@@ -4,13 +4,20 @@
 
 const express = require('express');
 const router = express.Router();
-const { pool } = require('../config/db');
+const { pool, systemPool } = require('../config/db');
+const { runAsSystem } = require('../config/tenantRouting');
 const { enviameClient } = require('../services/enviameClient');
 const { recordWebhookEvent } = require('../services/webhookEventLog');
 const fcmService = require('../services/fcmNotificationService');
 
 // Middleware para capturar raw body (necesario para verificación HMAC)
 router.use(express.raw({ type: 'application/json' }));
+
+// Este webhook no nace de una petición autenticada: no hay tenant ni usuario en
+// el contexto, y con RLS activo app_rls_user no ve ni envios ni pedidos_tienda
+// (medido en staging: 0 filas sin escalar). Igual que el webhook de Wompi, cada
+// bloque escala a app_system (BYPASSRLS, alcance transaccional).
+const withSystem = (fn) => runAsSystem({ pool, systemPool }, fn);
 
 // POST /api/webhooks/envia/tracking
 router.post('/tracking', async (req, res) => {
@@ -34,14 +41,14 @@ router.post('/tracking', async (req, res) => {
     const valid = enviameClient.verifyWebhook(rawBody, signature);
     if (!valid) {
       console.warn('[ENVIA WEBHOOK] Firma inválida', { ip: req.ip });
-      await recordWebhookEvent({
+      await withSystem((db) => recordWebhookEvent(db, {
         provider: 'envia',
-        event_id: eventData.event_id || `env_${Date.now()}`,
-        evento_tipo: eventData.event,
+        eventId: eventData.event_id || `env_${Date.now()}`,
+        eventType: eventData.event || 'firma_invalida',
         payload: eventData,
-        resultado: 'firma_invalida',
-        error_mensaje: 'HMAC signature mismatch'
-      });
+        result: { procesado: false, motivo: 'firma_invalida' },
+        errorMessage: 'HMAC signature mismatch'
+      })).catch((e) => console.warn('[ENVIA WEBHOOK] No se pudo registrar el evento:', e.message));
       return res.status(401).json({ error: 'Firma inválida' });
     }
   }
@@ -56,18 +63,25 @@ router.post('/tracking', async (req, res) => {
   const payloadHash = require('crypto').createHash('sha256').update(rawBody).digest('hex');
   
   try {
-    const webhookRes = await pool.query(
-      `INSERT INTO webhook_events (provider, event_id, evento_tipo, tracking_number, shipment_id, payload, payload_previo_hash, procesado_ok)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,NULL)
-       ON CONFLICT (provider, event_id, payload_previo_hash) DO UPDATE SET
-         payload = EXCLUDED.payload,
-         recibido_en = NOW()
+    // Columnas reales de webhook_events (130 + 164): event_type y payload_hash
+    // son NOT NULL; payload/recibido_en no existen en el esquema.
+    const webhookRes = await withSystem((db) => db.query(
+      `INSERT INTO webhook_events
+         (provider, event_id, event_type, payload_hash, evento_tipo,
+          tracking_number, shipment_id, payload_previo_hash, procesado_ok, result)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,NULL,$9::jsonb)
+       ON CONFLICT (provider, event_id) DO NOTHING
        RETURNING id`,
-      ['envia', normalized.event_id, evento_tipo, tracking_number, shipment_id, eventData, payloadHash]
-    );
-    webhookRecordId = webhookRecordId || webhookRes.rows[0]?.id;
+      ['envia', normalized.event_id, evento_tipo, payloadHash, evento_tipo,
+       tracking_number, shipment_id, payloadHash, JSON.stringify(eventData)]
+    ));
+
+    if (webhookRes.rows.length === 0) {
+      console.log('[ENVIA WEBHOOK] Evento duplicado (idempotencia por provider+event_id), ignorando');
+      return res.json({ received: true, duplicate: true });
+    }
+    webhookRecordId = webhookRes.rows[0].id;
   } catch (e) {
-    // Si falla por conflicto único, ya se procesó
     if (e.code === '23505') {
       console.log('[ENVIA WEBHOOK] Evento duplicado (idempotencia), ignorando');
       return res.json({ received: true, duplicate: true });
@@ -81,15 +95,15 @@ router.post('/tracking', async (req, res) => {
 
   try {
     if (evento_tipo === 'shipment.status_update' || evento_tipo === 'tracking.updated') {
-      procesadoOk = await _handleStatusUpdate(tracking_number, shipment_id, status, timestamp, eventData);
+      procesadoOk = await withSystem((db) => _handleStatusUpdate(db, tracking_number, shipment_id, status, timestamp, eventData));
     } else if (evento_tipo === 'pickup.scheduled' || evento_tipo === 'pickup.created') {
-      procesadoOk = await _handlePickupScheduled(tracking_number, shipment_id, eventData);
+      procesadoOk = await withSystem((db) => _handlePickupScheduled(db, tracking_number, shipment_id, eventData));
     } else if (evento_tipo === 'pickup.collected' || evento_tipo === 'pickup.completed') {
-      procesadoOk = await _handlePickupCollected(tracking_number, shipment_id, timestamp, eventData);
+      procesadoOk = await withSystem((db) => _handlePickupCollected(db, tracking_number, shipment_id, timestamp, eventData));
     } else if (evento_tipo === 'shipment.delivered') {
-      procesadoOk = await _handleDelivered(tracking_number, shipment_id, timestamp, eventData);
+      procesadoOk = await withSystem((db) => _handleDelivered(db, tracking_number, shipment_id, timestamp, eventData));
     } else if (evento_tipo === 'shipment.failed' || evento_tipo === 'shipment.returned') {
-      procesadoOk = await _handleFailedOrReturned(tracking_number, shipment_id, status, timestamp, eventData);
+      procesadoOk = await withSystem((db) => _handleFailedOrReturned(db, tracking_number, shipment_id, status, timestamp, eventData));
     } else {
       console.log(`[ENVIA WEBHOOK] Evento no manejado: ${evento_tipo}`);
       procesadoOk = true; // No es error, solo no hacemos nada
@@ -100,15 +114,15 @@ router.post('/tracking', async (req, res) => {
   }
 
   // 6. Actualizar registro webhook_events con resultado
-  await pool.query(
-    `UPDATE webhook_events SET 
-       procesado_ok = $1, 
-       error_mensaje = $2, 
+  await withSystem((db) => db.query(
+    `UPDATE webhook_events SET
+       procesado_ok = $1,
+       error_mensaje = $2,
        procesado_en = NOW(),
        reintentos = reintentos + 1
      WHERE id = $3`,
     [procesadoOk, errorMsg, webhookRecordId]
-  );
+  ));
 
   const latency = Date.now() - startTime;
   console.log(`[ENVIA WEBHOOK] Procesado en ${latency}ms | OK: ${procesadoOk}`);
@@ -120,97 +134,83 @@ router.post('/tracking', async (req, res) => {
 // HANDLERS ESPECÍFICOS
 // ────────────────────────────────────────────────────────────────────────
 
-async function _handleStatusUpdate(trackingNumber, shipmentId, status, timestamp, rawData) {
+async function _handleStatusUpdate(db, trackingNumber, shipmentId, status, timestamp, rawData) {
   if (!trackingNumber) return false;
 
-  const client = await pool.connect();
-  try {
-    await client.query('BEGIN');
+  // La transacción la abre runAsSystem (withSystem); aquí no se abre otra.
+  // Buscar envío por guía
+  const envioRes = await db.query(
+    `SELECT e.*, pt.estado as pedido_estado, pt.comprador_id, pt.prestador_comisionado_id
+     FROM envios e
+     JOIN pedidos_tienda pt ON pt.id = e.pedido_id
+     WHERE e.guia = $1`,
+    [trackingNumber]
+  );
 
-    // Buscar envío por guía
-    const envioRes = await client.query(
-      `SELECT e.*, pt.estado as pedido_estado, pt.comprador_id, pt.prestador_comisionado_id
-       FROM envios e
-       JOIN pedidos_tienda pt ON pt.id = e.pedido_id
-       WHERE e.guia = $1`,
-      [trackingNumber]
-    );
-
-    if (envioRes.rows.length === 0) {
-      console.warn(`[ENVIA WEBHOOK] Envío no encontrado para guía ${trackingNumber}`);
-      return false;
-    }
-
-    const envio = envioRes.rows[0];
-    
-    // Mapear estado Envíame → estado interno
-    const estadoMap = {
-      'CREATED': 'CREADO',
-      'LABEL_GENERATED': 'CREADO',
-      'PICKUP_SCHEDULED': 'CREADO',
-      'PICKED_UP': 'RECOGIDO',
-      'IN_TRANSIT': 'EN_TRANSITO',
-      'AT_DESTINATION_HUB': 'EN_CENTRO_DESTINO',
-      'OUT_FOR_DELIVERY': 'SALIDA_ENTREGA',
-      'DELIVERED': 'ENTREGADO',
-      'DELIVERY_FAILED': 'FALLIDO',
-      'RETURNED': 'DEVUELTO',
-      'CANCELLED': 'DEVUELTO'
-    };
-    
-    const estadoInterno = estadoMap[status?.toUpperCase()] || status?.toUpperCase() || 'CREADO';
-    
-    // Actualizar envío
-    const updateFields = ['estado = $1', 'actualizado_en = NOW()'];
-    const updateValues = [estadoInterno];
-    let paramIdx = 2;
-
-    if (timestamp) {
-      updateFields.push(`actualizado_en = $${paramIdx++}`);
-      updateValues.push(new Date(timestamp));
-    }
-    
-    if (rawData.tracking_url) {
-      updateFields.push(`url_rastreo = $${paramIdx++}`);
-      updateValues.push(rawData.tracking_url);
-    }
-
-    updateValues.push(trackingNumber);
-    await client.query(
-      `UPDATE envios SET ${updateFields.join(', ')} WHERE guia = $${paramIdx}`,
-      updateValues
-    );
-
-    // Si ENTREGADO → actualizar pedido
-    if (estadoInterno === 'ENTREGADO') {
-      await client.query(
-        `UPDATE pedidos_tienda SET estado = 'ENTREGADO', entregado_en = $1 WHERE id = $2`,
-        [timestamp ? new Date(timestamp) : new Date(), envio.pedido_id]
-      );
-      
-      // Notificar al cliente
-      await _notifyClientDelivery(client, envio.comprador_id, envio.pedido_id, trackingNumber);
-    }
-
-    // Si FALLIDO → crear tarea para CS
-    if (estadoInterno === 'FALLIDO') {
-      await _createFailedDeliveryTask(client, envio, rawData);
-    }
-
-    await client.query('COMMIT');
-    return true;
-  } catch (e) {
-    await client.query('ROLLBACK');
-    throw e;
-  } finally {
-    client.release();
+  if (envioRes.rows.length === 0) {
+    console.warn(`[ENVIA WEBHOOK] Envío no encontrado para guía ${trackingNumber}`);
+    return false;
   }
+
+  const envio = envioRes.rows[0];
+
+  // Mapear estado Envíame → estado interno
+  const estadoMap = {
+    'CREATED': 'CREADO',
+    'LABEL_GENERATED': 'CREADO',
+    'PICKUP_SCHEDULED': 'CREADO',
+    'PICKED_UP': 'RECOGIDO',
+    'IN_TRANSIT': 'EN_TRANSITO',
+    'AT_DESTINATION_HUB': 'EN_CENTRO_DESTINO',
+    'OUT_FOR_DELIVERY': 'SALIDA_ENTREGA',
+    'DELIVERED': 'ENTREGADO',
+    'DELIVERY_FAILED': 'FALLIDO',
+    'RETURNED': 'DEVUELTO',
+    'CANCELLED': 'DEVUELTO'
+  };
+
+  const estadoInterno = estadoMap[status?.toUpperCase()] || status?.toUpperCase() || 'CREADO';
+
+  // Actualizar envío. actualizado_en va una sola vez: repetirlo en el SET
+  // hacía que Postgres rechazara la sentencia con 'multiple assignments'.
+  const updateFields = ['estado = $1', 'actualizado_en = NOW()'];
+  const updateValues = [estadoInterno];
+  let paramIdx = 2;
+
+  if (rawData.tracking_url) {
+    updateFields.push(`url_rastreo = $${paramIdx++}`);
+    updateValues.push(rawData.tracking_url);
+  }
+
+  updateValues.push(trackingNumber);
+  await db.query(
+    `UPDATE envios SET ${updateFields.join(', ')} WHERE guia = $${paramIdx}`,
+    updateValues
+  );
+
+  // Si ENTREGADO → actualizar pedido
+  if (estadoInterno === 'ENTREGADO') {
+    await db.query(
+      `UPDATE pedidos_tienda SET estado = 'ENTREGADO', entregado_en = $1 WHERE id = $2`,
+      [timestamp ? new Date(timestamp) : new Date(), envio.pedido_id]
+    );
+
+    // Notificar al cliente
+    await _notifyClientDelivery(db, envio.comprador_id, envio.pedido_id, trackingNumber);
+  }
+
+  // Si FALLIDO → crear tarea para CS
+  if (estadoInterno === 'FALLIDO') {
+    await _createFailedDeliveryTask(db, envio, rawData);
+  }
+
+  return true;
 }
 
-async function _handlePickupScheduled(trackingNumber, shipmentId, rawData) {
+async function _handlePickupScheduled(db, trackingNumber, shipmentId, rawData) {
   if (!trackingNumber) return false;
 
-  await pool.query(
+  await db.query(
     `UPDATE envios SET 
        pickup_scheduled_at = $1,
        pickup_window_start = $2,
@@ -229,10 +229,10 @@ async function _handlePickupScheduled(trackingNumber, shipmentId, rawData) {
   return true;
 }
 
-async function _handlePickupCollected(trackingNumber, shipmentId, timestamp, rawData) {
+async function _handlePickupCollected(db, trackingNumber, shipmentId, timestamp, rawData) {
   if (!trackingNumber) return false;
 
-  await pool.query(
+  await db.query(
     `UPDATE envios SET 
        estado = 'RECOGIDO',
        pickup_confirmed_at = $1,
@@ -242,7 +242,7 @@ async function _handlePickupCollected(trackingNumber, shipmentId, timestamp, raw
   );
 
   // Actualizar pedido a DESPACHADO si estaba en PAGADO
-  await pool.query(
+  await db.query(
     `UPDATE pedidos_tienda pt
      SET estado = 'DESPACHADO', despachado_en = $1
      FROM envios e
@@ -253,20 +253,20 @@ async function _handlePickupCollected(trackingNumber, shipmentId, timestamp, raw
   return true;
 }
 
-async function _handleDelivered(trackingNumber, shipmentId, timestamp, rawData) {
-  return _handleStatusUpdate(trackingNumber, shipmentId, 'DELIVERED', timestamp, rawData);
+async function _handleDelivered(db, trackingNumber, shipmentId, timestamp, rawData) {
+  return _handleStatusUpdate(db, trackingNumber, shipmentId, 'DELIVERED', timestamp, rawData);
 }
 
-async function _handleFailedOrReturned(trackingNumber, shipmentId, status, timestamp, rawData) {
+async function _handleFailedOrReturned(db, trackingNumber, shipmentId, status, timestamp, rawData) {
   const estadoInterno = status?.toUpperCase().includes('RETURN') ? 'DEVUELTO' : 'FALLIDO';
-  return _handleStatusUpdate(trackingNumber, shipmentId, estadoInterno, timestamp, rawData);
+  return _handleStatusUpdate(db, trackingNumber, shipmentId, estadoInterno, timestamp, rawData);
 }
 
 // ────────────────────────────────────────────────────────────────────────
 // NOTIFICACIONES Y TAREAS
 // ────────────────────────────────────────────────────────────────────────
 
-async function _notifyClientDelivery(client, userId, orderId, trackingNumber) {
+async function _notifyClientDelivery(db, userId, orderId, trackingNumber) {
   try {
     await fcmService.sendToUser(userId, {
       title: '📦 ¡Tu pedido ha sido entregado!',
@@ -278,10 +278,10 @@ async function _notifyClientDelivery(client, userId, orderId, trackingNumber) {
   }
 }
 
-async function _createFailedDeliveryTask(client, envio, rawData) {
+async function _createFailedDeliveryTask(db, envio, rawData) {
   try {
     // Insertar en tabla de tareas/alertas para CS
-    await client.query(
+    await db.query(
       `INSERT INTO tareas_cs (tipo, prioridad, titulo, descripcion, datos_contexto, estado, creado_en)
        VALUES ('ENTREGA_FALLIDA', 'ALTA', $1, $2, $3, 'PENDIENTE', NOW())
        ON CONFLICT DO NOTHING`,

@@ -2,7 +2,8 @@
 // Orquestador de fulfillment post-pago — F1 Logística
 // Se dispara desde storeWebhook cuando pedido pasa a PAGADO
 
-const { pool } = require('../config/db');
+const { pool, systemPool } = require('../config/db');
+const { runAsSystem } = require('../config/tenantRouting');
 const { enviameClient } = require('../services/enviameClient');
 const fcmService = require('../services/fcmNotificationService');
 
@@ -12,12 +13,8 @@ const fcmService = require('../services/fcmNotificationService');
  * @param {Object} client - Cliente PG (opcional, para transacción externa)
  * @returns {Promise<Object>} Resultado del fulfillment
  */
-async function processOrderFulfillment(orderId, client = null) {
-  const useExternalClient = !!client;
-  const db = client || await pool.connect();
-  
+async function _processOrderFulfillmentTx(orderId, db) {
   try {
-    if (!useExternalClient) await db.query('BEGIN');
 
     // 1. Obtener pedido con items y dirección
     const orderRes = await db.query(
@@ -63,7 +60,6 @@ async function processOrderFulfillment(orderId, client = null) {
         await _notifyProviderForCitaDelivery(db, order);
       }
 
-      if (!useExternalClient) await db.query('COMMIT');
       return { success: true, tipo: 'entrega_en_cita', orderId };
     }
 
@@ -85,8 +81,6 @@ async function processOrderFulfillment(orderId, client = null) {
     // 5. Actualizar pedido a estado procesado (queda en PAGADO hasta que proveedor despache)
     // El estado DESPACHADO se pone cuando proveedor hace dispatch desde su app
 
-    if (!useExternalClient) await db.query('COMMIT');
-
     return { 
       success: true, 
       tipo: 'envio_estandar',
@@ -96,12 +90,26 @@ async function processOrderFulfillment(orderId, client = null) {
     };
 
   } catch (err) {
-    if (!useExternalClient) await db.query('ROLLBACK');
     console.error(`[FULFILLMENT ERROR] Pedido ${orderId}:`, err);
     throw err;
-  } finally {
-    if (!useExternalClient) db.release();
   }
+}
+
+/**
+ * Punto de entrada público.
+ *
+ * RLS: el pool de la aplicación (app_rls_user) no lleva tenant ni rol en el
+ * contexto, así que pedidos_tienda, productos y carrier_accounts devuelven 0
+ * filas (medido en staging: 0 productos/0 carrier sin escalar, 37/5 con
+ * app_system). Los caminos que no nacen de una petición autenticada escalan.
+ *
+ * @param {string} orderId
+ * @param {Object|null} client conexión de una transacción ya abierta por el
+ *        llamador; si se pasa, no se abre ni se cierra transacción aquí.
+ */
+async function processOrderFulfillment(orderId, client = null) {
+  if (client) return _processOrderFulfillmentTx(orderId, client);
+  return runAsSystem({ pool, systemPool }, (c) => _processOrderFulfillmentTx(orderId, c));
 }
 
 /**
@@ -310,14 +318,14 @@ async function _notifyProviderNewOrder(db, order, providerId, envio) {
  * (para recuperar si webhook falló)
  */
 async function recoverUnfulfilledOrders() {
-  const res = await pool.query(
+  const res = await runAsSystem({ pool, systemPool }, (db) => db.query(
     `SELECT id FROM pedidos_tienda 
      WHERE estado = 'PAGADO' 
      AND booking_id IS NULL
      AND NOT EXISTS (SELECT 1 FROM envios WHERE pedido_id = pedidos_tienda.id)
      AND pagado_en < NOW() - INTERVAL '10 minutes'
      LIMIT 50`
-  );
+  ));
 
   for (const row of res.rows) {
     try {

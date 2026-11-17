@@ -8,6 +8,7 @@ const {
   MINIMO_PEDIDO,
 } = require('../config/programaPuntos');
 const { pool } = require('../config/db');
+const { runInTenantTransaction } = require('../config/tenantRouting');
 const { resolverPrecio } = require('../services/precioService');
 const { calcularEnvio } = require('../services/envioService');
 const { insertPendingTransaction } = require('../services/transactionStore');
@@ -1284,6 +1285,8 @@ exports.storeWebhook = async (req, res) => {
 
 /**
  * Genera y envía la Factura Electrónica DIAN para un pedido de tienda pagado.
+ * Se ejecuta con rol de sistema (BYPASSRLS) porque el webhook de Wompi
+ * llega sin contexto de inquilino y las políticas de RLS filtrarían todo.
  */
 async function generarFacturaDianPedido(pedidoId) {
   if (!dianInvoiceClient.isConfigured()) {
@@ -1291,14 +1294,16 @@ async function generarFacturaDianPedido(pedidoId) {
     return;
   }
 
-  // Obtener datos del pedido con detalles
-  const orderRes = await pool.query(
+  const tenantRouting = require('../config/tenantRouting');
+
+  // Obtener datos del pedido con detalles (con rol de sistema para bypass RLS)
+  const orderRes = await tenantRouting.runAsSystem({ pool }, async (cx) => cx.query(
     `SELECT pt.*, u.id as comprador_id, u.email as comprador_email, u.first_name, u.last_name, u.document_number, u.document_type, u.phone, u.address
      FROM pedidos_tienda pt
      JOIN usuarios u ON pt.comprador_id = u.id
      WHERE pt.id = $1;`,
     [pedidoId]
-  );
+  ));
 
   if (orderRes.rows.length === 0) {
     throw new Error(`Pedido ${pedidoId} no encontrado para facturación`);
@@ -1307,13 +1312,13 @@ async function generarFacturaDianPedido(pedidoId) {
   const order = orderRes.rows[0];
 
   // Obtener detalles del pedido
-  const detailsRes = await pool.query(
+  const detailsRes = await tenantRouting.runAsSystem({ pool }, async (cx) => cx.query(
     `SELECT dpt.*, p.nombre, p.tag_especialidad
      FROM detalles_pedido_tienda dpt
      JOIN productos p ON dpt.producto_id = p.id
      WHERE dpt.pedido_id = $1;`,
     [pedidoId]
-  );
+  ));
 
   // Datos del emisor
   const emisorNit = process.env.DIAN_NIT;
@@ -1397,7 +1402,7 @@ async function generarFacturaDianPedido(pedidoId) {
   }
 
   // Guardar CUFE y QR en el pedido
-  await pool.query(
+  await tenantRouting.runAsSystem({ pool }, async (cx) => cx.query(
     `UPDATE pedidos_tienda SET 
        cufe = $2, 
        qr_factura = $3, 
@@ -1405,7 +1410,7 @@ async function generarFacturaDianPedido(pedidoId) {
        factura_fecha = $4 
      WHERE id = $1;`,
     [pedidoId, resultado.cufe, resultado.qr, new Date()]
-  );
+  ));
 
   console.log(`✅ [DIAN INVOICE] Factura emitida para pedido ${pedidoId} - CUFE: ${resultado.cufe}`);
 }
@@ -1418,6 +1423,7 @@ async function dispatchOrder(req, res) {
   try {
     const orderId = req.params.id;
     const { transportadora, guia, url_rastreo, observaciones } = req.body;
+    const tenantId = req.user.tenant_id;
 
     // Validar campos obligatorios
     if (!transportadora || !transportadora.trim()) {
@@ -1427,20 +1433,15 @@ async function dispatchOrder(req, res) {
       return res.status(400).json({ error: 'guia (número de guía) es obligatoria' });
     }
 
-    const client = await pool.connect();
-    try {
-      await client.query('BEGIN');
-
+    await runInTenantTransaction({ pool }, tenantId, async (client) => {
       // Verificar pedido y estado actual
       const orderRes = await client.query('SELECT * FROM pedidos_tienda WHERE id = $1;', [orderId]);
       if (orderRes.rows.length === 0) {
-        await client.query('ROLLBACK');
         return res.status(404).json({ error: 'Pedido no encontrado' });
       }
       const order = orderRes.rows[0];
 
       if (order.estado !== 'PAGADO') {
-        await client.query('ROLLBACK');
         return res.status(400).json({ error: `El pedido debe estar PAGADO para despachar. Estado actual: ${order.estado}` });
       }
 
@@ -1458,8 +1459,6 @@ async function dispatchOrder(req, res) {
         [orderId, transportadora, guia, url_rastreo || null, observaciones || null]
       );
 
-      await client.query('COMMIT');
-
       console.log(`✅ [ADMIN DISPATCH] Pedido ${orderId} despachado vía ${transportadora} guía ${guia}`);
 
       res.json({
@@ -1469,15 +1468,10 @@ async function dispatchOrder(req, res) {
           envio: envioRes.rows[0]
         }
       });
-    } catch (err) {
-      await client.query('ROLLBACK');
-      throw err;
-    } finally {
-      client.release();
-    }
+    });
   } catch (error) {
     console.error('❌ ERROR EN POST /api/admin/store/orders/:id/dispatch:', error);
-    res.status(500).json({ error: 'Error al despachar el pedido' });
+    if (!res.headersSent) res.status(500).json({ error: 'Error al despachar el pedido' });
   }
 }
 
@@ -1490,21 +1484,17 @@ async function deliverOrder(req, res) {
   try {
     const orderId = req.params.id;
     const { observaciones } = req.body;
+    const tenantId = req.user.tenant_id;
 
-    const client = await pool.connect();
-    try {
-      await client.query('BEGIN');
-
+    await runInTenantTransaction({ pool }, tenantId, async (client) => {
       // Verificar pedido y estado actual
       const orderRes = await client.query('SELECT * FROM pedidos_tienda WHERE id = $1;', [orderId]);
       if (orderRes.rows.length === 0) {
-        await client.query('ROLLBACK');
         return res.status(404).json({ error: 'Pedido no encontrado' });
       }
       const order = orderRes.rows[0];
 
       if (!['DESPACHADO', 'PAGADO'].includes(order.estado)) {
-        await client.query('ROLLBACK');
         return res.status(400).json({ error: `El pedido debe estar DESPACHADO (o PAGADO) para marcar como entregado. Estado actual: ${order.estado}` });
       }
 
@@ -1521,23 +1511,16 @@ async function deliverOrder(req, res) {
         [orderId, observaciones || null]
       );
 
-      await client.query('COMMIT');
-
       console.log(`✅ [ADMIN DELIVER] Pedido ${orderId} marcado ENTREGADO`);
 
       res.json({
         success: true,
         data: { order: { ...order, estado: 'ENTREGADO', entregado_en: new Date() } }
       });
-    } catch (err) {
-      await client.query('ROLLBACK');
-      throw err;
-    } finally {
-      client.release();
-    }
+    });
   } catch (error) {
     console.error('❌ ERROR EN POST /api/admin/store/orders/:id/deliver:', error);
-    res.status(500).json({ error: 'Error al marcar pedido como entregado' });
+    if (!res.headersSent) res.status(500).json({ error: 'Error al marcar pedido como entregado' });
   }
 }
 
@@ -1784,125 +1767,116 @@ async function updateEnvioStatus(req, res) {
   // ────────────────────────────────────────────────────────────────────────
 
   /**
-   * GET /api/provider/fulfillment/orders
-   * Lista pedidos PAGADO asignados al proveedor logueado, sin envío creado aún
-   */
-  async function getProviderFulfillmentOrders(req, res) {
-    try {
-      const providerId = req.user.id;
-      const userRole = req.user.role;
+     * GET /api/provider/fulfillment/orders
+     * Lista pedidos PAGADO asignados al proveedor logueado, sin envío creado aún
+     */
+    async function getProviderFulfillmentOrders(req, res) {
+      try {
+        const providerId = req.user.id;
+        const userRole = req.user.role;
+        const tenantId = req.user.tenant_id;
 
-      // Solo provider y salon pueden acceder
-      if (!['provider', 'salon'].includes(userRole)) {
-        return res.status(403).json({ error: 'Solo proveedores y salones pueden acceder a fulfillment' });
+        // Solo provider y salon pueden acceder
+        if (!['provider', 'salon'].includes(userRole)) {
+          return res.status(403).json({ error: 'Solo proveedores y salones pueden acceder a fulfillment' });
+        }
+
+        const { rows } = await runInTenantTransaction({ pool }, tenantId, (client) => client.query(
+          `SELECT
+             pt.id, pt.estado, pt.total, pt.pagado_en, pt.nombre_entrega, pt.direccion_entrega,
+             pt.ciudad, pt.departamento, pt.codigo_postal,
+             json_agg(json_build_object(
+               'producto_id', dpt.producto_id,
+               'cantidad', dpt.cantidad,
+               'nombre', p.nombre,
+               'precio_unitario', dpt.precio_unitario_pagado
+             )) FILTER (WHERE dpt.id IS NOT NULL) AS items,
+             CASE WHEN e.id IS NOT NULL THEN true ELSE false END AS tiene_envio,
+             e.id AS envio_id,
+             e.estado AS envio_estado,
+             e.transportadora
+           FROM pedidos_tienda pt
+           LEFT JOIN detalles_pedido_tienda dpt ON dpt.pedido_id = pt.id
+           LEFT JOIN productos p ON p.id = dpt.producto_id
+           LEFT JOIN envios e ON e.pedido_id = pt.id
+           WHERE pt.prestador_comisionado_id = $1
+             AND pt.estado = 'PAGADO'
+             AND pt.booking_id IS NULL
+           GROUP BY pt.id, e.id
+           ORDER BY pt.pagado_en DESC`,
+          [providerId]
+        ));
+
+        res.json({ success: true, data: rows });
+      } catch (error) {
+        console.error('❌ ERROR EN GET /api/provider/fulfillment/orders:', error);
+        res.status(500).json({ error: 'Error al obtener pedidos por despachar' });
       }
-
-      const { rows } = await pool.query(
-        `SELECT 
-           pt.id, pt.estado, pt.total, pt.pagado_en, pt.nombre_entrega, pt.direccion_entrega,
-           pt.ciudad, pt.departamento, pt.codigo_postal,
-           json_agg(json_build_object(
-             'producto_id', dpt.producto_id,
-             'cantidad', dpt.cantidad,
-             'nombre', p.nombre,
-             'precio_unitario', dpt.precio_unitario_pagado
-           )) FILTER (WHERE dpt.id IS NOT NULL) AS items,
-           CASE WHEN e.id IS NOT NULL THEN true ELSE false END AS tiene_envio,
-           e.id AS envio_id,
-           e.estado AS envio_estado,
-           e.transportadora
-         FROM pedidos_tienda pt
-         LEFT JOIN detalles_pedido_tienda dpt ON dpt.pedido_id = pt.id
-         LEFT JOIN productos p ON p.id = dpt.producto_id
-         LEFT JOIN envios e ON e.pedido_id = pt.id
-         WHERE pt.prestador_comisionado_id = $1
-           AND pt.estado = 'PAGADO'
-           AND pt.booking_id IS NULL
-         GROUP BY pt.id, e.id
-         ORDER BY pt.pagado_en DESC`,
-        [providerId]
-      );
-
-      res.json({ success: true, data: rows });
-    } catch (error) {
-      console.error('❌ ERROR EN GET /api/provider/fulfillment/orders:', error);
-      res.status(500).json({ error: 'Error al obtener pedidos por despachar' });
     }
-  }
 
   /**
-   * POST /api/provider/fulfillment/orders/:id/prepare
-   * Marca items como preparados (listos para etiquetar)
-   * Body: { items: [{ producto_id, cantidad_preparada }] }
-   */
-  async function prepareOrderItems(req, res) {
-    const client = await pool.connect();
-    try {
+     * POST /api/provider/fulfillment/orders/:id/prepare
+     * Marca items como preparados (listos para etiquetar)
+     * Body: { items: [{ producto_id, cantidad_preparada }] }
+     */
+    async function prepareOrderItems(req, res) {
       const providerId = req.user.id;
       const orderId = req.params.id;
       const { items } = req.body;
+      const tenantId = req.user.tenant_id;
 
       if (!items || !Array.isArray(items) || items.length === 0) {
         return res.status(400).json({ error: 'Se requiere lista de items a preparar' });
       }
 
-      await client.query('BEGIN');
+      try {
+        await runInTenantTransaction({ pool }, tenantId, async (client) => {
+          // Verificar que el pedido pertenece a este proveedor y está en PAGADO
+          const orderRes = await client.query(
+            `SELECT * FROM pedidos_tienda WHERE id = $1 AND prestador_comisionado_id = $2 FOR UPDATE`,
+            [orderId, providerId]
+          );
 
-      // Verificar que el pedido pertenece a este proveedor y está en PAGADO
-      const orderRes = await client.query(
-        `SELECT * FROM pedidos_tienda WHERE id = $1 AND prestador_comisionado_id = $2 FOR UPDATE`,
-        [orderId, providerId]
-      );
+          if (orderRes.rows.length === 0) {
+            return res.status(404).json({ error: 'Pedido no encontrado o no autorizado' });
+          }
 
-      if (orderRes.rows.length === 0) {
-        await client.query('ROLLBACK');
-        return res.status(404).json({ error: 'Pedido no encontrado o no autorizado' });
+          const order = orderRes.rows[0];
+          if (order.estado !== 'PAGADO') {
+            return res.status(400).json({ error: `Pedido en estado ${order.estado}, debe ser PAGADO` });
+          }
+
+          // Validar y actualizar items preparados
+          for (const item of items) {
+            const { producto_id, cantidad_preparada } = item;
+            if (!producto_id || !cantidad_preparada || cantidad_preparada <= 0) {
+              return res.status(400).json({ error: 'producto_id y cantidad_preparada (>0) son obligatorios' });
+            }
+
+            // Verificar que el item existe en el pedido
+            const itemRes = await client.query(
+              `SELECT cantidad FROM detalles_pedido_tienda WHERE pedido_id = $1 AND producto_id = $2`,
+              [orderId, producto_id]
+            );
+            if (itemRes.rows.length === 0) {
+              return res.status(400).json({ error: `Producto ${producto_id} no está en este pedido` });
+            }
+            if (cantidad_preparada > itemRes.rows[0].cantidad) {
+              return res.status(400).json({ error: `Cantidad preparada excede la del pedido para producto ${producto_id}` });
+            }
+          }
+
+          // TODO: Guardar estado de preparación en tabla nueva o metadata del pedido
+          // Por ahora solo logueamos
+          console.log(`[FULFILLMENT] Proveedor ${providerId} preparó items para pedido ${orderId}:`, items);
+
+          res.json({ success: true, data: { message: 'Items marcados como preparados', items } });
+        });
+      } catch (error) {
+        console.error('❌ ERROR EN POST /api/provider/fulfillment/orders/:id/prepare:', error);
+        if (!res.headersSent) res.status(500).json({ error: 'Error al preparar items' });
       }
-
-      const order = orderRes.rows[0];
-      if (order.estado !== 'PAGADO') {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: `Pedido en estado ${order.estado}, debe ser PAGADO` });
-      }
-
-      // Validar y actualizar items preparados
-      for (const item of items) {
-        const { producto_id, cantidad_preparada } = item;
-        if (!producto_id || !cantidad_preparada || cantidad_preparada <= 0) {
-          await client.query('ROLLBACK');
-          return res.status(400).json({ error: 'producto_id y cantidad_preparada (>0) son obligatorios' });
-        }
-
-        // Verificar que el item existe en el pedido
-        const itemRes = await client.query(
-          `SELECT cantidad FROM detalles_pedido_tienda WHERE pedido_id = $1 AND producto_id = $2`,
-          [orderId, producto_id]
-        );
-        if (itemRes.rows.length === 0) {
-          await client.query('ROLLBACK');
-          return res.status(400).json({ error: `Producto ${producto_id} no está en este pedido` });
-        }
-        if (cantidad_preparada > itemRes.rows[0].cantidad) {
-          await client.query('ROLLBACK');
-          return res.status(400).json({ error: `Cantidad preparada excede la del pedido para producto ${producto_id}` });
-        }
-      }
-
-      // TODO: Guardar estado de preparación en tabla nueva o metadata del pedido
-      // Por ahora solo logueamos
-      console.log(`[FULFILLMENT] Proveedor ${providerId} preparó items para pedido ${orderId}:`, items);
-
-      await client.query('COMMIT');
-
-      res.json({ success: true, data: { message: 'Items marcados como preparados', items } });
-    } catch (error) {
-      await client.query('ROLLBACK');
-      console.error('❌ ERROR EN POST /api/provider/fulfillment/orders/:id/prepare:', error);
-      res.status(500).json({ error: 'Error al preparar items' });
-    } finally {
-      client.release();
     }
-  }
 
   /**
    * POST /api/provider/fulfillment/orders/:id/label
@@ -1910,162 +1884,144 @@ async function updateEnvioStatus(req, res) {
    * Body: { peso_kg, dimensiones_cm: {l,w,h}, valor_declarado_cop }
    */
   async function generateEnvioLabel(req, res) {
-    const client = await pool.connect();
+    const providerId = req.user.id;
+    const orderId = req.params.id;
+    const { peso_kg, dimensiones_cm, valor_declarado_cop } = req.body;
+    const tenantId = req.user.tenant_id;
+
     try {
-      const providerId = req.user.id;
-      const orderId = req.params.id;
-      const { peso_kg, dimensiones_cm, valor_declarado_cop } = req.body;
-
-      await client.query('BEGIN');
-
-      // Verificar pedido y obtener envío existente o crear uno
-      const orderRes = await client.query(
-        `SELECT pt.*, e.id as envio_id, e.guia, e.estado as envio_estado
-         FROM pedidos_tienda pt
-         LEFT JOIN envios e ON e.pedido_id = pt.id
-         WHERE pt.id = $1 AND pt.prestador_comisionado_id = $2`,
-        [orderId, providerId]
-      );
-
-      if (orderRes.rows.length === 0) {
-        await client.query('ROLLBACK');
-        return res.status(404).json({ error: 'Pedido no encontrado o no autorizado' });
-      }
-
-      const order = orderRes.rows[0];
-      if (order.estado !== 'PAGADO') {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: `Pedido en estado ${order.estado}` });
-      }
-
-      // Si ya tiene guía y está en estado avanzado, no regenerar
-      if (order.guia && ['RECOGIDO', 'EN_TRANSITO', 'EN_CENTRO_DESTINO', 'SALIDA_ENTREGA', 'ENTREGADO'].includes(order.envio_estado)) {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: `Envío ya en proceso (${order.envio_estado}), no se puede regenerar etiqueta` });
-      }
-
-      // Obtener dirección origen (proveedor)
-      const origen = await _getOrigenDireccionForProvider(client, providerId);
-      if (!origen) {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: 'Proveedor no tiene dirección de origen configurada (business_profile)' });
-      }
-
-      // Obtener dirección destino (cliente)
-      const destino = {
-        ciudad: order.ciudad,
-        departamento: order.departamento,
-        codigo_postal: order.codigo_postal,
-        street: order.direccion_entrega
-      };
-
-      // Cotizar y obtener mejor carrier (usar shippingService + routing rules)
-      const { cotizarEnvio } = require('../services/shippingService');
-      const cotizacion = await cotizarEnvio({
-        ciudad: order.ciudad,
-        departamento: order.departamento,
-        codigo_postal: order.codigo_postal,
-        peso_total_kg: peso_kg || 0.5,
-        valor_pedido: order.total
-      });
-
-      // Llamar Envíame para generar etiqueta
-            const { EnviameClient } = require('../services/enviameClient');
-            const providerEnviameClient = new EnviameClient({ pool: client });
-
-            // Primero obtener rates
-            const rates = await providerEnviameClient.getRates({
-        origin: { 
-          city: origen.dane_code, 
-          state: _departamentoToDaneState(origen.departamento), 
-          country: 'CO',
-          postal_code: origen.codigo_postal,
-          street: _formatOrigenStreet(origen)
-        },
-        destination: { 
-          city: _ciudadToDaneCode(order.ciudad), 
-          state: _departamentoToDaneState(order.departamento), 
-          country: 'CO',
-          postal_code: order.codigo_postal,
-          street: order.direccion_entrega
-        },
-        parcels: [{ 
-          weight: peso_kg || 0.5, 
-          length: dimensiones_cm?.l || 20, 
-          width: dimensiones_cm?.w || 15, 
-          height: dimensiones_cm?.h || 10 
-        }],
-        value_cop: valor_declarado_cop || order.total,
-        currency: 'COP'
-      });
-
-      // Seleccionar mejor rate (el más barato que cumpla SLA)
-      const bestRate = rates[0]; // TODO: aplicar routing rules
-      if (!bestRate) {
-        await client.query('ROLLBACK');
-        return res.status(500).json({ error: 'No hay carriers disponibles para esta ruta' });
-      }
-
-      // Generar etiqueta
-            const labelResult = await providerEnviameClient.generateLabel({
-        rate_id: bestRate.rate_id,
-        reference: `order_${orderId}`,
-        metadata: { provider_id: providerId, order_id: orderId }
-      });
-
-      // Actualizar o crear registro en envios
-      let envioId = order.envio_id;
-      if (envioId) {
-        await client.query(
-          `UPDATE envios SET 
-             guia = $1, label_pdf_url = $2, label_zpl = $3,
-             carrier_service_code = $4, transportadora = $5,
-             estado = 'CREADO', actualizado_en = NOW()
-           WHERE id = $5`,
-          [labelResult.tracking_number, labelResult.label_pdf_url, labelResult.label_zpl,
-           bestRate.service_code, bestRate.carrier, envioId]
+      await runInTenantTransaction({ pool }, tenantId, async (client) => {
+        // Verificar pedido y obtener envío existente o crear uno
+        const orderRes = await client.query(
+          `SELECT pt.*, e.id as envio_id, e.guia, e.estado as envio_estado
+           FROM pedidos_tienda pt
+           LEFT JOIN envios e ON e.pedido_id = pt.id
+           WHERE pt.id = $1 AND pt.prestador_comisionado_id = $2`,
+          [orderId, providerId]
         );
-      } else {
-        const envioRes = await client.query(
-          `INSERT INTO envios (
-             pedido_id, transportadora, guia, label_pdf_url, label_zpl,
-             carrier_service_code, estado, observaciones,
-             origen_tipo_via, origen_numero_principal, origen_letra_principal,
-             origen_numero_secundario, origen_letra_secundaria, origen_complemento,
-             origen_barrio, origen_ciudad, origen_departamento, origen_codigo_postal, origen_dane_code
-           ) VALUES ($1,$2,$3,$4,$5,$6,'CREADO',$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)
-           RETURNING id`,
-          [
-            orderId, bestRate.carrier, labelResult.tracking_number, labelResult.label_pdf_url, labelResult.label_zpl,
-            bestRate.service_code, `Etiqueta generada por proveedor ${providerId}`,
-            origen.tipo_via, origen.numero_principal, origen.letra_principal,
-            origen.numero_secundario, origen.letra_secundaria, origen.complemento,
-            origen.barrio, origen.ciudad, origen.departamento, origen.codigo_postal, origen.dane_code
-          ]
-        );
-        envioId = envioRes.rows[0].id;
-      }
 
-      await client.query('COMMIT');
-
-      res.json({ 
-        success: true, 
-        data: { 
-          tracking_number: labelResult.tracking_number,
-          label_pdf_url: labelResult.label_pdf_url,
-          label_zpl: labelResult.label_zpl,
-          carrier: bestRate.carrier,
-          service_code: bestRate.service_code,
-          envio_id: envioId,
-          estimated_days: `${bestRate.days_min}-${bestRate.days_max}`
+        if (orderRes.rows.length === 0) {
+          return res.status(404).json({ error: 'Pedido no encontrado o no autorizado' });
         }
+
+        const order = orderRes.rows[0];
+        if (order.estado !== 'PAGADO') {
+          return res.status(400).json({ error: `Pedido en estado ${order.estado}` });
+        }
+
+        // Si ya tiene guía y está en estado avanzado, no regenerar
+        if (order.guia && ['RECOGIDO', 'EN_TRANSITO', 'EN_CENTRO_DESTINO', 'SALIDA_ENTREGA', 'ENTREGADO'].includes(order.envio_estado)) {
+          return res.status(400).json({ error: `Envío ya en proceso (${order.envio_estado}), no se puede regenerar etiqueta` });
+        }
+
+        // Obtener dirección origen (proveedor)
+        const origen = await _getOrigenDireccionForProvider(client, providerId);
+        if (!origen) {
+          return res.status(400).json({ error: 'Proveedor no tiene dirección de origen configurada (business_profile)' });
+        }
+
+        // Cotizar y obtener mejor carrier (usar shippingService + routing rules)
+        const { cotizarEnvio } = require('../services/shippingService');
+        const cotizacion = await cotizarEnvio({
+          ciudad: order.ciudad,
+          departamento: order.departamento,
+          codigo_postal: order.codigo_postal,
+          peso_total_kg: peso_kg || 0.5,
+          valor_pedido: order.total
+        });
+
+        // Llamar Envíame para generar etiqueta
+        const { EnviameClient } = require('../services/enviameClient');
+        const providerEnviameClient = new EnviameClient({ pool: client });
+
+        // Primero obtener rates
+        const rates = await providerEnviameClient.getRates({
+          origin: { 
+            city: origen.dane_code, 
+            state: _departamentoToDaneState(origen.departamento), 
+            country: 'CO',
+            postal_code: origen.codigo_postal,
+            street: _formatOrigenStreet(origen)
+          },
+          destination: { 
+            city: _ciudadToDaneCode(order.ciudad), 
+            state: _departamentoToDaneState(order.departamento), 
+            country: 'CO',
+            postal_code: order.codigo_postal,
+            street: order.direccion_entrega
+          },
+          parcels: [{ 
+            weight: peso_kg || 0.5, 
+            length: dimensiones_cm?.l || 20, 
+            width: dimensiones_cm?.w || 15, 
+            height: dimensiones_cm?.h || 10 
+          }],
+          value_cop: valor_declarado_cop || order.total,
+          currency: 'COP'
+        });
+
+        // Seleccionar mejor rate (el más barato que cumpla SLA)
+        const bestRate = rates[0]; // TODO: aplicar routing rules
+        if (!bestRate) {
+          return res.status(500).json({ error: 'No hay carriers disponibles para esta ruta' });
+        }
+
+        // Generar etiqueta
+        const labelResult = await providerEnviameClient.generateLabel({
+          rate_id: bestRate.rate_id,
+          reference: `order_${orderId}`,
+          metadata: { provider_id: providerId, order_id: orderId }
+        });
+
+        // Actualizar o crear registro en envios
+        let envioId = order.envio_id;
+        if (envioId) {
+          await client.query(
+            `UPDATE envios SET 
+               guia = $1, label_pdf_url = $2, label_zpl = $3,
+               carrier_service_code = $4, transportadora = $5,
+               estado = 'CREADO', actualizado_en = NOW()
+             WHERE id = $6`,
+            [labelResult.tracking_number, labelResult.label_pdf_url, labelResult.label_zpl,
+             bestRate.service_code, bestRate.carrier, envioId]
+          );
+        } else {
+          const envioRes = await client.query(
+            `INSERT INTO envios (
+               pedido_id, transportadora, guia, label_pdf_url, label_zpl,
+               carrier_service_code, estado, observaciones,
+               origen_tipo_via, origen_numero_principal, origen_letra_principal,
+               origen_numero_secundario, origen_letra_secundaria, origen_complemento,
+               origen_barrio, origen_ciudad, origen_departamento, origen_codigo_postal, origen_dane_code
+             ) VALUES ($1,$2,$3,$4,$5,$6,'CREADO',$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)
+             RETURNING id`,
+            [
+              orderId, bestRate.carrier, labelResult.tracking_number, labelResult.label_pdf_url, labelResult.label_zpl,
+              bestRate.service_code, `Etiqueta generada por proveedor ${providerId}`,
+              origen.tipo_via, origen.numero_principal, origen.letra_principal,
+              origen.numero_secundario, origen.letra_secundaria, origen.complemento,
+              origen.barrio, origen.ciudad, origen.departamento, origen.codigo_postal, origen.dane_code
+            ]
+          );
+          envioId = envioRes.rows[0].id;
+        }
+
+        res.json({ 
+          success: true, 
+          data: { 
+            tracking_number: labelResult.tracking_number,
+            label_pdf_url: labelResult.label_pdf_url,
+            label_zpl: labelResult.label_zpl,
+            carrier: bestRate.carrier,
+            service_code: bestRate.service_code,
+            envio_id: envioId,
+            estimated_days: `${bestRate.days_min}-${bestRate.days_max}`
+          }
+        });
       });
     } catch (error) {
-      await client.query('ROLLBACK');
       console.error('❌ ERROR EN POST /api/provider/fulfillment/orders/:id/label:', error);
-      res.status(500).json({ error: 'Error al generar etiqueta: ' + error.message });
-    } finally {
-      client.release();
+      if (!res.headersSent) res.status(500).json({ error: 'Error al generar etiqueta: ' + error.message });
     }
   }
 
@@ -2075,89 +2031,81 @@ async function updateEnvioStatus(req, res) {
    * Body: { ventana_inicio, ventana_fin, contacto_nombre, contacto_telefono }
    */
   async function scheduleEnvioPickup(req, res) {
-    const client = await pool.connect();
+    const providerId = req.user.id;
+    const orderId = req.params.id;
+    const { ventana_inicio, ventana_fin, contacto_nombre, contacto_telefono } = req.body;
+    const tenantId = req.user.tenant_id;
+
+    if (!ventana_inicio || !ventana_fin) {
+      return res.status(400).json({ error: 'ventana_inicio y ventana_fin son obligatorios (ISO timestamp)' });
+    }
+
     try {
-      const providerId = req.user.id;
-      const orderId = req.params.id;
-      const { ventana_inicio, ventana_fin, contacto_nombre, contacto_telefono } = req.body;
+      await runInTenantTransaction({ pool }, tenantId, async (client) => {
+        // Obtener envío del pedido
+        const envioRes = await client.query(
+          `SELECT e.* FROM envios e
+           JOIN pedidos_tienda pt ON pt.id = e.pedido_id
+           WHERE pt.id = $1 AND pt.prestador_comisionado_id = $2`,
+          [orderId, providerId]
+        );
 
-      if (!ventana_inicio || !ventana_fin) {
-        return res.status(400).json({ error: 'ventana_inicio y ventana_fin son obligatorios (ISO timestamp)' });
-      }
-
-      await client.query('BEGIN');
-
-      // Obtener envío del pedido
-      const envioRes = await client.query(
-        `SELECT e.* FROM envios e
-         JOIN pedidos_tienda pt ON pt.id = e.pedido_id
-         WHERE pt.id = $1 AND pt.prestador_comisionado_id = $2`,
-        [orderId, providerId]
-      );
-
-      if (envioRes.rows.length === 0) {
-        await client.query('ROLLBACK');
-        return res.status(404).json({ error: 'Envío no encontrado para este pedido' });
-      }
-
-      const envio = envioRes.rows[0];
-      if (!envio.guia) {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: 'No hay guía generada. Primero genere la etiqueta.' });
-      }
-      if (envio.estado !== 'CREADO') {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: `Envío en estado ${envio.estado}, debe ser CREADO` });
-      }
-
-      // Solicitar recolección a Envíame
-            const { EnviameClient } = require('../services/enviameClient');
-            const providerEnviameClient = new EnviameClient({ pool: client });
-            const pickupResult = await providerEnviameClient.schedulePickup({
-        tracking_number: envio.guia,
-        pickup_address: {
-          city: envio.origen_dane_code,
-          state: _departamentoToDaneState(envio.origen_departamento),
-          country: 'CO',
-          postal_code: envio.origen_codigo_postal,
-          street: _formatOrigenStreet(envio)
-        },
-        pickup_window_start: ventana_inicio,
-        pickup_window_end: ventana_fin,
-        contact_name: contacto_nombre || 'Proveedor GlowApp',
-        contact_phone: contacto_telefono || ''
-      });
-
-      // Actualizar envío con datos de recolección
-      await client.query(
-        `UPDATE envios SET 
-           pickup_scheduled_at = $1,
-           pickup_window_start = $2,
-           pickup_window_end = $3,
-           pickup_id = $4,
-           estado = 'CREADO',
-           actualizado_en = NOW()
-         WHERE id = $5`,
-        [ventana_inicio, ventana_inicio, ventana_fin, pickupResult.pickup_id, envio.id]
-      );
-
-      await client.query('COMMIT');
-
-      res.json({ 
-        success: true, 
-        data: { 
-          pickup_id: pickupResult.pickup_id,
-          scheduled_at: pickupResult.scheduled_at,
-          carrier: pickupResult.carrier,
-          message: 'Recolección programada. El carrier pasará en la ventana indicada.'
+        if (envioRes.rows.length === 0) {
+          return res.status(404).json({ error: 'Envío no encontrado para este pedido' });
         }
+
+        const envio = envioRes.rows[0];
+        if (!envio.guia) {
+          return res.status(400).json({ error: 'No hay guía generada. Primero genere la etiqueta.' });
+        }
+        if (envio.estado !== 'CREADO') {
+          return res.status(400).json({ error: `Envío en estado ${envio.estado}, debe ser CREADO` });
+        }
+
+        // Solicitar recolección a Envíame
+        const { EnviameClient } = require('../services/enviameClient');
+        const providerEnviameClient = new EnviameClient({ pool: client });
+        const pickupResult = await providerEnviameClient.schedulePickup({
+          tracking_number: envio.guia,
+          pickup_address: {
+            city: envio.origen_dane_code,
+            state: _departamentoToDaneState(envio.origen_departamento),
+            country: 'CO',
+            postal_code: envio.origen_codigo_postal,
+            street: _formatOrigenStreet(envio)
+          },
+          pickup_window_start: ventana_inicio,
+          pickup_window_end: ventana_fin,
+          contact_name: contacto_nombre || 'Proveedor GlowApp',
+          contact_phone: contacto_telefono || ''
+        });
+
+        // Actualizar envío con datos de recolección
+        await client.query(
+          `UPDATE envios SET 
+             pickup_scheduled_at = $1,
+             pickup_window_start = $2,
+             pickup_window_end = $3,
+             pickup_id = $4,
+             estado = 'CREADO',
+             actualizado_en = NOW()
+           WHERE id = $5`,
+          [ventana_inicio, ventana_inicio, ventana_fin, pickupResult.pickup_id, envio.id]
+        );
+
+        res.json({ 
+          success: true, 
+          data: { 
+            pickup_id: pickupResult.pickup_id,
+            scheduled_at: pickupResult.scheduled_at,
+            carrier: pickupResult.carrier,
+            message: 'Recolección programada. El carrier pasará en la ventana indicada.'
+          }
+        });
       });
     } catch (error) {
-      await client.query('ROLLBACK');
       console.error('❌ ERROR EN POST /api/provider/fulfillment/orders/:id/pickup:', error);
-      res.status(500).json({ error: 'Error al programar recolección: ' + error.message });
-    } finally {
-      client.release();
+      if (!res.headersSent) res.status(500).json({ error: 'Error al programar recolección: ' + error.message });
     }
   }
 
@@ -2166,64 +2114,55 @@ async function updateEnvioStatus(req, res) {
    * Proveedor marca como despachado (carrier ya recogió)
    */
   async function providerDispatchOrder(req, res) {
-    const client = await pool.connect();
+    const providerId = req.user.id;
+    const orderId = req.params.id;
+    const tenantId = req.user.tenant_id;
+
     try {
-      const providerId = req.user.id;
-      const orderId = req.params.id;
+      await runInTenantTransaction({ pool }, tenantId, async (client) => {
+        // Verificar pedido y envío
+        const resPedido = await client.query(
+          `SELECT pt.*, e.id as envio_id, e.guia, e.estado as envio_estado
+           FROM pedidos_tienda pt
+           LEFT JOIN envios e ON e.pedido_id = pt.id
+           WHERE pt.id = $1 AND pt.prestador_comisionado_id = $2`,
+          [orderId, providerId]
+        );
 
-      await client.query('BEGIN');
+        if (resPedido.rows.length === 0) {
+          return res.status(404).json({ error: 'Pedido no encontrado' });
+        }
 
-      // Verificar pedido y envío
-      const resPedido = await client.query(
-        `SELECT pt.*, e.id as envio_id, e.guia, e.estado as envio_estado
-         FROM pedidos_tienda pt
-         LEFT JOIN envios e ON e.pedido_id = pt.id
-         WHERE pt.id = $1 AND pt.prestador_comisionado_id = $2`,
-        [orderId, providerId]
-      );
+        const pedido = resPedido.rows[0];
+        if (pedido.estado !== 'PAGADO') {
+          return res.status(400).json({ error: `Pedido en estado ${pedido.estado}` });
+        }
+        if (!pedido.envio_id || !pedido.guia) {
+          return res.status(400).json({ error: 'No hay envío con guía generada para este pedido' });
+        }
+        if (pedido.envio_estado !== 'CREADO' && pedido.envio_estado !== 'RECOGIDO') {
+          return res.status(400).json({ error: `Envío en estado ${pedido.envio_estado}, no se puede despachar` });
+        }
 
-      if (resPedido.rows.length === 0) {
-        await client.query('ROLLBACK');
-        return res.status(404).json({ error: 'Pedido no encontrado' });
-      }
+        // Actualizar pedido a DESPACHADO
+        await client.query(
+          `UPDATE pedidos_tienda SET estado = 'DESPACHADO', despachado_en = NOW() WHERE id = $1`,
+          [orderId]
+        );
 
-      const pedido = resPedido.rows[0];
-      if (pedido.estado !== 'PAGADO') {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: `Pedido en estado ${pedido.estado}` });
-      }
-      if (!pedido.envio_id || !pedido.guia) {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: 'No hay envío con guía generada para este pedido' });
-      }
-      if (pedido.envio_estado !== 'CREADO' && pedido.envio_estado !== 'RECOGIDO') {
-        await client.query('ROLLBACK');
-        return res.status(400).json({ error: `Envío en estado ${pedido.envio_estado}, no se puede despachar` });
-      }
+        // Actualizar envío a RECOGIDO
+        await client.query(
+          `UPDATE envios SET estado = 'RECOGIDO', actualizado_en = NOW() WHERE id = $1`,
+          [pedido.envio_id]
+        );
 
-      // Actualizar pedido a DESPACHADO
-      await client.query(
-        `UPDATE pedidos_tienda SET estado = 'DESPACHADO', despachado_en = NOW() WHERE id = $1`,
-        [orderId]
-      );
+        console.log(`✅ [PROVIDER DISPATCH] Pedido ${orderId} despachado por proveedor ${providerId}`);
 
-      // Actualizar envío a RECOGIDO
-      await client.query(
-        `UPDATE envios SET estado = 'RECOGIDO', actualizado_en = NOW() WHERE id = $1`,
-        [pedido.envio_id]
-      );
-
-      await client.query('COMMIT');
-
-      console.log(`✅ [PROVIDER DISPATCH] Pedido ${orderId} despachado por proveedor ${providerId}`);
-
-      res.json({ success: true, data: { message: 'Pedido marcado como despachado', orderId } });
+        res.json({ success: true, data: { message: 'Pedido marcado como despachado', orderId } });
+      });
     } catch (error) {
-      await client.query('ROLLBACK');
       console.error('❌ ERROR EN POST /api/provider/fulfillment/orders/:id/dispatch:', error);
-      res.status(500).json({ error: 'Error al despachar pedido' });
-    } finally {
-      client.release();
+      if (!res.headersSent) res.status(500).json({ error: 'Error al despachar pedido' });
     }
   }
 
@@ -2235,14 +2174,15 @@ async function updateEnvioStatus(req, res) {
     try {
       const providerId = req.user.id;
       const envioId = req.params.id;
+      const tenantId = req.user.tenant_id;
 
-      const { rows } = await pool.query(
+      const { rows } = await runInTenantTransaction({ pool }, tenantId, (client) => client.query(
         `SELECT e.*, pt.id as pedido_id, pt.total, pt.nombre_entrega, pt.direccion_entrega
          FROM envios e
          JOIN pedidos_tienda pt ON pt.id = e.pedido_id
          WHERE e.id = $1 AND pt.prestador_comisionado_id = $2`,
         [envioId, providerId]
-      );
+      ));
 
       if (rows.length === 0) {
         return res.status(404).json({ error: 'Envío no encontrado' });
