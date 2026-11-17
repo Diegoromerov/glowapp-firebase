@@ -59,7 +59,6 @@ router.post(
   '/store/orders/:id/pay',
   requireFlag('glowstore'),
   authMiddleware,
-  exigirCapacidad(CAPACIDADES.COMPRAR),
   orderController.payOrder
 );
 router.post('/payments/store-webhook', orderController.storeWebhook);
