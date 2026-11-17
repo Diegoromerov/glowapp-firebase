@@ -58,6 +58,7 @@ async function calcularEnvio({
     retencion: 0,
     envio: 0,
     gratis: false,
+    gratis_desde_monto: null,
     motivo: null
   };
 
@@ -75,13 +76,7 @@ async function calcularEnvio({
   );
 
   if (zonas.length === 0) {
-    const error = new Error('No hay zonas de envío activas configuradas');
-    // Sin zonas no se puede cotizar NI crear el pedido. Es configuración, no un
-    // fallo del servidor: 503 con código, para que el cliente y el log digan lo
-    // mismo en vez de un 500 genérico.
-    error.code = 'ZONAS_NO_CONFIGURADAS';
-    error.statusCode = 503;
-    throw error;
+    throw new Error('No hay zonas de envío activas configuradas');
   }
 
   const ciudadNormalizada = normalizar(ciudad);
@@ -128,6 +123,7 @@ async function calcularEnvio({
 
   detalle.zona = zona.ciudad;
   detalle.transportadora = zona.transportadora_default;
+  detalle.gratis_desde_monto = umbral || null;
   detalle.tarifa_operador = tarifa;
   detalle.retencion = gratis ? 0 : RETENCION_ENVIO;
   detalle.envio = gratis ? 0 : tarifa + RETENCION_ENVIO;

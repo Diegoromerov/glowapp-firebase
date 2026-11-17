@@ -118,11 +118,13 @@ const MIGRACIONES_BASE_NUEVA = [
   '168_seed_carrier_routing.sql',
   '169_saneamiento_seeds_logistica.sql',
   // ── Logística Fase 5 (D-GL-036) ────────────────────────────────────────
-  // 170 prefs notificaciones, 171 log notificaciones, 172 devoluciones retorno,
-  // 173 métricas diarias. Todas idempotentes (CREATE TABLE IF NOT EXISTS, ADD COLUMN IF NOT EXISTS).
+  // 170 prefs, 171 notificaciones y 172 devoluciones; 174 y 175 crean
+  // los contratos que consume 173 (métricas diarias).
   '170_usuario_notificaciones_prefs.sql',
   '171_notificaciones_log.sql',
   '172_extend_devoluciones_retorno.sql',
+  '174_glowshop_provider_fulfillment.sql',
+  '175_glowshop_return_contract.sql',
   '173_logistica_metricas_diarias.sql',
 ];
 
@@ -243,14 +245,14 @@ const MIGRACIONES_ARRANQUE = [
     '169_saneamiento_seeds_logistica.sql',
 
     // ── Logística Fase 5 (D-GL-036) ────────────────────────────────────────
-    // 170 prefs notificaciones, 171 log notificaciones, 172 devoluciones retorno,
-      // 173 métricas diarias. Todas idempotentes (CREATE TABLE IF NOT EXISTS, ADD COLUMN IF NOT EXISTS).
-      '170_usuario_notificaciones_prefs.sql',
-      '171_notificaciones_log.sql',
-      '172_extend_devoluciones_retorno.sql',
-      '173_logistica_metricas_diarias.sql',
-
-
+    // 170 prefs, 171 notificaciones y 172 devoluciones; 174 y 175 crean
+    // los contratos que consume 173 (métricas diarias).
+    '170_usuario_notificaciones_prefs.sql',
+    '171_notificaciones_log.sql',
+    '172_extend_devoluciones_retorno.sql',
+    '174_glowshop_provider_fulfillment.sql',
+    '175_glowshop_return_contract.sql',
+    '173_logistica_metricas_diarias.sql',
   ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {

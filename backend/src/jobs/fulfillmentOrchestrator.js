@@ -179,8 +179,8 @@ async function _createEnvioRecord(db, order, providerId, providerItems) {
       origen_tipo_via, origen_numero_principal, origen_letra_principal,
       origen_numero_secundario, origen_letra_secundaria, origen_complemento,
       origen_barrio, origen_ciudad, origen_departamento, origen_codigo_postal,
-      origen_dane_code
-    ) VALUES ($1,$2,'CREADO',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+      origen_dane_code, destino_ciudad, destino_departamento, destino_codigo_postal, prestador_id
+    ) VALUES ($1,$2,'CREADO',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)
     RETURNING *`,
     [
       order.id,
@@ -196,7 +196,11 @@ async function _createEnvioRecord(db, order, providerId, providerItems) {
       origen.ciudad,
       origen.departamento,
       origen.codigo_postal,
-      origen.dane_code
+      origen.dane_code,
+      order.ciudad || null,
+      order.departamento || null,
+      order.codigo_postal || null,
+      providerId === 'sin_proveedor' ? null : providerId
     ]
   );
 
@@ -223,7 +227,7 @@ async function _getOrigenDireccion(db, providerId) {
       bp.direccion_codigo_postal AS codigo_postal,
       bp.direccion_dane_code AS dane_code
     FROM business_profiles bp
-    WHERE bp.usuario_id = $1 AND bp.activo = true
+    WHERE bp.provider_id = $1 AND bp.activo = true
     LIMIT 1`,
     [providerId]
   );

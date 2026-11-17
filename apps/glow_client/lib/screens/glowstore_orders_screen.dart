@@ -12,6 +12,7 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
   bool _isLoading = true;
   String? _error;
   List<Map<String, dynamic>> _orders = [];
+  Map<String, List<Map<String, dynamic>>> _returnsByOrder = {};
 
   @override
   void initState() {
@@ -26,9 +27,21 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
     });
     try {
       final orders = await ApiService.fetchStoreOrders();
+      var returnsByOrder = <String, List<Map<String, dynamic>>>{};
+      try {
+        final response = await ApiService.get('/client/returns');
+        if (response != null && response['success'] == true) {
+          for (final raw in (response['data'] as List? ?? const [])) {
+            final row = Map<String, dynamic>.from(raw as Map);
+            final id = row['pedido_id']?.toString();
+            if (id != null) (returnsByOrder[id] ??= []).add(row);
+          }
+        }
+      } catch (_) {}
       if (mounted) {
         setState(() {
           _orders = orders;
+          _returnsByOrder = returnsByOrder;
           _isLoading = false;
         });
       }
@@ -40,6 +53,85 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
         });
       }
     }
+  }
+
+  Future<void> _viewShipmentTracking(String guide) async {
+    try {
+      final response = await ApiService.get('/tracking/$guide');
+      if (!mounted) return;
+      if (response == null || response['success'] != true) throw Exception(response?['error'] ?? 'No se pudo consultar el seguimiento');
+      final data = Map<String, dynamic>.from(response['data'] as Map);
+      final timeline = (data['timeline'] as List?) ?? const [];
+      await showDialog<void>(
+        context: context,
+        builder: (dialogContext) => AlertDialog(
+          title: Text('Seguimiento ${data['guia'] ?? guide}'),
+          content: SizedBox(width: 420, child: ListView(shrinkWrap: true, children: [
+            Text('${data['transportadora'] ?? 'Transportadora'} · ${data['estado_actual'] ?? 'Estado desconocido'}'),
+            if (timeline.isEmpty) const Text('Aún no hay eventos de seguimiento.'),
+            ...timeline.map((raw) {
+              final event = Map<String, dynamic>.from(raw as Map);
+              return ListTile(dense: true, leading: const Icon(Icons.local_shipping_outlined),
+                title: Text((event['estado'] ?? event['evento'] ?? 'Actualización').toString()),
+                subtitle: Text((event['timestamp'] ?? event['fecha'] ?? '').toString()));
+            }),
+          ])),
+          actions: [TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cerrar'))],
+        ),
+      );
+    } catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(mensajeHumano(e))));
+    }
+  }
+
+  Future<void> _requestReturn(Map<String, dynamic> order, Map<String, dynamic> shipment) async {
+    final description = TextEditingController();
+    var reason = 'defectuoso';
+    final providerId = shipment['prestador_id']?.toString();
+    final items = ((order['items'] as List?) ?? const []).map((raw) => Map<String, dynamic>.from(raw as Map))
+        .where((item) => providerId == null || item['proveedor_id']?.toString() == providerId)
+        .map((item) => {'producto_id': item['producto_id'], 'cantidad': item['cantidad']}).toList();
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => StatefulBuilder(builder: (context, setDialogState) => AlertDialog(
+        title: const Text('Solicitar devolución'),
+        content: Column(mainAxisSize: MainAxisSize.min, children: [
+          DropdownButtonFormField<String>(value: reason, decoration: const InputDecoration(labelText: 'Motivo'),
+            items: const [
+              DropdownMenuItem(value: 'defectuoso', child: Text('Producto defectuoso')),
+              DropdownMenuItem(value: 'no_gusta', child: Text('No me gustó')),
+              DropdownMenuItem(value: 'talla_incorrecta', child: Text('Talla incorrecta')),
+              DropdownMenuItem(value: 'producto_incorrecto', child: Text('Producto incorrecto')),
+              DropdownMenuItem(value: 'dañado_envio', child: Text('Dañado durante el envío')),
+              DropdownMenuItem(value: 'llegó_tarde', child: Text('Llegó tarde')),
+              DropdownMenuItem(value: 'cambio_opinion', child: Text('Cambio de opinión')),
+              DropdownMenuItem(value: 'otro', child: Text('Otro')),
+            ], onChanged: (value) => setDialogState(() => reason = value ?? 'otro')),
+          TextField(controller: description, maxLines: 3,
+            decoration: const InputDecoration(labelText: 'Describe el motivo (mínimo 10 caracteres)')),
+          Text('${items.length} producto(s) incluidos en la solicitud.'),
+        ]),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialogContext, false), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.pop(dialogContext, true), child: const Text('Enviar')),
+        ],
+      )),
+    );
+    if (confirmed != true) { description.dispose(); return; }
+    try {
+      final response = await ApiService.post('/client/orders/${order['id']}/return', {
+        'motivo': reason, 'descripcion': description.text.trim(), 'envio_id': shipment['id'],
+        'items': items, 'fotos': <String>[],
+      });
+      if (mounted && response?['success'] == true) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Solicitud de devolución enviada')));
+        await _loadOrders();
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response?['error'] ?? 'No se pudo enviar la solicitud')));
+      }
+    } catch (e) {
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(mensajeHumano(e))));
+    } finally { description.dispose(); }
   }
 
   @override
@@ -351,6 +443,42 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
                 color: LuxeColors.nude500,
               ),
             ),
+          if (order['envios'] is List && (order['envios'] as List).isNotEmpty) ...[
+            const SizedBox(height: 12),
+            const Text('ENVÍO Y SEGUIMIENTO', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11)),
+            ...(order['envios'] as List).map((raw) {
+              final shipment = Map<String, dynamic>.from(raw as Map);
+              final guide = shipment['guia']?.toString();
+              return Card(child: ListTile(
+                leading: const Icon(Icons.local_shipping_outlined),
+                title: Text('${shipment['transportadora'] ?? 'Transportadora'} · ${shipment['estado'] ?? 'CREADO'}'),
+                subtitle: Text(guide == null || guide.isEmpty ? 'Guía pendiente' : 'Guía: $guide'),
+                trailing: guide == null || guide.isEmpty ? null : IconButton(
+                  tooltip: 'Ver seguimiento', icon: const Icon(Icons.timeline), onPressed: () => _viewShipmentTracking(guide)),
+              ));
+            }),
+          ],
+          if ((_returnsByOrder[orderId] ?? const []).isNotEmpty) ...[
+            const SizedBox(height: 8),
+            const Text('DEVOLUCIONES', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11)),
+            ...(_returnsByOrder[orderId] ?? const []).map((row) => ListTile(
+              dense: true, leading: const Icon(Icons.assignment_return_outlined),
+              title: Text('Solicitud: ${row['estado'] ?? 'pendiente'}'),
+              subtitle: Text([
+                (row['descripcion'] ?? row['motivo'] ?? '').toString(),
+                if (row['reembolso_estado'] != null) 'Reembolso: ${row['reembolso_estado']}',
+              ].join(' · ')),
+            )),
+          ],
+          if (order['envios'] is List && estado.toUpperCase() != 'PENDIENTE_PAGO') ...[
+              ...(order['envios'] as List).map((raw) {
+                final shipment = Map<String, dynamic>.from(raw as Map);
+                if (shipment['prestador_id'] == null || shipment['estado'] != 'ENTREGADO') return const SizedBox.shrink();
+                return Align(alignment: Alignment.centerRight, child: TextButton.icon(
+                  icon: const Icon(Icons.assignment_return_outlined), label: const Text('Solicitar devolución'),
+                  onPressed: () => _requestReturn(order, shipment)));
+              }),
+          ],
           const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -70,12 +70,72 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
     }
   }
 
+  Future<void> _editOriginAddress() async {
+    try {
+      final response = await ApiService.get('/provider/fulfillment/origin');
+      if (response == null || response['success'] != true || response['data'] == null) {
+        throw Exception(response?['error'] ?? 'No se pudo cargar el origen');
+      }
+      final data = Map<String, dynamic>.from(response['data'] as Map);
+      final fields = <String, TextEditingController>{
+        'tipo_via': TextEditingController(text: data['tipo_via']?.toString() ?? ''),
+        'numero_principal': TextEditingController(text: data['numero_principal']?.toString() ?? ''),
+        'letra_principal': TextEditingController(text: data['letra_principal']?.toString() ?? ''),
+        'numero_secundario': TextEditingController(text: data['numero_secundario']?.toString() ?? ''),
+        'letra_secundaria': TextEditingController(text: data['letra_secundaria']?.toString() ?? ''),
+        'complemento': TextEditingController(text: data['complemento']?.toString() ?? ''),
+        'barrio': TextEditingController(text: data['barrio']?.toString() ?? ''),
+        'ciudad': TextEditingController(text: data['ciudad']?.toString() ?? ''),
+        'departamento': TextEditingController(text: data['departamento']?.toString() ?? ''),
+        'codigo_postal': TextEditingController(text: data['codigo_postal']?.toString() ?? ''),
+        'dane_code': TextEditingController(text: data['dane_code']?.toString() ?? ''),
+      };
+      final saved = await showDialog<bool>(context: context, builder: (dialogContext) => AlertDialog(
+        title: const Text('Dirección de despacho'),
+        content: SizedBox(width: 460, child: SingleChildScrollView(child: Column(mainAxisSize: MainAxisSize.min, children: [
+          for (final field in fields.entries)
+            Padding(padding: const EdgeInsets.only(bottom: 8), child: TextField(
+              controller: field.value,
+              decoration: InputDecoration(labelText: field.key.replaceAll('_', ' ')),
+            )),
+        ]))),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(dialogContext, false), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.pop(dialogContext, true), child: const Text('Guardar')),
+        ],
+      ));
+      if (saved == true) {
+        final body = fields.map((key, controller) => MapEntry(key, controller.text.trim()));
+        final update = await ApiService.put('/provider/fulfillment/origin', body);
+        if (update == null || update['success'] != true) throw Exception(update?['error'] ?? 'No se pudo guardar la dirección');
+        _showSnack('Dirección de despacho guardada');
+      }
+      for (final field in fields.values) { field.dispose(); }
+    } catch (e) {
+      if (mounted) _showSnack('Configura una dirección en tu perfil de negocio: ${mensajeHumano(e)}');
+    }
+  }
+
   Future<void> _prepareItems(FulfillmentOrder order) async {
-    // TODO: Mostrar modal para marcar items como preparados
-    _showSnack('Preparar items - pendiente implementar modal');
+    final items = order.items.map((raw) {
+      final item = Map<String, dynamic>.from(raw as Map);
+      return {'producto_id': item['producto_id'], 'cantidad_preparada': item['cantidad']};
+    }).toList();
+    try {
+      final response = await ApiService.post('/provider/fulfillment/orders/${order.id}/prepare', {'items': items});
+      if (response != null && response['success'] == true) {
+        _showSnack('Productos marcados como preparados');
+        await _loadOrders();
+      } else {
+        _showSnack('Error: ${response?['error'] ?? 'No se pudieron preparar los productos'}');
+      }
+    } catch (e) {
+      _showSnack('Error: ${mensajeHumano(e)}');
+    }
   }
 
   Future<void> _generateLabel(FulfillmentOrder order) async {
+    if (order.preparacionEstado != 'PREPARADO' || order.trackingNumber?.isNotEmpty == true) return;
     final confirmed = await _showConfirmDialog(
       'Generar etiqueta',
       '¿Generar etiqueta de envío para el pedido #${order.shortId}?\n'
@@ -157,6 +217,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
   }
 
   Future<void> _dispatchOrder(FulfillmentOrder order) async {
+    if (order.trackingNumber?.isNotEmpty != true || order.envioEstado != 'CREADO' || order.labelPdfUrl?.isEmpty == true) return;
     final confirmed = await _showConfirmDialog(
       'Marcar como despachado',
       '¿Confirmar que el carrier ya recogió el paquete del pedido #${order.shortId}?\n'
@@ -482,6 +543,16 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
         iconTheme: IconThemeData(color: _textPrimary),
         actions: [
           IconButton(
+            tooltip: 'Dirección de despacho',
+            icon: const Icon(Icons.location_on_outlined, color: _gold),
+            onPressed: _editOriginAddress,
+          ),
+          IconButton(
+            tooltip: 'Devoluciones',
+            icon: const Icon(Icons.assignment_return_outlined, color: _gold),
+            onPressed: () => Navigator.pushNamed(context, '/provider/returns'),
+          ),
+          IconButton(
             icon: const Icon(Icons.refresh, color: _gold),
             onPressed: _loadOrders,
             tooltip: 'Actualizar',
@@ -567,7 +638,9 @@ class _OrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final canGenerateLabel = order.envioId == null || order.trackingNumber == null;
+    final canGenerateLabel = order.envioId != null && order.preparacionEstado == 'PREPARADO' &&
+        (order.trackingNumber == null || order.trackingNumber!.isEmpty) && order.envioEstado == 'CREADO';
+    final needsPreparation = order.preparacionEstado != 'PREPARADO';
     final canSchedulePickup = order.trackingNumber != null && order.envioEstado == 'CREADO';
     final canDispatch = order.envioEstado == 'CREADO' || order.envioEstado == 'RECOGIDO';
     final hasEnvio = order.envioId != null;
@@ -673,7 +746,13 @@ class _OrderCard extends StatelessWidget {
               spacing: 8,
               runSpacing: 8,
               children: [
-                if (canGenerateLabel)
+                if (needsPreparation)
+                  OutlinedButton.icon(
+                    icon: const Icon(Icons.inventory_2_outlined, size: 18),
+                    label: const Text('Marcar preparado'),
+                    onPressed: () => onPrepare(order),
+                  ),
+                if (canGenerateLabel && !needsPreparation)
                   ElevatedButton.icon(
                     icon: const Icon(Icons.local_shipping_outlined, size: 18),
                     label: const Text('Etiquetar'),
@@ -855,9 +934,12 @@ class FulfillmentOrder {
   final String? envioId;
   final String? envioEstado;
   final String? transportadora;
+  final String? trackingNumber;
+  final String? urlRastreo;
+  final String? preparacionEstado;
+  final String? labelPdfUrl;
 
   String get shortId => id.length > 8 ? id.substring(0, 8).toUpperCase() : id.toUpperCase();
-  String get trackingNumber => envioId ?? '';
   double get estimatedWeightKg => items.fold(0.0, (sum, item) => sum + ((item['peso_estimado_kg'] as num?)?.toDouble() ?? 0.5) * ((item['cantidad'] as num?)?.toDouble() ?? 1));
 
   FulfillmentOrder({
@@ -875,24 +957,32 @@ class FulfillmentOrder {
     this.envioId,
     this.envioEstado,
     this.transportadora,
+    this.trackingNumber,
+    this.urlRastreo,
+    this.preparacionEstado,
+    this.labelPdfUrl,
   });
 
   factory FulfillmentOrder.fromJson(Map<String, dynamic> json) {
     return FulfillmentOrder(
-      id: json['id'] as String,
+      id: json['id']?.toString() ?? '',
       estado: json['estado'] as String,
-      total: (json['total'] as num).toDouble(),
-      pagadoEn: DateTime.parse(json['pagado_en'] as String),
-      nombreEntrega: json['nombre_entrega'] as String,
-      direccionEntrega: json['direccion_entrega'] as String,
-      ciudad: json['ciudad'] as String,
-      departamento: json['departamento'] as String,
+      total: double.tryParse(json['total']?.toString() ?? '') ?? 0.0,
+      pagadoEn: DateTime.tryParse(json['pagado_en']?.toString() ?? '') ?? DateTime.fromMillisecondsSinceEpoch(0),
+      nombreEntrega: json['nombre_entrega']?.toString() ?? '',
+      direccionEntrega: json['direccion_entrega']?.toString() ?? '',
+      ciudad: json['ciudad']?.toString() ?? '',
+      departamento: json['departamento']?.toString() ?? '',
       codigoPostal: json['codigo_postal'] as String?,
       items: (json['items'] as List?) ?? [],
       tieneEnvio: json['tiene_envio'] as bool? ?? false,
-      envioId: json['envio_id'] as String?,
-      envioEstado: json['envio_estado'] as String?,
-      transportadora: json['transportadora'] as String?,
+      envioId: json['envio_id']?.toString(),
+      envioEstado: json['envio_estado']?.toString(),
+      transportadora: json['transportadora']?.toString(),
+      trackingNumber: json['tracking_number']?.toString(),
+      urlRastreo: json['url_rastreo']?.toString(),
+      preparacionEstado: json['preparacion_estado']?.toString(),
+      labelPdfUrl: json['label_pdf_url']?.toString(),
     );
   }
 }

@@ -77,6 +77,8 @@ router.patch('/admin/envios/:guia/status', authMiddleware, requireRol('admin'), 
 // --- Rutas Provider/Salón: Fulfillment (F1-Logística) ---
 // Proveedor ve sus pedidos por despachar
 router.get('/provider/fulfillment/orders', authMiddleware, orderController.getProviderFulfillmentOrders);
+router.get('/provider/fulfillment/origin', authMiddleware, orderController.getProviderFulfillmentOrigin);
+router.put('/provider/fulfillment/origin', authMiddleware, orderController.updateProviderFulfillmentOrigin);
 // Proveedor prepara items (marca listos para etiquetar)
 router.post('/provider/fulfillment/orders/:id/prepare', authMiddleware, orderController.prepareOrderItems);
 // Proveedor genera etiqueta via Envíame

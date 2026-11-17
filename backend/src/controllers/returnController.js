@@ -15,23 +15,34 @@ async function solicitarDevolucion(req, res) {
   const clienteId = req.user.id;
   const tenantId = req.user.tenant_id;
   const orderId = req.params.id;
-  const { motivo, fotos = [], items } = req.body;
+  const { motivo, descripcion, fotos = [], items, envio_id } = req.body;
+  const motivosValidos = ['defectuoso', 'no_gusta', 'talla_incorrecta', 'producto_incorrecto', 'dañado_envio', 'llegó_tarde', 'cambio_opinion', 'otro'];
 
-  if (!motivo || motivo.trim().length < 10) {
-    return res.status(400).json({ error: 'Motivo obligatorio (mín 10 caracteres)' });
+  if (!motivosValidos.includes(motivo)) {
+    return res.status(400).json({ error: 'Selecciona un motivo de devolución válido' });
+  }
+  if (typeof descripcion !== 'string' || descripcion.trim().length < 10) {
+    return res.status(400).json({ error: 'La descripción debe tener al menos 10 caracteres' });
   }
   if (!items || !Array.isArray(items) || items.length === 0) {
     return res.status(400).json({ error: 'Items a devolver requeridos' });
+  }
+  if (new Set(items.map((item) => String(item?.producto_id))).size !== items.length ||
+      items.some((item) => !Number.isInteger(Number(item?.cantidad)) || Number(item.cantidad) <= 0)) {
+    return res.status(400).json({ error: 'Los productos no se deben repetir y las cantidades deben ser enteros positivos' });
   }
 
   try {
     await runInTenantTransaction({ pool }, tenantId, async (client) => {
       // Verificar pedido: del cliente, estado ENTREGADO, dentro de ventana (ej 30 días)
       const pedidoRes = await client.query(
-        `SELECT * FROM pedidos_tienda 
-         WHERE id = $1 AND comprador_id = $2 AND estado = 'ENTREGADO'
-         AND entregado_en > NOW() - INTERVAL '30 days'`,
-        [orderId, clienteId]
+        `SELECT pt.*, e.id AS envio_original_id, e.prestador_id AS envio_prestador_id,
+                e.estado AS envio_estado
+           FROM pedidos_tienda pt
+           JOIN envios e ON e.pedido_id = pt.id AND ($3::uuid IS NULL OR e.id = $3)
+         WHERE pt.id = $1 AND pt.comprador_id = $2
+            AND e.estado = 'ENTREGADO' AND pt.entregado_en > NOW() - INTERVAL '30 days'`,
+        [orderId, clienteId, envio_id || null]
       );
 
       if (pedidoRes.rows.length === 0) {
@@ -40,17 +51,23 @@ async function solicitarDevolucion(req, res) {
 
       const pedido = pedidoRes.rows[0];
 
-      // Verificar items existen en el pedido y cantidades válidas
+  const receptorId = pedido.envio_prestador_id;
+      if (!receptorId) return res.status(409).json({ error: 'El pedido no tiene proveedor asignado para tramitar la devolución' });
+      if (pedido.envio_estado !== 'ENTREGADO') {
+        return res.status(409).json({ error: 'Solo se pueden devolver artículos de un envío entregado' });
+      }
+
+      // Validar que los artículos pertenezcan al proveedor del envío.
       for (const item of items) {
         const { producto_id, cantidad } = item;
         const itemRes = await client.query(
-          `SELECT cantidad FROM detalles_pedido_tienda WHERE pedido_id = $1 AND producto_id = $2`,
-          [orderId, producto_id]
+          `SELECT dpt.cantidad FROM detalles_pedido_tienda dpt JOIN productos p ON p.id = dpt.producto_id WHERE dpt.pedido_id = $1 AND dpt.producto_id = $2 AND p.proveedor_id = $3`,
+          [orderId, producto_id, receptorId]
         );
         if (itemRes.rows.length === 0) {
           return res.status(400).json({ error: `Producto ${producto_id} no está en este pedido` });
         }
-        if (cantidad > itemRes.rows[0].cantidad) {
+        if (Number(cantidad) > Number(itemRes.rows[0].cantidad)) {
           return res.status(400).json({ error: `Cantidad a devolver excede la comprada para producto ${producto_id}` });
         }
       }
@@ -58,11 +75,11 @@ async function solicitarDevolucion(req, res) {
       // Crear devolución
       const devRes = await client.query(
         `INSERT INTO devoluciones (
-           pedido_id, cliente_id, prestador_id, estado, motivo,
-           items, fotos, creado_en
-         ) VALUES ($1,$2,$3,'SOLICITADA',$4,$5,$6,NOW())
+           pedido_id, envio_original_id, solicitante_id, receptor_id, tenant_id,
+           estado, motivo, descripcion, items, fotos_urls
+         ) VALUES ($1,$2,$3,$4,$5,'SOLICITADA',$6,$7,$8::jsonb,$9)
          RETURNING *`,
-        [orderId, clienteId, pedido.prestador_comisionado_id, motivo, JSON.stringify(items), JSON.stringify(fotos)]
+        [orderId, pedido.envio_original_id, clienteId, receptorId, tenantId, motivo, descripcion.trim(), JSON.stringify(items), fotos]
       );
 
       const devolucion = devRes.rows[0];
@@ -97,12 +114,12 @@ async function getMisDevoluciones(req, res) {
 
   try {
     await runInTenantTransaction({ pool }, tenantId, async (client) => {
-      const { rows } = await client.query(
+        const { rows } = await client.query(
         `SELECT d.*, pt.total as pedido_total, pt.creado_en as pedido_creado
          FROM devoluciones d
          JOIN pedidos_tienda pt ON pt.id = d.pedido_id
-         WHERE d.cliente_id = $1
-         ORDER BY d.creado_en DESC`,
+         WHERE d.solicitante_id = $1
+         ORDER BY d.solicitada_en DESC`,
         [clienteId]
       );
 
@@ -121,6 +138,7 @@ async function getMisDevoluciones(req, res) {
 async function getProviderDevoluciones(req, res) {
   const providerId = req.user.id;
   const tenantId = req.user.tenant_id;
+  if (!['provider', 'salon'].includes(req.user.role)) return res.status(403).json({ error: 'Solo proveedores y salones pueden consultar devoluciones' });
 
   try {
     await runInTenantTransaction({ pool }, tenantId, async (client) => {
@@ -129,9 +147,9 @@ async function getProviderDevoluciones(req, res) {
                 u.nombre as cliente_nombre, u.email as cliente_email, u.telefono as cliente_telefono
          FROM devoluciones d
          JOIN pedidos_tienda pt ON pt.id = d.pedido_id
-         LEFT JOIN usuarios u ON u.id = d.cliente_id
-         WHERE d.prestador_id = $1
-         ORDER BY d.creado_en DESC`,
+         LEFT JOIN usuarios u ON u.id = d.solicitante_id
+         WHERE d.receptor_id = $1
+         ORDER BY d.solicitada_en DESC`,
         [providerId]
       );
 
@@ -151,6 +169,7 @@ async function getProviderDevoluciones(req, res) {
 async function aprobarDevolucion(req, res) {
   const providerId = req.user.id;
   const tenantId = req.user.tenant_id;
+  if (!['provider', 'salon'].includes(req.user.role)) return res.status(403).json({ error: 'Solo proveedores y salones pueden tramitar devoluciones' });
   const devolucionId = req.params.id;
   const { carrier_retorno, service_code_retorno } = req.body;
 
@@ -159,12 +178,14 @@ async function aprobarDevolucion(req, res) {
       // Verificar devolución pertenece a este proveedor y está SOLICITADA
       const devRes = await client.query(
         `SELECT d.*, pt.id as pedido_id, pt.comprador_id, pt.prestador_comisionado_id,
-                pt.ciudad, pt.departamento, pt.codigo_postal, pt.direccion_entrega,
+                pt.ciudad, pt.departamento, pt.codigo_postal, pt.direccion_entrega, pt.total as pedido_total,
+                e.destino_ciudad, e.destino_departamento, e.destino_codigo_postal,
                 u.nombre as cliente_nombre, u.telefono as cliente_telefono
          FROM devoluciones d
          JOIN pedidos_tienda pt ON pt.id = d.pedido_id
-         LEFT JOIN usuarios u ON u.id = d.cliente_id
-         WHERE d.id = $1 AND d.prestador_id = $2 AND d.estado = 'SOLICITADA'`,
+         LEFT JOIN envios e ON e.id = d.envio_original_id
+         LEFT JOIN usuarios u ON u.id = d.solicitante_id
+         WHERE d.id = $1 AND d.receptor_id = $2 AND d.estado = 'SOLICITADA'`,
         [devolucionId, providerId]
       );
 
@@ -176,7 +197,20 @@ async function aprobarDevolucion(req, res) {
 
       // Obtener dirección origen (proveedor) para retorno
       const origenRes = await client.query(
-        `SELECT * FROM business_profile WHERE user_id = $1`,
+        `SELECT direccion_tipo_via AS tipo_via,
+                direccion_numero_principal AS numero_principal,
+                direccion_letra_principal AS letra_principal,
+                direccion_numero_secundario AS numero_secundario,
+                direccion_letra_secundaria AS letra_secundaria,
+                direccion_complemento AS complemento,
+                direccion_barrio AS barrio,
+                direccion_ciudad AS ciudad,
+                direccion_departamento AS departamento,
+                direccion_codigo_postal AS codigo_postal,
+                direccion_dane_code AS dane_code
+           FROM business_profiles
+          WHERE provider_id = $1 AND activo = true
+          ORDER BY created_at DESC LIMIT 1`,
         [providerId]
       );
       if (origenRes.rows.length === 0) {
@@ -189,20 +223,20 @@ async function aprobarDevolucion(req, res) {
         ciudad: origen.ciudad,
         departamento: origen.departamento,
         codigo_postal: origen.codigo_postal,
-        street: `${origen.tipo_via} ${origen.numero_principal}${origen.letra_principal || ''} ${origen.cruce || ''} ${origen.complemento || ''}`.trim(),
+        street: `${origen.tipo_via || ''} ${origen.numero_principal || ''}${origen.letra_principal || ''} ${origen.numero_secundario || ''}${origen.letra_secundaria || ''} ${origen.complemento || ''} ${origen.barrio || ''}`.trim(),
       };
 
       // Origen = dirección del cliente
       const origenCliente = {
-        ciudad: devolucion.ciudad,
-        departamento: devolucion.departamento,
-        codigo_postal: devolucion.codigo_postal,
+        ciudad: devolucion.destino_ciudad || devolucion.ciudad,
+        departamento: devolucion.destino_departamento || devolucion.departamento,
+        codigo_postal: devolucion.destino_codigo_postal || devolucion.codigo_postal,
         street: devolucion.direccion_entrega,
       };
 
       // Calcular peso estimado desde items
       const items = typeof devolucion.items === 'string' ? JSON.parse(devolucion.items) : devolucion.items;
-      const pesoEstimado = items.reduce((sum, i) => sum + (i.cantidad * 0.2), 0.5); // ~200g por item default
+      const pesoEstimado = items.reduce((sum, i) => sum + (i.peso_estimado_kg || 0.5) * i.cantidad, 0.5);
 
       // Llamar Envíame para generar etiqueta de retorno
       const enviameClient = new EnviameClient({ pool: client });
@@ -222,14 +256,14 @@ async function aprobarDevolucion(req, res) {
           street: destino.street,
         },
         parcels: [{ weight: pesoEstimado, length: 20, width: 15, height: 10 }],
-        value_cop: devolucion.monto_estimado || 50000,
+        value_cop: devolucion.monto_reembolso || devolucion.pedido_total || 50000,
         currency: 'COP',
       });
 
       // Seleccionar carrier (preferir el pasado o el más barato)
       let bestRate = rates[0];
       if (carrier_retorno) {
-        bestRate = rates.find(r => r.carrier === carrier_retorno) || rates[0];
+        bestRate = rates.find(r => r.carrier === carrier_retorno && (!service_code_retorno || r.service_code === service_code_retorno)) || rates[0];
       }
 
       if (!bestRate) {
@@ -245,7 +279,8 @@ async function aprobarDevolucion(req, res) {
       // Actualizar devolución con datos de retorno
       await client.query(
         `UPDATE devoluciones SET
-           estado = 'APROBADA',
+           estado = 'ETIQUETA_GENERADA',
+           etiqueta_generada_en = NOW(),
            carrier_retorno = $1,
            carrier_retorno_service_code = $2,
            guia_retorno = $3,
@@ -257,7 +292,7 @@ async function aprobarDevolucion(req, res) {
          WHERE id = $8`,
         [
           bestRate.carrier,
-          bestRate.service_code,
+          service_code_retorno || bestRate.service_code,
           labelResult.tracking_number,
           labelResult.tracking_url,
           labelResult.label_pdf_url,
@@ -305,17 +340,18 @@ async function aprobarDevolucion(req, res) {
 async function rechazarDevolucion(req, res) {
   const providerId = req.user.id;
   const tenantId = req.user.tenant_id;
+  if (!['provider', 'salon'].includes(req.user.role)) return res.status(403).json({ error: 'Solo proveedores y salones pueden tramitar devoluciones' });
   const devolucionId = req.params.id;
   const { motivo_rechazo } = req.body;
 
-  if (!motivo_rechazo || motivo_rechazo.trim().length < 10) {
+  if (typeof motivo_rechazo !== 'string' || motivo_rechazo.trim().length < 10) {
     return res.status(400).json({ error: 'Motivo de rechazo obligatorio (mín 10 caracteres)' });
   }
 
   try {
     await runInTenantTransaction({ pool }, tenantId, async (client) => {
       const devRes = await client.query(
-        `SELECT * FROM devoluciones WHERE id = $1 AND prestador_id = $2 AND estado = 'SOLICITADA'`,
+        `SELECT * FROM devoluciones WHERE id = $1 AND receptor_id = $2 AND estado = 'SOLICITADA'`,
         [devolucionId, providerId]
       );
 
@@ -327,10 +363,19 @@ async function rechazarDevolucion(req, res) {
         `UPDATE devoluciones SET
            estado = 'RECHAZADA',
            rechazo_motivo = $1,
+           observaciones_internas = $1,
            rechazada_en = NOW(),
-           rechazada_por = $2
+           rechazada_por = $2,
+           tipo_resolucion = 'sin_resolucion',
+           resuelta_en = NOW(), cerrada_en = NOW()
          WHERE id = $3`,
         [motivo_rechazo, providerId, devolucionId]
+      );
+
+      await client.query(
+        `UPDATE devoluciones SET cerrada_en = NOW(), resuelta_en = NOW(),
+           tipo_resolucion = 'sin_resolucion' WHERE id = $1`,
+        [devolucionId]
       );
 
       // Notificar al cliente
@@ -356,6 +401,7 @@ async function rechazarDevolucion(req, res) {
 async function recibirDevolucion(req, res) {
   const providerId = req.user.id;
   const tenantId = req.user.tenant_id;
+  if (!['provider', 'salon'].includes(req.user.role)) return res.status(403).json({ error: 'Solo proveedores y salones pueden inspeccionar devoluciones' });
   const devolucionId = req.params.id;
   const { inspeccion_estado, notas, fotos = [], monto_reembolso_cop } = req.body;
 
@@ -369,12 +415,12 @@ async function recibirDevolucion(req, res) {
         `SELECT d.*, pt.comprador_id, pt.total as pedido_total
          FROM devoluciones d
          JOIN pedidos_tienda pt ON pt.id = d.pedido_id
-         WHERE d.id = $1 AND d.prestador_id = $2 AND d.estado = 'APROBADA'`,
+         WHERE d.id = $1 AND d.receptor_id = $2 AND d.estado IN ('ETIQUETA_GENERADA', 'ENVIADA', 'EN_TRANSITO_RETORNO')`,
         [devolucionId, providerId]
       );
 
       if (devRes.rows.length === 0) {
-        return res.status(404).json({ error: 'Devolución no encontrada, no autorizada o no aprobada' });
+        return res.status(404).json({ error: 'Devolución no encontrada, no autorizada o no lista para recepción' });
       }
 
       const devolucion = devRes.rows[0];
@@ -387,27 +433,29 @@ async function recibirDevolucion(req, res) {
            inspeccion_fotos = $3,
            inspeccionada_por = $4,
            inspeccionada_en = NOW(),
-           estado = CASE 
-             WHEN $1 = 'aprobada' THEN 'RECIBIDA'
-             WHEN $1 = 'rechazada' THEN 'RECHAZADA_INSPECCION'
-             ELSE 'RECIBIDA_PARCIAL'
-           END
+           estado = CASE WHEN $1 = 'rechazada' THEN 'RECHAZADA' ELSE 'INSPECCIONADA' END,
+           recibida_proveedor_en = NOW(),
+           resuelta_en = CASE WHEN $1 = 'rechazada' THEN NOW() ELSE resuelta_en END,
+           tipo_resolucion = CASE WHEN $1 = 'rechazada' THEN 'sin_resolucion' ELSE tipo_resolucion END
          WHERE id = $5`,
         [inspeccion_estado, notas, JSON.stringify(fotos), providerId, devolucionId]
       );
-
       // Si aprobada o parcial → procesar reembolso
       if (inspeccion_estado === 'aprobada' || inspeccion_estado === 'parcial') {
-        const monto = monto_reembolso_cop || (inspeccion_estado === 'aprobada' ? devolucion.pedido_total : Math.round(devolucion.pedido_total * 0.5));
+        const monto = Number(monto_reembolso_cop) || Number(devolucion.monto_reembolso) ||
+          (inspeccion_estado === 'aprobada' ? Number(devolucion.pedido_total) : Math.round(Number(devolucion.pedido_total) * 0.5));
         
-        // Aquí iría la llamada a Stripe/Wompi para reembolso
-        // Por ahora solo marcamos como pendiente
+        // Hasta integrar la operación de devolución del proveedor de pagos, la
+        // solicitud permanece inspeccionada y el reembolso queda pendiente.
         await client.query(
           `UPDATE devoluciones SET
              reembolso_monto_cop = $1,
-             reembolso_estado = 'pendiente'
+             monto_reembolso = $1,
+             reembolso_estado = 'pendiente',
+             estado = 'INSPECCIONADA',
+             tipo_resolucion = CASE WHEN $3 = 'aprobada' THEN 'reembolso_total' ELSE 'reembolso_parcial' END
            WHERE id = $2`,
-          [monto, devolucionId]
+          [monto, devolucionId, inspeccion_estado]
         );
 
         // Notificar cliente
@@ -421,6 +469,11 @@ async function recibirDevolucion(req, res) {
           },
         });
       } else {
+        await client.query(
+          `UPDATE devoluciones SET recibida_proveedor_en = NOW(), tipo_resolucion = 'sin_resolucion'
+            WHERE id = $1`,
+          [devolucionId]
+        );
         // Rechazada en inspección
         await notificarPartesEnvio({
           guia: devolucion.guia_retorno,

@@ -1,0 +1,52 @@
+flowchart TD
+  A([Inicio: cliente abre GlowShop]) --> B[App cliente consulta catálogo, precios y stock]
+  B --> C{¿Producto disponible y con precio válido?}
+  C -- No --> C1[Mostrar indisponibilidad o error; corregir carrito]
+  C1 --> B
+  C -- Sí --> D[Agregar productos al carrito]
+  D --> E[Ingresar destino y modalidad de entrega]
+  E --> F[Cliente solicita cotización al backend]
+  F --> G[Backend valida precios, IVA, unidades, puntos, zona y peso]
+  G --> H{¿Cotización válida?}
+  H -- No --> H1[Mostrar error y corregir datos]
+  H1 --> E
+  H -- Sí --> I[Calcular envío: destino + peso + valor + zona; aplicar umbral gratis y gestión de $1.000 cuando corresponda]
+  I --> J[Mostrar desglose y total antes del pago]
+  J --> K{¿Cliente confirma compra?}
+  K -- No --> Z([Fin sin compra])
+  K -- Sí --> L[POST checkout: backend recalcula precio, inventario, impuestos, puntos y envío]
+  L --> M{¿Total coincide con cotización y hay stock?}
+  M -- No --> M1[Informar cambio; actualizar cotización y pedir confirmación]
+  M1 --> E
+  M -- Sí --> N[Crear pedido PENDIENTE_PAGO y reservar/descontar inventario según backend]
+  N --> O[App abre Wompi con el total del servidor]
+  O --> P{¿Pago aprobado?}
+  P -- No --> P1[Pedido permanece pendiente de pago; cliente puede reintentar]
+  P1 --> O
+  P -- Sí --> Q[Webhook autenticado de Wompi confirma el pago]
+  Q --> R[Pedido pasa a PAGADO; backend crea un envío por proveedor]
+  R --> S{¿Entrega en cita?}
+  S -- Sí --> S1[Proveedor entrega en la cita; seguimiento por pedido]
+  S1 --> T([Compra completada])
+  S -- No --> U[Cada proveedor ve solo su paquete y sus productos]
+  U --> V[Proveedor registra dirección de origen y prepara cantidades completas]
+  V --> W{¿Preparación completa?}
+  W -- No --> V
+  W -- Sí --> X[Backend solicita tarifa y crea etiqueta/guía en Envíame]
+  X --> Y[Proveedor programa recogida y entrega paquete al transportista]
+  Y --> AA[Webhook de Envíame actualiza estado de cada guía]
+  AA --> AB[Cliente consulta seguimiento por guía desde sus pedidos]
+  AB --> AC{¿Llegaron todos los paquetes?}
+  AC -- No --> AD[Pedido sigue DESPACHADO; seguir cada paquete pendiente]
+  AD --> AA
+  AC -- Sí --> AE[Pedido pasa a ENTREGADO y comienza ventana de devolución]
+  AE --> AF{¿Cliente solicita devolución dentro de 30 días?}
+  AF -- No --> T
+  AF -- Sí --> AG[Cliente elige paquete, productos, cantidades y motivo]
+  AG --> AH[Proveedor aprueba o rechaza; si aprueba se crea guía inversa]
+  AH --> AI[Proveedor recibe e inspecciona la devolución]
+  AI --> AJ{¿Inspección aprobada o parcial?}
+  AJ -- No --> AK[Registrar rechazo de devolución y notificar al cliente]
+  AK --> T
+  AJ -- Sí --> AL[Registrar monto y estado de reembolso pendiente de conciliación Wompi]
+  AL --> T

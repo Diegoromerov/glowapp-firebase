@@ -377,7 +377,11 @@ async function manualStatusShipment(req, res) {
     // Si ENTREGADO, actualizar pedido
     if (estado === 'ENTREGADO') {
       await pool.query(
-        `UPDATE pedidos_tienda SET estado = 'ENTREGADO', entregado_en = NOW() WHERE id = $1`,
+        `UPDATE pedidos_tienda pt SET estado = 'ENTREGADO', entregado_en = COALESCE(pt.entregado_en, NOW())
+          WHERE pt.id = $1 AND EXISTS (SELECT 1 FROM envios e WHERE e.pedido_id = pt.id)
+            AND NOT EXISTS (
+            SELECT 1 FROM envios e WHERE e.pedido_id = pt.id AND e.estado <> 'ENTREGADO'
+          )`,
         [rows[0].pedido_id]
       );
     }

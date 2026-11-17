@@ -188,10 +188,16 @@ async function _handleStatusUpdate(db, trackingNumber, shipmentId, status, times
     updateValues
   );
 
-  // Si ENTREGADO → actualizar pedido
+  // La compra queda ENTREGADA cuando cada paquete del pedido llegó.
   if (estadoInterno === 'ENTREGADO') {
     await db.query(
-      `UPDATE pedidos_tienda SET estado = 'ENTREGADO', entregado_en = $1 WHERE id = $2`,
+      `UPDATE pedidos_tienda pt
+          SET estado = 'ENTREGADO', entregado_en = COALESCE(pt.entregado_en, $1)
+        WHERE pt.id = $2
+          AND EXISTS (SELECT 1 FROM envios e WHERE e.pedido_id = pt.id)
+          AND NOT EXISTS (
+            SELECT 1 FROM envios e WHERE e.pedido_id = pt.id AND e.estado <> 'ENTREGADO'
+          )`,
       [timestamp ? new Date(timestamp) : new Date(), envio.pedido_id]
     );
 
@@ -241,12 +247,14 @@ async function _handlePickupCollected(db, trackingNumber, shipmentId, timestamp,
     [timestamp ? new Date(timestamp) : new Date(), trackingNumber]
   );
 
-  // Actualizar pedido a DESPACHADO si estaba en PAGADO
+  // La compra queda DESPACHADA si salió al menos un paquete y aún hay paquetes
+  // que esperan recogida; el estado final ENTREGADO se reserva para todos.
   await db.query(
     `UPDATE pedidos_tienda pt
-     SET estado = 'DESPACHADO', despachado_en = $1
+     SET estado = CASE WHEN pt.estado = 'PAGADO' THEN 'DESPACHADO' ELSE pt.estado END,
+         despachado_en = COALESCE(pt.despachado_en, $1)
      FROM envios e
-     WHERE e.guia = $2 AND e.pedido_id = pt.id AND pt.estado = 'PAGADO'`,
+     WHERE e.guia = $2 AND e.pedido_id = pt.id AND pt.estado IN ('PAGADO', 'DESPACHADO')`,
     [timestamp ? new Date(timestamp) : new Date(), trackingNumber]
   );
 
