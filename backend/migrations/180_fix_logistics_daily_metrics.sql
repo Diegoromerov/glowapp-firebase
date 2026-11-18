@@ -6,6 +6,9 @@ CREATE INDEX IF NOT EXISTS idx_envios_creado_en_metricas
 ALTER TABLE envios
   ADD COLUMN IF NOT EXISTS peso_kg NUMERIC(8,3),
   ADD COLUMN IF NOT EXISTS costo_etiqueta_cop BIGINT;
+ALTER TABLE pedidos_tienda
+  ADD COLUMN IF NOT EXISTS ciudad VARCHAR(100),
+  ADD COLUMN IF NOT EXISTS departamento VARCHAR(100);
 
 CREATE OR REPLACE FUNCTION refrescar_logistica_metricas_diarias(p_fecha DATE DEFAULT CURRENT_DATE - 1)
 RETURNS VOID
@@ -39,8 +42,8 @@ BEGIN
     LEFT JOIN LATERAL (
       SELECT ze.id
         FROM zonas_envio ze
-       WHERE ze.ciudad = e.destino_ciudad
-         AND ze.departamento = e.destino_departamento
+       WHERE ze.ciudad = pt.ciudad
+         AND ze.departamento = pt.departamento
        ORDER BY (ze.codigo_postal_prefijo IS NULL) DESC, ze.creado_en, ze.id
        LIMIT 1
     ) z ON TRUE
@@ -63,11 +66,12 @@ BEGIN
        ORDER BY (envio.id = d.envio_original_id) DESC, envio.creado_en, envio.id
        LIMIT 1
     ) e ON TRUE
+    JOIN pedidos_tienda pt ON pt.id = d.pedido_id
     LEFT JOIN LATERAL (
       SELECT ze.id
         FROM zonas_envio ze
-       WHERE ze.ciudad = e.destino_ciudad
-         AND ze.departamento = e.destino_departamento
+       WHERE ze.ciudad = pt.ciudad
+         AND ze.departamento = pt.departamento
        ORDER BY (ze.codigo_postal_prefijo IS NULL) DESC, ze.creado_en, ze.id
        LIMIT 1
     ) z ON TRUE
@@ -91,11 +95,12 @@ BEGIN
        ORDER BY (envio.id = d.envio_original_id) DESC, envio.creado_en, envio.id
        LIMIT 1
     ) e ON TRUE
+    JOIN pedidos_tienda pt ON pt.id = d.pedido_id
     LEFT JOIN LATERAL (
       SELECT ze.id
         FROM zonas_envio ze
-       WHERE ze.ciudad = e.destino_ciudad
-         AND ze.departamento = e.destino_departamento
+       WHERE ze.ciudad = pt.ciudad
+         AND ze.departamento = pt.departamento
        ORDER BY (ze.codigo_postal_prefijo IS NULL) DESC, ze.creado_en, ze.id
        LIMIT 1
     ) z ON TRUE
