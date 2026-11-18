@@ -315,187 +315,165 @@ export default function AdminPrestadoresIvaPage() {
   // Determinar si mostrar botones de acción
   const puedeAccion = (p: PrestadorFiscal) => p.revision_estado === 'PENDIENTE';
 
+  const indicadores = pestañaActiva === 'iva'
+    ? [
+        { etiqueta: 'Prestadores', valor: resumen?.total_prestadores ?? '—', detalle: 'En el sistema', color: 'text-white', icono: <Receipt className="h-5 w-5" />, filtro: 'todos' as FiltroEstado },
+        { etiqueta: 'Sin declarar', valor: resumen?.sin_declarar ?? '—', detalle: 'Requieren información fiscal', color: 'text-amber-300', icono: <AlertTriangle className="h-5 w-5" />, filtro: 'sin_declarar' as FiltroEstado },
+        { etiqueta: 'Declarados', valor: resumen?.declarados ?? '—', detalle: 'Condición registrada desde el RUT', color: 'text-emerald-300', icono: <CheckCircle className="h-5 w-5" />, filtro: 'declarado' as FiltroEstado },
+        { etiqueta: 'Correcciones humanas', valor: resumen?.override ?? '—', detalle: 'Revisadas por el equipo', color: 'text-sky-300', icono: <SlidersHorizontal className="h-5 w-5" />, filtro: 'override' as FiltroEstado },
+      ]
+    : [
+        { etiqueta: 'Pendientes', valor: resumen?.revision.pendiente ?? 0, detalle: 'Esperan revisión del equipo', color: 'text-amber-300', icono: <AlertCircle className="h-5 w-5" />, filtro: 'pendiente' as FiltroRevision },
+        { etiqueta: 'Aprobadas', valor: resumen?.revision.aprobada ?? 0, detalle: 'Cuenta habilitada', color: 'text-emerald-300', icono: <CheckCircle2 className="h-5 w-5" />, filtro: 'aprobada' as FiltroRevision },
+        { etiqueta: 'Rechazadas', valor: resumen?.revision.rechazada ?? 0, detalle: 'Pueden corregir y reenviar', color: 'text-rose-300', icono: <XCircle className="h-5 w-5" />, filtro: 'rechazada' as FiltroRevision },
+        { etiqueta: 'Sin enviar', valor: resumen?.revision.sin_enviar ?? 0, detalle: 'Aún no adjuntan su RUT', color: 'text-slate-300', icono: <HelpCircle className="h-5 w-5" />, filtro: 'sin_enviar' as FiltroRevision },
+      ];
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-8 space-y-8">
-      {/* Header con tabs */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
-        <div>
-          <div className="flex items-center gap-3">
-                      {(() => {
-                        const tab = TABS.find(t => t.id === pestañaActiva);
-                        return tab ? tab.icon : <Receipt className="text-rose-500 w-8 h-8" />;
-                      })()}
-                      <h1 className="text-3xl font-bold text-white tracking-tight">
-              {TABS.find(t => t.id === pestañaActiva)?.label || 'Prestadores'}
-            </h1>
-          </div>
-          <p className="text-slate-400 text-sm mt-1">
-            {pestañaActiva === 'iva'
-              ? 'Quién acreditó su responsabilidad de IVA desde el RUT, quién no, y qué overrides manuales hay.'
-              : 'Cola de revisión de RUT: ver documento, aprobar (activa cuenta) o rechazar (notifica correcciones).'}
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2">
-          {/* Tabs principales */}
-          <div className="flex bg-slate-900/50 rounded-xl p-1 border border-slate-800">
-            {TABS.map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setPestañaActiva(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  pestañaActiva === tab.id
-                    ? 'bg-rose-500/10 text-rose-300 border-rose-500/30'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                {tab.icon}
-                {tab.label}
-              </button>
-            ))}
+      {/* Encabezado y navegación del espacio de cumplimiento */}
+      <section className="space-y-6">
+        <div className="flex flex-col gap-5 border-b border-slate-800 pb-6 xl:flex-row xl:items-end xl:justify-between">
+          <div>
+            <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+              <span className="h-2 w-2 rounded-full bg-amber-300" />
+              GlowAdmin <span className="text-slate-600">/</span> Cumplimiento
+            </div>
+            <div className="flex items-center gap-3">
+              {TABS.find(t => t.id === pestañaActiva)?.icon}
+              <h1 className="text-3xl font-bold tracking-tight text-white">
+                {pestañaActiva === 'iva' ? 'Responsabilidad de IVA' : 'Revisión de documentos RUT'}
+              </h1>
+            </div>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+              {pestañaActiva === 'iva'
+                ? 'Consulta la condición fiscal declarada y registra una corrección cuando la evidencia revisada lo justifique.'
+                : 'Organiza los documentos pendientes y registra la decisión del revisor para cada prestador.'}
+            </p>
           </div>
 
-          <button
-            onClick={fetchDatos}
-            disabled={loading}
-            className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-slate-300 text-sm font-medium transition-all disabled:opacity-50"
-          >
-            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            Actualizar
-          </button>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="flex rounded-xl border border-slate-800 bg-slate-900 p-1">
+              {TABS.map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setPestañaActiva(tab.id)}
+                  aria-pressed={pestañaActiva === tab.id}
+                  className={`flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition ${
+                    pestañaActiva === tab.id
+                      ? 'bg-amber-300 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                  }`}
+                >
+                  {tab.icon}
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={fetchDatos}
+              disabled={loading}
+              className="flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800 disabled:opacity-50"
+            >
+              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+              Actualizar
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Tabs de filtro según pestaña */}
-      <div className="flex flex-wrap gap-2">
-        {pestañaActiva === 'iva' ? (
-          FILTROS_ESTADO.map(f => (
-            <button
-              key={f.id}
-              onClick={() => setFiltroEstado(f.id)}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all border ${
-                filtroEstado === f.id
-                  ? 'bg-rose-500/10 border-rose-500/40 text-rose-300'
-                  : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              {f.label}
-            </button>
-          ))
-        ) : (
-          FILTROS_REVISION.map(f => (
-            <button
-              key={f.id}
-              onClick={() => setFiltroRevision(f.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all border ${
-                filtroRevision === f.id
-                  ? 'bg-amber-500/10 border-amber-500/40 text-amber-300'
-                  : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              {f.icon}
-              {f.label}
-              {resumen && f.id !== 'todas' && (
-                <span className="px-2 py-0.5 text-xs bg-amber-500/20 text-amber-300 rounded-full">
-                  {resumen.revision[f.id as keyof typeof resumen.revision] ?? 0}
-                </span>
-              )}
-            </button>
-          ))
+        {/* Indicadores resumidos y accionables */}
+        {resumen && (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {indicadores.map((indicador, index) => {
+              const seleccionado = pestañaActiva === 'iva'
+                ? filtroEstado === indicador.filtro
+                : filtroRevision === indicador.filtro;
+              return (
+                <button
+                  key={indicador.etiqueta}
+                  type="button"
+                  onClick={() => pestañaActiva === 'iva'
+                    ? setFiltroEstado(indicador.filtro as FiltroEstado)
+                    : setFiltroRevision(indicador.filtro as FiltroRevision)}
+                  aria-pressed={seleccionado}
+                  className={`group relative overflow-hidden rounded-2xl border p-5 text-left transition hover:-translate-y-0.5 hover:border-slate-600 hover:bg-slate-900 ${
+                    seleccionado ? 'border-amber-300/50 bg-slate-900' : 'border-slate-800 bg-slate-900/60'
+                  }`}
+                >
+                  <span className={`absolute inset-y-0 left-0 w-1 ${[
+                    'bg-slate-500', 'bg-amber-400', 'bg-emerald-400', 'bg-sky-400',
+                  ][index]}`} />
+                  <span className="flex items-start justify-between gap-3">
+                    <span className="text-sm font-medium text-slate-400">{indicador.etiqueta}</span>
+                    <span className={indicador.color}>{indicador.icono}</span>
+                  </span>
+                  <span className={`mt-4 block text-3xl font-bold tracking-tight ${indicador.color}`}>
+                    {loading ? '—' : indicador.valor}
+                  </span>
+                  <span className="mt-1 block text-xs text-slate-500">{indicador.detalle}</span>
+                </button>
+              );
+            })}
+          </div>
         )}
-      </div>
+      </section>
 
       {error && (
-        <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 px-4 py-3 rounded-xl flex justify-between items-center text-sm">
+        <div className="flex items-center justify-between rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">
           <span className="flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4" /> {error}
+            <AlertTriangle className="h-4 w-4" /> {error}
           </span>
-          <button onClick={() => setError(null)} className="font-bold text-rose-400 hover:text-white">✕</button>
+          <button onClick={() => setError(null)} className="font-bold text-rose-400 hover:text-white" aria-label="Cerrar aviso">✕</button>
         </div>
       )}
 
-      {/* Censo (solo en pestaña IVA) */}
-      {pestañaActiva === 'iva' && resumen && (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Prestadores</span>
-              <HelpCircle className="w-5 h-5 text-slate-500" />
-            </div>
-            <p className="text-3xl font-extrabold text-white mt-4">{resumen.total_prestadores ?? '—'}</p>
-            <p className="text-xs text-slate-500 mt-1">Total con rol PRESTADOR</p>
+      {/* Navegación de resultados */}
+      <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+        <div className="flex flex-col gap-4 border-b border-slate-800 px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 className="font-semibold text-white">{pestañaActiva === 'iva' ? 'Listado fiscal' : 'Cola de revisión'}</h2>
+            <p className="mt-1 text-xs text-slate-500">{pestañaActiva === 'iva' ? 'Filtra por el origen de la condición o por correcciones del equipo.' : 'Elige un estado para enfocar la revisión.'}</p>
           </div>
-
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Sin declarar</span>
-              <AlertTriangle className="w-5 h-5 text-amber-400" />
-            </div>
-            <p className="text-3xl font-extrabold text-white mt-4">{resumen.sin_declarar ?? '—'}</p>
-            <p className="text-xs text-slate-500 mt-1">No se presume responsable (D3)</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Declarados</span>
-              <CheckCircle className="w-5 h-5 text-emerald-400" />
-            </div>
-            <p className="text-3xl font-extrabold text-white mt-4">{resumen.declarados ?? '—'}</p>
-            <p className="text-xs text-slate-500 mt-1">Condición tomada del RUT</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Override manual</span>
-              <SlidersHorizontal className="w-5 h-5 text-sky-400" />
-            </div>
-            <p className="text-3xl font-extrabold text-white mt-4">{resumen.override ?? '—'}</p>
-            <p className="text-xs text-slate-500 mt-1">Fijado por un admin, auditado (D1)</p>
-          </div>
-        </div>
-      )}
-
-      {/* Resumen de revisión (solo en pestaña Revisión RUT) */}
-      {pestañaActiva === 'revision' && resumen && (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Pendientes</span>
-              <AlertCircle className="w-5 h-5 text-amber-400" />
-            </div>
-            <p className="text-3xl font-extrabold text-amber-300 mt-4">{resumen.revision.pendiente ?? 0}</p>
-            <p className="text-xs text-slate-500 mt-1">Requieren revisión del equipo</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Aprobadas</span>
-              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-            </div>
-            <p className="text-3xl font-extrabold text-emerald-300 mt-4">{resumen.revision.aprobada ?? 0}</p>
-            <p className="text-xs text-slate-500 mt-1">Cuenta activada, puede publicar</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Rechazadas</span>
-              <XCircle className="w-5 h-5 text-rose-400" />
-            </div>
-            <p className="text-3xl font-extrabold text-rose-300 mt-4">{resumen.revision.rechazada ?? 0}</p>
-            <p className="text-xs text-slate-500 mt-1">Notificado, puede reenviar</p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
-            <div className="flex justify-between items-start">
-              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Sin enviar</span>
-              <HelpCircle className="w-5 h-5 text-slate-400" />
-            </div>
-            <p className="text-3xl font-extrabold text-slate-300 mt-4">{resumen.revision.sin_enviar ?? 0}</p>
-            <p className="text-xs text-slate-500 mt-1">Aún no subieron RUT</p>
+          <div className="flex flex-wrap gap-2">
+            {pestañaActiva === 'iva' ? (
+              FILTROS_ESTADO.map(f => (
+                <button
+                  key={f.id}
+                  onClick={() => setFiltroEstado(f.id)}
+                  aria-pressed={filtroEstado === f.id}
+                  className={`rounded-lg border px-3 py-2 text-xs font-medium transition ${
+                    filtroEstado === f.id
+                      ? 'border-amber-300/50 bg-amber-300/10 text-amber-200'
+                      : 'border-slate-700 bg-slate-950/60 text-slate-400 hover:border-slate-600 hover:text-slate-200'
+                  }`}
+                >
+                  {f.label}
+                </button>
+              ))
+            ) : (
+              FILTROS_REVISION.map(f => (
+                <button
+                  key={f.id}
+                  onClick={() => setFiltroRevision(f.id)}
+                  aria-pressed={filtroRevision === f.id}
+                  className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium transition ${
+                    filtroRevision === f.id
+                      ? 'border-amber-300/50 bg-amber-300/10 text-amber-200'
+                      : 'border-slate-700 bg-slate-950/60 text-slate-400 hover:border-slate-600 hover:text-slate-200'
+                  }`}
+                >
+                  {f.icon}
+                  {f.label}
+                  {resumen && f.id !== 'todas' && (
+                    <span className="rounded-full bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-300">
+                      {resumen.revision[f.id as keyof typeof resumen.revision] ?? 0}
+                    </span>
+                  )}
+                </button>
+              ))
+            )}
           </div>
         </div>
-      )}
-
       {/* Tabla */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
@@ -683,6 +661,7 @@ export default function AdminPrestadoresIvaPage() {
           </table>
         </div>
       </div>
+      </section>
 
       {/* Modal Ver Documento */}
       {docModal && (
