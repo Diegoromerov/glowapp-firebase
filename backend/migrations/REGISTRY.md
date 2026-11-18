@@ -472,3 +472,10 @@ en 076).
 - Hasta que exista esa relación en el esquema, `app_rls_user` queda sin lectura ni escritura en `logistica_metricas_diarias`; `app_system` conserva acceso para jobs operacionales.
 - Vuelve a declarar `fn_actualizado_en()` para que la migración 170 pueda crear su trigger en instalaciones donde la función no existía.
 - Es idempotente y repara instalaciones donde la migración 173 ya quedó registrada y el runner la omitiría.
+
+## 178: actualización incremental del catálogo DIVIPOLA
+
+- Conserva intacta la migración histórica 167 para evitar deriva de checksum en bases ya existentes.
+- Amplía las columnas requeridas y carga los 1.122 registros DIVIPOLA por código DANE, sin sobrescribir vínculos de zona preexistentes.
+- Crea y enlaza zonas base faltantes, sin confundirlas con zonas de prefijo postal; elimina el código ficticio `99999`.
+- Reejecutable dentro de una transacción y verificada contra el esquema histórico que ya tenía 167 registrada.

@@ -79,6 +79,30 @@ MIGRAR_OMITIR="123_checkout_tenant_wompi.sql,129_otp_codigo_cifrado.sql" \
 node backend/scripts/prepareRlsDatabase.js > /tmp/esc3.log 2>&1       # arranca encima
 [ $? -eq 0 ] && echo "  OK arranque sobre base poblada" || { echo "  X arranque sobre base poblada falló"; tail -5 /tmp/esc3.log; FALLOS=$((FALLOS+1)); }
 
+echo "== Escenario 4: upgrade de catálogo histórico 167 ya registrado =="
+limpiar
+MIGRAR_OMITIR="178_refresh_municipios_dane_catalog.sql,166_seed_insumos_b2b.sql,123_checkout_tenant_wompi.sql,129_otp_codigo_cifrado.sql" \
+  node backend/scripts/prepareRlsDatabase.js > /tmp/esc_upgrade_before.log 2>&1
+[ $? -eq 0 ] || { echo "  X no se pudo construir el esquema pre-178"; tail -8 /tmp/esc_upgrade_before.log; FALLOS=$((FALLOS+1)); }
+docker exec "$CT" psql -U postgres -d glowtest -c \
+  "CREATE TABLE schema_migrations (filename TEXT PRIMARY KEY, checksum TEXT, applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW());"
+checksum_167=$(node -e "const fs=require('fs'),c=require('crypto');process.stdout.write(c.createHash('sha256').update(fs.readFileSync('backend/migrations/167_municipios_dane.sql')).digest('hex').slice(0,16))")
+docker exec "$CT" psql -U postgres -d glowtest -c \
+  "INSERT INTO schema_migrations (filename, checksum) VALUES ('167_municipios_dane.sql', '$checksum_167');" >/dev/null
+previo=$(docker exec "$CT" psql -U postgres -d glowtest -tAc \
+  "select count(*) from schema_migrations where filename='167_municipios_dane.sql'")
+antiguos=$(docker exec "$CT" psql -U postgres -d glowtest -tAc "select count(*) from municipios_dane")
+[ "$previo" = "1" ] && [ "$antiguos" -lt "1122" ] \
+  && echo "  OK construido catálogo histórico ($antiguos filas; 167 registrada)" \
+  || { echo "  X estado histórico incorrecto (167=$previo, filas=$antiguos)"; FALLOS=$((FALLOS+1)); }
+node backend/scripts/prepareRlsDatabase.js > /tmp/esc_upgrade_after.log 2>&1
+[ $? -eq 0 ] && echo "  OK migración incremental sobre base histórica" \
+  || { echo "  X upgrade histórico falló"; tail -8 /tmp/esc_upgrade_after.log; FALLOS=$((FALLOS+1)); }
+DATABASE_URL_ADMIN="postgres://postgres@127.0.0.1:${PORT}/glowtest" \
+  node backend/scripts/verifyDaneCatalog.js > /tmp/esc_upgrade_verify.log 2>&1
+[ $? -eq 0 ] && echo "  OK catálogo completo tras upgrade histórico" \
+  || { echo "  X catálogo tras upgrade inválido"; tail -5 /tmp/esc_upgrade_verify.log; FALLOS=$((FALLOS+1)); }
+
 echo "== Comprobaciones de esquema =="
 n=$(docker exec "$CT" psql -U postgres -d glowtest -tAc \
   "select count(*) from pg_proc where proname='app_usuario_por_email'")
