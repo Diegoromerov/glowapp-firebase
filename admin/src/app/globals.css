@@ -2,25 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* === BASE - Linear-inspired Dark Mode === */
-  --bg-deep: #0a0c0d;
-  --bg-panel: #121517;
-  --bg-surface: #1c1f22;
-  --bg-elevated: #25292d;
-  --bg-modal: #191a1b;
+  /* === BASE - GlowApp light theme === */
+  --bg-deep: #f7f5f0;
+  --bg-panel: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1eee7;
+  --bg-modal: #ffffff;
 
-  /* === TEXT - Controlled Luminance === */
-  --text-primary: #f3f4f5;
-  --text-secondary: #b8bcc3;
-  --text-muted: #7a7f8a;
-  --text-subtle: #5a5f6a;
+  /* === TEXT - High contrast for light surfaces === */
+  --text-primary: #27231d;
+  --text-secondary: #514b42;
+  --text-muted: #777064;
+  --text-subtle: #928b7e;
 
   /* === BRAND - GlowApp Identity === */
   --brand-gold: #c5a052;
   --brand-gold-dim: #a88842;
   --brand-gold-bright: #d4b86a;
   --brand-gold-bg: rgba(197, 160, 82, 0.12);
-  --brand-gold-border: rgba(197, 160, 82, 0.3);
+  --brand-gold-border: rgba(169, 132, 55, 0.32);
   --brand-rose: #d4a59c;
   --brand-rose-bg: rgba(212, 165, 156, 0.12);
   --brand-dark: #2b2420;
@@ -37,19 +37,19 @@
   --info: #5e6ad2;
   --info-bg: rgba(94, 106, 210, 0.15);
 
-  /* === BORDERS - Semi-transparent White (Linear style) === */
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-standard: rgba(255, 255, 255, 0.08);
-  --border-brand: rgba(197, 160, 82, 0.3);
-  --border-solid: #2e3238;
-  --border-input: rgba(255, 255, 255, 0.12);
+  /* === BORDERS - Soft neutral outlines === */
+  --border-subtle: rgba(39, 35, 29, 0.06);
+  --border-standard: rgba(39, 35, 29, 0.10);
+  --border-brand: rgba(169, 132, 55, 0.32);
+  --border-solid: #e5dfd3;
+  --border-input: rgba(39, 35, 29, 0.16);
 
   /* === SHADOWS - Linear Style (borders > shadows) === */
-  --shadow-ring: 0 0 0 1px rgba(0, 0, 0, 0.4);
-  --shadow-elevated: rgba(0, 0, 0, 0.4) 0 8px 24px -8px, rgba(0, 0, 0, 0.2) 0 4px 12px -4px;
-  --shadow-modal: rgba(0, 0, 0, 0) 0 8px 2px, rgba(0, 0, 0, 0.01) 0 5px 2px, rgba(0, 0, 0, 0.04) 0 3px 2px, rgba(0, 0, 0, 0.07) 0 1px 1px, rgba(0, 0, 0, 0.08) 0 0 1px;
-  --shadow-card: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.1) 0 2px 8px -2px;
-  --shadow-dropdown: rgba(0, 0, 0, 0.4) 0 12px 32px -12px, rgba(0, 0, 0, 0.15) 0 4px 16px -4px;
+  --shadow-ring: 0 0 0 1px rgba(39, 35, 29, 0.12);
+  --shadow-elevated: rgba(39, 35, 29, 0.10) 0 8px 24px -8px, rgba(39, 35, 29, 0.06) 0 4px 12px -4px;
+  --shadow-modal: rgba(39, 35, 29, 0.10) 0 8px 24px -8px, rgba(39, 35, 29, 0.06) 0 2px 8px -2px;
+  --shadow-card: rgba(39, 35, 29, 0.08) 0 0 0 1px, rgba(39, 35, 29, 0.04) 0 2px 8px -2px;
+  --shadow-dropdown: rgba(39, 35, 29, 0.12) 0 12px 32px -12px, rgba(39, 35, 29, 0.06) 0 4px 16px -4px;
 
   /* === RADII === */
   --radius-micro: 2px;

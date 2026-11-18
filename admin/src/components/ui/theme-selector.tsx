@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { ChevronDown, Palette, Sun, Moon, Monitor } from "lucide-react";
+import { ChevronDown, Palette, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const themes = [
-  { value: "neutral", label: "Neutral", icon: Monitor, description: "Default dark theme" },
+  { value: "neutral", label: "Glow claro", icon: Sun, description: "Tema claro de GlowApp" },
   { value: "tangerine", label: "Tangerine", icon: Sun, description: "Warm orange accents" },
   { value: "brutalist", label: "Brutalist", icon: Palette, description: "High contrast, no radius" },
   { value: "softpop", label: "Soft Pop", icon: Sun, description: "Light pastel theme" },
