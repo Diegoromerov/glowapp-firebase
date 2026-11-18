@@ -1933,7 +1933,7 @@ async function updateEnvioStatus(req, res) {
         // Llamar Envíame para generar etiqueta
         const { EnviameClient } = require('../services/enviameClient');
         const providerEnviameClient = new EnviameClient({ pool: client });
-
+        const pesoPaqueteFinal = Number(peso_kg) > 0 ? Number(peso_kg) : 0.5;
         // Primero obtener rates
         const rates = await providerEnviameClient.getRates({
           origin: { 
@@ -1951,7 +1951,7 @@ async function updateEnvioStatus(req, res) {
             street: order.direccion_entrega
           },
           parcels: [{ 
-            weight: peso_kg || 0.5, 
+            weight: pesoPaqueteFinal,
             length: dimensiones_cm?.l || 20, 
             width: dimensiones_cm?.w || 15, 
             height: dimensiones_cm?.h || 10 
@@ -1987,24 +1987,27 @@ async function updateEnvioStatus(req, res) {
             `UPDATE envios SET 
                guia = $1, label_pdf_url = $2, label_zpl = $3,
                carrier_service_code = $4, transportadora = $5,
+               peso_kg = $6, costo_etiqueta_cop = $7,
                estado = 'CREADO', actualizado_en = NOW()
-             WHERE id = $6`,
+             WHERE id = $8`,
             [labelResult.tracking_number, labelResult.label_pdf_url, labelResult.label_zpl,
-             bestRate.service_code, bestRate.carrier, envioId]
+             bestRate.service_code, bestRate.carrier, pesoPaqueteFinal,
+             bestRate.rate_cop ?? null, envioId]
           );
         } else {
           const envioRes = await client.query(
             `INSERT INTO envios (
                pedido_id, transportadora, guia, label_pdf_url, label_zpl,
-               carrier_service_code, estado, observaciones,
+               carrier_service_code, peso_kg, costo_etiqueta_cop, estado, observaciones,
                origen_tipo_via, origen_numero_principal, origen_letra_principal,
                origen_numero_secundario, origen_letra_secundaria, origen_complemento,
                origen_barrio, origen_ciudad, origen_departamento, origen_codigo_postal, origen_dane_code
-             ) VALUES ($1,$2,$3,$4,$5,$6,'CREADO',$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)
+             ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,'CREADO',$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)
              RETURNING id`,
             [
               orderId, bestRate.carrier, labelResult.tracking_number, labelResult.label_pdf_url, labelResult.label_zpl,
-              bestRate.service_code, `Etiqueta generada por proveedor ${providerId}`,
+              bestRate.service_code, pesoPaqueteFinal, bestRate.rate_cop ?? null,
+              `Etiqueta generada por proveedor ${providerId}`,
               origen.tipo_via, origen.numero_principal, origen.letra_principal,
               origen.numero_secundario, origen.letra_secundaria, origen.complemento,
               origen.barrio, origen.ciudad, origen.departamento, origen.codigo_postal, origen.dane_code
