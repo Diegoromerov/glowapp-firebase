@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS logistica_metricas_diarias (
     id BIGSERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
     carrier VARCHAR(50) NOT NULL,
-    zona_id BIGINT REFERENCES zonas_envio(id),
+    zona_id UUID REFERENCES zonas_envio(id),
     envios_creados BIGINT NOT NULL DEFAULT 0,
     envios_recogidos BIGINT NOT NULL DEFAULT 0,
     envios_entregados BIGINT NOT NULL DEFAULT 0,
