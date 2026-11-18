@@ -93,11 +93,22 @@ jobs:
           # Los tests de integracion lo destaparon al insertar con tenant_id.
         run: node scripts/prepareRlsDatabase.js
 
+      - name: Verificar reejecución sobre esquema existente
+        env:
+          DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
+          RLS_ROLE_PASSWORD: test_rls_password
+        run: node scripts/prepareRlsDatabase.js
+
       - name: Verificar aislamiento multi-tenant (verifyTenantIsolation.js)
         env:
           # trust auth: sin password en la URL
           TEST_DATABASE_URL: postgres://app_owner@localhost:5432/glowtest
         run: node scripts/verifyTenantIsolation.js
+
+      - name: Verificar aislamiento de métricas logísticas
+        env:
+          DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
+        run: node scripts/verifyLogisticaMetricsRls.js
 
       - name: Contrato app <-> API
         # Se ejecuta desde la raiz del monorepo: la herramienta compara lo que
