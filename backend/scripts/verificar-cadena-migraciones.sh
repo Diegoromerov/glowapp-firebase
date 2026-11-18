@@ -135,6 +135,14 @@ DATABASE_URL_ADMIN="postgres://postgres@127.0.0.1:${PORT}/glowtest" \
   node backend/scripts/verifyLogisticaMetricsRls.js > /tmp/esc5.log 2>&1
 [ $? -eq 0 ] && echo "  OK verifyLogisticaMetricsRls" || { echo "  X verifyLogisticaMetricsRls falló"; tail -5 /tmp/esc5.log; FALLOS=$((FALLOS+1)); }
 
+echo "== Refresco de métricas logísticas e idempotencia =="
+docker exec "$CT" psql -U postgres -d glowtest -v ON_ERROR_STOP=1 -c \
+  "SELECT refrescar_logistica_metricas_diarias(CURRENT_DATE - 1);" >/dev/null \
+  && docker exec "$CT" psql -U postgres -d glowtest -v ON_ERROR_STOP=1 -c \
+  "SELECT refrescar_logistica_metricas_diarias(CURRENT_DATE - 1);" >/dev/null \
+  && echo "  OK refresco diario ejecuta dos veces sin error" \
+  || { echo "  X refresco diario falló"; FALLOS=$((FALLOS+1)); }
+
 echo
 if [ "$FALLOS" -eq 0 ]; then
   echo "TODO VERDE ($(date)) — puedes publicar con MIGRACIONES_VERIFICADAS=1"
