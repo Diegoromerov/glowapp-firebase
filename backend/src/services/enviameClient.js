@@ -13,7 +13,9 @@ class EnviameClient {
     this.pool = options.pool || null; // Pool de BD para routing rules y municipios_dane
     
     const production = process.env.NODE_ENV === 'production';
-    this._mockMode = !production && (!this.apiKey || /placeholder|mock/i.test(this.apiKey));
+    const railwayEnvironment = String(process.env.RAILWAY_ENVIRONMENT_NAME || '').trim().toLowerCase();
+    const staging = railwayEnvironment === 'staging';
+    this._mockMode = (!production || staging) && (!this.apiKey || /placeholder|mock/i.test(this.apiKey));
     
     if (this._mockMode) {
       console.warn('[ENVIAMAE] ⚠️ MODO MOCK: Sin API key real. Respuestas simuladas.');
