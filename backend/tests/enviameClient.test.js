@@ -104,9 +104,11 @@ describe('EnviameClient — DIVIPOLA, routing y modo seguro', () => {
 
   test('modo productivo falla cerrado sin credenciales o firma webhook', async () => {
     const previousNodeEnv = process.env.NODE_ENV;
+    const previousRailwayEnvironment = process.env.RAILWAY_ENVIRONMENT_NAME;
     const previousApiKey = process.env.ENVIAME_API_KEY;
     delete process.env.ENVIAME_API_KEY;
     process.env.NODE_ENV = 'production';
+    process.env.RAILWAY_ENVIRONMENT_NAME = 'production';
     try {
       const client = new EnviameClient();
       expect(client._mockMode).toBe(false);
@@ -123,6 +125,27 @@ describe('EnviameClient — DIVIPOLA, routing y modo seguro', () => {
     } finally {
       if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
       else process.env.NODE_ENV = previousNodeEnv;
+      if (previousRailwayEnvironment === undefined) delete process.env.RAILWAY_ENVIRONMENT_NAME;
+      else process.env.RAILWAY_ENVIRONMENT_NAME = previousRailwayEnvironment;
+      if (previousApiKey === undefined) delete process.env.ENVIAME_API_KEY;
+      else process.env.ENVIAME_API_KEY = previousApiKey;
+    }
+  });
+
+  test('permite mock sin credenciales solo en Railway staging aunque NODE_ENV sea production', () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    const previousRailwayEnvironment = process.env.RAILWAY_ENVIRONMENT_NAME;
+    const previousApiKey = process.env.ENVIAME_API_KEY;
+    process.env.NODE_ENV = 'production';
+    process.env.RAILWAY_ENVIRONMENT_NAME = 'staging';
+    delete process.env.ENVIAME_API_KEY;
+    try {
+      expect(new EnviameClient()._mockMode).toBe(true);
+    } finally {
+      if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+      else process.env.NODE_ENV = previousNodeEnv;
+      if (previousRailwayEnvironment === undefined) delete process.env.RAILWAY_ENVIRONMENT_NAME;
+      else process.env.RAILWAY_ENVIRONMENT_NAME = previousRailwayEnvironment;
       if (previousApiKey === undefined) delete process.env.ENVIAME_API_KEY;
       else process.env.ENVIAME_API_KEY = previousApiKey;
     }
