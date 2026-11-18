@@ -133,7 +133,7 @@ export default function Sidebar() {
         <nav className="sidebar-nav" role="navigation" aria-label="Navegación principal">
           {links.map((link) => {
             const Icon = link.icon;
-            if ('children' in link) {
+            if ('children' in link && link.children) {
               const isActive = link.children.some((child) => pathname === child.href || pathname.startsWith(`${child.href}/`));
               return (
                 <React.Fragment key={link.label}>
