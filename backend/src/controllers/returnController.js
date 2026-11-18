@@ -28,7 +28,7 @@ async function solicitarDevolucion(req, res) {
     await runInTenantTransaction({ pool }, tenantId, async (client) => {
       // Verificar pedido: del cliente, estado ENTREGADO, dentro de ventana (ej 30 días)
       const pedidoRes = await client.query(
-        `SELECT * FROM pedidos_tienda 
+        `SELECT * FROM pedidos_tienda
          WHERE id = $1 AND comprador_id = $2 AND estado = 'ENTREGADO'
          AND entregado_en > NOW() - INTERVAL '30 days'`,
         [orderId, clienteId]
@@ -387,7 +387,7 @@ async function recibirDevolucion(req, res) {
            inspeccion_fotos = $3,
            inspeccionada_por = $4,
            inspeccionada_en = NOW(),
-           estado = CASE 
+           estado = CASE
              WHEN $1 = 'aprobada' THEN 'RECIBIDA'
              WHEN $1 = 'rechazada' THEN 'RECHAZADA_INSPECCION'
              ELSE 'RECIBIDA_PARCIAL'
@@ -399,7 +399,7 @@ async function recibirDevolucion(req, res) {
       // Si aprobada o parcial → procesar reembolso
       if (inspeccion_estado === 'aprobada' || inspeccion_estado === 'parcial') {
         const monto = monto_reembolso_cop || (inspeccion_estado === 'aprobada' ? devolucion.pedido_total : Math.round(devolucion.pedido_total * 0.5));
-        
+
         // Aquí iría la llamada a Stripe/Wompi para reembolso
         // Por ahora solo marcamos como pendiente
         await client.query(
