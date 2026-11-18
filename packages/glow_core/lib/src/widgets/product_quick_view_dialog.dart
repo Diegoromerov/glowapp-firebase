@@ -22,42 +22,9 @@ class ProductQuickViewDialog extends StatefulWidget {
 
 class _ProductQuickViewDialogState extends State<ProductQuickViewDialog> {
   int _qty = 1;
-  String _selectedSkinTone = 'Piel Clara';
 
   String _formatCOP(double amount) {
     return '\$${amount.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.')} COP';
-  }
-
-  Widget _buildSkinToneChip(String label, Color color) {
-    final isSelected = _selectedSkinTone == label;
-    return GestureDetector(
-      onTap: () => setState(() => _selectedSkinTone = label),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-        decoration: BoxDecoration(
-          color: color.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: isSelected ? AppTheme.primary : Colors.transparent,
-            width: 2,
-          ),
-        ),
-        child: Row(
-          children: [
-            CircleAvatar(radius: 6, backgroundColor: color),
-            const SizedBox(width: 6),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                color: AppTheme.text,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 
   Widget _buildPlaceholderImage(double height) {
@@ -218,26 +185,6 @@ class _ProductQuickViewDialogState extends State<ProductQuickViewDialog> {
                         color: AppTheme.primary,
                         fontWeight: FontWeight.w600,
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    // SELECTOR DE MUESTRA SEGÚN FOTOTIPO DE PIEL (UX BELLEZA - SWATCHES)
-                    const Text(
-                      'Muestra Aplicada por Fototipo de Piel',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.text,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        _buildSkinToneChip('Piel Clara', const Color(0xFFF3E5DC)),
-                        const SizedBox(width: 8),
-                        _buildSkinToneChip('Trigueña', const Color(0xFFD8B094)),
-                        const SizedBox(width: 8),
-                        _buildSkinToneChip('Morena', const Color(0xFF8D5B4C)),
-                      ],
                     ),
                     const SizedBox(height: 16),
                     const Text(
