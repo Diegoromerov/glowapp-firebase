@@ -34,6 +34,7 @@ import {
 } from 'recharts';
 import { useAdminSession } from '@/hooks/useAdminSession';
 import { formatMinutos, prioridadesPorRiesgo, type PqrsfMetricas } from '@/lib/metricasPqrsf';
+import DashboardLayout from '@/app/(dashboard)/layout';
 
 interface FinancialMetrics {
   gmv: number;
@@ -179,7 +180,7 @@ function isPqrsfMetricas(value: unknown): value is PqrsfMetricas {
   );
 }
 
-export default function DashboardPage() {
+function DashboardOverview() {
   const { user, loading: sessionLoading, refetch: refetchSession } = useAdminSession();
   const [loading, setLoading] = useState(true);
   const [backendStatus, setBackendStatus] = useState('Comprobando conexión...');
@@ -819,5 +820,13 @@ export default function DashboardPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <DashboardLayout>
+      <DashboardOverview />
+    </DashboardLayout>
   );
 }
