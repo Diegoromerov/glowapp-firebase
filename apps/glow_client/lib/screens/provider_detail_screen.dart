@@ -1428,121 +1428,40 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Tarjeta de Horarios y Cobertura Profesional
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: const Color(0xFFE8DFD8),
-                            width: 1,
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: MediaQuery.sizeOf(context).width - 40,
+                            ),
+                            child: _ProviderInfoPill(
+                              icon: isSalon ? Icons.storefront_outlined : Icons.home_outlined,
+                              label: serviceSettingLabel,
+                              foreground: const Color(0xFF8A6A2F),
+                              background: const Color(0xFFFAF6EE),
+                            ),
                           ),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color(0x06000000),
-                              blurRadius: 12,
-                              offset: Offset(0, 4),
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: MediaQuery.sizeOf(context).width - 40,
                             ),
-                          ],
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFFAF6F0),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: const Icon(Icons.home_work_outlined,
-                                      size: 18, color: Color(0xFFC5A052)),
-                                ),
-                                const SizedBox(width: 12),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        'Tipo de atención',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
-                                          color: Color(0xFF1F1A15),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 2),
-                                      Text(
-                                        serviceSettingLabel,
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF6B5E55),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Divider(height: 20, color: Color(0xFFF0EAE3)),
-                            InkWell(
-                              onTap: () => _showGuaranteeSheet(context),
-                              borderRadius: BorderRadius.circular(12),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 4),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFFAF6F0),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: const Icon(Icons.shield_outlined,
-                                          size: 18, color: Color(0xFFC5A052)),
-                                    ),
-                                    const SizedBox(width: 12),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            (p['guarantee_title'] ??
-                                                    p['protocol_title'] ??
-                                                    'Garantía y Protocolo GlowApp')
-                                                .toString(),
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 13,
-                                              color: Color(0xFF1F1A15),
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2),
-                                          Text(
-                                            (p['guarantee_subtitle'] ??
-                                                    p['protocol_subtitle'] ??
-                                                    'Bioseguridad certificada · Pago seguro en custodia')
-                                                .toString(),
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Color(0xFF6B5E55),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const Icon(Icons.chevron_right,
-                                        size: 20, color: Color(0xFFC5A052)),
-                                  ],
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                onTap: () => _showGuaranteeSheet(context),
+                                borderRadius: BorderRadius.circular(20),
+                                child: const _ProviderInfoPill(
+                                  icon: Icons.shield_outlined,
+                                  label: 'Garantía GlowApp',
+                                  foreground: Color(0xFF8A6A2F),
+                                  background: Color(0xFFFAF6EE),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 24),
 
