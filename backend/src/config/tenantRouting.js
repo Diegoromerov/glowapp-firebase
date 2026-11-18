@@ -89,8 +89,8 @@ function isPerRequestTransactionEnabled() {
 }
 
 /**
- * Ejecuta `fn` dentro de una transacción dedicada con el tenant fijado de forma
- * LOCAL a esa transacción, y libera la conexión siempre.
+ * Ejecuta `fn` dentro de una transacción dedicada con el tenant y usuario
+ * fijados de forma LOCAL a esa transacción, y libera la conexión siempre.
  *
  * El cliente se obtiene con `pool.connect()` (el wrapper de db.js), de modo que
  * si Postgres no está disponible el cliente degradado también funciona y no se
@@ -98,9 +98,10 @@ function isPerRequestTransactionEnabled() {
  *
  * @param {{ pool: {connect: Function} }} deps
  * @param {number|string|null} tenantId
+ * @param {number|string|null} userId
  * @param {(client: object) => Promise<any>} fn
  */
-async function runInTenantTransaction(deps, tenantId, fn) {
+async function runInTenantTransaction(deps, tenantId, userId, fn) {
   const client = await deps.pool.connect();
 
   // Arnés de tests: varios dobles de config/db declaran `connect: jest.fn()`,
@@ -129,8 +130,16 @@ async function runInTenantTransaction(deps, tenantId, fn) {
         `${tenantId}`,
       ]);
     }
+    // Fijar app.user_id para que app_current_user_id() funcione en políticas RLS
+    // (p.ej. usuarios_isolation permite id = app_current_user_id()).
+    if (userId !== null && userId !== undefined && `${userId}` !== '') {
+      await client.query('SELECT set_config($1, $2, true)', [
+        'app.user_id',
+        `${userId}`,
+      ]);
+    }
 
-    const result = await runWithClient(client, () => fn(client), { tenantId });
+    const result = await runWithClient(client, () => fn(client), { tenantId, userId });
 
     // COMMIT explícito. Sin esto la conexión vuelve al pool con la transacción
     // abierta ("idle in transaction"): el trabajo se perdería y la conexión

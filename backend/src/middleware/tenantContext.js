@@ -58,11 +58,8 @@ const { pool } = require('../config/db');
 const tenantRouting = require('../config/tenantRouting');
 
 async function tenantContextMiddleware(req, res, next) {
-  // Sin usuario o sin tenant no hay contexto que fijar. No se abre transacción:
-  // encarecería las peticiones públicas, y las políticas usan
-  // current_setting('app.tenant_id', true), de modo que sin contexto devuelven
-  // 0 filas en lugar de lanzar error.
-  if (!req.user || !req.user.tenant_id) {
+  // Sin usuario no hay contexto que fijar.
+  if (!req.user) {
     return next();
   }
 
@@ -126,7 +123,7 @@ async function tenantContextMiddleware(req, res, next) {
   if (sendOriginal) res.send = (cuerpo) => diferir('send', cuerpo, () => sendOriginal.call(res, cuerpo));
 
   try {
-    await tenantRouting.runInTenantTransaction({ pool }, req.user.tenant_id, () =>
+      await tenantRouting.runInTenantTransaction({ pool }, req.user.tenant_id, req.user.id, () =>
       new Promise((resolve, reject) => {
         let resuelto = false;
         const finalizar = (error) => {
