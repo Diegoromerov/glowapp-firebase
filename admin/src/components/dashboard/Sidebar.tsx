@@ -20,6 +20,7 @@ import {
   ShieldAlert,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Inbox,
   Receipt,
   ShoppingCart,
@@ -33,6 +34,9 @@ export default function Sidebar() {
   const { user, logout } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
+  const [reclamacionesOpen, setReclamacionesOpen] = useState(
+    pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas'),
+  );
 
   // El botón hamburguesa del Header emite este evento (el estado del drawer
   // vive aquí, no en el layout).
@@ -41,6 +45,12 @@ export default function Sidebar() {
     window.addEventListener('glow:toggle-sidebar', toggle);
     return () => window.removeEventListener('glow:toggle-sidebar', toggle);
   }, []);
+
+  useEffect(() => {
+    if (pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas')) {
+      setReclamacionesOpen(true);
+    }
+  }, [pathname]);
 
   // Links based on role
   const getLinks = () => {
@@ -56,7 +66,14 @@ export default function Sidebar() {
     if (user?.rol === 'ADMIN') {
       return [
         { href: '/admin/sos', label: 'Alertas SOS', icon: ShieldAlert },
-        { href: '/admin/pqrsf', label: 'PQRSF / Soporte', icon: Inbox },
+        {
+          label: 'Reclamaciones',
+          icon: Inbox,
+          children: [
+            { href: '/admin/pqrsf', label: 'PQRSF' },
+            { href: '/admin/disputas', label: 'Disputas' },
+          ],
+        },
         { href: '/admin/business', label: 'Cumplimiento Business', icon: Building2 },
         { href: '/admin/prestadores', label: 'Prestadores · IVA', icon: Receipt },
         { href: '/admin/retiros', label: 'Cuentas de retiro', icon: WalletCards },
@@ -116,6 +133,46 @@ export default function Sidebar() {
         <nav className="sidebar-nav" role="navigation" aria-label="Navegación principal">
           {links.map((link) => {
             const Icon = link.icon;
+            if ('children' in link) {
+              const isActive = link.children.some((child) => pathname === child.href || pathname.startsWith(`${child.href}/`));
+              return (
+                <React.Fragment key={link.label}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (collapsed) setCollapsed(false);
+                      setReclamacionesOpen((open) => !open);
+                    }}
+                    className={`nav-link w-full text-left ${isActive ? 'active' : ''}`}
+                    aria-expanded={reclamacionesOpen}
+                    aria-controls="reclamaciones-subnav"
+                    title={collapsed ? link.label : undefined}
+                  >
+                    <Icon className="icon" size={20} aria-hidden="true" />
+                    {!collapsed && <span>{link.label}</span>}
+                    {!collapsed && <ChevronDown className={`ml-auto transition-transform ${reclamacionesOpen ? 'rotate-180' : ''}`} size={16} aria-hidden="true" />}
+                  </button>
+                  {!collapsed && reclamacionesOpen && (
+                    <div id="reclamaciones-subnav" className="sidebar-subnav">
+                      {link.children.map((child) => {
+                        const childActive = pathname === child.href || pathname.startsWith(`${child.href}/`);
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setSidebarOpen(false)}
+                            className={`nav-link nav-sublink ${childActive ? 'active' : ''}`}
+                            aria-current={childActive ? 'page' : undefined}
+                          >
+                            <span>{child.label}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </React.Fragment>
+              );
+            }
             const isActive = pathname === link.href;
             return (
               <Link

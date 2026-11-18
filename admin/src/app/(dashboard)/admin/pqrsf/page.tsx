@@ -432,7 +432,7 @@ export default function AdminPqrsfPage() {
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight">PQRSF y soporte</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight">PQRSF</h1>
           <p className="text-secondary mt-1">
             Peticiones, quejas, reclamos, sugerencias y felicitaciones creadas desde la aplicación.
           </p>
