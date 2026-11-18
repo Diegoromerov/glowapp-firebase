@@ -560,37 +560,11 @@ async function recibirDevolucion(req, res) {
  * Helpers (copiados de orderController para evitar circular)
  */
 function _ciudadToDaneCode(ciudad) {
-  const map = {
-    'bogota': 11001, 'bogotá': 11001,
-    'medellin': 5001, 'medellín': 5001,
-    'cali': 76001,
-    'barranquilla': 8001,
-    'cartagena': 13001,
-    'bucaramanga': 68001,
-    'cucuta': 54001, 'cúcuta': 54001,
-    'pereira': 66001,
-    'santa marta': 47001,
-    'ibague': 73001, 'ibagué': 73001,
-  };
-  const key = (ciudad || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  return map[key] || 11001;
+  return String(ciudad || '').trim();
 }
 
 function _departamentoToDaneState(departamento) {
-  const map = {
-    'bogota': 'CUN', 'bogotá': 'CUN', 'cundinamarca': 'CUN',
-    'antioquia': 'ANT',
-    'valle del cauca': 'VAC', 'valle': 'VAC',
-    'atlantico': 'ATL', 'atlántico': 'ATL',
-    'bolivar': 'BOL', 'bolívar': 'BOL',
-    'santander': 'SAN',
-    'norte de santander': 'NSA',
-    'risaralda': 'RIS',
-    'magdalena': 'MAG',
-    'tolima': 'TOL',
-  };
-  const key = (departamento || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  return map[key] || 'CUN';
+  return String(departamento || '').trim();
 }
 
 module.exports = {
