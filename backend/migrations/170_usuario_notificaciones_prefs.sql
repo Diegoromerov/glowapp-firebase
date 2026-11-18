@@ -1,6 +1,15 @@
 -- 170_usuario_notificaciones_prefs.sql
 -- Preferencias de notificación por usuario y tipo de evento
 
+-- La función debe existir antes de crear los triggers que la usan.
+CREATE OR REPLACE FUNCTION fn_actualizado_en()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.actualizado_en = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE TABLE IF NOT EXISTS usuario_notificaciones_prefs (
     id BIGSERIAL PRIMARY KEY,
     usuario_id BIGINT NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
@@ -24,11 +33,11 @@ CREATE POLICY usuario_notif_prefs_isolation ON usuario_notificaciones_prefs
     TO app_rls_user
     USING (
         usuario_id = current_setting('app.current_user_id', true)::bigint
-        OR current_setting('app.tenant_id', true) = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
+        OR current_setting('app.tenant_id', true)::bigint = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
     )
     WITH CHECK (
         usuario_id = current_setting('app.current_user_id', true)::bigint
-        OR current_setting('app.tenant_id', true) = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
+        OR current_setting('app.tenant_id', true)::bigint = (SELECT tenant_id FROM usuarios WHERE id = usuario_notificaciones_prefs.usuario_id)
     );
 
 DROP POLICY IF EXISTS usuario_notif_prefs_system ON usuario_notificaciones_prefs;
