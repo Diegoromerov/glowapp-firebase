@@ -392,23 +392,23 @@ export default function AdminProductosPage() {
   );
 
   return (
-    <div className="p-8 space-y-8 bg-slate-950 min-h-screen text-slate-100">
+    <div className="p-8 space-y-8 bg-[#f7f5f0] min-h-screen text-[#2b2420]">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-900/80 p-6 rounded-2xl border border-slate-800 backdrop-blur-sm">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl border border-[#e8e1d7] backdrop-blur-sm">
         <div>
           <div className="flex items-center gap-3">
             <div className="bg-rose-500/10 p-3 rounded-xl border border-rose-500/20 text-rose-400">
               <Package size={28} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-white">Catálogo de Productos GlowShop</h1>
-              <p className="text-sm text-slate-400">CRUD completo + Subida de imágenes a R2 + Precios multi-nivel</p>
+              <h1 className="text-2xl font-bold tracking-tight text-[#2b2420]">Catálogo de Productos GlowShop</h1>
+              <p className="text-sm text-[#71685f]">CRUD completo + Subida de imágenes a R2 + Precios multi-nivel</p>
             </div>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <button onClick={fetchProductos} disabled={loading} className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-sm font-medium transition-all">
+          <button onClick={fetchProductos} disabled={loading} className="flex items-center gap-2 px-4 py-2.5 bg-[#f2eee8] hover:bg-[#e8e1d7] text-[#403a35] rounded-xl text-sm font-medium transition-all">
             <Loader2 size={16} className={loading ? 'animate-spin' : ''} />
             Actualizar
           </button>
@@ -421,46 +421,46 @@ export default function AdminProductosPage() {
 
       {/* Alerts */}
       {error && (
-        <div className="flex items-center justify-between p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-300 text-sm">
+        <div className="flex items-center justify-between p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-800 text-sm">
           <div className="flex items-center gap-3">
             <AlertTriangle size={20} className="text-rose-400 shrink-0" />
             <span>{error}</span>
           </div>
-          <button onClick={() => setError(null)} className="text-rose-400 hover:text-rose-200"><X size={18} /></button>
+          <button onClick={() => setError(null)} className="text-rose-400 hover:text-rose-800"><X size={18} /></button>
         </div>
       )}
       {successMsg && (
-        <div className="flex items-center justify-between p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-300 text-sm">
+        <div className="flex items-center justify-between p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-800 text-sm">
           <div className="flex items-center gap-3">
             <CheckCircle size={20} className="text-emerald-400 shrink-0" />
             <span>{successMsg}</span>
           </div>
-          <button onClick={() => setSuccessMsg(null)} className="text-emerald-400 hover:text-emerald-200"><X size={18} /></button>
+          <button onClick={() => setSuccessMsg(null)} className="text-emerald-400 hover:text-emerald-800"><X size={18} /></button>
         </div>
       )}
 
       {/* Search & Filters */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-        <div className="flex items-center gap-2 bg-slate-800/80 px-3.5 py-2 rounded-xl border border-slate-700/60 w-full sm:w-80">
-          <Search size={18} className="text-slate-400" />
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-[#fbfaf8] p-4 rounded-xl border border-[#e8e1d7]">
+        <div className="flex items-center gap-2 bg-[#f7f5f0] px-3.5 py-2 rounded-xl border border-[#e8e1d7] w-full sm:w-80">
+          <Search size={18} className="text-[#71685f]" />
           <input
             type="text"
             placeholder="Buscar por nombre o SKU..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-transparent text-sm text-slate-100 placeholder-slate-400 focus:outline-none w-full"
+            className="bg-transparent text-sm text-[#2b2420] placeholder-[#8a8178] focus:outline-none w-full"
           />
         </div>
-        <div className="flex items-center gap-2 text-sm text-slate-400">
+        <div className="flex items-center gap-2 text-sm text-[#71685f]">
           <span>{catalogoDisponible ? `Página ${currentPage} de ${totalPages || 1} • ${totalCount} productos` : 'Catálogo no disponible'}</span>
         </div>
       </div>
 
       {/* Products Table */}
-      <div className="bg-slate-900/80 rounded-2xl border border-slate-800 overflow-hidden backdrop-blur-sm shadow-xl">
+      <div className="bg-white rounded-2xl border border-[#e8e1d7] overflow-hidden backdrop-blur-sm shadow-xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-slate-300">
-            <thead className="bg-slate-800/90 text-xs text-slate-400 uppercase tracking-wider border-b border-slate-700/60">
+          <table className="w-full text-left text-sm text-[#403a35]">
+            <thead className="bg-[#f2eee8] text-xs text-[#71685f] uppercase tracking-wider border-b border-[#e8e1d7]">
               <tr>
                 <th className="py-4 px-6">Imagen</th>
                 <th className="py-4 px-6">Producto</th>
@@ -471,57 +471,57 @@ export default function AdminProductosPage() {
                 <th className="py-4 px-6 text-right">Acciones</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-[#e8e1d7]">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-slate-400">
+                  <td colSpan={7} className="py-12 text-center text-[#71685f]">
                     <Loader2 size={24} className="animate-spin mx-auto mb-2 text-rose-500" />
                     Cargando catálogo...
                   </td>
                 </tr>
               ) : !catalogoDisponible ? (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-slate-400">
+                  <td colSpan={7} className="py-12 text-center text-[#71685f]">
                     No se pudo consultar el catálogo; no es posible confirmar que esté vacío.
                   </td>
                 </tr>
               ) : filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-slate-400">
+                  <td colSpan={7} className="py-12 text-center text-[#71685f]">
                     No se encontraron productos
                   </td>
                 </tr>
               ) : (
                 filteredProducts.map((prod) => (
-                  <tr key={prod.id} className="hover:bg-slate-800/40 transition-colors">
+                  <tr key={prod.id} className="hover:bg-[#f7f5f0] transition-colors">
                     <td className="py-4 px-6">
                       {prod.imagen_url ? (
                         <img 
                           src={prod.imagen_url} 
                           alt={prod.nombre}
-                          className="w-16 h-16 object-cover rounded-lg border border-slate-700"
+                          className="w-16 h-16 object-cover rounded-lg border border-[#ded6cb]"
                           loading="lazy"
                         />
                       ) : (
-                        <div className="w-16 h-16 bg-slate-800 rounded-lg flex items-center justify-center border border-slate-700">
-                          <Image size={24} className="text-slate-500" />
+                        <div className="w-16 h-16 bg-[#f2eee8] rounded-lg flex items-center justify-center border border-[#ded6cb]">
+                          <Image size={24} className="text-[#8a8178]" />
                         </div>
                       )}
                     </td>
                     <td className="py-4 px-6">
-                      <div className="font-semibold text-slate-100">{prod.nombre}</div>
-                      <div className="text-xs text-slate-500 flex items-center gap-2 mt-0.5">
+                      <div className="font-semibold text-[#2b2420]">{prod.nombre}</div>
+                      <div className="text-xs text-[#8a8178] flex items-center gap-2 mt-0.5">
                         <span>SKU: {prod.sku || 'SIN-SKU'}</span>
                         <span>•</span>
                         <span>Tag: {prod.tag_especialidad}</span>
                       </div>
                     </td>
                     <td className="py-4 px-4">
-                      <span className="px-2 py-1 bg-slate-800 rounded-lg text-xs text-slate-300 border border-slate-700">
+                      <span className="px-2 py-1 bg-[#f2eee8] rounded-lg text-xs text-[#403a35] border border-[#ded6cb]">
                         {categorias.find(c => c.id === parseInt(formData.categoria_id || '0'))?.nombre || 'N/A'}
                       </span>
                     </td>
-                    <td className="py-4 px-4 text-right font-mono text-slate-300">
+                    <td className="py-4 px-4 text-right font-mono text-[#403a35]">
                       {formatPrecio(prod.costo)}
                     </td>
                     <td className="py-4 px-4 text-center font-mono">
@@ -540,14 +540,14 @@ export default function AdminProductosPage() {
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => handleOpenEdit(prod)}
-                          className="p-2 text-slate-400 hover:text-sky-400 hover:bg-sky-500/10 rounded-xl transition-all border border-transparent hover:border-sky-500/20"
+                          className="p-2 text-[#71685f] hover:text-sky-400 hover:bg-sky-500/10 rounded-xl transition-all border border-transparent hover:border-sky-500/20"
                           title="Editar"
                         >
                           <Edit3 size={18} />
                         </button>
                         <button
                           onClick={() => handleDelete(prod.id)}
-                          className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition-all border border-transparent hover:border-rose-500/20"
+                          className="p-2 text-[#71685f] hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition-all border border-transparent hover:border-rose-500/20"
                           title="Eliminar"
                         >
                           <Trash2 size={18} />
@@ -563,22 +563,22 @@ export default function AdminProductosPage() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="p-4 border-t border-slate-800 flex items-center justify-between">
-            <div className="text-sm text-slate-400">
+          <div className="p-4 border-t border-[#e8e1d7] flex items-center justify-between">
+            <div className="text-sm text-[#71685f]">
               {catalogoDisponible ? `Mostrando ${((currentPage - 1) * pageSize) + 1} - ${Math.min(currentPage * pageSize, totalCount)} de ${totalCount}` : 'Catálogo no disponible'}
             </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="p-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all"
+                className="p-2 bg-[#f2eee8] hover:bg-[#e8e1d7] disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="p-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all"
+                className="p-2 bg-[#f2eee8] hover:bg-[#e8e1d7] disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all"
               >
                 <ChevronRight size={18} />
               </button>
@@ -589,70 +589,70 @@ export default function AdminProductosPage() {
 
       {/* Modal Create/Edit */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 overflow-y-auto">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-3xl p-6 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-4 sticky top-0 bg-slate-900 z-10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md p-4 overflow-y-auto">
+          <div className="bg-white border border-[#e8e1d7] rounded-2xl w-full max-w-3xl p-6 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center border-b border-[#e8e1d7] pb-4 sticky top-0 bg-white z-10">
               <div>
-                <h3 className="text-lg font-bold text-white">
+                <h3 className="text-lg font-bold text-[#2b2420]">
                   {editingProduct ? 'Editar Producto' : 'Nuevo Producto'}
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-[#71685f]">
                   {editingProduct ? `ID: ${editingProduct.id}` : 'Los campos con * son obligatorios'}
                 </p>
               </div>
-              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-white"><X size={24} /></button>
+              <button onClick={() => setShowModal(false)} className="text-[#71685f] hover:text-[#2b2420]"><X size={24} /></button>
             </div>
 
             <div className="space-y-6">
               {/* Basic Info */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Nombre *</label>
+                  <label className="text-xs text-[#71685f] block mb-1">Nombre *</label>
                   <input
                     type="text"
                     name="nombre"
                     value={formData.nombre}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-rose-500"
                     placeholder="Nombre del producto"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">SKU</label>
+                  <label className="text-xs text-[#71685f] block mb-1">SKU</label>
                   <input
                     type="text"
                     name="sku"
                     value={formData.sku}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-slate-500 font-mono"
+                    className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-[#c9a45c] font-mono"
                     placeholder="Opcional"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Tag Especialidad *</label>
+                  <label className="text-xs text-[#71685f] block mb-1">Tag Especialidad *</label>
                   <input
                     type="text"
                     name="tag_especialidad"
                     value={formData.tag_especialidad}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-rose-500"
                     placeholder="Ej: hair-diagnostic, nails-classic"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Categoría</label>
+                  <label className="text-xs text-[#71685f] block mb-1">Categoría</label>
                   <select
                     name="categoria_id"
                     value={formData.categoria_id}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-slate-500"
+                    className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-[#c9a45c]"
                   >
                     <option value="">Seleccionar...</option>
                     {categorias.map(c => <option key={c.id} value={c.id}>{c.nombre}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Costo Base ($) *</label>
+                  <label className="text-xs text-[#71685f] block mb-1">Costo Base ($) *</label>
                   <input
                     type="number"
                     name="costo"
@@ -660,29 +660,29 @@ export default function AdminProductosPage() {
                     onChange={handleInputChange}
                     step="0.01"
                     min="0"
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-rose-500 font-mono"
+                    className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-rose-500 font-mono"
                     placeholder="0.00"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Stock</label>
+                  <label className="text-xs text-[#71685f] block mb-1">Stock</label>
                   <input
                     type="number"
                     name="stock"
                     value={formData.stock}
                     onChange={handleInputChange}
                     min="0"
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-slate-500 font-mono"
+                    className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-[#c9a45c] font-mono"
                     placeholder="0"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Visibilidad</label>
+                  <label className="text-xs text-[#71685f] block mb-1">Visibilidad</label>
                   <select
                     name="tipo_visibilidad"
                     value={formData.tipo_visibilidad}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-slate-500"
+                    className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-[#c9a45c]"
                   >
                     <option value="PUBLICO">Público</option>
                     <option value="INSUMO_PRESTADOR">Insumo Prestador</option>
@@ -693,29 +693,29 @@ export default function AdminProductosPage() {
 
               {/* Descripción */}
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Descripción</label>
+                <label className="text-xs text-[#71685f] block mb-1">Descripción</label>
                 <textarea
                   name="descripcion"
                   value={formData.descripcion}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-slate-500 resize-none"
+                  className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-xl px-3.5 py-2 text-sm text-[#2b2420] focus:outline-none focus:border-[#c9a45c] resize-none"
                   placeholder="Descripción del producto..."
                 />
               </div>
 
               {/* Image Upload */}
-              <div className="space-y-4 p-4 bg-slate-850/50 rounded-xl border border-slate-700/60">
-                <label className="text-xs font-semibold text-slate-300 flex items-center gap-2">
+              <div className="space-y-4 p-4 bg-slate-850/50 rounded-xl border border-[#e8e1d7]">
+                <label className="text-xs font-semibold text-[#403a35] flex items-center gap-2">
                   <Image size={14} /> Imagen del Producto (R2/CDN)
                 </label>
                 
                 <div className="flex items-center gap-4">
-                  <div className="relative w-32 h-32 flex-shrink-0 bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+                  <div className="relative w-32 h-32 flex-shrink-0 bg-[#f2eee8] rounded-xl border border-[#ded6cb] overflow-hidden">
                     {imagePreview ? (
                       <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-500">
+                      <div className="w-full h-full flex items-center justify-center text-[#8a8178]">
                         <Image size={32} />
                       </div>
                     )}
@@ -733,21 +733,21 @@ export default function AdminProductosPage() {
                       </div>
                     )}
                     {formData.imagen_url && !uploadingImage && (
-                      <p className="text-xs text-slate-400 font-mono truncate max-w-xs">
+                      <p className="text-xs text-[#71685f] font-mono truncate max-w-xs">
                         {formData.imagen_url}
                       </p>
                     )}
                   </div>
                 </div>
-                <p className="text-[11px] text-slate-400">
+                <p className="text-[11px] text-[#71685f]">
                   La imagen se sube directamente a Cloudflare R2 (bucket: glowapp-products) vía URL presignada.
-                  Se sirve públicamente desde: <code className="text-slate-300">pub-d4cc152248c743a4a5feacbccfa6d33b.r2.dev</code>
+                  Se sirve públicamente desde: <code className="text-[#403a35]">pub-d4cc152248c743a4a5feacbccfa6d33b.r2.dev</code>
                 </p>
               </div>
 
               {/* Precios Multi-nivel */}
-              <div className="space-y-4 p-4 bg-slate-850/50 rounded-xl border border-slate-700/60">
-                <label className="text-xs font-semibold text-slate-300 flex items-center gap-2">
+              <div className="space-y-4 p-4 bg-slate-850/50 rounded-xl border border-[#e8e1d7]">
+                <label className="text-xs font-semibold text-[#403a35] flex items-center gap-2">
                   <DollarSign size={14} /> Precios por Nivel (opcional - se pueden agregar después en /admin/precios)
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -762,26 +762,26 @@ export default function AdminProductosPage() {
                       </label>
                       <div className="space-y-2">
                         <div>
-                          <label className="text-[11px] text-slate-400 block mb-0.5">Precio ($)</label>
+                          <label className="text-[11px] text-[#71685f] block mb-0.5">Precio ($)</label>
                           <input
                             type="number"
                             value={p.precio || ''}
                             onChange={(e) => handlePrecioChange(p.lista, 'precio', e.target.value)}
                             step="0.01"
                             min="0"
-                            className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-slate-100 focus:outline-none focus:border-rose-500 font-mono"
+                            className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-lg px-3 py-1.5 text-sm text-[#2b2420] focus:outline-none focus:border-rose-500 font-mono"
                             placeholder="0.00"
                           />
                         </div>
                         {p.lista === 'negocio' && (
                           <div>
-                            <label className="text-[11px] text-slate-400 block mb-0.5">Unidad Mínima</label>
+                            <label className="text-[11px] text-[#71685f] block mb-0.5">Unidad Mínima</label>
                             <input
                               type="number"
                               value={p.unidad_minima}
                               onChange={(e) => handlePrecioChange(p.lista, 'unidad_minima', e.target.value)}
                               min="1"
-                              className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-slate-100 focus:outline-none focus:border-purple-500 font-mono"
+                              className="w-full bg-[#f7f5f0] border border-[#ded6cb] rounded-lg px-3 py-1.5 text-sm text-[#2b2420] focus:outline-none focus:border-purple-500 font-mono"
                             />
                           </div>
                         )}
@@ -793,10 +793,10 @@ export default function AdminProductosPage() {
             </div>
 
             {/* Actions */}
-            <div className="flex justify-end gap-3 pt-4 border-t border-slate-800 sticky bottom-0 bg-slate-900/95 backdrop-blur-sm">
+            <div className="flex justify-end gap-3 pt-4 border-t border-[#e8e1d7] sticky bottom-0 bg-white backdrop-blur-sm">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-sm font-medium"
+                className="px-4 py-2 bg-[#f2eee8] hover:bg-[#e8e1d7] text-[#403a35] rounded-xl text-sm font-medium"
               >
                 Cancelar
               </button>

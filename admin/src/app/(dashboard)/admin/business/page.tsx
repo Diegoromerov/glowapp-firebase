@@ -193,22 +193,22 @@ export default function AdminBusinessPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-8 space-y-8">
+    <div className="min-h-screen bg-[#f7f5f0] text-[#2b2420] p-8 space-y-8">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#e8e1d7] pb-6">
         <div>
           <div className="flex items-center gap-3">
             <ShieldCheck className="text-rose-500 w-8 h-8" />
-            <h1 className="text-3xl font-bold text-white tracking-tight">GlowApp Business Admin</h1>
+            <h1 className="text-3xl font-bold text-[#2b2420] tracking-tight">GlowApp Business Admin</h1>
           </div>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="text-[#71685f] text-sm mt-1">
             Gestión de cumplimiento regulatorio, verificación de evidencias y generación de borradores documentales.
           </p>
         </div>
 
         <button 
           onClick={fetchData}
-          className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-slate-300 text-sm font-medium transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-[#f2eee8] hover:bg-[#e8e1d7] rounded-xl text-[#403a35] text-sm font-medium transition-all"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           Actualizar Datos
@@ -216,59 +216,59 @@ export default function AdminBusinessPage() {
       </div>
 
       {feedbackMsg && (
-        <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 px-4 py-3 rounded-xl flex justify-between items-center text-sm">
+        <div className="bg-rose-500/10 border border-rose-500/30 text-rose-800 px-4 py-3 rounded-xl flex justify-between items-center text-sm">
           <span>{feedbackMsg}</span>
-          <button onClick={() => setFeedbackMsg(null)} className="font-bold text-rose-400 hover:text-white">✕</button>
+          <button onClick={() => setFeedbackMsg(null)} className="font-bold text-rose-400 hover:text-[#2b2420]">✕</button>
         </div>
       )}
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+        <div className="bg-white border border-[#e8e1d7] p-6 rounded-2xl">
           <div className="flex justify-between items-start">
-            <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Pendientes de Revisión</span>
+            <span className="text-[#71685f] text-xs font-semibold uppercase tracking-wider">Pendientes de Revisión</span>
             <Clock className="w-5 h-5 text-amber-400" />
           </div>
-          <p className="text-3xl font-extrabold text-white mt-4">{queueStatus === 'available' ? queue.length : '—'}</p>
-          <p className="text-xs text-slate-500 mt-1">{queueStatus === 'available' ? 'Evidencias en cola' : 'Fuente no disponible'}</p>
+          <p className="text-3xl font-extrabold text-[#2b2420] mt-4">{queueStatus === 'available' ? queue.length : '—'}</p>
+          <p className="text-xs text-[#8a8178] mt-1">{queueStatus === 'available' ? 'Evidencias en cola' : 'Fuente no disponible'}</p>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+        <div className="bg-white border border-[#e8e1d7] p-6 rounded-2xl">
           <div className="flex justify-between items-start">
-            <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Cumplimiento Medio</span>
+            <span className="text-[#71685f] text-xs font-semibold uppercase tracking-wider">Cumplimiento Medio</span>
             <Award className="w-5 h-5 text-emerald-400" />
           </div>
-          <p className="text-3xl font-extrabold text-white mt-4">—</p>
-          <p className="text-xs text-slate-500 mt-1">Métrica sin fuente conectada</p>
+          <p className="text-3xl font-extrabold text-[#2b2420] mt-4">—</p>
+          <p className="text-xs text-[#8a8178] mt-1">Métrica sin fuente conectada</p>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+        <div className="bg-white border border-[#e8e1d7] p-6 rounded-2xl">
           <div className="flex justify-between items-start">
-            <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Plantillas Activas</span>
+            <span className="text-[#71685f] text-xs font-semibold uppercase tracking-wider">Plantillas Activas</span>
             <FileText className="w-5 h-5 text-sky-400" />
           </div>
-          <p className="text-3xl font-extrabold text-white mt-4">{templatesStatus === 'available' ? templates.length : '—'}</p>
-          <p className="text-xs text-slate-500 mt-1">{templatesStatus === 'available' ? 'Plantillas informadas por el backend' : 'Fuente no disponible'}</p>
+          <p className="text-3xl font-extrabold text-[#2b2420] mt-4">{templatesStatus === 'available' ? templates.length : '—'}</p>
+          <p className="text-xs text-[#8a8178] mt-1">{templatesStatus === 'available' ? 'Plantillas informadas por el backend' : 'Fuente no disponible'}</p>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+        <div className="bg-white border border-[#e8e1d7] p-6 rounded-2xl">
           <div className="flex justify-between items-start">
-            <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Estado del Servidor</span>
+            <span className="text-[#71685f] text-xs font-semibold uppercase tracking-wider">Estado del Servidor</span>
             <ShieldCheck className="w-5 h-5 text-rose-500" />
           </div>
-          <p className="text-lg font-bold text-slate-300 mt-4">No consultado</p>
-          <p className="text-xs text-slate-500 mt-1">Salud del servidor sin fuente conectada</p>
+          <p className="text-lg font-bold text-[#403a35] mt-4">No consultado</p>
+          <p className="text-xs text-[#8a8178] mt-1">Salud del servidor sin fuente conectada</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-800 space-x-8">
+      <div className="flex border-b border-[#e8e1d7] space-x-8">
         <button
           onClick={() => setActiveTab('queue')}
           className={`pb-4 font-semibold text-sm transition-all border-b-2 ${
             activeTab === 'queue'
               ? 'border-rose-500 text-rose-400'
-              : 'border-transparent text-slate-400 hover:text-slate-200'
+              : 'border-transparent text-[#71685f] hover:text-[#403a35]'
           }`}
         >
           Cola de Verificación ({queueStatus === 'available' ? queue.length : '—'})
@@ -279,7 +279,7 @@ export default function AdminBusinessPage() {
           className={`pb-4 font-semibold text-sm transition-all border-b-2 ${
             activeTab === 'templates'
               ? 'border-rose-500 text-rose-400'
-              : 'border-transparent text-slate-400 hover:text-slate-200'
+              : 'border-transparent text-[#71685f] hover:text-[#403a35]'
           }`}
         >
           Documentos & Plantillas
@@ -289,22 +289,22 @@ export default function AdminBusinessPage() {
       {/* Tab 1: Queue */}
       {activeTab === 'queue' && (
         <div className="space-y-6">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <h2 className="text-lg font-bold text-white mb-4">Evidencias Subidas Pendientes de Validación</h2>
+          <div className="bg-white border border-[#e8e1d7] rounded-2xl p-6">
+            <h2 className="text-lg font-bold text-[#2b2420] mb-4">Evidencias Subidas Pendientes de Validación</h2>
 
             {queueStatus === 'loading' ? (
-              <div className="text-center py-12 text-slate-500">Consultando la fuente de evidencias…</div>
+              <div className="text-center py-12 text-[#8a8178]">Consultando la fuente de evidencias…</div>
             ) : queueStatus === 'unavailable' ? (
-              <div className="text-center py-12 text-amber-300">La fuente de evidencias no está disponible; el panel no puede confirmar que la cola esté vacía.</div>
+              <div className="text-center py-12 text-amber-700">La fuente de evidencias no está disponible; el panel no puede confirmar que la cola esté vacía.</div>
             ) : queue.length === 0 ? (
-              <div className="text-center py-12 text-slate-500">
-                <CheckCircle className="w-12 h-12 mx-auto text-slate-600 mb-3" />
+              <div className="text-center py-12 text-[#8a8178]">
+                <CheckCircle className="w-12 h-12 mx-auto text-[#a0978e] mb-3" />
                 <p>No hay evidencias pendientes en la cola de revisión.</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm text-slate-300">
-                  <thead className="bg-slate-950 text-slate-400 uppercase text-xs">
+                <table className="w-full text-left text-sm text-[#403a35]">
+                  <thead className="bg-[#f7f5f0] text-[#71685f] uppercase text-xs">
                     <tr>
                       <th className="p-4 rounded-l-xl">Establecimiento / Tarea</th>
                       <th className="p-4">Tipo Evidencia</th>
@@ -313,15 +313,15 @@ export default function AdminBusinessPage() {
                       <th className="p-4 text-right rounded-r-xl">Acciones</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800">
+                  <tbody className="divide-y divide-[#e8e1d7]">
                     {queue.map(item => (
-                      <tr key={item.id} className="hover:bg-slate-800/50">
+                      <tr key={item.id} className="hover:bg-[#f7f5f0]">
                         <td className="p-4">
-                          <p className="font-semibold text-white">{item.business_name || 'Salón de Belleza'}</p>
-                          <p className="text-xs text-slate-400">{item.task_title || item.task_id}</p>
+                          <p className="font-semibold text-[#2b2420]">{item.business_name || 'Salón de Belleza'}</p>
+                          <p className="text-xs text-[#71685f]">{item.task_title || item.task_id}</p>
                         </td>
                         <td className="p-4">
-                          <span className="bg-slate-800 text-slate-300 text-xs px-2.5 py-1 rounded-lg border border-slate-700">
+                          <span className="bg-[#f2eee8] text-[#403a35] text-xs px-2.5 py-1 rounded-lg border border-[#ded6cb]">
                             {item.evidence_type}
                           </span>
                         </td>
@@ -331,8 +331,8 @@ export default function AdminBusinessPage() {
                           </span>
                         </td>
                         <td className="p-4">
-                          <p className="text-xs font-mono text-slate-400 truncate max-w-xs">{sanitizePath(item.file_path)}</p>
-                          <p className="text-xs text-slate-500 italic mt-0.5">{sanitizeText(item.reviewer_notes)}</p>
+                          <p className="text-xs font-mono text-[#71685f] truncate max-w-xs">{sanitizePath(item.file_path)}</p>
+                          <p className="text-xs text-[#8a8178] italic mt-0.5">{sanitizeText(item.reviewer_notes)}</p>
                         </td>
                         <td className="p-4 text-right space-x-2">
                           <button
@@ -364,15 +364,15 @@ export default function AdminBusinessPage() {
       {activeTab === 'templates' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Template Selection */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
-            <h2 className="text-lg font-bold text-white">Generador de Borradores Documentales</h2>
+          <div className="bg-white border border-[#e8e1d7] rounded-2xl p-6 space-y-6">
+            <h2 className="text-lg font-bold text-[#2b2420]">Generador de Borradores Documentales</h2>
             
             <div>
-              <label className="block text-xs font-semibold uppercase text-slate-400 mb-2">Seleccionar Plantilla</label>
+              <label className="block text-xs font-semibold uppercase text-[#71685f] mb-2">Seleccionar Plantilla</label>
               <select
                 value={selectedTemplate}
                 onChange={e => setSelectedTemplate(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-rose-500"
+                className="w-full bg-[#f7f5f0] border border-[#e8e1d7] rounded-xl p-3 text-sm text-[#2b2420] focus:outline-none focus:border-rose-500"
               >
                 {templates.map(t => (
                   <option key={t.code} value={t.code}>{t.title} ({t.category})</option>
@@ -391,31 +391,31 @@ export default function AdminBusinessPage() {
           </div>
 
           {/* Generated Document Preview */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
+          <div className="bg-white border border-[#e8e1d7] rounded-2xl p-6 space-y-4">
+            <h2 className="text-lg font-bold text-[#2b2420] flex items-center gap-2">
               <FileDown className="w-5 h-5 text-rose-500" />
               Vista Previa del Documento
             </h2>
 
             {generatedDoc ? (
-              <div className="bg-slate-950 border border-slate-800 p-6 rounded-xl space-y-4 text-xs">
+              <div className="bg-[#f7f5f0] border border-[#e8e1d7] p-6 rounded-xl space-y-4 text-xs">
                 <div className="bg-amber-500/10 border border-amber-500/30 text-amber-400 p-2.5 rounded-lg font-bold text-center uppercase tracking-wide">
                   {generatedDoc.watermark}
                 </div>
 
-                <h3 className="font-bold text-sm text-white">{generatedDoc.title}</h3>
+                <h3 className="font-bold text-sm text-[#2b2420]">{generatedDoc.title}</h3>
 
-                <div className="bg-slate-900 p-4 rounded-lg font-mono text-slate-300 whitespace-pre-wrap max-h-64 overflow-y-auto border border-slate-800">
+                <div className="bg-white p-4 rounded-lg font-mono text-[#403a35] whitespace-pre-wrap max-h-64 overflow-y-auto border border-[#e8e1d7]">
                   {generatedDoc.renderedBody}
                 </div>
 
-                <div className="bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-slate-400 italic">
+                <div className="bg-[#fbfaf8] p-3 rounded-lg border border-[#e8e1d7] text-[#71685f] italic">
                   {generatedDoc.disclaimer}
                 </div>
               </div>
             ) : (
-              <div className="text-center py-12 text-slate-500 border border-dashed border-slate-800 rounded-xl">
-                <FileText className="w-10 h-10 mx-auto text-slate-600 mb-2" />
+              <div className="text-center py-12 text-[#8a8178] border border-dashed border-[#e8e1d7] rounded-xl">
+                <FileText className="w-10 h-10 mx-auto text-[#a0978e] mb-2" />
               <p>Selecciona una plantilla y presiona Generar documento para visualizar la vista previa.</p>
               </div>
             )}
