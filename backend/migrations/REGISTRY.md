@@ -465,3 +465,10 @@ en 076).
 - 157 registra desafíos de correo de un solo uso para cambios de cuenta; 158 conserva la cuenta aprobada previa y aplica el periodo de protección tras una modificación.
 - 159 registra desafíos de correo para retiros, con expiración, límite de intentos, uso único y vínculo al hash de monto/ciclo/destino.
 - Las tablas de desafíos aplican RLS y privilegios explícitos para los roles de aplicación.
+
+## 177: reparación RLS de métricas logísticas
+
+- Elimina la comparación inválida entre `zona_id` y `app.tenant_id`: una zona logística no identifica por sí sola a su tenant.
+- Hasta que exista esa relación en el esquema, `app_rls_user` queda sin lectura ni escritura en `logistica_metricas_diarias`; `app_system` conserva acceso para jobs operacionales.
+- Vuelve a declarar `fn_actualizado_en()` para que la migración 170 pueda crear su trigger en instalaciones donde la función no existía.
+- Es idempotente y repara instalaciones donde la migración 173 ya quedó registrada y el runner la omitiría.
