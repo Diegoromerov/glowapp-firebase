@@ -885,7 +885,7 @@ a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--bg-deep), 0 0 0 4px
 
 /* Header */
 .header {
-  background: rgba(18, 21, 23, 0.85);
+  background: var(--bg-panel);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
