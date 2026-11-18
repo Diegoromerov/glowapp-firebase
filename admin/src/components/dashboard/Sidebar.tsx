@@ -14,9 +14,7 @@ import {
   Scissors,
   GraduationCap,
   LayoutDashboard,
-  Tag,
   Building2,
-  Package,
   ShieldAlert,
   ChevronLeft,
   ChevronRight,
@@ -34,9 +32,10 @@ export default function Sidebar() {
   const { user, logout } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
-  const [reclamacionesOpen, setReclamacionesOpen] = useState(
-    pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas'),
-  );
+  const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
+    Reclamaciones: pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas'),
+    Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
+  });
 
   // El botón hamburguesa del Header emite este evento (el estado del drawer
   // vive aquí, no en el layout).
@@ -47,9 +46,16 @@ export default function Sidebar() {
   }, []);
 
   useEffect(() => {
-    if (pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas')) {
-      setReclamacionesOpen(true);
-    }
+    const rutasPorGrupo: Record<string, string[]> = {
+      Reclamaciones: ['/admin/pqrsf', '/admin/disputas'],
+      Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'],
+    };
+    setOpenGroups((current) => Object.fromEntries(
+      Object.entries(rutasPorGrupo).map(([group, paths]) => [
+        group,
+        current[group] || paths.some((path) => pathname === path || pathname.startsWith(`${path}/`)),
+      ]),
+    ));
   }, [pathname]);
 
   // Links based on role
@@ -77,9 +83,15 @@ export default function Sidebar() {
         { href: '/admin/business', label: 'Cumplimiento Business', icon: Building2 },
         { href: '/admin/prestadores', label: 'Prestadores · IVA', icon: Receipt },
         { href: '/admin/retiros', label: 'Cuentas de retiro', icon: WalletCards },
-        { href: '/admin/precios', label: 'Gestión de Precios', icon: Tag },
-        { href: '/admin/productos', label: 'Catálogo Productos', icon: Package },
-        { href: '/admin/store/orders', label: 'Pedidos GlowStore', icon: ShoppingCart },
+        {
+          label: 'Tienda',
+          icon: ShoppingCart,
+          children: [
+            { href: '/admin/precios', label: 'Gestión de Precios' },
+            { href: '/admin/productos', label: 'Catálogo de Productos' },
+            { href: '/admin/store/orders', label: 'Pedidos GlowStore' },
+          ],
+        },
         { href: '/admin/logistics', label: 'Logística GlowStore', icon: Truck },
         { href: '/admin/logistics/returns', label: 'Devoluciones GlowStore', icon: RotateCcw },
         { href: '/admin/academia', label: 'Academia Glow', icon: GraduationCap },
@@ -135,25 +147,27 @@ export default function Sidebar() {
             const Icon = link.icon;
             if ('children' in link && link.children) {
               const isActive = link.children.some((child) => pathname === child.href || pathname.startsWith(`${child.href}/`));
+              const isOpen = Boolean(openGroups[link.label]);
+              const submenuId = `${link.label.toLowerCase()}-subnav`;
               return (
                 <React.Fragment key={link.label}>
                   <button
                     type="button"
                     onClick={() => {
                       if (collapsed) setCollapsed(false);
-                      setReclamacionesOpen((open) => !open);
+                      setOpenGroups((groups) => ({ ...groups, [link.label]: !groups[link.label] }));
                     }}
                     className={`nav-link w-full text-left ${isActive ? 'active' : ''}`}
-                    aria-expanded={reclamacionesOpen}
-                    aria-controls="reclamaciones-subnav"
+                    aria-expanded={isOpen}
+                    aria-controls={submenuId}
                     title={collapsed ? link.label : undefined}
                   >
                     <Icon className="icon" size={20} aria-hidden="true" />
                     {!collapsed && <span>{link.label}</span>}
-                    {!collapsed && <ChevronDown className={`ml-auto transition-transform ${reclamacionesOpen ? 'rotate-180' : ''}`} size={16} aria-hidden="true" />}
+                    {!collapsed && <ChevronDown className={`ml-auto transition-transform ${isOpen ? 'rotate-180' : ''}`} size={16} aria-hidden="true" />}
                   </button>
-                  {!collapsed && reclamacionesOpen && (
-                    <div id="reclamaciones-subnav" className="sidebar-subnav">
+                  {!collapsed && isOpen && (
+                    <div id={submenuId} className="sidebar-subnav">
                       {link.children.map((child) => {
                         const childActive = pathname === child.href || pathname.startsWith(`${child.href}/`);
                         return (
