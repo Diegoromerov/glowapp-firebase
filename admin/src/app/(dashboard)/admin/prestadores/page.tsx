@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import {
@@ -111,6 +112,7 @@ export default function AdminPrestadoresIvaPage() {
 
   // Modal para ver documento
   const [docModal, setDocModal] = useState<{ url: string; nombre: string; tipo: 'image' | 'pdf' } | null>(null);
+  const [portalReady, setPortalReady] = useState(false);
 
   // Modal para rechazar (requiere nota)
   const [rechazarModal, setRechazarModal] = useState<{ prestador: PrestadorFiscal | null; nota: string }>({
@@ -224,6 +226,10 @@ export default function AdminPrestadoresIvaPage() {
   };
 
   const cerrarDocModal = () => setDocModal(null);
+
+  useEffect(() => {
+    setPortalReady(true);
+  }, []);
 
   const abrirRechazarModal = (p: PrestadorFiscal) => {
     setRechazarModal({ prestador: p, nota: '' });
@@ -634,41 +640,42 @@ export default function AdminPrestadoresIvaPage() {
       </div>
 
       {/* Modal Ver Documento */}
-      {docModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" onClick={cerrarDocModal}>
-          <div className="relative w-full max-w-4xl max-h-[90vh] bg-slate-900 rounded-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+      {portalReady && docModal && createPortal(
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center overflow-y-auto bg-black/80 p-3 sm:p-6" onClick={cerrarDocModal}>
+          <div role="dialog" aria-modal="true" aria-labelledby="rut-document-title" className="relative my-auto flex max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-slate-900 shadow-2xl sm:max-h-[90dvh]" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between p-4 border-b border-slate-800">
-              <h3 className="text-lg font-semibold text-white">{docModal.nombre} · RUT</h3>
-              <button onClick={cerrarDocModal} className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white">
+              <h3 id="rut-document-title" className="min-w-0 truncate pr-3 text-lg font-semibold text-white">{docModal.nombre} · RUT</h3>
+              <button type="button" aria-label="Cerrar documento" onClick={cerrarDocModal} className="shrink-0 rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white">
                 ✕
               </button>
             </div>
-            <div className="p-4 max-h-[calc(90vh-80px)] overflow-auto">
+            <div className="min-h-0 overflow-auto p-3 sm:p-4">
               {docModal.tipo === 'pdf' ? (
                 <iframe
                   src={docModal.url}
-                  className="w-full h-[70vh] border-0 rounded-lg"
+                  className="h-[min(70dvh,60rem)] min-h-[18rem] w-full rounded-lg border-0"
                   title="RUT PDF"
                 />
               ) : (
                 <img
                   src={docModal.url}
                   alt={`RUT de ${docModal.nombre}`}
-                  className="max-w-full max-h-[70vh] mx-auto block rounded-lg"
+                  className="mx-auto block max-h-[min(70dvh,60rem)] max-w-full rounded-lg object-contain"
                 />
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
 
       {/* Modal Rechazar */}
-      {rechazarModal.prestador && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" onClick={cerrarRechazarModal}>
-          <div className="relative w-full max-w-md bg-slate-900 rounded-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+      {portalReady && rechazarModal.prestador && createPortal(
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center overflow-y-auto bg-black/80 p-3 sm:p-6" onClick={cerrarRechazarModal}>
+          <div role="dialog" aria-modal="true" aria-labelledby="reject-rut-title" className="relative my-auto w-full max-w-md overflow-hidden rounded-2xl bg-slate-900 shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between p-4 border-b border-slate-800">
-              <h3 className="text-lg font-semibold text-white">Rechazar RUT</h3>
-              <button onClick={cerrarRechazarModal} className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white">✕</button>
+              <h3 id="reject-rut-title" className="text-lg font-semibold text-white">Rechazar RUT</h3>
+              <button type="button" aria-label="Cerrar diálogo" onClick={cerrarRechazarModal} className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white">✕</button>
             </div>
             <div className="p-4 space-y-4">
               <p className="text-slate-300">
@@ -703,7 +710,8 @@ export default function AdminPrestadoresIvaPage() {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );
