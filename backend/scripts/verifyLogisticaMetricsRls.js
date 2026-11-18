@@ -12,7 +12,7 @@ if (!connectionString) {
 async function main() {
   const client = new Client({ connectionString });
   await client.connect();
-  const carrier = `__rls_metrics_verification_${process.pid}_${Date.now()}`;
+  const carrier = `rls_${process.pid}_${Date.now()}`;
   try {
     await client.query('BEGIN');
     await client.query(
