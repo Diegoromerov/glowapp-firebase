@@ -76,7 +76,7 @@ module.exports = async function publicTenantContext(req, res, next) {
   let cadenaIniciada = false;
 
   try {
-    await tenantRouting.runInTenantTransaction({ pool }, tenantId, () => {
+    await tenantRouting.runInTenantTransaction({ pool }, tenantId, null, () => {
       cadenaIniciada = true;
       return new Promise((resolve, reject) => {
         // La transacción se cierra cuando la respuesta termina. Las rutas de
