@@ -69,13 +69,18 @@ sentencia SQL fue tocada.
 
 ---
 
-## 2. Deuda histórica: 15 números duplicados desde antes de la Fase D
+## 2. Deuda histórica y colisión 179 ya desplegada
 
 `main` ya llegaba con estos duplicados, **todos aplicados en producción**:
 
 ```
 002  003  004  008  011  012  026  029  030  032  033  034  065  066  067
 ```
+
+Después se desplegaron dos migraciones con prefijo `179` desde ramas independientes:
+`179_add_notification_prefs_metadata.sql` y `179_dispute_messages.sql`. Ambas están
+registradas en producción por nombre de archivo. Se congelan en el baseline exacto;
+no deben renombrarse, porque el runner podría volver a ejecutarlas.
 
 **Por qué NO se renumeran aquí.** `schema_migrations` rastrea por **nombre de
 archivo**: renombrar un legacy cambiaría su `filename` y el runner lo trataría como
@@ -91,7 +96,7 @@ tarjeta propia y ya está en marcha:
 **`agent/t_fix_8aeb7051-p2-3-consolidate-migrations`**. Duplicarlo aquí crearía dos
 esquemas de renumeración en competencia y un conflicto mucho peor.
 
-**Decisión:** el guard **congela** ese backlog en `BASELINE_DUPLICADOS_LEGACY`
+**Decisión:** el guard **congela** los duplicados desplegados en `BASELINE_DUPLICADOS_LEGACY`
 (lista exacta de archivos por número, no solo el número). Queda visible y
 verificable, y **cualquier duplicado nuevo falla**, sea cual sea su número:
 

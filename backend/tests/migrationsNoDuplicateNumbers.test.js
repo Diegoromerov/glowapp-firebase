@@ -13,8 +13,9 @@
  *   aislamiento desde 9cb3fb077 y las 4 eligieron el 073.
  *
  * POR QUÉ HAY UN BASELINE
- *   15 números ya están duplicados en `main` — 002, 003, 004, 008, 011, 012, 026,
- *   029, 030, 032, 033, 034, 065, 066, 067 — y están APLICADOS en producción.
+ *   15 números históricos ya están duplicados en `main` — 002, 003, 004, 008,
+ *   011, 012, 026, 029, 030, 032, 033, 034, 065, 066, 067. La colisión 179 entre
+ *   notificaciones y mensajes de disputa también quedó aplicada en producción.
  *   `schema_migrations` los rastrea por nombre de archivo: renombrarlos los haría
  *   re-ejecutar (varias de esas migraciones no son idempotentes) o dejaría el
  *   registro huérfano, y `prepareRlsDatabase.js` / `verifyCatalogoAutorizado.js`
@@ -76,10 +77,13 @@ const BASELINE_DUPLICADOS_LEGACY = {
   '066': ['066_fix_academia_curriculum_and_content.sql', '066_invalidate_legacy_unhashed_invitations.sql'],
   '067': ['067_academy_integrity_and_verifiable_certificates.sql', '067_create_multi_salon_ddl.sql'],
   '117': ['117_inventario_y_alquileres.sql', '117_rls_roles_array.sql'],
+  // Ambas migraciones están registradas en producción por nombre de archivo;
+  // renumerarlas volvería a ejecutarlas y dejaría drift entre código y esquema.
+  '179': ['179_add_notification_prefs_metadata.sql', '179_dispute_messages.sql'],
 };
 
 /** Frontera del baseline: por encima de este número no se admite ningún duplicado. */
-const LEGACY_MAX = 117;
+const LEGACY_MAX = 179;
 
 /**
  * Asignación determinista de la resolución de la colisión de Fase D.

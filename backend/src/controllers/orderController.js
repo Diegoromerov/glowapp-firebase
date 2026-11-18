@@ -2045,6 +2045,7 @@ async function updateEnvioStatus(req, res) {
           (sum, item) => sum + Number(item.peso_estimado_kg || 0.5) * Number(item.cantidad_preparada || item.cantidad || 1),
           0.5
         );
+        const pesoPaqueteFinal = Number(peso_kg) > 0 ? Number(peso_kg) : pesoPaqueteEstimado;
         // Primero obtener rates
         const rates = await providerEnviameClient.getRates({
           origin: { 
@@ -2062,7 +2063,7 @@ async function updateEnvioStatus(req, res) {
             street: order.direccion_entrega
           },
           parcels: [{ 
-            weight: peso_kg || pesoPaqueteEstimado,
+            weight: pesoPaqueteFinal,
             length: dimensiones_cm?.l || 20, 
             width: dimensiones_cm?.w || 15, 
             height: dimensiones_cm?.h || 10 
@@ -2099,11 +2100,13 @@ async function updateEnvioStatus(req, res) {
             `UPDATE envios SET 
                guia = $1, label_pdf_url = $2, label_zpl = $3,
                carrier_service_code = $4, transportadora = $5,
+               peso_kg = $6, costo_etiqueta_cop = $7,
                estado = 'CREADO', actualizado_en = NOW()
-             WHERE id = $6 AND prestador_id = $7 AND preparacion_estado = 'PREPARADO'
+             WHERE id = $8 AND prestador_id = $9 AND preparacion_estado = 'PREPARADO'
                AND estado = 'CREADO' AND guia IS NULL`,
             [labelResult.tracking_number, labelResult.label_pdf_url, labelResult.label_zpl,
-             bestRate.service_code, bestRate.carrier, envioId, providerId]
+             bestRate.service_code, bestRate.carrier, pesoPaqueteFinal,
+             bestRate.rate_cop ?? null, envioId, providerId]
           );
           if (labelUpdate.rowCount === 0) {
             return res.status(409).json({ error: 'El envío del proveedor ya cambió de estado; actualiza la lista antes de generar otra etiqueta' });

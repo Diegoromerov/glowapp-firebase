@@ -1942,6 +1942,8 @@ if (process.env.NODE_ENV !== 'test') {
         const { runFulfillmentRecovery } = require('./src/crons/fulfillmentRecoveryCron');
         setInterval(runFulfillmentRecovery, 10 * 60 * 1000); // 10 minutos
         console.log('🔄 Cron fulfillment recovery iniciado (cada 10 min)');
+        const { iniciarLogisticaMetricsCron } = require('./src/crons/logisticaMetricsCron');
+        iniciarLogisticaMetricsCron();
         // (WORKERS DESHABILITADOS)
     // Inicializar servidor WebSocket compartiendo puerto HTTP
     initWebSocketServer(server);
