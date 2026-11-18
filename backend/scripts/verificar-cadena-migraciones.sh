@@ -91,6 +91,10 @@ svc_id=$(docker exec "$CT" psql -U postgres -d glowtest -tAc \
   "select data_type from information_schema.columns where table_name='services' and column_name='id'")
 [ "$svc_id" = "uuid" ] && echo "  OK services.id es uuid (como produccion)" || { echo "  X services.id es '$svc_id' y produccion usa uuid"; FALLOS=$((FALLOS+1)); }
 
+DATABASE_URL_ADMIN="postgres://postgres@127.0.0.1:${PORT}/glowtest" \
+  node backend/scripts/verifyDaneCatalog.js > /tmp/esc_dane.log 2>&1
+[ $? -eq 0 ] && echo "  OK catálogo DIVIPOLA completo y vinculado" || { echo "  X catálogo DIVIPOLA inválido"; tail -5 /tmp/esc_dane.log; FALLOS=$((FALLOS+1)); }
+
 contrato=$(docker exec "$CT" psql -U postgres -d glowtest -tAc \
   "select valor from schema_contracts where nombre='services.id'")
 [ "$contrato" = "uuid" ] && echo "  OK schema_contracts registra services.id=uuid" || { echo "  X contrato de services.id: '$contrato'"; FALLOS=$((FALLOS+1)); }

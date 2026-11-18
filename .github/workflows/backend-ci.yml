@@ -99,6 +99,11 @@ jobs:
           RLS_ROLE_PASSWORD: test_rls_password
         run: node scripts/prepareRlsDatabase.js
 
+      - name: Verificar catálogo DIVIPOLA y zonas de envío
+        env:
+          DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
+        run: node scripts/verifyDaneCatalog.js
+
       - name: Verificar aislamiento multi-tenant (verifyTenantIsolation.js)
         env:
           # trust auth: sin password en la URL
