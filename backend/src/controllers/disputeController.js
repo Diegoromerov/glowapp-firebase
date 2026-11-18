@@ -2,6 +2,8 @@
 const { sequelize } = require('../config/database');
 const { QueryTypes } = require('sequelize');
 
+const esAdmin = (user) => String(user?.role || user?.rol || '').toLowerCase() === 'admin';
+
 // POST /api/disputas -> Abrir una nueva disputa
 exports.createDispute = async (req, res) => {
   try {
@@ -84,7 +86,7 @@ exports.createDispute = async (req, res) => {
 exports.getMyDisputes = async (req, res) => {
   try {
     const userId = req.user.id;
-    const is_admin = req.user.role === 'admin';
+    const is_admin = esAdmin(req.user);
 
     let query = `
       SELECT d.*, b.scheduled_at as booking_fecha, s.name as servicio_nombre
@@ -124,7 +126,7 @@ exports.getDisputeById = async (req, res) => {
   try {
     const disputeId = req.params.id;
     const userId = req.user.id;
-    const is_admin = req.user.role === 'admin';
+    const is_admin = esAdmin(req.user);
 
     const query = `
       SELECT d.*, b.client_id, b.provider_id, s.name as servicio_nombre
@@ -154,9 +156,22 @@ exports.getDisputeById = async (req, res) => {
       return res.status(403).json({ error: 'No autorizado para ver esta disputa.' });
     }
 
+    // El hilo compartido es visible a cliente/proveedor; las notas internas
+    // quedan reservadas a la bandeja administrativa.
+    const mensajes = await sequelize.transaction(async (t) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      return sequelize.query(`SELECT m.id, m.remitente_id, m.audiencia, m.mensaje, m.creado_at,
+          u.nombre AS remitente_nombre
+        FROM disputa_mensajes m LEFT JOIN usuarios u ON u.id = m.remitente_id
+        WHERE m.disputa_id = :disputeId AND m.audiencia = 'PARTES'
+        ORDER BY m.creado_at ASC, m.id ASC`, {
+        replacements: { disputeId }, type: QueryTypes.SELECT, transaction: t,
+      });
+    });
+
     res.json({
       success: true,
-      data: dispute
+      data: { ...dispute, mensajes }
     });
   } catch (error) {
     console.error('❌ ERROR EN GET /api/disputas/:id:', error);
@@ -171,7 +186,7 @@ exports.resolveDispute = async (req, res) => {
     const adminId = req.user.id;
     const { resolucion, porcentaje_prestador, nota_resolucion } = req.body;
 
-    if (req.user.role !== 'admin') {
+    if (!esAdmin(req.user)) {
       return res.status(403).json({ error: 'Solo los administradores pueden resolver disputas.' });
     }
 

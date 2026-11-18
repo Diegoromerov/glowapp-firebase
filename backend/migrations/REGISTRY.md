@@ -479,3 +479,8 @@ en 076).
 - Amplía las columnas requeridas y carga los 1.122 registros DIVIPOLA por código DANE, sin sobrescribir vínculos de zona preexistentes.
 - Crea y enlaza zonas base faltantes, sin confundirlas con zonas de prefijo postal; elimina el código ficticio `99999`.
 - Reejecutable dentro de una transacción y verificada contra el esquema histórico que ya tenía 167 registrada.
+
+## 179: mensajes de disputas
+
+- Agrega el hilo de respuestas y notas internas vinculado a la disputa y al tenant.
+- Aplica RLS para el rol de aplicación y acceso explícito al rol de sistema usado por los endpoints administrativos.

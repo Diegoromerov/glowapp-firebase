@@ -12,6 +12,136 @@ const {
   responsabilidadDesdeCodigo,
 } = require('../services/fiscalRevision');
 
+const UUID_DISPUTA = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+// Bandeja de disputas: usa app_system dentro del contexto transaccional de la
+// petición para consultar los registros que cruzan los tenants de cliente y proveedor.
+router.get('/disputes/inbox', authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    await pool.query('SET LOCAL ROLE app_system');
+    const estado = String(req.query.estado || 'TODOS').toUpperCase();
+    const q = String(req.query.q || '').trim().slice(0, 120);
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(50, Math.max(1, parseInt(req.query.limit, 10) || 20));
+    const offset = (page - 1) * limit;
+    const estadosValidos = ['TODOS', 'ABIERTA', 'EN_REVISION', 'RESUELTA', 'CERRADA'];
+    if (!estadosValidos.includes(estado)) return res.status(400).json({ error: 'Filtro de estado inválido.' });
+
+    const where = `($1 = 'TODOS' OR d.estado::text = $1)
+      AND ($2 = '' OR d.id::text ILIKE '%' || $2 || '%' OR u_c.nombre ILIKE '%' || $2 || '%'
+        OR u_p.nombre ILIKE '%' || $2 || '%' OR COALESCE(s.name, '') ILIKE '%' || $2 || '%')`;
+    const [rows, total, metrics] = await Promise.all([
+      pool.query(`SELECT d.id, d.booking_id, d.tipo_actor, d.tipo, d.descripcion, d.evidencia_urls,
+          d.monto_disputado, d.estado, d.resolucion, d.nota_resolucion, d.creado_at, d.sla_limite_at,
+          b.scheduled_at AS booking_fecha, b.valor_bruto, b.pago_neto_prestador,
+          u_i.nombre AS iniciado_por_nombre, u_i.email AS iniciado_por_email,
+          u_c.nombre AS cliente_nombre, u_c.email AS cliente_email,
+          u_p.nombre AS prestador_nombre, u_p.email AS prestador_email,
+          s.name AS servicio_nombre,
+          GREATEST(0, FLOOR(EXTRACT(EPOCH FROM (NOW() - d.creado_at)) / 3600))::int AS horas_abierta,
+          (d.sla_limite_at IS NOT NULL AND d.sla_limite_at < NOW()) AS sla_vencido,
+          (SELECT COUNT(*)::int FROM disputa_mensajes m WHERE m.disputa_id = d.id) AS mensajes_total
+        FROM disputas d
+        JOIN bookings b ON b.id = d.booking_id
+        LEFT JOIN usuarios u_i ON u_i.id = d.iniciado_por
+        LEFT JOIN usuarios u_c ON u_c.id = b.client_id
+        LEFT JOIN usuarios u_p ON u_p.id = b.provider_id
+        LEFT JOIN services s ON s.id = b.service_id
+        WHERE ${where}
+        ORDER BY CASE WHEN d.estado IN ('ABIERTA','EN_REVISION') THEN 0 ELSE 1 END,
+          d.sla_limite_at ASC NULLS LAST, d.creado_at DESC
+        LIMIT $3 OFFSET $4`, [estado, q, limit, offset]),
+      pool.query(`SELECT COUNT(*)::int AS total FROM disputas d
+        JOIN bookings b ON b.id = d.booking_id
+        LEFT JOIN usuarios u_c ON u_c.id = b.client_id
+        LEFT JOIN usuarios u_p ON u_p.id = b.provider_id
+        LEFT JOIN services s ON s.id = b.service_id WHERE ${where}`, [estado, q]),
+      pool.query(`SELECT COUNT(*)::int AS total,
+        COUNT(*) FILTER (WHERE estado = 'ABIERTA')::int AS abiertas,
+        COUNT(*) FILTER (WHERE estado = 'EN_REVISION')::int AS en_revision,
+        COUNT(*) FILTER (WHERE estado IN ('ABIERTA','EN_REVISION') AND sla_limite_at < NOW())::int AS vencidas,
+        COUNT(*) FILTER (WHERE estado IN ('RESUELTA','CERRADA'))::int AS cerradas
+        FROM disputas`),
+    ]);
+    return res.json({ success: true, data: rows.rows, total: total.rows[0].total, page, limit, metricas: metrics.rows[0] });
+  } catch (error) {
+    console.error('❌ ERROR EN GET /api/admin/disputes/inbox:', error);
+    return res.status(500).json({ error: 'No se pudo cargar la bandeja de disputas.' });
+  }
+});
+
+router.get('/disputes/:id/review', authMiddleware, adminMiddleware, async (req, res) => {
+  if (!UUID_DISPUTA.test(req.params.id)) return res.status(400).json({ error: 'Identificador de disputa inválido.' });
+  try {
+    await pool.query('SET LOCAL ROLE app_system');
+    const result = await pool.query(`SELECT d.*, b.client_id, b.provider_id, b.valor_bruto,
+        b.pago_neto_prestador, b.scheduled_at AS booking_fecha,
+        u_i.nombre AS iniciado_por_nombre, u_i.email AS iniciado_por_email,
+        u_c.nombre AS cliente_nombre, u_c.email AS cliente_email,
+        u_p.nombre AS prestador_nombre, u_p.email AS prestador_email, s.name AS servicio_nombre
+      FROM disputas d JOIN bookings b ON b.id = d.booking_id
+      LEFT JOIN usuarios u_i ON u_i.id = d.iniciado_por
+      LEFT JOIN usuarios u_c ON u_c.id = b.client_id
+      LEFT JOIN usuarios u_p ON u_p.id = b.provider_id
+      LEFT JOIN services s ON s.id = b.service_id WHERE d.id = $1`, [req.params.id]);
+    if (!result.rows.length) return res.status(404).json({ error: 'Disputa no encontrada.' });
+    const mensajes = await pool.query(`SELECT m.id, m.remitente_id, m.audiencia, m.mensaje, m.creado_at,
+        u.nombre AS remitente_nombre
+      FROM disputa_mensajes m LEFT JOIN usuarios u ON u.id = m.remitente_id
+      WHERE m.disputa_id = $1 ORDER BY m.creado_at ASC, m.id ASC`, [req.params.id]);
+    return res.json({ success: true, data: { ...result.rows[0], mensajes: mensajes.rows } });
+  } catch (error) {
+    console.error('❌ ERROR EN GET /api/admin/disputes/:id/review:', error);
+    return res.status(500).json({ error: 'No se pudo cargar el expediente.' });
+  }
+});
+
+router.patch('/disputes/:id/review', authMiddleware, adminMiddleware,
+  adminAuditLog({ action: 'dispute.review', resource: 'dispute' }), async (req, res) => {
+    if (!UUID_DISPUTA.test(req.params.id)) return res.status(400).json({ error: 'Identificador de disputa inválido.' });
+    try {
+      await pool.query('SET LOCAL ROLE app_system');
+      const result = await pool.query(`UPDATE disputas SET estado = 'EN_REVISION', actualizado_at = NOW()
+        WHERE id = $1 AND estado = 'ABIERTA' RETURNING id, estado, actualizado_at`, [req.params.id]);
+      if (!result.rows.length) {
+        const existe = await pool.query('SELECT id, estado FROM disputas WHERE id = $1', [req.params.id]);
+        if (!existe.rows.length) return res.status(404).json({ error: 'Disputa no encontrada.' });
+        if (existe.rows[0].estado === 'EN_REVISION') return res.json({ success: true, data: existe.rows[0] });
+        return res.status(409).json({ error: 'Solo se puede iniciar la revisión de una disputa abierta.' });
+      }
+      return res.json({ success: true, data: result.rows[0] });
+    } catch (error) {
+      console.error('❌ ERROR EN PATCH /api/admin/disputes/:id/review:', error);
+      return res.status(500).json({ error: 'No se pudo iniciar la revisión.' });
+    }
+  });
+
+router.post('/disputes/:id/messages', authMiddleware, adminMiddleware,
+  adminAuditLog({ action: 'dispute.message.create', resource: 'dispute' }), async (req, res) => {
+    if (!UUID_DISPUTA.test(req.params.id)) return res.status(400).json({ error: 'Identificador de disputa inválido.' });
+    const mensaje = typeof req.body?.mensaje === 'string' ? req.body.mensaje.trim() : '';
+    const audiencia = req.body?.audiencia === 'INTERNA' ? 'INTERNA' : 'PARTES';
+    if (!mensaje || mensaje.length > 4000) return res.status(400).json({ error: 'Escribe un mensaje de 1 a 4.000 caracteres.' });
+    try {
+      await pool.query('SET LOCAL ROLE app_system');
+      const result = await pool.query(`INSERT INTO disputa_mensajes (disputa_id, remitente_id, audiencia, mensaje, tenant_id)
+        SELECT d.id, $2, $3, $4, COALESCE(d.tenant_id, b.tenant_id, u_p.tenant_id, u_c.tenant_id, $5)
+        FROM disputas d JOIN bookings b ON b.id = d.booking_id
+        LEFT JOIN usuarios u_p ON u_p.id = b.provider_id
+        LEFT JOIN usuarios u_c ON u_c.id = b.client_id
+        WHERE d.id = $1
+        RETURNING id, disputa_id, remitente_id, audiencia, mensaje, creado_at`,
+      [req.params.id, req.user.id, audiencia, mensaje, req.user.tenant_id || null]);
+      if (!result.rows.length) return res.status(404).json({ error: 'Disputa no encontrada.' });
+      return res.status(201).json({ success: true, data: result.rows[0], aviso: audiencia === 'PARTES'
+        ? 'Respuesta guardada en el expediente. La notificación al usuario aún no está habilitada.'
+        : 'Nota interna guardada; solo visible para el equipo.' });
+    } catch (error) {
+      console.error('❌ ERROR EN POST /api/admin/disputes/:id/messages:', error);
+      return res.status(500).json({ error: 'No se pudo guardar el mensaje.' });
+    }
+  });
+
 // 🔹 GET /api/admin/audit-logs — Obtener traza de auditoría append-only
 router.get('/audit-logs', authMiddleware, adminMiddleware, async (req, res) => {
   try {

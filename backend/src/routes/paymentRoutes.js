@@ -2146,6 +2146,9 @@ router.put('/admin/disputes/:id/resolve', authMiddleware, async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    // La resolución cruza registros de wallets, reservas y disputas; se ejecuta
+    // como operación de sistema dentro de ESTA transacción financiera.
+    await client.query('SET LOCAL ROLE app_system');
 
     const { rows } = await client.query(
       `SELECT d.*, b.provider_id, b.client_id, b.pago_neto_prestador, b.valor_bruto
