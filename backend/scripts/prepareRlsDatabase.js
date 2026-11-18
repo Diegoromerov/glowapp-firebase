@@ -126,6 +126,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '174_glowshop_provider_fulfillment.sql',
   '175_glowshop_return_contract.sql',
   '173_logistica_metricas_diarias.sql',
+  '177_fix_logistica_metrics_rls.sql',
 ];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
@@ -253,6 +254,7 @@ const MIGRACIONES_ARRANQUE = [
     '174_glowshop_provider_fulfillment.sql',
     '175_glowshop_return_contract.sql',
     '173_logistica_metricas_diarias.sql',
+    '177_fix_logistica_metrics_rls.sql',
   ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {

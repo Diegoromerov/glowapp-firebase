@@ -38,14 +38,10 @@ ALTER TABLE logistica_metricas_diarias ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS log_metricas_isolation ON logistica_metricas_diarias;
 CREATE POLICY log_metricas_isolation ON logistica_metricas_diarias
     TO app_rls_user
-    USING (
-        zona_id IS NULL
-        OR zona_id = current_setting('app.tenant_id', true)::uuid
-    )
-    WITH CHECK (
-        zona_id IS NULL
-        OR zona_id = current_setting('app.tenant_id', true)::uuid
-    );
+    -- zona_id identifica una zona logística, no al tenant propietario.
+    -- Sin relación tenant<->zona, acceso vacío: falla cerrado.
+    USING (false)
+    WITH CHECK (false);
 
 DROP POLICY IF EXISTS log_metricas_system ON logistica_metricas_diarias;
 CREATE POLICY log_metricas_system ON logistica_metricas_diarias
