@@ -5,10 +5,18 @@
 set -uo pipefail
 
 IMG="postgis/postgis:16-3.4"
-CT="glowapp-verify"
-PORT="${PORT:-55434}"
+CT="${CT:-glowapp-chain-verify-$$}"
+PORT="${PORT:-}"
 PASS="test_rls_password"
 FALLOS=0
+CONTAINER_CREATED=0
+
+limpiar_contenedor() {
+  if [ "$CONTAINER_CREATED" -eq 1 ]; then
+    docker rm -fv "$CT" >/dev/null 2>&1 || true
+  fi
+}
+trap limpiar_contenedor EXIT
 
 solo_si_docker() {
   command -v docker >/dev/null || { echo "X docker no está en el PATH"; exit 2; }
@@ -16,10 +24,19 @@ solo_si_docker() {
 }
 
 levantar() {
-  docker rm -f "$CT" >/dev/null 2>&1
+  local -a publish_args
+  if [ -n "$PORT" ]; then
+    publish_args=(-p "127.0.0.1:${PORT}:5432")
+  else
+    publish_args=(-p "127.0.0.1::5432")
+  fi
   docker run -d --name "$CT" -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres \
     -e POSTGRES_DB=glowtest -e POSTGRES_HOST_AUTH_METHOD=trust \
-    -p "${PORT}:5432" "$IMG" >/dev/null || return 1
+    "${publish_args[@]}" "$IMG" >/dev/null || return 1
+  CONTAINER_CREATED=1
+  if [ -z "$PORT" ]; then
+    PORT=$(docker inspect -f '{{(index (index .NetworkSettings.Ports "5432/tcp") 0).HostPort}}' "$CT") || return 1
+  fi
   # La imagen postgis arranca un servidor temporal durante initdb y luego lo
   # reinicia: una consulta exitosa ahi no garantiza que el servidor final este
   # listo (fallaba con "Connection terminated unexpectedly"). Exigimos dos
@@ -42,12 +59,12 @@ limpiar() { docker exec "$CT" psql -U postgres -d postgres -c "DROP DATABASE IF 
             -c "CREATE DATABASE glowtest;" >/dev/null 2>&1; }
 
 solo_si_docker
-export DATABASE_URL_ADMIN="postgres://postgres@127.0.0.1:${PORT}/glowtest"
 export RLS_ROLE_PASSWORD="$PASS"
 unset MIGRAR_OMITIR
 
 echo "== Escenario 1: base vacía, cadena completa =="
 levantar || { echo "X no arrancó postgres"; exit 2; }
+export DATABASE_URL_ADMIN="postgres://postgres@127.0.0.1:${PORT}/glowtest"
 node backend/scripts/prepareRlsDatabase.js > /tmp/esc1.log 2>&1
 [ $? -eq 0 ] && echo "  OK arranque 1" || { echo "  X arranque 1 falló"; tail -5 /tmp/esc1.log; FALLOS=$((FALLOS+1)); }
 
@@ -85,6 +102,10 @@ rls=$(docker exec "$CT" psql -U postgres -d glowtest -tAc \
 TEST_DATABASE_URL="postgres://app_owner@127.0.0.1:${PORT}/glowtest" \
   node backend/scripts/verifyTenantIsolation.js > /tmp/esc4.log 2>&1
 [ $? -eq 0 ] && echo "  OK verifyTenantIsolation" || { echo "  X verifyTenantIsolation falló"; tail -5 /tmp/esc4.log; FALLOS=$((FALLOS+1)); }
+
+DATABASE_URL_ADMIN="postgres://postgres@127.0.0.1:${PORT}/glowtest" \
+  node backend/scripts/verifyLogisticaMetricsRls.js > /tmp/esc5.log 2>&1
+[ $? -eq 0 ] && echo "  OK verifyLogisticaMetricsRls" || { echo "  X verifyLogisticaMetricsRls falló"; tail -5 /tmp/esc5.log; FALLOS=$((FALLOS+1)); }
 
 echo
 if [ "$FALLOS" -eq 0 ]; then
