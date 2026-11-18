@@ -18,6 +18,8 @@ import {
   AlertCircle,
   UserCheck,
   UserX,
+  X,
+  Save,
 } from 'lucide-react';
 
 /**
@@ -108,6 +110,10 @@ export default function AdminPrestadoresIvaPage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [fuenteDisponible, setFuenteDisponible] = useState(false);
+  const [correccion, setCorreccion] = useState<PrestadorFiscal | null>(null);
+  const [valorCorreccion, setValorCorreccion] = useState<boolean | null>(null);
+  const [motivoCorreccion, setMotivoCorreccion] = useState('');
+  const [guardandoCorreccion, setGuardandoCorreccion] = useState(false);
 
   // Modal para ver documento
   const [docModal, setDocModal] = useState<{ url: string; nombre: string; tipo: 'image' | 'pdf' } | null>(null);
@@ -164,6 +170,42 @@ export default function AdminPrestadoresIvaPage() {
       setLoading(false);
     }
   }, [buildUrl]);
+
+  const abrirCorreccion = (prestador: PrestadorFiscal) => {
+    setCorreccion(prestador);
+    setValorCorreccion(prestador.responsable_iva);
+    setMotivoCorreccion('');
+  };
+
+  const guardarCorreccion = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!correccion || valorCorreccion === null) return;
+
+    setGuardandoCorreccion(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/admin/providers/${correccion.id}/fiscal/correction`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: JSON.stringify({ responsable_iva: valorCorreccion, motivo: motivoCorreccion.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setError(data?.error || `El backend respondió ${res.status}.`);
+        return;
+      }
+
+      setCorreccion(null);
+      await fetchDatos();
+    } catch {
+      setError('No se pudo guardar la corrección.');
+    } finally {
+      setGuardandoCorreccion(false);
+    }
+  };
 
   useEffect(() => {
     fetchDatos();
@@ -526,9 +568,18 @@ export default function AdminPrestadoresIvaPage() {
                     {pestañaActiva === 'iva' ? (
                       <>
                         <td className="px-6 py-4">
-                          <span className={p.responsable_iva ? 'text-emerald-300' : 'text-slate-400'}>
-                            {p.responsable_iva ? 'Sí' : 'No'}
-                          </span>
+                          <div className="flex items-center gap-3">
+                            <span className={p.responsable_iva ? 'text-emerald-300' : 'text-slate-400'}>
+                              {p.responsable_iva ? 'Sí' : 'No'}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => abrirCorreccion(p)}
+                              className="rounded-lg border border-sky-500/30 px-2.5 py-1 text-xs font-medium text-sky-300 transition hover:bg-sky-500/10"
+                            >
+                              {p.fuente === 'MANUAL' ? 'Editar corrección' : 'Corregir'}
+                            </button>
+                          </div>
                         </td>
                         <td className="px-6 py-4">
                           <span className={`px-3 py-1 rounded-full border text-xs font-medium ${b.clase}`}>
@@ -703,6 +754,96 @@ export default function AdminPrestadoresIvaPage() {
               </div>
             </div>
           </div>
+
+        </div>
+      )}
+
+      {correccion && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+          <form
+            onSubmit={guardarCorreccion}
+            className="w-full max-w-xl space-y-5 rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="fiscal-correction-title"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h2 id="fiscal-correction-title" className="text-xl font-bold text-white">Corregir responsabilidad de IVA</h2>
+                <p className="mt-1 text-sm text-slate-400">{correccion.nombre} · RUT {correccion.rut_numero || 'sin registrar'}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setCorreccion(null)}
+                disabled={guardandoCorreccion}
+                className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white"
+                aria-label="Cerrar"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-sm text-slate-300">
+              Casilla declarada: <strong className="text-white">{codigoLabel(correccion.rut_responsabilidad_codigo)}</strong>.
+              La corrección cambia el valor aplicado y conserva la declaración original del RUT.
+            </div>
+
+            <fieldset className="space-y-2">
+              <legend className="mb-2 text-sm font-semibold text-slate-200">Criterio del revisor</legend>
+              {[{ value: false, label: 'No es responsable de IVA' }, { value: true, label: 'Sí es responsable de IVA' }].map((opcion) => (
+                <label key={String(opcion.value)} className="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-700 p-3 text-sm text-slate-200 hover:bg-slate-800">
+                  <input
+                    type="radio"
+                    name="responsable_iva"
+                    checked={valorCorreccion === opcion.value}
+                    onChange={() => setValorCorreccion(opcion.value)}
+                    className="accent-sky-400"
+                  />
+                  {opcion.label}
+                </label>
+              ))}
+            </fieldset>
+
+            <label className="block space-y-2 text-sm font-semibold text-slate-200">
+              Motivo de la corrección
+              <textarea
+                value={motivoCorreccion}
+                onChange={(event) => setMotivoCorreccion(event.target.value)}
+                minLength={10}
+                maxLength={500}
+                required
+                rows={3}
+                placeholder="Describe qué evidencia revisaste y por qué ajustas el resultado."
+                className="w-full rounded-xl border border-slate-700 bg-slate-950 p-3 font-normal text-white outline-none focus:border-sky-500"
+              />
+              <span className="block text-xs font-normal text-slate-500">El motivo y el cambio quedarán en la bitácora de auditoría.</span>
+            </label>
+
+            {error && (
+              <p role="alert" className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-300">
+                {error}
+              </p>
+            )}
+
+            <div className="flex justify-end gap-3 border-t border-slate-800 pt-4">
+              <button
+                type="button"
+                onClick={() => setCorreccion(null)}
+                disabled={guardandoCorreccion}
+                className="rounded-xl border border-slate-700 px-4 py-2 text-sm text-slate-300 hover:bg-slate-800"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                disabled={guardandoCorreccion || valorCorreccion === null || motivoCorreccion.trim().length < 10}
+                className="flex items-center gap-2 rounded-xl bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Save className="h-4 w-4" />
+                {guardandoCorreccion ? 'Guardando…' : 'Guardar corrección'}
+              </button>
+            </div>
+          </form>
         </div>
       )}
     </div>

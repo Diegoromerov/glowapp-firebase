@@ -64,6 +64,9 @@ function buildAuditRecord(req, res, { action, resource } = {}) {
     status_code: statusCode,
     ip: clientIp(req),
     user_agent: ((req && req.headers && req.headers['user-agent']) || 'unknown'),
+    metadata: req && req.auditMetadata && typeof req.auditMetadata === 'object'
+      ? req.auditMetadata
+      : {},
     timestamp: new Date().toISOString(),
   };
 }

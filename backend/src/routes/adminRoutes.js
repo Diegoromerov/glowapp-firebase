@@ -235,6 +235,72 @@ router.get('/providers/fiscal', authMiddleware, adminMiddleware, async (req, res
   }
 });
 
+// PATCH /api/admin/providers/:id/fiscal/correction — corrección manual revisada.
+// Conserva intacta la casilla declarada y guarda el criterio humano como override
+// MANUAL, junto con motivo, valor previo y valor aplicado en la bitácora append-only.
+router.patch(
+  '/providers/:id/fiscal/correction',
+  authMiddleware,
+  adminMiddleware,
+  adminAuditLog({ action: 'provider.fiscal.correction', resource: 'provider' }),
+  async (req, res) => {
+    const id = Number(req.params.id);
+    const responsable = req.body?.responsable_iva;
+    const motivo = typeof req.body?.motivo === 'string' ? req.body.motivo.trim() : '';
+
+    if (!Number.isInteger(id) || id <= 0) {
+      return res.status(400).json({ error: 'ID de prestador inválido.' });
+    }
+    if (typeof responsable !== 'boolean') {
+      return res.status(400).json({ error: 'Selecciona si el prestador es responsable de IVA.' });
+    }
+    if (motivo.length < 10 || motivo.length > 500) {
+      return res.status(400).json({ error: 'Explica el motivo de la corrección (10 a 500 caracteres).' });
+    }
+
+    try {
+      const anterior = await pool.query(
+        `SELECT id, rut_numero, rut_responsabilidad_codigo, responsable_iva,
+                responsable_iva_override, responsabilidad_iva_fuente
+           FROM usuarios WHERE id = $1 AND rol = 'PRESTADOR'`,
+        [id]
+      );
+      if (!anterior.rows.length) {
+        return res.status(404).json({ error: 'Prestador no encontrado.' });
+      }
+
+      const previo = anterior.rows[0];
+      const actualizado = await pool.query(
+        `UPDATE usuarios
+            SET responsable_iva = $2,
+                responsable_iva_override = $2,
+                responsabilidad_iva_fuente = 'MANUAL',
+                responsabilidad_iva_actualizada_at = NOW(),
+                responsabilidad_iva_cambiada_por = $3
+          WHERE id = $1 AND rol = 'PRESTADOR'
+          RETURNING id, rut_numero, rut_responsabilidad_codigo, responsable_iva,
+                    responsable_iva_override, responsabilidad_iva_fuente,
+                    responsabilidad_iva_actualizada_at, responsabilidad_iva_cambiada_por`,
+        [id, responsable, req.user.id]
+      );
+
+      req.auditMetadata = {
+        motivo,
+        rut_responsabilidad_codigo: previo.rut_responsabilidad_codigo,
+        fuente_anterior: previo.responsabilidad_iva_fuente || null,
+        responsable_iva_anterior: previo.responsable_iva,
+        override_anterior: previo.responsable_iva_override,
+        responsable_iva_aplicado: actualizado.rows[0].responsable_iva,
+      };
+
+      return res.json({ success: true, fiscal: actualizado.rows[0] });
+    } catch (error) {
+      console.error('❌ ERROR EN PATCH /api/admin/providers/:id/fiscal/correction:', error);
+      return res.status(500).json({ error: 'No se pudo guardar la corrección fiscal.' });
+    }
+  }
+);
+
 // 🔹 POST /api/admin/providers/:id/fiscal/revision — aprobar o rechazar el RUT
 //
 // D-GL-030: el prestador no puede publicar hasta que su RUT esté aprobado. La
