@@ -128,6 +128,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '173_logistica_metricas_diarias.sql',
   '177_fix_logistica_metrics_rls.sql',
   '178_refresh_municipios_dane_catalog.sql',
+  '179_add_notification_prefs_metadata.sql',
 ];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
@@ -257,6 +258,7 @@ const MIGRACIONES_ARRANQUE = [
     '173_logistica_metricas_diarias.sql',
     '177_fix_logistica_metrics_rls.sql',
     '178_refresh_municipios_dane_catalog.sql',
+    '179_add_notification_prefs_metadata.sql',
   ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {
