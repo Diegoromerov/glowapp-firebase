@@ -487,7 +487,8 @@ exports.onboarding = async (req, res) => {
     if (mappedRol === 'PRESTADOR') {
       await pool.query(
         `UPDATE usuarios 
-         SET onboarding_completo = true,
+         SET rol = 'PRESTADOR',
+             onboarding_completo = true,
              habeas_data_accepted_at = NOW(), habeas_data_ip = $2,
              terminos_accepted_at = NOW(), terminos_ip = $2
          WHERE id = $1`,
