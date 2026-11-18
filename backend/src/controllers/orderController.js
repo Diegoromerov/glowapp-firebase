@@ -2045,25 +2045,17 @@ async function updateEnvioStatus(req, res) {
           (sum, item) => sum + Number(item.peso_estimado_kg || 0.5) * Number(item.cantidad_preparada || item.cantidad || 1),
           0.5
         );
-        const quoteForLabel = await calcularEnvio({
-          client,
-          ciudad: order.destino_ciudad || order.ciudad,
-          direccion: order.direccion_entrega,
-          pesoKg: peso_kg || pesoPaqueteEstimado,
-          subtotal: Number(order.total || 0),
-          unidades: itemsForQuote.reduce((sum, item) => sum + Number(item.cantidad_preparada || item.cantidad || 1), 0),
-        });
         // Primero obtener rates
         const rates = await providerEnviameClient.getRates({
           origin: { 
-            city: origen.dane_code, 
-            state: _departamentoToDaneState(origen.departamento), 
+            city: origen.dane_code || origen.ciudad,
+            state: _departamentoToDaneState(origen.departamento),
             country: 'CO',
             postal_code: origen.codigo_postal,
             street: _formatOrigenStreet(origen)
           },
           destination: { 
-            city: _ciudadToDaneCode(order.destino_ciudad || order.ciudad),
+            city: order.destino_dane_code || _ciudadToDaneCode(order.destino_ciudad || order.ciudad),
             state: _departamentoToDaneState(order.destino_departamento || order.departamento),
             country: 'CO',
             postal_code: order.destino_codigo_postal || order.codigo_postal,
@@ -2079,8 +2071,9 @@ async function updateEnvioStatus(req, res) {
           currency: 'COP'
         });
 
-        // Seleccionar mejor rate (el más barato que cumpla SLA)
-        const bestRate = rates.find((rate) => rate.carrier === quoteForLabel.transportadora) || rates[0];
+        // getRates devuelve las reglas aplicables ordenadas por prioridad. La
+        // primera es la preferida; las siguientes son fallbacks explícitos.
+        const bestRate = rates[0];
         if (!bestRate) {
           return res.status(500).json({ error: 'No hay carriers disponibles para esta ruta' });
         }
@@ -2089,7 +2082,13 @@ async function updateEnvioStatus(req, res) {
         const labelResult = await providerEnviameClient.generateLabel({
           rate_id: bestRate.rate_id,
           reference: `order_${orderId}`,
-          metadata: { provider_id: providerId, order_id: orderId }
+          metadata: {
+            provider_id: providerId,
+            order_id: orderId,
+            carrier: bestRate.carrier,
+            service_code: bestRate.service_code,
+            carrier_account_id: bestRate.carrier_account_id
+          }
         });
 
         // El orquestador de postpago crea un paquete por proveedor. No se permite
@@ -2184,7 +2183,8 @@ async function updateEnvioStatus(req, res) {
           pickup_window_start: ventana_inicio,
           pickup_window_end: ventana_fin,
           contact_name: contacto_nombre || 'Proveedor GlowApp',
-          contact_phone: contacto_telefono || ''
+          contact_phone: contacto_telefono || '',
+          carrier: envio.transportadora
         });
 
         // Actualizar envío con datos de recolección
@@ -2351,33 +2351,16 @@ async function updateEnvioStatus(req, res) {
       ciudad: d.ciudad,
       departamento: d.departamento,
       codigo_postal: d.codigo_postal,
-      dane_code: d.dane_code || _inferDaneCode(d.ciudad, d.departamento)
+      dane_code: d.dane_code || null
     };
-  }
-
-  function _inferDaneCode(ciudad, departamento) {
-    const map = {
-      'bogota': '11001', 'medellin': '05001', 'cali': '76001',
-      'barranquilla': '08001', 'cartagena': '13001', 'bucaramanga': '68001',
-      'pereira': '66001', 'manizales': '17001', 'ibague': '73001',
-      'villavicencio': '50001'
-    };
-    const key = (ciudad || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    return map[key] || '11001';
   }
 
   function _departamentoToDaneState(departamento) {
-    const map = {
-      'cundinamarca': '25', 'antioquia': '05', 'valle del cauca': '76',
-      'atlantico': '08', 'bolivar': '13', 'santander': '68',
-      'risaralda': '66', 'caldas': '17', 'tolima': '73', 'meta': '50'
-    };
-    const key = (departamento || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    return map[key] || '25';
+    return String(departamento || '').trim();
   }
 
   function _ciudadToDaneCode(ciudad) {
-    return _inferDaneCode(ciudad, '');
+    return String(ciudad || '').trim();
   }
 
   function _formatOrigenStreet(origen) {

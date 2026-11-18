@@ -47,8 +47,18 @@ async function cotizarEnvio({ ciudad, departamento, codigo_postal, peso_total_kg
   const nCiudad = normalizar(ciudad);
   const nDepartamento = normalizar(departamento);
 
-  // Una sola consulta: el catalogo de zonas es pequeno y el emparejamiento se hace en
-  // memoria, que es donde se puede ignorar tildes y mayusculas de verdad.
+  // DIVIPOLA es la autoridad para resolver el nombre y el departamento. La zona
+  // postal específica sigue teniendo precedencia cuando existe.
+  const municipioRes = await pool.query(
+    `SELECT dane_code, nombre, departamento_nombre, zona_envio_id
+       FROM municipios_dane
+      WHERE activo = true
+        AND translate(lower(nombre), 'áéíóúüñ', 'aeiouun') = $1
+        AND translate(lower(departamento_nombre), 'áéíóúüñ', 'aeiouun') = $2
+      LIMIT 1`,
+    [nCiudad, nDepartamento]
+  );
+  const municipio = municipioRes.rows?.[0] || null;
   const zonasRes = await pool.query('SELECT * FROM zonas_envio WHERE activa ORDER BY ciudad, departamento');
   const zonas = zonasRes.rows || [];
 
@@ -69,6 +79,12 @@ async function cotizarEnvio({ ciudad, departamento, codigo_postal, peso_total_kg
     // 1b. Sin prefijo declarado: comodin de la ciudad.
     const sinPrefijo = candidatas.find((z) => !z.codigo_postal_prefijo);
     zona = porPrefijo || sinPrefijo || candidatas[0];
+  }
+
+  // Direcciones con nombres escritos de otra forma se resuelven por el vínculo
+  // oficial municipio → zona, sin inventar una zona a partir de la ciudad.
+  if (!zona && municipio?.zona_envio_id) {
+    zona = zonas.find((z) => z.id === municipio.zona_envio_id) || null;
   }
 
   // 2. La ciudad coincide pero el departamento viene escrito distinto.
