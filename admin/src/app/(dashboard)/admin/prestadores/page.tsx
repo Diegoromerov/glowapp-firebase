@@ -182,19 +182,20 @@ export default function AdminPrestadoresIvaPage() {
   };
 
   const badgeEstado = (p: PrestadorFiscal) => {
-    if (p.estado === 'MANUAL') {
-      return { clase: 'bg-sky-500/10 border-sky-500/30 text-sky-300', label: 'Override manual' };
-    }
-    if (p.estado === 'DECLARADA') {
-      return {
-        clase: p.responsable_iva
-          ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-          : 'bg-slate-500/10 border-slate-500/30 text-slate-300',
-        label: p.responsable_iva ? 'Declarado · responsable' : 'Declarado · no responsable',
-      };
-    }
-    return { clase: 'bg-amber-500/10 border-amber-500/30 text-amber-300', label: 'Sin declarar' };
-  };
+      if (p.estado === 'MANUAL') {
+        return { clase: 'bg-sky-500/10 border-sky-500/30 text-sky-300', label: 'Override manual', icon: <SlidersHorizontal className="w-3 h-3" /> };
+      }
+      if (p.estado === 'DECLARADA') {
+        return {
+          clase: p.responsable_iva
+            ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+            : 'bg-slate-500/10 border-slate-500/30 text-slate-300',
+          label: p.responsable_iva ? 'Declarado · responsable' : 'Declarado · no responsable',
+          icon: p.responsable_iva ? <CheckCircle className="w-3 h-3" /> : <SlidersHorizontal className="w-3 h-3" />,
+        };
+      }
+      return { clase: 'bg-amber-500/10 border-amber-500/30 text-amber-300', label: 'Sin declarar', icon: <HelpCircle className="w-3 h-3" /> };
+    };
 
   const badgeRevision = (estado: string) => {
     switch (estado) {
@@ -278,8 +279,11 @@ export default function AdminPrestadoresIvaPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
         <div>
           <div className="flex items-center gap-3">
-            <TABS.map(t => t.id === pestañaActiva ? t.icon : null).find(Boolean) || <Receipt className="text-rose-500 w-8 h-8" />}
-            <h1 className="text-3xl font-bold text-white tracking-tight">
+                      {(() => {
+                        const tab = TABS.find(t => t.id === pestañaActiva);
+                        return tab ? tab.icon : <Receipt className="text-rose-500 w-8 h-8" />;
+                      })()}
+                      <h1 className="text-3xl font-bold text-white tracking-tight">
               {TABS.find(t => t.id === pestañaActiva)?.label || 'Prestadores'}
             </h1>
           </div>
