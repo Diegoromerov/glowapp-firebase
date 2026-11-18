@@ -58,7 +58,10 @@ const OTRO = zona({
 beforeEach(() => {
   jest.clearAllMocks();
   pool.query.mockReset();
-  pool.query.mockResolvedValue({ rows: [BOGOTA, BOGOTA_SUR, MEDELLIN, OTRO] });
+  pool.query.mockImplementation((sql) => {
+    if (/FROM municipios_dane/i.test(sql)) return Promise.resolve({ rows: [] });
+    return Promise.resolve({ rows: [BOGOTA, BOGOTA_SUR, MEDELLIN, OTRO] });
+  });
 });
 
 describe('cotizarEnvio — emparejamiento tolerante', () => {
@@ -114,11 +117,26 @@ describe('cotizarEnvio — emparejamiento tolerante', () => {
     expect(r.transportadora).toBe('Coordinadora');
   });
 
-  test('una sola consulta, sin depender de lower() en SQL', async () => {
+  test('resuelve primero el municipio DANE y compara zonas sin depender de lower() en SQL', async () => {
     await cotizarEnvio({ ciudad: 'bogota', departamento: 'Bogotá D.C.' });
-    expect(pool.query).toHaveBeenCalledTimes(1);
-    const sql = pool.query.mock.calls[0][0];
+    expect(pool.query).toHaveBeenCalledTimes(2);
+    expect(pool.query.mock.calls[0][0]).toMatch(/FROM municipios_dane/i);
+    const sql = pool.query.mock.calls[1][0];
     expect(sql).not.toMatch(/lower\(/i);
+  });
+
+  test('usa zona vinculada al municipio DANE cuando el nombre de la zona difiere', async () => {
+    const zonaDane = zona({ id: 'zona-dane', ciudad: 'Municipio normalizado', departamento: 'Departamento', tarifa_base: '7000.00' });
+    pool.query.mockImplementation((sql) => {
+      if (/FROM municipios_dane/i.test(sql)) {
+        return Promise.resolve({ rows: [{ dane_code: '05001', nombre: 'Medellín', departamento_nombre: 'Antioquia', zona_envio_id: 'zona-dane' }] });
+      }
+      return Promise.resolve({ rows: [zonaDane, OTRO] });
+    });
+
+    const result = await cotizarEnvio({ ciudad: 'medellin', departamento: 'Antioquia' });
+    expect(result.zona).toBe('Municipio normalizado, Departamento');
+    expect(result.costo).toBe(7200);
   });
 
   test('sin ciudad o departamento falla con mensaje propio', async () => {
