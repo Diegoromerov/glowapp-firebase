@@ -464,17 +464,17 @@ export default function AdminPreciosPage() {
   });
 
   return (
-    <div className="p-8 space-y-8 bg-slate-950 min-h-screen text-slate-100">
+    <div className="p-8 space-y-8 bg-[#f7f5f0] min-h-screen text-[#27231d]">
       {/* Header de Página */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-900/80 p-6 rounded-2xl border border-slate-800 backdrop-blur-sm">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl border border-[#e5dfd3] backdrop-blur-sm">
         <div>
           <div className="flex items-center gap-3">
-            <div className="bg-rose-500/10 p-3 rounded-xl border border-rose-500/20 text-rose-400">
+            <div className="bg-rose-500/10 p-3 rounded-xl border border-rose-500/20 text-rose-700">
               <DollarSign size={28} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-white">Administración de Precios GlowShop</h1>
-              <p className="text-sm text-slate-400">Gestión de tarifas por nivel (Consumidor, Profesional, Salón) e importación masiva</p>
+              <h1 className="text-2xl font-bold tracking-tight text-[#27231d]">Administración de Precios GlowShop</h1>
+              <p className="text-sm text-[#6c655b]">Gestión de tarifas por nivel (Consumidor, Profesional, Salón) e importación masiva</p>
             </div>
           </div>
         </div>
@@ -482,28 +482,28 @@ export default function AdminPreciosPage() {
         <div className="flex flex-wrap items-center gap-3">
           <button
             onClick={() => { setShowHistorialModal(true); fetchHistorialData(); }}
-            className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-purple-400 border border-purple-500/20 rounded-xl text-sm font-medium transition-all"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#f1eee7] hover:bg-[#e9e4da] text-purple-700 border border-purple-500/20 rounded-xl text-sm font-medium transition-all"
           >
             <History size={16} />
             Historial
           </button>
           <button
             onClick={fetchPreciosData}
-            className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-sm font-medium transition-all"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#f1eee7] hover:bg-[#e9e4da] text-[#514b42] rounded-xl text-sm font-medium transition-all"
           >
             <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
             Actualizar
           </button>
           <button
             onClick={handleExportCsv}
-            className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/20 rounded-xl text-sm font-medium transition-all"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#f1eee7] hover:bg-[#e9e4da] text-emerald-700 border border-emerald-500/20 rounded-xl text-sm font-medium transition-all"
           >
             <Download size={16} />
             Exportar CSV
           </button>
           <button
             onClick={() => { setShowImportModal(true); setImportResult(null); }}
-            className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-sky-400 border border-sky-500/20 rounded-xl text-sm font-medium transition-all"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#f1eee7] hover:bg-[#e9e4da] text-sky-700 border border-sky-500/20 rounded-xl text-sm font-medium transition-all"
           >
             <Upload size={16} />
             Importar CSV
@@ -520,62 +520,62 @@ export default function AdminPreciosPage() {
 
       {/* Alertas de Notificación */}
       {error && (
-        <div className="flex items-center justify-between p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-300 text-sm">
+        <div className="flex items-center justify-between p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-700 text-sm">
           <div className="flex items-center gap-3">
-            <AlertTriangle size={20} className="text-rose-400 shrink-0" />
+            <AlertTriangle size={20} className="text-rose-700 shrink-0" />
             <span>{error}</span>
           </div>
-          <button onClick={() => setError(null)} className="text-rose-400 hover:text-rose-200"><X size={18} /></button>
+          <button onClick={() => setError(null)} className="text-rose-700 hover:text-rose-800"><X size={18} /></button>
         </div>
       )}
 
       {successMsg && (
-        <div className="flex items-center justify-between p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-300 text-sm">
+        <div className="flex items-center justify-between p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-700 text-sm">
           <div className="flex items-center gap-3">
-            <CheckCircle size={20} className="text-emerald-400 shrink-0" />
+            <CheckCircle size={20} className="text-emerald-700 shrink-0" />
             <span>{successMsg}</span>
           </div>
-          <button onClick={() => setSuccessMsg(null)} className="text-emerald-400 hover:text-emerald-200"><X size={18} /></button>
+          <button onClick={() => setSuccessMsg(null)} className="text-emerald-700 hover:text-emerald-800"><X size={18} /></button>
         </div>
       )}
 
       {/* Reporte de Coherencia Comercial (Informativo, No Bloqueante) */}
       {coherencia && tieneAvisosCoherencia(coherencia) && (
         <div className="p-5 bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-3">
-          <div className="flex items-center gap-3 text-amber-400 font-semibold text-sm">
+          <div className="flex items-center gap-3 text-amber-700 font-semibold text-sm">
             <Info size={18} />
             <span>Avisos de Coherencia Comercial (Informativos)</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 text-xs text-amber-200/80">
-            <div className="bg-amber-950/40 p-3 rounded-xl border border-amber-500/20">
-              <span className="font-semibold text-amber-300">{coherencia.producto_sin_precio_en_lista.length}</span> sin tarifa en alguna lista
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 text-xs text-amber-800">
+            <div className="bg-amber-50 p-3 rounded-xl border border-amber-500/20">
+              <span className="font-semibold text-amber-700">{coherencia.producto_sin_precio_en_lista.length}</span> sin tarifa en alguna lista
             </div>
-            <div className="bg-amber-950/40 p-3 rounded-xl border border-amber-500/20">
-              <span className="font-semibold text-amber-300">{coherencia.precio_bajo_costo.length}</span> por debajo del costo
+            <div className="bg-amber-50 p-3 rounded-xl border border-amber-500/20">
+              <span className="font-semibold text-amber-700">{coherencia.precio_bajo_costo.length}</span> por debajo del costo
             </div>
-            <div className="bg-amber-950/40 p-3 rounded-xl border border-amber-500/20">
-              <span className="font-semibold text-amber-300">{coherencia.profesional_mayor_o_igual_que_cliente.length}</span> donde Profesional ≥ Consumidor
+            <div className="bg-amber-50 p-3 rounded-xl border border-amber-500/20">
+              <span className="font-semibold text-amber-700">{coherencia.profesional_mayor_o_igual_que_cliente.length}</span> donde Profesional ≥ Consumidor
             </div>
-            <div className="bg-amber-950/40 p-3 rounded-xl border border-amber-500/20">
-              <span className="font-semibold text-amber-300">{coherencia.negocio_mayor_que_profesional.length}</span> donde Salón &gt; Profesional
+            <div className="bg-amber-50 p-3 rounded-xl border border-amber-500/20">
+              <span className="font-semibold text-amber-700">{coherencia.negocio_mayor_que_profesional.length}</span> donde Salón &gt; Profesional
             </div>
-            <div className="bg-amber-950/40 p-3 rounded-xl border border-amber-500/20">
-              <span className="font-semibold text-amber-300">{coherencia.sin_costo_cargado.length}</span> sin costo cargado
+            <div className="bg-amber-50 p-3 rounded-xl border border-amber-500/20">
+              <span className="font-semibold text-amber-700">{coherencia.sin_costo_cargado.length}</span> sin costo cargado
             </div>
           </div>
         </div>
       )}
 
       {/* Barra de Filtros y Búsqueda */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-        <div className="flex items-center gap-2 bg-slate-800/80 px-3.5 py-2 rounded-xl border border-slate-700/60 w-full sm:w-80">
-          <Search size={18} className="text-slate-400" />
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 rounded-xl border border-[#e5dfd3]">
+        <div className="flex items-center gap-2 bg-[#f1eee7] px-3.5 py-2 rounded-xl border border-[#e5dfd3] w-full sm:w-80">
+          <Search size={18} className="text-[#6c655b]" />
           <input
             type="text"
             placeholder="Buscar por producto o SKU..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-transparent text-sm text-slate-100 placeholder-slate-400 focus:outline-none w-full"
+            className="bg-transparent text-sm text-[#27231d] placeholder-slate-400 focus:outline-none w-full"
           />
         </div>
 
@@ -587,7 +587,7 @@ export default function AdminPreciosPage() {
               className={`px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap ${
                 activeTab === tab
                   ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20'
-                  : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200'
+                  : 'bg-[#f1eee7] text-[#6c655b] hover:bg-[#e9e4da] hover:text-[#27231d]'
               }`}
             >
               {tab === 'todos' ? 'Todos los Productos' : tab === 'cliente' ? 'Consumidor' : tab === 'profesional' ? 'Profesional' : 'Salón (Min 6)'}
@@ -597,10 +597,10 @@ export default function AdminPreciosPage() {
       </div>
 
       {/* Tabla Principal de Catálogo de Precios por Nivel */}
-      <div className="bg-slate-900/80 rounded-2xl border border-slate-800 overflow-hidden backdrop-blur-sm shadow-xl">
+      <div className="bg-white rounded-2xl border border-[#e5dfd3] overflow-hidden backdrop-blur-sm shadow-xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-slate-300">
-            <thead className="bg-slate-800/90 text-xs text-slate-400 uppercase tracking-wider border-b border-slate-700/60">
+          <table className="w-full text-left text-sm text-[#514b42]">
+            <thead className="bg-[#f1eee7] text-xs text-[#6c655b] uppercase tracking-wider border-b border-[#e5dfd3]">
               <tr>
                 <th className="py-4 px-6">SKU / Producto</th>
                 <th className="py-4 px-4 text-right">Costo Base</th>
@@ -610,23 +610,23 @@ export default function AdminPreciosPage() {
                 <th className="py-4 px-6 text-right">Acciones</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-[#e5dfd3]">
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="py-12 text-center text-slate-400">
+                  <td colSpan={6} className="py-12 text-center text-[#6c655b]">
                     <RefreshCw size={24} className="animate-spin mx-auto mb-2 text-rose-500" />
                     Cargando catálogo de precios por nivel...
                   </td>
                 </tr>
               ) : !catalogoDisponible ? (
                 <tr>
-                  <td colSpan={6} className="py-12 text-center text-slate-400">
+                  <td colSpan={6} className="py-12 text-center text-[#6c655b]">
                     No se pudo consultar el catálogo de precios; no es posible confirmar que esté vacío.
                   </td>
                 </tr>
               ) : filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-12 text-center text-slate-400">
+                  <td colSpan={6} className="py-12 text-center text-[#6c655b]">
                     No se encontraron productos que coincidan con la búsqueda.
                   </td>
                 </tr>
@@ -638,28 +638,28 @@ export default function AdminPreciosPage() {
                   const uMinNegocio = prod.precios.negocio?.unidad_minima || 6;
 
                   return (
-                    <tr key={prod.producto_id} className="hover:bg-slate-800/40 transition-colors">
+                    <tr key={prod.producto_id} className="hover:bg-[#f1eee7] transition-colors">
                       <td className="py-4 px-6">
-                        <div className="font-semibold text-slate-100">{prod.nombre}</div>
-                        <div className="text-xs text-slate-500 flex items-center gap-2 mt-0.5">
+                        <div className="font-semibold text-[#27231d]">{prod.nombre}</div>
+                        <div className="text-xs text-[#777064] flex items-center gap-2 mt-0.5">
                           <span>SKU: {prod.sku || 'SIN-SKU'}</span>
                           <span>•</span>
                           <span>Stock: {prod.stock}</span>
                         </div>
                       </td>
 
-                      <td className="py-4 px-4 text-right font-mono text-slate-300">
-                        {prod.costo !== null ? formatPrecio(prod.costo) : <span className="text-slate-600">-</span>}
+                      <td className="py-4 px-4 text-right font-mono text-[#514b42]">
+                        {prod.costo !== null ? formatPrecio(prod.costo) : <span className="text-[#928b7e]">-</span>}
                       </td>
 
                       {/* Nivel Consumidor */}
                       <td className="py-4 px-4 text-center">
                         {pCliente !== undefined && pCliente !== null ? (
-                          <span className="font-mono font-medium text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
+                          <span className="font-mono font-medium text-emerald-700 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
                             ${formatPrecio(pCliente)}
                           </span>
                         ) : (
-                          <span className="text-xs text-rose-400/80 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20 font-medium">
+                          <span className="text-xs text-rose-700/80 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20 font-medium">
                             Sin Precio
                           </span>
                         )}
@@ -668,11 +668,11 @@ export default function AdminPreciosPage() {
                       {/* Nivel Profesional */}
                       <td className="py-4 px-4 text-center">
                         {pProf !== undefined && pProf !== null ? (
-                          <span className="font-mono font-medium text-sky-400 bg-sky-500/10 px-3 py-1 rounded-lg border border-sky-500/20">
+                          <span className="font-mono font-medium text-sky-700 bg-sky-500/10 px-3 py-1 rounded-lg border border-sky-500/20">
                             ${formatPrecio(pProf)}
                           </span>
                         ) : (
-                          <span className="text-xs text-slate-500 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">
+                          <span className="text-xs text-[#777064] bg-[#f1eee7] px-2.5 py-1 rounded-lg border border-[#e5dfd3]">
                             Sin Precio
                           </span>
                         )}
@@ -682,13 +682,13 @@ export default function AdminPreciosPage() {
                       <td className="py-4 px-4 text-center">
                         {pNegocio !== undefined && pNegocio !== null ? (
                           <div className="inline-flex flex-col items-center">
-                            <span className="font-mono font-medium text-purple-400 bg-purple-500/10 px-3 py-1 rounded-lg border border-purple-500/20">
+                            <span className="font-mono font-medium text-purple-700 bg-purple-500/10 px-3 py-1 rounded-lg border border-purple-500/20">
                               ${formatPrecio(pNegocio)}
                             </span>
-                            <span className="text-[10px] text-purple-300/70 mt-1">Min: {uMinNegocio} unid.</span>
+                            <span className="text-[10px] text-purple-700/70 mt-1">Min: {uMinNegocio} unid.</span>
                           </div>
                         ) : (
-                          <span className="text-xs text-slate-500 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">
+                          <span className="text-xs text-[#777064] bg-[#f1eee7] px-2.5 py-1 rounded-lg border border-[#e5dfd3]">
                             Sin Precio
                           </span>
                         )}
@@ -697,7 +697,7 @@ export default function AdminPreciosPage() {
                       <td className="py-4 px-6 text-right">
                         <button
                           onClick={() => handleOpenEdit(prod)}
-                          className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition-all border border-transparent hover:border-rose-500/20"
+                          className="p-2 text-[#6c655b] hover:text-rose-700 hover:bg-rose-500/10 rounded-xl transition-all border border-transparent hover:border-rose-500/20"
                           title="Editar Precios de Producto"
                         >
                           <Edit3 size={18} />
@@ -713,8 +713,8 @@ export default function AdminPreciosPage() {
 
         {/* Paginacion: sin esto solo se veian los primeros 50 productos y el resto
             era inalcanzable, aunque el backend ya devolvia el total. */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-4 border-t border-slate-800">
-          <p className="text-sm text-slate-400">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-4 border-t border-[#e5dfd3]">
+          <p className="text-sm text-[#6c655b]">
             {catalogoDisponible ? `Mostrando ${productos.length === 0 ? 0 : ((pagina - 1) * POR_PAGINA) + 1} - ${Math.min(pagina * POR_PAGINA, totalProductos)} de ${totalProductos} productos` : 'Catálogo no disponible'}
           </p>
           <div className="flex items-center gap-3">
@@ -726,7 +726,7 @@ export default function AdminPreciosPage() {
             >
               Anterior
             </button>
-            <span className="text-sm text-slate-400">
+            <span className="text-sm text-[#6c655b]">
               {catalogoDisponible ? `Página ${pagina} de ${Math.max(1, Math.ceil(totalProductos / POR_PAGINA))}` : '—'}
             </span>
             <button
@@ -743,19 +743,19 @@ export default function AdminPreciosPage() {
 
       {/* MODAL DE EDICIÓN MANUAL DE PRECIO */}
       {editingProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-xl p-6 space-y-6 shadow-2xl">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+          <div className="bg-white border border-[#e5dfd3] rounded-2xl w-full max-w-xl p-6 space-y-6 shadow-2xl">
+            <div className="flex justify-between items-center border-b border-[#e5dfd3] pb-4">
               <div>
-                <h3 className="text-lg font-bold text-white">Editar Precios — {editingProduct.nombre}</h3>
-                <p className="text-xs text-slate-400">SKU: {editingProduct.sku || 'N/A'}</p>
+                <h3 className="text-lg font-bold text-[#27231d]">Editar Precios — {editingProduct.nombre}</h3>
+                <p className="text-xs text-[#6c655b]">SKU: {editingProduct.sku || 'N/A'}</p>
               </div>
-              <button onClick={() => setEditingProduct(null)} className="text-slate-400 hover:text-white"><X size={20} /></button>
+              <button onClick={() => setEditingProduct(null)} className="text-[#6c655b] hover:text-[#27231d]"><X size={20} /></button>
             </div>
 
             {/* Referencia Porcentual Informativa (No Bloqueante) */}
-            <div className="p-4 bg-slate-850 bg-slate-800/40 rounded-xl border border-slate-700/60 space-y-2">
-              <label className="text-xs font-semibold text-rose-300 flex items-center gap-2">
+            <div className="p-4 bg-[#f1eee7] rounded-xl border border-[#e5dfd3] space-y-2">
+              <label className="text-xs font-semibold text-rose-700 flex items-center gap-2">
                 <Info size={14} /> Margen Informativo de Referencia (% estimado sobre costo)
               </label>
               <input
@@ -763,82 +763,82 @@ export default function AdminPreciosPage() {
                 placeholder="Ej. 30 (para +30% estimado)"
                 value={refPorcentaje}
                 onChange={(e) => handleCalcRefPorcentaje(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-rose-500"
+                className="w-full bg-white border border-[#e5dfd3] rounded-lg px-3 py-1.5 text-xs text-[#514b42] focus:outline-none focus:border-rose-500"
               />
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-[#6c655b]">
                 Esta regla porcentual es sólo una estimación sugerida y no restringe la colocación manual del valor deseado.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Costo Base ($)</label>
+                <label className="text-xs text-[#6c655b] block mb-1">Costo Base ($)</label>
                 <input
                   type="number"
                   value={editCosto}
                   onChange={(e) => setEditCosto(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-rose-500 font-mono"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm text-[#27231d] focus:outline-none focus:border-rose-500 font-mono"
                 />
               </div>
 
               <div>
-                <label className="text-xs text-emerald-400 block mb-1">Consumidor (IVA incl.) ($)</label>
+                <label className="text-xs text-emerald-700 block mb-1">Consumidor (IVA incl.) ($)</label>
                 <input
                   type="number"
                   value={editPrecioCliente}
                   onChange={(e) => setEditPrecioCliente(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm text-[#27231d] focus:outline-none focus:border-emerald-500 font-mono"
                 />
               </div>
 
               <div>
-                <label className="text-xs text-sky-400 block mb-1">Profesional B2B ($)</label>
+                <label className="text-xs text-sky-700 block mb-1">Profesional B2B ($)</label>
                 <input
                   type="number"
                   value={editPrecioProf}
                   onChange={(e) => setEditPrecioProf(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-sky-500 font-mono"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm text-[#27231d] focus:outline-none focus:border-sky-500 font-mono"
                 />
               </div>
 
               <div>
-                <label className="text-xs text-purple-400 block mb-1">Salón B2B ($)</label>
+                <label className="text-xs text-purple-700 block mb-1">Salón B2B ($)</label>
                 <input
                   type="number"
                   value={editPrecioNegocio}
                   onChange={(e) => setEditPrecioNegocio(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500 font-mono"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm text-[#27231d] focus:outline-none focus:border-purple-500 font-mono"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="text-xs text-purple-300 block mb-1">Unidad Mínima Salón (Exclusiva Venta Salones)</label>
+                <label className="text-xs text-purple-700 block mb-1">Unidad Mínima Salón (Exclusiva Venta Salones)</label>
                 <input
                   type="number"
                   value={editUnidadMinimaNegocio}
                   onChange={(e) => setEditUnidadMinimaNegocio(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500 font-mono"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm text-[#27231d] focus:outline-none focus:border-purple-500 font-mono"
                 />
-                <p className="text-[11px] text-slate-400 mt-1">
+                <p className="text-[11px] text-[#6c655b] mt-1">
                   El mínimo de 6 unidades aplica únicamente a la lista de salones de belleza. En Consumidor y Profesional siempre es 1.
                 </p>
               </div>
 
               <div className="md:col-span-2">
-                <label className="text-xs text-slate-400 block mb-1">Motivo de Auditoría</label>
+                <label className="text-xs text-[#6c655b] block mb-1">Motivo de Auditoría</label>
                 <input
                   type="text"
                   value={editMotivo}
                   onChange={(e) => setEditMotivo(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-rose-500"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3.5 py-2 text-sm text-[#27231d] focus:outline-none focus:border-rose-500"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
+            <div className="flex justify-end gap-3 pt-4 border-t border-[#e5dfd3]">
               <button
                 onClick={() => setEditingProduct(null)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-sm font-medium"
+                className="px-4 py-2 bg-[#f1eee7] hover:bg-[#e9e4da] text-[#514b42] rounded-xl text-sm font-medium"
               >
                 Cancelar
               </button>
@@ -856,23 +856,23 @@ export default function AdminPreciosPage() {
 
       {/* MODAL DE AJUSTE MASIVO CON VISTA PREVIA OBLIGATORIA */}
       {showBulkModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl p-6 space-y-6 shadow-2xl">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+          <div className="bg-white border border-[#e5dfd3] rounded-2xl w-full max-w-2xl p-6 space-y-6 shadow-2xl">
+            <div className="flex justify-between items-center border-b border-[#e5dfd3] pb-4">
+              <h3 className="text-lg font-bold text-[#27231d] flex items-center gap-2">
                 <Sliders size={20} className="text-rose-500" />
                 Ajuste Masivo de Precios (Vista Previa Requerida)
               </h3>
-              <button onClick={() => setShowBulkModal(false)} className="text-slate-400 hover:text-white"><X size={20} /></button>
+              <button onClick={() => setShowBulkModal(false)} className="text-[#6c655b] hover:text-[#27231d]"><X size={20} /></button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Lista Destino</label>
+                <label className="text-xs text-[#6c655b] block mb-1">Lista Destino</label>
                 <select
                   value={bulkLista}
                   onChange={(e) => setBulkLista(e.target.value as 'cliente' | 'profesional' | 'negocio')}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3 py-2 text-[#27231d]"
                 >
                   <option value="cliente">Consumidor</option>
                   <option value="profesional">Profesional</option>
@@ -881,11 +881,11 @@ export default function AdminPreciosPage() {
               </div>
 
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Tipo de Ajuste</label>
+                <label className="text-xs text-[#6c655b] block mb-1">Tipo de Ajuste</label>
                 <select
                   value={bulkOperacion}
                   onChange={(e) => setBulkOperacion(e.target.value as 'porcentaje' | 'fijar' | 'delta')}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3 py-2 text-[#27231d]"
                 >
                   <option value="porcentaje">Porcentaje (%) — varía el precio en ese %</option>
                   <option value="fijar">Fijar precio ($) — pone ese precio a todos</option>
@@ -894,12 +894,12 @@ export default function AdminPreciosPage() {
               </div>
 
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Valor de Incremento</label>
+                <label className="text-xs text-[#6c655b] block mb-1">Valor de Incremento</label>
                 <input
                   type="number"
                   value={bulkValor}
                   onChange={(e) => setBulkValor(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 font-mono"
+                  className="w-full bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl px-3 py-2 text-[#27231d] font-mono"
                 />
               </div>
             </div>
@@ -907,7 +907,7 @@ export default function AdminPreciosPage() {
             <button
               onClick={handleGenerateBulkPreview}
               disabled={bulkLoading}
-              className="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-rose-400 border border-rose-500/20 rounded-xl text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-full py-2.5 bg-[#f1eee7] hover:bg-[#e9e4da] text-rose-700 border border-rose-500/20 rounded-xl text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {bulkLoading ? 'Calculando en el servidor…' : 'Generar Vista Previa de Cambios'}
             </button>
@@ -915,26 +915,26 @@ export default function AdminPreciosPage() {
             {/* TABLA DE VISTA PREVIA PROPUESTA */}
             {bulkPreviewRows.length > 0 && (
               <div className="space-y-3">
-                <p className="text-xs font-semibold text-slate-300">
+                <p className="text-xs font-semibold text-[#514b42]">
                   Vista previa del servidor · {bulkPreviewRows.length} de {productos.length} productos de esta página ({totalProductos} en el catálogo):
                 </p>
-                <div className="max-h-60 overflow-y-auto border border-slate-800 rounded-xl">
-                  <table className="w-full text-left text-xs text-slate-300">
-                    <thead className="bg-slate-800 text-slate-400 sticky top-0">
+                <div className="max-h-60 overflow-y-auto border border-[#e5dfd3] rounded-xl">
+                  <table className="w-full text-left text-xs text-[#514b42]">
+                    <thead className="bg-[#f1eee7] text-[#6c655b] sticky top-0">
                       <tr>
                         <th className="py-2 px-3">Producto</th>
                         <th className="py-2 px-3 text-right">Precio Actual</th>
                         <th className="py-2 px-3 text-right">Precio Nuevo Propuesto</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-800">
+                    <tbody className="divide-y divide-[#e5dfd3]">
                       {bulkPreviewRows.slice(0, 50).map((r) => (
                         <tr key={r.producto_id}>
                           <td className="py-2 px-3">{r.nombre}</td>
-                          <td className="py-2 px-3 text-right font-mono text-slate-400">
+                          <td className="py-2 px-3 text-right font-mono text-[#6c655b]">
                             {formatPrecio(r.precio_actual)}
                           </td>
-                          <td className="py-2 px-3 text-right font-mono text-emerald-400 font-bold">
+                          <td className="py-2 px-3 text-right font-mono text-emerald-700 font-bold">
                             ${formatPrecio(r.precio_nuevo)}
                           </td>
                         </tr>
@@ -946,7 +946,7 @@ export default function AdminPreciosPage() {
                 <div className="flex justify-end gap-3 pt-2">
                   <button
                     onClick={() => setShowBulkModal(false)}
-                    className="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-sm font-medium"
+                    className="px-4 py-2 bg-[#f1eee7] text-[#514b42] rounded-xl text-sm font-medium"
                   >
                     Cancelar
                   </button>
@@ -965,19 +965,19 @@ export default function AdminPreciosPage() {
 
       {/* MODAL DE IMPORTACIÓN CSV */}
       {showImportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg p-6 space-y-6 shadow-2xl">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <FileSpreadsheet size={20} className="text-sky-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+          <div className="bg-white border border-[#e5dfd3] rounded-2xl w-full max-w-lg p-6 space-y-6 shadow-2xl">
+            <div className="flex justify-between items-center border-b border-[#e5dfd3] pb-4">
+              <h3 className="text-lg font-bold text-[#27231d] flex items-center gap-2">
+                <FileSpreadsheet size={20} className="text-sky-700" />
                 Importar Precios desde Archivo CSV
               </h3>
-              <button onClick={() => setShowImportModal(false)} className="text-slate-400 hover:text-white"><X size={20} /></button>
+              <button onClick={() => setShowImportModal(false)} className="text-[#6c655b] hover:text-[#27231d]"><X size={20} /></button>
             </div>
 
             {/* REGLA FORZOSA DE NEGOCIO */}
-            <div className="p-4 bg-sky-500/10 border border-sky-500/30 rounded-xl text-xs text-sky-200 space-y-1">
-              <p className="font-bold flex items-center gap-1 text-sky-300">
+            <div className="p-4 bg-sky-500/10 border border-sky-500/30 rounded-xl text-xs text-sky-800 space-y-1">
+              <p className="font-bold flex items-center gap-1 text-sky-700">
                 <Info size={14} /> Regla de Importación CSV:
               </p>
               <p>
@@ -988,12 +988,12 @@ export default function AdminPreciosPage() {
 
             <div className="space-y-4">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Seleccionar archivo CSV</label>
+                <label className="text-xs text-[#6c655b] block mb-1">Seleccionar archivo CSV</label>
                 <input
                   type="file"
                   accept=".csv"
                   onChange={(e) => setImportFile(e.target.files?.[0] || null)}
-                  className="w-full text-xs text-slate-300 bg-slate-950 border border-slate-700 rounded-xl p-2.5"
+                  className="w-full text-xs text-[#514b42] bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl p-2.5"
                 />
               </div>
 
@@ -1003,9 +1003,9 @@ export default function AdminPreciosPage() {
                   id="dryRunCheck"
                   checked={importDryRun}
                   onChange={(e) => setImportDryRun(e.target.checked)}
-                  className="rounded border-slate-700 bg-slate-950 text-rose-500 focus:ring-rose-500"
+                  className="rounded border-[#e5dfd3] bg-[#f7f5f0] text-rose-500 focus:ring-rose-500"
                 />
-                <label htmlFor="dryRunCheck" className="text-xs text-slate-300 cursor-pointer">
+                <label htmlFor="dryRunCheck" className="text-xs text-[#514b42] cursor-pointer">
                   Modo Simulador (Dry Run) — Evalúa el archivo sin modificar la base de datos
                 </label>
               </div>
@@ -1020,16 +1020,16 @@ export default function AdminPreciosPage() {
 
             {/* RESULTADO DE IMPORTACIÓN */}
             {importResult && (
-              <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2 text-xs">
-                <p className="font-semibold text-slate-200">Resultado del Procesamiento:</p>
+              <div className="p-4 bg-[#f7f5f0] border border-[#e5dfd3] rounded-xl space-y-2 text-xs">
+                <p className="font-semibold text-[#514b42]">Resultado del Procesamiento:</p>
                 <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="bg-emerald-500/10 p-2 rounded-lg text-emerald-400 font-bold">
+                  <div className="bg-emerald-500/10 p-2 rounded-lg text-emerald-700 font-bold">
                     Nuevos: {importResult.nuevos || 0}
                   </div>
-                  <div className="bg-sky-500/10 p-2 rounded-lg text-sky-400 font-bold">
+                  <div className="bg-sky-500/10 p-2 rounded-lg text-sky-700 font-bold">
                     Modificados: {importResult.modificados || 0}
                   </div>
-                  <div className="bg-slate-800 p-2 rounded-lg text-slate-400 font-bold">
+                  <div className="bg-[#f1eee7] p-2 rounded-lg text-[#6c655b] font-bold">
                     Sin Cambio: {importResult.sin_cambio || 0}
                   </div>
                 </div>
@@ -1041,19 +1041,19 @@ export default function AdminPreciosPage() {
 
       {/* MODAL DE HISTORIAL DE AUDITORÍA DE PRECIOS */}
       {showHistorialModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-4xl p-6 space-y-6 shadow-2xl">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <History size={20} className="text-purple-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+          <div className="bg-white border border-[#e5dfd3] rounded-2xl w-full max-w-4xl p-6 space-y-6 shadow-2xl">
+            <div className="flex justify-between items-center border-b border-[#e5dfd3] pb-4">
+              <h3 className="text-lg font-bold text-[#27231d] flex items-center gap-2">
+                <History size={20} className="text-purple-700" />
                 Historial de Auditoría de Precios
               </h3>
-              <button onClick={() => setShowHistorialModal(false)} className="text-slate-400 hover:text-white"><X size={20} /></button>
+              <button onClick={() => setShowHistorialModal(false)} className="text-[#6c655b] hover:text-[#27231d]"><X size={20} /></button>
             </div>
 
-            <div className="max-h-96 overflow-y-auto border border-slate-800 rounded-xl">
-              <table className="w-full text-left text-xs text-slate-300">
-                <thead className="bg-slate-800 text-slate-400 sticky top-0">
+            <div className="max-h-96 overflow-y-auto border border-[#e5dfd3] rounded-xl">
+              <table className="w-full text-left text-xs text-[#514b42]">
+                <thead className="bg-[#f1eee7] text-[#6c655b] sticky top-0">
                   <tr>
                     <th className="py-2.5 px-4">Fecha / Hora</th>
                     <th className="py-2.5 px-4">Producto</th>
@@ -1063,37 +1063,37 @@ export default function AdminPreciosPage() {
                     <th className="py-2.5 px-4">Origen / Actor</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800">
+                <tbody className="divide-y divide-[#e5dfd3]">
                   {loadingHistorial ? (
                     <tr>
-                      <td colSpan={6} className="py-8 text-center text-slate-400">
-                        <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-purple-400" />
+                      <td colSpan={6} className="py-8 text-center text-[#6c655b]">
+                        <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-purple-700" />
                         Cargando historial de cambios...
                       </td>
                     </tr>
                   ) : historialItems.length === 0 ? (
                     <tr>
-                      <td colSpan={6} className="py-8 text-center text-slate-400">
+                      <td colSpan={6} className="py-8 text-center text-[#6c655b]">
                         No hay registros en el historial de precios.
                       </td>
                     </tr>
                   ) : (
                     historialItems.map((item) => (
-                      <tr key={item.id} className="hover:bg-slate-800/40">
-                        <td className="py-2.5 px-4 font-mono text-slate-400">
+                      <tr key={item.id} className="hover:bg-[#f1eee7]">
+                        <td className="py-2.5 px-4 font-mono text-[#6c655b]">
                           {new Date(item.fecha_cambio).toLocaleString('es-CO')}
                         </td>
-                        <td className="py-2.5 px-4 font-medium text-slate-200">{item.producto_nombre}</td>
-                        <td className="py-2.5 px-4 uppercase font-semibold text-purple-300">{item.lista_codigo}</td>
-                        <td className="py-2.5 px-4 text-right font-mono text-slate-400">
+                        <td className="py-2.5 px-4 font-medium text-[#514b42]">{item.producto_nombre}</td>
+                        <td className="py-2.5 px-4 uppercase font-semibold text-purple-700">{item.lista_codigo}</td>
+                        <td className="py-2.5 px-4 text-right font-mono text-[#6c655b]">
                           {formatPrecio(item.precio_anterior)}
                         </td>
-                        <td className="py-2.5 px-4 text-right font-mono font-bold text-emerald-400">
+                        <td className="py-2.5 px-4 text-right font-mono font-bold text-emerald-700">
                           ${formatPrecio(item.precio_nuevo)}
                         </td>
-                        <td className="py-2.5 px-4 text-slate-400">
+                        <td className="py-2.5 px-4 text-[#6c655b]">
                           <div>{item.origen}</div>
-                          {item.actor_nombre && <div className="text-[10px] text-slate-500">{item.actor_nombre}</div>}
+                          {item.actor_nombre && <div className="text-[10px] text-[#777064]">{item.actor_nombre}</div>}
                         </td>
                       </tr>
                     ))
@@ -1105,7 +1105,7 @@ export default function AdminPreciosPage() {
             <div className="flex justify-end pt-2">
               <button
                 onClick={() => setShowHistorialModal(false)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-sm font-medium"
+                className="px-4 py-2 bg-[#f1eee7] hover:bg-[#e9e4da] text-[#514b42] rounded-xl text-sm font-medium"
               >
                 Cerrar
               </button>
@@ -1115,12 +1115,12 @@ export default function AdminPreciosPage() {
       )}
 
       {/* SECCIÓN INFORMATIVA DE AUDITORÍA DE HISTORIAL */}
-      <div className="p-6 bg-slate-900/40 rounded-2xl border border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+      <div className="p-6 bg-white rounded-2xl border border-[#e5dfd3] flex items-center justify-between text-xs text-[#6c655b]">
         <div className="flex items-center gap-3">
-          <History size={18} className="text-slate-500" />
-          <span>Historial de Auditoría: Todos los cambios de precios quedan registrados de forma inmutable en <code className="text-slate-300">precios_historial</code>.</span>
+          <History size={18} className="text-[#777064]" />
+          <span>Historial de Auditoría: Todos los cambios de precios quedan registrados de forma inmutable en <code className="text-[#514b42]">precios_historial</code>.</span>
         </div>
-        <span className="text-slate-500 font-mono">FK ON DELETE RESTRICT Protegido</span>
+        <span className="text-[#777064] font-mono">FK ON DELETE RESTRICT Protegido</span>
       </div>
     </div>
   );
