@@ -124,6 +124,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '171_notificaciones_log.sql',
   '172_extend_devoluciones_retorno.sql',
   '173_logistica_metricas_diarias.sql',
+  '177_fix_logistica_metrics_rls.sql',
 ];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
@@ -245,10 +246,11 @@ const MIGRACIONES_ARRANQUE = [
   // ── Logística Fase 5 (D-GL-036) ────────────────────────────────────────
   // 170 prefs notificaciones, 171 log notificaciones, 172 devoluciones retorno,
   // 173 métricas diarias. Todas idempotentes (CREATE TABLE IF NOT EXISTS, ADD COLUMN IF NOT EXISTS).
-  '170_create_usuario_notificaciones_prefs.sql',
-  '171_create_notificaciones_log.sql',
+  '170_usuario_notificaciones_prefs.sql',
+  '171_notificaciones_log.sql',
   '172_extend_devoluciones_retorno.sql',
-  '173_create_logistica_metricas_diarias.sql',
+  '173_logistica_metricas_diarias.sql',
+  '177_fix_logistica_metrics_rls.sql',
 
 
 ];
