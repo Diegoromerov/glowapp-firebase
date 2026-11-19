@@ -489,3 +489,8 @@ en 076).
 
 - Agrega el hilo de respuestas y notas internas vinculado a la disputa y al tenant.
 - Aplica RLS para el rol de aplicación y acceso explícito al rol de sistema usado por los endpoints administrativos.
+
+## 181: peso opcional de producto para fulfillment
+
+- Agrega `productos.peso_kg` como `NUMERIC(8,3)` nullable para que el orquestador de fulfillment pueda leer el peso cuando exista.
+- No altera filas existentes ni inventa pesos; el código conserva el fallback de 0,5 kg cuando el campo queda `NULL`.
