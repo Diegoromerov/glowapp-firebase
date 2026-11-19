@@ -123,6 +123,8 @@ describe('logística mock E2E — pedido, fulfillment, etiqueta, pickup y entreg
     }, labelResponse);
     expect(labelResponse.statusCode).toBe(200);
     expect(labelResponse.body.data).toMatchObject({ carrier: 'inter', service_code: 'inter_express' });
+    expect(labelResponse.body.data.simulated).toBe(true);
+    expect(labelResponse.body.data.tracking_number).toMatch(/^MOCK-/);
     expect(shipment.guia).toBe(labelResponse.body.data.tracking_number);
 
     const pickupResponse = makeResponse();
@@ -137,6 +139,7 @@ describe('logística mock E2E — pedido, fulfillment, etiqueta, pickup y entreg
     }, pickupResponse);
     expect(pickupResponse.statusCode).toBe(200);
     expect(pickupResponse.body.data.carrier).toBe(shipment.transportadora);
+    expect(pickupResponse.body.data.simulated).toBe(true);
 
     const app = express();
     app.use('/api/webhooks/envia', enviaWebhook);

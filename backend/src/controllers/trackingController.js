@@ -19,7 +19,7 @@ async function getPublicTracking(req, res) {
     // Buscar envío + pedido + eventos de webhook (historial)
     const { rows } = await pool.query(
       `SELECT 
-         e.guia, e.transportadora, e.estado, e.url_rastreo,
+         e.guia, e.transportadora, e.estado, e.url_rastreo, e.label_pdf_url,
          e.creado_en, e.recogido_en, e.entregado_en, e.actualizado_en,
          e.origen_ciudad, e.origen_departamento,
          e.destino_ciudad, e.destino_departamento,
@@ -36,6 +36,8 @@ async function getPublicTracking(req, res) {
     }
 
     const envio = rows[0];
+    const simulated = String(envio.guia || '').startsWith('MOCK-')
+      || String(envio.label_pdf_url || '').startsWith('https://mock.envia.com/');
 
     // Obtener historial de estados desde webhook_events
     const historialRes = await pool.query(
@@ -60,7 +62,9 @@ async function getPublicTracking(req, res) {
       estado: 'CREADO',
       timestamp: envio.creado_en,
       ubicacion: `${envio.origen_ciudad}, ${envio.origen_departamento}`,
-      detalle: 'Etiqueta generada, pendiente de recolección',
+      detalle: simulated
+        ? 'Guía simulada; no hay recolección real programada'
+        : 'Etiqueta generada, pendiente de recolección',
       fuente: 'sistema',
     });
 
@@ -108,6 +112,7 @@ async function getPublicTracking(req, res) {
       data: {
         guia: envio.guia,
         transportadora: envio.transportadora,
+        simulated,
         estado_actual: envio.estado,
         url_rastreo: envio.url_rastreo,
         pedido_id: envio.pedido_id,
@@ -154,6 +159,8 @@ async function getProviderTracking(req, res) {
       }
 
       const envio = envioRes.rows[0];
+      const simulated = String(envio.guia || '').startsWith('MOCK-')
+        || String(envio.label_pdf_url || '').startsWith('https://mock.envia.com/');
 
       // Historial (mismo query que público)
       const historialRes = await client.query(
@@ -176,7 +183,9 @@ async function getProviderTracking(req, res) {
         estado: 'CREADO',
         timestamp: envio.creado_en,
         ubicacion: `${envio.origen_ciudad}, ${envio.origen_departamento}`,
-        detalle: 'Etiqueta generada por proveedor',
+        detalle: simulated
+          ? 'Guía simulada; no hay recolección real programada'
+          : 'Etiqueta generada por proveedor',
         fuente: 'sistema',
       });
 
@@ -232,6 +241,7 @@ async function getProviderTracking(req, res) {
         success: true,
         data: {
           ...envio,
+          simulated,
           timeline,
           acciones_permitidas: accionesPermitidas,
           puede_ver_label: !!envio.label_pdf_url,

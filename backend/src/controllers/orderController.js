@@ -2123,6 +2123,7 @@ async function updateEnvioStatus(req, res) {
             label_zpl: labelResult.label_zpl,
             carrier: bestRate.carrier,
             service_code: bestRate.service_code,
+            simulated: Boolean(labelResult.simulated || bestRate.simulated),
             envio_id: envioId,
             estimated_days: `${bestRate.days_min}-${bestRate.days_max}`
           }
@@ -2210,6 +2211,7 @@ async function updateEnvioStatus(req, res) {
             pickup_id: pickupResult.pickup_id,
             scheduled_at: pickupResult.scheduled_at,
             carrier: pickupResult.carrier,
+            simulated: Boolean(pickupResult.simulated),
             message: 'Recolección programada. El carrier pasará en la ventana indicada.'
           }
         });

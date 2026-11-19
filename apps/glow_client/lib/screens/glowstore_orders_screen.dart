@@ -68,6 +68,13 @@ class _GlowStoreOrdersScreenState extends State<GlowStoreOrdersScreen> {
           title: Text('Seguimiento ${data['guia'] ?? guide}'),
           content: SizedBox(width: 420, child: ListView(shrinkWrap: true, children: [
             Text('${data['transportadora'] ?? 'Transportadora'} · ${data['estado_actual'] ?? 'Estado desconocido'}'),
+            if (data['simulated'] == true) const Padding(
+              padding: EdgeInsets.only(top: 8),
+              child: Text(
+                'SIMULADO: esta guía no corresponde a un envío real ni tiene seguimiento de transportadora.',
+                style: TextStyle(color: Colors.deepOrange),
+              ),
+            ),
             if (timeline.isEmpty) const Text('Aún no hay eventos de seguimiento.'),
             ...timeline.map((raw) {
               final event = Map<String, dynamic>.from(raw as Map);

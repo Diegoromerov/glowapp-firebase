@@ -51,6 +51,7 @@ describe('EnviameClient — DIVIPOLA, routing y modo seguro', () => {
 
     expect(rates.map((rate) => rate.carrier)).toEqual(['inter', 'tcc']);
     expect(rates[0]).toMatchObject({ rate_id: 'mock-inter-inter_express-1', prioridad: 1, days_max: 2 });
+    expect(rates.every((rate) => rate.simulated === true)).toBe(true);
     expect(rates).toHaveLength(2);
 
     const filteredRates = await client.getRates({
@@ -99,14 +100,19 @@ describe('EnviameClient — DIVIPOLA, routing y modo seguro', () => {
     });
 
     expect(label).toMatchObject({ carrier: 'tcc', service_code: 'tcc_estandar', carrier_account_id: 'acct-tcc' });
+    expect(label.simulated).toBe(true);
+    expect(label.tracking_number).toMatch(/^MOCK-/);
     expect(pickup).toMatchObject({ carrier: 'tcc', status: 'scheduled' });
+    expect(pickup.simulated).toBe(true);
   });
 
   test('modo productivo falla cerrado sin credenciales o firma webhook', async () => {
     const previousNodeEnv = process.env.NODE_ENV;
     const previousRailwayEnvironment = process.env.RAILWAY_ENVIRONMENT_NAME;
     const previousApiKey = process.env.ENVIAME_API_KEY;
+    const previousLiveEnabled = process.env.ENVIAME_LIVE_ENABLED;
     delete process.env.ENVIAME_API_KEY;
+    delete process.env.ENVIAME_LIVE_ENABLED;
     process.env.NODE_ENV = 'production';
     process.env.RAILWAY_ENVIRONMENT_NAME = 'production';
     try {
@@ -122,6 +128,7 @@ describe('EnviameClient — DIVIPOLA, routing y modo seguro', () => {
         parcels: [{ weight: 1 }],
         value_cop: 10000
       })).rejects.toThrow(/cotización real.*no está habilitada/i);
+      await expect(configuredClient._fetch('/ship/generate')).rejects.toThrow(/deshabilitadas en este entorno/i);
     } finally {
       if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
       else process.env.NODE_ENV = previousNodeEnv;
@@ -129,18 +136,26 @@ describe('EnviameClient — DIVIPOLA, routing y modo seguro', () => {
       else process.env.RAILWAY_ENVIRONMENT_NAME = previousRailwayEnvironment;
       if (previousApiKey === undefined) delete process.env.ENVIAME_API_KEY;
       else process.env.ENVIAME_API_KEY = previousApiKey;
+      if (previousLiveEnabled === undefined) delete process.env.ENVIAME_LIVE_ENABLED;
+      else process.env.ENVIAME_LIVE_ENABLED = previousLiveEnabled;
     }
   });
 
-  test('permite mock sin credenciales solo en Railway staging aunque NODE_ENV sea production', () => {
+  test('Railway staging siempre simula aunque tenga credenciales y opt-in configurados', () => {
     const previousNodeEnv = process.env.NODE_ENV;
     const previousRailwayEnvironment = process.env.RAILWAY_ENVIRONMENT_NAME;
     const previousApiKey = process.env.ENVIAME_API_KEY;
+    const previousWebhookSecret = process.env.ENVIAME_WEBHOOK_SECRET;
+    const previousLiveEnabled = process.env.ENVIAME_LIVE_ENABLED;
     process.env.NODE_ENV = 'production';
     process.env.RAILWAY_ENVIRONMENT_NAME = 'staging';
-    delete process.env.ENVIAME_API_KEY;
+    process.env.ENVIAME_API_KEY = 'staging-test-key';
+    process.env.ENVIAME_WEBHOOK_SECRET = 'staging-test-secret';
+    process.env.ENVIAME_LIVE_ENABLED = 'true';
     try {
-      expect(new EnviameClient()._mockMode).toBe(true);
+      const client = new EnviameClient();
+      expect(client._mockMode).toBe(true);
+      expect(client._liveEnabled).toBe(false);
     } finally {
       if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
       else process.env.NODE_ENV = previousNodeEnv;
@@ -148,6 +163,10 @@ describe('EnviameClient — DIVIPOLA, routing y modo seguro', () => {
       else process.env.RAILWAY_ENVIRONMENT_NAME = previousRailwayEnvironment;
       if (previousApiKey === undefined) delete process.env.ENVIAME_API_KEY;
       else process.env.ENVIAME_API_KEY = previousApiKey;
+      if (previousWebhookSecret === undefined) delete process.env.ENVIAME_WEBHOOK_SECRET;
+      else process.env.ENVIAME_WEBHOOK_SECRET = previousWebhookSecret;
+      if (previousLiveEnabled === undefined) delete process.env.ENVIAME_LIVE_ENABLED;
+      else process.env.ENVIAME_LIVE_ENABLED = previousLiveEnabled;
     }
   });
 
