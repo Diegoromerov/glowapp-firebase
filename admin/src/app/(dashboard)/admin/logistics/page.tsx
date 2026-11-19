@@ -152,10 +152,10 @@ export default function AdminLogisticsPage() {
               </tr></thead>
               <tbody className="divide-y divide-gray-100">{shipments.map((shipment) => (
                 <tr key={shipment.id} className="align-top hover:bg-gray-50">
-                  <td className="px-4 py-3"><div className="font-mono">#{shipment.pedido_id.slice(0, 8).toUpperCase()}</div><div className="text-xs text-gray-500">Guía: {shipment.guia || 'pendiente'}</div><div className="text-xs text-gray-500">Total del pedido: {money(shipment.total)}</div></td>
+                  <td className="px-4 py-3"><div className="font-mono">#{shipment.pedido_id.slice(0, 8).toUpperCase()}</div><div className="text-xs text-gray-500">Guía: {shipment.guia || 'pendiente'}</div>{shipment.guia?.startsWith('MOCK-') && <div className="text-xs font-semibold text-amber-700">SIMULADO — no válido ante transportadora</div>}<div className="text-xs text-gray-500">Total del pedido: {money(shipment.total)}</div></td>
                   <td className="px-4 py-3">{shipment.proveedor_nombre || 'Sin proveedor'}<div className="text-xs text-gray-500">{shipment.proveedor_email || ''}</div></td>
                   <td className="px-4 py-3">{shipment.nombre_entrega}<div className="text-xs text-gray-500">{shipment.origen_ciudad || 'Origen pendiente'} → {shipment.destino_ciudad || 'Destino pendiente'}</div></td>
-                  <td className="px-4 py-3">{shipment.transportadora || 'Por asignar'}{shipment.url_rastreo && <a className="ml-2 inline-flex text-blue-700" href={shipment.url_rastreo} target="_blank" rel="noreferrer" aria-label="Abrir rastreo"><ExternalLink className="h-4 w-4" /></a>}</td>
+                  <td className="px-4 py-3">{shipment.transportadora || 'Por asignar'}{!shipment.guia?.startsWith('MOCK-') && shipment.url_rastreo && <a className="ml-2 inline-flex text-blue-700" href={shipment.url_rastreo} target="_blank" rel="noreferrer" aria-label="Abrir rastreo"><ExternalLink className="h-4 w-4" /></a>}</td>
                   <td className="px-4 py-3"><span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium">{STATUS_LABEL[shipment.estado] || shipment.estado}</span></td>
                   <td className="px-4 py-3 text-gray-600">{date(shipment.actualizado_en)}</td>
                   <td className="px-4 py-3"><button className="btn btn-tertiary" onClick={() => { setSelected(shipment); setNewStatus(shipment.estado); setNote(''); }}>Registrar novedad</button></td>
