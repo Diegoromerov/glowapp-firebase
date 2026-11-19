@@ -15,6 +15,13 @@ const fcmService = require('../services/fcmNotificationService');
  */
 async function _processOrderFulfillmentTx(orderId, db) {
   try {
+    // The payment webhook and recovery cron may claim the same order on
+    // different API replicas. Serialize by order for this transaction so only
+    // one caller can create shipments or send provider notifications.
+    await db.query(
+      'SELECT pg_advisory_xact_lock(hashtextextended($1::text, 0))',
+      [orderId]
+    );
 
     // 1. Obtener pedido con items y dirección
     const orderRes = await db.query(
@@ -43,6 +50,17 @@ async function _processOrderFulfillmentTx(orderId, db) {
     if (order.estado !== 'PAGADO') {
       console.log(`[FULFILLMENT] Pedido ${orderId} estado=${order.estado}, omitiendo`);
       return { skipped: true, reason: `Estado ${order.estado} no es PAGADO` };
+    }
+
+    // A repeated webhook or recovery attempt must not create a second parcel
+    // set. Multi-provider orders are created in one transaction below, so any
+    // existing row means that the complete fulfillment already committed.
+    const existingShipments = await db.query(
+      'SELECT 1 FROM envios WHERE pedido_id = $1 LIMIT 1',
+      [orderId]
+    );
+    if (existingShipments.rows.length > 0) {
+      return { skipped: true, reason: 'Fulfillment ya tiene envíos creados' };
     }
 
     // 3. ¿Es entrega en cita? (booking_id presente y tiene prestador_comisionado_id)
