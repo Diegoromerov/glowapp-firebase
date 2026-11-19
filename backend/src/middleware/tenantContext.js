@@ -59,7 +59,7 @@ const tenantRouting = require('../config/tenantRouting');
 
 async function tenantContextMiddleware(req, res, next) {
   // Sin usuario no hay contexto que fijar.
-  if (!req.user) {
+  if (!req.user || !req.user.tenant_id) {
     return next();
   }
 
