@@ -479,3 +479,8 @@ en 076).
 - Amplía las columnas requeridas y carga los 1.122 registros DIVIPOLA por código DANE, sin sobrescribir vínculos de zona preexistentes.
 - Crea y enlaza zonas base faltantes, sin confundirlas con zonas de prefijo postal; elimina el código ficticio `99999`.
 - Reejecutable dentro de una transacción y verificada contra el esquema histórico que ya tenía 167 registrada.
+
+## 181: peso opcional de producto para fulfillment
+
+- Agrega `productos.peso_kg` como `NUMERIC(8,3)` nullable para que el orquestador de fulfillment pueda leer el peso cuando exista.
+- No altera filas existentes ni inventa pesos; el código conserva el fallback de 0,5 kg cuando el campo queda `NULL`.
