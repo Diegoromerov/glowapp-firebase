@@ -2,7 +2,7 @@
 
 **Fecha de inspección:** 2026-11-19
 **Commit de producción revisado inicialmente:** `9555502b9e1be803140b9784ee73159673c4cfbd`
-**Commit de `main` y producción al inicio de esta ampliación:** `8656d4ca24b3cc3addbdcff50e4e53e8a109d23e`
+**Commit de `main` y producción al inicio de la captura:** `9ea61fbbc9e072fd6782f672c7d2d0e1e20e790b`
 **Alcance:** app cliente Flutter, app proveedor Flutter, panel Next.js, API Node.js/PostgreSQL en Railway.
 
 ## Resultado ejecutivo
@@ -26,7 +26,8 @@ La documentación de Fase 0 se añadió a `main` en `c326f95` y se amplió en `8
 | API, 5 GET secuenciales a `/api/health` | 5/5 HTTP 200; RTT externo 393.7–1,714.8 ms; mediana 480 ms | Muestra puntual, incluye red/TLS/proxy y no equivale a duración interna ni a p95 de usuarios |
 | Panel, 5 GET secuenciales a `/` | 5/5 HTTP 200; RTT externo 579–905 ms; mediana 643 ms | Ruta pública sin sesión; RTT incluye red/TLS/proxy, no mide navegación autenticada ni Core Web Vitals |
 | API staging `glowapp-api-staging`, commit `65534a4` | Deployment `SUCCESS`; `/api/health` HTTP 200, PostgreSQL disponible, 178 migraciones; `/metrics` HTTP 200 | Staging está disponible para una prueba posterior de carga controlada; esto no demuestra comportamiento bajo carga |
-| API staging `GET /api/providers` | HTTP 400 en una petición externa | Se excluye de la medición: contrato autodescubierto sin parámetros documentados; no repetir hasta identificar el contrato/tenant requerido |
+| API staging `GET /api/providers` sin `X-App-Audience` | HTTP 400 con `Header X-App-Audience requerido` | Rechazo de contrato esperado; la prueba válida envía `X-App-Audience: client` y se documenta en la fila siguiente |
+| API staging, `/api/providers` con `X-App-Audience: client` | 5 GET secuenciales, 5/5 HTTP 200; RTT externo 379.8–608.4 ms, mediana 437.8 ms; respuesta 1,598 bytes | Perfil inicial 1 VU, pausa de 1 s, solo lectura; no es p95 ni prueba de capacidad. Sin el encabezado requerido, la API devuelve 400 `Header X-App-Audience requerido` |
 | Variables de observabilidad Railway | No se encontraron nombres de variables OTEL, Prometheus Remote Write, Grafana, Sentry, Datadog, Honeycomb o New Relic en API producción/staging | Sin evidencia de exportación remota configurada en esos servicios; los valores secretos no se leyeron |
 | Colector local de Fase 0 | Prueba de una muestra en staging guardó 148 métricas seleccionadas y produjo resumen válido | El transporte necesita el almacén CA del sistema en esta máquina; Node sin esa opción rechazó el certificado y no se desactivó TLS |
 
@@ -42,7 +43,7 @@ La documentación de Fase 0 se añadió a `main` en `c326f95` y se amplió en `8
 
 ## Riesgos de medición detectados
 
-1. `backend/load-test/glowapp_masive_load.js` tiene como destino por defecto un dominio antiguo y comprueba un campo de health (`db`) que no coincide con el contrato actual (`database`). Además escala hasta 500 usuarios virtuales. **No ejecutar en producción.**
+1. `backend/load-test/glowapp_masive_load.js` tiene como destino por defecto un dominio antiguo y comprueba un campo de health (`db`) que no coincide con el contrato actual (`database`). Además escala hasta 500 usuarios virtuales. **No ejecutar en producción.** Se añadió `backend/scripts/phase0_staging_read_probe.ps1`, limitado al host de staging y a GET secuenciales de catálogo con audiencia cliente.
 2. `backend/scripts/smoke_test_prod.js` no es un smoke test inocuo: consulta un estado de consentimiento con ID fijo y envía un POST biométrico con credenciales ficticias. **No ejecutar contra producción.**
 3. No se encontró instrumentación `web-vitals`/RUM en el panel; las métricas de servidor no reflejan LCP/INP/CLS ni tiempos percibidos dentro de Flutter.
 4. Las métricas Prometheus actuales son en memoria del proceso. Sin scraping persistente y retención, un reinicio pierde la ventana histórica necesaria para comparar.
@@ -95,15 +96,21 @@ El informe deriva percentiles aproximados de deltas de histogramas y tasas de er
 ### Prueba de carga
 
 - Corregir destino, contrato de health, perfiles de carga y umbrales en un cambio separado.
-- Ejecutar primero contra staging con datos sintéticos y rampa baja; detener si suben errores, conexiones DB o latencia.
+- El perfil de entrada ya ejecutado en staging hace cinco lecturas secuenciales con 1 VU y pausa de 1 s. Antes de aumentar concurrencia, definir observación de errores, conexiones DB y latencia; no inferir capacidad a partir de estas cinco solicitudes.
 - No usar los 500 usuarios virtuales actuales como primer escalón ni dirigirlos a producción.
+
+Ejecutar el perfil conservador, sin URL configurable y sin guardar el cuerpo del catálogo:
+
+```powershell
+.\backend\scripts\phase0_staging_read_probe.ps1 -Requests 5 -PauseSeconds 1
+```
 
 ## Criterio de salida de fase 0
 
 1. Ventana de datos de servidor con suficiente volumen y sin contar las sondas manuales como tráfico real.
 2. p95/p99 por rutas críticas y tasa de errores documentadas.
 3. Métricas de experiencia web y un protocolo repetible para los recorridos Flutter.
-4. Script de carga saneado y ejecutado en staging con un perfil conservador.
+4. Perfil inicial seguro de lecturas ejecutado en staging; la prueba de capacidad sostenida queda para otra fase con umbrales y observación preparados.
 5. Objetivos de mejora acordados después de ver la línea base, antes de cambiar código de rendimiento.
 
-**Estado:** salud básica de producción/staging, RTT externo puntual y recolector local validado en una muestra de staging. Fase 0 sigue abierta: falta completar siete días de captura persistente en producción, obtener p95/p99 por rutas válidas, medir Core Web Vitals de laboratorio/campo, recorrer Flutter en dispositivos y ejecutar un perfil conservador de carga en staging. No se cambió configuración productiva ni se ejecutó carga concurrente.
+**Estado:** salud básica de producción/staging, RTT externo puntual, recolector local validado y perfil de entrada 1 VU ejecutado en staging. La captura local de producción inició el `2026-11-19T19:33:47Z`, con intervalo de 5 min, en `C:\Users\Compu casa\Documents\Codex\phase0-performance\production.ndjson`. Fase 0 sigue abierta hasta completar siete días representativos, obtener p95/p99 con suficiente tráfico, medir Core Web Vitals, recorrer Flutter en dispositivos y acordar objetivos antes de optimizar. No se cambió configuración productiva ni se ejecutó carga concurrente.
