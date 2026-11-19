@@ -28,6 +28,7 @@ La documentación de Fase 0 se añadió a `main` en `c326f95` y se amplió en `8
 | API staging `glowapp-api-staging`, commit `65534a4` | Deployment `SUCCESS`; `/api/health` HTTP 200, PostgreSQL disponible, 178 migraciones; `/metrics` HTTP 200 | Staging está disponible para una prueba posterior de carga controlada; esto no demuestra comportamiento bajo carga |
 | API staging `GET /api/providers` sin `X-App-Audience` | HTTP 400 con `Header X-App-Audience requerido` | Rechazo de contrato esperado; la prueba válida envía `X-App-Audience: client` y se documenta en la fila siguiente |
 | API staging, `/api/providers` con `X-App-Audience: client` | 5 GET secuenciales, 5/5 HTTP 200; RTT externo 379.8–608.4 ms, mediana 437.8 ms; respuesta 1,598 bytes | Perfil inicial 1 VU, pausa de 1 s, solo lectura; no es p95 ni prueba de capacidad. Sin el encabezado requerido, la API devuelve 400 `Header X-App-Audience requerido` |
+| Dispositivos Flutter disponibles (`flutter devices --machine`) | Windows, Chrome y Edge; ningún dispositivo Android/iOS ni emulador | No se puede obtener rendimiento móvil nativo representativo en este entorno; no se sustituye por un build Flutter web |
 | Variables de observabilidad Railway | No se encontraron nombres de variables OTEL, Prometheus Remote Write, Grafana, Sentry, Datadog, Honeycomb o New Relic en API producción/staging | Sin evidencia de exportación remota configurada en esos servicios; los valores secretos no se leyeron |
 | Colector local de Fase 0 | Prueba de una muestra en staging guardó 148 métricas seleccionadas y produjo resumen válido | El transporte necesita el almacén CA del sistema en esta máquina; Node sin esa opción rechazó el certificado y no se desactivó TLS |
 
@@ -65,7 +66,7 @@ $env:GLOWAPP_METRICS_INTERVAL_MS = '300000'
 node --use-system-ca backend/scripts/collect_phase0_metrics.js
 ```
 
-Dejarlo activo por siete días representativos; detenerlo con `Ctrl+C`. Para generar el resumen:
+Dejarlo activo por siete días representativos y mantener el equipo/sesión disponible; detenerlo con `Ctrl+C`. Errores de scrapeo quedan registrados y los intervalos largos se omiten. Para generar el resumen:
 
 ```powershell
 node backend/scripts/summarize_phase0_metrics.js 'C:\Users\Compu casa\Documents\Codex\phase0-performance\production.ndjson'
@@ -113,4 +114,4 @@ Ejecutar el perfil conservador, sin URL configurable y sin guardar el cuerpo del
 4. Perfil inicial seguro de lecturas ejecutado en staging; la prueba de capacidad sostenida queda para otra fase con umbrales y observación preparados.
 5. Objetivos de mejora acordados después de ver la línea base, antes de cambiar código de rendimiento.
 
-**Estado:** salud básica de producción/staging, RTT externo puntual, recolector local validado y perfil de entrada 1 VU ejecutado en staging. La captura local de producción inició el `2026-11-19T19:33:47Z`, con intervalo de 5 min, en `C:\Users\Compu casa\Documents\Codex\phase0-performance\production.ndjson`. Fase 0 sigue abierta hasta completar siete días representativos, obtener p95/p99 con suficiente tráfico, medir Core Web Vitals, recorrer Flutter en dispositivos y acordar objetivos antes de optimizar. No se cambió configuración productiva ni se ejecutó carga concurrente.
+**Estado:** salud básica de producción/staging, RTT externo puntual, recolector local validado y perfil de entrada 1 VU ejecutado en staging. La captura local de producción inició el `2026-11-19T19:33:47Z`, con intervalo de 5 min, en `C:\Users\Compu casa\Documents\Codex\phase0-performance\production.ndjson`. Fase 0 sigue abierta hasta completar siete días representativos, obtener p95/p99 con suficiente tráfico, medir Core Web Vitals (Lighthouse no generó reporte), recorrer Flutter en dispositivos y acordar objetivos antes de optimizar. No se cambió configuración productiva ni se ejecutó carga concurrente.
