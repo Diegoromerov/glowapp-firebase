@@ -2,7 +2,7 @@
 
 **Fecha de inspección:** 2026-11-19
 **Commit de producción revisado inicialmente:** `9555502b9e1be803140b9784ee73159673c4cfbd`
-**Commit actual de `main`:** `c326f958cfc682f2a337d5fd8db2dce5822b4acd` (documentación de Fase 0)
+**Commit de `main` y producción al inicio de esta ampliación:** `8656d4ca24b3cc3addbdcff50e4e53e8a109d23e`
 **Alcance:** app cliente Flutter, app proveedor Flutter, panel Next.js, API Node.js/PostgreSQL en Railway.
 
 ## Resultado ejecutivo
@@ -11,7 +11,7 @@ Producción respondió correctamente durante la inspección: `GET /api/health` d
 
 Esto valida disponibilidad básica, pero **no establece todavía una línea base de rendimiento representativa**. El endpoint Prometheus de la API tenía solo seis muestras HTTP en memoria desde el arranque. El histograma ubica ese pequeño conjunto por debajo del bucket de 100 ms, pero las solicitudes incluyen sondas de esta inspección y no sirven para inferir latencia de usuarios. La consulta de logs HTTP históricos de Railway no devolvió filas.
 
-La documentación de Fase 0 se añadió a `main` en `c326f95`; Railway lanzó despliegues de API y panel debido al cambio. Ambos terminaron en `SUCCESS`. Tras el despliegue, la API y el panel devolvieron HTTP 200; la API reportó PostgreSQL disponible y 53 migraciones registradas. No hubo cambios de código de aplicación ni de configuración productiva.
+La documentación de Fase 0 se añadió a `main` en `c326f95` y se amplió en `8656d4c`. Railway desplegó ambos commits automáticamente en API y panel; los despliegues de `8656d4c` terminaron en `SUCCESS`. Tras ellos, producción devolvió HTTP 200 en API y panel; la API reportó PostgreSQL disponible y 53 migraciones registradas. No hubo cambios de código de aplicación ni de configuración productiva.
 
 ## Evidencia disponible
 
@@ -25,6 +25,10 @@ La documentación de Fase 0 se añadió a `main` en `c326f95`; Railway lanzó de
 | Logs HTTP Railway | La consulta de hasta 200 filas devolvió cero registros | No prueba ausencia de tráfico; la fuente/retención no aportó una muestra utilizable |
 | API, 5 GET secuenciales a `/api/health` | 5/5 HTTP 200; RTT externo 393.7–1,714.8 ms; mediana 480 ms | Muestra puntual, incluye red/TLS/proxy y no equivale a duración interna ni a p95 de usuarios |
 | Panel, 5 GET secuenciales a `/` | 5/5 HTTP 200; RTT externo 579–905 ms; mediana 643 ms | Ruta pública sin sesión; RTT incluye red/TLS/proxy, no mide navegación autenticada ni Core Web Vitals |
+| API staging `glowapp-api-staging`, commit `65534a4` | Deployment `SUCCESS`; `/api/health` HTTP 200, PostgreSQL disponible, 178 migraciones; `/metrics` HTTP 200 | Staging está disponible para una prueba posterior de carga controlada; esto no demuestra comportamiento bajo carga |
+| API staging `GET /api/providers` | HTTP 400 en una petición externa | Se excluye de la medición: contrato autodescubierto sin parámetros documentados; no repetir hasta identificar el contrato/tenant requerido |
+| Variables de observabilidad Railway | No se encontraron nombres de variables OTEL, Prometheus Remote Write, Grafana, Sentry, Datadog, Honeycomb o New Relic en API producción/staging | Sin evidencia de exportación remota configurada en esos servicios; los valores secretos no se leyeron |
+| Colector local de Fase 0 | Prueba de una muestra en staging guardó 148 métricas seleccionadas y produjo resumen válido | El transporte necesita el almacén CA del sistema en esta máquina; Node sin esa opción rechazó el certificado y no se desactivó TLS |
 
 ## Instrumentación y herramientas ya presentes
 
@@ -42,9 +46,31 @@ La documentación de Fase 0 se añadió a `main` en `c326f95`; Railway lanzó de
 2. `backend/scripts/smoke_test_prod.js` no es un smoke test inocuo: consulta un estado de consentimiento con ID fijo y envía un POST biométrico con credenciales ficticias. **No ejecutar contra producción.**
 3. No se encontró instrumentación `web-vitals`/RUM en el panel; las métricas de servidor no reflejan LCP/INP/CLS ni tiempos percibidos dentro de Flutter.
 4. Las métricas Prometheus actuales son en memoria del proceso. Sin scraping persistente y retención, un reinicio pierde la ventana histórica necesaria para comparar.
-5. `backend/monitoring/prometheus.yml` y `alerts.yml` están versionados, pero no hay evidencia de que Prometheus esté desplegado y reteniendo datos. Su target (`glowapp-backend:8080`) debe validarse contra la red y el puerto reales de producción.
-6. La alerta `GlowAppHighHttpErrorRate` divide tasas sin proteger el denominador cero. Debe validarse y protegerse ese caso antes de depender de ella para operaciones.
-7. `backend/src/instrumentation.ts` deja activo el exportador local `:9464/metrics` cuando falta `PROMETHEUS_REMOTE_WRITE_URL`; hay que verificar que no colisiona con el proceso y que los exportadores de producción llegan a un colector real. No se inspeccionaron valores secretos.
+5. `backend/monitoring/prometheus.yml` y `alerts.yml` están versionados, pero no hay evidencia de que Prometheus esté desplegado y reteniendo datos. Su target (`glowapp-backend:8080`) corresponde a una topología de red interna y debe validarse antes de usarlo fuera de ella.
+6. Se revisó la expresión `GlowAppHighHttpErrorRate`: PromQL sigue aritmética IEEE 754 y los operadores de comparación filtran los valores que no cumplen; por tanto, el caso `0/0` no hace disparar por sí mismo esta alerta. La brecha es que no hay evidencia de que un evaluador Prometheus la esté ejecutando. [Referencia oficial de operadores PromQL](https://prometheus.io/docs/prometheus/latest/querying/operators/).
+7. `backend/src/instrumentation.ts` deja activo el exportador local `:9464/metrics` cuando falta `PROMETHEUS_REMOTE_WRITE_URL`; la ausencia de variables de exportación en Railway hace necesario confirmar el modo de arranque y la existencia de un colector antes de dar esas métricas por persistidas. No se inspeccionaron valores secretos.
+8. Lighthouse no pudo completar desde este entorno. El primer intento de npm terminó con `ENOSPC`; al reintentar con caché en D: falló la escritura con `EIO`. No se generó reporte Lighthouse ni se modificó el lockfile.
+
+## Captura persistente de backend
+
+El repositorio incluye un recolector local de solo lectura en `backend/scripts/collect_phase0_metrics.js` y un resumidor en `backend/scripts/summarize_phase0_metrics.js`. El recolector solo acepta HTTPS hacia `/metrics` de los dominios API de producción/staging de GlowApp; escribe muestras agregadas NDJSON y no conserva cuerpos de negocio ni encabezados. El intervalo mínimo es 15 s; usar 300 s (5 min) para esta ventana y excluir `/metrics`, `/api/health` y `UNMATCHED` del resumen de rutas de usuario.
+
+En PowerShell, después de desplegar el commit que contiene ambos scripts, iniciar la captura local con Node 24 (esta máquina requiere confiar en el almacén CA del sistema; `--use-system-ca` mantiene la validación TLS):
+
+```powershell
+$env:GLOWAPP_METRICS_URL = 'https://glowapp-api-production.up.railway.app/metrics'
+$env:GLOWAPP_METRICS_OUTPUT = 'C:\Users\Compu casa\Documents\Codex\phase0-performance\production.ndjson'
+$env:GLOWAPP_METRICS_INTERVAL_MS = '300000'
+node --use-system-ca backend/scripts/collect_phase0_metrics.js
+```
+
+Dejarlo activo por siete días representativos; detenerlo con `Ctrl+C`. Para generar el resumen:
+
+```powershell
+node backend/scripts/summarize_phase0_metrics.js 'C:\Users\Compu casa\Documents\Codex\phase0-performance\production.ndjson'
+```
+
+El informe deriva percentiles aproximados de deltas de histogramas y tasas de error por ruta. Omite intervalos mayores a diez minutos; si Railway reinicia el proceso, detecta el descenso de contadores y trata el valor actual como contador reiniciado. El endpoint `/metrics` incrementa su propia serie; el resumidor excluye `/metrics`, `/api/health` y `UNMATCHED` para no presentar el sondeo como tráfico de usuario.
 
 ## Protocolo propuesto
 
@@ -80,4 +106,4 @@ La documentación de Fase 0 se añadió a `main` en `c326f95`; Railway lanzó de
 4. Script de carga saneado y ejecutado en staging con un perfil conservador.
 5. Objetivos de mejora acordados después de ver la línea base, antes de cambiar código de rendimiento.
 
-**Estado:** salud básica y RTT externo puntual confirmados; línea base global pendiente por falta de muestras persistentes y de RUM cliente. No se modificó configuración de producción ni se generó carga.
+**Estado:** salud básica de producción/staging, RTT externo puntual y recolector local validado en una muestra de staging. Fase 0 sigue abierta: falta completar siete días de captura persistente en producción, obtener p95/p99 por rutas válidas, medir Core Web Vitals de laboratorio/campo, recorrer Flutter en dispositivos y ejecutar un perfil conservador de carga en staging. No se cambió configuración productiva ni se ejecutó carga concurrente.
