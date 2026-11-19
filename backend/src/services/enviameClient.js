@@ -12,13 +12,26 @@ class EnviameClient {
     this.timeout = options.timeout || 30000;
     this.pool = options.pool || null; // Pool de BD para routing rules y municipios_dane
     
-    const production = process.env.NODE_ENV === 'production';
     const railwayEnvironment = String(process.env.RAILWAY_ENVIRONMENT_NAME || '').trim().toLowerCase();
     const staging = railwayEnvironment === 'staging';
-    this._mockMode = (!production || staging) && (!this.apiKey || /placeholder|mock/i.test(this.apiKey));
+    const production = railwayEnvironment === 'production'
+      || (process.env.NODE_ENV === 'production' && !staging);
+    const hasRealApiKey = Boolean(this.apiKey && !/placeholder|mock/i.test(this.apiKey));
+    const hasRealWebhookSecret = Boolean(this.webhookSecret && !/placeholder|mock/i.test(this.webhookSecret));
+
+    // Development and staging stay simulated even if a real-looking key is
+    // accidentally configured. This phase does not call Envia externally.
+    this._mockMode = !production || staging;
+    this._liveEnabled = production
+      && !staging
+      && String(process.env.ENVIAME_LIVE_ENABLED || '').trim().toLowerCase() === 'true'
+      && hasRealApiKey
+      && hasRealWebhookSecret;
     
     if (this._mockMode) {
-      console.warn('[ENVIAMAE] ⚠️ MODO MOCK: Sin API key real. Respuestas simuladas.');
+      console.warn('[ENVIAMAE] MODO SIMULADO: no se ejecutan llamadas a Envia.');
+    } else if (!this._liveEnabled) {
+      console.warn('[ENVIAMAE] Operaciones reales deshabilitadas; se requiere habilitación explícita.');
     }
   }
 
@@ -188,7 +201,8 @@ class EnviameClient {
           days_min: rule.days[0],
           days_max: rule.days[1],
           pickup_available: true,
-          dropoff_available: true
+          dropoff_available: true,
+          simulated: true
         },
         {
           carrier: 'envia',
@@ -199,7 +213,8 @@ class EnviameClient {
           days_min: rule.days[0] + 1,
           days_max: rule.days[1] + 2,
           pickup_available: true,
-          dropoff_available: true
+          dropoff_available: true,
+          simulated: true
         },
         {
           carrier: 'envia',
@@ -210,7 +225,8 @@ class EnviameClient {
           days_min: rule.days[0] + 2,
           days_max: rule.days[1] + 3,
           pickup_available: true,
-          dropoff_available: true
+          dropoff_available: true,
+          simulated: true
         }
       ];
     }
@@ -241,7 +257,8 @@ class EnviameClient {
         days_min: Math.max(1, daysMax - 1),
         days_max: daysMax,
         pickup_available: true,
-        dropoff_available: true
+        dropoff_available: true,
+        simulated: true
       });
     }
 
@@ -278,14 +295,15 @@ class EnviameClient {
    */
   async generateLabel({ rate_id, reference, metadata = {} }) {
     if (this._mockMode) {
-      const tracking = `ENV${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
+      const tracking = `MOCK-${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
       return {
         tracking_number: tracking,
         label_pdf_url: `https://mock.envia.com/labels/${tracking}.pdf`,
         label_zpl: `^XA^FO50,50^BY3^BCN,100,Y,N,N^FD${tracking}^FS^XZ`,
         carrier: metadata.carrier || 'inter',
         service_code: metadata.service_code || 'inter_express',
-        carrier_account_id: metadata.carrier_account_id || 'mock-account-id'
+        carrier_account_id: metadata.carrier_account_id || 'mock-account-id',
+        simulated: true
       };
     }
 
@@ -321,7 +339,8 @@ class EnviameClient {
         pickup_id: pickupId,
         scheduled_at: pickup_window_start,
         carrier: carrier || 'inter',
-        status: 'scheduled'
+        status: 'scheduled',
+        simulated: true
       };
     }
 
@@ -347,7 +366,7 @@ class EnviameClient {
    * @returns {boolean}
    */
   verifyWebhook(payload, signature) {
-    if (this._mockMode) return true;
+    if (this._mockMode && !this.webhookSecret) return true;
     if (!this.webhookSecret || !signature) return false;
     const expected = crypto.createHmac('sha256', this.webhookSecret)
       .update(payload)
@@ -384,6 +403,9 @@ class EnviameClient {
 
   async _fetch(path, method = 'GET', body = null) {
     if (!this.apiKey) throw new Error('ENVIAME_API_KEY no está configurada');
+    if (!this._liveEnabled) {
+      throw new Error('Las llamadas reales a Envia están deshabilitadas en este entorno');
+    }
     const url = `${this.baseUrl}${path}`;
     const headers = {
       'Authorization': `Bearer ${this.apiKey}`,

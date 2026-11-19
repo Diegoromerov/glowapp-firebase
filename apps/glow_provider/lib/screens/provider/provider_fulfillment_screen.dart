@@ -105,6 +105,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
           labelZpl: data['label_zpl'],
           carrier: data['carrier'],
           estimatedDays: data['estimated_days'],
+          simulated: data['simulated'] == true,
         );
         _loadOrders(); // Refrescar lista
       } else {
@@ -145,7 +146,10 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
       if (mounted) Navigator.pop(context);
 
       if (response != null && response['success'] == true) {
-        _showSnack('Recolección programada para ${_formatDateTime(start)} - ${_formatDateTime(end)}');
+        final simulated = response['data']?['simulated'] == true;
+        _showSnack(simulated
+            ? 'Simulación: recogida registrada; no se notificó a una transportadora.'
+            : 'Recolección programada para ${_formatDateTime(start)} - ${_formatDateTime(end)}');
         _loadOrders();
       } else {
         _showSnack('Error: ${response?['error'] ?? 'No se pudo programar'}');
@@ -222,6 +226,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
     required String labelZpl,
     required String carrier,
     required String estimatedDays,
+    required bool simulated,
   }) {
     showDialog(
       context: context,
@@ -231,7 +236,7 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
           children: [
             const Icon(Icons.local_shipping, color: _gold),
             const SizedBox(width: 8),
-            Text('Etiqueta Generada', style: TextStyle(color: _textPrimary)),
+            Text(simulated ? 'Etiqueta simulada' : 'Etiqueta generada', style: TextStyle(color: _textPrimary)),
           ],
         ),
         content: SingleChildScrollView(
@@ -242,34 +247,42 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
               _InfoRow(label: 'Guía:', value: trackingNumber),
               _InfoRow(label: 'Transportadora:', value: carrier),
               _InfoRow(label: 'Entrega estimada:', value: estimatedDays),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      icon: const Icon(Icons.picture_as_pdf),
-                      label: const Text('Ver PDF'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: _gold,
-                        foregroundColor: _darkBg,
+              if (simulated) ...[
+                const SizedBox(height: 12),
+                const Text(
+                  'Entorno simulado: esta guía y su recogida no son válidas ante una transportadora.',
+                  style: TextStyle(color: Colors.orangeAccent),
+                ),
+              ] else ...[
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        icon: const Icon(Icons.picture_as_pdf),
+                        label: const Text('Ver PDF'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: _gold,
+                          foregroundColor: _darkBg,
+                        ),
+                        onPressed: () => _openLabelPdf(labelPdfUrl),
                       ),
-                      onPressed: () => _openLabelPdf(labelPdfUrl),
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      icon: const Icon(Icons.print),
-                      label: const Text('ZPL (Térmica)'),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: _gold,
-                        side: BorderSide(color: _gold),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        icon: const Icon(Icons.print),
+                        label: const Text('ZPL (Térmica)'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: _gold,
+                          side: BorderSide(color: _gold),
+                        ),
+                        onPressed: () => _showZplDialog(labelZpl),
                       ),
-                      onPressed: () => _showZplDialog(labelZpl),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ],
           ),
         ),
@@ -309,7 +322,14 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
     );
   }
 
+  bool _isSimulatedShipment(Map<String, dynamic> envio) {
+    final tracking = envio['guia']?.toString() ?? '';
+    final labelUrl = envio['label_pdf_url']?.toString() ?? '';
+    return tracking.startsWith('MOCK-') || labelUrl.startsWith('https://mock.envia.com/');
+  }
+
   void _showEnvioDetailDialog(Map<String, dynamic> envio) {
+    final simulated = _isSimulatedShipment(envio);
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
@@ -331,7 +351,15 @@ class _ProviderFulfillmentScreenState extends ConsumerState<ProviderFulfillmentS
               _InfoRow(label: 'Transportadora:', value: envio['transportadora'] ?? '—'),
               _InfoRow(label: 'Estado:', value: _estadoLabel(envio['estado'])),
               _InfoRow(label: 'Servicio:', value: envio['carrier_service_code'] ?? '—'),
-              if (envio['label_pdf_url'] != null) ...[
+              if (simulated)
+                const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: Text(
+                    'SIMULADO: esta guía no es válida ante una transportadora.',
+                    style: TextStyle(color: Colors.orangeAccent),
+                  ),
+                ),
+              if (!simulated && envio['label_pdf_url'] != null) ...[
                 const SizedBox(height: 8),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.picture_as_pdf),

@@ -288,6 +288,7 @@ async function aprobarDevolucion(req, res) {
           label_zpl: labelResult.label_zpl,
           carrier: bestRate.carrier,
           service_code: bestRate.service_code,
+          simulated: Boolean(labelResult.simulated || bestRate.simulated),
         },
       });
     });
