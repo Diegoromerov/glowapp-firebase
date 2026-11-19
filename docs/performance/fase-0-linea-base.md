@@ -1,7 +1,8 @@
 # Fase 0 — Línea base de rendimiento GlowApp
 
 **Fecha de inspección:** 2026-11-19
-**Commit de producción revisado:** `9555502b9e1be803140b9784ee73159673c4cfbd`
+**Commit de producción revisado inicialmente:** `9555502b9e1be803140b9784ee73159673c4cfbd`
+**Commit actual de `main`:** `c326f958cfc682f2a337d5fd8db2dce5822b4acd` (documentación de Fase 0)
 **Alcance:** app cliente Flutter, app proveedor Flutter, panel Next.js, API Node.js/PostgreSQL en Railway.
 
 ## Resultado ejecutivo
@@ -9,6 +10,8 @@
 Producción respondió correctamente durante la inspección: `GET /api/health` devolvió HTTP 200, estado `OK` y conexión PostgreSQL disponible; el panel de administración devolvió HTTP 200. Railway reportó el commit de `main` activo en `glowapp-api` y `admin-dashboard`.
 
 Esto valida disponibilidad básica, pero **no establece todavía una línea base de rendimiento representativa**. El endpoint Prometheus de la API tenía solo seis muestras HTTP en memoria desde el arranque. El histograma ubica ese pequeño conjunto por debajo del bucket de 100 ms, pero las solicitudes incluyen sondas de esta inspección y no sirven para inferir latencia de usuarios. La consulta de logs HTTP históricos de Railway no devolvió filas.
+
+La documentación de Fase 0 se añadió a `main` en `c326f95`; Railway lanzó despliegues de API y panel debido al cambio. Ambos terminaron en `SUCCESS`. Tras el despliegue, la API y el panel devolvieron HTTP 200; la API reportó PostgreSQL disponible y 53 migraciones registradas. No hubo cambios de código de aplicación ni de configuración productiva.
 
 ## Evidencia disponible
 
@@ -20,6 +23,8 @@ Esto valida disponibilidad básica, pero **no establece todavía una línea base
 | `/metrics` | HTTP 200; seis solicitudes contabilizadas en el proceso | Muestra demasiado pequeña y contaminada por sondas para estimar p95 real |
 | Histograma HTTP | Bucket p95 observado `<= 100 ms` para seis muestras | No usar como SLA ni como comparación antes/después |
 | Logs HTTP Railway | La consulta de hasta 200 filas devolvió cero registros | No prueba ausencia de tráfico; la fuente/retención no aportó una muestra utilizable |
+| API, 5 GET secuenciales a `/api/health` | 5/5 HTTP 200; RTT externo 393.7–1,714.8 ms; mediana 480 ms | Muestra puntual, incluye red/TLS/proxy y no equivale a duración interna ni a p95 de usuarios |
+| Panel, 5 GET secuenciales a `/` | 5/5 HTTP 200; RTT externo 579–905 ms; mediana 643 ms | Ruta pública sin sesión; RTT incluye red/TLS/proxy, no mide navegación autenticada ni Core Web Vitals |
 
 ## Instrumentación y herramientas ya presentes
 
@@ -37,6 +42,9 @@ Esto valida disponibilidad básica, pero **no establece todavía una línea base
 2. `backend/scripts/smoke_test_prod.js` no es un smoke test inocuo: consulta un estado de consentimiento con ID fijo y envía un POST biométrico con credenciales ficticias. **No ejecutar contra producción.**
 3. No se encontró instrumentación `web-vitals`/RUM en el panel; las métricas de servidor no reflejan LCP/INP/CLS ni tiempos percibidos dentro de Flutter.
 4. Las métricas Prometheus actuales son en memoria del proceso. Sin scraping persistente y retención, un reinicio pierde la ventana histórica necesaria para comparar.
+5. `backend/monitoring/prometheus.yml` y `alerts.yml` están versionados, pero no hay evidencia de que Prometheus esté desplegado y reteniendo datos. Su target (`glowapp-backend:8080`) debe validarse contra la red y el puerto reales de producción.
+6. La alerta `GlowAppHighHttpErrorRate` divide tasas sin proteger el denominador cero. Debe validarse y protegerse ese caso antes de depender de ella para operaciones.
+7. `backend/src/instrumentation.ts` deja activo el exportador local `:9464/metrics` cuando falta `PROMETHEUS_REMOTE_WRITE_URL`; hay que verificar que no colisiona con el proceso y que los exportadores de producción llegan a un colector real. No se inspeccionaron valores secretos.
 
 ## Protocolo propuesto
 
@@ -72,4 +80,4 @@ Esto valida disponibilidad básica, pero **no establece todavía una línea base
 4. Script de carga saneado y ejecutado en staging con un perfil conservador.
 5. Objetivos de mejora acordados después de ver la línea base, antes de cambiar código de rendimiento.
 
-**Estado:** salud básica confirmada; línea base global pendiente por falta de muestras persistentes y de RUM cliente. No se modificó configuración de producción ni se generó carga.
+**Estado:** salud básica y RTT externo puntual confirmados; línea base global pendiente por falta de muestras persistentes y de RUM cliente. No se modificó configuración de producción ni se generó carga.
