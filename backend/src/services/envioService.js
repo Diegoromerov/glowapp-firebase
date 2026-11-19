@@ -76,7 +76,10 @@ async function calcularEnvio({
   );
 
   if (zonas.length === 0) {
-    throw new Error('No hay zonas de envío activas configuradas');
+    const error = new Error('No hay zonas de envío activas configuradas');
+    error.code = 'ZONAS_NO_CONFIGURADAS';
+    error.statusCode = 503;
+    throw error;
   }
 
   const ciudadNormalizada = normalizar(ciudad);

@@ -494,3 +494,8 @@ en 076).
 
 - Agrega `productos.peso_kg` como `NUMERIC(8,3)` nullable para que el orquestador de fulfillment pueda leer el peso cuando exista.
 - No altera filas existentes ni inventa pesos; el código conserva el fallback de 0,5 kg cuando el campo queda `NULL`.
+## 182: alineación de zona en métricas logísticas
+
+- Usa ciudad y departamento persistidos en `envios.destino_ciudad` y `envios.destino_departamento`, columnas del contrato 174.
+- No añade columnas ficticias a `pedidos_tienda`; conserva intacta la migración 180 ya desplegada.
+- Reemplaza la función agregadora y se aplica tanto en bases nuevas como en arranque idempotente.
