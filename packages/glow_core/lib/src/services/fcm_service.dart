@@ -12,6 +12,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart'
     show kIsWeb, debugPrint, defaultTargetPlatform;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api_service.dart';
 import 'secure_storage_service.dart';
@@ -20,6 +21,9 @@ import 'secure_storage_service.dart';
 const String _notificationChannelId = 'glowapp_default';
 const String _notificationChannelName = 'GlowApp Notificaciones';
 const String _notificationChannelDescription = 'Notificaciones de citas, pagos y alertas de GlowApp';
+
+/// Clave SharedPreferences para deep-link pendiente (push recibida con app cerrada/background)
+const String _pendingDeepLinkKey = 'pending_deep_link';
 
 /// Payload esperado del backend para deep-linking
 class FcmPayload {
@@ -58,9 +62,28 @@ class FcmService {
   StreamSubscription<RemoteMessage>? _messageSub;
   StreamSubscription<RemoteMessage>? _backgroundMessageSub;
 
+  /// Almacena un deep-link para que se consuma al siguiente arranque (app terminada)
+  static Future<void> storePendingDeepLink(String deepLink) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_pendingDeepLinkKey, deepLink);
+    debugPrint('FCM: deep-link pendiente guardado: $deepLink');
+  }
+
+  /// Consume y limpia el deep-link pendiente (se llama al arrancar la app)
+  static Future<String?> consumePendingDeepLink() async {
+    final prefs = await SharedPreferences.getInstance();
+    final link = prefs.getString(_pendingDeepLinkKey);
+    if (link != null && link.isNotEmpty) {
+      await prefs.remove(_pendingDeepLinkKey);
+      debugPrint('FCM: deep-link pendiente consumido: $link');
+      return link;
+    }
+    return null;
+  }
+
   /// Inicializa Firebase, solicita permisos, registra token y configura handlers.
   /// Debe llamarse **temprano** en `main()` antes de `runApp`.
-  /// 
+  ///
   /// [firebaseConfigured] - Indica si Firebase está configurado para este build.
   /// Las apps deben pasar `true` si tienen firebase_options.dart configurado.
   Future<void> initialize({
@@ -258,6 +281,8 @@ class FcmService {
   /// Navega según payload del mensaje
   void _navigateFromPayload(Map<String, dynamic> data) {
     final payload = FcmPayload.fromMap(data);
+    // Si la app está en foreground, el callback decide si navega.
+    // Si la app venía de background/terminated, navegamos directo.
     _onPayloadTap?.call(payload);
   }
 

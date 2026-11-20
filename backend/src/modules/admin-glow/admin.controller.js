@@ -1,6 +1,7 @@
 const adminModel = require('./admin.model');
 const financialHelper = require('./financial.helper');
 const { CertifiedKYCProvider } = require('./CertifiedKYCProvider');
+const fcmNotificationService = require('../../services/fcmNotificationService');
 
 const kycProvider = new CertifiedKYCProvider();
 
@@ -239,6 +240,27 @@ async function approveProvider(req, res) {
       'APROBAR_PRESTADOR',
       `Prestador ID ${providerId} verificado y APROBADO`
     );
+
+    // 🔔 Enviar notificación push FCM al prestador aprobado
+    try {
+      const userRows = await adminModel.executeQuery(
+        `SELECT fcm_token FROM usuarios WHERE id = $1`,
+        [providerId]
+      );
+      const fcmToken = userRows.length > 0 ? userRows[0].fcm_token : null;
+      if (fcmToken) {
+        await fcmNotificationService.sendPushNotification(fcmToken, {
+          title: '✅ ¡Tu cuenta ha sido aprobada!',
+          body: 'Ya puedes acceder a tu panel de prestador y empezar a recibir citas.',
+          data: {
+            type: 'PROVIDER_APPROVED',
+            deep_link: '/home',
+          },
+        });
+      }
+    } catch (pushErr) {
+      console.warn('⚠️ No se pudo enviar push de aprobación:', pushErr.message);
+    }
 
     return res.status(200).json({
       success: true,
