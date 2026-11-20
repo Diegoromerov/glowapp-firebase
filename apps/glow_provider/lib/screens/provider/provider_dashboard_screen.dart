@@ -62,6 +62,9 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   bool _isTogglingStatus = false;
 
   WebSocketChannel? _webSocketChannel;
+  Timer? _wsReconnectTimer;
+  int _wsReconnectAttempts = 0;
+  bool _isWsConnecting = false;
 
   String? _userRole;
 
@@ -128,6 +131,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
 
   @override
   void dispose() {
+    _wsReconnectTimer?.cancel();
     _webSocketChannel?.sink.close();
     _providerGuideEngine.removeListener(_onProviderGuideStateChanged);
     // El engine es compartido: lo dispone la app, no esta pantalla.
@@ -135,23 +139,51 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   }
 
 
+  void _scheduleWsReconnect() {
+    _wsReconnectTimer?.cancel();
+    if (!mounted) return;
+
+    _wsReconnectAttempts++;
+    // Backoff exponencial: 5s, 10s, 20s, max 60s
+    final delaySeconds = (_wsReconnectAttempts <= 3)
+        ? _wsReconnectAttempts * 5
+        : 60;
+
+    debugPrint(
+      'WebSocket del dashboard desconectado. Reintentando en ${delaySeconds}s (intento $_wsReconnectAttempts)...',
+    );
+
+    _wsReconnectTimer = Timer(Duration(seconds: delaySeconds), () {
+      if (mounted) _initWebSocket();
+    });
+  }
+
   void _initWebSocket() async {
+    if (_isWsConnecting || !mounted) return;
+    _isWsConnecting = true;
+
     try {
       final token = await AuthService.getToken();
       final baseUrl = await AuthService.getBaseUrl();
-      final wsBase = baseUrl.replaceFirst('http', 'ws');
-      final wsUrl = '$wsBase/chat';
+      final uri = Uri.parse(baseUrl);
+      final isSecure = uri.scheme == 'https' || uri.scheme == 'wss';
+      final wsScheme = isSecure ? 'wss' : 'ws';
+      final wsUri = uri.replace(scheme: wsScheme, path: '/chat');
 
-      _webSocketChannel = WebSocketChannel.connect(Uri.parse(wsUrl));
+      _webSocketChannel?.sink.close();
+      _webSocketChannel = WebSocketChannel.connect(wsUri);
 
-      // Registrar prestador en WebSocket enviando el token
-      _webSocketChannel!.sink.add(jsonEncode({
-        'type': 'register',
-        'token': token,
-      }));
+      // Registrar prestador en WebSocket enviando el token si existe
+      if (token != null) {
+        _webSocketChannel!.sink.add(jsonEncode({
+          'type': 'register',
+          'token': token,
+        }));
+      }
 
       _webSocketChannel!.stream.listen(
         (message) {
+          _wsReconnectAttempts = 0; // Resetear contador al recibir mensaje
           try {
             final data = jsonDecode(message);
             if (data['type'] == 'new_booking') {
@@ -190,21 +222,17 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         },
         onError: (err) {
           debugPrint('Error en WebSocket del dashboard: $err');
-          // Reconectar automáticamente en 5 segundos
-          Future.delayed(const Duration(seconds: 5), () {
-            if (mounted) _initWebSocket();
-          });
+          _scheduleWsReconnect();
         },
         onDone: () {
-          debugPrint('WebSocket del dashboard desconectado.');
-          // Reconectar automáticamente en 5 segundos
-          Future.delayed(const Duration(seconds: 5), () {
-            if (mounted) _initWebSocket();
-          });
+          _scheduleWsReconnect();
         },
       );
     } catch (e) {
       debugPrint('Error inicializando WebSocket: $e');
+      _scheduleWsReconnect();
+    } finally {
+      _isWsConnecting = false;
     }
   }
 

@@ -58,6 +58,7 @@ class FcmService {
   final FlutterLocalNotificationsPlugin _localNotifications = FlutterLocalNotificationsPlugin();
 
   bool _initialized = false;
+  bool _permissionBlocked = false;
   OnPayloadTap? _onPayloadTap;
   StreamSubscription<RemoteMessage>? _messageSub;
   StreamSubscription<RemoteMessage>? _backgroundMessageSub;
@@ -146,22 +147,22 @@ class FcmService {
         : 'FCM Service inicializado SIN token: no llegaran notificaciones');
   }
 
-  /// Solicita permisos de notificación (iOS, Web)
+  /// Solicita permisos de notificación (iOS, Web, Android 13+)
   Future<void> _requestPermissions() async {
-    if (kIsWeb) {
-      // En web, getToken() pide permiso internamente
-      return;
+    try {
+      final settings = await _messaging.requestPermission(
+        alert: true,
+        badge: true,
+        sound: true,
+        provisional: false,
+        carPlay: false,
+        criticalAlert: false,
+      );
+      debugPrint('Permisos FCM: ${settings.authorizationStatus}');
+      _permissionBlocked = (settings.authorizationStatus == AuthorizationStatus.denied);
+    } catch (e) {
+      debugPrint('Error solicitando permisos FCM: $e');
     }
-
-    final settings = await _messaging.requestPermission(
-      alert: true,
-      badge: true,
-      sound: true,
-      provisional: false,
-      carPlay: false,
-      criticalAlert: false,
-    );
-    debugPrint('Permisos FCM: ${settings.authorizationStatus}');
   }
 
   /// Inicializa flutter_local_notifications (canal Android, permisos iOS)
@@ -204,24 +205,49 @@ class FcmService {
   /// cantar exito si esto devuelve false.
   Future<bool> _registerToken() async {
     try {
+      if (_permissionBlocked) {
+        // Si previamente fue denegado, consultar el estado actual sin disparar excepción
+        try {
+          final settings = await _messaging.getNotificationSettings();
+          if (settings.authorizationStatus == AuthorizationStatus.denied) {
+            debugPrint('FCM: Notificaciones bloqueadas en el navegador/dispositivo. Omitiendo solicitud de token.');
+            return false;
+          }
+          _permissionBlocked = false;
+        } catch (_) {
+          return false;
+        }
+      }
+
       String? token;
       if (kIsWeb) {
-              // Web SIEMPRE exige VAPID key (Firebase Console -> Cloud Messaging ->
-              // Web configuration). Sin ella getToken() falla con un error opaco de
-              // service worker, asi que se comprueba antes y se dice que falta.
-              // Soporta clave genérica y claves por app (provider/client)
-              const vapidKeyProvider = String.fromEnvironment('FCM_VAPID_KEY_PROVIDER');
-              const vapidKeyClient = String.fromEnvironment('FCM_VAPID_KEY_CLIENT');
-              const vapidKeyGeneric = String.fromEnvironment('FCM_VAPID_KEY');
-              final vapidKey = vapidKeyProvider.isNotEmpty
-                  ? vapidKeyProvider
-                  : (vapidKeyClient.isNotEmpty ? vapidKeyClient : vapidKeyGeneric);
-              if (vapidKey.isEmpty) {
-                debugPrint('FCM web sin VAPID key (FCM_VAPID_KEY / FCM_VAPID_KEY_PROVIDER / FCM_VAPID_KEY_CLIENT): no se puede obtener token.');
-                return false;
-              }
-              token = await _messaging.getToken(vapidKey: vapidKey);
-            } else {
+        // Web SIEMPRE exige VAPID key (Firebase Console -> Cloud Messaging ->
+        // Web configuration). Sin ella getToken() falla con un error opaco de
+        // service worker, asi que se comprueba antes y se dice que falta.
+        // Soporta clave genérica y claves por app (provider/client)
+        const vapidKeyProvider = String.fromEnvironment('FCM_VAPID_KEY_PROVIDER');
+        const vapidKeyClient = String.fromEnvironment('FCM_VAPID_KEY_CLIENT');
+        const vapidKeyGeneric = String.fromEnvironment('FCM_VAPID_KEY');
+        final vapidKey = vapidKeyProvider.isNotEmpty
+            ? vapidKeyProvider
+            : (vapidKeyClient.isNotEmpty ? vapidKeyClient : vapidKeyGeneric);
+        if (vapidKey.isEmpty) {
+          debugPrint('FCM web sin VAPID key (FCM_VAPID_KEY / FCM_VAPID_KEY_PROVIDER / FCM_VAPID_KEY_CLIENT): no se puede obtener token.');
+          return false;
+        }
+
+        // En Web, verificar si el permiso ya fue bloqueado para evitar la excepción permission-blocked
+        try {
+          final currentSettings = await _messaging.getNotificationSettings();
+          if (currentSettings.authorizationStatus == AuthorizationStatus.denied) {
+            _permissionBlocked = true;
+            debugPrint('FCM Web: El permiso de notificaciones está bloqueado. El usuario debe habilitarlo en el navegador.');
+            return false;
+          }
+        } catch (_) {}
+
+        token = await _messaging.getToken(vapidKey: vapidKey);
+      } else {
         token = await _messaging.getToken();
       }
 
@@ -234,7 +260,12 @@ class FcmService {
       debugPrint('FCM Token vacío');
       return false;
     } catch (e) {
-      debugPrint('Error obteniendo/registrando FCM token: $e');
+      if (e.toString().contains('permission-blocked')) {
+        _permissionBlocked = true;
+        debugPrint('FCM: Permiso de notificaciones bloqueado por el usuario o navegador [permission-blocked].');
+      } else {
+        debugPrint('Error obteniendo/registrando FCM token: $e');
+      }
       return false;
     }
   }
