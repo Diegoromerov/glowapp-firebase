@@ -2,7 +2,8 @@
  * Modelo de datos del Panel de Administración de GlowApp para PostgreSQL.
  * Proporciona consultas parametrizadas seguras nativas.
  */
-const { pool } = require('../../config/db');
+const { pool, systemPool } = require('../../config/db');
+const { runAsSystem } = require('../../config/tenantRouting');
 
 /**
  * Helper para ejecutar consultas parametrizadas de forma segura en PostgreSQL.
@@ -14,6 +15,18 @@ async function executeQuery(query, params = []) {
   }
   console.log(`[PostgreSQL mock] Ejecutando: ${query} con parámetros:`, params);
   return [];
+}
+
+/**
+ * Las rutas administrativas necesitan consultar proveedores de cualquier
+ * tenant. Ejecutar cada consulta en una transacción acotada con app_system
+ * evita que RLS responda silenciosamente con cero filas usando el pool normal.
+ */
+async function executeAdminQuery(query, params = []) {
+  return runAsSystem({ pool, systemPool }, async (client) => {
+    const result = await client.query(query, params);
+    return result.rows;
+  });
 }
 
 /**
@@ -82,7 +95,13 @@ async function getPendingProviders() {
     JOIN usuarios u ON p.id = u.id
     WHERE p.estatus_verificacion = 'PENDIENTE';
   `;
-  return await executeQuery(query);
+  return await executeAdminQuery(query);
+}
+
+async function getProviderFcmToken(providerId) {
+  const query = 'SELECT fcm_token FROM usuarios WHERE id = $1';
+  const rows = await executeAdminQuery(query, [providerId]);
+  return rows.length > 0 ? rows[0].fcm_token : null;
 }
 
 /**
@@ -101,7 +120,7 @@ async function setProviderVerifiedStatus(providerId, isVerified) {
        ${documentRequirements}
     RETURNING id, estatus_verificacion;
   `;
-  return await executeQuery(query, [status, providerId]);
+  return await executeAdminQuery(query, [status, providerId]);
 }
 
 /**
@@ -236,6 +255,7 @@ module.exports = {
   updateSOSAlertStatus,
   logAdminAction,
   getPendingProviders,
+  getProviderFcmToken,
   setProviderVerifiedStatus,
   getProviderWalletBalance,
   hasActiveDisputes,

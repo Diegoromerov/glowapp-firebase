@@ -240,7 +240,13 @@ async function approveProvider(req, res) {
       });
     }
 
-    await adminModel.setProviderVerifiedStatus(providerId, true);
+    const updated = await adminModel.setProviderVerifiedStatus(providerId, true);
+    if (!updated.length) {
+      return res.status(409).json({
+        success: false,
+        error: 'No se puede aprobar: el proveedor ya no está pendiente o le falta el documento de identidad o la acreditación profesional.'
+      });
+    }
     await adminModel.logAdminAction(
       adminId,
       'APROBAR_PRESTADOR',
@@ -249,11 +255,7 @@ async function approveProvider(req, res) {
 
     // 🔔 Enviar notificación push FCM al prestador aprobado
     try {
-      const userRows = await adminModel.executeQuery(
-        `SELECT fcm_token FROM usuarios WHERE id = $1`,
-        [providerId]
-      );
-      const fcmToken = userRows.length > 0 ? userRows[0].fcm_token : null;
+      const fcmToken = await adminModel.getProviderFcmToken(providerId);
       if (fcmToken) {
         await fcmNotificationService.sendPushNotification(fcmToken, {
           title: '✅ ¡Tu cuenta ha sido aprobada!',
