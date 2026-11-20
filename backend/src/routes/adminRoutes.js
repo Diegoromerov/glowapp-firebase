@@ -11,6 +11,7 @@ const {
   transicionar,
   responsabilidadDesdeCodigo,
 } = require('../services/fiscalRevision');
+const fcmNotificationService = require('../services/fcmNotificationService');
 
 const UUID_DISPUTA = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -493,23 +494,46 @@ router.post(
         fila.responsable_iva_override !== null && fila.responsable_iva_override !== undefined;
 
       const actualizado = await pool.query(
-        `UPDATE usuarios
-            SET revision_estado = $2,
-                revision_nota = $3,
-                revisado_por = $4,
-                revisado_at = NOW(),
-                responsable_iva = COALESCE($5, responsable_iva),
-                responsabilidad_iva_fuente = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_fuente ELSE 'RUT' END,
-                responsabilidad_iva_actualizada_at = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_actualizada_at ELSE NOW() END,
-                responsabilidad_iva_cambiada_por = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_cambiada_por ELSE $4 END
-          WHERE id = $1
-          RETURNING id, rut_numero, rut_responsabilidad_codigo, responsable_iva,
-                    responsable_iva_override, responsabilidad_iva_fuente,
-                    revision_estado, revision_nota, revisado_por, revisado_at`,
-        [id, transicion.estado, transicion.nota || null, req.user.id, hayOverride ? null : responsable]
-      );
+              `UPDATE usuarios
+                  SET revision_estado = $2,
+                      revision_nota = $3,
+                      revisado_por = $4,
+                      revisado_at = NOW(),
+                      responsable_iva = COALESCE($5, responsable_iva),
+                      responsabilidad_iva_fuente = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_fuente ELSE 'RUT' END,
+                      responsabilidad_iva_actualizada_at = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_actualizada_at ELSE NOW() END,
+                      responsabilidad_iva_cambiada_por = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_cambiada_por ELSE $4 END
+                WHERE id = $1
+                RETURNING id, rut_numero, rut_responsabilidad_codigo, responsable_iva,
+                          responsable_iva_override, responsabilidad_iva_fuente,
+                          revision_estado, revision_nota, revisado_por, revisado_at`,
+              [id, transicion.estado, transicion.nota || null, req.user.id, hayOverride ? null : responsable]
+            );
 
-      res.json({
+            // 🔔 Enviar notificación push FCM al prestador cuando se aprueba el RUT
+            if (transicion.estado === ESTADOS.APROBADA) {
+              try {
+                const userRows = await pool.query(
+                  `SELECT fcm_token FROM usuarios WHERE id = $1`,
+                  [id]
+                );
+                const fcmToken = userRows.length > 0 ? userRows[0].fcm_token : null;
+                if (fcmToken) {
+                  await fcmNotificationService.sendPushNotification(fcmToken, {
+                    title: '✅ ¡Tu RUT ha sido aprobado!',
+                    body: 'Ya puedes publicar servicios y recibir citas en GlowApp.',
+                    data: {
+                      type: 'PROVIDER_RUT_APPROVED',
+                      deep_link: '/home',
+                    },
+                  });
+                }
+              } catch (pushErr) {
+                console.warn('⚠️ No se pudo enviar push de aprobación RUT:', pushErr.message);
+              }
+            }
+
+            res.json({
         ok: true,
         revision: {
           prestador_id: id,
