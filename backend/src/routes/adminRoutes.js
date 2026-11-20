@@ -514,18 +514,25 @@ router.post(
             // 🔔 Enviar notificación push FCM al prestador cuando se aprueba el RUT
             if (transicion.estado === ESTADOS.APROBADA) {
               try {
-                const userRows = await pool.query(
-                  `SELECT fcm_token FROM usuarios WHERE id = $1`,
+                const { rows: userRows } = await pool.query(
+                  `SELECT u.fcm_token, p.estatus_verificacion
+                     FROM usuarios u
+                     LEFT JOIN perfiles_prestador p ON p.id = u.id
+                    WHERE u.id = $1`,
                   [id]
                 );
-                const fcmToken = userRows.length > 0 ? userRows[0].fcm_token : null;
+                const notificationUser = userRows[0];
+                const fcmToken = notificationUser?.fcm_token || null;
                 if (fcmToken) {
+                  const verificacionCompleta = notificationUser.estatus_verificacion === 'APROBADO';
                   await fcmNotificationService.sendPushNotification(fcmToken, {
-                    title: '✅ ¡Tu RUT ha sido aprobado!',
-                    body: 'Ya puedes publicar servicios y recibir citas en GlowApp.',
+                    title: '✅ Tu RUT fue aprobado',
+                    body: verificacionCompleta
+                      ? 'La revisión fiscal terminó. Ya puedes publicar servicios y recibir citas en GlowApp.'
+                      : 'La revisión fiscal terminó. La verificación de identidad y acreditación sigue pendiente; te avisaremos cuando finalice.',
                     data: {
                       type: 'PROVIDER_RUT_APPROVED',
-                      deep_link: '/home',
+                      deep_link: verificacionCompleta ? '/home' : '/auth/verification-pending',
                     },
                   });
                 }

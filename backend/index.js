@@ -1248,7 +1248,16 @@ app.get('/api/users/profile', authMiddleware, async (req, res) => {
     const rawRole = user.role || user.rol || 'CLIENTE';
     user.role = (rawRole === 'PRESTADOR' || rawRole === 'provider') ? 'provider' : ((rawRole === 'SALON' || rawRole === 'salon') ? 'salon' : 'client');
     if (user.role === 'provider') {
-      const providerRes = await pool.query('SELECT is_active, business_name, description, rating_avg, rating_count, (estatus_verificacion = \'APROBADO\') as is_verified, estatus_verificacion, active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = $1', [req.user.id]);
+      const providerRes = await pool.query(`
+        SELECT p.is_active, p.business_name, p.description, p.rating_avg, p.rating_count,
+               (p.estatus_verificacion = 'APROBADO') AS is_verified,
+               p.estatus_verificacion, p.active_start_hour, p.active_end_hour,
+               p.weekly_schedule, u.revision_estado AS rut_revision_estado,
+               u.revision_nota AS rut_revision_nota
+          FROM perfiles_prestador p
+          LEFT JOIN usuarios u ON u.id = p.id
+         WHERE p.id = $1
+      `, [req.user.id]);
       if (providerRes.rows.length > 0) {
         user = { 
           ...user, 

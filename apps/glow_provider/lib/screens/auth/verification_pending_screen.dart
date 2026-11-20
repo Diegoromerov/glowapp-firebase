@@ -30,6 +30,8 @@ class _VerificationPendingScreenState extends State<VerificationPendingScreen>
   Timer? _pollingTimer;
   bool _hasNavigated = false;
   String _currentStatus = 'PENDIENTE';
+  String _rutReviewStatus = 'SIN_ENVIAR';
+  String? _rutReviewNote;
   String? _rejectionNote;
   bool _isChecking = false;
 
@@ -73,7 +75,7 @@ class _VerificationPendingScreenState extends State<VerificationPendingScreen>
     if (_isChecking || _hasNavigated) return;
     setState(() => _isChecking = true);
     try {
-          final profile = await _fetchProfile();
+      final profile = await _fetchProfile();
       if (!mounted || _hasNavigated) return;
       if (profile == null) return;
 
@@ -82,12 +84,19 @@ class _VerificationPendingScreenState extends State<VerificationPendingScreen>
 
       final estatus = user['estatus_verificacion']?.toString() ?? 'PENDIENTE';
       final nota = user['rechazo_verificacion_nota']?.toString();
+      final rutStatus = user['rut_revision_estado']?.toString() ?? 'SIN_ENVIAR';
+      final rutNote = user['rut_revision_nota']?.toString();
 
-      if (estatus == _currentStatus && nota == _rejectionNote) return;
+      if (estatus == _currentStatus &&
+          nota == _rejectionNote &&
+          rutStatus == _rutReviewStatus &&
+          rutNote == _rutReviewNote) return;
 
       setState(() {
         _currentStatus = estatus;
         _rejectionNote = nota;
+        _rutReviewStatus = rutStatus;
+        _rutReviewNote = rutNote;
       });
 
       switch (estatus) {
@@ -120,6 +129,8 @@ class _VerificationPendingScreenState extends State<VerificationPendingScreen>
   @override
   Widget build(BuildContext context) {
     final isRejected = _currentStatus == 'RECHAZADO';
+    final rutApproved = _rutReviewStatus == 'APROBADA';
+    final rutRejected = _rutReviewStatus == 'RECHAZADA';
 
     return Scaffold(
       backgroundColor: const Color(0xFFFAF8F5),
@@ -174,13 +185,65 @@ class _VerificationPendingScreenState extends State<VerificationPendingScreen>
                   Text(
                     isRejected
                         ? 'El equipo de GlowApp no pudo validar tu documentación. Revisa el motivo y corrige lo necesario para volver a enviar.'
-                        : 'El equipo de GlowApp está validando tus documentos de identidad, RUT y acreditación profesional para garantizar la seguridad del servicio.',
+                        : 'El equipo de GlowApp está validando tus documentos de identidad y acreditación profesional. La revisión del RUT se muestra por separado.',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 14,
                       color: Color(0xFF6B5E59),
                       height: 1.5,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: const Color(0xFFE5DED2)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildStatusLine(
+                          'Identidad y acreditación',
+                          isRejected ? 'Requiere corrección' : _verificationLabel(_currentStatus),
+                          isRejected ? const Color(0xFFE57373) : const Color(0xFFC5A052),
+                        ),
+                        const SizedBox(height: 10),
+                        _buildStatusLine(
+                          'Revisión del RUT',
+                          _rutReviewLabel(_rutReviewStatus),
+                          rutApproved
+                              ? const Color(0xFF16845B)
+                              : rutRejected
+                                  ? const Color(0xFFE57373)
+                                  : const Color(0xFFC5A052),
+                        ),
+                        if (rutRejected && _rutReviewNote != null) ...[
+                          const SizedBox(height: 8),
+                          Text(
+                            'Observación del RUT: $_rutReviewNote',
+                            style: const TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 12,
+                              color: Color(0xFF8E7D7A),
+                            ),
+                          ),
+                        ],
+                        if (rutApproved && !isRejected) ...[
+                          const SizedBox(height: 8),
+                          const Text(
+                            'El RUT está aprobado. Esta aprobación no reemplaza la revisión de identidad y acreditación.',
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 12,
+                              color: Color(0xFF6B5E59),
+                              height: 1.4,
+                            ),
+                          ),
+                        ],
+                      ],
                     ),
                   ),
                   if (isRejected && _rejectionNote != null) ...[
@@ -314,5 +377,57 @@ class _VerificationPendingScreenState extends State<VerificationPendingScreen>
         ),
       ),
     );
+  }
+
+  Widget _buildStatusLine(String label, String status, Color color) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontFamily: 'Inter',
+              fontSize: 13,
+              color: Color(0xFF6B5E59),
+            ),
+          ),
+        ),
+        Text(
+          status,
+          style: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 13,
+            fontWeight: FontWeight.bold,
+            color: color,
+          ),
+        ),
+      ],
+    );
+  }
+
+  String _verificationLabel(String status) {
+    switch (status) {
+      case 'APROBADO':
+        return 'Aprobada';
+      case 'RECHAZADO':
+        return 'Requiere corrección';
+      case 'PENDIENTE':
+      default:
+        return 'Pendiente';
+    }
+  }
+
+  String _rutReviewLabel(String status) {
+    switch (status) {
+      case 'APROBADA':
+        return 'Aprobada';
+      case 'RECHAZADA':
+        return 'Rechazada';
+      case 'PENDIENTE':
+        return 'Pendiente';
+      case 'SIN_ENVIAR':
+      default:
+        return 'Sin enviar';
+    }
   }
 }

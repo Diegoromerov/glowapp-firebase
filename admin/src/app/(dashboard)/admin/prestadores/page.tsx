@@ -88,7 +88,7 @@ const FILTROS_ESTADO: { id: FiltroEstado; label: string }[] = [
 const FILTROS_REVISION: { id: FiltroRevision; label: string; icon: React.ReactNode }[] = [
   { id: 'todas', label: 'Todas', icon: <FileText className="w-4 h-4" /> },
   { id: 'pendiente', label: 'Pendientes', icon: <AlertCircle className="w-4 h-4 text-amber-400" /> },
-  { id: 'aprobada', label: 'Aprobadas', icon: <CheckCircle2 className="w-4 h-4 text-emerald-400" /> },
+  { id: 'aprobada', label: 'RUT aprobados', icon: <CheckCircle2 className="w-4 h-4 text-emerald-400" /> },
   { id: 'rechazada', label: 'Rechazadas', icon: <XCircle className="w-4 h-4 text-rose-400" /> },
   { id: 'sin_enviar', label: 'Sin enviar', icon: <HelpCircle className="w-4 h-4 text-[#6c655b]" /> },
 ];
@@ -242,11 +242,11 @@ export default function AdminPrestadoresIvaPage() {
   const badgeRevision = (estado: string) => {
     switch (estado) {
       case 'PENDIENTE':
-        return { clase: 'bg-amber-500/10 border-amber-500/40 text-amber-700', label: 'Pendiente', icon: <AlertCircle className="w-3 h-3" /> };
+        return { clase: 'bg-amber-500/10 border-amber-500/40 text-amber-700', label: 'RUT pendiente', icon: <AlertCircle className="w-3 h-3" /> };
       case 'APROBADA':
-        return { clase: 'bg-emerald-500/10 border-emerald-500/40 text-emerald-700', label: 'Aprobada', icon: <CheckCircle2 className="w-3 h-3" /> };
+        return { clase: 'bg-emerald-500/10 border-emerald-500/40 text-emerald-700', label: 'RUT aprobado', icon: <CheckCircle2 className="w-3 h-3" /> };
       case 'RECHAZADA':
-        return { clase: 'bg-rose-500/10 border-rose-500/40 text-rose-700', label: 'Rechazada', icon: <XCircle className="w-3 h-3" /> };
+        return { clase: 'bg-rose-500/10 border-rose-500/40 text-rose-700', label: 'RUT rechazado', icon: <XCircle className="w-3 h-3" /> };
       default:
         return { clase: 'bg-slate-500/10 border-slate-500/40 text-[#514b42]', label: 'Sin enviar', icon: <HelpCircle className="w-3 h-3" /> };
     }
@@ -299,7 +299,7 @@ export default function AdminPrestadoresIvaPage() {
   };
 
   const handleAprobar = (p: PrestadorFiscal) => {
-    if (window.confirm(`¿Aprobar el RUT de ${p.nombre}?\n\nEsto activará su cuenta y podrá publicar servicios.`)) {
+    if (window.confirm(`¿Aprobar el RUT de ${p.nombre}?\n\nEsta acción aprueba únicamente la revisión fiscal del RUT. La verificación de identidad y acreditación se gestiona por separado.`)) {
       ejecutarAccion(p.id, 'APROBAR');
     }
   };
@@ -324,7 +324,7 @@ export default function AdminPrestadoresIvaPage() {
       ]
     : [
         { etiqueta: 'Pendientes', valor: resumen?.revision.pendiente ?? 0, detalle: 'Esperan revisión del equipo', color: 'text-amber-700', icono: <AlertCircle className="h-5 w-5" />, filtro: 'pendiente' as FiltroRevision },
-        { etiqueta: 'Aprobadas', valor: resumen?.revision.aprobada ?? 0, detalle: 'Cuenta habilitada', color: 'text-emerald-700', icono: <CheckCircle2 className="h-5 w-5" />, filtro: 'aprobada' as FiltroRevision },
+        { etiqueta: 'RUT aprobados', valor: resumen?.revision.aprobada ?? 0, detalle: 'Verificación de identidad separada', color: 'text-emerald-700', icono: <CheckCircle2 className="h-5 w-5" />, filtro: 'aprobada' as FiltroRevision },
         { etiqueta: 'Rechazadas', valor: resumen?.revision.rechazada ?? 0, detalle: 'Pueden corregir y reenviar', color: 'text-rose-700', icono: <XCircle className="h-5 w-5" />, filtro: 'rechazada' as FiltroRevision },
         { etiqueta: 'Sin enviar', valor: resumen?.revision.sin_enviar ?? 0, detalle: 'Aún no adjuntan su RUT', color: 'text-[#514b42]', icono: <HelpCircle className="h-5 w-5" />, filtro: 'sin_enviar' as FiltroRevision },
       ];
@@ -496,7 +496,7 @@ export default function AdminPrestadoresIvaPage() {
                     <th className="text-left px-6 py-3">RUT</th>
                     <th className="text-left px-6 py-3">Casilla</th>
                     <th className="text-left px-6 py-3">Documento</th>
-                    <th className="text-left px-6 py-3">Estado revisión</th>
+                    <th className="text-left px-6 py-3">Estado revisión RUT</th>
                     <th className="text-left px-6 py-3">Cargado</th>
                     <th className="text-left px-6 py-3 w-48">Acciones</th>
                   </>
