@@ -90,10 +90,16 @@ async function getPendingProviders() {
  */
 async function setProviderVerifiedStatus(providerId, isVerified) {
   const status = isVerified ? 'APROBADO' : 'RECHAZADO';
+  const documentRequirements = isVerified
+    ? `AND documento_id_url IS NOT NULL AND BTRIM(documento_id_url) <> ''
+       AND certificacion_url IS NOT NULL AND BTRIM(certificacion_url) <> ''`
+    : '';
   const query = `
-    UPDATE perfiles_prestador 
-    SET estatus_verificacion = $1 
-    WHERE id = $2;
+    UPDATE perfiles_prestador
+       SET estatus_verificacion = $1
+     WHERE id = $2 AND estatus_verificacion = 'PENDIENTE'
+       ${documentRequirements}
+    RETURNING id, estatus_verificacion;
   `;
   return await executeQuery(query, [status, providerId]);
 }

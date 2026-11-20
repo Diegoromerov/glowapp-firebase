@@ -112,7 +112,13 @@ async function verifyProvider(req, res) {
     }
 
     // 1. Actualizar estado a 'VERIFICADO' en perfiles_prestador
-    await adminModel.setProviderVerifiedStatus(providerId, true);
+    const updated = await adminModel.setProviderVerifiedStatus(providerId, true);
+    if (!updated.length) {
+      return res.status(409).json({
+        success: false,
+        error: 'No se puede aprobar: el proveedor ya no está pendiente o le falta el documento de identidad o la acreditación profesional.'
+      });
+    }
 
     // 2. Registrar auditoría de la acción
     await adminModel.logAdminAction(
@@ -290,7 +296,13 @@ async function rejectProvider(req, res) {
       });
     }
 
-    await adminModel.setProviderVerifiedStatus(providerId, false);
+    const updated = await adminModel.setProviderVerifiedStatus(providerId, false);
+    if (!updated.length) {
+      return res.status(409).json({
+        success: false,
+        error: 'El proveedor ya no está pendiente de revisión.'
+      });
+    }
     await adminModel.logAdminAction(
       adminId,
       'RECHAZAR_PRESTADOR',
