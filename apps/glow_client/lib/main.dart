@@ -106,13 +106,14 @@ void main() async {
       );
 
   // Inicializar Firebase (solo si está configurado)
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  } catch (_) {
-    // Firebase no configurado en este build
-  }
+    try {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    } catch (e) {
+      // Log error but don't crash - PushService will handle missing config
+      debugPrint('Firebase initializeApp error (non-fatal): $e');
+    }
 
   // Inicializar servicios core
   await AudienceService.init();

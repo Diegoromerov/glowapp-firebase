@@ -102,15 +102,21 @@ class FcmService {
       return;
     }
 
-    // 1. Inicializar Firebase Core (no-op si ya se hizo)
-    try {
-      await Firebase.initializeApp();
-    } catch (_) {
-      // Ya inicializado
-    }
+    // 1. Verificar que Firebase ya está inicializado (main.dart lo hace con options)
+        // En web, FirebaseMessaging.instance requiere que la app DEFAULT exista.
+        final apps = Firebase.apps;
+        if (apps.isEmpty) {
+          debugPrint('FCM: Firebase no inicializado aun. Esperando...');
+          // Esperar un frame para que main.dart complete la inicializacion
+          await Future.delayed(const Duration(milliseconds: 100));
+          if (Firebase.apps.isEmpty) {
+            debugPrint('FCM: Firebase sigue sin inicializar tras espera');
+            return;
+          }
+        }
 
-    // 2. Configurar notificaciones locales (Android/iOS)
-    await _initLocalNotifications();
+        // 2. Configurar notificaciones locales (Android/iOS)
+        await _initLocalNotifications();
 
     // 3. Solicitar permisos (iOS/web)
     await _requestPermissions();
