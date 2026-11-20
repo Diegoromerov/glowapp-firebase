@@ -162,6 +162,7 @@ jobs:
             --dart-define=FIREBASE_IOS_APP_ID=${{ secrets.PROVIDER_FIREBASE_IOS_APP_ID }} \
             --dart-define=GOOGLE_WEB_CLIENT_ID=${{ secrets.PROVIDER_GOOGLE_WEB_CLIENT_ID }} \
             --dart-define=API_URL=${{ inputs.canal == 'live' && 'https://glowapp-api-production.up.railway.app' || 'https://glowapp-api-staging-staging.up.railway.app' }} \
+            --dart-define=FCM_VAPID_KEY_PROVIDER=${{ secrets.FIREBASE_PROVIDER_VAPID_KEY }} \
             --dart-define=APP_AUDIENCE=provider
         working-directory: ${{ github.workspace }}
 

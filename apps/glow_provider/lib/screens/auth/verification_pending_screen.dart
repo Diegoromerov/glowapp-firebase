@@ -1,9 +1,71 @@
 // frontend/lib/screens/auth/verification_pending_screen.dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:glow_core/services/auth_service.dart';
+import 'package:glow_core/glow_core.dart';
 
-class VerificationPendingScreen extends StatelessWidget {
+class VerificationPendingScreen extends StatefulWidget {
   const VerificationPendingScreen({super.key});
+
+  @override
+  State<VerificationPendingScreen> createState() => _VerificationPendingScreenState();
+}
+
+class _VerificationPendingScreenState extends State<VerificationPendingScreen> {
+  Timer? _pollingTimer;
+  Timer? _startupDelayTimer;
+  bool _hasNavigated = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _startPolling();
+    _listenForPushApproval();
+  }
+
+  @override
+  void dispose() {
+    _pollingTimer?.cancel();
+    _startupDelayTimer?.cancel();
+    super.dispose();
+  }
+
+  /// Escucha notificaciones push FCM mientras la pantalla está visible (foreground).
+  /// Si llega PROVIDER_APPROVED, navega a /home.
+  void _listenForPushApproval() {
+    // El callback se registra en FcmService.initialize() en main.dart.
+    // Aquí solo nos aseguramos de que, si la app está en foreground y llega el push,
+    // el handler (_navigateFromPayload) llama al callback que navega.
+    // No hay acción extra: el flujo es push -> FcmService._navigateFromPayload -> onPayloadTap.
+    // El onPayloadTap se configura en main.dart (ver abajo en build).
+  }
+
+  /// Polling cada 30s: consulta /api/auth/session para ver si onboarding_completo cambió a true.
+  /// Fallback por si la push no llega o la app estaba terminada y no consumió el deep-link.
+  void _startPolling() {
+    // Pequeño delay inicial para dar tiempo a que la sesión se hidrate
+    _startupDelayTimer = Timer(const Duration(seconds: 3), () {
+      _pollingTimer = Timer.periodic(const Duration(seconds: 30), (_) async {
+        if (!mounted || _hasNavigated) return;
+        try {
+          final session = await AuthService.restoreBiometricSession();
+          if (session != null) {
+            final user = session['user'] as Map<String, dynamic>?;
+            final onboardingCompleto = user?['onboarding_completo'] == true;
+            if (onboardingCompleto && mounted && !_hasNavigated) {
+              _hasNavigated = true;
+              _pollingTimer?.cancel();
+              _startupDelayTimer?.cancel();
+              Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+            }
+          }
+        } catch (_) {
+          // Silencioso: el polling es best-effort
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
