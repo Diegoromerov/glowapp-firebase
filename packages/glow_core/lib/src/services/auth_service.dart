@@ -539,9 +539,28 @@ class AuthService {
       return true;
     }
     return false;
-  }
+      }
 
-  static Future<Map<String, dynamic>?> createSalon({
+      /// Obtiene el perfil del usuario autenticado desde /api/users/profile.
+      /// Incluye estatus_verificacion para prestadores (PENDIENTE | APROBADO | RECHAZADO)
+      /// y rechazo_verificacion_nota si está rechazado.
+      static Future<Map<String, dynamic>?> fetchProfile() async {
+        final baseUrl = await getBaseUrl();
+        final token = await getToken();
+        if (token == null) return null;
+        final response = await http.get(
+          Uri.parse('$baseUrl/api/users/profile'),
+          headers: {
+            ..._jsonHeaders,
+            'Authorization': 'Bearer $token',
+          },
+        );
+        if (response.statusCode != 200) return null;
+        final data = json.decode(response.body);
+        return data is Map<String, dynamic> ? data : null;
+      }
+
+      static Future<Map<String, dynamic>?> createSalon({
     required String nombreSalon,
     String? nit,
     String? direccion,
