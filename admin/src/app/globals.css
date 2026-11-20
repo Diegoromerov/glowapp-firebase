@@ -1415,10 +1415,12 @@ a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--bg-deep), 0 0 0 4px
     top: 0;
     width: min(82vw, 300px) !important;
     flex-basis: auto;
-    z-index: 60;
+    /* El drawer debe permanecer por encima de los diálogos de las páginas. */
+    z-index: calc(var(--z-modal) + 1);
     transform: translateX(-105%);
     box-shadow: 12px 0 32px rgba(0, 0, 0, 0.28);
   }
+  .sidebar-overlay { z-index: var(--z-modal); }
   .sidebar.open { transform: translateX(0); }
   .sidebar.collapsed { width: min(82vw, 300px) !important; }
   .sidebar.collapsed .nav-link span,
