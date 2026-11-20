@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { ThemeSelector } from '@/components/ui/theme-selector';
@@ -12,6 +13,8 @@ interface HeaderProps {
 
 export default function Header({ onMenuClick }: HeaderProps) {
   const { user, logout } = useAuth();
+  const router = useRouter();
+  const [search, setSearch] = useState('');
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
@@ -49,9 +52,16 @@ export default function Header({ onMenuClick }: HeaderProps) {
           </span>
           <input
             type="text"
-            placeholder="Buscar servicios, precios, auditoría..."
+            placeholder="Buscar proveedor por nombre, documento o teléfono..."
             className="form-input pl-10 pr-4"
             aria-label="Buscar"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' && search.trim()) {
+                router.push(`/admin/proveedores/perfil?q=${encodeURIComponent(search.trim())}`);
+              }
+            }}
           />
         </div>
       </div>

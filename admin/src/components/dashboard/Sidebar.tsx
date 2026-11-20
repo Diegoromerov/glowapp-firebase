@@ -36,7 +36,7 @@ export default function Sidebar() {
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
     Reclamaciones: pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas'),
     Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
-    Proveedores: ['/admin/proveedores/validacion', '/admin/prestadores'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
+    Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/prestadores'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
   });
 
   // El botón hamburguesa del Header emite este evento (el estado del drawer
@@ -51,7 +51,7 @@ export default function Sidebar() {
     const rutasPorGrupo: Record<string, string[]> = {
       Reclamaciones: ['/admin/pqrsf', '/admin/disputas'],
       Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'],
-      Proveedores: ['/admin/proveedores/validacion', '/admin/prestadores'],
+      Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/prestadores'],
     };
     setOpenGroups((current) => Object.fromEntries(
       Object.entries(rutasPorGrupo).map(([group, paths]) => [
@@ -88,6 +88,7 @@ export default function Sidebar() {
           label: 'Proveedores',
           icon: UserRoundCheck,
           children: [
+            { href: '/admin/proveedores/perfil', label: 'Perfil' },
             { href: '/admin/proveedores/validacion', label: 'Validación' },
             { href: '/admin/prestadores', label: 'RUT e IVA' },
           ],

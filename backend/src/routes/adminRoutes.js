@@ -15,6 +15,49 @@ const fcmNotificationService = require('../services/fcmNotificationService');
 
 const UUID_DISPUTA = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
+// GET /api/admin/providers/profile?q=... — búsqueda y hoja de vida administrativa.
+router.get('/providers/profile', authMiddleware, adminMiddleware, async (req, res) => {
+  const q = String(req.query.q || '').trim().slice(0, 120);
+  if (q.length < 2) {
+    return res.status(400).json({ success: false, error: 'Escribe al menos 2 caracteres para buscar.' });
+  }
+
+  try {
+    const term = `%${q}%`;
+    const { rows } = await pool.query(`
+      SELECT u.id, u.nombre, u.email, u.phone, u.foto_url, u.rol,
+             u.onboarding_completo, u.glowai_plan, u.glowai_diagnosticos_mes,
+             u.glowai_ciclo_reset_at, u.streak_actual, u.streak_maximo,
+             u.streak_ultimo_registro, u.is_active,
+             u.rut_numero, u.rut_responsabilidad_codigo, u.responsable_iva,
+             u.revision_estado AS rut_revision_estado,
+             p.business_name, p.description, p.rating_avg, p.rating_count,
+             p.estatus_verificacion, p.documento_id_url, p.certificacion_url,
+             p.rut_url, p.is_active AS perfil_activo, p.active_start_hour,
+             p.active_end_hour, p.weekly_schedule
+        FROM usuarios u
+        LEFT JOIN perfiles_prestador p ON p.id = u.id
+       WHERE u.rol = 'PRESTADOR'
+         AND (u.nombre ILIKE $1 OR u.rut_numero ILIKE $1 OR u.phone ILIKE $1)
+       ORDER BY u.nombre ASC
+       LIMIT 100
+    `, [term]);
+
+    return res.json({ success: true, count: rows.length, data: rows.map((row) => ({
+      ...row,
+      is_verified: row.estatus_verificacion === 'APROBADO',
+      rating_avg: Number(row.rating_avg || 0),
+      rating_count: Number(row.rating_count || 0),
+      glowai_diagnosticos_mes: Number(row.glowai_diagnosticos_mes || 0),
+      streak_actual: Number(row.streak_actual || 0),
+      streak_maximo: Number(row.streak_maximo || 0),
+    })) });
+  } catch (error) {
+    console.error('❌ ERROR EN GET /api/admin/providers/profile:', error);
+    return res.status(500).json({ success: false, error: 'No se pudo consultar el perfil del proveedor.' });
+  }
+});
+
 // Bandeja de disputas: usa app_system dentro del contexto transaccional de la
 // petición para consultar los registros que cruzan los tenants de cliente y proveedor.
 router.get('/disputes/inbox', authMiddleware, adminMiddleware, async (req, res) => {
