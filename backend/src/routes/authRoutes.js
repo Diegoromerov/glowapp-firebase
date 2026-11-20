@@ -8,10 +8,18 @@ const { authLimiter, otpLimiter } = require('../middleware/rateLimiter');
 
 router.post('/register', authLimiter, register);
 router.post('/login', authLimiter, login);
-router.get('/session', authMiddleware, (req, res) => res.json({
-  success: true,
-  user: { id: req.user.id, email: req.user.email, role: req.user.role },
-}));
+router.get('/session', authMiddleware, async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT id, email, rol, onboarding_completo FROM usuarios WHERE id = $1',
+      [req.user.id]
+    );
+    if (!rows.length) return res.status(404).json({ success: false, error: 'Usuario no encontrado' });
+    res.json({ success: true, user: rows[0] });
+  } catch (err) {
+    res.status(500).json({ success: false, error: 'Error al obtener sesión' });
+  }
+});
 router.post('/logout', authMiddleware, logout);
 router.post('/forgot-password', otpLimiter, forgotPassword);
 router.post('/reset-password', otpLimiter, resetPassword);

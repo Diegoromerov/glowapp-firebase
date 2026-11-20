@@ -138,19 +138,21 @@ void main() async {
     );
 
     // 🔔 Inicializar FCM Service con callback de navegación
-    // Debe hacerse ANTES de runApp para que los handlers estén listos.
-    await FcmService.instance.initialize(
-      firebaseConfigured: true,
-      onPayloadTap: (payload) async {
-        // Navegar según tipo de payload
-        if (payload.type == 'PROVIDER_APPROVED' || payload.data['deep_link'] != null) {
-          final deepLink = payload.data['deep_link'] as String? ?? '/home';
-          // Usar navigatorKey global para navegar desde cualquier contexto
-          GlowGuideService.instance.navigatorKey.currentState
-              ?.pushNamedAndRemoveUntil(deepLink, (route) => false);
-        }
-      },
-    );
+        // Debe hacerse ANTES de runApp para que los handlers estén listos.
+        await FcmService.instance.initialize(
+          firebaseConfigured: true,
+          onPayloadTap: (payload) async {
+            // Navegar según tipo de payload (ambos tipos de aprobación de prestador)
+            if (payload.type == 'PROVIDER_APPROVED' ||
+                payload.type == 'PROVIDER_RUT_APPROVED' ||
+                payload.data['deep_link'] != null) {
+              final deepLink = payload.data['deep_link'] as String? ?? '/home';
+              // Usar navigatorKey global para navegar desde cualquier contexto
+              GlowGuideService.instance.navigatorKey.currentState
+                  ?.pushNamedAndRemoveUntil(deepLink, (route) => false);
+            }
+          },
+        );
 
     // 🔔 Consumir deep-link pendiente de push FCM (app terminada -> arranque)
     final String? pendingDeepLink = await FcmService.consumePendingDeepLink();

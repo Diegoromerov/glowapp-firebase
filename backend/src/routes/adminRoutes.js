@@ -494,21 +494,22 @@ router.post(
         fila.responsable_iva_override !== null && fila.responsable_iva_override !== undefined;
 
       const actualizado = await pool.query(
-              `UPDATE usuarios
-                  SET revision_estado = $2,
-                      revision_nota = $3,
-                      revisado_por = $4,
-                      revisado_at = NOW(),
-                      responsable_iva = COALESCE($5, responsable_iva),
-                      responsabilidad_iva_fuente = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_fuente ELSE 'RUT' END,
-                      responsabilidad_iva_actualizada_at = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_actualizada_at ELSE NOW() END,
-                      responsabilidad_iva_cambiada_por = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_cambiada_por ELSE $4 END
-                WHERE id = $1
-                RETURNING id, rut_numero, rut_responsabilidad_codigo, responsable_iva,
-                          responsable_iva_override, responsabilidad_iva_fuente,
-                          revision_estado, revision_nota, revisado_por, revisado_at`,
-              [id, transicion.estado, transicion.nota || null, req.user.id, hayOverride ? null : responsable]
-            );
+                    `UPDATE usuarios
+                        SET revision_estado = $2,
+                            revision_nota = $3,
+                            revisado_por = $4,
+                            revisado_at = NOW(),
+                            onboarding_completo = CASE WHEN $6 THEN true ELSE onboarding_completo END,
+                            responsable_iva = COALESCE($5, responsable_iva),
+                            responsabilidad_iva_fuente = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_fuente ELSE 'RUT' END,
+                            responsabilidad_iva_actualizada_at = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_actualizada_at ELSE NOW() END,
+                            responsabilidad_iva_cambiada_por = CASE WHEN $5::boolean IS NULL THEN responsabilidad_iva_cambiada_por ELSE $4 END
+                      WHERE id = $1
+                      RETURNING id, rut_numero, rut_responsabilidad_codigo, responsable_iva,
+                                responsable_iva_override, responsabilidad_iva_fuente,
+                                revision_estado, revision_nota, revisado_por, revisado_at, onboarding_completo`,
+                    [id, transicion.estado, transicion.nota || null, req.user.id, hayOverride ? null : responsable, transicion.estado === ESTADOS.APROBADA]
+                  );
 
             // 🔔 Enviar notificación push FCM al prestador cuando se aprueba el RUT
             if (transicion.estado === ESTADOS.APROBADA) {
