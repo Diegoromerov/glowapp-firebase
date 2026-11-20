@@ -200,17 +200,22 @@ class FcmService {
     try {
       String? token;
       if (kIsWeb) {
-        // Web SIEMPRE exige VAPID key (Firebase Console -> Cloud Messaging ->
-        // Web configuration). Sin ella getToken() falla con un error opaco de
-        // service worker, asi que se comprueba antes y se dice que falta.
-        const vapidKey = String.fromEnvironment('FCM_VAPID_KEY');
-        if (vapidKey.isEmpty) {
-          debugPrint('FCM web sin FCM_VAPID_KEY: no se puede obtener token. '
-              'Definela en el servicio y pasala al build por --dart-define.');
-          return false;
-        }
-        token = await _messaging.getToken(vapidKey: vapidKey);
-      } else {
+              // Web SIEMPRE exige VAPID key (Firebase Console -> Cloud Messaging ->
+              // Web configuration). Sin ella getToken() falla con un error opaco de
+              // service worker, asi que se comprueba antes y se dice que falta.
+              // Soporta clave genérica y claves por app (provider/client)
+              const vapidKeyProvider = String.fromEnvironment('FCM_VAPID_KEY_PROVIDER');
+              const vapidKeyClient = String.fromEnvironment('FCM_VAPID_KEY_CLIENT');
+              const vapidKeyGeneric = String.fromEnvironment('FCM_VAPID_KEY');
+              final vapidKey = vapidKeyProvider.isNotEmpty
+                  ? vapidKeyProvider
+                  : (vapidKeyClient.isNotEmpty ? vapidKeyClient : vapidKeyGeneric);
+              if (vapidKey.isEmpty) {
+                debugPrint('FCM web sin VAPID key (FCM_VAPID_KEY / FCM_VAPID_KEY_PROVIDER / FCM_VAPID_KEY_CLIENT): no se puede obtener token.');
+                return false;
+              }
+              token = await _messaging.getToken(vapidKey: vapidKey);
+            } else {
         token = await _messaging.getToken();
       }
 
