@@ -1401,6 +1401,12 @@ a:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--bg-deep), 0 0 0 4px
 /* El botón de colapso usa .btn-tertiary; asegurarlo compacto dentro del sidebar */
 .sidebar .btn-tertiary { padding: 6px 8px; }
 
+/* Keep provider review dialogs inside the dashboard content, beside its sidebar. */
+@media (min-width: 1025px) {
+  .provider-review-overlay { left: 260px; }
+  .sidebar.collapsed ~ .main-content .provider-review-overlay { left: 72px; }
+}
+
 @media (max-width: 1024px) {
   .dashboard-layout { display: block; }
   .sidebar {

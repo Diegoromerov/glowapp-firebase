@@ -308,8 +308,8 @@ export default function ProviderValidationPage() {
       </section>
 
       {selectedProvider && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 md:p-6" onMouseDown={(event) => { if (event.target === event.currentTarget) { setSelectedProvider(null); setPreview(null); } }}>
-          <section role="dialog" aria-modal="true" aria-labelledby="review-provider-title" className="flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+        <div className="provider-review-overlay fixed inset-0 z-[70] flex items-center justify-center bg-black/60 p-3 sm:p-5 lg:p-6" onMouseDown={(event) => { if (event.target === event.currentTarget) { setSelectedProvider(null); setPreview(null); } }}>
+          <section role="dialog" aria-modal="true" aria-labelledby="review-provider-title" className="flex h-[min(92dvh,900px)] w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
             <header className="flex items-start justify-between gap-4 border-b border-[#eee8de] px-5 py-4 md:px-7">
               <div className="min-w-0">
                 <p className="text-xs font-semibold uppercase tracking-wide text-[#8b6b28]">Revisión de identidad y acreditación</p>
@@ -319,8 +319,8 @@ export default function ProviderValidationPage() {
               <button type="button" aria-label="Cerrar revisión" onClick={() => { setSelectedProvider(null); setPreview(null); }} className="rounded-lg p-2 text-[#71685f] hover:bg-[#f1eee7]"><X className="h-5 w-5" /></button>
             </header>
 
-            <div className="grid min-h-0 flex-1 gap-5 overflow-y-auto p-5 md:grid-cols-[minmax(280px,0.8fr)_minmax(0,1.2fr)] md:p-7">
-              <div className="space-y-4">
+            <div className="grid min-h-0 flex-1 gap-5 overflow-y-auto p-4 sm:p-5 md:grid-cols-[minmax(250px,0.8fr)_minmax(0,1.2fr)] md:p-6">
+              <div className="space-y-4 md:min-h-0 md:overflow-y-auto md:pr-1">
                 {providerDocuments.map((document) => (
                   <article key={document.key} className="rounded-xl border border-[#e5dfd3] p-4">
                     <div className="flex items-start justify-between gap-3">
@@ -354,7 +354,7 @@ export default function ProviderValidationPage() {
                 </div>
               </div>
 
-              <div className="flex min-h-[280px] flex-col overflow-hidden rounded-xl border border-[#e5dfd3] bg-[#f7f5f0]">
+              <div className="flex min-h-[260px] flex-col overflow-hidden rounded-xl border border-[#e5dfd3] bg-[#f7f5f0] md:min-h-0">
                 {preview ? (
                   <>
                     <div className="flex items-center justify-between gap-3 border-b border-[#e5dfd3] bg-white px-4 py-3">
@@ -363,11 +363,11 @@ export default function ProviderValidationPage() {
                         Abrir aparte <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     </div>
-                    <div className="flex min-h-[260px] flex-1 items-center justify-center overflow-auto p-3">
+                    <div className="flex min-h-[220px] flex-1 items-center justify-center overflow-auto p-3 md:min-h-0">
                       {preview.kind === 'image' ? (
-                        <img src={preview.url} alt={preview.label} className="max-h-[55vh] max-w-full rounded-lg object-contain" />
+                        <img src={preview.url} alt={preview.label} className="max-h-[55dvh] max-w-full rounded-lg object-contain" />
                       ) : preview.kind === 'pdf' ? (
-                        <iframe title={preview.label} src={preview.url} className="h-[55vh] w-full rounded-lg bg-white" />
+                        <iframe title={preview.label} src={preview.url} className="h-[50dvh] min-h-[220px] w-full rounded-lg bg-white md:h-full" />
                       ) : (
                         <div className="max-w-sm p-6 text-center">
                           <FileText className="mx-auto h-10 w-10 text-[#8b6b28]" />
@@ -390,7 +390,7 @@ export default function ProviderValidationPage() {
               </div>
             </div>
 
-            <footer className="flex flex-col-reverse gap-3 border-t border-[#eee8de] bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between md:px-7">
+            <footer className="flex shrink-0 flex-col-reverse gap-3 border-t border-[#eee8de] bg-white px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5 md:px-7">
               <p className="text-xs text-[#777064]">La decisión se registra en el historial administrativo.</p>
               <div className="flex flex-col-reverse gap-2 sm:flex-row">
                 <button
