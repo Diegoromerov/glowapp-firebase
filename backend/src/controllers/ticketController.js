@@ -29,8 +29,8 @@ exports.createTicket = async (req, res) => {
       );
       if (!belongs.length) return res.status(400).json({ error: 'CITA_NO_ASOCIADA', message: 'La cita no existe o no pertenece a tu cuenta.' });
     }
-    if (evidencia_urls !== undefined && (!Array.isArray(evidencia_urls) || evidencia_urls.length > 3)) {
-      return res.status(400).json({ error: 'EVIDENCIA_INVALIDA', message: 'Adjunta como máximo 3 imágenes.' });
+    if (evidencia_urls !== undefined && (!Array.isArray(evidencia_urls) || evidencia_urls.length > 5)) {
+      return res.status(400).json({ error: 'EVIDENCIA_INVALIDA', message: 'Adjunta como máximo 5 imágenes.' });
     }
     const evidence = evidencia_urls || [];
     let evidenceBytes = 0;
@@ -39,8 +39,8 @@ exports.createTicket = async (req, res) => {
       if (!match) return res.status(400).json({ error: 'EVIDENCIA_INVALIDA', message: 'Las evidencias deben ser imágenes JPEG, PNG o WebP.' });
       const bytes = Math.floor(match[2].length * 3 / 4);
       evidenceBytes += bytes;
-      if (bytes > 1500000 || evidenceBytes > 4500000) {
-        return res.status(413).json({ error: 'EVIDENCIA_DEMASIADO_GRANDE', message: 'Máximo 1,5 MB por imagen y 4,5 MB en total.' });
+      if (bytes > 1500000 || evidenceBytes > 7500000) {
+        return res.status(413).json({ error: 'EVIDENCIA_DEMASIADO_GRANDE', message: 'Máximo 1,5 MB por imagen y 7,5 MB en total.' });
       }
     }
 

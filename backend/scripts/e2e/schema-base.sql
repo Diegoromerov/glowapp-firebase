@@ -1579,6 +1579,7 @@ ALTER TABLE ONLY public.booking_productos FORCE ROW LEVEL SECURITY;
 
 CREATE TABLE public.bookings (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
+    booking_number bigint GENERATED ALWAYS AS IDENTITY,
     client_id integer NOT NULL,
     provider_id integer NOT NULL,
     service_id uuid NOT NULL,
@@ -1627,6 +1628,9 @@ CREATE TABLE public.bookings (
     CONSTRAINT bookings_cancelled_by_check CHECK (((cancelled_by)::text = ANY ((ARRAY['client'::character varying, 'provider'::character varying, 'system'::character varying])::text[]))),
     CONSTRAINT bookings_valor_bruto_check CHECK ((valor_bruto >= (0)::numeric))
 );
+
+CREATE UNIQUE INDEX bookings_booking_number_uidx
+    ON public.bookings USING btree (booking_number);
 
 ALTER TABLE ONLY public.bookings FORCE ROW LEVEL SECURITY;
 

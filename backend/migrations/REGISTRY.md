@@ -511,3 +511,8 @@ en 076).
 - Guarda los nuevos datos del RUT y su soporte en columnas separadas mientras están pendientes de revisión.
 - Los datos fiscales efectivos solo se reemplazan cuando un administrador aprueba el documento.
 - Migra las solicitudes pendientes/rechazadas del flujo anterior sin alterar prestadores ya aprobados.
+
+## 185: número consecutivo visible para citas
+
+- Agrega `bookings.booking_number` como identidad consecutiva única para mostrarla en la app.
+- Conserva `bookings.id` UUID como clave primaria y como referencia usada por pagos, PQRSF y demás relaciones.

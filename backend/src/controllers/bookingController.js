@@ -471,7 +471,7 @@ exports.getProviderBookings = async (req, res) => {
     // pero Sequelize es genial para obtener la estructura limpia.
     const query = `
       SELECT 
-        b.id, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount, 
+        b.id, b.booking_number, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount,
         b.comision_plataforma AS platform_commission, b.impuestos_estado AS state_tax, b.pago_neto_prestador AS provider_net_amount,
         b.client_id, b.pin_verificacion, b.service_address,
         s.name as service_name, s.price,
@@ -489,6 +489,7 @@ exports.getProviderBookings = async (req, res) => {
     
     const formattedBookings = result.rows.map(row => ({
       id: row.id,
+      booking_number: row.booking_number,
       client_id: row.client_id ? row.client_id.toString() : '5',
       scheduled_at: row.scheduled_at ? new Date(row.scheduled_at).toISOString() : null,
       status: row.status,
@@ -573,7 +574,7 @@ exports.getClientBookings = async (req, res) => {
 
     const query = `
       SELECT 
-        b.id, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount, b.service_address, b.notes, b.pin_verificacion,
+        b.id, b.booking_number, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount, b.service_address, b.notes, b.pin_verificacion,
         b.service_id, b.provider_id, s.name as service_name, s.duration_minutes as service_duration,
         u_prov.nombre as provider_name,
         p.business_name as provider_business_name,
@@ -607,6 +608,7 @@ exports.getClientBookings = async (req, res) => {
     
     const formattedBookings = result.rows.map(row => ({
       id: row.id,
+      booking_number: row.booking_number,
       scheduled_at: row.scheduled_at ? new Date(row.scheduled_at).toISOString() : null,
       status: row.status,
       // Ítem 31: solo las citas pagadas tienen recibo.

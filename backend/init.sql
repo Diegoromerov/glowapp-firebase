@@ -96,6 +96,7 @@ CREATE TABLE services (
 -- 8. Tabla bookings (Reservas + Reparto Financiero 20% / 8%)
 CREATE TABLE bookings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  booking_number BIGINT GENERATED ALWAYS AS IDENTITY,
   client_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE RESTRICT,
   provider_id INTEGER NOT NULL REFERENCES perfiles_prestador(id) ON DELETE RESTRICT,
   service_id UUID NOT NULL REFERENCES services(id) ON DELETE RESTRICT,

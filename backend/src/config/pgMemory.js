@@ -263,6 +263,7 @@ const SCHEMA_SQL = `
 
   CREATE TABLE IF NOT EXISTS bookings (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    booking_number BIGINT UNIQUE,
     client_id INTEGER,
     provider_id INTEGER,
     service_id VARCHAR(36),

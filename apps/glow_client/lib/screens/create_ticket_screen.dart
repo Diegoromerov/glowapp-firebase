@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 class CreateTicketScreen extends StatefulWidget {
   final String? preselectedBookingId;
@@ -14,6 +15,10 @@ class CreateTicketScreen extends StatefulWidget {
 }
 
 class _CreateTicketScreenState extends State<CreateTicketScreen> {
+  static const int _maxEvidenceFiles = 5;
+  static const int _maxEvidenceBytes = 1500000;
+  static const int _maxEvidenceTotalBytes = 7500000;
+
   final _formKey = GlobalKey<FormState>();
   final _asuntoCtrl = TextEditingController();
   final _descCtrl = TextEditingController();
@@ -21,6 +26,9 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
   String _selectedTipo = 'PETICION';
   String _selectedCategoria = 'servicio';
   String? _bookingId;
+  List<Map<String, dynamic>> _clientBookings = [];
+  bool _isLoadingBookings = true;
+  String? _bookingLoadError;
 
   final List<String> _evidenciaBase64List = [];
   bool _isSaving = false;
@@ -32,6 +40,53 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
   void initState() {
     super.initState();
     _bookingId = widget.preselectedBookingId;
+    _loadClientBookings();
+  }
+
+  Future<void> _loadClientBookings() async {
+    try {
+      final bookings = await ApiService.fetchClientBookings();
+      if (!mounted) return;
+      final unicasPorId = <String, Map<String, dynamic>>{};
+      for (final booking in bookings) {
+        final id = booking['id']?.toString();
+        if (id != null && id.isNotEmpty) unicasPorId.putIfAbsent(id, () => booking);
+      }
+      setState(() {
+        _clientBookings = unicasPorId.values.toList();
+        _isLoadingBookings = false;
+        if (_bookingId != null &&
+            !_clientBookings.any((booking) => booking['id']?.toString() == _bookingId)) {
+          _bookingId = null;
+        }
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _isLoadingBookings = false;
+        _bookingLoadError = mensajeHumano(e);
+      });
+    }
+  }
+
+  String _bookingLabel(Map<String, dynamic> booking) {
+    final number = booking['booking_number']?.toString() ?? '—';
+    final service = booking['service_name']?.toString().trim();
+    final provider = (booking['provider_business_name']?.toString().trim().isNotEmpty == true
+            ? booking['provider_business_name']
+            : booking['provider_name'])
+        ?.toString()
+        .trim();
+    final scheduledAt = DateTime.tryParse(booking['scheduled_at']?.toString() ?? '');
+    final dateLabel = scheduledAt == null
+        ? 'fecha no disponible'
+        : DateFormat('dd/MM/yyyy HH:mm').format(scheduledAt.toLocal());
+    final details = [
+      if (service != null && service.isNotEmpty) service,
+      if (provider != null && provider.isNotEmpty) provider,
+      dateLabel,
+    ].join(' · ');
+    return 'Cita #$number · $details';
   }
 
   @override
@@ -43,6 +98,13 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
 
   Future<void> _attachImage() async {
     try {
+      if (_evidenciaBase64List.length >= _maxEvidenceFiles) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Puedes adjuntar máximo 5 imágenes.')),
+        );
+        return;
+      }
+
       final XFile? file = await _picker.pickImage(
         source: ImageSource.gallery,
         maxWidth: 1000,
@@ -52,18 +114,20 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       if (file == null) return;
 
       final Uint8List bytes = await file.readAsBytes();
-      if (_evidenciaBase64List.length >= 3) {
+      if (bytes.length > _maxEvidenceBytes) {
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Puedes adjuntar hasta 3 imágenes.')));
+          const SnackBar(content: Text('Cada imagen debe pesar máximo 1,5 MB.')),
+        );
         return;
       }
-      if (bytes.length > 1500000 ||
-          _evidenciaBase64List.fold<int>(0, (sum, item) => sum + item.length) +
-                  bytes.length >
-              4500000) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text(
-                'Cada imagen debe pesar hasta 1,5 MB (4,5 MB en total).')));
+      final bytesYaAdjuntos = _evidenciaBase64List.fold<int>(
+        0,
+        (total, dataUri) => total + base64Decode(dataUri.split(',').last).length,
+      );
+      if (bytesYaAdjuntos + bytes.length > _maxEvidenceTotalBytes) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('El tamaño total de las imágenes no puede superar 7,5 MB.')),
+        );
         return;
       }
       final ext = file.name.toLowerCase().split('.').last;
@@ -73,7 +137,13 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
         'png': 'image/png',
         'webp': 'image/webp',
       };
-      final mimeType = mimeTypes[ext] ?? 'image/jpeg';
+      final mimeType = mimeTypes[ext];
+      if (mimeType == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Formato no admitido. Usa JPG, PNG o WebP.')),
+        );
+        return;
+      }
       final base64String = base64Encode(bytes);
       final dataUri = 'data:$mimeType;base64,$base64String';
 
@@ -242,17 +312,79 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                         ),
                         const SizedBox(height: 16),
 
-                        // ID de Reserva (Opcional)
-                        TextFormField(
-                          initialValue: _bookingId,
-                          decoration: AppTheme.inputDecoration(
-                            hintText: 'Ej: UUID de la reserva (opcional)',
-                            labelText: 'ID de Cita Relacionada',
-                            prefixIcon: Icons.calendar_today_outlined,
+                        // Se muestra el número de cita y el UUID se envía internamente.
+                        if (_isLoadingBookings)
+                          InputDecorator(
+                            decoration: AppTheme.inputDecoration(
+                              labelText: 'Cita relacionada (opcional)',
+                              prefixIcon: Icons.calendar_today_outlined,
+                            ),
+                            child: const Row(
+                              children: [
+                                SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)),
+                                SizedBox(width: 12),
+                                Text('Cargando tus citas...'),
+                              ],
+                            ),
+                          )
+                        else if (_bookingLoadError != null)
+                          InputDecorator(
+                            decoration: AppTheme.inputDecoration(
+                              labelText: 'Cita relacionada (opcional)',
+                              prefixIcon: Icons.calendar_today_outlined,
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(child: Text('No se pudieron cargar las citas. ${_bookingLoadError!}')),
+                                IconButton(
+                                  tooltip: 'Volver a cargar las citas',
+                                  onPressed: () {
+                                    setState(() {
+                                      _isLoadingBookings = true;
+                                      _bookingLoadError = null;
+                                    });
+                                    _loadClientBookings();
+                                  },
+                                  icon: const Icon(Icons.refresh),
+                                ),
+                              ],
+                            ),
+                          )
+                        else if (_clientBookings.isEmpty)
+                          InputDecorator(
+                            decoration: AppTheme.inputDecoration(
+                              labelText: 'Cita relacionada (opcional)',
+                              prefixIcon: Icons.calendar_today_outlined,
+                            ),
+                            child: const Text('No tienes citas para seleccionar.'),
+                          )
+                        else
+                          DropdownButtonFormField<String>(
+                            value: _clientBookings.any((booking) => booking['id']?.toString() == _bookingId)
+                                ? _bookingId
+                                : '',
+                            isExpanded: true,
+                            decoration: AppTheme.inputDecoration(
+                              hintText: 'Selecciona una cita (opcional)',
+                              labelText: 'Cita relacionada',
+                              prefixIcon: Icons.calendar_today_outlined,
+                            ),
+                            items: [
+                              const DropdownMenuItem<String>(
+                                value: '',
+                                child: Text('No asociar una cita'),
+                              ),
+                              ..._clientBookings.map((booking) {
+                                final id = booking['id']?.toString();
+                                if (id == null || id.isEmpty) return null;
+                                return DropdownMenuItem<String>(
+                                  value: id,
+                                  child: Text(_bookingLabel(booking), overflow: TextOverflow.ellipsis),
+                                );
+                              }).whereType<DropdownMenuItem<String>>(),
+                            ],
+                            onChanged: (value) => setState(() => _bookingId = value?.isEmpty == true ? null : value),
                           ),
-                          onChanged: (val) => _bookingId =
-                              val.trim().isEmpty ? null : val.trim(),
-                        ),
                         const SizedBox(height: 16),
 
                         // Asunto
@@ -305,12 +437,16 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              'Adjuntar fotos / evidencias',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                  color: Colors.black87),
+                            const Expanded(
+                              child: Text(
+                                'Adjuntar evidencias (máximo 5 JPG, PNG o WebP; 1,5 MB cada una)',
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: Colors.black87),
+                              ),
                             ),
                             TextButton.icon(
                               onPressed: _attachImage,
