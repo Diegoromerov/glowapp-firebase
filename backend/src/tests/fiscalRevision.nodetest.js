@@ -134,9 +134,9 @@ test('tras un rechazo el prestador puede reenviar', () => {
   assert.equal(r.estado, ESTADOS.PENDIENTE);
 });
 
-test('no se reenvía un RUT que ya está en revisión ni uno aprobado', () => {
+test('no se reenvía un RUT en revisión y sí se puede solicitar cambio de uno aprobado', () => {
   assert.equal(transicionar({ actual: ESTADOS.PENDIENTE, accion: ACCIONES.ENVIAR }).valido, false);
-  assert.equal(transicionar({ actual: ESTADOS.APROBADA, accion: ACCIONES.ENVIAR }).valido, false);
+  assert.equal(transicionar({ actual: ESTADOS.APROBADA, accion: ACCIONES.ENVIAR }).valido, true);
 });
 
 test('el equipo aprueba lo que está pendiente', () => {
