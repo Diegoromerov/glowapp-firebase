@@ -499,3 +499,9 @@ en 076).
 - Usa ciudad y departamento persistidos en `envios.destino_ciudad` y `envios.destino_departamento`, columnas del contrato 174.
 - No añade columnas ficticias a `pedidos_tienda`; conserva intacta la migración 180 ya desplegada.
 - Reemplaza la función agregadora y se aplica tanto en bases nuevas como en arranque idempotente.
+
+## 183: suspensión de visibilidad pública de usuarios
+
+- Añade `usuarios.visibilidad_suspendida`, independiente de `is_active`, para ocultar y restaurar perfiles públicos sin bloquear el inicio de sesión.
+- La búsqueda pública, la ficha del proveedor y la vitrina pública omiten perfiles suspendidos; en salones también se comprueba el estado del usuario dueño.
+- La acción administrativa queda restringida a cuentas `PRESTADOR` y `SALON`, y registra auditoría.

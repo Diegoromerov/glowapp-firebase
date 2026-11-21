@@ -26,6 +26,7 @@ import {
   Truck,
   RotateCcw,
   UserRoundCheck,
+  UsersRound,
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -37,6 +38,7 @@ export default function Sidebar() {
     Reclamaciones: pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas'),
     Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
     Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/prestadores'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
+    Usuarios: pathname === '/admin/usuarios/perfil' || pathname.startsWith('/admin/usuarios/perfil/'),
   });
 
   // El botón hamburguesa del Header emite este evento (el estado del drawer
@@ -52,6 +54,7 @@ export default function Sidebar() {
       Reclamaciones: ['/admin/pqrsf', '/admin/disputas'],
       Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'],
       Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/prestadores'],
+      Usuarios: ['/admin/usuarios/perfil'],
     };
     setOpenGroups((current) => Object.fromEntries(
       Object.entries(rutasPorGrupo).map(([group, paths]) => [
@@ -91,6 +94,13 @@ export default function Sidebar() {
             { href: '/admin/proveedores/perfil', label: 'Perfil' },
             { href: '/admin/proveedores/validacion', label: 'Validación' },
             { href: '/admin/prestadores', label: 'RUT e IVA' },
+          ],
+        },
+        {
+          label: 'Usuarios',
+          icon: UsersRound,
+          children: [
+            { href: '/admin/usuarios/perfil', label: 'Perfil' },
           ],
         },
         { href: '/admin/retiros', label: 'Cuentas de retiro', icon: WalletCards },

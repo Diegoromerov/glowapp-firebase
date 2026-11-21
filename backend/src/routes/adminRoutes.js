@@ -15,6 +15,61 @@ const fcmNotificationService = require('../services/fcmNotificationService');
 
 const UUID_DISPUTA = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
+// GET /api/admin/users/profile?q=... — datos de cuenta no fiscales, para hoja de vida administrativa.
+router.get('/users/profile', authMiddleware, adminMiddleware, async (req, res) => {
+  const q = String(req.query.q || '').trim().slice(0, 120);
+  if (q.length < 2) return res.status(400).json({ success: false, error: 'Escribe al menos 2 caracteres para buscar.' });
+  try {
+    await pool.query('SET LOCAL ROLE app_system');
+    const term = `%${q}%`;
+    const { rows } = await pool.query(`
+      SELECT id, nombre, email, phone, foto_url, ciudad, bio, slug,
+             auth_provider, provider_id, rol, worker_type, onboarding_completo, is_active,
+             email_verificado, creado_en, fecha_alta,
+             habeas_data_accepted_at, habeas_data_ip, terminos_accepted_at, terminos_ip,
+             tenant_id, estado_operativo, estado_operativo_desde, estado_operativo_motivo,
+             referral_code, referred_by_user_id, referral_converted_at,
+             glowai_plan, glowai_diagnosticos_mes, glowai_ciclo_reset_at,
+             streak_actual, streak_maximo, streak_ultimo_registro, ultimo_nivel_notificado,
+             colorimetria_diagnosticos_mes, colorimetria_mes_referencia,
+             glowstyle_outfits_mes, glowstyle_mes_referencia,
+             visibilidad_suspendida
+        FROM usuarios
+       WHERE (rol IS NULL OR rol::text NOT IN ('ADMIN', 'SUPERADMIN', 'admin', 'superadmin'))
+         AND (nombre ILIKE $1 OR email ILIKE $1 OR phone ILIKE $1 OR id::text = $2)
+       ORDER BY nombre ASC
+       LIMIT 100
+    `, [term, q]);
+    return res.json({ success: true, count: rows.length, data: rows });
+  } catch (error) {
+    console.error('❌ ERROR EN GET /api/admin/users/profile:', error);
+    return res.status(500).json({ success: false, error: 'No se pudo consultar el perfil del usuario.' });
+  }
+});
+
+// Oculta/restaura perfiles de proveedores sin afectar la autenticación de la cuenta.
+router.patch('/users/:id/visibility', authMiddleware, adminMiddleware, adminAuditLog({ action: 'user.visibility.update', resource: 'user' }), async (req, res) => {
+  const id = Number.parseInt(req.params.id, 10);
+  const suspended = req.body?.suspended;
+  if (!Number.isSafeInteger(id) || id <= 0 || typeof suspended !== 'boolean') {
+    return res.status(400).json({ success: false, error: 'Solicitud de visibilidad inválida.' });
+  }
+  try {
+    await pool.query('SET LOCAL ROLE app_system');
+    const { rows } = await pool.query(`
+      UPDATE usuarios
+         SET visibilidad_suspendida = $1
+       WHERE id = $2 AND rol::text IN ('PRESTADOR', 'SALON')
+       RETURNING id, nombre, rol, visibilidad_suspendida
+    `, [suspended, id]);
+    if (!rows.length) return res.status(404).json({ success: false, error: 'No se encontró un perfil público de proveedor para actualizar.' });
+    return res.json({ success: true, data: rows[0] });
+  } catch (error) {
+    console.error('❌ ERROR EN PATCH /api/admin/users/:id/visibility:', error);
+    return res.status(500).json({ success: false, error: 'No se pudo actualizar la visibilidad del perfil.' });
+  }
+});
+
 // GET /api/admin/providers/profile?q=... — búsqueda y hoja de vida administrativa.
 router.get('/providers/profile', authMiddleware, adminMiddleware, async (req, res) => {
   const q = String(req.query.q || '').trim().slice(0, 120);

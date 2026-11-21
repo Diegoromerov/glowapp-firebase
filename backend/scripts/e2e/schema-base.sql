@@ -402,6 +402,7 @@ CREATE TABLE public.usuarios (
     responsabilidad_iva_actualizada_at timestamp with time zone,
     responsabilidad_iva_cambiada_por integer,
     is_active boolean DEFAULT true,
+    visibilidad_suspendida boolean DEFAULT false NOT NULL,
     CONSTRAINT chk_usuarios_responsabilidad_fuente CHECK (((responsabilidad_iva_fuente IS NULL) OR ((responsabilidad_iva_fuente)::text = ANY ((ARRAY['RUT'::character varying, 'MANUAL'::character varying])::text[])))),
     CONSTRAINT chk_usuarios_rut_responsabilidad CHECK (((rut_responsabilidad_codigo IS NULL) OR (rut_responsabilidad_codigo = ANY (ARRAY[48, 49])))),
     CONSTRAINT chk_usuarios_tarifa_iva_rango CHECK (((tarifa_iva >= (0)::numeric) AND (tarifa_iva <= (1)::numeric)))

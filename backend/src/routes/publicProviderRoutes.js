@@ -29,6 +29,7 @@ router.get('/public/provider/:slug', async (req, res) => {
          FROM usuarios
         WHERE LOWER(slug) = $1
           AND rol IN ('PRESTADOR', 'SALON')
+          AND COALESCE(visibilidad_suspendida, false) = false
         LIMIT 1`,
       [slug]
     );

@@ -80,6 +80,7 @@ exports.getProviders = async (req, res) => {
           INNER JOIN usuarios u ON p.id = u.id
           LEFT JOIN provider_loyalty pl ON p.id = pl.provider_id
           WHERE p.is_active = true AND p.estatus_verificacion = 'APROBADO'
+            AND COALESCE(u.visibilidad_suspendida, false) = false
             AND p.ubicacion IS NOT NULL
             AND ST_DWithin(
               p.ubicacion, 
@@ -110,7 +111,9 @@ exports.getProviders = async (req, res) => {
             NULL::int as end_hour,
             ST_Distance(s.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
           FROM salones s
-          WHERE s.ubicacion IS NOT NULL
+          JOIN usuarios salon_owner ON salon_owner.id = s.id_dueno
+          WHERE COALESCE(salon_owner.visibilidad_suspendida, false) = false
+            AND s.ubicacion IS NOT NULL
             AND s.location_enabled = true
             AND s.location_public = true
             AND UPPER(COALESCE(s.plan_saas, 'FREE_TRIAL')) = ANY($4)
@@ -153,6 +156,7 @@ exports.getProviders = async (req, res) => {
         FROM perfiles_prestador p
         INNER JOIN usuarios u ON p.id = u.id
         WHERE p.is_active = true
+          AND COALESCE(u.visibilidad_suspendida, false) = false
         LIMIT 50
       `);
     }
@@ -307,7 +311,7 @@ exports.getProviderById = async (req, res) => {
              p.rating_count, (p.estatus_verificacion = 'APROBADO') as is_verified 
       FROM perfiles_prestador p 
       JOIN usuarios u ON p.id = u.id 
-      WHERE p.id = $1;
+      WHERE p.id = $1 AND COALESCE(u.visibilidad_suspendida, false) = false;
     `;
     const providerRes = await pool.query(providerQ, [numericId]);
     if (providerRes.rows.length === 0) return res.status(404).json({ error: 'No encontrado' });

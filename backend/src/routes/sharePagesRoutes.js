@@ -88,7 +88,7 @@ router.get('/provider/:id', async (req, res) => {
               p.description, p.rating_avg, p.rating_count, u.foto_url
          FROM perfiles_prestador p
          JOIN usuarios u ON p.id = u.id
-        WHERE p.id = $1`,
+        WHERE p.id = $1 AND COALESCE(u.visibilidad_suspendida, false) = false`,
       [id]
     ));
 
