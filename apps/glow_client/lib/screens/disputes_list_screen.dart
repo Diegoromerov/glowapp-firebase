@@ -2,6 +2,8 @@
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'open_dispute_screen.dart';
+import 'client_dispute_detail_screen.dart';
+
 class DisputesListScreen extends StatefulWidget {
   const DisputesListScreen({super.key});
 
@@ -106,164 +108,224 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 680),
           child: RefreshIndicator(
-                      onRefresh: _loadDisputes,
-                      color: const Color(0xFFC5A052),
-                      child: _isLoading
-                      ? Center(child: CircularProgressIndicator(color: AppTheme.primary))
-                      : _error != null
-                          ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(_error!, style: const TextStyle(color: Colors.redAccent, fontSize: 14)),
-                          const SizedBox(height: 16),
-                          ElevatedButton(
-                            onPressed: _loadDisputes,
-                            style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primary),
-                            child: const Text('Reintentar', style: TextStyle(color: Colors.white)),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                : _disputes.isEmpty
-                    ? _buildEmptyState()
-                    : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
-                        itemCount: _disputes.length,
-                        itemBuilder: (context, index) {
-                          final dispute = _disputes[index];
-                          final id = dispute['id'].toString();
-                          final tipo = dispute['tipo']?.toString() ?? 'Falla de Servicio';
-                          final estado = dispute['estado']?.toString() ?? 'ABIERTA';
-                          final desc = dispute['descripcion']?.toString() ?? '';
-                          final monto = toDoubleOr(dispute['monto_disputado'], 0.0);
-                          final resolucion = dispute['resolucion']?.toString();
-                          final notaRes = dispute['nota_resolucion']?.toString() ?? '';
-                          final servicio = dispute['servicio_nombre']?.toString() ?? 'Servicio';
-                          final fechaStr = dispute['creado_at']?.toString() ?? '';
-                          final fecha = DateTime.tryParse(fechaStr)?.toLocal();
-                          final formattedDate = fecha != null
-                              ? '${fecha.day}/${fecha.month}/${fecha.year} ${fecha.hour.toString().padLeft(2, '0')}:${fecha.minute.toString().padLeft(2, '0')}'
-                              : '';
-
-                          return Container(
-                            margin: const EdgeInsets.only(bottom: 16),
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: const Color(0xFFF3EAE8)),
-                              boxShadow: AppTheme.softShadow,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                                      decoration: BoxDecoration(
-                                        color: _getStatusBgColor(estado),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Text(
-                                        estado.toUpperCase(),
-                                        style: TextStyle(
-                                          color: _getStatusColor(estado),
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      formattedDate,
-                                      style: const TextStyle(color: Color(0xFF6F5F4E), fontSize: 11),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 12),
-                                Text(
-                                  servicio,
+            onRefresh: _loadDisputes,
+            color: const Color(0xFFC5A052),
+            child: _isLoading
+                ? Center(
+                    child: CircularProgressIndicator(color: AppTheme.primary))
+                : _error != null
+                    ? Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(_error!,
                                   style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                    color: Colors.black87,
-                                  ),
+                                      color: Colors.redAccent, fontSize: 14)),
+                              const SizedBox(height: 16),
+                              ElevatedButton(
+                                onPressed: _loadDisputes,
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppTheme.primary),
+                                child: const Text('Reintentar',
+                                    style: TextStyle(color: Colors.white)),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    : _disputes.isEmpty
+                        ? _buildEmptyState()
+                        : ListView.builder(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0, vertical: 16.0),
+                            itemCount: _disputes.length,
+                            itemBuilder: (context, index) {
+                              final dispute = _disputes[index];
+                              final id = dispute['id'].toString();
+                              final tipo = dispute['tipo']?.toString() ??
+                                  'Falla de Servicio';
+                              final estado =
+                                  dispute['estado']?.toString() ?? 'ABIERTA';
+                              final desc =
+                                  dispute['descripcion']?.toString() ?? '';
+                              final monto =
+                                  toDoubleOr(dispute['monto_disputado'], 0.0);
+                              final resolucion =
+                                  dispute['resolucion']?.toString();
+                              final notaRes =
+                                  dispute['nota_resolucion']?.toString() ?? '';
+                              final servicio =
+                                  dispute['servicio_nombre']?.toString() ??
+                                      'Servicio';
+                              final fechaStr =
+                                  dispute['creado_at']?.toString() ?? '';
+                              final fecha =
+                                  DateTime.tryParse(fechaStr)?.toLocal();
+                              final formattedDate = fecha != null
+                                  ? '${fecha.day}/${fecha.month}/${fecha.year} ${fecha.hour.toString().padLeft(2, '0')}:${fecha.minute.toString().padLeft(2, '0')}'
+                                  : '';
+
+                              return Container(
+                                margin: const EdgeInsets.only(bottom: 16),
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                      color: const Color(0xFFF3EAE8)),
+                                  boxShadow: AppTheme.softShadow,
                                 ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  'Motivo: $tipo',
-                                  style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12, color: Colors.black54),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  desc,
-                                  style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 12.5),
-                                ),
-                                const SizedBox(height: 12),
-                                const Divider(height: 1, color: Color(0xFFF3EAE8)),
-                                const SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
-                                      'Monto en Disputa:',
-                                      style: TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
-                                    ),
-                                    Text(
-                                      '\$${monto.toStringAsFixed(0)} COP',
-                                                                            style: TextStyle(
-                                                                              fontSize: 13,
-                                                                              fontWeight: FontWeight.bold,
-                                                                              color: AppTheme.primary,
-                                                                            ),
-                                    ),
-                                  ],
-                                ),
-                                if (estado == 'RESUELTA') ...[
-                                  const SizedBox(height: 10),
-                                  Container(
-                                    padding: const EdgeInsets.all(12),
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFFFDFBFB),
-                                      borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(color: const Color(0xFFEADCD6)),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const Text(
-                                          'Resolución Administrativa:',
-                                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: Colors.black87),
-                                        ),
-                                                                                const SizedBox(height: 4),
-                                                                                Text(
-                                                                                  _formatResolucionText(resolucion),
-                                                                                  style: TextStyle(fontSize: 12, color: AppTheme.success, fontWeight: FontWeight.w600),
-                                        ),
-                                        if (notaRes.isNotEmpty) ...[
-                                          const SizedBox(height: 6),
-                                          Text(
-                                            'Nota: $notaRes',
-                                            style: const TextStyle(fontSize: 11.5, color: Colors.black54, fontStyle: FontStyle.italic),
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10, vertical: 4),
+                                          decoration: BoxDecoration(
+                                            color: _getStatusBgColor(estado),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
                                           ),
-                                        ],
+                                          child: Text(
+                                            estado.toUpperCase(),
+                                            style: TextStyle(
+                                              color: _getStatusColor(estado),
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          formattedDate,
+                                          style: const TextStyle(
+                                              color: Color(0xFF6F5F4E),
+                                              fontSize: 11),
+                                        ),
                                       ],
                                     ),
-                                  ),
-                                ],
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+                                    const SizedBox(height: 12),
+                                    Text(
+                                      servicio,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      'Motivo: $tipo',
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 12,
+                                          color: Colors.black54),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      desc,
+                                      style: TextStyle(
+                                          color: Color(0xFF6F5F4E),
+                                          fontSize: 12.5),
+                                    ),
+                                    const SizedBox(height: 12),
+                                    const Divider(
+                                        height: 1, color: Color(0xFFF3EAE8)),
+                                    const SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          'Monto en Disputa:',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF6F5F4E)),
+                                        ),
+                                        Text(
+                                          '\$${monto.toStringAsFixed(0)} COP',
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppTheme.primary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    if (estado == 'RESUELTA') ...[
+                                      const SizedBox(height: 10),
+                                      Container(
+                                        padding: const EdgeInsets.all(12),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFFDFBFB),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          border: Border.all(
+                                              color: const Color(0xFFEADCD6)),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            const Text(
+                                              'Resolución Administrativa:',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 11,
+                                                  color: Colors.black87),
+                                            ),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              _formatResolucionText(resolucion),
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: AppTheme.success,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            if (notaRes.isNotEmpty) ...[
+                                              const SizedBox(height: 6),
+                                              Text(
+                                                'Nota: $notaRes',
+                                                style: const TextStyle(
+                                                    fontSize: 11.5,
+                                                    color: Colors.black54,
+                                                    fontStyle:
+                                                        FontStyle.italic),
+                                              ),
+                                            ],
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: TextButton.icon(
+                                        onPressed: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (_) =>
+                                                  ClientDisputeDetailScreen(
+                                                      disputeId: id),
+                                            )).then((_) => _loadDisputes()),
+                                        icon: const Icon(Icons.forum_outlined,
+                                            size: 18),
+                                        label: const Text(
+                                            'Ver expediente y responder'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+          ),
         ),
       ),
-    ),
       floatingActionButton: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
@@ -286,7 +348,8 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const OpenDisputeScreen()),
+              MaterialPageRoute(
+                  builder: (context) => const OpenDisputeScreen()),
             ).then((_) => _loadDisputes());
           },
           icon: const Icon(Icons.add, color: Color(0xFF1F1A15)),
@@ -310,11 +373,15 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.gavel_outlined, size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
+            Icon(Icons.gavel_outlined,
+                size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
             const SizedBox(height: 16),
             const Text(
               'Sin disputas de servicio activas',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
@@ -328,15 +395,19 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const OpenDisputeScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const OpenDisputeScreen()),
                 ).then((_) => _loadDisputes());
               },
               icon: const Icon(Icons.add, color: Colors.white),
-              label: const Text('Iniciar Disputa', style: TextStyle(color: Colors.white)),
+              label: const Text('Iniciar Disputa',
+                  style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primary,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                 elevation: 0,
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:glow_core/services/support_service.dart';
 import 'package:glow_core/shared/theme.dart' hide AppTheme;
 import 'create_ticket_screen.dart';
 import 'ticket_chat_screen.dart';
+import 'provider_disputes_screen.dart';
 import 'package:glow_core/glow_core.dart';
 
 class SupportCenterScreen extends StatefulWidget {
@@ -121,6 +122,16 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
         foregroundColor: const Color(0xFF1F1A15),
         elevation: 0,
         centerTitle: false,
+        actions: [
+          TextButton.icon(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ProviderDisputesScreen()),
+            ),
+            icon: const Icon(Icons.gavel_outlined),
+            label: const Text('Disputas'),
+          ),
+        ],
       ),
       body: Center(
         child: ConstrainedBox(

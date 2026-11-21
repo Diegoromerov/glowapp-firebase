@@ -12,6 +12,8 @@ const {
   responsabilidadDesdeCodigo,
 } = require('../services/fiscalRevision');
 const fcmNotificationService = require('../services/fcmNotificationService');
+const { notifyDisputeUsers } = require('../services/disputeNotifications');
+const { validarEvidencias } = require('../utils/disputaEvidencias');
 
 const UUID_DISPUTA = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -184,7 +186,7 @@ router.get('/disputes/:id/review', authMiddleware, adminMiddleware, async (req, 
       LEFT JOIN usuarios u_p ON u_p.id = b.provider_id
       LEFT JOIN services s ON s.id = b.service_id WHERE d.id = $1`, [req.params.id]);
     if (!result.rows.length) return res.status(404).json({ error: 'Disputa no encontrada.' });
-    const mensajes = await pool.query(`SELECT m.id, m.remitente_id, m.audiencia, m.mensaje, m.creado_at,
+    const mensajes = await pool.query(`SELECT m.id, m.remitente_id, m.audiencia, m.mensaje, m.evidencia_urls, m.creado_at,
         u.nombre AS remitente_nombre
       FROM disputa_mensajes m LEFT JOIN usuarios u ON u.id = m.remitente_id
       WHERE m.disputa_id = $1 ORDER BY m.creado_at ASC, m.id ASC`, [req.params.id]);
@@ -200,8 +202,8 @@ router.patch('/disputes/:id/review', authMiddleware, adminMiddleware,
     if (!UUID_DISPUTA.test(req.params.id)) return res.status(400).json({ error: 'Identificador de disputa inválido.' });
     try {
       await pool.query('SET LOCAL ROLE app_system');
-      const result = await pool.query(`UPDATE disputas SET estado = 'EN_REVISION', actualizado_at = NOW()
-        WHERE id = $1 AND estado = 'ABIERTA' RETURNING id, estado, actualizado_at`, [req.params.id]);
+      const result = await pool.query(`UPDATE disputas SET estado = 'EN_REVISION', workflow_actor_id = $2, actualizado_at = NOW()
+        WHERE id = $1 AND estado = 'ABIERTA' RETURNING id, estado, actualizado_at`, [req.params.id, req.user.id]);
       if (!result.rows.length) {
         const existe = await pool.query('SELECT id, estado FROM disputas WHERE id = $1', [req.params.id]);
         if (!existe.rows.length) return res.status(404).json({ error: 'Disputa no encontrada.' });
@@ -221,20 +223,35 @@ router.post('/disputes/:id/messages', authMiddleware, adminMiddleware,
     const mensaje = typeof req.body?.mensaje === 'string' ? req.body.mensaje.trim() : '';
     const audiencia = req.body?.audiencia === 'INTERNA' ? 'INTERNA' : 'PARTES';
     if (!mensaje || mensaje.length > 4000) return res.status(400).json({ error: 'Escribe un mensaje de 1 a 4.000 caracteres.' });
+    const validacionEvidencias = validarEvidencias(req.body?.evidencia_urls);
+    if (!validacionEvidencias.ok) return res.status(validacionEvidencias.status).json({ error: 'EVIDENCIA_INVALIDA', mensaje: validacionEvidencias.message });
     try {
       await pool.query('SET LOCAL ROLE app_system');
-      const result = await pool.query(`INSERT INTO disputa_mensajes (disputa_id, remitente_id, audiencia, mensaje, tenant_id)
-        SELECT d.id, $2, $3, $4, COALESCE(d.tenant_id, b.tenant_id, u_p.tenant_id, u_c.tenant_id, $5)
+      const result = await pool.query(`INSERT INTO disputa_mensajes (disputa_id, remitente_id, audiencia, mensaje, evidencia_urls, tenant_id)
+        SELECT d.id, $2, $3, $4, $5, COALESCE(d.tenant_id, b.tenant_id, u_p.tenant_id, u_c.tenant_id, $6)
         FROM disputas d JOIN bookings b ON b.id = d.booking_id
         LEFT JOIN usuarios u_p ON u_p.id = b.provider_id
         LEFT JOIN usuarios u_c ON u_c.id = b.client_id
         WHERE d.id = $1
-        RETURNING id, disputa_id, remitente_id, audiencia, mensaje, creado_at`,
-      [req.params.id, req.user.id, audiencia, mensaje, req.user.tenant_id || null]);
+        RETURNING id, disputa_id, remitente_id, audiencia, mensaje, evidencia_urls, creado_at`,
+      [req.params.id, req.user.id, audiencia, mensaje, validacionEvidencias.evidence, req.user.tenant_id || null]);
       if (!result.rows.length) return res.status(404).json({ error: 'Disputa no encontrada.' });
+      let notification = { status: 'internal_note' };
+      if (audiencia === 'PARTES') {
+        const partes = await pool.query(
+          `SELECT b.id AS booking_id, b.client_id, b.provider_id
+           FROM disputas d JOIN bookings b ON b.id = d.booking_id WHERE d.id = $1`,
+          [req.params.id]);
+        const row = partes.rows[0];
+        if (row) notification = await notifyDisputeUsers({
+          userIds: [row.client_id, row.provider_id], disputeId: req.params.id,
+          bookingId: row.booking_id, actorId: req.user.id,
+          message: 'El equipo de GlowApp respondió a tu disputa. Consulta el expediente en la app.',
+        });
+      }
       return res.status(201).json({ success: true, data: result.rows[0], aviso: audiencia === 'PARTES'
-        ? 'Respuesta guardada en el expediente. La notificación al usuario aún no está habilitada.'
-        : 'Nota interna guardada; solo visible para el equipo.' });
+        ? 'Respuesta guardada en el expediente.'
+        : 'Nota interna guardada; solo visible para el equipo.', notification });
     } catch (error) {
       console.error('❌ ERROR EN POST /api/admin/disputes/:id/messages:', error);
       return res.status(500).json({ error: 'No se pudo guardar el mensaje.' });
@@ -288,56 +305,6 @@ router.get('/disputes', authMiddleware, adminMiddleware, async (req, res) => {
 });
 
 // 🔹 Resolver disputa y dictaminar porcentaje de fondos
-router.patch('/disputes/:id/resolve', authMiddleware, adminMiddleware, adminAuditLog({ action: 'dispute.resolve', resource: 'dispute' }), async (req, res) => {
-  try {
-    const disputeId = req.params.id;
-    const adminId = req.user.id;
-    const { resolucion, porcentaje_prestador, nota_resolucion } = req.body;
-
-    if (!resolucion || porcentaje_prestador === undefined || !nota_resolucion) {
-      return res.status(400).json({ error: 'Todos los campos de resolución son requeridos.' });
-    }
-
-    const pct = parseFloat(porcentaje_prestador);
-
-    const checkDispute = await pool.query('SELECT * FROM disputas WHERE id = $1', [disputeId]);
-    if (checkDispute.rows.length === 0) {
-      return res.status(404).json({ error: 'Disputa no encontrada.' });
-    }
-
-    const dispute = checkDispute.rows[0];
-
-    const result = await pool.query(`
-      UPDATE disputas
-      SET estado = 'RESUELTA',
-          resuelto_por = $1,
-          resolucion = $2,
-          porcentaje_prestador = $3,
-          nota_resolucion = $4,
-          resuelto_at = NOW(),
-          actualizado_at = NOW()
-      WHERE id = $5
-      RETURNING *;
-    `, [adminId, resolucion, pct, nota_resolucion, disputeId]);
-
-    const finalBookingStatus = pct > 0 ? 'COMPLETADA' : 'CANCELADA';
-    await pool.query(`
-      UPDATE bookings
-      SET estado = $1
-      WHERE id = $2;
-    `, [finalBookingStatus, dispute.booking_id]);
-
-    res.json({
-      success: true,
-      message: 'Disputa resuelta con éxito.',
-      dispute: result.rows[0]
-    });
-  } catch (error) {
-    console.error('❌ ERROR EN PATCH /api/admin/disputes/:id/resolve:', error);
-    res.status(500).json({ error: 'Error al resolver la disputa.' });
-  }
-});
-
 // 🔹 GET /api/admin/providers/fiscal — Responsabilidad de IVA de los prestadores
 //
 // Alimenta la vista «Prestadores · IVA» del panel (fase 4 del plan de captura de

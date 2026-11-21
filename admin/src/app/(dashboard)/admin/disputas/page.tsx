@@ -15,6 +15,7 @@ interface Mensaje {
   remitente_nombre?: string | null;
   audiencia: 'PARTES' | 'INTERNA';
   mensaje: string;
+  evidencia_urls?: string[] | null;
   creado_at: string;
 }
 interface Disputa {
@@ -28,6 +29,8 @@ interface Disputa {
   estado: Estado;
   resolucion?: Resolucion | null;
   nota_resolucion?: string | null;
+  reembolso_estado?: 'NO_APLICA' | 'PENDIENTE' | 'PROCESANDO' | 'COMPLETADO' | 'FALLIDO' | null;
+  reembolso_monto?: number | string | null;
   creado_at: string;
   sla_limite_at?: string | null;
   booking_fecha?: string | null;
@@ -163,7 +166,7 @@ export default function DisputasPage() {
       });
       const json = await response.json().catch(() => null);
       if (!response.ok) throw new Error(json?.error || 'No se pudo registrar la resolución.');
-      setNota(''); await cargar(); await abrir(detalle.id); setAviso('Resolución registrada y fondos procesados por el flujo transaccional.');
+      setNota(''); await cargar(); await abrir(detalle.id); setAviso('Decisión registrada. Si corresponde devolución, su estado aparece por separado y no se considera pagada hasta confirmación.');
     } catch (e) { setError(e instanceof Error ? e.message : 'No se pudo resolver el caso.'); }
     finally { setGuardando(false); }
   };
@@ -254,17 +257,22 @@ export default function DisputasPage() {
                     <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-stone-600"><span className="inline-flex items-center gap-2"><Wallet size={16} className="text-[#b38a43]" />Monto en disputa: <b className="text-stone-900">{money(detalle.monto_disputado)}</b></span><span>Servicio: <b className="text-stone-900">{detalle.servicio_nombre || '—'}</b></span></div>
                     <div className="mt-5"><h3 className="text-sm font-semibold">Descripción del caso</h3><p className="mt-2 whitespace-pre-wrap rounded-xl border border-stone-200 p-4 text-sm leading-6 text-stone-700">{detalle.descripcion || 'No se adjuntó descripción.'}</p></div>
                     <div className="mt-5"><h3 className="text-sm font-semibold">Evidencias <span className="font-normal text-stone-500">({detalle.evidencia_urls?.length || 0})</span></h3>
-                      {detalle.evidencia_urls?.length ? <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">{detalle.evidencia_urls.map((url, index) => /^https?:\/\//i.test(url) ? <a key={`${url}-${index}`} href={url} target="_blank" rel="noopener noreferrer" className="group relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl border border-stone-200 bg-stone-50"><img src={url} alt={`Evidencia ${index + 1}`} className="h-full w-full object-cover transition group-hover:scale-[1.03]" /><span className="absolute bottom-2 right-2 rounded-full bg-white/90 p-1.5 text-stone-700"><ArrowUpRight size={14} /></span></a> : <div key={`${url}-${index}`} className="flex items-center gap-2 rounded-lg bg-stone-50 p-3 text-xs text-stone-500"><FileImage size={16} />Evidencia {index + 1} no disponible como enlace público</div>)}</div> : <p className="mt-2 rounded-xl border border-dashed border-stone-300 p-4 text-sm text-stone-500">No hay archivos de evidencia adjuntos.</p>}
+                      {detalle.evidencia_urls?.length ? <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">{detalle.evidencia_urls.map((url, index) => {
+                        const inlineImage = /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(url);
+                        if (inlineImage) return <div key={`evidencia-${index}`} className="overflow-hidden rounded-xl border border-stone-200 bg-stone-50"><img src={url} alt={`Evidencia ${index + 1}`} className="aspect-[4/3] h-full w-full object-cover" /></div>;
+                        if (/^https?:\/\//i.test(url)) return <a key={`${url}-${index}`} href={url} target="_blank" rel="noopener noreferrer" className="group relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl border border-stone-200 bg-stone-50"><img src={url} alt={`Evidencia ${index + 1}`} className="h-full w-full object-cover transition group-hover:scale-[1.03]" /><span className="absolute bottom-2 right-2 rounded-full bg-white/90 p-1.5 text-stone-700"><ArrowUpRight size={14} /></span></a>;
+                        return <div key={`${url}-${index}`} className="flex items-center gap-2 rounded-lg bg-stone-50 p-3 text-xs text-stone-500"><FileImage size={16} />Evidencia {index + 1} no disponible</div>;
+                      })}</div> : <p className="mt-2 rounded-xl border border-dashed border-stone-300 p-4 text-sm text-stone-500">No hay archivos de evidencia adjuntos.</p>}
                     </div>
                   </div>
 
                   <div className="p-5 sm:p-6">
                     <div className="flex items-center justify-between"><h3 className="text-base font-semibold">Conversación del caso</h3><span className="text-xs text-stone-500">{detalle.mensajes?.length || 0} mensajes</span></div>
                     <div className="mt-3 max-h-72 space-y-3 overflow-y-auto rounded-xl bg-[#faf8f4] p-3 sm:p-4">
-                      {!detalle.mensajes?.length ? <p className="py-8 text-center text-sm text-stone-500">Aún no hay respuestas ni notas.</p> : detalle.mensajes.map((item) => <article key={item.id} className={`max-w-[92%] rounded-xl border p-3 ${item.audiencia === 'INTERNA' ? 'border-amber-200 bg-amber-50' : 'border-stone-200 bg-white'}`}><div className="flex flex-wrap items-center justify-between gap-2 text-xs"><b>{item.audiencia === 'INTERNA' ? 'Nota interna' : item.remitente_nombre || 'Equipo GlowApp'}</b><time className="text-stone-500">{dateTime(item.creado_at)}</time></div><p className="mt-2 whitespace-pre-wrap text-sm leading-5 text-stone-700">{item.mensaje}</p></article>)}
+                      {!detalle.mensajes?.length ? <p className="py-8 text-center text-sm text-stone-500">Aún no hay respuestas ni notas.</p> : detalle.mensajes.map((item) => <article key={item.id} className={`max-w-[92%] rounded-xl border p-3 ${item.audiencia === 'INTERNA' ? 'border-amber-200 bg-amber-50' : 'border-stone-200 bg-white'}`}><div className="flex flex-wrap items-center justify-between gap-2 text-xs"><b>{item.audiencia === 'INTERNA' ? 'Nota interna' : item.remitente_nombre || 'Equipo GlowApp'}</b><time className="text-stone-500">{dateTime(item.creado_at)}</time></div><p className="mt-2 whitespace-pre-wrap text-sm leading-5 text-stone-700">{item.mensaje}</p>{item.audiencia === 'PARTES' && item.evidencia_urls?.length ? <div className="mt-3 flex flex-wrap gap-2">{item.evidencia_urls.map((url, index) => /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(url) ? <img key={`${item.id}-${index}`} src={url} alt={`Evidencia de mensaje ${index + 1}`} className="h-24 w-28 rounded-lg border border-stone-200 object-cover" /> : null)}</div> : null}</article>)}
                     </div>
                     {detalle.estado !== 'RESUELTA' && detalle.estado !== 'CERRADA' && <div className="mt-3 space-y-2">
-                      <div className="flex flex-col gap-2 sm:flex-row"><select value={audiencia} onChange={(e) => setAudiencia(e.target.value as 'PARTES' | 'INTERNA')} className="h-10 rounded-lg border border-stone-300 bg-white px-3 text-sm"><option value="PARTES">Respuesta para las partes</option><option value="INTERNA">Nota interna</option></select><span className="self-center text-xs text-stone-500">{audiencia === 'PARTES' ? 'Quedará visible para cliente y prestador. No envía correo.' : 'Solo visible para el equipo administrador.'}</span></div>
+                    <div className="flex flex-col gap-2 sm:flex-row"><select value={audiencia} onChange={(e) => setAudiencia(e.target.value as 'PARTES' | 'INTERNA')} className="h-10 rounded-lg border border-stone-300 bg-white px-3 text-sm"><option value="PARTES">Respuesta para las partes</option><option value="INTERNA">Nota interna</option></select><span className="self-center text-xs text-stone-500">{audiencia === 'PARTES' ? 'Quedará visible para cliente y prestador; se enviará aviso si hay canales configurados.' : 'Solo visible para el equipo administrador.'}</span></div>
                       <textarea value={mensaje} maxLength={4000} onChange={(e) => setMensaje(e.target.value)} rows={3} placeholder={audiencia === 'PARTES' ? 'Escribe una respuesta clara para las partes…' : 'Registra contexto interno para el equipo…'} className="w-full resize-y rounded-xl border border-stone-300 bg-white p-3 text-sm outline-none focus:border-[#bb9550] focus:ring-2 focus:ring-[#bb9550]/15" />
                       <div className="flex items-center justify-between"><span className="text-xs text-stone-500">{mensaje.length}/4000</span><button disabled={guardando || !mensaje.trim()} onClick={() => void enviarMensaje()} type="button" className="inline-flex h-10 items-center gap-2 rounded-xl bg-stone-900 px-4 text-sm font-semibold text-white hover:bg-stone-800 disabled:opacity-40"><Send size={15} />Guardar mensaje</button></div>
                     </div>}
@@ -281,7 +289,7 @@ export default function DisputasPage() {
                     {detalle.estado === 'ABIERTA' && <p className="mt-2 text-xs text-stone-500">Inicia la revisión antes de habilitar la resolución.</p>}
                   </div>}
 
-                  {(detalle.estado === 'RESUELTA' || detalle.estado === 'CERRADA') && <div className="m-5 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm sm:m-6"><CheckCircle2 size={18} className="mt-0.5 text-emerald-700" /><div><b>Caso {detalle.estado.toLowerCase()}</b>{detalle.resolucion && <p className="mt-1">{RESOLUCIONES.find((x) => x.value === detalle.resolucion)?.label || detalle.resolucion}</p>}{detalle.nota_resolucion && <p className="mt-2 text-stone-700">{detalle.nota_resolucion}</p>}</div></div>}
+                  {(detalle.estado === 'RESUELTA' || detalle.estado === 'CERRADA') && <div className="m-5 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm sm:m-6"><CheckCircle2 size={18} className="mt-0.5 text-emerald-700" /><div><b>Caso {detalle.estado.toLowerCase()}</b>{detalle.resolucion && <p className="mt-1">{RESOLUCIONES.find((x) => x.value === detalle.resolucion)?.label || detalle.resolucion}</p>}{detalle.nota_resolucion && <p className="mt-2 text-stone-700">{detalle.nota_resolucion}</p>}{detalle.reembolso_estado && detalle.reembolso_estado !== 'NO_APLICA' && <p className="mt-2 font-medium">Reembolso: {detalle.reembolso_estado}{detalle.reembolso_monto ? ` · ${money(detalle.reembolso_monto)}` : ''}</p>}</div></div>}
                 </div>}
           </section>
         </div>

@@ -1,6 +1,8 @@
 // frontend/lib/services/dispute_service.dart
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+
 import 'auth_service.dart';
 
 class DisputeService {
@@ -15,7 +17,7 @@ class DisputeService {
     if (token == null) return null;
 
     final response = await http.post(
-      Uri.parse('$baseUrl/api/disputas'),
+      Uri.parse('$baseUrl/api/disputes'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -40,7 +42,7 @@ class DisputeService {
     if (token == null) return null;
 
     final response = await http.get(
-      Uri.parse('$baseUrl/api/disputas/my-disputes'),
+      Uri.parse('$baseUrl/api/disputes/my-disputes'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -62,7 +64,7 @@ class DisputeService {
     if (token == null) return null;
 
     final response = await http.get(
-      Uri.parse('$baseUrl/api/disputas/$disputeId'),
+      Uri.parse('$baseUrl/api/disputes/$disputeId'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -75,6 +77,29 @@ class DisputeService {
         return Map<String, dynamic>.from(decoded['data']);
       }
     }
+    return null;
+  }
+
+  static Future<Map<String, dynamic>?> sendMessage({
+    required String disputeId,
+    required String message,
+    List<String>? evidenceUrls,
+  }) async {
+    final baseUrl = await AuthService.getBaseUrl();
+    final token = await AuthService.getToken();
+    if (token == null) return null;
+    final response = await http.post(
+      Uri.parse('$baseUrl/api/disputes/$disputeId/messages'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode({
+        'mensaje': message,
+        'evidencia_urls': evidenceUrls ?? [],
+      }),
+    );
+    if (response.statusCode == 201) return json.decode(response.body);
     return null;
   }
 }

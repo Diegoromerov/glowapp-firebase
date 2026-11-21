@@ -14,8 +14,9 @@ router.get('/disputas/my-disputes', authMiddleware, disputeController.getMyDispu
 // Obtener detalle de una disputa
 router.get('/disputas/:id', authMiddleware, disputeController.getDisputeById);
 
-// Resolver una disputa (Administrador)
-router.patch('/disputas/:id/resolve', authMiddleware, disputeController.resolveDispute);
+// La resolución financiera solo se ofrece por el endpoint transaccional de
+// paymentRoutes (`PUT /api/admin/disputes/:id/resolve`). No reactivar aquí la
+// ruta histórica: solo cambiaba el estado del expediente sin mover los fondos.
 
 wrapRouterAsync(router);
 module.exports = router;

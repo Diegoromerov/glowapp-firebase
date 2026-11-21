@@ -391,6 +391,27 @@ class WompiClient {
       asyncPaymentUrl: this._extraerAsyncPaymentUrl(data)
     };
   }
+
+  /** Solicita un reembolso V2 en Wompi (COP). Solo debe invocarse desde backend. */
+  async createRefundV2({ transactionId, amountInCents, reason, reference }) {
+    if (typeof transactionId !== 'string' || !transactionId.trim()) {
+      throw new WompiError('El id de transacción es obligatorio para reembolsar.');
+    }
+    if (!Number.isSafeInteger(amountInCents) || amountInCents <= 0) {
+      throw new WompiError('El monto del reembolso debe ser un entero positivo en centavos.');
+    }
+    const { data } = await this._request('POST', '/refunds', {
+      auth: 'private',
+      body: {
+        transaction_id: transactionId,
+        amount_in_cents: amountInCents,
+        reason: String(reason || 'Resolución de disputa GlowApp').slice(0, 250),
+        reference: String(reference || '').slice(0, 100),
+      },
+    });
+    if (!data?.id && !data?.v2_refund_id) throw new WompiError('Wompi no devolvió un identificador de reembolso.');
+    return data;
+  }
 }
 
 const client = new WompiClient();

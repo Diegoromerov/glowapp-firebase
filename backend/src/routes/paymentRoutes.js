@@ -20,6 +20,8 @@ const wompiClient = require('../services/wompiClient');
 const wompiPayoutsClient = require('../services/wompiPayoutsClient');
 const { aCentavos, aDecimal, sumarMontos } = require('../utils/money');
 const { OAuth2Client } = require('google-auth-library');
+const { notifyDisputeUsers } = require('../services/disputeNotifications');
+const { validarEvidencias } = require('../utils/disputaEvidencias');
 
 // ─── UTILIDADES ──────────────────────────────────────────────────────────────
 
@@ -1921,23 +1923,28 @@ router.put('/wallet/model', authMiddleware, async (req, res) => {
 
 // ─── DISPUTAS — ABRIR ─────────────────────────────────────────────────────────
 
-router.post('/disputes', authMiddleware, async (req, res) => {
+const abrirDisputaServicio = async (req, res) => {
   const { booking_id, tipo, descripcion, evidencia_urls } = req.body;
+  const tiposDisputaPermitidos = [
+    'CALIDAD_SERVICIO', 'OTP_BLOQUEADO', 'CARGO_NO_RECONOCIDO', 'FRAUDE', 'FALLA_TECNICA',
+  ];
 
-  if (!booking_id || !tipo) {
-    return res.status(400).json({ error: 'Se requieren booking_id y tipo de disputa.' });
+  if (!booking_id || !tiposDisputaPermitidos.includes(tipo) || typeof descripcion !== 'string' || descripcion.trim().length < 15 || descripcion.trim().length > 10000) {
+    return res.status(400).json({ error: 'Cita, motivo y descripción (15 a 10.000 caracteres) son obligatorios.' });
   }
 
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    await client.query('SET LOCAL ROLE app_system');
 
     const { rows } = await client.query(
       `SELECT b.*, u_c.rol as rol_cliente, u_p.rol as rol_prestador
        FROM bookings b
        JOIN usuarios u_c ON b.client_id = u_c.id
        JOIN usuarios u_p ON b.provider_id = u_p.id
-       WHERE b.id = $1 AND (b.client_id = $2 OR b.provider_id = $2)`,
+       WHERE b.id = $1 AND (b.client_id::text = $2::text OR b.provider_id::text = $2::text)
+       FOR UPDATE OF b`,
       [booking_id, req.user.id]
     );
 
@@ -1947,6 +1954,10 @@ router.post('/disputes', authMiddleware, async (req, res) => {
     }
 
     const booking = rows[0];
+    if (String(booking.estado).toUpperCase() !== 'COMPLETADA') {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ error: 'Solo se pueden disputar citas completadas. Los casos de inasistencia requieren un flujo financiero distinto.' });
+    }
     const userRow = await client.query('SELECT rol FROM usuarios WHERE id = $1', [req.user.id]);
     const rolActor = userRow.rows[0].rol;
 
@@ -1987,14 +1998,21 @@ router.post('/disputes', authMiddleware, async (req, res) => {
       return res.status(409).json({ error: 'Ya existe una disputa abierta para esta reserva.' });
     }
 
-    const slaDias = parseInt(await getConfig('disputa_sla_dias', '5'));
+    const validacionEvidencias = validarEvidencias(evidencia_urls);
+    if (!validacionEvidencias.ok) {
+      await client.query('ROLLBACK');
+      return res.status(validacionEvidencias.status).json({ error: 'EVIDENCIA_INVALIDA', mensaje: validacionEvidencias.message });
+    }
+    const evidencias = validacionEvidencias.evidence;
+
+    const slaDias = parseInt(await getConfig('disputa_sla_dias', '5'), 10);
 
     const disputaResult = await client.query(
       `INSERT INTO disputas
          (booking_id, iniciado_por, tipo_actor, tipo, descripcion, evidencia_urls, monto_disputado, sla_limite_at)
        VALUES ($1, $2, $3, $4, $5, $6, $7, NOW() + ($8 || ' days')::interval)
        RETURNING *`,
-      [booking_id, req.user.id, rolActor, tipo, descripcion, evidencia_urls || [], booking.valor_bruto, slaDias]
+      [booking_id, req.user.id, rolActor, tipo, String(descripcion || '').trim(), evidencias, booking.valor_bruto, slaDias]
     );
 
     await client.query(
@@ -2033,9 +2051,29 @@ router.post('/disputes', authMiddleware, async (req, res) => {
 
     await client.query('COMMIT');
 
+    const otherPartyId = String(booking.client_id) === String(req.user.id)
+      ? booking.provider_id : booking.client_id;
+    const notification = await notifyDisputeUsers({
+      userIds: [otherPartyId], disputeId: disputaResult.rows[0].id, bookingId,
+      actorId: req.user.id, message: 'Se abrió un caso relacionado con esta cita. Revisa el expediente y agrega tu versión.',
+    });
+    if (process.env.SUPPORT_INBOX_EMAIL) {
+      try {
+        await emailService.sendEmail({
+          to: process.env.SUPPORT_INBOX_EMAIL,
+          subject: `Nueva disputa de servicio ${disputaResult.rows[0].id}`,
+          data: { text: `Nueva disputa de servicio\nCaso: ${disputaResult.rows[0].id}\nCita: ${booking_id}\nMotivo: ${tipo}\nIngresa al panel administrativo para revisar el expediente.` },
+        });
+      } catch (mailError) {
+        console.error('[disputas] aviso a soporte falló:', mailError.message);
+      }
+    }
+
     res.status(201).json({
       ok: true,
+      success: true,
       mensaje: `Disputa registrada. El pago queda congelado y se resuelve en máximo ${slaDias} días.`,
+      notification,
       disputa: disputaResult.rows[0]
     });
   } catch (err) {
@@ -2045,7 +2083,110 @@ router.post('/disputes', authMiddleware, async (req, res) => {
   } finally {
     client.release();
   }
-});
+};
+router.post('/disputes', authMiddleware, abrirDisputaServicio);
+// Compatibilidad con versiones anteriores de las apps: el alias usa exactamente
+// el mismo flujo financiero y sus validaciones.
+router.post('/disputas', authMiddleware, abrirDisputaServicio);
+
+// El expediente de disputa es compartido entre cliente y prestador. Todas las
+// consultas cruzadas se ejecutan con el rol de sistema y luego se autorizan por
+// participación explícita en la cita.
+const listarMisDisputas = async (req, res) => {
+  try {
+    const result = await runAsSystem({ pool }, (client) => client.query(
+      `SELECT d.*, b.scheduled_at AS booking_fecha, b.client_id, b.provider_id,
+          s.name AS servicio_nombre, b.booking_number
+       FROM disputas d JOIN bookings b ON b.id = d.booking_id
+       LEFT JOIN services s ON s.id = b.service_id
+       WHERE b.client_id::text = $1::text OR b.provider_id::text = $1::text
+       ORDER BY d.creado_at DESC`, [req.user.id]));
+    return res.json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error('[disputas] error listando expedientes:', error.message);
+    return res.status(500).json({ error: 'No se pudieron cargar las disputas.' });
+  }
+};
+router.get('/disputes/my-disputes', authMiddleware, listarMisDisputas);
+router.get('/disputas/my-disputes', authMiddleware, listarMisDisputas);
+
+const detalleDisputa = async (req, res) => {
+  try {
+    const result = await runAsSystem({ pool }, async (client) => {
+      const caso = await client.query(
+        `SELECT d.*, b.client_id, b.provider_id, b.scheduled_at AS booking_fecha,
+            b.booking_number, s.name AS servicio_nombre
+         FROM disputas d JOIN bookings b ON b.id = d.booking_id
+         LEFT JOIN services s ON s.id = b.service_id WHERE d.id = $1`, [req.params.id]);
+      if (!caso.rows.length) return { caso: null, mensajes: [] };
+      const mensajes = await client.query(
+        `SELECT m.id, m.remitente_id, m.audiencia, m.mensaje, m.evidencia_urls, m.creado_at,
+            u.nombre AS remitente_nombre
+         FROM disputa_mensajes m LEFT JOIN usuarios u ON u.id = m.remitente_id
+         WHERE m.disputa_id = $1 AND m.audiencia = 'PARTES'
+         ORDER BY m.creado_at, m.id`, [req.params.id]);
+      return { caso: caso.rows[0], mensajes: mensajes.rows };
+    });
+    if (!result.caso) return res.status(404).json({ error: 'Disputa no encontrada.' });
+    const id = String(req.user.id);
+    if (String(result.caso.client_id) !== id && String(result.caso.provider_id) !== id) {
+      return res.status(403).json({ error: 'No autorizado para consultar este expediente.' });
+    }
+    return res.json({ success: true, data: { ...result.caso, mensajes: result.mensajes } });
+  } catch (error) {
+    console.error('[disputas] error consultando expediente:', error.message);
+    return res.status(500).json({ error: 'No se pudo cargar el expediente.' });
+  }
+};
+router.get('/disputes/:id', authMiddleware, detalleDisputa);
+router.get('/disputas/:id', authMiddleware, detalleDisputa);
+
+const responderDisputa = async (req, res) => {
+  const mensaje = typeof req.body?.mensaje === 'string' ? req.body.mensaje.trim() : '';
+  if (!mensaje || mensaje.length > 4000) return res.status(400).json({ error: 'Escribe un mensaje de 1 a 4.000 caracteres.' });
+  const validacionEvidencias = validarEvidencias(req.body?.evidencia_urls);
+  if (!validacionEvidencias.ok) return res.status(validacionEvidencias.status).json({ error: 'EVIDENCIA_INVALIDA', mensaje: validacionEvidencias.message });
+  try {
+    const result = await runAsSystem({ pool }, async (client) => {
+      const caso = await client.query(
+        `SELECT d.id, d.estado, b.id AS booking_id, b.client_id, b.provider_id,
+            COALESCE(d.tenant_id, b.tenant_id, u_p.tenant_id, u_c.tenant_id) AS tenant_id
+         FROM disputas d JOIN bookings b ON b.id = d.booking_id
+         LEFT JOIN usuarios u_p ON u_p.id = b.provider_id
+         LEFT JOIN usuarios u_c ON u_c.id = b.client_id
+         WHERE d.id = $1`, [req.params.id]);
+      if (!caso.rows.length) return { error: 'NOT_FOUND' };
+      const row = caso.rows[0];
+      const id = String(req.user.id);
+      if (String(row.client_id) !== id && String(row.provider_id) !== id) return { error: 'FORBIDDEN' };
+      if (['RESUELTA', 'CERRADA'].includes(String(row.estado))) return { error: 'CLOSED' };
+      const tenantId = row.tenant_id || req.user.tenant_id;
+      if (!tenantId) return { error: 'TENANT_MISSING' };
+      const inserted = await client.query(
+        `INSERT INTO disputa_mensajes (disputa_id, remitente_id, audiencia, mensaje, evidencia_urls, tenant_id)
+         VALUES ($1, $2, 'PARTES', $3, $4, $5)
+         RETURNING id, disputa_id, remitente_id, audiencia, mensaje, evidencia_urls, creado_at`,
+        [req.params.id, req.user.id, mensaje, validacionEvidencias.evidence, tenantId]);
+      await client.query('UPDATE disputas SET actualizado_at = NOW() WHERE id = $1', [req.params.id]);
+      const recipientId = String(row.client_id) === id ? row.provider_id : row.client_id;
+      return { message: inserted.rows[0], recipientId, bookingId: row.booking_id };
+    });
+    if (result.error === 'NOT_FOUND') return res.status(404).json({ error: 'Disputa no encontrada.' });
+    if (result.error === 'FORBIDDEN') return res.status(403).json({ error: 'No autorizado para responder en este expediente.' });
+    if (result.error === 'CLOSED') return res.status(409).json({ error: 'El caso está cerrado y no admite nuevas respuestas.' });
+    if (result.error) return res.status(409).json({ error: 'No se pudo resolver el tenant del expediente.' });
+    const notification = await notifyDisputeUsers({
+      userIds: [result.recipientId], disputeId: req.params.id, bookingId: result.bookingId,
+      actorId: req.user.id, message: 'La otra parte agregó una respuesta al expediente.',
+    });
+    return res.status(201).json({ success: true, data: result.message, notification });
+  } catch (error) {
+    console.error('[disputas] error guardando mensaje:', error.message);
+    return res.status(500).json({ error: 'No se pudo guardar el mensaje.' });
+  }
+};
+router.post('/disputes/:id/messages', authMiddleware, responderDisputa);
+router.post('/disputas/:id/messages', authMiddleware, responderDisputa);
 
 // ─── ADMIN — DASHBOARD FINANCIERO ────────────────────────────────────────────
 
@@ -2139,8 +2280,13 @@ router.put('/admin/disputes/:id/resolve', authMiddleware, async (req, res) => {
   if (!resolucionesValidas.includes(resolucion)) {
     return res.status(400).json({ error: 'Resolución inválida.' });
   }
-  if (resolucion === 'DIVISION' && (porcentaje_prestador === undefined || porcentaje_prestador < 0 || porcentaje_prestador > 100)) {
+  const porcentaje = porcentaje_prestador === null || porcentaje_prestador === undefined
+    ? null : Number(porcentaje_prestador);
+  if (resolucion === 'DIVISION' && (!Number.isFinite(porcentaje) || porcentaje < 0 || porcentaje > 100)) {
     return res.status(400).json({ error: 'Para DIVISION se requiere porcentaje_prestador (0-100).' });
+  }
+  if (typeof nota_resolucion !== 'string' || nota_resolucion.trim().length < 5 || nota_resolucion.trim().length > 4000) {
+    return res.status(400).json({ error: 'La nota de resolución debe tener entre 5 y 4.000 caracteres.' });
   }
 
   const client = await pool.connect();
@@ -2151,9 +2297,16 @@ router.put('/admin/disputes/:id/resolve', authMiddleware, async (req, res) => {
     await client.query('SET LOCAL ROLE app_system');
 
     const { rows } = await client.query(
-      `SELECT d.*, b.provider_id, b.client_id, b.pago_neto_prestador, b.valor_bruto
+      `SELECT d.*, b.provider_id, b.client_id, b.pago_neto_prestador, b.valor_bruto,
+          t.external_id AS wompi_transaction_id, t.status AS payment_status
        FROM disputas d JOIN bookings b ON d.booking_id = b.id
-       WHERE d.id = $1 AND d.estado IN ('ABIERTA','EN_REVISION')`,
+       LEFT JOIN LATERAL (
+         SELECT tx.external_id, tx.status FROM transactions tx
+         WHERE tx.booking_id = b.id AND LOWER(tx.status) = 'paid'
+         ORDER BY tx.id DESC LIMIT 1
+       ) t ON TRUE
+       WHERE d.id = $1 AND d.estado IN ('ABIERTA','EN_REVISION')
+       FOR UPDATE OF d, b`,
       [id]
     );
 
@@ -2176,7 +2329,7 @@ router.put('/admin/disputes/:id/resolve', authMiddleware, async (req, res) => {
         montoReembolso = parseFloat(disputa.valor_bruto);
         break;
       case 'DIVISION':
-        montoPrestador = (montoEnDisputa * porcentaje_prestador) / 100;
+        montoPrestador = (montoEnDisputa * porcentaje) / 100;
         montoReembolso = montoEnDisputa - montoPrestador;
         break;
       case 'COMPENSACION_PLATAFORMA':
@@ -2210,14 +2363,17 @@ router.put('/admin/disputes/:id/resolve', authMiddleware, async (req, res) => {
     await client.query(
       `UPDATE disputas
        SET estado = 'RESUELTA', resolucion = $2, porcentaje_prestador = $3,
-           nota_resolucion = $4, resuelto_por = $5, resuelto_at = NOW()
+           nota_resolucion = $4, resuelto_por = $5, resuelto_at = NOW(),
+           reembolso_estado = CASE WHEN $6::numeric > 0 THEN 'PENDIENTE' ELSE 'NO_APLICA' END,
+           reembolso_monto = NULLIF($6::numeric, 0),
+           reembolso_actualizado_at = CASE WHEN $6::numeric > 0 THEN NOW() ELSE NULL END
        WHERE id = $1`,
-      [id, resolucion, porcentaje_prestador || null, nota_resolucion || null, req.user.id]
+      [id, resolucion, resolucion === 'DIVISION' ? porcentaje : null, nota_resolucion.trim(), req.user.id, montoReembolso]
     );
 
     await client.query(
       `UPDATE bookings SET estado = $2 WHERE id = $1`,
-      [disputa.booking_id, resolucion === 'REEMBOLSO_TOTAL' ? 'CANCELADA' : 'COMPLETADA']
+      [disputa.booking_id, montoPrestador > 0 ? 'COMPLETADA' : 'CANCELADA']
     );
 
     await auditLog(client, {
@@ -2232,12 +2388,57 @@ router.put('/admin/disputes/:id/resolve', authMiddleware, async (req, res) => {
 
     await client.query('COMMIT');
 
+    let reembolsoEstado = montoReembolso > 0 ? 'PENDIENTE' : 'NO_APLICA';
+    if (montoReembolso > 0 && process.env.WOMPI_REFUNDS_V2_ENABLED === 'true'
+        && disputa.wompi_transaction_id && String(disputa.payment_status).toLowerCase() === 'paid') {
+      const reference = `GLOW-${id}`;
+      reembolsoEstado = 'PROCESANDO';
+      try {
+        await runAsSystem({ pool }, (systemClient) => systemClient.query(
+          `UPDATE disputas SET reembolso_estado = 'PROCESANDO',
+              reembolso_transaction_id = $2, reembolso_referencia = $3,
+              reembolso_actualizado_at = NOW()
+           WHERE id = $1 AND reembolso_estado = 'PENDIENTE'`,
+          [id, disputa.wompi_transaction_id, reference]));
+        const refund = await wompiClient.createRefundV2({
+          transactionId: disputa.wompi_transaction_id,
+          amountInCents: aCentavos(montoReembolso),
+          reason: `Resolución GlowApp ${resolucion}`,
+          reference,
+        });
+        const wompiStatus = String(refund.status || '').toUpperCase();
+        reembolsoEstado = wompiStatus === 'APPROVED' ? 'COMPLETADO'
+          : ['PENDING', 'PROCESSING'].includes(wompiStatus) ? 'PROCESANDO' : 'FALLIDO';
+        await runAsSystem({ pool }, (systemClient) => systemClient.query(
+          `UPDATE disputas SET reembolso_estado = $2, reembolso_wompi_id = $3,
+              reembolso_actualizado_at = NOW() WHERE id = $1`,
+          [id, reembolsoEstado, String(refund.v2_refund_id || refund.id)]));
+      } catch (refundError) {
+        // Un timeout puede ocurrir después de que Wompi aceptó la solicitud. Se
+        // conserva PROCESANDO para impedir un segundo cargo accidental.
+        if (refundError?.status) {
+          reembolsoEstado = 'FALLIDO';
+          await runAsSystem({ pool }, (systemClient) => systemClient.query(
+            `UPDATE disputas SET reembolso_estado = 'FALLIDO', reembolso_actualizado_at = NOW() WHERE id = $1`, [id]));
+        }
+        console.error('[disputas] no se pudo confirmar solicitud de reembolso:', refundError.message);
+      }
+    }
+
+    const notification = await notifyDisputeUsers({
+      userIds: [disputa.client_id, disputa.provider_id], disputeId: id,
+      bookingId: disputa.booking_id, actorId: req.user.id,
+      message: `GlowApp registró la decisión ${resolucion}.${montoReembolso > 0 ? ` Estado del reembolso: ${reembolsoEstado}.` : ''}`,
+    });
+
     res.json({
       ok: true,
       mensaje: 'Disputa resuelta exitosamente.',
       resolucion,
       monto_liberado_prestador: montoPrestador,
-      monto_reembolso_cliente: montoReembolso
+      monto_reembolso_cliente: montoReembolso,
+      reembolso_estado: reembolsoEstado,
+      notification,
     });
   } catch (err) {
     await client.query('ROLLBACK');
