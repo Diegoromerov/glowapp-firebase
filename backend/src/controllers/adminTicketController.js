@@ -493,7 +493,8 @@ exports.auditoriaTicket = async (req, res) => {
 
 // ── POST /api/admin/tickets/:id/respuesta ──────────────────────────────────────
 // Responde como operador: guarda el mensaje en el hilo, mueve el estado y fija
-// `primera_respuesta_en` si es la primera. El correo al implicado es la fase siguiente.
+// `primera_respuesta_en` si es la primera. Tras confirmar la transacción se envía al
+// titular del ticket un correo con el texto de la respuesta.
 exports.responderTicket = async (req, res) => {
   try {
     const { id } = req.params;
@@ -575,16 +576,43 @@ exports.responderTicket = async (req, res) => {
     let notification = { status: 'not_configured' };
     try {
       const recipient = await sequelize.query(
-        `SELECT u.email FROM tickets t JOIN usuarios u ON u.id = t.usuario_id WHERE t.id = :id`,
+        `SELECT u.email, t.asunto FROM tickets t JOIN usuarios u ON u.id = t.usuario_id WHERE t.id = :id`,
         { replacements: { id }, type: QueryTypes.SELECT }
       );
       const mailer = require('../services/emailService');
-      if (recipient[0]?.email && (process.env.BREVO_API_KEY || (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS))) {
-        const sent = await mailer.sendEmail({ to: recipient[0].email, subject: 'Actualización de tu solicitud GlowApp',
-          data: { text: `Hay una actualización en tu ticket ${id}. Ingresa a GlowApp > Centro de Soporte > Mis solicitudes para consultarla.` } });
+      const transporteConfigurado = Boolean(
+        process.env.BREVO_API_KEY ||
+        (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS)
+      );
+      if (!recipient[0]?.email) {
+        notification = { status: 'recipient_missing' };
+      } else if (transporteConfigurado) {
+        const asunto = recipient[0].asunto || 'Solicitud de soporte';
+        const cuerpo = [
+          'Hola,',
+          '',
+          'El equipo de GlowApp respondió a tu solicitud de soporte.',
+          `Solicitud: ${asunto}`,
+          `Número de ticket: ${id}`,
+          '',
+          'Respuesta del equipo:',
+          resultado.mensaje.mensaje,
+          '',
+          'Puedes consultar el estado o continuar la conversación en GlowApp > Centro de Soporte > Mis solicitudes.',
+          '',
+          'Este es un correo automático. Para responder, utiliza el hilo de la solicitud dentro de GlowApp.',
+        ].join('\n');
+        const sent = await mailer.sendEmail({
+          to: recipient[0].email,
+          subject: 'GlowApp: respuesta a tu solicitud de soporte',
+          data: { text: cuerpo },
+        });
         notification = sent?.devMode ? { status: 'not_configured' } : { status: 'sent' };
       }
-    } catch (mailError) { console.error('[tickets] respuesta guardada; notificación no enviada:', mailError.message); notification = { status: 'failed' }; }
+    } catch (mailError) {
+      console.error('[tickets] respuesta guardada; notificación no enviada:', mailError.message);
+      notification = { status: 'failed' };
+    }
 
     return res.status(201).json({
       success: true,
@@ -593,6 +621,9 @@ exports.responderTicket = async (req, res) => {
         ticket: conTiempos(resultado.ticket, new Date()),
         mensaje: resultado.mensaje,
         notification,
+        // Compatibilidad con la bandeja administrativa, que usa este booleano
+        // para informar si el correo salió realmente.
+        correo_enviado: notification.status === 'sent',
       },
     });
   } catch (error) {
