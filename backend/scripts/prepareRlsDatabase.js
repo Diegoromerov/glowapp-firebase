@@ -131,6 +131,8 @@ const MIGRACIONES_BASE_NUEVA = [
   '179_add_notification_prefs_metadata.sql',
   '180_fix_logistics_daily_metrics.sql',
   '182_fix_logistics_metrics_destination_schema.sql',
+  // 183: suspend visibility without disabling account access.
+  '183_user_public_visibility_suspension.sql',
 ];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
@@ -263,6 +265,8 @@ const MIGRACIONES_ARRANQUE = [
     '179_add_notification_prefs_metadata.sql',
     '180_fix_logistics_daily_metrics.sql',
   '182_fix_logistics_metrics_destination_schema.sql',
+  // Keep existing databases aligned with the public visibility checks.
+  '183_user_public_visibility_suspension.sql',
   ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {

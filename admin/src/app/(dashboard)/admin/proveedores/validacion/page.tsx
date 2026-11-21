@@ -150,7 +150,10 @@ export default function ProviderValidationPage() {
     setError(null);
     setNotice(null);
     try {
-      const response = await fetch(`/api/glow-admin/provider/${decision}`, {
+      const decisionRoute = decision === 'approve'
+        ? '/api/glow-admin/provider/approve'
+        : '/api/glow-admin/provider/reject';
+      const response = await fetch(decisionRoute, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
