@@ -110,7 +110,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
       backgroundColor: const Color(0xFFFAF8F5),
       appBar: AppBar(
         title: const Text(
-          'Centro de Concierge & PQRSF',
+          'Centro de soporte · PQRSF',
           style: TextStyle(
             fontFamily: 'CormorantGaramond',
             fontWeight: FontWeight.bold,
@@ -129,7 +129,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
               MaterialPageRoute(builder: (_) => const ProviderDisputesScreen()),
             ),
             icon: const Icon(Icons.gavel_outlined),
-            label: const Text('Disputas'),
+            label: const Text('Disputas de citas'),
           ),
         ],
       ),
@@ -301,7 +301,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
           },
           icon: const Icon(Icons.add, color: Color(0xFF1F1A15)),
           label: const Text(
-            'Crear PQRSF',
+            'Crear solicitud PQRSF',
             style: TextStyle(
               color: Color(0xFF1F1A15),
               fontWeight: FontWeight.bold,

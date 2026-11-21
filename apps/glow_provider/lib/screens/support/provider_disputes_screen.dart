@@ -46,7 +46,7 @@ class _ProviderDisputesScreenState extends State<ProviderDisputesScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFFAF8F5),
       appBar: AppBar(
-        title: const Text('Disputas de servicio'),
+        title: const Text('Disputas de citas'),
         backgroundColor: const Color(0xFFFAF8F5),
         foregroundColor: const Color(0xFF1F1A15),
         actions: [
@@ -77,10 +77,31 @@ class _ProviderDisputesScreenState extends State<ProviderDisputesScreen> {
               ),
             )
           : _cases.isEmpty
-          ? const Center(
+          ? Center(
               child: Padding(
-                padding: EdgeInsets.all(24),
-                child: Text('No tienes disputas de servicio.'),
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.gavel_outlined, size: 40),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'No tienes disputas vinculadas a citas.',
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Las solicitudes generales se crean desde el centro PQRSF.',
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 12),
+                    TextButton.icon(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.support_agent_outlined),
+                      label: const Text('Volver al centro PQRSF'),
+                    ),
+                  ],
+                ),
               ),
             )
           : RefreshIndicator(

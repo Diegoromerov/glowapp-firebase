@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import 'api_service.dart';
 import 'auth_service.dart';
 
 class DisputeService {
@@ -21,6 +22,7 @@ class DisputeService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
       body: json.encode({
         'booking_id': bookingId,
@@ -46,6 +48,7 @@ class DisputeService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
     );
 
@@ -68,6 +71,7 @@ class DisputeService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
     );
 
@@ -93,6 +97,7 @@ class DisputeService {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
+        'X-App-Audience': ApiService.appAudience,
       },
       body: json.encode({
         'mensaje': message,
