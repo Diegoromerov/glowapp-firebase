@@ -27,6 +27,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
   final _bioCtrl = TextEditingController();
   final _coverageCtrl = TextEditingController();
   final _experienceCtrl = TextEditingController();
+  final _profileScrollController = ScrollController();
 
   String? _email;
   String? _avatarUrl;
@@ -61,6 +62,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     _bioCtrl.dispose();
     _coverageCtrl.dispose();
     _experienceCtrl.dispose();
+    _profileScrollController.dispose();
     super.dispose();
   }
 
@@ -207,7 +209,32 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
   }
 
   Future<void> _saveProfileChanges() async {
-    if (!_formKey.currentState!.validate()) return;
+    final form = _formKey.currentState;
+    if (form == null) return;
+    if (!form.validate()) {
+      if (mounted) {
+        setState(() {
+          _error = 'Revisa los campos marcados antes de guardar.';
+          _message = null;
+        });
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            const SnackBar(
+              content: Text('No se guardó: revisa los campos marcados.'),
+              behavior: SnackBarBehavior.floating,
+            ),
+          );
+        if (_profileScrollController.hasClients) {
+          await _profileScrollController.animateTo(
+            0,
+            duration: const Duration(milliseconds: 350),
+            curve: Curves.easeOut,
+          );
+        }
+      }
+      return;
+    }
 
     final fullName = _nameCtrl.text.trim();
     final phone = _phoneCtrl.text.trim();
@@ -225,11 +252,6 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     });
 
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('provider_bio', description);
-      await prefs.setDouble('provider_coverage_radius', coverageRadius);
-      await prefs.setInt('provider_experience_years', experienceYears);
-
       await ApiService.updateUserProfile(
         fullName: fullName,
         phone: phone,
@@ -239,17 +261,50 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         weeklySchedule: weeklySchedule,
       );
 
+      var localFieldsSaved = true;
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('provider_bio', description);
+        await prefs.setDouble('provider_coverage_radius', coverageRadius);
+        await prefs.setInt('provider_experience_years', experienceYears);
+      } catch (_) {
+        localFieldsSaved = false;
+      }
+
       if (!mounted) return;
       setState(() {
         _isSaving = false;
-        _message = 'Perfil guardado correctamente';
+        _message = localFieldsSaved
+            ? 'Perfil guardado correctamente.'
+            : 'Perfil guardado en tu cuenta. Algunos datos locales no se pudieron actualizar.';
       });
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(
+            content: Text(_message!),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: localFieldsSaved ? const Color(0xFF15803D) : const Color(0xFFA16207),
+            duration: const Duration(seconds: 4),
+          ),
+        );
     } catch (e) {
       if (mounted) {
+        final mensaje = 'No se pudo guardar el perfil: ${mensajeHumano(e)}';
         setState(() {
           _isSaving = false;
-          _error = 'Error al guardar cambios: ${mensajeHumano(e)}';
+          _error = mensaje;
         });
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            SnackBar(
+              content: Text(mensaje),
+              behavior: SnackBarBehavior.floating,
+              backgroundColor: Colors.redAccent,
+              duration: const Duration(seconds: 5),
+            ),
+          );
       }
     }
   }
@@ -749,6 +804,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 680),
           child: SingleChildScrollView(
+            controller: _profileScrollController,
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
             child: Form(
               key: _formKey,
@@ -1002,10 +1058,20 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),
                   child: _isSaving
-                      ? const SizedBox(
-                          width: 22,
-                          height: 22,
-                          child: CircularProgressIndicator(color: Color(0xFF1F1A15), strokeWidth: 2),
+                      ? const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(color: Color(0xFF1F1A15), strokeWidth: 2),
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              'Guardando perfil...',
+                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15)),
+                            ),
+                          ],
                         )
                       : const Text(
                           'Guardar Perfil Profesional',
