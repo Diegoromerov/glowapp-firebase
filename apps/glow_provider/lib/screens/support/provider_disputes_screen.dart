@@ -12,6 +12,8 @@ class ProviderDisputesScreen extends StatefulWidget {
 }
 
 class _ProviderDisputesScreenState extends State<ProviderDisputesScreen> {
+  static const _plum = Color(0xFF54264F);
+  static const _plumSoft = Color(0xFFF2E8F1);
   bool _loading = true;
   String? _error;
   List<Map<String, dynamic>> _cases = [];
@@ -47,8 +49,9 @@ class _ProviderDisputesScreenState extends State<ProviderDisputesScreen> {
       backgroundColor: const Color(0xFFFAF8F5),
       appBar: AppBar(
         title: const Text('Disputas de citas'),
-        backgroundColor: const Color(0xFFFAF8F5),
-        foregroundColor: const Color(0xFF1F1A15),
+        backgroundColor: _plum,
+        foregroundColor: Colors.white,
+        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
         actions: [
           IconButton(
             onPressed: _load,
@@ -108,40 +111,163 @@ class _ProviderDisputesScreenState extends State<ProviderDisputesScreen> {
               onRefresh: _load,
               child: ListView.builder(
                 padding: const EdgeInsets.all(16),
-                itemCount: _cases.length,
+                itemCount: _cases.length + 1,
                 itemBuilder: (context, index) {
-                  final item = _cases[index];
+                  if (index == 0) {
+                    return Container(
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.only(bottom: 16),
+                      decoration: BoxDecoration(
+                        color: _plumSoft,
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: const Color(0xFFDCC8D9)),
+                      ),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.gavel_outlined, color: _plum),
+                          SizedBox(width: 12),
+                          Expanded(child: Text('Expedientes vinculados a citas. Aquí puedes revisar el caso y responder.')),
+                        ],
+                      ),
+                    );
+                  }
+                  final item = _cases[index - 1];
                   final id = item['id']?.toString() ?? '';
                   final state = item['estado']?.toString() ?? 'ABIERTA';
+                  final bookingNumber = item['booking_number']?.toString();
+                  final bookingDate = DateTime.tryParse(item['booking_fecha']?.toString() ?? '')?.toLocal();
+                  final amount = item['monto_disputado']?.toString();
+                  final dateLabel = bookingDate == null
+                      ? 'Fecha de cita pendiente'
+                      : '${bookingDate.day}/${bookingDate.month}/${bookingDate.year}';
                   return Card(
-                    child: ListTile(
-                      title: Text(
-                        item['servicio_nombre']?.toString() ??
-                            'Disputa de servicio',
-                      ),
-                      subtitle: Text(
-                        '${item['tipo'] ?? 'Caso'} · $state\nCita #${item['booking_number'] ?? '—'}',
-                        maxLines: 2,
-                      ),
-                      isThreeLine: true,
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: id.isEmpty
-                          ? null
-                          : () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) =>
-                                      _ProviderDisputeDetail(id: id),
+                    margin: const EdgeInsets.only(bottom: 14),
+                    color: Colors.white,
+                    elevation: 1,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      side: const BorderSide(color: Color(0xFFE9DDE8)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.gavel_outlined, color: _plum),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  bookingNumber == null || bookingNumber.isEmpty
+                                      ? 'Disputa de cita'
+                                      : 'Cita #$bookingNumber',
+                                  style: const TextStyle(color: _plum, fontWeight: FontWeight.bold),
                                 ),
-                              );
-                              if (mounted) _load();
-                            },
+                              ),
+                              _DisputeStatusChip(label: state.replaceAll('_', ' ').toLowerCase()),
+                            ],
+                          ),
+                          const SizedBox(height: 14),
+                          Text(
+                            item['servicio_nombre']?.toString() ?? 'Servicio',
+                            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700, color: Color(0xFF241D25)),
+                          ),
+                          const SizedBox(height: 6),
+                          Text('${item['tipo'] ?? 'Caso'} · $dateLabel'),
+                          if (amount != null && amount.isNotEmpty) ...[
+                            const SizedBox(height: 12),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                              decoration: BoxDecoration(color: const Color(0xFFFFF3DE), borderRadius: BorderRadius.circular(12)),
+                              child: Text('Monto en disputa: \$$amount COP', style: const TextStyle(fontWeight: FontWeight.w600)),
+                            ),
+                          ],
+                          const SizedBox(height: 16),
+                          _DisputeProgress(state: state),
+                          const SizedBox(height: 12),
+                          OutlinedButton.icon(
+                            onPressed: id.isEmpty
+                                ? null
+                                : () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (_) => _ProviderDisputeDetail(id: id)),
+                                    );
+                                    if (mounted) _load();
+                                  },
+                            icon: const Icon(Icons.folder_open_outlined),
+                            label: const Text('Ver expediente'),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: _plum,
+                              side: const BorderSide(color: _plum),
+                              minimumSize: const Size.fromHeight(44),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
               ),
             ),
+    );
+  }
+}
+
+class _DisputeStatusChip extends StatelessWidget {
+  final String label;
+  const _DisputeStatusChip({required this.label});
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+    decoration: BoxDecoration(color: const Color(0xFFF2E8F1), borderRadius: BorderRadius.circular(20)),
+    child: Text(label, style: const TextStyle(color: Color(0xFF54264F), fontSize: 11, fontWeight: FontWeight.w700)),
+  );
+}
+
+class _DisputeProgress extends StatelessWidget {
+  final String state;
+  const _DisputeProgress({required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    final normalized = state.toUpperCase();
+    final activeStep = normalized.contains('RESUEL') || normalized.contains('CERR')
+        ? 2
+        : normalized.contains('REVISION') || normalized.contains('PROCESO')
+        ? 1
+        : 0;
+    const labels = ['Recibida', 'En revisión', 'Decisión'];
+    return Row(
+      children: [
+        for (var step = 0; step < labels.length; step++) ...[
+          if (step > 0)
+            Expanded(
+              child: Container(
+                height: 2,
+                color: step <= activeStep ? const Color(0xFF9A6A1E) : const Color(0xFFE5DDE5),
+              ),
+            ),
+          Column(
+            children: [
+              Icon(
+                step < activeStep
+                    ? Icons.check_circle
+                    : step == activeStep
+                    ? Icons.radio_button_checked
+                    : Icons.circle_outlined,
+                size: 20,
+                color: step <= activeStep ? const Color(0xFF54264F) : Colors.black38,
+              ),
+              const SizedBox(height: 4),
+              Text(labels[step], style: const TextStyle(fontSize: 10)),
+            ],
+          ),
+        ],
+      ],
     );
   }
 }
