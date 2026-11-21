@@ -8,6 +8,7 @@ import {
   ChevronRight,
   Clock,
   Inbox,
+  Image as ImageIcon,
   Loader2,
   Mail,
   MailX,
@@ -17,6 +18,7 @@ import {
   ShieldAlert,
   Timer,
   User,
+  X,
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -114,6 +116,7 @@ interface Mensaje {
  */
 interface Detalle extends Omit<Fila, 'mensajes_total'> {
   descripcion?: string | null;
+  evidencia_urls?: string[] | null;
   usuario_phone?: string | null;
   mensajes: Mensaje[];
 }
@@ -174,6 +177,10 @@ const etiqueta = (valor?: string | null): string =>
 
 /** Un campo de colección que llegue como no-colección degrada a vacío, no rompe el render. */
 const asArray = <T,>(valor: unknown): T[] => (Array.isArray(valor) ? (valor as T[]) : []);
+
+/** Solo se muestran imágenes inline de los formatos admitidos al radicar una PQRSF. */
+const esImagenAdjunta = (valor: unknown): valor is string =>
+  typeof valor === 'string' && /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(valor);
 
 function fechaHora(fecha?: string | null): string {
   if (!fecha) return '—';
@@ -240,6 +247,7 @@ export default function AdminPqrsfPage() {
 
   const [abierto, setAbierto] = useState<string | null>(null);
   const [detalle, setDetalle] = useState<Detalle | null>(null);
+  const [evidenciaAbierta, setEvidenciaAbierta] = useState<{ src: string; nombre: string } | null>(null);
   const [cargandoDetalle, setCargandoDetalle] = useState(false);
   const [respuesta, setRespuesta] = useState('');
   const [enviando, setEnviando] = useState(false);
@@ -786,6 +794,53 @@ export default function AdminPqrsfPage() {
                                 </div>
                               )}
 
+                              {/* Las evidencias llegan como data URI en evidencia_urls. */}
+                              <div>
+                                <span className="micro text-subtle block mb-2">
+                                  Evidencias para valoración ({asArray<unknown>(detalle.evidencia_urls).length})
+                                </span>
+                                {asArray<unknown>(detalle.evidencia_urls).length === 0 ? (
+                                  <p className="body-sm text-subtle rounded-lg border border-dashed border-border p-3">
+                                    Esta solicitud no tiene imágenes adjuntas.
+                                  </p>
+                                ) : (
+                                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                                    {asArray<unknown>(detalle.evidencia_urls).map((evidencia, index) => {
+                                      if (!esImagenAdjunta(evidencia)) {
+                                        return (
+                                          <div
+                                            key={`evidencia-no-disponible-${index}`}
+                                            className="flex min-h-28 flex-col items-center justify-center gap-2 rounded-lg border border-border bg-surface p-3 text-center"
+                                          >
+                                            <ImageIcon size={20} aria-hidden="true" />
+                                            <span className="micro text-subtle">Adjunto {index + 1} no visualizable</span>
+                                          </div>
+                                        );
+                                      }
+
+                                      const nombre = `Evidencia ${index + 1}`;
+                                      return (
+                                        <button
+                                          key={`evidencia-${index}`}
+                                          type="button"
+                                          onClick={() => setEvidenciaAbierta({ src: evidencia, nombre })}
+                                          className="group overflow-hidden rounded-lg border border-border bg-surface text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                                          aria-label={`Ampliar ${nombre}`}
+                                        >
+                                          <img
+                                            src={evidencia}
+                                            alt={nombre}
+                                            loading="lazy"
+                                            className="h-40 w-full bg-black/5 object-contain transition group-hover:scale-[1.02]"
+                                          />
+                                          <span className="body-sm block px-3 py-2">{nombre} · ampliar</span>
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                )}
+                              </div>
+
                               {/* Plazos */}
                               <div className="flex flex-wrap items-center gap-3">
                                 <span className={CHIP_SLA[detalle.sla?.estado] ?? CHIP_SLA.en_plazo}>
@@ -973,6 +1028,38 @@ export default function AdminPqrsfPage() {
           </div>
         )}
       </div>
+
+      {evidenciaAbierta && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={evidenciaAbierta.nombre}
+          onClick={() => setEvidenciaAbierta(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
+        >
+          <div className="w-full max-w-5xl rounded-xl bg-surface p-3 shadow-2xl sm:p-5" onClick={(event) => event.stopPropagation()}>
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <h2 className="font-semibold">{evidenciaAbierta.nombre} · solicitud #{detalle?.id}</h2>
+              <button
+                type="button"
+                onClick={() => setEvidenciaAbierta(null)}
+                className="btn btn-secondary"
+                aria-label="Cerrar imagen"
+              >
+                <X size={18} aria-hidden="true" />
+                <span>Cerrar</span>
+              </button>
+            </div>
+            <div className="flex max-h-[82vh] items-center justify-center overflow-auto rounded-lg bg-black/5">
+              <img
+                src={evidenciaAbierta.src}
+                alt={evidenciaAbierta.nombre}
+                className="max-h-[80vh] max-w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
