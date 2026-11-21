@@ -79,12 +79,35 @@ const SCHEMA_SQL = `
     revision_nota TEXT,
     revisado_por INTEGER,
     revisado_at TIMESTAMPTZ,
+    rut_solicitado_numero VARCHAR(20),
+    rut_solicitado_responsabilidad_codigo SMALLINT,
+    rut_solicitado_soporte_url TEXT,
+    rut_solicitado_soporte_hash VARCHAR(64),
+    rut_solicitado_soporte_mime VARCHAR(100),
+    rut_solicitado_soporte_bytes INTEGER,
     estado_operativo VARCHAR(16) NOT NULL DEFAULT 'EXPLORACION',
     estado_operativo_desde TIMESTAMPTZ,
     estado_operativo_motivo TEXT,
     slug VARCHAR(60),
     ciudad VARCHAR(120),
     bio TEXT
+  );
+
+  CREATE TABLE IF NOT EXISTS provider_fiscal_change_requests (
+    id BIGSERIAL PRIMARY KEY,
+    provider_id INTEGER NOT NULL,
+    rut_anterior VARCHAR(20),
+    codigo_anterior SMALLINT,
+    soporte_hash_anterior VARCHAR(64),
+    rut_solicitado VARCHAR(20) NOT NULL,
+    codigo_solicitado SMALLINT NOT NULL,
+    soporte_hash_solicitado VARCHAR(64) NOT NULL,
+    estado VARCHAR(12) NOT NULL DEFAULT 'PENDIENTE',
+    solicitado_por INTEGER NOT NULL,
+    solicitado_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    revisado_por INTEGER,
+    revisado_at TIMESTAMPTZ,
+    nota_revision TEXT
   );
 
   CREATE TABLE IF NOT EXISTS business_verticals (

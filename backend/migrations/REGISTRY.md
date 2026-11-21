@@ -505,3 +505,9 @@ en 076).
 - Añade `usuarios.visibilidad_suspendida`, independiente de `is_active`, para ocultar y restaurar perfiles públicos sin bloquear el inicio de sesión.
 - La búsqueda pública, la ficha del proveedor y la vitrina pública omiten perfiles suspendidos; en salones también se comprueba el estado del usuario dueño.
 - La acción administrativa queda restringida a cuentas `PRESTADOR` y `SALON`, y registra auditoría.
+
+## 184: solicitudes de cambio de datos fiscales
+
+- Guarda los nuevos datos del RUT y su soporte en columnas separadas mientras están pendientes de revisión.
+- Los datos fiscales efectivos solo se reemplazan cuando un administrador aprueba el documento.
+- Migra las solicitudes pendientes/rechazadas del flujo anterior sin alterar prestadores ya aprobados.

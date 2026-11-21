@@ -185,6 +185,8 @@ router.get('/provider/fiscal', authMiddleware, async (req, res) => {
               responsable_iva_override, responsabilidad_iva_fuente,
               responsabilidad_iva_actualizada_at,
               rut_soporte_url, rut_soporte_hash, rut_cargado_at,
+              rut_solicitado_numero, rut_solicitado_responsabilidad_codigo,
+              rut_solicitado_soporte_url, rut_solicitado_soporte_hash,
               revision_estado, revision_nota, revisado_at
          FROM usuarios
         WHERE id = $1`,
@@ -204,6 +206,8 @@ router.get('/provider/fiscal', authMiddleware, async (req, res) => {
     res.json({
       rut_numero: fila.rut_numero,
       rut_responsabilidad_codigo: fila.rut_responsabilidad_codigo,
+      rut_solicitado_numero: fila.rut_solicitado_numero,
+      rut_solicitado_responsabilidad_codigo: fila.rut_solicitado_responsabilidad_codigo,
       responsable_iva: fila.responsable_iva,
       override: fila.responsable_iva_override,
       fuente: fila.responsabilidad_iva_fuente,
@@ -249,11 +253,18 @@ router.patch('/provider/fiscal', authMiddleware, async (req, res) => {
 
   try {
     const actual = await pool.query(
-      'SELECT responsable_iva_override FROM usuarios WHERE id = $1',
+      'SELECT responsable_iva_override, revision_estado FROM usuarios WHERE id = $1',
       [req.user.id]
     );
     if (!actual.rows.length) {
       return res.status(404).json({ error: 'Usuario no encontrado.' });
+    }
+
+    if (['APROBADA', 'PENDIENTE'].includes(actual.rows[0].revision_estado)) {
+      return res.status(409).json({
+        error: 'CAMBIO_REQUIERE_REVISION',
+        detalle: 'Los datos aprobados o en revisión no se pueden modificar directamente. Envía el RUT actualizado para revisión.',
+      });
     }
 
     // El override NO lo puede tocar el prestador: si pudiera, se declararía a sí
@@ -400,7 +411,8 @@ router.post('/provider/fiscal/rut', authMiddleware, async (req, res) => {
     });
 
     const actual = await pool.query(
-      'SELECT revision_estado FROM usuarios WHERE id = $1',
+      `SELECT revision_estado, rut_numero, rut_responsabilidad_codigo, rut_soporte_hash
+         FROM usuarios WHERE id = $1`,
       [req.user.id]
     );
     if (!actual.rows.length) {
@@ -420,20 +432,20 @@ router.post('/provider/fiscal/rut', authMiddleware, async (req, res) => {
 
     const { rows } = await pool.query(
       `UPDATE usuarios
-          SET rut_numero = $2,
-              rut_responsabilidad_codigo = $3,
-              rut_soporte_url = $4,
-              rut_soporte_hash = $5,
-              rut_soporte_mime = $6,
-              rut_soporte_bytes = $7,
+          SET rut_solicitado_numero = $2,
+              rut_solicitado_responsabilidad_codigo = $3,
+              rut_solicitado_soporte_url = $4,
+              rut_solicitado_soporte_hash = $5,
+              rut_solicitado_soporte_mime = $6,
+              rut_solicitado_soporte_bytes = $7,
               rut_cargado_at = NOW(),
               revision_estado = $8,
               revision_nota = NULL,
               revisado_por = NULL,
               revisado_at = NULL
         WHERE id = $1
-        RETURNING rut_numero, rut_responsabilidad_codigo, revision_estado,
-                  rut_cargado_at, rut_soporte_url`,
+        RETURNING rut_solicitado_numero, rut_solicitado_responsabilidad_codigo,
+                  revision_estado, rut_cargado_at, rut_solicitado_soporte_url`,
       [
         req.user.id,
         rut.rut,
@@ -443,6 +455,22 @@ router.post('/provider/fiscal/rut', authMiddleware, async (req, res) => {
         soporte.mime,
         soporte.bytes,
         transicion.estado,
+      ]
+    );
+
+    await pool.query(
+      `INSERT INTO provider_fiscal_change_requests
+         (provider_id, rut_anterior, codigo_anterior, soporte_hash_anterior,
+          rut_solicitado, codigo_solicitado, soporte_hash_solicitado, solicitado_por)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $1)`,
+      [
+        req.user.id,
+        actual.rows[0].rut_numero,
+        actual.rows[0].rut_responsabilidad_codigo,
+        actual.rows[0].rut_soporte_hash,
+        rut.rut,
+        codigo.codigo,
+        soporte.hash,
       ]
     );
 

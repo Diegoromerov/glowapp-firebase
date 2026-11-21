@@ -174,7 +174,8 @@ function evaluarPublicacion({ rutNumero, revisionEstado } = {}) {
  *
  * APROBAR/RECHAZAR sólo salen de PENDIENTE: revisar algo que no está en la cola
  * significaría aprobar un archivo que nadie subió. ENVIAR se admite desde
- * SIN_ENVIAR y desde RECHAZADA (reenvío tras corregir).
+ * SIN_ENVIAR y desde RECHAZADA (reenvío tras corregir); desde APROBADA permite
+ * pedir una modificación, manteniendo los datos efectivos mientras se revisa.
  */
 function transicionar({ actual, accion, nota } = {}) {
   const desde = ESTADOS[actual] ? actual : ESTADOS.SIN_ENVIAR;
@@ -185,7 +186,11 @@ function transicionar({ actual, accion, nota } = {}) {
   }
 
   if (hasta === ACCIONES.ENVIAR) {
-    if (desde === ESTADOS.SIN_ENVIAR || desde === ESTADOS.RECHAZADA) {
+    if (
+      desde === ESTADOS.SIN_ENVIAR ||
+      desde === ESTADOS.RECHAZADA ||
+      desde === ESTADOS.APROBADA
+    ) {
       return { valido: true, estado: ESTADOS.PENDIENTE, limpiarNota: true };
     }
     return { valido: false, motivo: `No se puede enviar desde ${desde}.` };

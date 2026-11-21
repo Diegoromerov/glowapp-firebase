@@ -67,7 +67,9 @@ async function sembrar() {
 async function filaFiscal() {
   const filas = await sequelize.query(
     `SELECT rut_numero, rut_responsabilidad_codigo, responsable_iva,
-            revision_estado, revision_nota, revisado_por, rut_soporte_url
+            revision_estado, revision_nota, revisado_por, rut_soporte_url,
+            rut_solicitado_numero, rut_solicitado_responsabilidad_codigo,
+            rut_solicitado_soporte_url
        FROM usuarios WHERE id = :id`,
     { replacements: { id: PROVIDER_ID }, type: sequelize.QueryTypes.SELECT }
   );
@@ -109,7 +111,9 @@ describe('envío del RUT', () => {
 
     const fila = await filaFiscal();
     expect(fila.revision_estado).toBe('PENDIENTE');
-    expect(fila.rut_soporte_url).toBe(SOPORTE.soporte_url);
+    expect(fila.rut_solicitado_soporte_url).toBe(SOPORTE.soporte_url);
+    expect(fila.rut_solicitado_numero).toBe('1020304050');
+    expect(fila.rut_solicitado_responsabilidad_codigo).toBe(49);
     // Nada de aplicar IVA antes de que alguien mire el documento.
     expect(fila.responsable_iva).toBe(true);
   });

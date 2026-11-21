@@ -1,7 +1,12 @@
 // frontend/lib/widgets/provider/fiscal_iva_section.dart
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../services/api_service.dart';
+import '../../services/auth_service.dart';
 
 /// Sección reutilizable para declarar la responsabilidad de IVA del prestador.
 ///
@@ -57,7 +62,12 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
 
   String? _estado;
   String? _rutGuardado;
+  String? _rutSolicitado;
   String? _fuente;
+  String? _revisionEstado;
+  String? _revisionNota;
+  int? _codigoSolicitado;
+  bool _editRequestedChange = false;
 
   String? _error;
   String? _success;
@@ -85,11 +95,25 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
         _estado = data['estado']?.toString();
         _rutGuardado = data['rut_numero']?.toString();
         _fuente = data['fuente']?.toString();
-        final codigo = data['rut_responsabilidad_codigo'];
-        if (codigo is num && (codigo == _codigoResponsable || codigo == _codigoNoResponsable)) {
-          _codigo = codigo.toInt();
+        final revision = data['revision'];
+        _revisionEstado = revision is Map ? revision['estado']?.toString() : null;
+        _revisionNota = revision is Map ? revision['nota']?.toString() : null;
+        final rutSolicitado = data['rut_solicitado_numero']?.toString();
+        _rutSolicitado = rutSolicitado;
+        final codigoSolicitado = data['rut_solicitado_responsabilidad_codigo'];
+        _codigoSolicitado = codigoSolicitado is num ? codigoSolicitado.toInt() : null;
+        if (['PENDIENTE', 'RECHAZADA'].contains(_revisionEstado) &&
+            rutSolicitado?.isNotEmpty == true) {
+          _rutCtrl.text = rutSolicitado!;
         }
-        if (_rutGuardado != null && _rutGuardado!.isNotEmpty) {
+        final codigo = data['rut_responsabilidad_codigo'];
+        final visibleCode = _revisionEstado == 'RECHAZADA' ? _codigoSolicitado : codigo;
+        if (visibleCode is num && (visibleCode == _codigoResponsable || visibleCode == _codigoNoResponsable)) {
+          _codigo = visibleCode.toInt();
+        }
+        if (!['PENDIENTE', 'RECHAZADA'].contains(_revisionEstado) &&
+            _rutGuardado != null &&
+            _rutGuardado!.isNotEmpty) {
           _rutCtrl.text = _rutGuardado!;
         }
         _loadingStatus = false;
@@ -116,6 +140,11 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
     return null;
   }
 
+  bool get _revisionPendiente => _revisionEstado == 'PENDIENTE';
+  bool get _revisionAprobada => _revisionEstado == 'APROBADA';
+  bool get _camposBloqueados =>
+      _revisionPendiente || (_revisionAprobada && !_editRequestedChange);
+
   Future<void> _declarar() async {
     final localError = _validarRutLocal(_rutCtrl.text);
     if (localError != null) {
@@ -133,22 +162,46 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
     });
 
     try {
-      final data = await ApiService.updateProviderFiscal(
+      final file = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 90,
+      );
+      if (file == null) {
+        if (mounted) setState(() => _saving = false);
+        return;
+      }
+      final Uint8List bytes = await file.readAsBytes();
+      if (bytes.isEmpty || bytes.length > 10 * 1024 * 1024) {
+        throw Exception('El archivo debe pesar entre 1 byte y 10 MB.');
+      }
+      final ext = file.name.toLowerCase().split('.').last;
+      final mime = ext == 'png' ? 'image/png' : 'image/jpeg';
+      final data = await AuthService.enviarRutParaRevision(
         rutNumero: _rutCtrl.text.trim(),
         rutResponsabilidadCodigo: _codigo,
+        soporteDataUri: 'data:$mime;base64,${base64Encode(bytes)}',
       );
+      if (data == null || data['ok'] != true) {
+        throw FiscalApiException(
+          statusCode: (data?['status'] as num?)?.toInt() ?? 500,
+          error: data?['error']?.toString() ?? 'Error al enviar el RUT',
+          detalle: data?['detalle']?.toString() ?? data?['mensaje']?.toString(),
+        );
+      }
       if (!mounted) return;
       final fiscal = (data['fiscal'] as Map?)?.cast<String, dynamic>();
       setState(() {
         _saving = false;
-        _success = data['mensaje']?.toString() ??
-            'Declaración de IVA actualizada correctamente.';
+        _revisionEstado = (data['revision'] as Map?)?['estado']?.toString() ?? 'PENDIENTE';
+        _revisionNota = null;
+        _codigoSolicitado = _codigo;
+        _rutSolicitado = _rutCtrl.text.trim();
+        _editRequestedChange = false;
+        _success = data['mensaje']?.toString() ?? 'Recibimos tu RUT para revisión.';
         if (fiscal != null) {
           _estado = fiscal['estado']?.toString();
           _rutGuardado = fiscal['rut_numero']?.toString();
           _fuente = fiscal['responsabilidad_iva_fuente']?.toString();
-        } else {
-          _estado = 'DECLARADA';
         }
       });
       widget.onDeclared?.call();
@@ -248,6 +301,7 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
           const SizedBox(height: 16),
           TextField(
             controller: _rutCtrl,
+            readOnly: _camposBloqueados,
             keyboardType: const TextInputType.numberWithOptions(decimal: false),
             inputFormatters: [
               FilteringTextInputFormatter.allow(RegExp(r'[0-9.\-]')),
@@ -265,6 +319,11 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
           const SizedBox(height: 8),
           DropdownButtonFormField<int>(
             value: _codigo,
+            onChanged: _camposBloqueados
+                ? null
+                : (val) {
+                    if (val != null) setState(() => _codigo = val);
+                  },
             decoration: _inputDecoration('Selecciona el código de tu RUT', Icons.checklist_rounded),
             items: const [
               DropdownMenuItem(
@@ -276,9 +335,6 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
                 child: Text('49 · No responsable de IVA'),
               ),
             ],
-            onChanged: (val) {
-              if (val != null) setState(() => _codigo = val);
-            },
           ),
           const SizedBox(height: 8),
           const Text(
@@ -287,6 +343,13 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
             'estás por debajo del umbral de ingresos, tu casilla es la 49.',
             style: TextStyle(fontFamily: 'Inter', fontSize: 11.5, color: Color(0xFF8C7E74), height: 1.4),
           ),
+          if (!_revisionPendiente && !_camposBloqueados) ...[
+            const SizedBox(height: 8),
+            const Text(
+              'Adjunta una foto JPG o PNG legible del RUT al enviar. El cambio solo entra en vigor cuando el equipo lo aprueba.',
+              style: TextStyle(fontFamily: 'Inter', fontSize: 11.5, color: Color(0xFF8C7E74), height: 1.4),
+            ),
+          ],
           if (_error != null) ...[
             const SizedBox(height: 14),
             Container(
@@ -328,11 +391,30 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
               ],
             ),
           ],
+          if (_revisionPendiente) ...[
+            const SizedBox(height: 12),
+            const Text(
+              'El RUT está en revisión. Los datos aprobados siguen vigentes hasta que el equipo apruebe el cambio.',
+              style: TextStyle(fontFamily: 'Inter', fontSize: 12.5, color: Color(0xFFA16207), height: 1.4),
+            ),
+          ],
+          if (_revisionEstado == 'RECHAZADA' && (_revisionNota?.isNotEmpty ?? false)) ...[
+            const SizedBox(height: 10),
+            Text('Motivo del rechazo: $_revisionNota', style: const TextStyle(fontSize: 12.5, color: Color(0xFF9E4B3D))),
+          ],
+          if (!_revisionPendiente) ...[
           const SizedBox(height: 18),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: _saving ? null : _declarar,
+              onPressed: _saving
+                  ? null
+                  : _revisionAprobada && !_editRequestedChange
+                      ? () => setState(() {
+                            _editRequestedChange = true;
+                            _rutCtrl.text = _rutGuardado ?? '';
+                          })
+                      : _declarar,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFC5A052),
                 foregroundColor: const Color(0xFF1F1A15),
@@ -345,12 +427,19 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
                       height: 20,
                       child: CircularProgressIndicator(color: Color(0xFF1F1A15), strokeWidth: 2),
                     )
-                  : const Text(
-                      'Guardar declaración de IVA',
+                  : Text(
+                      _revisionAprobada && !_editRequestedChange
+                          ? 'Solicitar cambio'
+                          : _revisionAprobada
+                              ? 'Enviar cambio para revisión'
+                              : _revisionEstado == 'RECHAZADA'
+                                  ? 'Corregir y reenviar RUT'
+                                  : 'Enviar RUT para revisión',
                       style: TextStyle(fontFamily: 'Inter', fontSize: 14, fontWeight: FontWeight.bold),
                     ),
             ),
           ),
+          ],
         ],
       ),
     );
@@ -358,14 +447,15 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
 
   Widget _buildEstado() {
     final declarada = _estado == 'DECLARADA';
+    final revisionAprobada = _revisionEstado == 'APROBADA';
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: declarada ? const Color(0xFFF0FDF4) : const Color(0xFFFEFCE8),
+        color: revisionAprobada ? const Color(0xFFF0FDF4) : const Color(0xFFFEFCE8),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: declarada ? const Color(0xFFBBF7D0) : const Color(0xFFFEF08A),
+          color: revisionAprobada ? const Color(0xFFBBF7D0) : const Color(0xFFFEF08A),
           width: 1,
         ),
       ),
@@ -375,18 +465,26 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
           Row(
             children: [
               Icon(
-                declarada ? Icons.verified_rounded : Icons.pending_actions_rounded,
+                revisionAprobada ? Icons.verified_rounded : Icons.pending_actions_rounded,
                 size: 18,
-                color: declarada ? const Color(0xFF15803D) : const Color(0xFFA16207),
+                color: revisionAprobada ? const Color(0xFF15803D) : const Color(0xFFA16207),
               ),
               const SizedBox(width: 8),
               Text(
-                declarada ? 'DECLARADA' : 'SIN_DECLARAR',
+                _revisionEstado == 'PENDIENTE'
+                    ? 'PENDIENTE DE REVISIÓN'
+                    : _revisionEstado == 'RECHAZADA'
+                        ? 'RECHAZADA'
+                        : revisionAprobada
+                            ? 'VERIFICADA'
+                            : declarada
+                                ? 'DECLARADA · SIN VERIFICAR'
+                                : 'SIN DECLARAR',
                 style: TextStyle(
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
-                  color: declarada ? const Color(0xFF15803D) : const Color(0xFFA16207),
+                  color: revisionAprobada ? const Color(0xFF15803D) : const Color(0xFFA16207),
                   letterSpacing: 0.3,
                 ),
               ),
@@ -395,6 +493,12 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
           const SizedBox(height: 8),
           _estadoRow('RUT declarado', (_rutGuardado == null || _rutGuardado!.isEmpty) ? 'Sin registrar' : _rutGuardado!),
           const SizedBox(height: 4),
+          if (_revisionPendiente) ...[
+            _estadoRow('Cambio solicitado', 'En espera de aprobación'),
+            const SizedBox(height: 4),
+            _estadoRow('Nuevo RUT enviado', _rutSolicitado ?? 'Sin dato'),
+            const SizedBox(height: 4),
+          ],
           _estadoRow(
             'Origen',
             (_fuente == null || _fuente!.isEmpty) ? 'Sin declarar' : _textoOrigen(_fuente!),

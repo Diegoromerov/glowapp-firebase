@@ -386,13 +386,16 @@ router.get('/providers/fiscal', authMiddleware, adminMiddleware, async (req, res
 
   try {
     const { rows } = await pool.query(`
-      SELECT u.id, u.nombre, u.email, u.rut_numero,
-             u.rut_responsabilidad_codigo, u.responsable_iva,
+      SELECT u.id, u.nombre, u.email,
+             COALESCE(u.rut_solicitado_numero, u.rut_numero) AS rut_numero,
+             COALESCE(u.rut_solicitado_responsabilidad_codigo, u.rut_responsabilidad_codigo) AS rut_responsabilidad_codigo,
+             u.responsable_iva,
              u.responsable_iva_override, u.responsabilidad_iva_fuente,
              u.responsabilidad_iva_actualizada_at,
              u.responsabilidad_iva_cambiada_por,
              u.revision_estado, u.revision_nota,
-             u.rut_soporte_url, u.rut_cargado_at,
+             COALESCE(u.rut_solicitado_soporte_url, u.rut_soporte_url) AS rut_soporte_url,
+             u.rut_cargado_at,
              u.revisado_por, u.revisado_at,
              admin.nombre AS cambiada_por_nombre,
              revisor.nombre AS revisado_por_nombre
@@ -553,8 +556,10 @@ router.post(
 
     try {
       const { rows } = await pool.query(
-        `SELECT rut_numero, rut_responsabilidad_codigo, responsable_iva_override,
-                revision_estado, rut_soporte_url
+        `SELECT COALESCE(rut_solicitado_numero, rut_numero) AS rut_numero,
+                COALESCE(rut_solicitado_responsabilidad_codigo, rut_responsabilidad_codigo) AS rut_responsabilidad_codigo,
+                responsable_iva_override, revision_estado,
+                COALESCE(rut_solicitado_soporte_url, rut_soporte_url) AS rut_soporte_url
            FROM usuarios
           WHERE id = $1 AND rol = 'PRESTADOR'`,
         [id]
@@ -593,7 +598,19 @@ router.post(
 
       const actualizado = await pool.query(
                     `UPDATE usuarios
-                        SET revision_estado = $2,
+                        SET rut_numero = CASE WHEN $2 = 'APROBADA' THEN COALESCE(rut_solicitado_numero, rut_numero) ELSE rut_numero END,
+                            rut_responsabilidad_codigo = CASE WHEN $2 = 'APROBADA' THEN COALESCE(rut_solicitado_responsabilidad_codigo, rut_responsabilidad_codigo) ELSE rut_responsabilidad_codigo END,
+                            rut_soporte_url = CASE WHEN $2 = 'APROBADA' THEN COALESCE(rut_solicitado_soporte_url, rut_soporte_url) ELSE rut_soporte_url END,
+                            rut_soporte_hash = CASE WHEN $2 = 'APROBADA' THEN COALESCE(rut_solicitado_soporte_hash, rut_soporte_hash) ELSE rut_soporte_hash END,
+                            rut_soporte_mime = CASE WHEN $2 = 'APROBADA' THEN COALESCE(rut_solicitado_soporte_mime, rut_soporte_mime) ELSE rut_soporte_mime END,
+                            rut_soporte_bytes = CASE WHEN $2 = 'APROBADA' THEN COALESCE(rut_solicitado_soporte_bytes, rut_soporte_bytes) ELSE rut_soporte_bytes END,
+                            rut_solicitado_numero = CASE WHEN $2 = 'APROBADA' THEN NULL ELSE rut_solicitado_numero END,
+                            rut_solicitado_responsabilidad_codigo = CASE WHEN $2 = 'APROBADA' THEN NULL ELSE rut_solicitado_responsabilidad_codigo END,
+                            rut_solicitado_soporte_url = CASE WHEN $2 = 'APROBADA' THEN NULL ELSE rut_solicitado_soporte_url END,
+                            rut_solicitado_soporte_hash = CASE WHEN $2 = 'APROBADA' THEN NULL ELSE rut_solicitado_soporte_hash END,
+                            rut_solicitado_soporte_mime = CASE WHEN $2 = 'APROBADA' THEN NULL ELSE rut_solicitado_soporte_mime END,
+                            rut_solicitado_soporte_bytes = CASE WHEN $2 = 'APROBADA' THEN NULL ELSE rut_solicitado_soporte_bytes END,
+                            revision_estado = $2,
                             revision_nota = $3,
                             revisado_por = $4,
                             revisado_at = NOW(),
@@ -608,6 +625,17 @@ router.post(
                                 revision_estado, revision_nota, revisado_por, revisado_at, onboarding_completo`,
                     [id, transicion.estado, transicion.nota || null, req.user.id, hayOverride ? null : responsable, transicion.estado === ESTADOS.APROBADA]
                   );
+
+            await pool.query(
+              `UPDATE provider_fiscal_change_requests
+                  SET estado = $2, revisado_por = $3, revisado_at = NOW(), nota_revision = $4
+                WHERE id = (
+                  SELECT id FROM provider_fiscal_change_requests
+                   WHERE provider_id = $1 AND estado = 'PENDIENTE'
+                   ORDER BY solicitado_at DESC, id DESC LIMIT 1
+                )`,
+              [id, transicion.estado, req.user.id, transicion.nota || null]
+            );
 
             // 🔔 Enviar notificación push FCM al prestador cuando se aprueba el RUT
             if (transicion.estado === ESTADOS.APROBADA) {
