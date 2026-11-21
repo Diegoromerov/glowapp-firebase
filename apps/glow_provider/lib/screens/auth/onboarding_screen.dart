@@ -576,11 +576,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           final codigo = (envioRut?['error'] ?? '').toString();
           final detalle =
               (envioRut?['detalle'] ?? envioRut?['mensaje'] ?? '').toString();
-          setState(() => _error = codigo == 'SIN_SESION'
+          final errorHumano = codigo.isNotEmpty &&
+                  !RegExp(r'^[A-Z0-9_]+$').hasMatch(codigo)
+              ? codigo
+              : '';
+          final mensajeError = codigo == 'SIN_SESION'
               ? 'Tu sesión expiró. Vuelve a iniciar sesión para enviar tu RUT.'
               : detalle.isNotEmpty
                   ? detalle
-                  : 'No pudimos registrar tu RUT. Inténtalo de nuevo.');
+                  : errorHumano.isNotEmpty
+                      ? errorHumano
+                      : 'No pudimos registrar tu RUT. Inténtalo de nuevo.';
+          setState(() => _error = mensajeError);
           return;
         }
 

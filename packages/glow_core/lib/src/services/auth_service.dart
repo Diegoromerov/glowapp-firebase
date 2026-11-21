@@ -491,7 +491,11 @@ class AuthService {
         return {...data, 'status': response.statusCode, 'ok': response.statusCode < 400};
       }
     } catch (_) {}
-    return {'error': 'RESPUESTA_INVALIDA', 'status': response.statusCode};
+    return {
+      'error': 'RESPUESTA_INVALIDA',
+      'detalle': 'El servidor respondió HTTP ${response.statusCode} sin un detalle válido.',
+      'status': response.statusCode,
+    };
   }
 
   /// Capacidades de la cuenta (D-GL-031). La app no deduce el estado: lo lee.

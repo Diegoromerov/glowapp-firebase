@@ -58,8 +58,9 @@ const { pool } = require('../config/db');
 const tenantRouting = require('../config/tenantRouting');
 
 async function tenantContextMiddleware(req, res, next) {
-  // Sin usuario no hay contexto que fijar.
-  if (!req.user || !req.user.tenant_id) {
+  // También fijamos app.user_id para usuarios sin tenant. RLS de usuarios y
+  // perfiles permite leer/escribir la propia fila mediante ese sujeto.
+  if (!req.user) {
     return next();
   }
 

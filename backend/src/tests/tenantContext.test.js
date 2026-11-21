@@ -110,13 +110,22 @@ describe('tenantContext — ciclo de vida de la transacción por petición', () 
     expect(mockLlamadas).toEqual([]);
   });
 
-  test('sin tenant_id: passthrough aunque el flag esté activo', async () => {
+  test('sin tenant_id: fija app.user_id para permitir acceso a la fila propia', async () => {
     activarFlag('true');
+    const res = fakeRes();
     const next = jest.fn();
-    await tenantContext({ user: { id: 1, tenant_id: null } }, fakeRes(), next);
+    const pendiente = tenantContext({ user: { id: 1, tenant_id: null } }, res, next);
+
+    await new Promise((r) => setImmediate(r));
 
     expect(next).toHaveBeenCalledTimes(1);
-    expect(mockLlamadas).toEqual([]);
+    expect(mockLlamadas).toContain('SELECT set_config($1, $2, true) :: ["app.user_id","1"]');
+    expect(mockLlamadas.some((call) => call.includes('"app.tenant_id"'))).toBe(false);
+
+    res.emit('finish');
+    await pendiente;
+    expect(mockLlamadas).toContain('COMMIT');
+    expect(mockLlamadas[mockLlamadas.length - 1]).toBe('RELEASE');
   });
 
   test('flag activo: BEGIN -> set_config(local) -> COMMIT -> RELEASE', async () => {

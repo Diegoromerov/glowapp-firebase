@@ -114,11 +114,9 @@ const authMiddleware = async (req, res, next) => {
       token
     };
 
-    // El contexto de inquilino se establece AQUÍ, que es el único punto donde se
-    // conoce: tenantContext abre la conexión DEDICADA, ejecuta BEGIN y fija
-    // app.tenant_id dentro de la transacción; a partir de ahí config/db.js enruta
-    // las consultas de la petición a esa conexión. Toda ruta que use authMiddleware
-    // queda cubierta sin tocar 44 routers.
+    // El contexto transaccional se establece para todo usuario autenticado:
+    // fija app.user_id siempre y app.tenant_id cuando existe. Así RLS permite
+    // tanto la fila propia de usuarios sin tenant como los datos del tenant.
     //
     // Sin esto el middleware nunca se ejecutaba y las políticas de 068 evaluaban
     // `tenant_id = app_current_tenant_id()` con el ajuste ausente, es decir
@@ -128,11 +126,7 @@ const authMiddleware = async (req, res, next) => {
     //
     // Nunca se fija aquí un set_config de SESIÓN: eso es una fuga cross-tenant y
     // `src/tests/tenantAuthIsolation.test.js` falla si se reintroduce.
-    if (req.user.tenant_id) {
-      return tenantContext(req, res, next);
-    }
-
-    next();
+    return tenantContext(req, res, next);
   } catch (err) {
     console.error('❌ Error en authMiddleware:', err.message);
     res.status(400).json({ error: 'Token inválido o expirado.' });
