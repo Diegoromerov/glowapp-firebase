@@ -1,7 +1,9 @@
 // frontend/lib/screens/support/create_ticket_screen.dart
 import 'package:glow_core/glow_core.dart';
+
 import 'dart:convert';
 import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -50,13 +52,16 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       final unicasPorId = <String, Map<String, dynamic>>{};
       for (final booking in bookings) {
         final id = booking['id']?.toString();
-        if (id != null && id.isNotEmpty) unicasPorId.putIfAbsent(id, () => booking);
+        if (id != null && id.isNotEmpty)
+          unicasPorId.putIfAbsent(id, () => booking);
       }
       setState(() {
         _clientBookings = unicasPorId.values.toList();
         _isLoadingBookings = false;
         if (_bookingId != null &&
-            !_clientBookings.any((booking) => booking['id']?.toString() == _bookingId)) {
+            !_clientBookings.any(
+              (booking) => booking['id']?.toString() == _bookingId,
+            )) {
           _bookingId = null;
         }
       });
@@ -72,12 +77,15 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
   String _bookingLabel(Map<String, dynamic> booking) {
     final number = booking['booking_number']?.toString() ?? '—';
     final service = booking['service_name']?.toString().trim();
-    final provider = (booking['provider_business_name']?.toString().trim().isNotEmpty == true
-            ? booking['provider_business_name']
-            : booking['provider_name'])
-        ?.toString()
-        .trim();
-    final scheduledAt = DateTime.tryParse(booking['scheduled_at']?.toString() ?? '');
+    final provider =
+        (booking['provider_business_name']?.toString().trim().isNotEmpty == true
+                ? booking['provider_business_name']
+                : booking['provider_name'])
+            ?.toString()
+            .trim();
+    final scheduledAt = DateTime.tryParse(
+      booking['scheduled_at']?.toString() ?? '',
+    );
     final dateLabel = scheduledAt == null
         ? 'fecha no disponible'
         : DateFormat('dd/MM/yyyy HH:mm').format(scheduledAt.toLocal());
@@ -116,17 +124,24 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       final Uint8List bytes = await file.readAsBytes();
       if (bytes.length > _maxEvidenceBytes) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Cada imagen debe pesar máximo 1,5 MB.')),
+          const SnackBar(
+            content: Text('Cada imagen debe pesar máximo 1,5 MB.'),
+          ),
         );
         return;
       }
       final bytesYaAdjuntos = _evidenciaBase64List.fold<int>(
         0,
-        (total, dataUri) => total + base64Decode(dataUri.split(',').last).length,
+        (total, dataUri) =>
+            total + base64Decode(dataUri.split(',').last).length,
       );
       if (bytesYaAdjuntos + bytes.length > _maxEvidenceTotalBytes) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('El tamaño total de las imágenes no puede superar 7,5 MB.')),
+          const SnackBar(
+            content: Text(
+              'El tamaño total de las imágenes no puede superar 7,5 MB.',
+            ),
+          ),
         );
         return;
       }
@@ -140,7 +155,9 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       final mimeType = mimeTypes[ext];
       if (mimeType == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Formato no admitido. Usa JPG, PNG o WebP.')),
+          const SnackBar(
+            content: Text('Formato no admitido. Usa JPG, PNG o WebP.'),
+          ),
         );
         return;
       }
@@ -153,8 +170,9 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text('No se pudo adjuntar la imagen. ${mensajeHumano(e)}'),
-            backgroundColor: Colors.redAccent),
+          content: Text('No se pudo adjuntar la imagen. ${mensajeHumano(e)}'),
+          backgroundColor: Colors.redAccent,
+        ),
       );
     }
   }
@@ -182,7 +200,8 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                  '✓ Ticket ${res['data']?['id'] ?? ''} radicado. Puedes seguirlo desde Centro de Soporte > Mis solicitudes.'),
+                '✓ Ticket ${res['data']?['id'] ?? ''} radicado. Puedes seguirlo desde Centro de Soporte > Mis solicitudes.',
+              ),
               backgroundColor: AppTheme.success,
             ),
           );
@@ -226,13 +245,16 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
       ),
       body: _isSaving
           ? const Center(
-              child: CircularProgressIndicator(color: Color(0xFFC5A052)))
+              child: CircularProgressIndicator(color: Color(0xFFC5A052)),
+            )
           : Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 680),
                 child: SingleChildScrollView(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
+                  ),
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -241,15 +263,18 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                         const Text(
                           'Radicación de PQRSF',
                           style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
                         ),
                         const SizedBox(height: 6),
                         Text(
                           'Describe detalladamente tu caso. Nuestro equipo responderá en la brevedad posible.',
-                          style:
-                              TextStyle(fontSize: 12, color: Color(0xFF6F5F4E)),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF6F5F4E),
+                          ),
                         ),
                         const SizedBox(height: 24),
 
@@ -263,16 +288,25 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                           ),
                           items: const [
                             DropdownMenuItem(
-                                value: 'PETICION', child: Text('Petición')),
+                              value: 'PETICION',
+                              child: Text('Petición'),
+                            ),
                             DropdownMenuItem(
-                                value: 'QUEJA', child: Text('Queja')),
+                              value: 'QUEJA',
+                              child: Text('Queja'),
+                            ),
                             DropdownMenuItem(
-                                value: 'RECLAMO', child: Text('Reclamo')),
+                              value: 'RECLAMO',
+                              child: Text('Reclamo'),
+                            ),
                             DropdownMenuItem(
-                                value: 'SUGERENCIA', child: Text('Sugerencia')),
+                              value: 'SUGERENCIA',
+                              child: Text('Sugerencia'),
+                            ),
                             DropdownMenuItem(
-                                value: 'FELICITACION',
-                                child: Text('Felicitación')),
+                              value: 'FELICITACION',
+                              child: Text('Felicitación'),
+                            ),
                           ],
                           onChanged: (val) {
                             if (val != null)
@@ -291,19 +325,25 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                           ),
                           items: const [
                             DropdownMenuItem(
-                                value: 'servicio',
-                                child: Text('Calidad de Servicio')),
+                              value: 'servicio',
+                              child: Text('Calidad de Servicio'),
+                            ),
                             DropdownMenuItem(
-                                value: 'pago',
-                                child: Text('Pagos / Facturación')),
+                              value: 'pago',
+                              child: Text('Pagos / Facturación'),
+                            ),
                             DropdownMenuItem(
-                                value: 'app',
-                                child: Text('Problemas de la App')),
+                              value: 'app',
+                              child: Text('Problemas de la App'),
+                            ),
                             DropdownMenuItem(
-                                value: 'seguridad',
-                                child: Text('Seguridad y Privacidad')),
+                              value: 'seguridad',
+                              child: Text('Seguridad y Privacidad'),
+                            ),
                             DropdownMenuItem(
-                                value: 'otros', child: Text('Otros')),
+                              value: 'otros',
+                              child: Text('Otros'),
+                            ),
                           ],
                           onChanged: (val) {
                             if (val != null)
@@ -316,12 +356,19 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                         if (_isLoadingBookings)
                           InputDecorator(
                             decoration: AppTheme.inputDecoration(
+                              hintText: 'Cargando tus citas...',
                               labelText: 'Cita relacionada (opcional)',
                               prefixIcon: Icons.calendar_today_outlined,
                             ),
                             child: const Row(
                               children: [
-                                SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)),
+                                SizedBox(
+                                  width: 18,
+                                  height: 18,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                ),
                                 SizedBox(width: 12),
                                 Text('Cargando tus citas...'),
                               ],
@@ -330,12 +377,17 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                         else if (_bookingLoadError != null)
                           InputDecorator(
                             decoration: AppTheme.inputDecoration(
+                              hintText: 'No se pudo cargar la lista',
                               labelText: 'Cita relacionada (opcional)',
                               prefixIcon: Icons.calendar_today_outlined,
                             ),
                             child: Row(
                               children: [
-                                Expanded(child: Text('No se pudieron cargar las citas. ${_bookingLoadError!}')),
+                                Expanded(
+                                  child: Text(
+                                    'No se pudieron cargar las citas. ${_bookingLoadError!}',
+                                  ),
+                                ),
                                 IconButton(
                                   tooltip: 'Volver a cargar las citas',
                                   onPressed: () {
@@ -353,14 +405,21 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                         else if (_clientBookings.isEmpty)
                           InputDecorator(
                             decoration: AppTheme.inputDecoration(
+                              hintText: 'No tienes citas para seleccionar',
                               labelText: 'Cita relacionada (opcional)',
                               prefixIcon: Icons.calendar_today_outlined,
                             ),
-                            child: const Text('No tienes citas para seleccionar.'),
+                            child: const Text(
+                              'No tienes citas para seleccionar.',
+                            ),
                           )
                         else
                           DropdownButtonFormField<String>(
-                            value: _clientBookings.any((booking) => booking['id']?.toString() == _bookingId)
+                            value:
+                                _clientBookings.any(
+                                  (booking) =>
+                                      booking['id']?.toString() == _bookingId,
+                                )
                                 ? _bookingId
                                 : '',
                             isExpanded: true,
@@ -379,11 +438,18 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                                 if (id == null || id.isEmpty) return null;
                                 return DropdownMenuItem<String>(
                                   value: id,
-                                  child: Text(_bookingLabel(booking), overflow: TextOverflow.ellipsis),
+                                  child: Text(
+                                    _bookingLabel(booking),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 );
                               }).whereType<DropdownMenuItem<String>>(),
                             ],
-                            onChanged: (value) => setState(() => _bookingId = value?.isEmpty == true ? null : value),
+                            onChanged: (value) => setState(
+                              () => _bookingId = value?.isEmpty == true
+                                  ? null
+                                  : value,
+                            ),
                           ),
                         const SizedBox(height: 16),
 
@@ -412,8 +478,7 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                           controller: _descCtrl,
                           maxLines: 5,
                           decoration: const InputDecoration(
-                            hintText:
-                                'Describe claramente lo sucedido o tu sugerencia...',
+                            hintText: 'Describe claramente lo sucedido o tu sugerencia...',
                             labelText: 'Descripción detallada',
                             alignLabelWithHint: true,
                             border: OutlineInputBorder(),
@@ -443,19 +508,23 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: Colors.black87),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                  color: Colors.black87,
+                                ),
                               ),
                             ),
                             TextButton.icon(
                               onPressed: _attachImage,
-                              icon: const Icon(Icons.add_a_photo_outlined,
-                                  size: 18),
+                              icon: const Icon(
+                                Icons.add_a_photo_outlined,
+                                size: 18,
+                              ),
                               label: const Text('Agregar'),
                               style: TextButton.styleFrom(
-                                  foregroundColor: AppTheme.primary),
-                            )
+                                foregroundColor: AppTheme.primary,
+                              ),
+                            ),
                           ],
                         ),
                         const SizedBox(height: 8),
@@ -467,10 +536,10 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                             physics: const NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 4,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                            ),
+                                  crossAxisCount: 4,
+                                  crossAxisSpacing: 8,
+                                  mainAxisSpacing: 8,
+                                ),
                             itemCount: _evidenciaBase64List.length,
                             itemBuilder: (context, index) {
                               final dataUri = _evidenciaBase64List[index];
@@ -482,8 +551,10 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                                   Positioned.fill(
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(12),
-                                      child: Image.memory(bytes,
-                                          fit: BoxFit.cover),
+                                      child: Image.memory(
+                                        bytes,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                   Positioned(
@@ -501,8 +572,11 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                                           color: Colors.black54,
                                           shape: BoxShape.circle,
                                         ),
-                                        child: const Icon(Icons.close,
-                                            size: 14, color: Colors.white),
+                                        child: const Icon(
+                                          Icons.close,
+                                          size: 14,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -517,18 +591,26 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                               color: Colors.grey[50],
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                  color: Colors.grey[200]!,
-                                  style: BorderStyle.solid),
+                                color: Colors.grey[200]!,
+                                style: BorderStyle.solid,
+                              ),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.image_outlined,
-                                    color: Colors.grey[400], size: 18),
+                                Icon(
+                                  Icons.image_outlined,
+                                  color: Colors.grey[400],
+                                  size: 18,
+                                ),
                                 const SizedBox(width: 8),
-                                Text('Sin imágenes adjuntas',
-                                    style: TextStyle(
-                                        color: Color(0xFF6F5F4E), fontSize: 11)),
+                                Text(
+                                  'Sin imágenes adjuntas',
+                                  style: TextStyle(
+                                    color: Color(0xFF6F5F4E),
+                                    fontSize: 11,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -538,9 +620,10 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                           Text(
                             _error!,
                             style: const TextStyle(
-                                color: Colors.redAccent,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12),
+                              color: Colors.redAccent,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                         ],
@@ -571,7 +654,8 @@ class _CreateTicketScreenState extends State<CreateTicketScreen> {
                               shadowColor: Colors.transparent,
                               foregroundColor: const Color(0xFF1F1A15),
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16)),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
                               elevation: 0,
                             ),
                             child: const Text(
