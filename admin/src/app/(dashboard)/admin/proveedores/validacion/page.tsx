@@ -82,6 +82,7 @@ export default function ProviderValidationPage() {
     else setLoading(true);
     try {
       const response = await fetch('/api/glow-admin/provider/pending', {
+        method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
         cache: 'no-store',
       });
