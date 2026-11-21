@@ -16,6 +16,16 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
   bool _isLoading = true;
   List<Map<String, dynamic>> _tickets = [];
   String? _error;
+  String _ticketFilter = 'Todas';
+
+  List<Map<String, dynamic>> get _visibleTickets {
+    if (_ticketFilter == 'Todas') return _tickets;
+    return _tickets.where((ticket) {
+      final status = (ticket['estado']?.toString() ?? '').toUpperCase();
+      final closed = status == 'CERRADO' || status == 'RESUELTO';
+      return _ticketFilter == 'Cerradas' ? closed : !closed;
+    }).toList();
+  }
 
   @override
   void initState() {
@@ -126,7 +136,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
       backgroundColor: const Color(0xFFFAF8F5),
       appBar: AppBar(
         title: const Text(
-          'Centro de Concierge & PQRSF',
+          'Centro de soporte · PQRSF',
           style: TextStyle(
             fontFamily: 'CormorantGaramond',
             fontWeight: FontWeight.bold,
@@ -202,9 +212,50 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
                     ? _buildEmptyState()
                     : ListView.builder(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
-                        itemCount: _tickets.length,
+                        itemCount: _visibleTickets.isEmpty ? 3 : _visibleTickets.length + 2,
                         itemBuilder: (context, index) {
-                          final ticket = _tickets[index];
+                          if (index == 0) {
+                            return Container(
+                              padding: const EdgeInsets.all(16),
+                              margin: const EdgeInsets.only(bottom: 16),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFFF4DE),
+                                borderRadius: BorderRadius.circular(18),
+                                border: Border.all(color: const Color(0xFFE9D5AA)),
+                              ),
+                              child: const Row(
+                                children: [
+                                  Icon(Icons.headset_mic_outlined, color: Color(0xFF9A6A1E)),
+                                  SizedBox(width: 12),
+                                  Expanded(child: Text('Peticiones, quejas y solicitudes generales. Consulta aquí el estado y las respuestas de soporte.')),
+                                ],
+                              ),
+                            );
+                          }
+                          if (index == 1) {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: Wrap(
+                                spacing: 8,
+                                children: [
+                                  for (final filter in ['Todas', 'Abiertas', 'Cerradas'])
+                                    ChoiceChip(
+                                      label: Text(filter),
+                                      selected: _ticketFilter == filter,
+                                      selectedColor: const Color(0xFFC9953D),
+                                      onSelected: (_) => setState(() => _ticketFilter = filter),
+                                    ),
+                                ],
+                              ),
+                            );
+                          }
+                          if (_visibleTickets.isEmpty) {
+                            return const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 36),
+                              child: Center(child: Text('No hay solicitudes en este filtro.')),
+                            );
+                          }
+                          final ticket = _visibleTickets[index - 2];
                           final id = ticket['id'].toString();
                           final asunto = ticket['asunto']?.toString() ?? 'Sin Asunto';
                           final tipo = ticket['tipo']?.toString() ?? 'PETICION';
@@ -340,7 +391,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
           },
           icon: const Icon(Icons.add, color: Color(0xFF1F1A15)),
           label: const Text(
-            'Crear PQRSF',
+            'Crear solicitud',
             style: TextStyle(
               color: Color(0xFF1F1A15),
               fontWeight: FontWeight.bold,

@@ -12,9 +12,21 @@ class DisputesListScreen extends StatefulWidget {
 }
 
 class _DisputesListScreenState extends State<DisputesListScreen> {
+  static const _plum = Color(0xFF54264F);
+  static const _plumSoft = Color(0xFFF2E8F1);
   bool _isLoading = true;
   List<Map<String, dynamic>> _disputes = [];
   String? _error;
+  String _disputeFilter = 'Todas';
+
+  List<Map<String, dynamic>> get _visibleDisputes {
+    if (_disputeFilter == 'Todas') return _disputes;
+    return _disputes.where((dispute) {
+      final state = (dispute['estado']?.toString() ?? '').toUpperCase();
+      final resolved = state == 'RESUELTA' || state == 'CERRADA';
+      return _disputeFilter == 'Resueltas' ? resolved : !resolved;
+    }).toList();
+  }
 
   @override
   void initState() {
@@ -53,7 +65,9 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
   Color _getStatusColor(String status) {
     switch (status.toUpperCase()) {
       case 'ABIERTA':
-        return AppTheme.warning;
+        return _plum;
+      case 'EN_REVISION':
+        return _plum;
       case 'RESUELTA':
         return AppTheme.success;
       default:
@@ -64,7 +78,9 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
   Color _getStatusBgColor(String status) {
     switch (status.toUpperCase()) {
       case 'ABIERTA':
-        return AppTheme.warningBg;
+        return _plumSoft;
+      case 'EN_REVISION':
+        return _plumSoft;
       case 'RESUELTA':
         return AppTheme.successBg;
       default:
@@ -92,16 +108,16 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
       backgroundColor: const Color(0xFFFAF8F5),
       appBar: AppBar(
         title: const Text(
-          'Disputas & Mediación de Servicio',
+          'Disputas de citas',
           style: TextStyle(
             fontFamily: 'CormorantGaramond',
             fontWeight: FontWeight.bold,
             fontSize: 22,
-            color: Color(0xFF1F1A15),
+            color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFFFAF8F5),
-        foregroundColor: const Color(0xFF1F1A15),
+        backgroundColor: _plum,
+        foregroundColor: Colors.white,
         elevation: 0,
       ),
       body: Center(
@@ -140,9 +156,51 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                         : ListView.builder(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20.0, vertical: 16.0),
-                            itemCount: _disputes.length,
+                            itemCount: _visibleDisputes.isEmpty ? 3 : _visibleDisputes.length + 2,
                             itemBuilder: (context, index) {
-                              final dispute = _disputes[index];
+                              if (index == 0) {
+                                return Container(
+                                  padding: const EdgeInsets.all(16),
+                                  margin: const EdgeInsets.only(bottom: 16),
+                                  decoration: BoxDecoration(
+                                    color: _plumSoft,
+                                    borderRadius: BorderRadius.circular(18),
+                                    border: Border.all(color: const Color(0xFFDCC8D9)),
+                                  ),
+                                  child: const Row(
+                                    children: [
+                                      Icon(Icons.gavel_outlined, color: _plum),
+                                      SizedBox(width: 12),
+                                      Expanded(child: Text('Expedientes asociados a tus citas. Revisa el caso, su estado y responde desde el expediente.')),
+                                    ],
+                                  ),
+                                );
+                              }
+                              if (index == 1) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: Wrap(
+                                    spacing: 8,
+                                    children: [
+                                      for (final filter in ['Todas', 'En revisión', 'Resueltas'])
+                                        ChoiceChip(
+                                          label: Text(filter),
+                                          selected: _disputeFilter == filter,
+                                          selectedColor: _plum,
+                                          labelStyle: TextStyle(color: _disputeFilter == filter ? Colors.white : _plum),
+                                          onSelected: (_) => setState(() => _disputeFilter = filter),
+                                        ),
+                                    ],
+                                  ),
+                                );
+                              }
+                              if (_visibleDisputes.isEmpty) {
+                                return const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 36),
+                                  child: Center(child: Text('No hay disputas en este filtro.')),
+                                );
+                              }
+                              final dispute = _visibleDisputes[index - 2];
                               final id = dispute['id'].toString();
                               final tipo = dispute['tipo']?.toString() ??
                                   'Falla de Servicio';
@@ -166,6 +224,11 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                               final formattedDate = fecha != null
                                   ? '${fecha.day}/${fecha.month}/${fecha.year} ${fecha.hour.toString().padLeft(2, '0')}:${fecha.minute.toString().padLeft(2, '0')}'
                                   : '';
+                              final bookingNumber = dispute['booking_number']?.toString();
+                              final bookingDate = DateTime.tryParse(dispute['booking_fecha']?.toString() ?? '')?.toLocal();
+                              final bookingDateLabel = bookingDate == null
+                                  ? 'Fecha de cita pendiente'
+                                  : '${bookingDate.day}/${bookingDate.month}/${bookingDate.year}';
 
                               return Container(
                                 margin: const EdgeInsets.only(bottom: 16),
@@ -173,8 +236,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                                      color: const Color(0xFFF3EAE8)),
+                                  border: Border.all(color: const Color(0xFFE9DDE8)),
                                   boxShadow: AppTheme.softShadow,
                                 ),
                                 child: Column(
@@ -185,20 +247,11 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10, vertical: 4),
-                                          decoration: BoxDecoration(
-                                            color: _getStatusBgColor(estado),
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
+                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                          decoration: BoxDecoration(color: _getStatusBgColor(estado), borderRadius: BorderRadius.circular(20)),
                                           child: Text(
-                                            estado.toUpperCase(),
-                                            style: TextStyle(
-                                              color: _getStatusColor(estado),
-                                              fontSize: 11,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                            estado.replaceAll('_', ' ').toLowerCase(),
+                                            style: TextStyle(color: _getStatusColor(estado), fontSize: 11, fontWeight: FontWeight.bold),
                                           ),
                                         ),
                                         Text(
@@ -208,6 +261,18 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                               fontSize: 11),
                                         ),
                                       ],
+                                    ),
+                                    const SizedBox(height: 12),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                                      decoration: BoxDecoration(color: _plumSoft, borderRadius: BorderRadius.circular(12)),
+                                      child: Row(
+                                        children: [
+                                          const Icon(Icons.calendar_month_outlined, size: 18, color: _plum),
+                                          const SizedBox(width: 8),
+                                          Expanded(child: Text(bookingNumber == null || bookingNumber.isEmpty ? 'Cita · $bookingDateLabel' : 'Cita #$bookingNumber · $bookingDateLabel', style: const TextStyle(color: _plum, fontWeight: FontWeight.w600))),
+                                        ],
+                                      ),
                                     ),
                                     const SizedBox(height: 12),
                                     Text(
@@ -252,11 +317,13 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                           style: TextStyle(
                                             fontSize: 13,
                                             fontWeight: FontWeight.bold,
-                                            color: AppTheme.primary,
+                                          color: _plum,
                                           ),
                                         ),
                                       ],
                                     ),
+                                    const SizedBox(height: 16),
+                                    _ClientDisputeProgress(state: estado),
                                     if (estado == 'RESUELTA') ...[
                                       const SizedBox(height: 10),
                                       Container(
@@ -284,7 +351,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                               _formatResolucionText(resolucion),
                                               style: TextStyle(
                                                   fontSize: 12,
-                                                  color: AppTheme.success,
+                                                  color: _plum,
                                                   fontWeight: FontWeight.w600),
                                             ),
                                             if (notaRes.isNotEmpty) ...[
@@ -316,6 +383,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                                             size: 18),
                                         label: const Text(
                                             'Ver expediente y responder'),
+                                        style: TextButton.styleFrom(foregroundColor: _plum),
                                       ),
                                     ),
                                   ],
@@ -330,13 +398,13 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           gradient: const LinearGradient(
-            colors: [Color(0xFFF3D59B), Color(0xFFC5A052)],
+            colors: [Color(0xFF74436F), Color(0xFF54264F)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFC5A052).withValues(alpha: 0.35),
+              color: _plum.withValues(alpha: 0.25),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -352,11 +420,11 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
                   builder: (context) => const OpenDisputeScreen()),
             ).then((_) => _loadDisputes());
           },
-          icon: const Icon(Icons.add, color: Color(0xFF1F1A15)),
+          icon: const Icon(Icons.add, color: Colors.white),
           label: const Text(
             'Iniciar Disputa',
             style: TextStyle(
-              color: Color(0xFF1F1A15),
+              color: Colors.white,
               fontWeight: FontWeight.bold,
               fontFamily: 'Inter',
             ),
@@ -373,8 +441,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.gavel_outlined,
-                size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
+            Icon(Icons.gavel_outlined, size: 64, color: _plum.withValues(alpha: 0.5)),
             const SizedBox(height: 16),
             const Text(
               'Sin disputas de servicio activas',
@@ -403,7 +470,7 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
               label: const Text('Iniciar Disputa',
                   style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.primary,
+                backgroundColor: _plum,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 padding:
@@ -414,6 +481,37 @@ class _DisputesListScreenState extends State<DisputesListScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ClientDisputeProgress extends StatelessWidget {
+  final String state;
+  const _ClientDisputeProgress({required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    final normalized = state.toUpperCase();
+    final activeStep = normalized.contains('RESUEL') || normalized.contains('CERR')
+        ? 2
+        : normalized.contains('REVISION') || normalized.contains('PROCESO')
+        ? 1
+        : 0;
+    const labels = ['Recibida', 'En revisión', 'Decisión'];
+    return Row(
+      children: [
+        for (var step = 0; step < labels.length; step++) ...[
+          if (step > 0)
+            Expanded(child: Container(height: 2, color: step <= activeStep ? const Color(0xFF9A6A1E) : const Color(0xFFE5DDE5))),
+          Column(
+            children: [
+              Icon(step < activeStep ? Icons.check_circle : step == activeStep ? Icons.radio_button_checked : Icons.circle_outlined, size: 20, color: step <= activeStep ? const Color(0xFF54264F) : Colors.black38),
+              const SizedBox(height: 4),
+              Text(labels[step], style: const TextStyle(fontSize: 10)),
+            ],
+          ),
+        ],
+      ],
     );
   }
 }
