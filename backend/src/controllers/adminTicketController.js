@@ -513,9 +513,6 @@ exports.responderTicket = async (req, res) => {
     if (nuevoEstado !== undefined) {
       const motivo = await motivoInvalido('tickets', 'estado', nuevoEstado);
       if (motivo) return res.status(400).json({ error: 'VALOR_NO_ADMITIDO', message: motivo });
-    } else {
-      // Sin estado explícito, responder deja el ticket esperando al usuario.
-      nuevoEstado = 'ESPERANDO_RESPUESTA_USUARIO';
     }
 
     const tickets = await sequelize.query(
@@ -524,6 +521,13 @@ exports.responderTicket = async (req, res) => {
     );
     if (!tickets.length) {
       return res.status(404).json({ error: 'NO_ENCONTRADO', message: 'Ticket no encontrado.' });
+    }
+    if (nuevoEstado === undefined) {
+      // Una respuesta normalmente queda esperando al usuario. Si el operador ya
+      // cerró o resolvió el caso, agregar el mensaje final no debe reabrirlo.
+      nuevoEstado = ['RESUELTO', 'CERRADO'].includes(tickets[0].estado)
+        ? tickets[0].estado
+        : 'ESPERANDO_RESPUESTA_USUARIO';
     }
     if (tickets[0].tipo === TIPO_ARCO && ['RESUELTO', 'CERRADO'].includes(nuevoEstado)
         && !tickets[0].suppression_executed_at) {
