@@ -307,11 +307,12 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
 
   Future<void> _refreshActiveLocation() async {
     try {
-      final pos = await getWebGeolocation();
+      final pos = await ubicacionDisponible();
+      if (!pos.ok) return;
       await ApiService.updateProviderStatus(true,
-          latitude: pos['lat'], longitude: pos['lon']);
+          latitude: pos.lat, longitude: pos.lon);
       debugPrint(
-          '🟢 Ubicación actualizada automáticamente al cargar perfil: ${pos['lat']}, ${pos['lon']}');
+          '🟢 Ubicación actualizada automáticamente al cargar perfil: ${pos.lat}, ${pos.lon}');
     } catch (e) {
       debugPrint('❌ Error al actualizar ubicación automáticamente: $e');
     }
@@ -1765,13 +1766,25 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       double? lat;
       double? lon;
       if (value) {
-        try {
-          final pos = await getWebGeolocation();
-          lat = pos['lat'];
-          lon = pos['lon'];
-        } catch (e) {
-          debugPrint('Error getting geolocation: $e');
+        final pos = await solicitarUbicacion();
+        if (!pos.ok) {
+          if (mounted) {
+            setState(() {
+              _isActive = false;
+              _isTogglingStatus = false;
+            });
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'Necesitas permitir una ubicación real para ponerte En Línea.',
+                ),
+              ),
+            );
+          }
+          return;
         }
+        lat = pos.lat;
+        lon = pos.lon;
       }
       await ApiService.updateProviderStatus(value,
           latitude: lat, longitude: lon);
@@ -2019,15 +2032,20 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         // Ignorar si no hay citas en progreso
       }
 
-      double lat = 4.6735;
-      double lon = -74.1422;
-      try {
-        final pos = await getWebGeolocation();
-        lat = pos['lat'] ?? 4.6735;
-        lon = pos['lon'] ?? -74.1422;
-      } catch (e) {
-        debugPrint('Error getting real geolocation for SOS: $e');
+      // SOS must never report a default coordinate as if it were the device.
+      final location = await solicitarUbicacion();
+      if (!location.ok) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'No se pudo obtener tu ubicación real. Activa el GPS y permite el acceso para enviar el SOS.',
+            ),
+          ),
+        );
+        return;
       }
+      final lat = location.lat!;
+      final lon = location.lon!;
 
       // Registrar evento de telemetría de botón SOS presionado por prestador
       AnalyticsService().logEvent(
@@ -4559,29 +4577,18 @@ class _SegmentedPinDialogState extends State<SegmentedPinDialog> {
     });
 
     try {
-      double providerLat;
-      double providerLon;
-      double clientLat;
-      double clientLon;
-
-      try {
-        final pos = await getWebGeolocation();
-        providerLat = pos['lat']!;
-        providerLon = pos['lon']!;
-        clientLat = providerLat;
-        clientLon = providerLon;
-      } catch (e) {
-        debugPrint('Error obteniendo geolocalización real: $e');
-        throw Exception('No se pudo verificar tu geolocalización. Asegúrate de activar el GPS y dar permisos de ubicación.');
+      final posicion = await solicitarUbicacion();
+      if (!posicion.ok) {
+        throw Exception(
+          'No se pudo obtener tu ubicación real. Activa el GPS y permite el acceso.',
+        );
       }
 
       final res = await ApiService.completeBooking(
         widget.booking['id'].toString(),
         pin,
-        providerLat: providerLat,
-        providerLon: providerLon,
-        clientLat: clientLat,
-        clientLon: clientLon,
+        providerLat: posicion.lat,
+        providerLon: posicion.lon,
       );
       HapticFeedback.mediumImpact();
       if (mounted) {

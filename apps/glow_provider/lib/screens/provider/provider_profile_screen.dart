@@ -68,6 +68,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     try {
       final profile = await ApiService.fetchUserProfile();
       final prefs = await SharedPreferences.getInstance();
+      if (!mounted) return;
 
       final localBio =
           prefs.getString('provider_bio') ?? profile['description'] ?? '';
@@ -101,10 +102,12 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         _isLoading = false;
       });
     } catch (e) {
-      setState(() {
-        _error = 'Error al cargar perfil: ${mensajeHumano(e)}';
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _error = 'Error al cargar perfil: ${mensajeHumano(e)}';
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -160,6 +163,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         imageQuality: 70,
       );
       if (file == null) return;
+      if (!mounted) return;
 
       setState(() {
         _isUploading = true;
@@ -168,6 +172,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
       });
 
       final Uint8List bytes = await file.readAsBytes();
+      if (!mounted) return;
       
       // Convertir a Base64 Data URI para almacenar directamente en la BD
       // Esto evita depender del filesystem del servidor (efímero en Railway)
@@ -185,21 +190,33 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
       
       await ApiService.updateAvatar(dataUri);
 
+      if (!mounted) return;
       setState(() {
         _avatarUrl = dataUri;
         _isUploading = false;
         _message = 'Foto de perfil actualizada con éxito';
       });
     } catch (e) {
-      setState(() {
-        _isUploading = false;
-        _error = 'Error al subir foto: ${mensajeHumano(e)}';
-      });
+      if (mounted) {
+        setState(() {
+          _isUploading = false;
+          _error = 'Error al subir foto: ${mensajeHumano(e)}';
+        });
+      }
     }
   }
 
   Future<void> _saveProfileChanges() async {
     if (!_formKey.currentState!.validate()) return;
+
+    final fullName = _nameCtrl.text.trim();
+    final phone = _phoneCtrl.text.trim();
+    final description = _bioCtrl.text.trim();
+    final coverageRadius = double.tryParse(_coverageCtrl.text) ?? 10.0;
+    final experienceYears = int.tryParse(_experienceCtrl.text) ?? 3;
+    final startHour = _startHour;
+    final endHour = _endHour;
+    final weeklySchedule = Map<String, dynamic>.from(_weeklySchedule);
 
     setState(() {
       _isSaving = true;
@@ -209,30 +226,31 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
 
     try {
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('provider_bio', _bioCtrl.text.trim());
-      await prefs.setDouble('provider_coverage_radius',
-          double.tryParse(_coverageCtrl.text) ?? 10.0);
-      await prefs.setInt(
-          'provider_experience_years', int.tryParse(_experienceCtrl.text) ?? 3);
+      await prefs.setString('provider_bio', description);
+      await prefs.setDouble('provider_coverage_radius', coverageRadius);
+      await prefs.setInt('provider_experience_years', experienceYears);
 
       await ApiService.updateUserProfile(
-        fullName: _nameCtrl.text.trim(),
-        phone: _phoneCtrl.text.trim(),
-        description: _bioCtrl.text.trim(),
-        activeStartHour: _startHour,
-        activeEndHour: _endHour,
-        weeklySchedule: _weeklySchedule,
+        fullName: fullName,
+        phone: phone,
+        description: description,
+        activeStartHour: startHour,
+        activeEndHour: endHour,
+        weeklySchedule: weeklySchedule,
       );
 
+      if (!mounted) return;
       setState(() {
         _isSaving = false;
         _message = 'Perfil guardado correctamente';
       });
     } catch (e) {
-      setState(() {
-        _isSaving = false;
-        _error = 'Error al guardar cambios: ${mensajeHumano(e)}';
-      });
+      if (mounted) {
+        setState(() {
+          _isSaving = false;
+          _error = 'Error al guardar cambios: ${mensajeHumano(e)}';
+        });
+      }
     }
   }
 
