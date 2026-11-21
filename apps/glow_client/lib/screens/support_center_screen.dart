@@ -149,6 +149,13 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
         elevation: 0,
         centerTitle: false,
         actions: [
+          // Las disputas tienen un expediente distinto de las solicitudes
+          // PQRSF; déjalas accesibles también desde este centro.
+          IconButton(
+            tooltip: 'Mis disputas de citas',
+            icon: const Icon(Icons.gavel_outlined),
+            onPressed: () => Navigator.pushNamed(context, '/disputes'),
+          ),
           // Horario y SLA (ítem 71): el compromiso de respuesta tiene que estar
           // publicado, no solo prometido en el chat.
           IconButton(
@@ -189,181 +196,245 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
             onRefresh: _loadTickets,
             color: const Color(0xFFC5A052),
             child: _isLoading
-                        ? Center(child: CircularProgressIndicator(color: AppTheme.primary))
-            : _error != null
                 ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(_error!, style: const TextStyle(color: Colors.redAccent, fontSize: 14)),
-                          const SizedBox(height: 16),
-                          ElevatedButton(
-                            onPressed: _loadTickets,
-                            style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primary),
-                            child: const Text('Reintentar', style: TextStyle(color: Colors.white)),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                : _tickets.isEmpty
-                    ? _buildEmptyState()
-                    : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
-                        itemCount: _visibleTickets.isEmpty ? 3 : _visibleTickets.length + 2,
-                        itemBuilder: (context, index) {
-                          if (index == 0) {
-                            return Container(
-                              padding: const EdgeInsets.all(16),
-                              margin: const EdgeInsets.only(bottom: 16),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFFFF4DE),
-                                borderRadius: BorderRadius.circular(18),
-                                border: Border.all(color: const Color(0xFFE9D5AA)),
-                              ),
-                              child: const Row(
-                                children: [
-                                  Icon(Icons.headset_mic_outlined, color: Color(0xFF9A6A1E)),
-                                  SizedBox(width: 12),
-                                  Expanded(child: Text('Peticiones, quejas y solicitudes generales. Consulta aquí el estado y las respuestas de soporte.')),
-                                ],
-                              ),
-                            );
-                          }
-                          if (index == 1) {
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 16),
-                              child: Wrap(
-                                spacing: 8,
-                                children: [
-                                  for (final filter in ['Todas', 'Abiertas', 'Cerradas'])
-                                    ChoiceChip(
-                                      label: Text(filter),
-                                      selected: _ticketFilter == filter,
-                                      selectedColor: const Color(0xFFC9953D),
-                                      onSelected: (_) => setState(() => _ticketFilter = filter),
-                                    ),
-                                ],
-                              ),
-                            );
-                          }
-                          if (_visibleTickets.isEmpty) {
-                            return const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 36),
-                              child: Center(child: Text('No hay solicitudes en este filtro.')),
-                            );
-                          }
-                          final ticket = _visibleTickets[index - 2];
-                          final id = ticket['id'].toString();
-                          final asunto = ticket['asunto']?.toString() ?? 'Sin Asunto';
-                          final tipo = ticket['tipo']?.toString() ?? 'PETICION';
-                          final estado = ticket['estado']?.toString() ?? 'ABIERTO';
-                          final prioridad = ticket['prioridad']?.toString() ?? 'MEDIA';
-                          final desc = ticket['descripcion']?.toString() ?? '';
-                          final fechaStr = ticket['fecha_creacion']?.toString() ?? '';
-                          final fecha = DateTime.tryParse(fechaStr)?.toLocal();
-                          final formattedDate = fecha != null
-                              ? '${fecha.day}/${fecha.month}/${fecha.year} ${fecha.hour.toString().padLeft(2, '0')}:${fecha.minute.toString().padLeft(2, '0')}'
-                              : '';
+                    child: CircularProgressIndicator(color: AppTheme.primary))
+                : _error != null
+                    ? Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(_error!,
+                                  style: const TextStyle(
+                                      color: Colors.redAccent, fontSize: 14)),
+                              const SizedBox(height: 16),
+                              ElevatedButton(
+                                onPressed: _loadTickets,
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppTheme.primary),
+                                child: const Text('Reintentar',
+                                    style: TextStyle(color: Colors.white)),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    : _tickets.isEmpty
+                        ? _buildEmptyState()
+                        : ListView.builder(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0, vertical: 16.0),
+                            itemCount: _visibleTickets.isEmpty
+                                ? 3
+                                : _visibleTickets.length + 2,
+                            itemBuilder: (context, index) {
+                              if (index == 0) {
+                                return Container(
+                                  padding: const EdgeInsets.all(16),
+                                  margin: const EdgeInsets.only(bottom: 16),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFFFF4DE),
+                                    borderRadius: BorderRadius.circular(18),
+                                    border: Border.all(
+                                        color: const Color(0xFFE9D5AA)),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Row(
+                                        children: [
+                                          Icon(Icons.headset_mic_outlined,
+                                              color: Color(0xFF9A6A1E)),
+                                          SizedBox(width: 12),
+                                          Expanded(
+                                              child: Text(
+                                                  'Peticiones, quejas y solicitudes generales. Consulta aquí el estado y las respuestas de soporte.')),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: TextButton.icon(
+                                          onPressed: () => Navigator.pushNamed(
+                                              context, '/disputes'),
+                                          icon: const Icon(Icons.gavel_outlined,
+                                              size: 18),
+                                          label: const Text(
+                                              'Ver disputas de citas'),
+                                          style: TextButton.styleFrom(
+                                              foregroundColor:
+                                                  const Color(0xFF54264F)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                              if (index == 1) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: Wrap(
+                                    spacing: 8,
+                                    children: [
+                                      for (final filter in [
+                                        'Todas',
+                                        'Abiertas',
+                                        'Cerradas'
+                                      ])
+                                        ChoiceChip(
+                                          label: Text(filter),
+                                          selected: _ticketFilter == filter,
+                                          selectedColor:
+                                              const Color(0xFFC9953D),
+                                          onSelected: (_) => setState(
+                                              () => _ticketFilter = filter),
+                                        ),
+                                    ],
+                                  ),
+                                );
+                              }
+                              if (_visibleTickets.isEmpty) {
+                                return const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 36),
+                                  child: Center(
+                                      child: Text(
+                                          'No hay solicitudes en este filtro.')),
+                                );
+                              }
+                              final ticket = _visibleTickets[index - 2];
+                              final id = ticket['id'].toString();
+                              final asunto =
+                                  ticket['asunto']?.toString() ?? 'Sin Asunto';
+                              final tipo =
+                                  ticket['tipo']?.toString() ?? 'PETICION';
+                              final estado =
+                                  ticket['estado']?.toString() ?? 'ABIERTO';
+                              final prioridad =
+                                  ticket['prioridad']?.toString() ?? 'MEDIA';
+                              final desc =
+                                  ticket['descripcion']?.toString() ?? '';
+                              final fechaStr =
+                                  ticket['fecha_creacion']?.toString() ?? '';
+                              final fecha =
+                                  DateTime.tryParse(fechaStr)?.toLocal();
+                              final formattedDate = fecha != null
+                                  ? '${fecha.day}/${fecha.month}/${fecha.year} ${fecha.hour.toString().padLeft(2, '0')}:${fecha.minute.toString().padLeft(2, '0')}'
+                                  : '';
 
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => TicketChatScreen(
-                                    ticketId: id,
-                                    ticketSubject: asunto,
-                                    ticketStatus: estado,
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => TicketChatScreen(
+                                        ticketId: id,
+                                        ticketSubject: asunto,
+                                        ticketStatus: estado,
+                                      ),
+                                    ),
+                                  ).then((_) => _loadTickets());
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(bottom: 16),
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                        color: const Color(0xFFF3EAE8)),
+                                    boxShadow: AppTheme.softShadow,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 4),
+                                            decoration: BoxDecoration(
+                                              color: _getStatusBgColor(estado),
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            child: Text(
+                                              _formatStatusText(estado),
+                                              style: TextStyle(
+                                                color: _getStatusColor(estado),
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            formattedDate,
+                                            style: const TextStyle(
+                                                color: Color(0xFF6F5F4E),
+                                                fontSize: 11),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 12),
+                                      Text(
+                                        asunto,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.black87,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        desc,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Color(0xFF6F5F4E),
+                                            fontSize: 12),
+                                      ),
+                                      const SizedBox(height: 12),
+                                      const Divider(
+                                          height: 1, color: Color(0xFFF3EAE8)),
+                                      const SizedBox(height: 8),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Tipo: $tipo',
+                                            style: const TextStyle(
+                                                fontSize: 11,
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'Prioridad: $prioridad',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color:
+                                                  prioridad == 'EMERGENCIA' ||
+                                                          prioridad == 'ALTA'
+                                                      ? Colors.red.shade700
+                                                      : Colors.black54,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ).then((_) => _loadTickets());
+                              );
                             },
-                            child: Container(
-                              margin: const EdgeInsets.only(bottom: 16),
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: const Color(0xFFF3EAE8)),
-                                boxShadow: AppTheme.softShadow,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                                        decoration: BoxDecoration(
-                                          color: _getStatusBgColor(estado),
-                                          borderRadius: BorderRadius.circular(12),
-                                        ),
-                                        child: Text(
-                                          _formatStatusText(estado),
-                                          style: TextStyle(
-                                            color: _getStatusColor(estado),
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        formattedDate,
-                                        style: const TextStyle(color: Color(0xFF6F5F4E), fontSize: 11),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Text(
-                                    asunto,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                      color: Colors.black87,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    desc,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(color: Color(0xFF6F5F4E), fontSize: 12),
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const Divider(height: 1, color: Color(0xFFF3EAE8)),
-                                  const SizedBox(height: 8),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Tipo: $tipo',
-                                        style: const TextStyle(fontSize: 11, color: Colors.black54, fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        'Prioridad: $prioridad',
-                                        style: TextStyle(
-                                          fontSize: 11,
-                                          color: prioridad == 'EMERGENCIA' || prioridad == 'ALTA'
-                                              ? Colors.red.shade700
-                                              : Colors.black54,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                          ),
+          ),
         ),
       ),
-    ),
       floatingActionButton: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
@@ -386,7 +457,8 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CreateTicketScreen()),
+              MaterialPageRoute(
+                  builder: (context) => const CreateTicketScreen()),
             ).then((_) => _loadTickets());
           },
           icon: const Icon(Icons.add, color: Color(0xFF1F1A15)),
@@ -410,11 +482,15 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.headset_mic_outlined, size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
+            Icon(Icons.headset_mic_outlined,
+                size: 64, color: AppTheme.primary.withValues(alpha: 0.5)),
             const SizedBox(height: 16),
             const Text(
               '¿Tienes dudas, quejas o reclamos?',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
@@ -428,15 +504,19 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CreateTicketScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const CreateTicketScreen()),
                 ).then((_) => _loadTickets());
               },
               icon: const Icon(Icons.add, color: Colors.white),
-              label: const Text('Crear Nueva Solicitud', style: TextStyle(color: Colors.white)),
+              label: const Text('Crear Nueva Solicitud',
+                  style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primary,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                 elevation: 0,
               ),
             ),
