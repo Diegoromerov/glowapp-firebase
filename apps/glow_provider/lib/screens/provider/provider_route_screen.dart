@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:web_socket_channel/web_socket_channel.dart' as web_socket_channel;
@@ -27,16 +28,12 @@ class ProviderRouteScreen extends StatefulWidget {
 
 class _ProviderRouteScreenState extends State<ProviderRouteScreen>
     with SingleTickerProviderStateMixin {
-  // Coordenadas fijas del cliente en Fontibón
-  final LatLng _clientLoc = const LatLng(4.6735, -74.1422);
-
-  // Coordenadas iniciales del prestador
-  late LatLng _providerLoc;
-
-  double _progress = 0.0;
-  Timer? _moveTimer;
-  int _minutesRemaining = 8;
-  bool _isArrived = false;
+  LatLng? _clientLoc;
+  LatLng? _providerLoc;
+  final MapController _mapController = MapController();
+  bool _mapReady = false;
+  bool _hasFitLocations = false;
+  String _locationMessage = 'Buscando la dirección y ubicación real…';
   bool _isStartingService = false;
 
   late AnimationController _pulseController;
@@ -44,9 +41,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
   @override
   void initState() {
     super.initState();
-    // Inicia un poco al noreste del cliente
-    _providerLoc = const LatLng(4.6795, -74.1310);
-    _startRouteSimulation();
+    _loadRealLocations();
     _conectarSala();
 
     _pulseController = AnimationController(
@@ -104,20 +99,21 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
     }
 
     try {
-      final permiso = await Geolocator.checkPermission();
+      var permiso = await Geolocator.checkPermission();
       if (permiso == LocationPermission.denied) {
-        final pedido = await Geolocator.requestPermission();
-        if (pedido == LocationPermission.denied ||
-            pedido == LocationPermission.deniedForever) {
-          if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Sin permiso de ubicación no se puede compartir'),
-              ),
-            );
-          }
-          return;
+        permiso = await Geolocator.requestPermission();
+      }
+      if (permiso == LocationPermission.denied ||
+          permiso == LocationPermission.deniedForever ||
+          permiso == LocationPermission.unableToDetermine) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Sin permiso de ubicación no se puede compartir'),
+            ),
+          );
         }
+        return;
       }
 
       const settings = LocationSettings(
@@ -125,8 +121,7 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
         distanceFilter: 10,
       );
 
-      _geoSub =
-          Geolocator.getPositionStream(locationSettings: settings).listen((pos) {
+      _geoSub = Geolocator.getPositionStream(locationSettings: settings).listen((pos) {
         _wsChannel?.sink.add(jsonEncode({
           'type': 'location_update',
           'bookingId': bookingId,
@@ -137,8 +132,24 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
           setState(() {
             _providerLoc = LatLng(pos.latitude, pos.longitude);
           });
+          _fitMapToLocations();
         }
-      }, onError: (e) => debugPrint('GPS provider: $e'));
+      }, onError: (e) {
+        debugPrint('GPS provider: $e');
+        _geoSub?.cancel();
+        _geoSub = null;
+        if (mounted) {
+          setState(() {
+            _compartiendo = false;
+            _locationMessage = 'No se pudo compartir la ubicación del dispositivo.';
+          });
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('No se pudo obtener la ubicación. Revisa el GPS y los permisos.'),
+            ),
+          );
+        }
+      });
 
       if (mounted) setState(() => _compartiendo = true);
     } catch (e) {
@@ -148,39 +159,73 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
 
   @override
   void dispose() {
-    _moveTimer?.cancel();
     _geoSub?.cancel();
     _wsChannel?.sink.close();
     _pulseController.dispose();
+    _mapController.dispose();
     super.dispose();
   }
 
-  void _startRouteSimulation() {
-    _moveTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (!mounted) return;
-      setState(() {
-        if (_progress < 1.0) {
-          _progress +=
-              0.1; // Incrementa 10% cada 2 segundos (20 segundos total)
-          if (_progress > 1.0) _progress = 1.0;
+  Future<void> _loadRealLocations() async {
+    LatLng? destination;
+    final address = widget.booking['service_address']?.toString().trim() ?? '';
+    final addressMessage = address.isEmpty
+        ? 'La cita no tiene una dirección para mostrar.'
+        : 'No pudimos ubicar la dirección de la cita.';
 
-          final double lat =
-              4.6795 + (_clientLoc.latitude - 4.6795) * _progress;
-          final double lon =
-              -74.1310 + (_clientLoc.longitude - (-74.1310)) * _progress;
-          _providerLoc = LatLng(lat, lon);
-
-          _minutesRemaining = (8 * (1.0 - _progress)).round();
-          if (_minutesRemaining < 1) _minutesRemaining = 1;
-
-          if (_progress >= 1.0) {
-            _isArrived = true;
-            HapticFeedback.lightImpact();
-            _moveTimer?.cancel();
-          }
+    if (address.isNotEmpty) {
+      try {
+        final locations = await locationFromAddress(address);
+        if (locations.isNotEmpty) {
+          destination = LatLng(locations.first.latitude, locations.first.longitude);
         }
-      });
+      } catch (e) {
+        debugPrint('No se pudo geocodificar la dirección de la cita: $e');
+      }
+    }
+
+    LatLng? providerLocation;
+    final currentLocation = await ubicacionDisponible();
+    if (currentLocation.ok) {
+      providerLocation = LatLng(currentLocation.lat!, currentLocation.lon!);
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _clientLoc = destination;
+      _providerLoc = providerLocation;
+      _locationMessage = destination != null && providerLocation != null
+          ? 'Ubicación real del prestador y destino de la cita.'
+          : destination != null
+              ? 'Destino ubicado. Comparte tu ubicación para mostrar tu posición.'
+              : addressMessage;
     });
+    _fitMapToLocations();
+  }
+
+  void _fitMapToLocations() {
+    if (!_mapReady || _hasFitLocations) return;
+    final points = [
+      if (_clientLoc != null) _clientLoc!,
+      if (_providerLoc != null) _providerLoc!,
+    ];
+    if (points.isEmpty) return;
+    if (points.length == 1) {
+      _mapController.move(points.single, 14.2);
+      return;
+    }
+    if (const Distance().distance(points.first, points.last) < 20) {
+      _mapController.move(points.first, 15);
+      _hasFitLocations = true;
+      return;
+    }
+    _mapController.fitCamera(
+      CameraFit.bounds(
+        bounds: LatLngBounds.fromPoints(points),
+        padding: const EdgeInsets.all(64),
+      ),
+    );
+    _hasFitLocations = true;
   }
 
   Future<void> _handleStartService() async {
@@ -287,32 +332,27 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
           // 1. Capa de Mapa (OSM via flutter_map)
           FlutterMap(
             options: MapOptions(
-              initialCenter: LatLng(
-                  (_clientLoc.latitude + _providerLoc.latitude) / 2,
-                  (_clientLoc.longitude + _providerLoc.longitude) / 2),
-              initialZoom: 14.2,
+              initialCenter: const LatLng(4.653, -74.083),
+              initialZoom: 11,
+              onMapReady: () {
+                _mapReady = true;
+                _fitMapToLocations();
+              },
             ),
+            mapController: _mapController,
             children: [
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.beautyapp.map',
               ),
-              PolylineLayer(
-                polylines: [
-                  Polyline(
-                    points: [_providerLoc, _clientLoc],
-                    color: AppTheme.primary,
-                    strokeWidth: 4.5,
-                  ),
-                ],
-              ),
               MarkerLayer(
                 markers: [
                   // Marcador Cliente (Destino)
-                  Marker(
+                  if (_clientLoc != null)
+                    Marker(
                     width: 50,
                     height: 50,
-                    point: _clientLoc,
+                    point: _clientLoc!,
                     child: Container(
                       decoration: BoxDecoration(
                         color: AppTheme.surface,
@@ -324,10 +364,11 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                     ),
                   ),
                   // Marcador Prestador (Origen móvil) con doble anillo de pulso concéntrico
-                  Marker(
+                  if (_providerLoc != null)
+                    Marker(
                     width: 80,
                     height: 80,
-                    point: _providerLoc,
+                    point: _providerLoc!,
                     child: AnimatedBuilder(
                       animation: _pulseController,
                       builder: (context, child) {
@@ -548,14 +589,13 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                                   Text(
                                     isInProgress
                                         ? '⚡ Servicio en Progreso'
-                                        : (_isArrived
-                                            ? '🟢 Has llegado al destino'
-                                            : '🚙 En camino al domicilio'),
+                                        : _locationMessage,
                                     style: TextStyle(
                                       fontSize: 13,
                                       color: isInProgress
                                           ? AppTheme.primary
-                                          : (_isArrived
+                                          : (_clientLoc != null &&
+                                                  _providerLoc != null
                                               ? AppTheme.success
                                               : Colors.grey),
                                       fontWeight: isInProgress
@@ -566,22 +606,6 @@ class _ProviderRouteScreenState extends State<ProviderRouteScreen>
                                 ],
                               ),
                             ),
-                            if (!_isArrived)
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 8),
-                                decoration: BoxDecoration(
-                                  color: AppTheme.errorBg,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Text(
-                                  '$_minutesRemaining min',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: AppTheme.error,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
                           ],
                         ),
                         Divider(

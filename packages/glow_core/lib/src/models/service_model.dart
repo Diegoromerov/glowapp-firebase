@@ -7,7 +7,7 @@ class ServiceModel {
   final int durationMinutes;
   final String category;
   final bool isActive;
-  final int bookingsCount;
+  final int? bookingsCount;
 
   ServiceModel({
     required this.id,
@@ -28,14 +28,8 @@ class ServiceModel {
         durationMinutes: _toSafeInt(json['duration_minutes']),
         category: json['category'] as String? ?? '',
         isActive: json['is_active'] as bool? ?? true,
-        bookingsCount: _toSafeInt(json['bookings_count']) == 0
-            ? ((json['id']
-                            ?.toString()
-                            .runes
-                            .fold<int>(0, (prev, element) => prev + element) ??
-                        0) %
-                    11 +
-                5)
+        bookingsCount: json['bookings_count'] == null
+            ? null
             : _toSafeInt(json['bookings_count']),
       );
 
@@ -47,7 +41,7 @@ class ServiceModel {
         'duration_minutes': durationMinutes,
         'category': category,
         'is_active': isActive,
-        'bookings_count': bookingsCount,
+        if (bookingsCount != null) 'bookings_count': bookingsCount,
       };
 
   static double _toSafeDouble(dynamic value) {

@@ -880,7 +880,9 @@ class _ProviderServicesScreenState extends State<ProviderServicesScreen>
                                         color: Colors.amber, size: 12),
                                     const SizedBox(width: 2),
                                     Text(
-                                      '${service.bookingsCount} reservas',
+                                      service.bookingsCount == null
+                                          ? 'Reservas sin dato'
+                                          : '${service.bookingsCount} reservas',
                                       style: TextStyle(
                                         color: AppTheme.primary,
                                         fontSize: 11,
