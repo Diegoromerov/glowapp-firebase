@@ -40,6 +40,31 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
 
   bool _isLoading = false;
   String? _errorMessage;
+  Map? _accountStatus;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAccountStatus();
+  }
+
+  Future<void> _loadAccountStatus() async {
+    try {
+      final response = await ApiService.get('/api/wallet/bank-account');
+      if (!mounted) return;
+      setState(() {
+        _accountStatus = response is Map ? Map.from(response) : null;
+      });
+    } catch (_) {
+      // La consulta de estado no debe impedir que el prestador registre la cuenta.
+    }
+  }
+
+  String _formatReviewDate(Object? value) {
+    final date = DateTime.tryParse(value?.toString() ?? '')?.toLocal();
+    if (date == null) return 'fecha por confirmar';
+    return '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+  }
 
   final List<String> _tiposCuenta = [
     'NEQUI',
@@ -243,6 +268,61 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     ),
                   ),
                   const SizedBox(height: 12),
+                ],
+
+                if (_accountStatus?['configurada'] == true) ...[
+                  Builder(
+                    builder: (context) {
+                      final pending =
+                          _accountStatus?['estado_verificacion'] == 'PENDIENTE';
+                      final rejected =
+                          _accountStatus?['estado_verificacion'] == 'RECHAZADA';
+                      final approved =
+                          _accountStatus?['estado_verificacion'] ==
+                              'APROBADA' ||
+                          _accountStatus?['cuenta_verificada'] == true;
+                      final slaHours =
+                          int.tryParse(
+                            _accountStatus?['revision_sla_horas']?.toString() ??
+                                '',
+                          ) ??
+                          48;
+                      final deadline = _accountStatus?['revision_estimada_at'];
+                      final masked =
+                          _accountStatus?['numero_cuenta_enmascarado']
+                              ?.toString();
+                      return Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(bottom: 12),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: pending
+                              ? const Color(0xFFFFF7E6)
+                              : rejected
+                              ? const Color(0xFFFEF2F2)
+                              : const Color(0xFFE8F5EE),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          pending
+                              ? 'Tu cuenta ${masked ?? ''} está pendiente de revisión. Plazo objetivo: hasta $slaHours horas calendario (aprox. ${_formatReviewDate(deadline)}).'
+                              : rejected
+                              ? 'Tu cuenta ${masked ?? ''} fue rechazada. Revisa la notificación que recibiste y registra los datos corregidos.'
+                              : approved
+                              ? 'Tu cuenta actual ${masked ?? ''} está verificada. Si registras un cambio, se revisará antes de habilitar retiros al nuevo destino.'
+                              : 'Tu cuenta ${masked ?? ''} requiere revisión. Consulta la notificación recibida.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: pending
+                                ? const Color(0xFF92400E)
+                                : rejected
+                                ? const Color(0xFFB91C1C)
+                                : const Color(0xFF047857),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ],
 
                 // ─── Preset Quick Bank Selector ──────────────────────────────

@@ -46,6 +46,7 @@ async function listPending(req, res) {
     const { rows, slaHours } = resultData;
     return res.json({
       ok: true,
+      revision_sla_horas: slaHours,
       items: rows.map((storedRow) => {
         const row = payoutData.decryptWallet(storedRow);
         const requestedAt = row.cuenta_cambio_solicitado_at ? new Date(row.cuenta_cambio_solicitado_at) : null;

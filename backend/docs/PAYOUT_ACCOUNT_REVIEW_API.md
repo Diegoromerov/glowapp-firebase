@@ -6,13 +6,13 @@ Todas las rutas requieren `Authorization: Bearer <token>` de una cuenta cuyo rol
 
 `GET /api/glow-admin/payout-account-reviews?limit=50&after_provider_id=0`
 
-Devuelve solicitudes `PENDIENTE` con número y documento enmascarados. `revision_token` permite que una decisión no se aplique sobre datos que cambiaron mientras el administrador revisaba.
+Devuelve solicitudes `PENDIENTE` con número y documento enmascarados, el objetivo global `revision_sla_horas`, una `revision_estimada_at` por solicitud y `revision_vencida` para resaltar los objetivos superados. El SLA inicial es de 48 horas calendario y se configura mediante `platform_config.payout_account_review_sla_hours`. `revision_token` permite que una decisión no se aplique sobre datos que cambiaron mientras el administrador revisaba.
 
 ## Detalle
 
 `GET /api/glow-admin/payout-account-reviews/:providerId`
 
-Devuelve los datos completos necesarios para validar titular y destino. Cada consulta registra `CONSULTA_DATOS_CUENTA_RETIRO` en `audit_log` con la cuenta/documento enmascarados.
+Devuelve los datos completos necesarios para validar titular y destino, además del plazo objetivo y su fecha estimada. Cada consulta registra `CONSULTA_DATOS_CUENTA_RETIRO` en `audit_log` con la cuenta/documento enmascarados.
 
 ## Decisión
 

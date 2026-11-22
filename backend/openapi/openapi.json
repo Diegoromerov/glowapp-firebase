@@ -4860,7 +4860,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Cola con número/documento enmascarados y revision_token."
+            "description": "Cola con número/documento enmascarados, objetivo y fecha estimada de revisión, indicador de vencimiento y revision_token."
           },
           "401": {
             "description": "Token inválido o ausente."
@@ -4898,7 +4898,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Detalle de titular y cuenta con revision_token."
+            "description": "Detalle de titular y cuenta, objetivo y fecha estimada de revisión, con revision_token."
           },
           "401": {
             "description": "Token inválido o ausente."

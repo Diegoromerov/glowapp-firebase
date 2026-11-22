@@ -17,6 +17,9 @@ interface ReviewRow {
   titular_documento_enmascarado: string | null;
   estado: string;
   solicitado_at: string | null;
+  revision_estimada_at: string | null;
+  revision_sla_horas: number;
+  revision_vencida?: boolean;
   retiros_habilitables_despues_de: string | null;
   revision_token: string;
 }
@@ -40,6 +43,7 @@ export default function AdminCuentasRetiroPage() {
   const router = useRouter();
   const [items, setItems] = useState<ReviewRow[]>([]);
   const [cursor, setCursor] = useState<number | null>(null);
+  const [reviewSlaHours, setReviewSlaHours] = useState(48);
   const [detail, setDetail] = useState<ReviewDetail | null>(null);
   const [reason, setReason] = useState('');
   const [loading, setLoading] = useState(true);
@@ -60,6 +64,7 @@ export default function AdminCuentasRetiroPage() {
       const body = await response.json();
       if (!response.ok || !body.ok) throw new Error(body.error || `El backend respondió ${response.status}.`);
       setItems((current) => append ? [...current, ...(body.items || [])] : (body.items || []));
+      setReviewSlaHours(Number(body.revision_sla_horas) || 48);
       setCursor(body.next_after_provider_id ?? null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'No se pudo cargar la cola de revisión.');
@@ -166,6 +171,7 @@ export default function AdminCuentasRetiroPage() {
               ['Entidad', detail.banco], ['Tipo de cuenta', detail.tipo_cuenta_bancaria || detail.tipo_cuenta],
               ['Número de cuenta', detail.numero_cuenta], ['Titular', detail.titular_nombre],
               ['Tipo de documento', detail.titular_documento_tipo], ['Documento', detail.titular_documento_num],
+              [`Plazo objetivo (${detail.revision_sla_horas} h)`, fecha(detail.revision_estimada_at)],
               ['Protección de retiros hasta', fecha(detail.retiros_habilitables_despues_de)],
             ].map(([label, value]) => <div key={label} className="rounded-xl border border-[#e8e1d7] bg-[#f8f6f2] p-4"><dt className="text-xs font-semibold uppercase tracking-wide text-[#8a8178]">{label}</dt><dd className="mt-2 break-all text-sm text-[#2b2420]">{value || '—'}</dd></div>)}
           </dl>
@@ -181,21 +187,22 @@ export default function AdminCuentasRetiroPage() {
 
       <section aria-label="Solicitudes pendientes" className="overflow-hidden rounded-2xl border border-[#e8e1d7] bg-white">
         <div className="flex items-center justify-between border-b border-[#e8e1d7] px-5 py-4">
-          <div><h2 className="font-semibold text-[#2b2420]">Solicitudes pendientes</h2><p className="mt-1 text-xs text-[#8a8178]">{items.length} solicitud{items.length === 1 ? '' : 'es'} cargada{items.length === 1 ? '' : 's'}</p></div>
+          <div><h2 className="font-semibold text-[#2b2420]">Solicitudes pendientes</h2><p className="mt-1 text-xs text-[#8a8178]">{items.length} solicitud{items.length === 1 ? '' : 'es'} cargada{items.length === 1 ? '' : 's'} · Objetivo: hasta {reviewSlaHours} horas calendario</p></div>
           <span className="rounded-lg bg-amber-400/10 px-3 py-1 text-sm font-semibold text-amber-800">{loading ? '…' : items.length}</span>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[760px] text-left text-sm">
-            <thead className="bg-[#f8f6f2] text-xs uppercase tracking-wide text-[#8a8178]"><tr><th className="px-5 py-3">Prestador</th><th className="px-5 py-3">Entidad</th><th className="px-5 py-3">Cuenta</th><th className="px-5 py-3">Titular</th><th className="px-5 py-3">Solicitada</th><th className="px-5 py-3">Acción</th></tr></thead>
+          <table className="w-full min-w-[900px] text-left text-sm">
+            <thead className="bg-[#f8f6f2] text-xs uppercase tracking-wide text-[#8a8178]"><tr><th className="px-5 py-3">Prestador</th><th className="px-5 py-3">Entidad</th><th className="px-5 py-3">Cuenta</th><th className="px-5 py-3">Titular</th><th className="px-5 py-3">Solicitada</th><th className="px-5 py-3">Objetivo de revisión</th><th className="px-5 py-3">Acción</th></tr></thead>
             <tbody className="divide-y divide-[#e8e1d7]">
-              {loading && items.length === 0 && <tr><td colSpan={6} className="px-5 py-12 text-center text-[#8a8178]">Cargando solicitudes…</td></tr>}
-              {!loading && items.length === 0 && <tr><td colSpan={6} className="px-5 py-12 text-center text-[#8a8178]">No hay cuentas pendientes de revisión.</td></tr>}
+              {loading && items.length === 0 && <tr><td colSpan={7} className="px-5 py-12 text-center text-[#8a8178]">Cargando solicitudes…</td></tr>}
+              {!loading && items.length === 0 && <tr><td colSpan={7} className="px-5 py-12 text-center text-[#8a8178]">No hay cuentas pendientes de revisión.</td></tr>}
               {items.map((item) => <tr key={item.provider_id} className="hover:bg-[#f7f5f0]">
                 <td className="px-5 py-4"><div className="font-medium text-[#2b2420]">{item.provider_name || `Prestador ${item.provider_id}`}</div><div className="mt-1 text-xs text-[#8a8178]">{item.email}</div></td>
                 <td className="px-5 py-4 text-[#403a35]">{item.banco || '—'}</td>
                 <td className="px-5 py-4 font-mono text-[#403a35]">{item.numero_cuenta_enmascarado || '—'}</td>
                 <td className="px-5 py-4"><div className="text-[#403a35]">{item.titular_nombre || '—'}</div><div className="mt-1 text-xs text-[#8a8178]">{item.titular_documento_tipo || ''} {item.titular_documento_enmascarado || ''}</div></td>
                 <td className="px-5 py-4 whitespace-nowrap text-[#71685f]">{fecha(item.solicitado_at)}</td>
+                <td className="px-5 py-4 whitespace-nowrap"><div className={item.revision_vencida ? 'text-rose-700' : 'text-[#403a35]'}>{fecha(item.revision_estimada_at)}</div><div className={`mt-1 text-xs ${item.revision_vencida ? 'font-semibold text-rose-700' : 'text-[#8a8178]'}`}>{item.revision_vencida ? 'Objetivo vencido' : `Hasta ${item.revision_sla_horas} h`}</div></td>
                 <td className="px-5 py-4"><button onClick={() => void openDetail(item.provider_id)} disabled={loadingDetail} className="inline-flex items-center gap-2 rounded-lg border border-[#ded6cb] px-3 py-2 text-xs font-semibold text-[#403a35] hover:border-amber-400/50 hover:text-amber-800 disabled:opacity-50"><Eye className="h-4 w-4" />Revisar</button></td>
               </tr>)}
             </tbody>

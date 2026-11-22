@@ -256,7 +256,7 @@ const CRITICAL_OPERATIONS = {
         { name: 'limit', in: 'query', schema: { type: 'integer', minimum: 1, maximum: 100, default: 50 } },
         { name: 'after_provider_id', in: 'query', schema: { type: 'integer', minimum: 0, default: 0 } },
       ],
-      responses: { 200: { description: 'Cola con número/documento enmascarados y revision_token.' }, 401: { description: 'Token inválido o ausente.' }, 403: { description: 'Se requiere rol ADMIN.' } },
+      responses: { 200: { description: 'Cola con número/documento enmascarados, objetivo y fecha estimada de revisión, indicador de vencimiento y revision_token.' }, 401: { description: 'Token inválido o ausente.' }, 403: { description: 'Se requiere rol ADMIN.' } },
     },
   },
 
@@ -268,7 +268,7 @@ const CRITICAL_OPERATIONS = {
       tags: ['glow-admin'],
       security: BEARER,
       parameters: [{ name: 'providerId', in: 'path', required: true, schema: { type: 'integer' } }],
-      responses: { 200: { description: 'Detalle de titular y cuenta con revision_token.' }, 401: { description: 'Token inválido o ausente.' }, 403: { description: 'Se requiere rol ADMIN.' }, 404: { description: 'Cuenta no encontrada.' } },
+      responses: { 200: { description: 'Detalle de titular y cuenta, objetivo y fecha estimada de revisión, con revision_token.' }, 401: { description: 'Token inválido o ausente.' }, 403: { description: 'Se requiere rol ADMIN.' }, 404: { description: 'Cuenta no encontrada.' } },
     },
   },
 
