@@ -101,6 +101,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   ///
   /// En el provider las secciones (Inicio/Agenda/Wallet/GlowShop/Academia/Chat/
   /// Perfil) no son rutas: son un `switch (_currentIndex)` en este mismo widget.
+  /// El índice sigue representando la sección aunque algunas estén agrupadas en
+  /// "Más" dentro de la navegación visible.
   /// Antes el cambio de pestaña dependia de las acciones del presenter; ahora se
   /// sigue el estado del engine, asi que tambien avanza cuando el paso cambia por
   /// el fin del video o por `previous`.
@@ -3691,76 +3693,120 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
     );
   }
 
-  Widget _buildProminentCenterNavItem({
-    required int index,
-    required String semanticName,
-    required String label,
-    String? assetPath,
-    bool isMen = false,
-  }) {
-    final isSelected = _currentIndex == index;
+  Widget _buildMoreNavItem({bool isMen = false}) {
+    final moreIsSelected = const {2, 4, 6}.contains(_currentIndex);
+    const activeColor = Color(0xFFC5A052);
+    final inactiveColor = isMen ? const Color(0xFFB0A89F) : const Color(0xFF8C7A6B);
+    final menuColor = isMen ? const Color(0xFF1F1A15) : const Color(0xFFFFFDF8);
+
     return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          HapticFeedback.mediumImpact();
-          setState(() {
-            _currentIndex = index;
-          });
+      child: PopupMenuButton<int>(
+        tooltip: 'Más secciones',
+        onSelected: (index) {
+          HapticFeedback.selectionClick();
+          setState(() => _currentIndex = index);
         },
-        child: Transform.translate(
-          offset: const Offset(0, -14),
+        color: menuColor,
+        surfaceTintColor: Colors.transparent,
+        elevation: 14,
+        offset: const Offset(0, -8),
+        constraints: const BoxConstraints(minWidth: 220, maxWidth: 260),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            color: const Color(0xFFD4AF37).withOpacity(isMen ? 0.65 : 0.45),
+          ),
+        ),
+        itemBuilder: (_) => [
+          _buildMoreMenuItem(
+            index: 2,
+            label: 'Wallet',
+            icon: Icons.account_balance_wallet_outlined,
+            isMen: isMen,
+          ),
+          _buildMoreMenuItem(
+            index: 4,
+            label: 'Academia',
+            icon: Icons.school_outlined,
+            isMen: isMen,
+          ),
+          _buildMoreMenuItem(
+            index: 6,
+            label: 'Perfil',
+            icon: Icons.person_outline_rounded,
+            isMen: isMen,
+          ),
+        ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: isMen ? const Color(0xFF2A241E) : const Color(0xFFF5EFE6), // Quiet Luxury Beige background
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFD4AF37).withOpacity(isMen ? 0.5 : 0.3),
-                      blurRadius: 12,
-                      spreadRadius: 1,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                  border: Border.all(
-                    color: isSelected ? const Color(0xFFD4AF37) : const Color(0xFFE8DFD8),
-                    width: 2.5,
-                  ),
-                ),
-                child: Center(
-                  child: assetPath != null
-                      ? Image.asset(
-                          assetPath,
-                          width: 28,
-                          height: 28,
-                          fit: BoxFit.contain,
-                        )
-                      : GlowIcon.resolve(
-                          semanticName,
-                          size: 24,
-                          color: const Color(0xFFC5A052),
-                          semanticLabel: label,
-                        ),
-                ),
+              Icon(
+                Icons.more_horiz_rounded,
+                size: 23,
+                color: moreIsSelected ? activeColor : inactiveColor,
               ),
-              const SizedBox(height: 2),
+              const SizedBox(height: 3),
               Text(
-                label,
+                'Más',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 9.5,
-                  fontWeight: FontWeight.w800,
-                  color: isSelected
-                      ? const Color(0xFFC5A052)
-                      : (isMen ? const Color(0xFFD4AF37) : const Color(0xFFB07D62)),
+                  fontWeight: moreIsSelected ? FontWeight.w800 : FontWeight.w600,
+                  color: moreIsSelected ? activeColor : inactiveColor,
                 ),
               ),
+              if (moreIsSelected)
+                Container(
+                  margin: const EdgeInsets.only(top: 2),
+                  width: 4,
+                  height: 4,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFD4AF37),
+                    shape: BoxShape.circle,
+                  ),
+                ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  PopupMenuItem<int> _buildMoreMenuItem({
+    required int index,
+    required String label,
+    required IconData icon,
+    required bool isMen,
+  }) {
+    final isSelected = _currentIndex == index;
+    final textColor = isMen ? const Color(0xFFFFFDF8) : const Color(0xFF1F1A15);
+
+    return PopupMenuItem<int>(
+      value: index,
+      height: 56,
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            size: 21,
+            color: isSelected ? const Color(0xFFC5A052) : const Color(0xFF8C7A6B),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Text(
+              label,
+              style: TextStyle(
+                color: isSelected ? const Color(0xFFC5A052) : textColor,
+                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+              ),
+            ),
+          ),
+          if (isSelected)
+            const Icon(Icons.check_rounded, color: Color(0xFFC5A052), size: 19),
+        ],
       ),
     );
   }
@@ -3979,7 +4025,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           // GlowGuideProviderHost (MaterialApp.builder), encima del Navigator,
           // para que el video siga visible si se abre una ruta por encima.
 
-          // Luxury Navigation Dock (Haute Horlogerie & Quiet Luxury)
+          // Navegación principal: cuatro secciones frecuentes y "Más" para el
+          // resto, conservando los índices internos usados por GlowGuide.
           Positioned(
             bottom: MediaQuery.of(context).padding.bottom + 16,
             left: 16,
@@ -4025,27 +4072,10 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                     isMen: isMen,
                   ),
                   _buildNavItem(
-                    index: 2,
-                    semanticName: 'wallet',
-                    assetPath: 'assets/icons/glow/nav_provider_wallet.png',
-                    label: 'Wallet',
-                    isMen: isMen,
-                  ),
-
-                  // Botón central prominente: GlowShop (Luxe Medallion)
-                  _buildProminentCenterNavItem(
                     index: 3,
                     semanticName: 'bag',
                     assetPath: 'assets/icons/glow/nav_glowshop.webp',
                     label: 'GlowShop',
-                    isMen: isMen,
-                  ),
-
-                  _buildNavItem(
-                    index: 4,
-                    semanticName: 'school',
-                    assetPath: 'assets/icons/glow/nav_provider_academy.png',
-                    label: 'Academia',
                     isMen: isMen,
                   ),
                   _buildNavItem(
@@ -4055,13 +4085,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                     label: 'Chat',
                     isMen: isMen,
                   ),
-                  _buildNavItem(
-                    index: 6,
-                    semanticName: 'profile',
-                    assetPath: 'assets/icons/glow/nav_perfil.webp',
-                    label: 'Perfil',
-                    isMen: isMen,
-                  ),
+                  _buildMoreNavItem(isMen: isMen),
                 ],
               ),
             ),
