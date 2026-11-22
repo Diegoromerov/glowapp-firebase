@@ -1067,6 +1067,7 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       ? `****${w.numero_cuenta.slice(-4)}`
       : '****';
     const slaHoras = Math.max(1, Math.min(720, parseInt(await getConfig('payout_account_review_sla_hours', '48'), 10) || 48));
+    const enfriamientoHoras = Math.max(24, parseInt(await getConfig('retiro_cambio_cuenta_horas', '24'), 10) || 24);
     const revisionEstimadaAt = w.cuenta_estado_verificacion === 'PENDIENTE' && w.cuenta_cambio_solicitado_at
       ? new Date(new Date(w.cuenta_cambio_solicitado_at).getTime() + slaHoras * 60 * 60 * 1000)
       : null;
@@ -1083,6 +1084,7 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       retiros_bloqueados_hasta: w.cuenta_retiros_bloqueados_hasta,
       revision_estimada_at: revisionEstimadaAt,
       revision_sla_horas: slaHoras,
+      retiros_bloqueados_horas: enfriamientoHoras,
       cambio_cancelable: w.cuenta_cambio_cancelable === true
     });
   } catch (err) {
@@ -1542,12 +1544,15 @@ const handleSaveBankAccount = async (req, res) => {
       ? `****${numero_cuenta.trim().slice(-4)}`
       : '****';
     const revisionEstimadaAt = new Date(Date.now() + slaRevisionHoras * 60 * 60 * 1000);
+    const retirosBloqueadosHasta = new Date(Date.now() + enfriamientoHoras * 60 * 60 * 1000);
 
     res.json({
       ok: true,
       mensaje: `Cuenta registrada. La revisión tiene un plazo objetivo de hasta ${slaRevisionHoras} horas.`,
       revision_estimada_at: revisionEstimadaAt,
       revision_sla_horas: slaRevisionHoras,
+      retiros_bloqueados_hasta: retirosBloqueadosHasta,
+      retiros_bloqueados_horas: enfriamientoHoras,
       cuenta: {
         tipo_cuenta: cuentaActualizada.tipo_cuenta,
         banco: cuentaActualizada.banco,

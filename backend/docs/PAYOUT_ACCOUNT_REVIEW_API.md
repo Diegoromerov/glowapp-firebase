@@ -31,3 +31,9 @@ Devuelve los datos completos necesarios para validar titular y destino, además 
 ## Seguridad del retiro
 
 Antes de `POST /api/wallet/withdraw`, el cliente solicita `POST /api/wallet/withdraw/authorization` con `{ "current_password": "…", "monto": 50000, "tipo_origen": "SEMANAL" }`. La respuesta incluye `authorization_id`; el código de seis dígitos se entrega solo al correo verificado y vence en 10 minutos. El retiro se confirma enviando `authorization_id` y `authorization_code` junto con monto y tipo. El código se consume una vez, se limita a cinco intentos y queda vinculado al monto, ciclo y destino exactos.
+
+## Flujo de inscripción y cambio de cuenta
+
+La app de proveedores presenta cuatro pasos: método, datos, confirmación por correo y revisión. Antes de pedir el código, valida en servidor la entidad, tipo y longitud del destino y los datos del titular. El OTP de cambio vence a los 10 minutos, admite hasta cinco solicitudes por IP cada 10 minutos y solo autoriza el destino cuyos datos se usaron al generarlo. La app espera 60 segundos antes de habilitar un reenvío y solicita confirmar de nuevo la identidad y los datos.
+
+`GET /api/wallet/bank-account` devuelve `retiros_bloqueados_horas` y `retiros_bloqueados_hasta` cuando ya hay una cuenta. Al registrar o cambiar una cuenta, `POST /api/wallet/bank-account` responde con `retiros_bloqueados_hasta` y `retiros_bloqueados_horas`, además del SLA estimado de revisión. Mientras la cuenta nueva esté pendiente o dentro del periodo de protección no se pueden iniciar retiros nuevos; los retiros ya iniciados conservan el destino guardado en su solicitud. Si se pierde acceso al correo o a la cuenta anterior, el flujo dirige al prestador al Centro PQRSF para validar identidad.

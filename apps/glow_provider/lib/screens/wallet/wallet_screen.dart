@@ -694,6 +694,7 @@ class _WalletScreenState extends State<WalletScreen>
                                                     context: context,
                                                     builder: (_) => BankAccountFormDialog(
                                                       onSuccess: _cargarWallet,
+                                                      onOpenSupport: () { Navigator.pushNamed(context, '/support'); },
                                                       isFirstAccount: _isFirstPayoutAccount(wallet),
                                                       isGoogleOnly: _isGoogleOnlyAccount(wallet),
                                                       googleReauthBuilder: _buildGoogleReauthButton,
@@ -1535,6 +1536,7 @@ class _WalletScreenState extends State<WalletScreen>
                       context: context,
                       builder: (_) => BankAccountFormDialog(
                         onSuccess: _cargarWallet,
+                        onOpenSupport: () { Navigator.pushNamed(context, '/support'); },
                         isFirstAccount: _isFirstPayoutAccount(wallet),
                         isGoogleOnly: _isGoogleOnlyAccount(wallet),
                         googleReauthBuilder: _buildGoogleReauthButton,
@@ -1634,6 +1636,7 @@ class _WalletScreenState extends State<WalletScreen>
                       context: context,
                       builder: (_) => BankAccountFormDialog(
                         onSuccess: _cargarWallet,
+                        onOpenSupport: () { Navigator.pushNamed(context, '/support'); },
                         isFirstAccount: _isFirstPayoutAccount(wallet),
                         isGoogleOnly: _isGoogleOnlyAccount(wallet),
                         googleReauthBuilder: _buildGoogleReauthButton,
