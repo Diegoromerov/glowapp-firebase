@@ -21,12 +21,11 @@ class ProviderProfileScreen extends StatefulWidget {
 }
 
 class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
+  static const double _providerCoverageRadiusKm = 20;
   final _formKey = GlobalKey<FormState>();
   final _nameCtrl = TextEditingController();
   final _phoneCtrl = TextEditingController();
   final _bioCtrl = TextEditingController();
-  final _coverageCtrl = TextEditingController();
-  final _experienceCtrl = TextEditingController();
   final _profileScrollController = ScrollController();
 
   String? _email;
@@ -61,8 +60,6 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     _nameCtrl.dispose();
     _phoneCtrl.dispose();
     _bioCtrl.dispose();
-    _coverageCtrl.dispose();
-    _experienceCtrl.dispose();
     _profileScrollController.dispose();
     super.dispose();
   }
@@ -75,9 +72,6 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
 
       final localBio =
           prefs.getString('provider_bio') ?? profile['description'] ?? '';
-      final localCoverage = prefs.getDouble('provider_coverage_radius') ?? 10.0;
-      final localExperience = prefs.getInt('provider_experience_years') ?? 3;
-
       final start = profile['active_start_hour'] != null
           ? int.tryParse(profile['active_start_hour'].toString()) ?? 6
           : 6;
@@ -92,8 +86,6 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
         _nameCtrl.text = profile['full_name'] ?? '';
         _phoneCtrl.text = profile['phone'] ?? '';
         _bioCtrl.text = localBio;
-        _coverageCtrl.text = localCoverage.toString();
-        _experienceCtrl.text = localExperience.toString();
         _startHour = start;
         _endHour = end;
         if (schedule != null) {
@@ -240,8 +232,6 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
     final fullName = _nameCtrl.text.trim();
     final phone = _phoneCtrl.text.trim();
     final description = _bioCtrl.text.trim();
-    final coverageRadius = double.tryParse(_coverageCtrl.text) ?? 10.0;
-    final experienceYears = int.tryParse(_experienceCtrl.text) ?? 3;
     final startHour = _startHour;
     final endHour = _endHour;
     final weeklySchedule = Map<String, dynamic>.from(_weeklySchedule);
@@ -266,8 +256,11 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
       try {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('provider_bio', description);
-        await prefs.setDouble('provider_coverage_radius', coverageRadius);
-        await prefs.setInt('provider_experience_years', experienceYears);
+        await prefs.setDouble(
+          'provider_coverage_radius',
+          _providerCoverageRadiusKm,
+        );
+        await prefs.remove('provider_experience_years');
       } catch (_) {
         localFieldsSaved = false;
       }
@@ -311,16 +304,13 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
   }
 
   double _calculateCompleteness() {
-    int totalFields = 6;
+    int totalFields = 4;
     int filledFields = 0;
 
     if (_nameCtrl.text.trim().isNotEmpty) filledFields++;
     if (_phoneCtrl.text.trim().isNotEmpty) filledFields++;
     if (_avatarUrl != null && _avatarUrl!.isNotEmpty) filledFields++;
     if (_bioCtrl.text.trim().isNotEmpty) filledFields++;
-    if (_coverageCtrl.text.trim().isNotEmpty) filledFields++;
-    if (_experienceCtrl.text.trim().isNotEmpty) filledFields++;
-
     return filledFields / totalFields;
   }
 
@@ -966,48 +956,20 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
               const SizedBox(height: 16),
               TextFormField(
                 controller: _bioCtrl,
-                maxLines: 3,
+                maxLines: 5,
                 decoration: _inputDecoration(
-                    'Bio Profesional', Icons.text_snippet_outlined),
+                  'Bio Profesional',
+                  Icons.text_snippet_outlined,
+                ).copyWith(
+                  hintText:
+                      'Preséntate a tus clientes: menciona tus años de experiencia y especialidades, los servicios que realizas a domicilio, las zonas que atiendes y tus certificaciones o cuidados relevantes.',
+                  alignLabelWithHint: true,
+                ),
                 validator: (v) =>
                     v!.isEmpty ? 'Ingresa una breve biografía' : null,
                 onChanged: (v) => setState(() {}),
               ),
               const SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      controller: _coverageCtrl,
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
-                      decoration: _inputDecoration(
-                          'Radio Cobertura (km)', Icons.map_outlined),
-                      validator: (v) {
-                        if (v!.isEmpty) return 'Requerido';
-                        if (double.tryParse(v) == null) return 'Inválido';
-                        return null;
-                      },
-                      onChanged: (v) => setState(() {}),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: TextFormField(
-                      controller: _experienceCtrl,
-                      keyboardType: TextInputType.number,
-                      decoration: _inputDecoration(
-                          'Experiencia (Años)', Icons.work_outline),
-                      validator: (v) {
-                        if (v!.isEmpty) return 'Requerido';
-                        if (int.tryParse(v) == null) return 'Inválido';
-                        return null;
-                      },
-                      onChanged: (v) => setState(() {}),
-                    ),
-                  ),
-                ],
-              ),
               _buildWeeklyScheduleEditor(),
               // Datos fiscales: consulta y cambio de la responsabilidad de IVA
               // declarada a partir del RUT (estado, RUT y origen vienen del servidor).
