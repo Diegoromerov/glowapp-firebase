@@ -1,5 +1,5 @@
 # Etapa de construcción (Builder) - Flutter Web
-FROM ghcr.io/cirruslabs/flutter:3.29.2 AS builder
+FROM ghcr.io/cirruslabs/flutter:3.44.0 AS builder
 
 WORKDIR /app
 
