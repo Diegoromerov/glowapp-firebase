@@ -4,13 +4,14 @@ FROM ghcr.io/cirruslabs/flutter:3.29.2 AS builder
 WORKDIR /app
 
 # Copiar archivos de dependencias primero para cache
+COPY pubspec.yaml ./pubspec.yaml
+COPY pubspec.lock ./pubspec.lock
 COPY packages/glow_core/pubspec.yaml ./packages/glow_core/pubspec.yaml
 COPY apps/glow_provider/pubspec.yaml ./apps/glow_provider/pubspec.yaml
 COPY melos.yaml ./melos.yaml
-# Instalar melos y bootstrap
-RUN dart pub global activate melos 6.2.0
-ENV PATH="$PATH:/root/.pub-cache/bin"
-RUN melos bootstrap
+# Instalar la dependencia local de Melos y bootstrap del monorepo
+RUN dart pub get
+RUN dart run melos bootstrap
 
 # Copiar código fuente
 COPY packages/glow_core ./packages/glow_core
