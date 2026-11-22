@@ -74,7 +74,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
   // reagrupar, o el número del círculo miente.
   double _zoomRender = 13.5;
   bool _soloLista = false;
-  int _radioMetros = 5000;
+  int _radioMetros = 20000;
 
   @override
   void initState() {
