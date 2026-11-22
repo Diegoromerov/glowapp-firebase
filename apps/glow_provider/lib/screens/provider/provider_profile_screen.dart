@@ -1123,20 +1123,8 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
                     const Divider(color: Color(0xFFF3EFE9), height: 1, indent: 56, endIndent: 16),
                     _buildSettingsTile(
                       icon: Icons.headset_mic_outlined,
-                      title: 'Centro de Soporte y PQRSF',
+                      title: 'PQRSF y Disputas',
                       onTap: () => Navigator.pushNamed(context, '/support'),
-                    ),
-                    const Divider(color: Color(0xFFF3EFE9), height: 1, indent: 56, endIndent: 16),
-                    _buildSettingsTile(
-                                          icon: Icons.gavel_outlined,
-                                          title: 'Mis Disputas de Servicio',
-                                          onTap: () => Navigator.pushNamed(context, '/support'),
-                                        ),
-                    const Divider(color: Color(0xFFF3EFE9), height: 1, indent: 56, endIndent: 16),
-                    _buildSettingsTile(
-                      icon: Icons.school_outlined,
-                      title: 'Academia Glow (Capacitación)',
-                      onTap: () => Navigator.pushNamed(context, '/academy'),
                     ),
                   ],
                 ),
