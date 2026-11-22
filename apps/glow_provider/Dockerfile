@@ -7,8 +7,6 @@ WORKDIR /app
 COPY packages/glow_core/pubspec.yaml ./packages/glow_core/pubspec.yaml
 COPY apps/glow_provider/pubspec.yaml ./apps/glow_provider/pubspec.yaml
 COPY melos.yaml ./melos.yaml
-COPY pnpm-workspace.yaml ./pnpm-workspace.yaml
-
 # Instalar melos y bootstrap
 RUN dart pub global activate melos 6.2.0
 ENV PATH="$PATH:/root/.pub-cache/bin"
