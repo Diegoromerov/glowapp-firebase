@@ -59,6 +59,7 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
 
   bool _loadingStatus = false;
   bool _saving = false;
+  bool _expanded = false;
 
   String? _estado;
   String? _rutGuardado;
@@ -239,7 +240,7 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 16, bottom: 16),
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(22),
@@ -252,34 +253,42 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Icon(Icons.receipt_long_rounded, color: Color(0xFFC5A052), size: 20),
-              const SizedBox(width: 8),
-              const Expanded(
-                child: Text(
-                  'Responsabilidad de IVA (RUT)',
-                  style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14.5,
-                    color: Color(0xFF1F1A15),
-                    letterSpacing: 0.2,
-                  ),
-                ),
-              ),
-              if (_loadingStatus)
-                const SizedBox(
-                  width: 16,
-                  height: 16,
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          tilePadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+          childrenPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          initiallyExpanded: _expanded,
+          onExpansionChanged: (expanded) => setState(() => _expanded = expanded),
+          leading: _loadingStatus
+              ? const SizedBox(
+                  width: 20,
+                  height: 20,
                   child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFFC5A052)),
-                ),
-            ],
+                )
+              : const Icon(Icons.receipt_long_rounded, color: Color(0xFFC5A052), size: 20),
+          title: const Text(
+            'Responsabilidad de IVA (RUT)',
+            style: TextStyle(
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.bold,
+              fontSize: 14.5,
+              color: Color(0xFF1F1A15),
+              letterSpacing: 0.2,
+            ),
           ),
-          const SizedBox(height: 8),
+          subtitle: Text(
+            _revisionAprobada
+                ? 'Verificada · Toca para ver los detalles'
+                : _revisionPendiente
+                    ? 'En revisión · Toca para ver los detalles'
+                    : 'Toca para consultar o declarar',
+            style: const TextStyle(fontFamily: 'Inter', fontSize: 11.5, color: Color(0xFF8C7E74)),
+          ),
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
           const Text(
             'Los tratamientos de belleza están gravados con IVA del 19%. Quién lo '
             'cobra depende de tu RUT, en la casilla de responsabilidades: código 48 '
@@ -440,7 +449,10 @@ class _FiscalIvaSectionState extends State<FiscalIvaSection> {
             ),
           ),
           ],
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
