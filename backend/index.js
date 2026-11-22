@@ -2,7 +2,8 @@
 const express = require('express');
 const cors = require('cors');
 const compression = require('compression'); // ← GZIP para reducir main.dart.js de 4MB a ~1MB
-const { pool, migrationPool, testConnection, getDbStatus } = require('./src/config/db');
+const { pool, migrationPool, testConnection, getDbStatus, systemPool } = require('./src/config/db');
+const { runAsSystem } = require('./src/config/tenantRouting');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
@@ -853,17 +854,41 @@ app.post('/api/sos', authMiddleware, async (req, res) => {
       return res.status(400).json({ error: 'Longitud inválida' });
     }
 
-    const query = `
-      INSERT INTO sos_alerts (user_id, booking_id, latitude, longitude, estado)
-      VALUES ($1, $2, $3, $4, 'ACTIVO')
-      RETURNING id, creado_en;
-    `;
-    const result = await pool.query(query, [
-      user_id,
-      booking_id || null,
-      latitude || null,
-      longitude || null
-    ]);
+    // sos_alerts está protegida por RLS. Los usuarios sin tenant no pueden
+    // insertar bajo app_rls_user, por lo que la alerta se escribe en una
+    // transacción acotada con app_system. El solicitante siempre viene del JWT;
+    // si se adjunta una reserva, comprobamos que pertenezca a ese usuario.
+    const result = await runAsSystem({ pool, systemPool }, async (client) => {
+      let tenantId = req.user.tenant_id || null;
+      if (booking_id) {
+        const booking = await client.query(
+          `SELECT id, client_id, provider_id, tenant_id
+             FROM bookings
+            WHERE id = $1`,
+          [booking_id]
+        );
+        const related = booking.rows[0];
+        if (!related || (Number(related.client_id) !== Number(user_id) &&
+            Number(related.provider_id) !== Number(user_id))) {
+          const error = new Error('La reserva no está asociada a tu cuenta.');
+          error.statusCode = 404;
+          throw error;
+        }
+        tenantId = related.tenant_id || tenantId;
+      }
+
+      return client.query(`
+        INSERT INTO sos_alerts (user_id, booking_id, latitude, longitude, estado, tenant_id)
+        VALUES ($1, $2, $3, $4, 'ACTIVO', $5)
+        RETURNING id, creado_en;
+      `, [
+        user_id,
+        booking_id || null,
+        latitude ?? null,
+        longitude ?? null,
+        tenantId
+      ]);
+    });
 
     const alertId = result.rows[0].id;
     
@@ -897,7 +922,9 @@ app.post('/api/sos', authMiddleware, async (req, res) => {
 
   } catch (error) {
     console.error('❌ ERROR EN POST /api/sos:', error);
-    res.status(500).json({ error: 'Error interno al registrar alerta de pánico' });
+    res.status(error.statusCode || 500).json({
+      error: error.statusCode ? error.message : 'No se pudo registrar la alerta SOS. Intenta de nuevo o llama al 123.'
+    });
   }
 });
 
