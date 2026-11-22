@@ -10,6 +10,24 @@
 importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js');
 
+// El navegador suele resumir errores de evaluación del worker como un mensaje
+// genérico. Registra la excepción original para poder distinguir fallos de red,
+// compatibilidad o inicialización sin mostrar credenciales.
+self.addEventListener('error', (event) => {
+  console.error('[GlowApp FCM SW] Error al evaluar el worker:', {
+    message: event.message,
+    source: event.filename,
+    line: event.lineno,
+    column: event.colno,
+    stack: event.error && event.error.stack,
+  });
+});
+
+self.addEventListener('unhandledrejection', (event) => {
+  console.error('[GlowApp FCM SW] Promesa rechazada al iniciar el worker:',
+    event.reason && (event.reason.stack || event.reason.message || event.reason));
+});
+
 const params = new URL(self.location).searchParams;
 const config = {
   apiKey: params.get('apiKey') || '',
