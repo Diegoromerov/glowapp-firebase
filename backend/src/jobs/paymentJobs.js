@@ -3,6 +3,7 @@
 
 const { pool } = require('../config/db');
 const wompiService = require('../services/wompiService');
+const payoutData = require('../services/payoutSensitiveDataService');
 const wompiPayoutsClient = require('../services/wompiPayoutsClient');
 const { _mapearEstadoRetiro: mapearEstadoRetiro } = require('../services/wompiService');
 const { aplicarPricingDinamico } = require('./dynamicPricing');
@@ -161,6 +162,7 @@ async function ejecutarRetirosAutomaticos() {
           await client.query('ROLLBACK');
           continue;
         }
+        walletLocked.numero_cuenta = payoutData.decrypt(walletLocked.numero_cuenta);
 
         const monto = parseFloat(walletLocked.saldo_disponible);
         if (!Number.isFinite(monto) || monto < minCop) {
@@ -201,7 +203,7 @@ async function ejecutarRetirosAutomaticos() {
            VALUES ($1, $2, $3, $4, $5, $6, 'PROCESANDO')
            RETURNING *`,
           [wallet.provider_id, wallet.id, monto, walletLocked.modelo_retiro,
-           walletLocked.numero_cuenta, walletLocked.banco]
+           payoutData.encrypt(walletLocked.numero_cuenta), walletLocked.banco]
         );
 
         // Debitar wallet
@@ -318,7 +320,7 @@ async function conciliarPayouts() {
 
     // Retiros en PROCESANDO que ya tienen referencia_wompi (lote enviado)
     const { rows: retirosProcesando } = await client.query(`
-      SELECT r.id, r.provider_id, r.monto, r.referencia_wompi, r.numero_cuenta, r.banco,
+      SELECT r.id, r.provider_id, r.monto, r.referencia_wompi,
              pw.saldo_disponible
       FROM retiros r
       JOIN provider_wallet pw ON pw.id = r.wallet_id

@@ -1,6 +1,7 @@
 const { pool } = require('../config/db');
 const crypto = require('crypto');
 const wompiPayoutsClient = require('./wompiPayoutsClient');
+const payoutData = require('./payoutSensitiveDataService');
 
 /**
  * Genera una referencia Wompi DETERMINISTA (idempotente) a partir de la clave de
@@ -72,7 +73,7 @@ exports.crearPayout = async ({ retiroId, providerId, amount, numeroCuenta, banco
     );
 
     if (!rows.length) throw new Error(`No existe wallet para el prestador ${providerId}.`);
-    const w = rows[0];
+    const w = payoutData.decryptWallet(rows[0]);
 
     const nombreBeneficiario = (w.titular_nombre || w.usuario_nombre || '').trim();
     const legalIdType = (w.titular_documento_tipo || 'CC').toUpperCase();
@@ -141,7 +142,9 @@ exports.crearPayout = async ({ retiroId, providerId, amount, numeroCuenta, banco
     console.log(`✅ [WOMPI PAYOUT] Retiro ${retiroId} enviado. Lote Wompi: ${lote.id} (${lote.status}).`);
     return { retiroId, referenciaWompi: lote.id, estadoWompi: lote.status, estado: estadoInterno };
   } catch (err) {
-    console.error(`❌ [WOMPI PAYOUT ERROR] Fallo al dispersar el retiro ${retiroId}:`, err.message);
+    const errorCode = String(err.code || err.response?.status || 'PROVIDER_ERROR').replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 40);
+    console.error(`❌ [WOMPI PAYOUT ERROR] Fallo al dispersar el retiro ${retiroId}; código=${errorCode}.`);
+    const errorSeguro = `Falló la dispersión en Wompi (código ${errorCode}).`;
 
     await pool.query(
       `UPDATE retiros
@@ -149,7 +152,7 @@ exports.crearPayout = async ({ retiroId, providerId, amount, numeroCuenta, banco
               error_wompi = $2,
               procesado_at = NOW()
         WHERE id = $1`,
-      [retiroId, String(err.message).slice(0, 500)]
+      [retiroId, errorSeguro]
     );
 
     await pool.query(
@@ -160,7 +163,7 @@ exports.crearPayout = async ({ retiroId, providerId, amount, numeroCuenta, banco
        WHERE wt.provider_id = $1
          AND wt.tipo = 'DEBITO_RETIRO'
          AND (wt.metadata->>'retiro_id')::uuid = $2`,
-      [providerId, retiroId, String(err.message).slice(0, 500)]
+      [providerId, retiroId, errorSeguro]
     );
 
     throw err;

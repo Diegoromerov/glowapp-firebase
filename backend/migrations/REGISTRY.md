@@ -516,3 +516,9 @@ en 076).
 
 - Agrega `bookings.booking_number` como identidad consecutiva única para mostrarla en la app.
 - Conserva `bookings.id` UUID como clave primaria y como referencia usada por pagos, PQRSF y demás relaciones.
+
+## 186: protección de destinos de retiro y plazo de revisión
+
+- Amplía a `TEXT` los campos que guardan cuentas y datos identificatorios cifrados, incluidos los snapshots de retiro.
+- Añade el parámetro `payout_account_review_sla_hours` con objetivo inicial de 48 horas calendario.
+- La migración SQL prepara el esquema; las filas existentes se cifran después con `node scripts/encryptPayoutData.js` y `PAYOUT_DATA_ENCRYPTION_KEY`.

@@ -1,6 +1,7 @@
 // lib/widgets/provider/bank_account_dialog.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../../core/theme/belleza_luxe_theme.dart';
 import '../../services/api_service.dart';
 
@@ -44,11 +45,9 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
     'NEQUI',
     'DAVIPLATA',
     'AHORROS',
-    'CORRIENTE'
+    'CORRIENTE',
   ];
   final List<String> _bancos = [
-    'Nequi',
-    'Daviplata',
     'Bancolombia',
     'Banco de Bogotá',
     'Davivienda',
@@ -57,10 +56,10 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
     'RappiPay',
     'Banco de Occidente',
     'Banco Popular',
-    'Scotiabank Colpatria'
+    'Scotiabank Colpatria',
   ];
 
-  final List<String> _tiposDoc = ['CC', 'CE', 'NIT', 'PASAPORTE'];
+  final List<String> _tiposDoc = ['CC', 'CE', 'NIT'];
 
   @override
   void dispose() {
@@ -85,8 +84,10 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
     if (_authorizationId == null &&
         widget.isGoogleOnly &&
         _googleIdToken == null) {
-      setState(() =>
-          _errorMessage = 'Confirma tu identidad con Google para continuar.');
+      setState(
+        () =>
+            _errorMessage = 'Confirma tu identidad con Google para continuar.',
+      );
       return;
     }
     if (_authorizationId != null && !_formKey.currentState!.validate()) return;
@@ -100,8 +101,9 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
       'tipo_cuenta': _tipoCuenta,
       'banco': _banco,
       'numero_cuenta': _numeroCuentaController.text.trim(),
-      'tipo_cuenta_bancaria':
-          (_tipoCuenta == 'CORRIENTE') ? 'CORRIENTE' : 'AHORROS',
+      'tipo_cuenta_bancaria': (_tipoCuenta == 'CORRIENTE')
+          ? 'CORRIENTE'
+          : 'AHORROS',
       'titular_nombre': _titularNombreController.text.trim(),
       'titular_documento_tipo': _titularDocumentoTipo,
       'titular_documento_num': _titularDocumentoNumController.text.trim(),
@@ -109,16 +111,18 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
 
     try {
       if (_authorizationId == null) {
-        final response =
-            await ApiService.post('/api/wallet/bank-account/authorization', {
-          ...datosCuenta,
-          if (!widget.isFirstAccount && !widget.isGoogleOnly)
-            'current_password': _passwordController.text,
-          if (!widget.isFirstAccount &&
-              widget.isGoogleOnly &&
-              _googleIdToken != null)
-            'google_id_token': _googleIdToken,
-        });
+        final response = await ApiService.post(
+          '/api/wallet/bank-account/authorization',
+          {
+            ...datosCuenta,
+            if (!widget.isFirstAccount && !widget.isGoogleOnly)
+              'current_password': _passwordController.text,
+            if (!widget.isFirstAccount &&
+                widget.isGoogleOnly &&
+                _googleIdToken != null)
+              'google_id_token': _googleIdToken,
+          },
+        );
         if (response is! Map || response['challenge_id'] == null) {
           throw Exception('No se pudo iniciar la autorización de seguridad.');
         }
@@ -139,18 +143,32 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
         return;
       }
 
-      await ApiService.post('/api/wallet/bank-account', {
+      final saveResponse = await ApiService.post('/api/wallet/bank-account', {
         ...datosCuenta,
         'authorization_id': _authorizationId,
         'authorization_code': _authorizationCodeController.text.trim(),
       });
 
+      final reviewHours = saveResponse is Map
+          ? int.tryParse(saveResponse['revision_sla_horas']?.toString() ?? '')
+          : null;
+      final reviewAtValue = saveResponse is Map
+          ? DateTime.tryParse(
+              saveResponse['revision_estimada_at']?.toString() ?? '',
+            )
+          : null;
+      final reviewAt = reviewAtValue?.toLocal();
+      final reviewEta = reviewAt == null
+          ? ''
+          : ' (aprox. ${reviewAt.day.toString().padLeft(2, '0')}/${reviewAt.month.toString().padLeft(2, '0')} ${reviewAt.hour.toString().padLeft(2, '0')}:${reviewAt.minute.toString().padLeft(2, '0')})';
+
       if (mounted) {
         Navigator.pop(context, true);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
+          SnackBar(
             content: Text(
-                'Cuenta bancaria registrada. Los retiros se habilitarán cuando termine la validación.'),
+              'Cuenta registrada. Plazo objetivo de revisión: hasta ${reviewHours ?? 48} horas calendario$reviewEta.',
+            ),
             backgroundColor: Color(0xFF059669),
           ),
         );
@@ -192,8 +210,11 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.close,
-                          color: LuxeColors.nude900, size: 20),
+                      icon: const Icon(
+                        Icons.close,
+                        color: LuxeColors.nude900,
+                        size: 20,
+                      ),
                       onPressed: () => Navigator.pop(context),
                     ),
                   ],
@@ -277,16 +298,24 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                           });
                         }) ??
                         const Text(
-                            'No está disponible la confirmación con Google en este dispositivo.'),
+                          'No está disponible la confirmación con Google en este dispositivo.',
+                        ),
                   if (_googleIdToken != null)
                     const Row(
                       children: [
-                        Icon(Icons.verified_user_outlined,
-                            color: Color(0xFF047857), size: 18),
+                        Icon(
+                          Icons.verified_user_outlined,
+                          color: Color(0xFF047857),
+                          size: 18,
+                        ),
                         SizedBox(width: 6),
-                        Text('Identidad de Google confirmada',
-                            style: TextStyle(
-                                color: Color(0xFF047857), fontSize: 12)),
+                        Text(
+                          'Identidad de Google confirmada',
+                          style: TextStyle(
+                            color: Color(0xFF047857),
+                            fontSize: 12,
+                          ),
+                        ),
                       ],
                     ),
                   const SizedBox(height: 12),
@@ -301,8 +330,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     ),
                     validator: (value) =>
                         (value == null || !RegExp(r'^\d{6}$').hasMatch(value))
-                            ? 'Ingresa el código de 6 dígitos'
-                            : null,
+                        ? 'Ingresa el código de 6 dígitos'
+                        : null,
                   ),
                   Align(
                     alignment: Alignment.centerRight,
@@ -310,13 +339,14 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                       onPressed: _isLoading
                           ? null
                           : () => setState(() {
-                                _authorizationId = null;
-                                _authorizationCodeController.clear();
-                                _errorMessage = null;
-                                _googleIdToken = null;
-                              }),
-                      child:
-                          const Text('Cambiar datos o solicitar otro código'),
+                              _authorizationId = null;
+                              _authorizationCodeController.clear();
+                              _errorMessage = null;
+                              _googleIdToken = null;
+                            }),
+                      child: const Text(
+                        'Cambiar datos o solicitar otro código',
+                      ),
                     ),
                   ),
                 ],
@@ -326,7 +356,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: (_errorMessage!.startsWith('Enviamos') ||
+                      color:
+                          (_errorMessage!.startsWith('Enviamos') ||
                               _errorMessage!.startsWith('Código de prueba'))
                           ? const Color(0xFFE8F5EE)
                           : const Color(0xFFFEE2E2),
@@ -336,7 +367,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                       _errorMessage!,
                       style: TextStyle(
                         fontSize: 12,
-                        color: (_errorMessage!.startsWith('Enviamos') ||
+                        color:
+                            (_errorMessage!.startsWith('Enviamos') ||
                                 _errorMessage!.startsWith('Código de prueba'))
                             ? const Color(0xFF047857)
                             : const Color(0xFFDC2626),
@@ -357,10 +389,15 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                           labelStyle: TextStyle(fontSize: 12),
                         ),
                         items: _tiposCuenta
-                            .map((t) => DropdownMenuItem(
+                            .map(
+                              (t) => DropdownMenuItem(
                                 value: t,
-                                child: Text(t,
-                                    style: const TextStyle(fontSize: 12))))
+                                child: Text(
+                                  t,
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            )
                             .toList(),
                         onChanged: (val) {
                           if (val != null) {
@@ -368,6 +405,10 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                               _tipoCuenta = val;
                               if (val == 'NEQUI') _banco = 'Nequi';
                               if (val == 'DAVIPLATA') _banco = 'Daviplata';
+                              if ((val == 'AHORROS' || val == 'CORRIENTE') &&
+                                  !_bancos.contains(_banco)) {
+                                _banco = _bancos.first;
+                              }
                             });
                           }
                         },
@@ -375,23 +416,38 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: DropdownButtonFormField<String>(
-                        value:
-                            _bancos.contains(_banco) ? _banco : _bancos.first,
-                        decoration: const InputDecoration(
-                          labelText: 'Entidad Financiera',
-                          labelStyle: TextStyle(fontSize: 12),
-                        ),
-                        items: _bancos
-                            .map((b) => DropdownMenuItem(
-                                value: b,
-                                child: Text(b,
-                                    style: const TextStyle(fontSize: 12))))
-                            .toList(),
-                        onChanged: (val) {
-                          if (val != null) setState(() => _banco = val);
-                        },
-                      ),
+                      child:
+                          _tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA'
+                          ? InputDecorator(
+                              decoration: const InputDecoration(
+                                labelText: 'Entidad Financiera',
+                                labelStyle: TextStyle(fontSize: 12),
+                              ),
+                              child: Text(_banco),
+                            )
+                          : DropdownButtonFormField<String>(
+                              value: _bancos.contains(_banco)
+                                  ? _banco
+                                  : _bancos.first,
+                              decoration: const InputDecoration(
+                                labelText: 'Entidad Financiera',
+                                labelStyle: TextStyle(fontSize: 12),
+                              ),
+                              items: _bancos
+                                  .map(
+                                    (b) => DropdownMenuItem(
+                                      value: b,
+                                      child: Text(
+                                        b,
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              onChanged: (val) {
+                                if (val != null) setState(() => _banco = val);
+                              },
+                            ),
                     ),
                   ],
                 ),
@@ -405,17 +461,24 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   decoration: InputDecoration(
                     labelText:
                         (_tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA')
-                            ? 'Número de Celular (10 dígitos)'
-                            : 'Número de Cuenta Bancaria',
+                        ? 'Número de Celular (10 dígitos)'
+                        : 'Número de Cuenta Bancaria',
                     hintText:
                         (_tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA')
-                            ? '3001234567'
-                            : '1234567890',
+                        ? '3001234567'
+                        : '1234567890',
                   ),
                   validator: (val) {
-                    if (val == null || val.trim().isEmpty)
+                    final value = val?.trim() ?? '';
+                    if (value.isEmpty)
                       return 'Ingresa el número de cuenta o celular';
-                    if (val.trim().length < 6) return 'Número demasiado corto';
+                    if (_tipoCuenta == 'NEQUI' || _tipoCuenta == 'DAVIPLATA') {
+                      if (!RegExp(r'^3\d{9}$').hasMatch(value)) {
+                        return 'Usa un celular colombiano de 10 dígitos que empiece por 3';
+                      }
+                    } else if (!RegExp(r'^\d{6,30}$').hasMatch(value)) {
+                      return 'La cuenta debe tener entre 6 y 30 dígitos';
+                    }
                     return null;
                   },
                 ),
@@ -429,8 +492,13 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     hintText: 'Ej. Ana Silva',
                   ),
                   validator: (val) {
-                    if (val == null || val.trim().isEmpty)
-                      return 'Ingresa el nombre del titular';
+                    final value = val?.trim() ?? '';
+                    if (!RegExp(
+                      r"^[\p{L}][\p{L}\p{M} .,'’-]{1,98}[\p{L}.]$",
+                      unicode: true,
+                    ).hasMatch(value)) {
+                      return 'Escribe el nombre legal completo del titular';
+                    }
                     return null;
                   },
                 ),
@@ -445,10 +513,15 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                         value: _titularDocumentoTipo,
                         decoration: const InputDecoration(labelText: 'Doc'),
                         items: _tiposDoc
-                            .map((d) => DropdownMenuItem(
+                            .map(
+                              (d) => DropdownMenuItem(
                                 value: d,
-                                child: Text(d,
-                                    style: const TextStyle(fontSize: 12))))
+                                child: Text(
+                                  d,
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            )
                             .toList(),
                         onChanged: (val) {
                           if (val != null)
@@ -462,15 +535,16 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                         controller: _titularDocumentoNumController,
                         keyboardType: TextInputType.number,
                         inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
+                          FilteringTextInputFormatter.digitsOnly,
                         ],
                         decoration: const InputDecoration(
                           labelText: 'Número de Identificación',
                           hintText: '1018234567',
                         ),
                         validator: (val) {
-                          if (val == null || val.trim().isEmpty)
-                            return 'Ingresa el documento';
+                          final value = val?.trim() ?? '';
+                          final valid = RegExp(r'^\d{5,15}$').hasMatch(value);
+                          if (!valid) return 'Revisa el número de documento';
                           return null;
                         },
                       ),
@@ -479,23 +553,27 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                 ),
                 const SizedBox(height: 16),
 
-                // ─── AES-256 Security Assurance Badge ────────────────
+                // Información de privacidad y visualización de datos.
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: const Color(0xFF10B981).withOpacity(0.08),
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                        color: const Color(0xFF10B981).withOpacity(0.2)),
+                      color: const Color(0xFF10B981).withOpacity(0.2),
+                    ),
                   ),
                   child: const Row(
                     children: [
-                      Icon(Icons.shield_outlined,
-                          color: Color(0xFF10B981), size: 16),
+                      Icon(
+                        Icons.shield_outlined,
+                        color: Color(0xFF10B981),
+                        size: 16,
+                      ),
                       SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          'Tus datos se guardan cifrados con AES-256.',
+                          'Los datos completos solo se consultan para validar la cuenta; en la app verás el número enmascarado.',
                           style: TextStyle(
                             fontSize: 10.5,
                             color: Color(0xFF047857),
@@ -516,7 +594,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: LuxeColors.nude900,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                     onPressed: _isLoading ? null : _handleSubmit,
                     child: _isLoading
@@ -524,16 +603,18 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
-                                color: Colors.white, strokeWidth: 2),
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
                           )
                         : Text(
                             _authorizationId != null
                                 ? 'CONFIRMAR Y REGISTRAR CUENTA'
                                 : widget.isFirstAccount
-                                    ? 'ENVIAR CÓDIGO Y CONTINUAR'
-                                    : widget.isGoogleOnly
-                                        ? 'CONFIRMAR CON GOOGLE'
-                                        : 'VERIFICAR IDENTIDAD Y CONTINUAR',
+                                ? 'ENVIAR CÓDIGO Y CONTINUAR'
+                                : widget.isGoogleOnly
+                                ? 'CONFIRMAR CON GOOGLE'
+                                : 'VERIFICAR IDENTIDAD Y CONTINUAR',
                             style: TextStyle(
                               fontFamily: 'JetBrainsMono',
                               fontSize: 12,
@@ -552,8 +633,11 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
     );
   }
 
-  Widget _buildPresetChip(String bancoNombre, String tipoCuenta,
-      {String? label}) {
+  Widget _buildPresetChip(
+    String bancoNombre,
+    String tipoCuenta, {
+    String? label,
+  }) {
     final isSelected = _banco == bancoNombre;
     return Expanded(
       child: GestureDetector(

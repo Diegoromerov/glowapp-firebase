@@ -3,6 +3,7 @@ const { pool } = require('../../config/db');
 const { runAsSystem } = require('../../config/tenantRouting');
 const emailService = require('../../services/emailService');
 const fcm = require('../../services/fcmNotificationService');
+const payoutData = require('../../services/payoutSensitiveDataService');
 
 function revisionToken(row) {
   const material = [
@@ -23,7 +24,7 @@ async function listPending(req, res) {
   const limit = Math.max(1, Math.min(requestedLimit, 100));
   const after = Number.parseInt(req.query.after_provider_id, 10) || 0;
   try {
-    const rows = await runAsSystem({ pool }, async (client) => {
+    const resultData = await runAsSystem({ pool }, async (client) => {
       const result = await client.query(
         `SELECT pw.provider_id, u.nombre AS provider_name, u.email,
                 pw.banco, pw.tipo_cuenta, pw.tipo_cuenta_bancaria,
@@ -39,11 +40,16 @@ async function listPending(req, res) {
           ORDER BY pw.provider_id ASC
           LIMIT $2`, [after, limit]
       );
-      return result.rows;
+      const config = await client.query("SELECT value FROM platform_config WHERE key = 'payout_account_review_sla_hours'");
+      return { rows: result.rows, slaHours: Math.max(1, Math.min(720, Number.parseInt(config.rows[0]?.value || '48', 10) || 48)) };
     });
+    const { rows, slaHours } = resultData;
     return res.json({
       ok: true,
-      items: rows.map((row) => ({
+      items: rows.map((storedRow) => {
+        const row = payoutData.decryptWallet(storedRow);
+        const requestedAt = row.cuenta_cambio_solicitado_at ? new Date(row.cuenta_cambio_solicitado_at) : null;
+        return ({
         provider_id: row.provider_id,
         provider_name: row.provider_name,
         email: row.email,
@@ -55,9 +61,13 @@ async function listPending(req, res) {
         titular_documento_enmascarado: mask(row.titular_documento_num),
         estado: row.cuenta_estado_verificacion,
         solicitado_at: row.cuenta_cambio_solicitado_at,
+        revision_estimada_at: requestedAt ? new Date(requestedAt.getTime() + slaHours * 60 * 60 * 1000) : null,
+        revision_sla_horas: slaHours,
+        revision_vencida: Boolean(requestedAt && Date.now() > requestedAt.getTime() + slaHours * 60 * 60 * 1000),
         retiros_habilitables_despues_de: row.cuenta_retiros_bloqueados_hasta,
         revision_token: revisionToken(row),
-      })),
+      });
+      }),
       next_after_provider_id: rows.length === limit ? rows[rows.length - 1].provider_id : null,
     });
   } catch (error) {
@@ -72,7 +82,7 @@ async function getPendingDetails(req, res) {
     return res.status(400).json({ ok: false, error: 'providerId inválido.' });
   }
   try {
-    const row = await runAsSystem({ pool }, async (client) => {
+    const resultData = await runAsSystem({ pool }, async (client) => {
       const result = await client.query(
         `SELECT pw.provider_id, u.nombre AS provider_name, u.email,
                 pw.banco, pw.tipo_cuenta, pw.tipo_cuenta_bancaria,
@@ -84,7 +94,8 @@ async function getPendingDetails(req, res) {
            JOIN usuarios u ON u.id = pw.provider_id
           WHERE pw.provider_id = $1`, [providerId]
       );
-      const current = result.rows[0];
+      const stored = result.rows[0];
+      const current = payoutData.decryptWallet(stored);
       if (current) {
         await client.query(
           `INSERT INTO audit_log (actor_id, accion, tabla, registro_id, datos_despues, ip)
@@ -92,8 +103,10 @@ async function getPendingDetails(req, res) {
           [req.admin.id, providerId, JSON.stringify({ motivo: 'revisión administrativa', cuenta: mask(current.numero_cuenta), documento: mask(current.titular_documento_num) }), req.ip || null]
         );
       }
-      return current || null;
+      const config = await client.query("SELECT value FROM platform_config WHERE key = 'payout_account_review_sla_hours'");
+      return { row: current || null, slaHours: Math.max(1, Math.min(720, Number.parseInt(config.rows[0]?.value || '48', 10) || 48)) };
     });
+    const { row, slaHours } = resultData;
     if (!row) return res.status(404).json({ ok: false, error: 'Cuenta de retiro no encontrada.' });
     return res.json({
       ok: true,
@@ -112,6 +125,10 @@ async function getPendingDetails(req, res) {
         solicitado_at: row.cuenta_cambio_solicitado_at,
         retiros_habilitables_despues_de: row.cuenta_retiros_bloqueados_hasta,
         revision_token: revisionToken(row),
+        revision_sla_horas: slaHours,
+        revision_estimada_at: row.cuenta_cambio_solicitado_at
+          ? new Date(new Date(row.cuenta_cambio_solicitado_at).getTime() + slaHours * 60 * 60 * 1000)
+          : null,
       },
     });
   } catch (error) {
@@ -142,18 +159,18 @@ async function decidePending(req, res) {
            FROM provider_wallet pw JOIN usuarios u ON u.id = pw.provider_id
           WHERE pw.provider_id = $1 FOR UPDATE OF pw`, [providerId]
       );
-      const current = currentResult.rows[0];
-      if (!current || !current.numero_cuenta) return { status: 404, error: 'Cuenta de retiro no encontrada.' };
-      if (current.cuenta_estado_verificacion !== 'PENDIENTE') {
+      const stored = currentResult.rows[0];
+      if (!stored || !stored.numero_cuenta) return { status: 404, error: 'Cuenta de retiro no encontrada.' };
+      if (stored.cuenta_estado_verificacion !== 'PENDIENTE') {
         return { status: 409, error: 'La cuenta ya no está pendiente de revisión.' };
       }
+      const current = payoutData.decryptWallet(stored);
       const expectedRevision = revisionToken(current);
       const a = Buffer.from(expectedRevision, 'hex');
       const b = Buffer.from(submittedRevision, 'hex');
       if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
         return { status: 409, error: 'Los datos cambiaron desde que abriste la revisión. Recarga la cola y vuelve a revisar.' };
       }
-
       const approved = decision === 'APROBAR';
       await client.query(
         `UPDATE provider_wallet

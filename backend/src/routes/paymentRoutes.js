@@ -22,6 +22,7 @@ const { aCentavos, aDecimal, sumarMontos } = require('../utils/money');
 const { OAuth2Client } = require('google-auth-library');
 const { notifyDisputeUsers } = require('../services/disputeNotifications');
 const { validarEvidencias } = require('../utils/disputaEvidencias');
+const payoutData = require('../services/payoutSensitiveDataService');
 
 // ─── UTILIDADES ──────────────────────────────────────────────────────────────
 
@@ -831,7 +832,7 @@ router.get('/wallet', authMiddleware, async (req, res) => {
       });
     }
 
-    const wallet = rows[0];
+    const wallet = payoutData.decryptWallet(rows[0]);
 
     // D-GL-024 — el ciclo estándar es semanal y no tiene mínimo; el anticipado
     // exige 100.000 y solo opera sobre saldo madurado. El mínimo ya no bloquea
@@ -881,6 +882,12 @@ router.get('/wallet', authMiddleware, async (req, res) => {
     for (const key of Object.keys(walletPublico)) {
       if (key.startsWith('cuenta_anterior_')) delete walletPublico[key];
     }
+    if (walletPublico.numero_cuenta) {
+      walletPublico.numero_cuenta_enmascarado = `****${String(walletPublico.numero_cuenta).slice(-4)}`;
+    }
+    delete walletPublico.numero_cuenta;
+    delete walletPublico.titular_nombre;
+    delete walletPublico.titular_documento_num;
     res.json({
       ...walletPublico,
       cuenta_cambio_cancelable: wallet.cuenta_estado_verificacion === 'PENDIENTE' && Boolean(wallet.banco),
@@ -1055,10 +1062,14 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       });
     }
 
-    const w = rows[0];
+    const w = payoutData.decryptWallet(rows[0]);
     const enmascarada = w.numero_cuenta.length > 4
       ? `****${w.numero_cuenta.slice(-4)}`
       : '****';
+    const slaHoras = Math.max(1, Math.min(720, parseInt(await getConfig('payout_account_review_sla_hours', '48'), 10) || 48));
+    const revisionEstimadaAt = w.cuenta_estado_verificacion === 'PENDIENTE' && w.cuenta_cambio_solicitado_at
+      ? new Date(new Date(w.cuenta_cambio_solicitado_at).getTime() + slaHoras * 60 * 60 * 1000)
+      : null;
 
     res.json({
       configurada: true,
@@ -1070,6 +1081,8 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       estado_verificacion: w.cuenta_estado_verificacion || (w.cuenta_verificada ? 'APROBADA' : 'PENDIENTE'),
       cambio_solicitado_at: w.cuenta_cambio_solicitado_at,
       retiros_bloqueados_hasta: w.cuenta_retiros_bloqueados_hasta,
+      revision_estimada_at: revisionEstimadaAt,
+      revision_sla_horas: slaHoras,
       cambio_cancelable: w.cuenta_cambio_cancelable === true
     });
   } catch (err) {
@@ -1079,7 +1092,10 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
 });
 
 function normalizarDestinoCuenta(body = {}) {
-  const tipo_cuenta = String(body.tipo_cuenta || 'NEQUI').trim().toUpperCase();
+  const tipoIngresado = String(body.tipo_cuenta || 'NEQUI').trim().toUpperCase();
+  const tipo_cuenta = ['NEQUI', 'DAVIPLATA'].includes(tipoIngresado)
+    ? tipoIngresado
+    : ['AHORROS', 'CORRIENTE', 'BANCARIA'].includes(tipoIngresado) ? 'BANCARIA' : tipoIngresado;
   const banco = tipo_cuenta === 'NEQUI' ? 'Nequi'
     : tipo_cuenta === 'DAVIPLATA' ? 'Daviplata'
       : String(body.banco || 'Bancolombia').trim();
@@ -1087,13 +1103,51 @@ function normalizarDestinoCuenta(body = {}) {
     tipo_cuenta,
     banco,
     numero_cuenta: String(body.numero_cuenta || '').trim(),
-    tipo_cuenta_bancaria: tipo_cuenta === 'NEQUI' || tipo_cuenta === 'DAVIPLATA'
-      ? tipo_cuenta
-      : (tipo_cuenta === 'CORRIENTE' ? 'CORRIENTE' : 'AHORROS'),
+    tipo_cuenta_bancaria: ['NEQUI', 'DAVIPLATA'].includes(tipoIngresado)
+      ? tipoIngresado
+      : (tipoIngresado === 'CORRIENTE' ? 'CORRIENTE' : 'AHORROS'),
     titular_nombre: String(body.titular_nombre || '').trim(),
     titular_documento_tipo: String(body.titular_documento_tipo || '').trim().toUpperCase(),
     titular_documento_num: String(body.titular_documento_num || '').trim()
   };
+}
+
+const BANCOS_DESTINO_PERMITIDOS = new Map([
+  ['bancolombia', 'Bancolombia'], ['banco de bogota', 'Banco de Bogotá'],
+  ['davivienda', 'Davivienda'], ['bbva colombia', 'BBVA Colombia'],
+  ['lulo bank', 'Lulo Bank'], ['rappipay', 'RappiPay'],
+  ['banco de occidente', 'Banco de Occidente'], ['banco popular', 'Banco Popular'],
+  ['scotiabank colpatria', 'Scotiabank Colpatria'],
+]);
+
+function validarDestinoCuenta(destino) {
+  const tipo = destino.tipo_cuenta;
+  if (!['NEQUI', 'DAVIPLATA', 'BANCARIA'].includes(tipo)) {
+    return 'Selecciona Nequi, Daviplata o una cuenta bancaria.';
+  }
+  if (tipo === 'BANCARIA') {
+    const claveBanco = destino.banco.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    if (!BANCOS_DESTINO_PERMITIDOS.has(claveBanco)) return 'Selecciona una entidad financiera disponible.';
+    destino.banco = BANCOS_DESTINO_PERMITIDOS.get(claveBanco);
+    if (!['AHORROS', 'CORRIENTE'].includes(destino.tipo_cuenta_bancaria)) {
+      return 'Selecciona si la cuenta bancaria es de ahorros o corriente.';
+    }
+  }
+  const cuenta = destino.numero_cuenta;
+  if (tipo === 'NEQUI' || tipo === 'DAVIPLATA') {
+    if (!/^3\d{9}$/.test(cuenta)) return 'El número de Nequi o Daviplata debe ser un celular colombiano de 10 dígitos.';
+  } else if (!/^\d{6,30}$/.test(cuenta)) {
+    return 'El número de cuenta debe tener entre 6 y 30 dígitos.';
+  }
+  if (!/^[\p{L}][\p{L}\p{M} .,'’-]{1,98}[\p{L}.]$/u.test(destino.titular_nombre)) {
+    return 'Escribe el nombre legal completo del titular (entre 3 y 100 caracteres).';
+  }
+  if (!['CC', 'CE', 'NIT'].includes(destino.titular_documento_tipo)) {
+    return 'Selecciona un tipo de documento válido.';
+  }
+  const documento = destino.titular_documento_num;
+  if (!/^\d{5,15}$/.test(documento)) return 'Revisa el número de documento del titular.';
+  return null;
 }
 
 function hashDestinoCuenta(destino, modalidad = 'CAMBIO') {
@@ -1130,10 +1184,11 @@ router.post('/wallet/withdraw/authorization', authMiddleware, exigirCapacidad(CA
     if (!(process.env.BREVO_API_KEY || emailService.initEmailService())) {
       return res.status(503).json({ error: 'La autorización por correo no está disponible.' });
     }
-    const wallet = await runAsSystem({ pool }, async (c) => {
+    const walletRow = await runAsSystem({ pool }, async (c) => {
       const result = await c.query('SELECT * FROM provider_wallet WHERE provider_id = $1', [req.user.id]);
       return result.rows[0] || null;
     });
+    const wallet = payoutData.decryptWallet(walletRow);
     if (!wallet?.numero_cuenta || !wallet.cuenta_verificada || wallet.cuenta_estado_verificacion !== 'APROBADA') {
       return res.status(403).json({ error: 'No existe una cuenta de retiro aprobada.' });
     }
@@ -1176,12 +1231,8 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
   const googleIdToken = String(req.body.google_id_token || '');
 
   const destino = normalizarDestinoCuenta(req.body);
-  if (!destino.numero_cuenta || destino.numero_cuenta.length < 6) {
-    return res.status(400).json({ error: 'Número de cuenta inválido.' });
-  }
-  if (!destino.titular_nombre || !destino.titular_documento_tipo || !destino.titular_documento_num) {
-    return res.status(400).json({ error: 'Completa los datos de identidad del titular para autorizar el cambio.' });
-  }
+  const errorDestino = validarDestinoCuenta(destino);
+  if (errorDestino) return res.status(400).json({ error: errorDestino });
 
   try {
     const contacto = await runAsSystem({ pool }, async (c) => {
@@ -1330,25 +1381,19 @@ const handleSaveBankAccount = async (req, res) => {
   if (!await requirePrestador(req, res)) return;
 
   const {
-    tipo_cuenta,
-    banco,
     numero_cuenta,
-    tipo_cuenta_bancaria,
     titular_nombre,
     titular_documento_tipo,
     titular_documento_num
   } = req.body;
   const { authorization_id, authorization_code } = req.body;
 
-  if (!numero_cuenta || typeof numero_cuenta !== 'string' || numero_cuenta.trim().length < 6) {
-    return res.status(400).json({ error: 'Número de cuenta inválido (mínimo 6 caracteres).' });
-  }
-
-  const tipoNormalizado = (tipo_cuenta || 'NEQUI').toUpperCase();
-  const bancoNormalizado = (tipoNormalizado === 'NEQUI') ? 'Nequi' : (tipoNormalizado === 'DAVIPLATA') ? 'Daviplata' : (banco || 'Bancolombia');
-  const tipoCuentaFinal = (tipoNormalizado === 'NEQUI' || tipoNormalizado === 'DAVIPLATA') ? tipoNormalizado : 'BANCARIA';
-  const tipoBancariaFinal = (tipoNormalizado === 'CORRIENTE') ? 'CORRIENTE' : 'AHORROS';
   const destinoNormalizado = normalizarDestinoCuenta(req.body);
+  const errorDestino = validarDestinoCuenta(destinoNormalizado);
+  if (errorDestino) return res.status(400).json({ error: errorDestino });
+  const bancoNormalizado = destinoNormalizado.banco;
+  const tipoCuentaFinal = destinoNormalizado.tipo_cuenta;
+  const tipoBancariaFinal = destinoNormalizado.tipo_cuenta_bancaria;
   if (!authorization_id || !/^\d{6}$/.test(String(authorization_code || ''))) {
     return res.status(403).json({ error: 'Necesitas un código de seguridad vigente para cambiar la cuenta.' });
   }
@@ -1412,8 +1457,9 @@ const handleSaveBankAccount = async (req, res) => {
        FROM provider_wallet WHERE provider_id = $1`,
       [req.user.id]
     );
-    const datosAntes = datosAntesRes.rows[0];
+    const datosAntes = payoutData.decryptWallet(datosAntesRes.rows[0]);
     const enfriamientoHoras = Math.max(24, parseInt(await getConfig('retiro_cambio_cuenta_horas', '24'), 10) || 24);
+    const slaRevisionHoras = Math.max(1, Math.min(720, parseInt(await getConfig('payout_account_review_sla_hours', '48'), 10) || 48));
 
     // Una modificación del destino invalida la aprobación anterior. La cuenta
     // solo podrá aprobarse mediante el flujo administrativo/verificador.
@@ -1454,11 +1500,11 @@ const handleSaveBankAccount = async (req, res) => {
         req.user.id,
         tipoCuentaFinal,
         bancoNormalizado,
-        numero_cuenta.trim(),
+        payoutData.encrypt(numero_cuenta.trim()),
         tipoBancariaFinal,
-        titular_nombre ? String(titular_nombre).trim() : null,
+        titular_nombre ? payoutData.encrypt(String(titular_nombre).trim()) : null,
         titular_documento_tipo ? String(titular_documento_tipo).trim().toUpperCase() : null,
-        titular_documento_num ? String(titular_documento_num).trim() : null,
+        titular_documento_num ? payoutData.encrypt(String(titular_documento_num).trim()) : null,
         enfriamientoHoras
       ]
     );
@@ -1476,7 +1522,7 @@ const handleSaveBankAccount = async (req, res) => {
         banco: bancoNormalizado,
         cuenta: `****${numero_cuenta.trim().slice(-4)}`,
         tipo: tipoCuentaFinal,
-        titular: titular_nombre || null,
+        titular_registrado: Boolean(titular_nombre),
         doc_tipo: titular_documento_tipo || null,
         doc_num: titular_documento_num ? `****${titular_documento_num.slice(-4)}` : null
       },
@@ -1492,13 +1538,16 @@ const handleSaveBankAccount = async (req, res) => {
       tipo: 'PAYOUT_ACCOUNT_CHANGED'
     });
 
-    const enmascarada = cuentaActualizada.numero_cuenta.length > 4
-      ? `****${cuentaActualizada.numero_cuenta.slice(-4)}`
+    const enmascarada = numero_cuenta.trim().length > 4
+      ? `****${numero_cuenta.trim().slice(-4)}`
       : '****';
+    const revisionEstimadaAt = new Date(Date.now() + slaRevisionHoras * 60 * 60 * 1000);
 
     res.json({
       ok: true,
-      mensaje: 'Cuenta bancaria registrada. Está pendiente de validación antes de habilitar retiros.',
+      mensaje: `Cuenta registrada. La revisión tiene un plazo objetivo de hasta ${slaRevisionHoras} horas.`,
+      revision_estimada_at: revisionEstimadaAt,
+      revision_sla_horas: slaRevisionHoras,
       cuenta: {
         tipo_cuenta: cuentaActualizada.tipo_cuenta,
         banco: cuentaActualizada.banco,
@@ -1533,7 +1582,7 @@ router.post('/wallet/bank-account/cancel-change', authMiddleware, async (req, re
       await client.query('ROLLBACK');
       return res.status(409).json({ error: 'No hay un cambio de cuenta pendiente para cancelar.' });
     }
-    const antes = current.rows[0];
+    const antes = payoutData.decryptWallet(current.rows[0]);
     await client.query(
       `UPDATE provider_wallet SET
          tipo_cuenta = CASE WHEN cuenta_anterior_verificada THEN cuenta_anterior_tipo_cuenta ELSE NULL END,
@@ -1663,7 +1712,7 @@ router.post(
       return res.status(404).json({ error: 'Wallet no encontrado.' });
     }
 
-    const wallet = rows[0];
+    const wallet = payoutData.decryptWallet(rows[0]);
     const minCop = parseInt(await getConfig('retiro_demanda_min_cop', '100000'));
     const diasMin = parseInt(await getConfig('retiro_demanda_dias', '7'));
     const esAnticipado = tipoOrigen === 'DEMANDA';
@@ -1787,7 +1836,7 @@ router.post(
        RETURNING *`,
       [
         req.user.id, wallet.id, montoSolicitado, tipoOrigen,
-        wallet.numero_cuenta, wallet.banco,
+        payoutData.encrypt(wallet.numero_cuenta), wallet.banco,
         JSON.stringify({ anticipado: esAnticipado, costo_retiro: costoRetiro, costo_pct: costoPct })
       ]
     );
@@ -1817,7 +1866,7 @@ router.post(
         esAnticipado ? 'Retiro anticipado solicitado' : `Retiro del ciclo ${tipoOrigen} solicitado`,
         JSON.stringify({
           retiro_id: retiro.id,
-          cuenta: wallet.numero_cuenta,
+          cuenta: `****${String(wallet.numero_cuenta).slice(-4)}`,
           banco: wallet.banco,
           tipo_origen: tipoOrigen,
           costo_retiro: costoRetiro
@@ -1859,7 +1908,7 @@ router.post(
       costo_retiro: costoRetiro,
       monto_neto: montoADispersar,
       tipo_origen: tipoOrigen,
-      cuenta: `${wallet.banco} ****${wallet.numero_cuenta?.slice(-4)}`,
+      cuenta: `${wallet.banco} ****${String(wallet.numero_cuenta || '').slice(-4)}`,
       estado: 'PROCESANDO'
     });
   } catch (err) {
