@@ -46,6 +46,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
   bool _isLoading = true;
   bool _isSaving = false;
   bool _isUploading = false;
+  bool _weeklyScheduleExpanded = false;
   String? _error;
   String? _message;
 
@@ -484,7 +485,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
 
     return Container(
       margin: const EdgeInsets.only(top: 16, bottom: 16),
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(22),
@@ -500,40 +501,54 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Row(
+          InkWell(
+            borderRadius: BorderRadius.circular(22),
+            onTap: () => setState(() => _weeklyScheduleExpanded = !_weeklyScheduleExpanded),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 12, 8),
+              child: Row(
                 children: [
-                  Icon(Icons.calendar_today_rounded, color: Color(0xFFC5A052), size: 19),
-                  SizedBox(width: 8),
-                  Text(
-                    'Horario de Disponibilidad Semanal',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                      color: Color(0xFF1F1A15),
-                      letterSpacing: 0.2,
+                  const Icon(Icons.calendar_today_rounded, color: Color(0xFFC5A052), size: 19),
+                  const SizedBox(width: 8),
+                  const Expanded(
+                    child: Text(
+                      'Horario de Disponibilidad Semanal',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Color(0xFF1F1A15),
+                        letterSpacing: 0.2,
+                      ),
                     ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.tune_rounded, color: Color(0xFFC5A052), size: 20),
+                    tooltip: 'Editor rápido de horarios',
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => ProviderScheduleDialog(
+                          currentSchedule: _weeklySchedule,
+                          onSuccess: _loadProfile,
+                        ),
+                      );
+                    },
+                  ),
+                  Icon(
+                    _weeklyScheduleExpanded ? Icons.expand_less_rounded : Icons.expand_more_rounded,
+                    color: const Color(0xFFC5A052),
                   ),
                 ],
               ),
-              IconButton(
-                icon: const Icon(Icons.tune_rounded, color: Color(0xFFC5A052), size: 20),
-                tooltip: 'Editor rápido de horarios',
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (_) => ProviderScheduleDialog(
-                      currentSchedule: _weeklySchedule,
-                      onSuccess: _loadProfile,
-                    ),
-                  );
-                },
-              ),
-            ],
+            ),
           ),
+          if (_weeklyScheduleExpanded)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
           const SizedBox(height: 8),
           const Text(
             'Configura las horas de inicio y fin para cada día, o apaga los días que no laboras.',
@@ -667,6 +682,9 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen> {
               ),
             );
           }),
+                ],
+              ),
+            ),
         ],
       ),
     );
