@@ -166,6 +166,20 @@ exports.crearPayout = async ({ retiroId, providerId, amount, numeroCuenta, banco
       [providerId, retiroId, errorSeguro]
     );
 
+    // Vincula el fallo operativo con la sesión de alta/cambio de cuenta para
+    // las métricas agregadas; no guarda el mensaje de Wompi ni datos bancarios.
+    try {
+      await pool.query(
+        `UPDATE payout_account_flow_sessions s
+            SET transfer_failures = transfer_failures + 1
+           FROM provider_wallet pw
+          WHERE pw.provider_id = $1 AND pw.cuenta_flow_session_id = s.id`,
+        [providerId]
+      );
+    } catch (metricsError) {
+      console.warn('[WOMPI PAYOUT] No se pudo actualizar la métrica de fallo:', metricsError.message);
+    }
+
     throw err;
   }
 };

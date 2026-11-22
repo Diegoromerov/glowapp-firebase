@@ -30,6 +30,17 @@ interface ReviewDetail extends ReviewRow {
   titular_documento_num: string | null;
 }
 
+interface ReviewEvidence {
+  id: string;
+  status: string;
+  reason_code: string;
+  requested_at: string;
+  uploaded_at: string | null;
+  file_mime_type?: string | null;
+  file_base64?: string | null;
+  file_bytes?: number | null;
+}
+
 const headers = { 'X-Requested-With': 'XMLHttpRequest' };
 
 function fecha(value: string | null) {
@@ -51,6 +62,9 @@ export default function AdminCuentasRetiroPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [metrics, setMetrics] = useState<Record<string, number | null> | null>(null);
+  const [evidence, setEvidence] = useState<ReviewEvidence | null>(null);
+  const [evidenceReason, setEvidenceReason] = useState('TITULAR_NO_COINCIDE');
 
   useEffect(() => {
     if (!authLoading && (!user || user.rol !== 'ADMIN')) router.replace('/login');
@@ -76,6 +90,18 @@ export default function AdminCuentasRetiroPage() {
 
   useEffect(() => { void loadQueue(); }, [loadQueue]);
 
+  useEffect(() => {
+    if (!detail) setEvidence(null);
+  }, [detail]);
+
+  useEffect(() => {
+    void fetch('/api/glow-admin/payout-account-reviews/metrics?days=90', { headers })
+      .then(async (response) => {
+        const body = await response.json();
+        if (response.ok && body.ok) setMetrics(body.metrics);
+      }).catch(() => undefined);
+  }, []);
+
   const openDetail = async (providerId: number) => {
     setLoadingDetail(true);
     setError(null);
@@ -86,11 +112,49 @@ export default function AdminCuentasRetiroPage() {
       if (!response.ok || !body.ok) throw new Error(body.error || `El backend respondió ${response.status}.`);
       setDetail(body.item);
       setReason('');
+      setEvidence(null);
+      const evidenceResponse = await fetch(`/api/glow-admin/payout-account-reviews/${providerId}/evidence`, { headers });
+      if (evidenceResponse.ok) {
+        const evidenceBody = await evidenceResponse.json();
+        if (evidenceBody.ok) setEvidence(evidenceBody.evidence);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'No se pudo cargar el detalle.');
     } finally {
       setLoadingDetail(false);
     }
+  };
+
+  const requestEvidence = async () => {
+    if (!detail) return;
+    setSaving(true); setError(null);
+    try {
+      const response = await fetch(`/api/glow-admin/payout-account-reviews/${detail.provider_id}/evidence-request`, {
+        method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason_code: evidenceReason }),
+      });
+      const body = await response.json();
+      if (!response.ok || !body.ok) throw new Error(body.error || `El backend respondió ${response.status}.`);
+      setNotice('Solicitud de soporte enviada al prestador. La revisión quedará pendiente hasta que lo cargue.');
+      const refreshed = await fetch(`/api/glow-admin/payout-account-reviews/${detail.provider_id}/evidence`, { headers });
+      if (refreshed.ok) { const evidenceBody = await refreshed.json(); setEvidence(evidenceBody.evidence || null); }
+    } catch (err) { setError(err instanceof Error ? err.message : 'No se pudo solicitar el soporte.'); }
+    finally { setSaving(false); }
+  };
+
+  const cancelEvidenceRequest = async () => {
+    if (!detail || !window.confirm('¿Cancelar la solicitud de soporte?')) return;
+    setSaving(true); setError(null);
+    try {
+      const response = await fetch(`/api/glow-admin/payout-account-reviews/${detail.provider_id}/evidence-request/cancel`, {
+        method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' }, body: '{}',
+      });
+      const body = await response.json();
+      if (!response.ok || !body.ok) throw new Error(body.error || `El backend respondió ${response.status}.`);
+      setEvidence(null);
+      setNotice('Solicitud de soporte cancelada.');
+    } catch (err) { setError(err instanceof Error ? err.message : 'No se pudo cancelar la solicitud.'); }
+    finally { setSaving(false); }
   };
 
   const decide = async (decision: 'APROBAR' | 'RECHAZAR') => {
@@ -152,6 +216,17 @@ export default function AdminCuentasRetiroPage() {
         <p>La revisión es administrativa. GlowApp no consulta al banco para confirmar titularidad automáticamente. Consulta los datos completos solo al abrir una solicitud; ese acceso queda auditado. Cada decisión debe corresponder a la documentación y procedimientos internos vigentes.</p>
       </div>
 
+      <section aria-label="Indicadores del flujo de cuentas" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          ['Inicios (90 días)', metrics?.starts],
+          ['Envíos', metrics?.submitted],
+          ['Abandonos', metrics?.abandoned],
+          ['Rechazos / fallas', (metrics?.rejected || 0) + (metrics?.transfer_failures || 0)],
+          ['Soportes solicitados', metrics?.support_opened],
+          ['Revisión promedio (h)', metrics?.avg_review_hours],
+        ].map(([label, value]) => <div key={String(label)} className="rounded-xl border border-[#e8e1d7] bg-white p-4"><p className="text-xs text-[#8a8178]">{label}</p><p className="mt-2 text-2xl font-semibold text-[#2b2420]">{value ?? '—'}</p><p className="mt-1 text-[11px] text-[#8a8178]">Medición desde la instrumentación de Fase 3</p></div>)}
+      </section>
+
       {error && <div role="alert" className="flex items-start gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-800"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />{error}</div>}
       {notice && <div role="status" className="flex items-start gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-800"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />{notice}</div>}
 
@@ -175,6 +250,14 @@ export default function AdminCuentasRetiroPage() {
               ['Protección de retiros hasta', fecha(detail.retiros_habilitables_despues_de)],
             ].map(([label, value]) => <div key={label} className="rounded-xl border border-[#e8e1d7] bg-[#f8f6f2] p-4"><dt className="text-xs font-semibold uppercase tracking-wide text-[#8a8178]">{label}</dt><dd className="mt-2 break-all text-sm text-[#2b2420]">{value || '—'}</dd></div>)}
           </dl>
+
+          <section className="space-y-3 rounded-xl border border-[#e8e1d7] bg-[#f8f6f2] p-4" aria-label="Soporte de titularidad">
+            <div><h3 className="font-semibold">Soporte excepcional</h3><p className="text-xs text-[#71685f]">Solicítalo solo ante una diferencia de titular, rechazo de transferencia o revisión de seguridad.</p></div>
+            {evidence && <p className="text-sm">Estado: <strong>{evidence.status}</strong> · Solicitado: {fecha(evidence.requested_at)}</p>}
+            {evidence?.status === 'REQUESTED' && <button onClick={() => void cancelEvidenceRequest()} disabled={saving} className="rounded-lg border border-[#ded6cb] px-3 py-2 text-sm disabled:opacity-40">Cancelar solicitud de soporte</button>}
+            {evidence?.status === 'UPLOADED' && evidence.file_base64 && evidence.file_mime_type && <div className="space-y-2"><p className="text-xs text-[#71685f]">Imagen disponible solo para esta revisión. Se eliminará según el plazo de retención.</p><img alt="Soporte cargado por el prestador" className="max-h-80 rounded-lg border border-[#ded6cb] object-contain" src={`data:${evidence.file_mime_type};base64,${evidence.file_base64}`} /></div>}
+            {!evidence || evidence.status === 'REVIEWED' || evidence.status === 'EXPIRED' || evidence.status === 'PURGED' ? <div className="flex flex-col gap-2 sm:flex-row"><select aria-label="Motivo de solicitud de soporte" value={evidenceReason} onChange={(event) => setEvidenceReason(event.target.value)} className="rounded-lg border border-[#ded6cb] bg-white px-3 py-2 text-sm"><option value="TITULAR_NO_COINCIDE">Diferencia en titular</option><option value="RECHAZO_TRANSFERENCIA">Rechazo de transferencia</option><option value="REVISION_RIESGO">Revisión de seguridad</option></select><button onClick={() => void requestEvidence()} disabled={saving} className="rounded-lg border border-amber-500/40 px-3 py-2 text-sm font-semibold text-amber-900 disabled:opacity-40">Solicitar soporte</button></div> : null}
+          </section>
 
           <label className="block text-sm font-medium text-[#403a35]" htmlFor="review-reason">Nota de revisión <span className="font-normal text-[#8a8178]">(opcional al aprobar, obligatoria al rechazar)</span></label>
           <textarea id="review-reason" value={reason} onChange={(event) => setReason(event.target.value)} rows={3} maxLength={1000} className="w-full rounded-xl border border-[#ded6cb] bg-[#f7f5f0] p-3 text-sm text-[#2b2420] outline-none focus:border-amber-400" placeholder="Describe el criterio aplicado y, si corresponde, qué debe corregir el prestador." />

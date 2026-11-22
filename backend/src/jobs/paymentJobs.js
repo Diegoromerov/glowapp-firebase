@@ -14,6 +14,20 @@ const pointsService = require('../services/pointsService');
 const { avisarVencimientoPuntos } = require('./puntosVencimiento');
 const { avisarNivelesPendientes } = require('./nivelJob');
 
+async function purgePayoutEvidence() {
+  await pool.query(
+    `UPDATE payout_account_review_evidence
+        SET status = 'PURGED', file_ciphertext = NULL, file_mime_type = NULL,
+            file_bytes = NULL
+      WHERE file_ciphertext IS NOT NULL AND purge_at <= NOW()`
+  );
+  await pool.query(
+    `UPDATE payout_account_review_evidence
+        SET status = 'EXPIRED'
+      WHERE status = 'REQUESTED' AND requested_at <= NOW() - INTERVAL '7 days'`
+  );
+}
+
 /**
  * Ejecuta un job con el ROL DE SISTEMA activo (SET LOCAL ROLE app_system, que
  * tiene BYPASSRLS).
@@ -536,6 +550,10 @@ function inicializarJobs() {
   // avisa en el momento; esto cubre lo que se escriba por fuera.
   setInterval(comoSistema(avisarNivelesPendientes), 6 * 60 * 60 * 1000);
 
+  // Borra el soporte cifrado vencido (30 días desde su carga/revisión): cada hora.
+  setInterval(comoSistema(purgePayoutEvidence), 60 * 60 * 1000);
+  setTimeout(comoSistema(purgePayoutEvidence), 5000);
+
   // Pricing dinámico: cada día a las 3 AM
   setInterval(async () => {
     const hora = new Date().getHours();
@@ -562,5 +580,6 @@ module.exports = {
   madurarSaldosPendientes: comoSistema(madurarSaldosPendientes),
   ejecutarRetirosAutomaticos: comoSistema(ejecutarRetirosAutomaticos),
   conciliacionDiaria: comoSistema(conciliacionDiaria),
-  conciliarPayouts: comoSistema(conciliarPayouts)
+  conciliarPayouts: comoSistema(conciliarPayouts),
+  purgePayoutEvidence: comoSistema(purgePayoutEvidence),
 };

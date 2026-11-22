@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../core/theme/belleza_luxe_theme.dart';
 import '../../services/api_service.dart';
@@ -54,11 +55,63 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
   bool _isLoading = false;
   String? _errorMessage;
   Map? _accountStatus;
+  String? _flowSessionId;
 
   @override
   void initState() {
     super.initState();
+    _ensureFlowSession();
     _loadAccountStatus();
+  }
+
+  Future<String?> _ensureFlowSession() async {
+    if (_flowSessionId != null) return _flowSessionId;
+    try {
+      final response = await ApiService.post(
+        '/api/wallet/bank-account/flow-session',
+        const <String, dynamic>{},
+      );
+      if (response is Map && response['flow_session_id'] != null) {
+        _flowSessionId = response['flow_session_id'].toString();
+      }
+    } catch (_) {}
+    return _flowSessionId;
+  }
+
+  Future<void> _uploadRequestedEvidence(String evidenceId) async {
+    final file = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 85,
+    );
+    if (file == null || !mounted) return;
+    final name = file.name.toLowerCase();
+    final mimeType = name.endsWith('.png') ? 'image/png' : 'image/jpeg';
+    final bytes = await file.readAsBytes();
+    if (bytes.length > 1500000) {
+      setState(() => _errorMessage = 'La imagen debe pesar máximo 1,5 MB.');
+      return;
+    }
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+    try {
+      await ApiService.uploadPayoutAccountEvidence(
+        evidenceId,
+        bytes,
+        file.name,
+        mimeType,
+      );
+      await _loadAccountStatus();
+        if (mounted)
+          setState(() => _errorMessage = 'Soporte enviado de forma segura.');
+    } catch (error) {
+      if (mounted)
+        setState(() =>
+            _errorMessage = error.toString().replaceAll('Exception: ', ''));
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
   }
 
   Future<void> _loadAccountStatus() async {
@@ -105,6 +158,13 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
 
   @override
   void dispose() {
+    final sessionId = _flowSessionId;
+    if (sessionId != null && _flowStage < 3) {
+      unawaited(ApiService.post(
+        '/api/wallet/bank-account/flow-session/$sessionId/close',
+        const <String, dynamic>{},
+      ).catchError((_) => null));
+    }
     _numeroCuentaController.dispose();
     _confirmarNumeroCuentaController.dispose();
     _titularNombreController.dispose();
@@ -214,8 +274,10 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
         return;
       }
 
+      final flowSessionId = await _ensureFlowSession();
       final saveResponse = await ApiService.post('/api/wallet/bank-account', {
         ...datosCuenta,
+        if (flowSessionId != null) 'flow_session_id': flowSessionId,
         'authorization_id': _authorizationId,
         'authorization_code': _authorizationCodeController.text.trim(),
       });
@@ -359,6 +421,13 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
   }
 
   Future<void> _showSupportRoute() async {
+    final sessionId = await _ensureFlowSession();
+    if (sessionId != null) {
+      unawaited(ApiService.post(
+        '/api/wallet/bank-account/flow-session/$sessionId/support-opened',
+        const <String, dynamic>{},
+      ).catchError((_) => null));
+    }
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
@@ -529,6 +598,44 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                   ),
                 ],
 
+                if (_accountStatus?['evidencia_titularidad'] is Map) ...[
+                  Builder(builder: (context) {
+                    final evidence = Map<String, dynamic>.from(
+                      _accountStatus!['evidencia_titularidad'] as Map,
+                    );
+                    final uploaded = evidence['estado'] == 'UPLOADED';
+                    return Container(
+                      width: double.infinity,
+                      margin: const EdgeInsets.only(bottom: 12),
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFEFF6FF),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(uploaded
+                              ? 'Soporte recibido. El equipo de revisión lo analizará.'
+                              : 'El equipo de revisión solicitó un soporte adicional para validar tu cuenta. Adjunta una imagen donde se vean el titular, la entidad y la terminación de la cuenta. Puedes ocultar saldos y movimientos. Nunca incluyas claves ni códigos.'),
+                          if (!uploaded && evidence['id'] != null) ...[
+                            const SizedBox(height: 8),
+                            OutlinedButton.icon(
+                              onPressed: _isLoading
+                                  ? null
+                                  : () => _uploadRequestedEvidence(
+                                      evidence['id'].toString()),
+                              icon: const Icon(Icons.upload_file),
+                              label: const Text(
+                                  'Adjuntar JPG o PNG (máx. 1,5 MB)'),
+                            ),
+                          ],
+                        ],
+                      ),
+                    );
+                  }),
+                ],
+
                 if (_flowStage == 0) ...[
                   // ─── Preset Quick Bank Selector ──────────────────────────────
                   const Text(
@@ -668,7 +775,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: (_errorMessage!.startsWith('Enviamos') ||
-                              _errorMessage!.startsWith('Código de prueba'))
+                              _errorMessage!.startsWith('Código de prueba') ||
+                              _errorMessage!.startsWith('Soporte enviado'))
                           ? const Color(0xFFE8F5EE)
                           : const Color(0xFFFEE2E2),
                       borderRadius: BorderRadius.circular(8),
@@ -678,7 +786,8 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
                       style: TextStyle(
                         fontSize: 12,
                         color: (_errorMessage!.startsWith('Enviamos') ||
-                                _errorMessage!.startsWith('Código de prueba'))
+                                _errorMessage!.startsWith('Código de prueba') ||
+                                _errorMessage!.startsWith('Soporte enviado'))
                             ? const Color(0xFF047857)
                             : const Color(0xFFDC2626),
                       ),

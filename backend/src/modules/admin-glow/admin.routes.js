@@ -11,7 +11,11 @@ router.use(authAdmin);
 // API de integración del dashboard administrativo: cola y validación manual
 // de cuentas de retiro. Las lecturas de detalle y decisiones quedan auditadas.
 router.get('/payout-account-reviews', payoutAccountReviewController.listPending);
+router.get('/payout-account-reviews/metrics', payoutAccountReviewController.getMetrics);
 router.get('/payout-account-reviews/:providerId', payoutAccountReviewController.getPendingDetails);
+router.get('/payout-account-reviews/:providerId/evidence', payoutAccountReviewController.getEvidence);
+router.post('/payout-account-reviews/:providerId/evidence-request', payoutAccountReviewController.requestEvidence);
+router.post('/payout-account-reviews/:providerId/evidence-request/cancel', payoutAccountReviewController.cancelEvidenceRequest);
 router.post('/payout-account-reviews/:providerId/decision', payoutAccountReviewController.decidePending);
 
 /**

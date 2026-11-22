@@ -43,4 +43,13 @@ function decryptWallet(row) {
   return result;
 }
 
-module.exports = { PREFIX, encrypt, decrypt, decryptWallet };
+function fingerprint(value) {
+  const normalized = String(value || '').trim().toLowerCase();
+  if (!normalized) throw new Error('No se puede calcular la huella de una cuenta vacía.');
+  const fingerprintKey = crypto.createHmac('sha256', getKey())
+    .update('glowapp:payout-account-fingerprint:v1')
+    .digest();
+  return crypto.createHmac('sha256', fingerprintKey).update(normalized).digest('hex');
+}
+
+module.exports = { PREFIX, encrypt, decrypt, decryptWallet, fingerprint };

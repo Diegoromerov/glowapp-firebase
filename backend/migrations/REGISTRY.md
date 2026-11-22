@@ -522,3 +522,9 @@ en 076).
 - Amplía a `TEXT` los campos que guardan cuentas y datos identificatorios cifrados, incluidos los snapshots de retiro.
 - Añade el parámetro `payout_account_review_sla_hours` con objetivo inicial de 48 horas calendario.
 - La migración SQL prepara el esquema; las filas existentes se cifran después con `node scripts/encryptPayoutData.js` y `PAYOUT_DATA_ENCRYPTION_KEY`.
+
+## 187: soportes excepcionales y métricas del flujo de cuentas de retiro
+
+- Registra sesiones del prestador para medir inicios, envíos, abandonos, revisiones, aperturas de soporte y fallos de transferencia.
+- Permite solicitar soporte de titularidad solo ante una diferencia, rechazo de transferencia o revisión de seguridad; la evidencia se cifra y se elimina a los 30 días.
+- No integra verificación bancaria automática para cuentas tradicionales; la revisión permanece administrativa.

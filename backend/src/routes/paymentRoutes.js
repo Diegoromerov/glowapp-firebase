@@ -3,6 +3,8 @@ const { wrapRouterAsync } = require('../utils/expressAsync');
 // Sistema completo de pagos: OTP, Wallet, Retiros, Disputas
 
 const express = require('express');
+const multer = require('multer');
+const sharp = require('sharp');
 const router = express.Router();
 const { pool } = require('../config/db');
 const { runAsSystemContext, runAsSystem } = require('../config/tenantRouting');
@@ -23,6 +25,12 @@ const { OAuth2Client } = require('google-auth-library');
 const { notifyDisputeUsers } = require('../services/disputeNotifications');
 const { validarEvidencias } = require('../utils/disputaEvidencias');
 const payoutData = require('../services/payoutSensitiveDataService');
+
+const payoutEvidenceUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 1500000, files: 1 },
+  fileFilter: (_req, file, cb) => cb(null, ['image/jpeg', 'image/png'].includes(file.mimetype)),
+});
 
 // ─── UTILIDADES ──────────────────────────────────────────────────────────────
 
@@ -1039,6 +1047,161 @@ router.get('/wallet/statement', authMiddleware, async (req, res) => {
 
 // ─── WALLET — OBTENER CUENTA BANCARIA ───────────────────────────────────────
 
+// El identificador no contiene datos personales y permite calcular abandono,
+// tiempo de revisión y aperturas de soporte del flujo del prestador.
+router.post('/wallet/bank-account/flow-session', authMiddleware, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  try {
+    await pool.query(
+      `UPDATE payout_account_flow_sessions
+          SET status = 'ABANDONED', closed_at = COALESCE(closed_at, NOW())
+        WHERE provider_id = $1 AND status = 'OPEN'
+          AND started_at < NOW() - INTERVAL '30 minutes'`,
+      [req.user.id]
+    );
+    let result = await pool.query(
+      `SELECT id FROM payout_account_flow_sessions
+        WHERE provider_id = $1 AND status = 'OPEN'
+          AND started_at >= NOW() - INTERVAL '30 minutes'
+        ORDER BY started_at DESC LIMIT 1`,
+      [req.user.id]
+    );
+    if (!result.rows.length) {
+      result = await pool.query(
+        `INSERT INTO payout_account_flow_sessions (provider_id, tenant_id)
+         VALUES ($1, $2) RETURNING id`,
+        [req.user.id, req.user.tenant_id || null]
+      );
+    }
+    return res.status(201).json({ flow_session_id: result.rows[0].id });
+  } catch (error) {
+    console.error('[PAYOUT FLOW] No se pudo abrir la sesión:', error.message);
+    return res.status(500).json({ error: 'No se pudo iniciar el flujo de cuenta.' });
+  }
+});
+
+router.post('/wallet/bank-account/flow-session/:id/support-opened', authMiddleware, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  if (!/^[0-9a-f-]{36}$/i.test(String(req.params.id || ''))) {
+    return res.status(400).json({ error: 'Sesión de flujo inválida.' });
+  }
+  try {
+    const result = await pool.query(
+      `UPDATE payout_account_flow_sessions
+          SET support_opened_at = COALESCE(support_opened_at, NOW())
+        WHERE id = $1 AND provider_id = $2 AND status IN ('OPEN', 'SUBMITTED')
+        RETURNING id`,
+      [req.params.id, req.user.id]
+    );
+    return result.rowCount
+      ? res.json({ ok: true })
+      : res.status(404).json({ error: 'Sesión de flujo no encontrada.' });
+  } catch (error) {
+    console.error('[PAYOUT FLOW] No se pudo registrar apertura de soporte:', error.message);
+    return res.status(500).json({ error: 'No se pudo registrar la acción.' });
+  }
+});
+
+router.post('/wallet/bank-account/flow-session/:id/close', authMiddleware, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  if (!/^[0-9a-f-]{36}$/i.test(String(req.params.id || ''))) {
+    return res.status(400).json({ error: 'Sesión de flujo inválida.' });
+  }
+  try {
+    await pool.query(
+      `UPDATE payout_account_flow_sessions
+          SET status = 'ABANDONED', closed_at = COALESCE(closed_at, NOW())
+        WHERE id = $1 AND provider_id = $2 AND status = 'OPEN'`,
+      [req.params.id, req.user.id]
+    );
+    return res.json({ ok: true });
+  } catch (error) {
+    console.error('[PAYOUT FLOW] No se pudo cerrar la sesión:', error.message);
+    return res.status(500).json({ error: 'No se pudo registrar el cierre.' });
+  }
+});
+
+router.post('/wallet/bank-account/evidence/:id', authMiddleware, (req, res, next) => {
+  payoutEvidenceUpload.single('file')(req, res, (err) => {
+    if (err) return res.status(400).json({ error: err.code === 'LIMIT_FILE_SIZE' ? 'El archivo supera 1,5 MB.' : 'Adjunta una imagen JPG o PNG válida.' });
+    next();
+  });
+}, async (req, res) => {
+  if (!await requirePrestador(req, res)) return;
+  if (!/^[0-9a-f-]{36}$/i.test(String(req.params.id || '')) || !req.file) {
+    return res.status(400).json({ error: 'Solicitud o archivo inválido.' });
+  }
+  const bytes = req.file.buffer;
+  const isJpeg = bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  const isPng = bytes.length >= 8 && bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  if ((req.file.mimetype === 'image/jpeg' && !isJpeg) || (req.file.mimetype === 'image/png' && !isPng)) {
+    return res.status(400).json({ error: 'El contenido no coincide con el formato de imagen declarado.' });
+  }
+  let sanitizedBytes;
+  try {
+    const image = sharp(bytes, { limitInputPixels: 20000000 }).rotate();
+    sanitizedBytes = req.file.mimetype === 'image/png'
+      ? await image.png({ compressionLevel: 9 }).toBuffer()
+      : await image.jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+  } catch (_) {
+    return res.status(400).json({ error: 'La imagen está dañada o no se puede procesar.' });
+  }
+  if (!sanitizedBytes.length || sanitizedBytes.length > 1500000) {
+    return res.status(400).json({ error: 'La imagen procesada supera 1,5 MB. Reduce su tamaño e inténtalo de nuevo.' });
+  }
+  const storedMimeType = req.file.mimetype;
+  try {
+    const client = await pool.connect();
+    let result;
+    try {
+      await client.query('BEGIN');
+      if (req.user.tenant_id) {
+        await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(req.user.tenant_id)]);
+      }
+      await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
+      const evidence = await client.query(
+        `SELECT e.id, e.account_fingerprint, pw.tipo_cuenta, pw.banco,
+                pw.tipo_cuenta_bancaria, pw.numero_cuenta
+           FROM payout_account_review_evidence e
+           JOIN provider_wallet pw ON pw.provider_id = e.provider_id
+          WHERE e.id = $1 AND e.provider_id = $2 AND e.status = 'REQUESTED'
+          FOR UPDATE OF e, pw`, [req.params.id, req.user.id]
+      );
+      const row = evidence.rows[0];
+      if (!row) {
+        await client.query('ROLLBACK');
+        return res.status(409).json({ error: 'No hay una solicitud vigente para esta cuenta. Contacta al equipo de revisión.' });
+      }
+      const wallet = payoutData.decryptWallet(row);
+      const fingerprint = payoutData.fingerprint([
+        wallet.tipo_cuenta, wallet.banco, wallet.tipo_cuenta_bancaria, wallet.numero_cuenta,
+      ].join('|'));
+      if (fingerprint !== row.account_fingerprint) {
+        await client.query('ROLLBACK');
+        return res.status(409).json({ error: 'La cuenta cambió después de la solicitud. Solicita una nueva revisión.' });
+      }
+      result = await client.query(
+        `UPDATE payout_account_review_evidence
+            SET status = 'UPLOADED', file_ciphertext = $2, file_mime_type = $3,
+                file_bytes = $4, uploaded_at = NOW(), purge_at = NOW() + INTERVAL '30 days'
+          WHERE id = $1 AND status = 'REQUESTED' RETURNING id`,
+        [req.params.id, payoutData.encrypt(sanitizedBytes.toString('base64')), storedMimeType, sanitizedBytes.length]
+      );
+      await client.query('COMMIT');
+    } catch (error) {
+      await client.query('ROLLBACK').catch(() => undefined);
+      throw error;
+    } finally {
+      client.release();
+    }
+    if (!result?.rowCount) return res.status(409).json({ error: 'La solicitud de soporte ya no está vigente.' });
+    return res.json({ ok: true, estado: 'UPLOADED' });
+  } catch (error) {
+    console.error('[PAYOUT EVIDENCE] No se pudo guardar el soporte:', error.message);
+    return res.status(500).json({ error: 'No se pudo guardar el soporte de forma segura.' });
+  }
+});
+
 router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
   if (!await requirePrestador(req, res)) return;
 
@@ -1068,6 +1231,14 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       : '****';
     const slaHoras = Math.max(1, Math.min(720, parseInt(await getConfig('payout_account_review_sla_hours', '48'), 10) || 48));
     const enfriamientoHoras = Math.max(24, parseInt(await getConfig('retiro_cambio_cuenta_horas', '24'), 10) || 24);
+    const evidenciaResult = await pool.query(
+      `SELECT id, status, reason_code, requested_at, uploaded_at
+         FROM payout_account_review_evidence
+        WHERE provider_id = $1 AND status IN ('REQUESTED', 'UPLOADED')
+        ORDER BY requested_at DESC LIMIT 1`,
+      [req.user.id]
+    );
+    const evidencia = evidenciaResult.rows[0] || null;
     const revisionEstimadaAt = w.cuenta_estado_verificacion === 'PENDIENTE' && w.cuenta_cambio_solicitado_at
       ? new Date(new Date(w.cuenta_cambio_solicitado_at).getTime() + slaHoras * 60 * 60 * 1000)
       : null;
@@ -1085,7 +1256,14 @@ router.get('/wallet/bank-account', authMiddleware, async (req, res) => {
       revision_estimada_at: revisionEstimadaAt,
       revision_sla_horas: slaHoras,
       retiros_bloqueados_horas: enfriamientoHoras,
-      cambio_cancelable: w.cuenta_cambio_cancelable === true
+      cambio_cancelable: w.cuenta_cambio_cancelable === true,
+      evidencia_titularidad: evidencia ? {
+        id: evidencia.id,
+        estado: evidencia.status,
+        motivo: evidencia.reason_code,
+        solicitada_at: evidencia.requested_at,
+        cargada_at: evidencia.uploaded_at
+      } : null
     });
   } catch (err) {
     console.error('Error al consultar cuenta bancaria:', err);
@@ -1386,7 +1564,8 @@ const handleSaveBankAccount = async (req, res) => {
     numero_cuenta,
     titular_nombre,
     titular_documento_tipo,
-    titular_documento_num
+    titular_documento_num,
+    flow_session_id
   } = req.body;
   const { authorization_id, authorization_code } = req.body;
 
@@ -1396,6 +1575,9 @@ const handleSaveBankAccount = async (req, res) => {
   const bancoNormalizado = destinoNormalizado.banco;
   const tipoCuentaFinal = destinoNormalizado.tipo_cuenta;
   const tipoBancariaFinal = destinoNormalizado.tipo_cuenta_bancaria;
+  if (flow_session_id && !/^[0-9a-f-]{36}$/i.test(String(flow_session_id))) {
+    return res.status(400).json({ error: 'Sesión de flujo inválida.' });
+  }
   if (!authorization_id || !/^\d{6}$/.test(String(authorization_code || ''))) {
     return res.status(403).json({ error: 'Necesitas un código de seguridad vigente para cambiar la cuenta.' });
   }
@@ -1404,6 +1586,17 @@ const handleSaveBankAccount = async (req, res) => {
   try {
     await client.query('BEGIN');
     await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
+    if (flow_session_id) {
+      const flow = await client.query(
+        `SELECT id FROM payout_account_flow_sessions
+          WHERE id = $1 AND provider_id = $2 AND status = 'OPEN' FOR UPDATE`,
+        [flow_session_id, req.user.id]
+      );
+      if (!flow.rowCount) {
+        await client.query('ROLLBACK');
+        return res.status(409).json({ error: 'La sesión del formulario venció. Cierra y vuelve a abrir el registro de cuenta.' });
+      }
+    }
 
     // Bloquea el estado del destino mientras se consume el reto. Así un reto
     // creado para la primera inscripción no puede reutilizarse como cambio.
@@ -1491,6 +1684,7 @@ const handleSaveBankAccount = async (req, res) => {
            cuenta_retiros_bloqueados_hasta = NOW() + ($9::int * INTERVAL '1 hour'),
            cuenta_verificada = FALSE,
            cuenta_estado_verificacion = 'PENDIENTE',
+           cuenta_flow_session_id = COALESCE($10, cuenta_flow_session_id),
            cuenta_verificada_at = NULL,
            cuenta_verificada_por = NULL,
            updated_at = NOW()
@@ -1507,8 +1701,25 @@ const handleSaveBankAccount = async (req, res) => {
         titular_nombre ? payoutData.encrypt(String(titular_nombre).trim()) : null,
         titular_documento_tipo ? String(titular_documento_tipo).trim().toUpperCase() : null,
         titular_documento_num ? payoutData.encrypt(String(titular_documento_num).trim()) : null,
-        enfriamientoHoras
+        enfriamientoHoras,
+        flow_session_id || null
       ]
+    );
+
+    if (flow_session_id) {
+      await client.query(
+        `UPDATE payout_account_flow_sessions
+            SET status = 'SUBMITTED', submitted_at = NOW(), closed_at = NOW()
+          WHERE id = $1 AND provider_id = $2 AND status = 'OPEN'`,
+        [flow_session_id, req.user.id]
+      );
+    }
+    await client.query(
+      `UPDATE payout_account_review_evidence
+          SET status = 'EXPIRED', file_ciphertext = NULL, file_mime_type = NULL,
+              file_bytes = NULL, purge_at = COALESCE(purge_at, NOW())
+        WHERE provider_id = $1 AND status IN ('REQUESTED', 'UPLOADED')`,
+      [req.user.id]
     );
 
     const cuentaActualizada = rows[0];

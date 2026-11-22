@@ -19,6 +19,151 @@ function mask(value) {
   return text ? `****${text.slice(-4)}` : null;
 }
 
+function accountFingerprint(row) {
+  return payoutData.fingerprint([
+    row.tipo_cuenta, row.banco, row.tipo_cuenta_bancaria, row.numero_cuenta,
+  ].join('|'));
+}
+
+async function requestEvidence(req, res) {
+  const providerId = Number.parseInt(req.params.providerId, 10);
+  const reasonCode = String(req.body.reason_code || '').trim().toUpperCase();
+  const allowed = new Set(['TITULAR_NO_COINCIDE', 'RECHAZO_TRANSFERENCIA', 'REVISION_RIESGO']);
+  if (!Number.isInteger(providerId) || providerId <= 0 || !allowed.has(reasonCode)) {
+    return res.status(400).json({ ok: false, error: 'Proveedor o motivo de solicitud inválidos.' });
+  }
+  try {
+    const created = await runAsSystem({ pool }, async (client) => {
+      const result = await client.query(
+        `SELECT pw.*, u.tenant_id AS provider_tenant_id, u.nombre AS provider_name, u.email, u.email_verificado, u.fcm_token
+           FROM provider_wallet pw JOIN usuarios u ON u.id = pw.provider_id
+          WHERE pw.provider_id = $1 FOR UPDATE OF pw`, [providerId]
+      );
+      const stored = result.rows[0];
+      if (!stored || !stored.numero_cuenta) return { status: 404 };
+      if (stored.cuenta_estado_verificacion !== 'PENDIENTE') return { status: 409 };
+      const wallet = payoutData.decryptWallet(stored);
+      const evidence = await client.query(
+        `INSERT INTO payout_account_review_evidence
+          (provider_id, tenant_id, flow_session_id, account_fingerprint, reason_code, requested_by)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         ON CONFLICT (provider_id) WHERE status IN ('REQUESTED', 'UPLOADED') DO NOTHING
+         RETURNING id, requested_at`,
+        [providerId, stored.provider_tenant_id || null, stored.cuenta_flow_session_id || null,
+          accountFingerprint(wallet), reasonCode, req.admin.id]
+      );
+      if (!evidence.rowCount) return { status: 409 };
+      await client.query(
+        `INSERT INTO audit_log (actor_id, accion, tabla, registro_id, datos_despues, ip)
+         VALUES ($1, 'SOLICITUD_SOPORTE_CUENTA_RETIRO', 'payout_account_review_evidence', $2, $3::jsonb, $4)`,
+        [req.admin.id, evidence.rows[0].id, JSON.stringify({ provider_id: providerId, reason_code: reasonCode }), req.ip || null]
+      );
+      return { status: 201, ...evidence.rows[0], providerName: stored.provider_name, email: stored.email,
+        emailVerified: stored.email_verificado, fcmToken: stored.fcm_token };
+    });
+    if (created.status !== 201) return res.status(created.status).json({ ok: false, error: created.status === 404 ? 'No se encontró una cuenta para revisar.' : 'La cuenta ya tiene una solicitud de soporte activa o dejó de estar pendiente.' });
+    const label = {
+      TITULAR_NO_COINCIDE: 'aclarar una diferencia en el titular',
+      RECHAZO_TRANSFERENCIA: 'revisar un rechazo de transferencia',
+      REVISION_RIESGO: 'completar una revisión de seguridad',
+    }[reasonCode];
+    const message = `Necesitamos un soporte para ${label} de tu cuenta de retiro. Adjunta un JPG o PNG desde Cuenta de retiro en la app del prestador.`;
+    try {
+      if (created.email && created.emailVerified === true && (process.env.BREVO_API_KEY || emailService.initEmailService())) {
+        await emailService.sendEmail({ to: created.email, subject: 'Soporte solicitado para tu cuenta de retiro · GlowApp', data: { html: `<p>Hola ${String(created.providerName || '').replace(/[&<>"']/g, '')},</p><p>${message}</p>` } });
+      }
+      if (created.fcmToken && fcm.initialized) await fcm.sendPushNotification(created.fcmToken, { title: 'Soporte solicitado', body: message, data: { type: 'PAYOUT_EVIDENCE_REQUESTED' } });
+    } catch (error) { console.error('[ADMIN PAYOUT EVIDENCE] No se pudo notificar:', error.message); }
+    return res.status(201).json({ ok: true, evidence_id: created.id, requested_at: created.requested_at });
+  } catch (error) {
+    console.error('[ADMIN PAYOUT EVIDENCE] No se pudo crear la solicitud:', error.message);
+    return res.status(500).json({ ok: false, error: 'No se pudo solicitar el soporte.' });
+  }
+}
+
+async function getEvidence(req, res) {
+  const providerId = Number.parseInt(req.params.providerId, 10);
+  if (!Number.isInteger(providerId) || providerId <= 0) return res.status(400).json({ ok: false, error: 'providerId inválido.' });
+  try {
+    const evidence = await runAsSystem({ pool }, async (client) => {
+      const result = await client.query(
+        `SELECT id, status, reason_code, requested_at, uploaded_at, reviewed_at,
+                file_ciphertext, file_mime_type, file_bytes
+           FROM payout_account_review_evidence
+          WHERE provider_id = $1 ORDER BY requested_at DESC LIMIT 1`, [providerId]
+      );
+      const row = result.rows[0];
+      if (!row) return null;
+      if (row.status === 'UPLOADED') {
+        await client.query(
+          `INSERT INTO audit_log (actor_id, accion, tabla, registro_id, datos_despues, ip)
+           VALUES ($1, 'CONSULTA_SOPORTE_CUENTA_RETIRO', 'payout_account_review_evidence', $2, $3::jsonb, $4)`,
+          [req.admin.id, row.id, JSON.stringify({ provider_id: providerId, status: row.status }), req.ip || null]
+        );
+      }
+      return { ...row, file_base64: row.status === 'UPLOADED' && row.file_ciphertext ? payoutData.decrypt(row.file_ciphertext) : null, file_ciphertext: undefined };
+    });
+    if (!evidence) return res.status(404).json({ ok: false, error: 'No hay solicitudes de soporte para esta cuenta.' });
+    res.set('Cache-Control', 'no-store, private');
+    return res.json({ ok: true, evidence });
+  } catch (error) {
+    console.error('[ADMIN PAYOUT EVIDENCE] No se pudo consultar el soporte:', error.message);
+    return res.status(500).json({ ok: false, error: 'No se pudo consultar el soporte.' });
+  }
+}
+
+async function cancelEvidenceRequest(req, res) {
+  const providerId = Number.parseInt(req.params.providerId, 10);
+  if (!Number.isInteger(providerId) || providerId <= 0) return res.status(400).json({ ok: false, error: 'providerId inválido.' });
+  try {
+    const result = await runAsSystem({ pool }, async (client) => {
+      const updated = await client.query(
+        `UPDATE payout_account_review_evidence
+            SET status = 'EXPIRED', purge_at = COALESCE(purge_at, NOW())
+          WHERE provider_id = $1 AND status = 'REQUESTED'
+          RETURNING id`, [providerId]
+      );
+      if (updated.rowCount) {
+        await client.query(
+          `INSERT INTO audit_log (actor_id, accion, tabla, registro_id, datos_despues, ip)
+           VALUES ($1, 'CANCELA_SOLICITUD_SOPORTE_CUENTA_RETIRO', 'payout_account_review_evidence', $2, $3::jsonb, $4)`,
+          [req.admin.id, updated.rows[0].id, JSON.stringify({ provider_id: providerId }), req.ip || null]
+        );
+      }
+      return updated.rowCount;
+    });
+    if (!result) return res.status(409).json({ ok: false, error: 'No hay una solicitud pendiente de carga para cancelar.' });
+    return res.json({ ok: true });
+  } catch (error) {
+    console.error('[ADMIN PAYOUT EVIDENCE] No se pudo cancelar la solicitud:', error.message);
+    return res.status(500).json({ ok: false, error: 'No se pudo cancelar la solicitud.' });
+  }
+}
+
+async function getMetrics(req, res) {
+  const days = Math.max(1, Math.min(365, Number.parseInt(req.query.days, 10) || 90));
+  try {
+    const metrics = await runAsSystem({ pool }, async (client) => {
+      const result = await client.query(
+        `SELECT COUNT(*)::int AS starts,
+                COUNT(*) FILTER (WHERE status IN ('SUBMITTED','APPROVED','REJECTED'))::int AS submitted,
+                COUNT(*) FILTER (WHERE status = 'ABANDONED')::int AS abandoned,
+                COUNT(*) FILTER (WHERE status = 'REJECTED')::int AS rejected,
+                COUNT(*) FILTER (WHERE support_opened_at IS NOT NULL)::int AS support_opened,
+                COALESCE(SUM(transfer_failures), 0)::int AS transfer_failures,
+                ROUND(AVG(EXTRACT(EPOCH FROM (reviewed_at - submitted_at)) / 3600)::numeric, 1) AS avg_review_hours
+           FROM payout_account_flow_sessions
+          WHERE started_at >= NOW() - ($1::int * INTERVAL '1 day')`, [days]
+      );
+      return result.rows[0];
+    });
+    return res.json({ ok: true, days, metrics });
+  } catch (error) {
+    console.error('[ADMIN PAYOUT METRICS] No se pudieron consultar métricas:', error.message);
+    return res.status(500).json({ ok: false, error: 'No se pudieron consultar las métricas.' });
+  }
+}
+
 async function listPending(req, res) {
   const requestedLimit = Number.parseInt(req.query.limit, 10) || 50;
   const limit = Math.max(1, Math.min(requestedLimit, 100));
@@ -172,6 +317,14 @@ async function decidePending(req, res) {
       if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
         return { status: 409, error: 'Los datos cambiaron desde que abriste la revisión. Recarga la cola y vuelve a revisar.' };
       }
+      const evidence = await client.query(
+        `SELECT id, status FROM payout_account_review_evidence
+          WHERE provider_id = $1 AND status IN ('REQUESTED', 'UPLOADED')
+          ORDER BY requested_at DESC LIMIT 1 FOR UPDATE`, [providerId]
+      );
+      if (evidence.rows[0]?.status === 'REQUESTED') {
+        return { status: 409, error: 'Hay un soporte solicitado que el prestador aún no ha cargado.' };
+      }
       const approved = decision === 'APROBAR';
       await client.query(
         `UPDATE provider_wallet
@@ -183,6 +336,21 @@ async function decidePending(req, res) {
           WHERE provider_id = $1`,
         [providerId, approved, approved ? 'APROBADA' : 'RECHAZADA', req.admin.id]
       );
+      if (evidence.rows[0]?.status === 'UPLOADED') {
+        await client.query(
+          `UPDATE payout_account_review_evidence
+              SET status = 'REVIEWED', reviewed_by = $2, reviewed_at = NOW(),
+                  purge_at = NOW() + INTERVAL '30 days'
+            WHERE id = $1`, [evidence.rows[0].id, req.admin.id]
+        );
+      }
+      if (stored.cuenta_flow_session_id) {
+        await client.query(
+          `UPDATE payout_account_flow_sessions
+              SET status = $2, reviewed_at = NOW(), closed_at = COALESCE(closed_at, NOW())
+            WHERE id = $1`, [stored.cuenta_flow_session_id, approved ? 'APPROVED' : 'REJECTED']
+        );
+      }
       await client.query(
         `INSERT INTO audit_log (actor_id, accion, tabla, registro_id, datos_antes, datos_despues, ip)
          VALUES ($1, $2, 'provider_wallet', $3, $4::jsonb, $5::jsonb, $6)`,
@@ -237,4 +405,4 @@ async function decidePending(req, res) {
   }
 }
 
-module.exports = { listPending, getPendingDetails, decidePending, revisionToken };
+module.exports = { listPending, getPendingDetails, decidePending, requestEvidence, cancelEvidenceRequest, getEvidence, getMetrics, revisionToken };

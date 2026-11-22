@@ -1,6 +1,7 @@
 // lib/services/api_service.dart
 import 'dart:async';
 import 'dart:convert';
+import 'dart:typed_data';
 import 'api_error.dart';
 import 'app_update_service.dart';
 import 'booking_selection.dart';
@@ -1045,6 +1046,34 @@ class ApiService {
     }
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
+  }
+
+  static Future<Map<String, dynamic>> uploadPayoutAccountEvidence(
+      String evidenceId, Uint8List imageBytes, String filename, String mimeType) async {
+    await ensureBaseUrl();
+    final token = await _getToken();
+    final request = http.MultipartRequest(
+      'POST',
+      Uri.parse('$_baseUrl$_apiPath/wallet/bank-account/evidence/$evidenceId'),
+    );
+    if (token != null && token.isNotEmpty) {
+      request.headers['Authorization'] = 'Bearer $token';
+    }
+    request.headers['X-App-Audience'] = appAudience;
+    final mimeParts = mimeType.split('/');
+    request.files.add(http.MultipartFile.fromBytes(
+      'file', imageBytes,
+      filename: filename,
+      contentType: http_parser.MediaType(mimeParts[0], mimeParts[1]),
+    ));
+    final streamedResponse = await request.send().timeout(const Duration(seconds: 45));
+    final response = await http.Response.fromStream(streamedResponse);
+    final body = response.body.isEmpty ? <String, dynamic>{} : json.decode(response.body);
+    if (response.statusCode >= 200 && response.statusCode < 300 && body is Map<String, dynamic>) {
+      return body;
+    }
+    throw Exception(extractApiError(response.statusCode, response.body,
+        fallback: 'No se pudo cargar el soporte de la cuenta.'));
   }
 
   static Future<Map<String, dynamic>> updateAvatar(String imageUrl) async {
