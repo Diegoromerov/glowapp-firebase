@@ -34,8 +34,9 @@ import { useAuth } from '@/contexts/AuthContext';
 
 interface SosAlert {
   id: number;
-  client_name?: string | null;
-  client_phone?: string | null;
+  requester_name?: string | null;
+  requester_phone?: string | null;
+  requester_role?: string | null;
   provider_name?: string | null;
   provider_phone?: string | null;
   latitude: string | number;
@@ -46,7 +47,7 @@ interface SosAlert {
   resuelto_en?: string | null;
 }
 
-const REFRESCO_MS = 30000;
+const REFRESCO_MS = 5000;
 const MIN_RESOLUCION = 3;
 
 /** Antiguedad legible de la alerta. Vacia si la fecha no es valida. */
@@ -250,7 +251,7 @@ export default function AdminSosPage() {
         <div className="card-header">
           <h2 className="card-title">Alertas</h2>
           <span className="chip-sm">
-            {fuenteDisponible ? activas.length : '—'} activa(s) · se actualiza cada 30 s
+            {fuenteDisponible ? activas.length : '—'} activa(s) · se actualiza cada 5 s
           </span>
         </div>
 
@@ -259,8 +260,8 @@ export default function AdminSosPage() {
             <thead>
               <tr>
                 <th>Alerta</th>
-                <th>Cliente</th>
-                <th>Prestador</th>
+                <th>Solicitante</th>
+                <th>Prestador asociado</th>
                 <th>Ubicación</th>
                 <th>Emitida</th>
                 <th className="col-actions">Acciones</th>
@@ -294,17 +295,18 @@ export default function AdminSosPage() {
                           <span className="chip-sm">#{a.id}</span>
                         </td>
                         <td>
-                          {a.client_name ? (
+                          {a.requester_name ? (
                             <span className="flex items-center gap-2">
                               <User size={15} aria-hidden="true" />
-                              {a.client_name}
-                              {a.client_phone && (
+                              {a.requester_name}
+                              <span className="chip-sm">{a.requester_role || 'Usuario'}</span>
+                              {a.requester_phone && (
                                 <a
-                                  href={`tel:${a.client_phone}`}
+                                  href={`tel:${a.requester_phone}`}
                                   className="text-gold flex items-center gap-1"
                                 >
                                   <Phone size={14} aria-hidden="true" />
-                                  {a.client_phone}
+                                  {a.requester_phone}
                                 </a>
                               )}
                             </span>

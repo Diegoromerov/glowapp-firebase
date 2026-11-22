@@ -867,7 +867,8 @@ app.post('/api/sos', authMiddleware, async (req, res) => {
 
     const alertId = result.rows[0].id;
     
-    // Emitir el evento SOS en tiempo real a los dashboards conectados
+    // Emitir el evento SOS a administradores conectados al flujo en vivo.
+    // La bandeja /admin/sos también consulta esta alerta desde la base de datos.
     broadcastAdminEvent('sos_alert', {
       id: alertId,
       user_id: user_id,
@@ -886,11 +887,11 @@ app.post('/api/sos', authMiddleware, async (req, res) => {
     if (booking_id) console.log(`- Reserva asociada: ${booking_id}`);
     if (latitude && longitude) console.log(`- Ubicación: ${latitude}, ${longitude}`);
     console.log(`- Timestamp: ${new Date().toISOString()}`);
-    console.log('\x1b[41m\x1b[37m%s\x1b[0m', `🚨 [FIN DE ALERTA - NOTIFICANDO AUTORIDADES] 🚨`);
+    console.log('\x1b[41m\x1b[37m%s\x1b[0m', `🚨 [SOS REGISTRADO EN GLOWAPP] 🚨`);
 
     res.status(201).json({
       success: true,
-      message: 'Alerta de pánico (SOS) activada correctamente. La central de seguridad y las autoridades locales de Fontibón han sido notificadas.',
+      message: 'Tu alerta SOS quedó registrada en la bandeja administrativa de GlowApp. Esta app no contacta automáticamente a las autoridades. Si necesitas ayuda inmediata, llama al 123.',
       alert_id: alertId
     });
 

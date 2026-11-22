@@ -40,10 +40,11 @@ async function getActiveSOSAlerts(estado = 'ACTIVO') {
     SELECT 
       s.id, s.latitude, s.longitude, s.estado, s.creado_en as fecha_creacion,
       s.resolucion, s.resuelto_en,
-      u_client.nombre AS client_name, u_client.phone AS client_phone,
+      u_requester.nombre AS requester_name, u_requester.phone AS requester_phone,
+      u_requester.rol AS requester_role,
       u_prov.nombre AS provider_name, u_prov.phone AS provider_phone
     FROM sos_alerts s
-    LEFT JOIN usuarios u_client ON s.user_id = u_client.id
+    LEFT JOIN usuarios u_requester ON s.user_id = u_requester.id
     LEFT JOIN bookings b ON s.booking_id = b.id
     LEFT JOIN usuarios u_prov ON b.provider_id = u_prov.id
     WHERE ($1 = 'TODOS' OR s.estado = $1)

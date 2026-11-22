@@ -4,6 +4,7 @@ import 'package:glow_core/services/web_geolocation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:glow_provider/screens/chat/chat_screen.dart';
 import 'provider_route_screen.dart';
 import '../../widgets/modo_exploracion_banner.dart';
@@ -1969,7 +1970,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               ),
               SizedBox(height: 12),
               Text(
-                'Al confirmar, se enviará una alerta silenciosa con tu ubicación actual a la central de seguridad de la plataforma y te daremos la opción de llamar directamente al número de emergencias (123).',
+                'Al confirmar, registraremos tu ubicación en la bandeja de Alertas SOS de GlowApp para que el equipo pueda revisarla. La app no contacta automáticamente a las autoridades. Si necesitas ayuda inmediata, podrás abrir el marcador para llamar al 123.',
                 style: TextStyle(
                     fontSize: 13.5, height: 1.4, color: Color(0xFF8C7E74)),
               ),
@@ -2086,6 +2087,23 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
     }
   }
 
+  Future<void> _callEmergencyServices() async {
+    final uri = Uri(scheme: 'tel', path: '123');
+    try {
+      final launched = await launchUrl(uri);
+      if (!launched && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No se pudo abrir el marcador. Llama al 123 directamente.')),
+        );
+      }
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No se pudo abrir el marcador. Llama al 123 directamente.')),
+      );
+    }
+  }
+
   void _showSOSTriggeredSheet(String message) {
     showModalBottomSheet(
       context: context,
@@ -2144,12 +2162,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                   ),
                   onPressed: () {
                     Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('📞 Marcando al 123 (Emergencias)...'),
-                        backgroundColor: Color(0xFF800A0A),
-                      ),
-                    );
+                    _callEmergencyServices();
                   },
                   icon: const Icon(Icons.phone_in_talk_rounded, color: Color(0xFFD4AF37)),
                   label: const Text(
