@@ -1446,10 +1446,6 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       primeraCuenta &&
       emailPruebaPermitido.length > 0 &&
       String(contacto.email).trim().toLowerCase() === emailPruebaPermitido;
-    if (contacto.email_verificado !== true && !modoOtpPrueba) {
-      return res.status(403).json({ error: 'Verifica el correo de tu cuenta antes de cambiar la cuenta de retiro.' });
-    }
-
     if (!primeraCuenta && contacto.password_hash) {
       if (!currentPassword || !await bcrypt.compare(currentPassword, contacto.password_hash)) {
         return res.status(403).json({ error: 'La contraseña actual no es válida. No se inició el cambio de cuenta.' });
@@ -1544,9 +1540,12 @@ router.post('/wallet/bank-account/authorization', authMiddleware, otpLimiter, as
       expira_at: expiraAt,
       correo_enmascarado: correoEnmascarado,
       modalidad: primeraCuenta ? 'PRIMERA_CUENTA' : 'CAMBIO',
+      correo_por_confirmar: contacto.email_verificado !== true,
       mensaje: modoOtpPrueba
         ? 'Código de prueba generado para esta cuenta de staging.'
-        : 'Enviamos un código al correo verificado de tu cuenta.',
+        : contacto.email_verificado === true
+          ? 'Enviamos un código al correo de tu cuenta.'
+          : 'Enviamos un código para confirmar el correo de tu cuenta y autorizar este destino de retiro.',
       ...(modoOtpPrueba && { otp_dev: codigo, modo_prueba: true })
     });
   } catch (err) {
@@ -1638,6 +1637,13 @@ const handleSaveBankAccount = async (req, res) => {
       return res.status(403).json({ error: destinoValido ? 'Código incorrecto.' : 'El código no corresponde a estos datos de cuenta.' });
     }
     await client.query('UPDATE payout_account_change_challenges SET usado_at = NOW() WHERE id = $1', [authorization_id]);
+
+    // El OTP se envió al correo registrado y acaba de validarse. Si aún estaba
+    // pendiente, esta prueba de posesión completa también la verificación del correo.
+    await client.query(
+      'UPDATE usuarios SET email_verificado = TRUE WHERE id = $1 AND email_verificado = FALSE',
+      [req.user.id]
+    );
 
     // Asegurar existencia del registro de wallet
     await client.query(

@@ -43,6 +43,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
   String? _authorizationId;
   String? _googleIdToken;
   String? _maskedEmail;
+  bool _emailVerificationPending = false;
   DateTime? _otpExpiresAt;
   DateTime? _resendAvailableAt;
   Timer? _otpTimer;
@@ -244,6 +245,7 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
         setState(() {
           _authorizationId = response['challenge_id'].toString();
           _maskedEmail = response['correo_enmascarado']?.toString();
+          _emailVerificationPending = response['correo_por_confirmar'] == true;
           _otpExpiresAt =
               DateTime.tryParse(response['expira_at']?.toString() ?? '');
           _resendAvailableAt = DateTime.now().add(const Duration(seconds: 60));
@@ -370,7 +372,9 @@ class _BankAccountFormDialogState extends State<BankAccountFormDialog> {
           Text('Titular: ${_titularNombreController.text.trim()}'),
           const SizedBox(height: 8),
           Text(
-            'El código se envió a ${_maskedEmail ?? 'tu correo verificado'}. El código autoriza solo este destino.',
+            _emailVerificationPending
+                ? 'El código enviado a ${_maskedEmail ?? 'tu correo'} confirma el acceso al correo y autoriza solo este destino.'
+                : 'El código se envió a ${_maskedEmail ?? 'tu correo'}. Autoriza solo este destino.',
             style: const TextStyle(fontSize: 12, color: LuxeColors.nude600),
           ),
         ],
