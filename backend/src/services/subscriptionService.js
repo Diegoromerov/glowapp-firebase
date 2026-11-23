@@ -5,6 +5,7 @@ const wompiSubscriptionService = require('./wompiSubscriptionService');
 const invoiceService = require('./invoiceService');
 const { hasEntitlement } = require('../config/saasEntitlements');
 const crypto = require('crypto');
+const { PLAN_CATALOG, PLAN_IDS } = require('../config/saasCatalog');
 
 class SubscriptionService {
   /**
@@ -27,8 +28,10 @@ class SubscriptionService {
       let status = 'trialing';
       let trialEnd = null;
 
-      const isPaidPlan = ['BASIC', 'PRO', 'ENTERPRISE'].includes(plan);
-      const trialDays = plan === 'FREE_TRIAL' ? 14 : (isPaidPlan ? 30 : null);
+      const planDefinition = PLAN_CATALOG[plan];
+      if (!planDefinition) throw new Error('Plan SaaS inválido');
+      const isPaidPlan = planDefinition.priceCop > 0;
+      const trialDays = plan === 'FREE_TRIAL' ? planDefinition.trialDays : (isPaidPlan ? 30 : null);
 
       if (currency === 'USD') {
         // Stripe para pagos internacionales
@@ -532,8 +535,7 @@ class SubscriptionService {
   }
 
   _comparePlans(planA, planB) {
-    const order = { FREE_TRIAL: 0, FREEMIUM: 1, BASIC: 2, PRO: 3, ENTERPRISE: 4 };
-    return (order[planA] || 0) - (order[planB] || 0);
+    return PLAN_IDS.indexOf(planA) - PLAN_IDS.indexOf(planB);
   }
 }
 

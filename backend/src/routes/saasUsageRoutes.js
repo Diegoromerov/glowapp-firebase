@@ -5,6 +5,7 @@ const saasContext = require('../middleware/saasContext');
 const { requireEntitlement } = require('../middleware/featureGate');
 const { authMiddleware } = require('../middleware/auth');
 const usageMeteringService = require('../services/usageMeteringService');
+const { METRICS, PLAN_IDS, publicCatalog } = require('../config/saasCatalog');
 
 const router = express.Router();
 
@@ -37,6 +38,53 @@ router.get('/', async (req, res) => {
       ORDER BY feature;
     `, [tenantId, periodStart.toISOString().split('T')[0]]);
 
+    const metricMap = new Map(metrics.map((metric) => [metric.feature, metric]));
+    let teamSeatsInUse = null;
+    if (Object.prototype.hasOwnProperty.call(usageMeteringService.getPlanLimits(plan), 'TEAM_SEATS')) {
+      const { rows: members } = await pool.query(`
+        SELECT COUNT(*)::integer AS count
+        FROM memberships
+        WHERE business_profile_id = $1 AND status IN ('ACTIVE', 'PENDING')
+      `, [tenantId]);
+      teamSeatsInUse = Number(members[0]?.count || 0);
+    }
+
+    // Si aún no existe contador este mes, mostrar las reservas ya hechas antes
+    // de activar el nuevo medidor. Por negocio compartido se usa la relación
+    // explícita servicio→perfil; el provider_id sirve solo para el esquema viejo
+    // cuando identifica un único perfil.
+    let existingBookings = null;
+    if (!metricMap.has('ONLINE_BOOKING')) {
+      const { rows: businesses } = await pool.query(
+        'SELECT provider_id FROM business_profiles WHERE id = $1', [tenantId]
+      );
+      const providerId = businesses[0]?.provider_id;
+      const { rows: profileColumn } = await pool.query(`
+        SELECT 1 FROM information_schema.columns
+        WHERE table_schema = 'public' AND table_name = 'services' AND column_name = 'business_profile_id'
+      `);
+      if (profileColumn.length > 0) {
+        const { rows } = await pool.query(`
+          SELECT COUNT(DISTINCT (b.client_id, b.provider_id, b.scheduled_at))::integer AS count
+          FROM bookings b
+          JOIN services s ON s.id = b.service_id
+          WHERE s.business_profile_id = $1 AND b.created_at >= $2
+        `, [tenantId, periodStart.toISOString().split('T')[0]]);
+        existingBookings = Number(rows[0]?.count || 0);
+      } else if (providerId) {
+        const { rows: owners } = await pool.query(
+          'SELECT COUNT(*)::integer AS count FROM business_profiles WHERE provider_id = $1', [providerId]
+        );
+        if (Number(owners[0]?.count) === 1) {
+          const { rows } = await pool.query(`
+            SELECT COUNT(DISTINCT (client_id, provider_id, scheduled_at))::integer AS count
+            FROM bookings WHERE provider_id = $1 AND created_at >= $2
+          `, [providerId, periodStart.toISOString().split('T')[0]]);
+          existingBookings = Number(rows[0]?.count || 0);
+        }
+      }
+    }
+
     // Límites del plan
     const planLimits = usageMeteringService.getPlanLimits(plan);
 
@@ -44,7 +92,11 @@ router.get('/', async (req, res) => {
     const usage = Object.keys(planLimits).map(feature => {
       const metric = metrics.find(m => m.feature === feature);
       const limit = planLimits[feature];
-      const used = metric?.count || 0;
+      const used = feature === 'TEAM_SEATS' && teamSeatsInUse !== null
+        ? teamSeatsInUse
+        : feature === 'ONLINE_BOOKING' && existingBookings !== null
+          ? existingBookings
+          : metric?.count || 0;
       const percentage = limit && limit > 0 ? Math.round((used / limit) * 100) : 0;
       const remaining = limit && limit > 0 ? Math.max(0, limit - used) : null;
       
@@ -57,6 +109,9 @@ router.get('/', async (req, res) => {
 
       return {
         feature,
+        label: METRICS[feature]?.label || feature,
+        unit: METRICS[feature]?.unit || null,
+        kind: METRICS[feature]?.kind || 'quota',
         used,
         limit: limit === null ? 'unlimited' : limit,
         remaining,
@@ -136,7 +191,7 @@ router.get('/limits', async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const plan = req.saas.plan;
-    const allPlans = ['FREE_TRIAL', 'FREEMIUM', 'BASIC', 'PRO', 'ENTERPRISE'];
+    const allPlans = PLAN_IDS;
     const planLimits = usageMeteringService.getPlanLimits(plan);
 
     // Construir matriz de comparación
@@ -150,9 +205,11 @@ router.get('/limits', async (req, res) => {
     });
 
     res.json({
+      catalogVersion: publicCatalog().version,
       currentPlan: plan,
       plans: allPlans,
-      limits: comparison
+      limits: comparison,
+      catalog: publicCatalog(),
     });
   } catch (error) {
     console.error('[saasUsageRoutes] Error getting limits:', error.message);

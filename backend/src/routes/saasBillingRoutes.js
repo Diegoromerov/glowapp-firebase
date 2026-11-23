@@ -8,6 +8,7 @@ const subscriptionService = require('../services/subscriptionService');
 const invoiceService = require('../services/invoiceService');
 const stripeService = require('../services/stripeService');
 const wompiSubscriptionService = require('../services/wompiSubscriptionService');
+const { PLAN_CATALOG, PLAN_IDS } = require('../config/saasCatalog');
 
 const router = express.Router();
 
@@ -220,7 +221,7 @@ router.post('/checkout', requireOwner, async (req, res) => {
 
     const { plan, currency = 'COP', successUrl, cancelUrl } = req.body;
 
-    const validPlans = ['BASIC', 'PRO', 'ENTERPRISE'];
+    const validPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop > 0);
     if (!validPlans.includes(plan)) {
       return res.status(400).json({ error: 'Plan inválido', validPlans });
     }
@@ -228,8 +229,8 @@ router.post('/checkout', requireOwner, async (req, res) => {
     // Verificar que es upgrade (no downgrade por checkout)
     const currentSub = await subscriptionService.getActiveSubscription(req.saas.tenantId);
     if (currentSub) {
-      const order = { FREE_TRIAL: 0, FREEMIUM: 1, BASIC: 2, PRO: 3, ENTERPRISE: 4 };
-      if ((order[plan] || 0) <= (order[currentSub.plan] || 0)) {
+      const order = PLAN_IDS;
+      if (order.indexOf(plan) <= order.indexOf(currentSub.plan)) {
         return res.status(400).json({ 
           error: 'Use change-plan para downgrades', 
           currentPlan: currentSub.plan 
@@ -332,7 +333,7 @@ router.post('/change-plan', requireOwner, async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const { plan, prorate = true } = req.body;
-    const validPlans = ['FREEMIUM', 'BASIC', 'PRO', 'ENTERPRISE'];
+    const validPlans = PLAN_IDS.filter((id) => id !== 'FREE_TRIAL');
     
     if (!validPlans.includes(plan)) {
       return res.status(400).json({ error: 'Plan inválido', validPlans });

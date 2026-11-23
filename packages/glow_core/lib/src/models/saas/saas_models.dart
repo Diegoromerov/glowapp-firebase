@@ -79,7 +79,7 @@ enum SaasPlanTier {
           'ONLINE_BOOKING': 50,
           'TEAM_SEATS': 3,
           'API_CALLS': 1000,
-          'ADVANCED_ANALYTICS': 1,
+          'ADVANCED_ANALYTICS': 0,
           'CUSTOM_BRANDING': 1,
           'WHATSAPP_INTEGRATION': 0,
           'POS_INTEGRATION': 0,
@@ -114,7 +114,7 @@ enum SaasPlanTier {
           'API_CALLS': 100000,
           'ADVANCED_ANALYTICS': 1,
           'CUSTOM_BRANDING': 1,
-          'WHATSAPP_INTEGRATION': 1,
+          'WHATSAPP_INTEGRATION': 0,
           'POS_INTEGRATION': 0,
         };
       case SaasPlanTier.enterprise:
@@ -260,7 +260,7 @@ enum ApiKeyScope {
 }
 
 enum UsageMetricType {
-  apiCalls('API_CALLS', 'Llamadas API', Icons.cloud_outlined),
+  apiCalls('API_CALLS', 'Procesos de integración', Icons.cloud_outlined),
   bookings('ONLINE_BOOKING', 'Reservas online', Icons.calendar_today),
   staff('TEAM_SEATS', 'Asientos de equipo', Icons.people_outline),
   mapVisibility('MAP_VISIBILITY', 'Visibilidad en mapa', Icons.map_outlined),
@@ -797,6 +797,7 @@ class Invoice {
 @immutable
 class UsageMetric {
   final UsageMetricType type;
+  final String? label;
   final int current;
   final int limit;
   final int? projected;
@@ -805,6 +806,7 @@ class UsageMetric {
 
   const UsageMetric({
     required this.type,
+    this.label,
     required this.current,
     required this.limit,
     this.projected,
@@ -819,6 +821,7 @@ class UsageMetric {
     final used = _asInt(json, ['current', 'used', 'currentValue', 'current_value']);
     return UsageMetric(
       type: UsageMetricType.fromCode(_asString(json, ['type', 'feature'])),
+      label: _pick(json, ['label'])?.toString(),
       current: used,
       limit: limit,
       projected: _pick(json, ['projected']) is num ? (_pick(json, ['projected']) as num).toInt() : null,
@@ -829,6 +832,7 @@ class UsageMetric {
 
   Map<String, dynamic> toJson() => {
         'type': type.code,
+        'label': label,
         'current': current,
         'limit': limit,
         'projected': projected,

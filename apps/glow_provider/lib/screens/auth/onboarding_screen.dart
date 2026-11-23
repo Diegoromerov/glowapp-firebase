@@ -59,6 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   // SAAS ONBOARDING STATE
   // ═══════════════════════════════════════════════════════════════
   SaasPlanTier _selectedPlan = SaasPlanTier.freeTrial;
+  List<SaasPlan> _commercialPlans = const [];
   final List<InviteMemberRequest> _teamInvites = [];
   bool _isCreatingSaasProfile = false;
   String? _saasError;
@@ -155,6 +156,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void initState() {
     super.initState();
     _loadUserRoleIntent();
+    _loadCommercialPlans();
+  }
+
+  Future<void> _loadCommercialPlans() async {
+    try {
+      final plans = await SaasApiService.getPlans();
+      if (mounted && plans.isNotEmpty) setState(() => _commercialPlans = plans);
+    } catch (_) {
+      // La lista embebida mantiene disponible el onboarding sin conexión.
+    }
   }
 
   Future<void> _loadUserRoleIntent() async {
@@ -295,21 +306,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   String _planDescription(SaasPlanTier plan) {
       switch (plan) {
         case SaasPlanTier.freeTrial:
-          return '14 días gratis · 3 asientos · 1.000 API/mes';
+          return 'Prueba GlowApp durante 14 días con hasta 3 personas de tu equipo.';
         case SaasPlanTier.freemium:
-          return 'Gratis permanente · 1 asiento · 500 API/mes';
+          return 'Administra tu salón gratis de forma permanente con 1 persona.';
         case SaasPlanTier.basic:
-          return '5 asientos · 200 reservas/mes · 10.000 API/mes';
+          return 'Organiza el trabajo de hasta 5 personas y gestiona hasta 200 reservas al mes.';
         case SaasPlanTier.pro:
-          return '20 asientos · reservas ilimitadas · Analítica avanzada · API Keys';
+          return 'Coordina hasta 20 personas, recibe reservas sin límite y consulta analíticas avanzadas.';
         case SaasPlanTier.enterprise:
-          return 'Asientos y API ilimitados · WhatsApp · POS · Soporte prioritario';
+          return 'Equipo sin límite de personas, WhatsApp, punto de venta y soporte prioritario.';
       }
     }
 
   Widget _buildPlanSelector() {
+    final availablePlans = _commercialPlans.where((plan) =>
+        plan.tier == SaasPlanTier.freeTrial || plan.tier == SaasPlanTier.freemium).toList();
+    final plans = availablePlans.isNotEmpty
+        ? availablePlans
+        : SaasPlanTier.values.where((tier) =>
+            tier == SaasPlanTier.freeTrial || tier == SaasPlanTier.freemium).map((tier) => SaasPlan(
+              id: tier.code,
+              tier: tier,
+              name: tier.label,
+              description: _planDescription(tier),
+              priceCents: tier.priceCents,
+              trialDays: tier == SaasPlanTier.freeTrial ? 14 : 0,
+              limits: const {},
+              features: const [],
+              isActive: true,
+              isPopular: tier == SaasPlanTier.pro,
+            )).toList();
     return Column(
-      children: SaasPlanTier.values.map((plan) {
+      children: plans.map((commercialPlan) {
+        final plan = commercialPlan.tier;
         final isSelected = _selectedPlan == plan;
         return GestureDetector(
           onTap: () => setState(() => _selectedPlan = plan),
@@ -346,27 +375,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        plan.label,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected ? plan.color : const Color(0xFF1F1A15),
-                        ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              commercialPlan.name,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: isSelected ? plan.color : const Color(0xFF1F1A15),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            commercialPlan.priceCents == 0
+                                ? 'Gratis'
+                                : '\$${(commercialPlan.priceCents / 100).round().toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]}.')} COP/mes',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: isSelected ? plan.color : const Color(0xFF8C7E74),
+                            ),
+                          ),
+                        ],
                       ),
+                      const SizedBox(height: 4),
                       Text(
-                        plan.formattedPrice,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: isSelected ? plan.color : const Color(0xFF8C7E74),
-                        ),
+                        commercialPlan.description,
+                        style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74)),
                       ),
                     ],
                   ),
-                ),
-                Text(
-                  _planDescription(plan),
-                  style: const TextStyle(fontSize: 11, color: Color(0xFF8C7E74)),
                 ),
               ],
             ),
@@ -939,7 +977,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  'Elige el plan que mejor se adapte a tu negocio. Podrás cambiarlo después.',
+                  'Elige cómo empezar gratis. Puedes activar un plan de pago después desde Facturación.',
                   style: TextStyle(fontSize: 12, color: Color(0xFF8C7E74)),
                 ),
                 const SizedBox(height: 12),

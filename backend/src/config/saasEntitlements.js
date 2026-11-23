@@ -5,45 +5,23 @@
  * Permite evaluar de forma dinámica: hasEntitlement(plan, capability)
  */
 
+const { PLAN_CATALOG, getPlansWithCapability: catalogPlansWithCapability, hasCapability } = require('./saasCatalog');
+
 const SAAS_CAPABILITIES = {
   MAP_VISIBILITY: 'MAP_VISIBILITY',           // Visibilidad en el mapa público de Home
   TEAM_MANAGEMENT: 'TEAM_MANAGEMENT',         // Invitar empleados / prestadores
   ADVANCED_ANALYTICS: 'ADVANCED_ANALYTICS',   // Métricas avanzadas de retención
   ONLINE_BOOKING: 'ONLINE_BOOKING',           // Agendamiento directo de clientes
   CUSTOM_BRANDING: 'CUSTOM_BRANDING',         // Logo y banners personalizados
+  API_KEYS: 'API_KEYS',                       // Integraciones mediante llaves API
+  WHATSAPP_INTEGRATION: 'WHATSAPP_INTEGRATION', // Integración con WhatsApp
+  POS_INTEGRATION: 'POS_INTEGRATION',         // Punto de venta
 };
 
-// Mapeo canónico de planes SaaS a sus conjuntos de capacidades
-const PLAN_ENTITLEMENTS = {
-  FREE_TRIAL: [
-    SAAS_CAPABILITIES.MAP_VISIBILITY,
-    SAAS_CAPABILITIES.TEAM_MANAGEMENT,
-    SAAS_CAPABILITIES.ONLINE_BOOKING,
-    SAAS_CAPABILITIES.CUSTOM_BRANDING,
-  ],
-  FREEMIUM: [
-    SAAS_CAPABILITIES.ONLINE_BOOKING,
-    // Sin MAP_VISIBILITY en freemium base
-  ],
-  BASIC: [
-    SAAS_CAPABILITIES.MAP_VISIBILITY,
-    SAAS_CAPABILITIES.ONLINE_BOOKING,
-  ],
-  PRO: [
-    SAAS_CAPABILITIES.MAP_VISIBILITY,
-    SAAS_CAPABILITIES.TEAM_MANAGEMENT,
-    SAAS_CAPABILITIES.ONLINE_BOOKING,
-    SAAS_CAPABILITIES.ADVANCED_ANALYTICS,
-    SAAS_CAPABILITIES.CUSTOM_BRANDING,
-  ],
-  ENTERPRISE: [
-    SAAS_CAPABILITIES.MAP_VISIBILITY,
-    SAAS_CAPABILITIES.TEAM_MANAGEMENT,
-    SAAS_CAPABILITIES.ONLINE_BOOKING,
-    SAAS_CAPABILITIES.ADVANCED_ANALYTICS,
-    SAAS_CAPABILITIES.CUSTOM_BRANDING,
-  ],
-};
+// Compatibilidad con consumidores anteriores; ahora se deriva del catálogo.
+const PLAN_ENTITLEMENTS = Object.fromEntries(
+  Object.entries(PLAN_CATALOG).map(([plan, definition]) => [plan, definition.capabilities])
+);
 
 /**
  * Verifica si un plan determinado posee una capacidad/entitlement específico.
@@ -54,8 +32,7 @@ const PLAN_ENTITLEMENTS = {
 function hasEntitlement(plan, capability) {
   if (!plan) return false;
   const normalizedPlan = plan.toUpperCase().trim();
-  const entitlements = PLAN_ENTITLEMENTS[normalizedPlan] || [];
-  return entitlements.includes(capability);
+  return hasCapability(normalizedPlan, capability);
 }
 
 /**
@@ -65,14 +42,13 @@ function hasEntitlement(plan, capability) {
  * @returns {string[]}
  */
 function getPlansWithEntitlement(capability) {
-  return Object.keys(PLAN_ENTITLEMENTS).filter(plan =>
-    PLAN_ENTITLEMENTS[plan].includes(capability)
-  );
+  return catalogPlansWithCapability(capability);
 }
 
 module.exports = {
   SAAS_CAPABILITIES,
   PLAN_ENTITLEMENTS,
+  CAPABILITIES: SAAS_CAPABILITIES,
   hasEntitlement,
   getPlansWithEntitlement,
 };

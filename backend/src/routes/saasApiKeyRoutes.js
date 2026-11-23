@@ -5,6 +5,8 @@ const saasContext = require('../middleware/saasContext');
 const { requireEntitlement, requireRole } = require('../middleware/featureGate');
 const { authMiddleware } = require('../middleware/auth');
 const crypto = require('crypto');
+const { hasEntitlement } = require('../config/saasEntitlements');
+const usageMeteringService = require('../services/usageMeteringService');
 
 const router = express.Router();
 
@@ -52,9 +54,9 @@ router.get('/', requireRole('ADMIN'), async (req, res) => {
 /**
  * POST /api/saas/api-keys
  * Crea nueva API key
- * Requiere: ADMIN u OWNER + entitlement CUSTOM_BRANDING (proxy para API access)
+ * Requiere: ADMIN u OWNER + capacidad API_KEYS
  */
-router.post('/', requireRole('ADMIN'), requireEntitlement('CUSTOM_BRANDING'), async (req, res) => {
+router.post('/', requireRole('ADMIN'), requireEntitlement('API_KEYS'), async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
@@ -306,6 +308,11 @@ function apiKeyAuth(requiredScopes = []) {
 
       const key = rows[0];
 
+      // Las llaves dejan de funcionar si el plan que las autorizaba ya no está activo.
+      if (!hasEntitlement(key.saas_plan, 'API_KEYS')) {
+        return res.status(401).json({ error: 'El plan actual no incluye integraciones con API' });
+      }
+
       // Verificar scopes
       if (requiredScopes.length > 0) {
         const hasScope = requiredScopes.some(s => key.scopes.includes(s));
@@ -316,6 +323,17 @@ function apiKeyAuth(requiredScopes = []) {
             current: key.scopes 
           });
         }
+      }
+
+      const usage = await usageMeteringService.consumeUsage(key.tenant_id, 'API_CALLS');
+      if (!usage.allowed) {
+        return res.status(429).json({
+          error: 'Se alcanzó el límite mensual de integraciones del plan',
+          current: usage.current,
+          limit: usage.limit,
+          currentPlan: usage.plan,
+          upgradeUrl: '/api/saas/billing/checkout',
+        });
       }
 
       // Poblar req para uso posterior

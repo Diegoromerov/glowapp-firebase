@@ -17,11 +17,10 @@ const express = require('express');
 const crypto = require('crypto');
 const { pool } = require('../config/db');
 const { authMiddleware } = require('../middleware/auth');
+const { PLAN_CATALOG, PLAN_IDS } = require('../config/saasCatalog');
 
 const router = express.Router();
 router.use(authMiddleware);
-
-const VALID_PLANS = ['FREE_TRIAL', 'FREEMIUM', 'BASIC', 'PRO', 'ENTERPRISE'];
 
 async function resolveVerticalId() {
   const preferred = await pool.query(
@@ -95,7 +94,7 @@ router.get('/', async (req, res) => {
 /**
  * POST /api/saas/bootstrap
  * Provisiona el tenant del usuario a partir de su salón. Idempotente.
- * Body: { plan?: 'FREE_TRIAL'|'FREEMIUM'|'BASIC'|'PRO'|'ENTERPRISE', name?: string }
+ * Body: { plan?: 'FREE_TRIAL'|'FREEMIUM', name?: string }
  */
 router.post('/', async (req, res) => {
   const client = await pool.connect();
@@ -109,9 +108,14 @@ router.post('/', async (req, res) => {
       return res.status(200).json({ provisioned: true, created: false, profile: toPayload(existing) });
     }
 
-    const plan = (req.body?.plan || 'FREE_TRIAL').toUpperCase();
-    if (!VALID_PLANS.includes(plan)) {
-      return res.status(400).json({ error: 'Plan inválido', validPlans: VALID_PLANS });
+    const plan = String(req.body?.plan || 'FREE_TRIAL').toUpperCase();
+    const initialPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop === 0);
+    if (!initialPlans.includes(plan)) {
+      return res.status(400).json({
+        error: 'El alta inicial debe usar Prueba Gratis o Freemium. Los planes pagos se activan desde Facturación.',
+        validPlans: initialPlans,
+        upgradeUrl: '/api/saas/billing/checkout',
+      });
     }
 
     const { rows: salones } = await pool.query(

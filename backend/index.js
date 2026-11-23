@@ -571,10 +571,12 @@ const saasTeamRoutes = require('./src/routes/saasTeamRoutes');
 const saasUsageRoutes = require('./src/routes/saasUsageRoutes');
 const saasBillingRoutes = require('./src/routes/saasBillingRoutes');
 const saasApiKeyRoutes = require('./src/routes/saasApiKeyRoutes');
+const saasCatalogRoutes = require('./src/routes/saasCatalogRoutes');
 const saasBootstrapRoutes = require('./src/routes/saasBootstrapRoutes');
 const superAdminRoutes = require('./src/routes/superAdminRoutes');
 
 app.use('/api/saas/bootstrap', saasBootstrapRoutes);
+app.use('/api/saas/catalog', saasCatalogRoutes);
 app.use('/api/saas/team', saasTeamRoutes);
 app.use('/api/saas/usage', saasUsageRoutes);
 app.use('/api/saas/billing', saasBillingRoutes);

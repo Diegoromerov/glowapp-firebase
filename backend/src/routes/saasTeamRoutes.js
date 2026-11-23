@@ -2,9 +2,10 @@
 const express = require('express');
 const { pool } = require('../config/db');
 const saasContext = require('../middleware/saasContext');
-const { requireRole, requireOwner } = require('../middleware/featureGate');
+const { requireRole, requireOwner, requireEntitlement } = require('../middleware/featureGate');
 const { authMiddleware } = require('../middleware/auth');
 const crypto = require('crypto');
+const usageMeteringService = require('../services/usageMeteringService');
 
 const router = express.Router();
 
@@ -66,7 +67,7 @@ router.get('/', async (req, res) => {
  * Invita un nuevo miembro al tenant
  * Requiere: ADMIN u OWNER
  */
-router.post('/invite', requireRole('ADMIN'), async (req, res) => {
+router.post('/invite', requireRole('ADMIN'), requireEntitlement('TEAM_MANAGEMENT'), async (req, res) => {
   try {
     const { email, role = 'MEMBER', message } = req.body;
 
@@ -82,28 +83,6 @@ router.post('/invite', requireRole('ADMIN'), async (req, res) => {
     // No permitir invitar OWNER (solo uno por tenant)
     if (role === 'OWNER') {
       return res.status(400).json({ error: 'No se puede invitar como OWNER' });
-    }
-
-    // Verificar límite de asientos según plan
-    const limits = {
-      FREE_TRIAL: 3, FREEMIUM: 1, BASIC: 5, PRO: 20, ENTERPRISE: 999
-    };
-    const maxSeats = limits[req.saas.plan] || 1;
-
-    const { rows: currentMembers } = await pool.query(
-      `SELECT COUNT(*) as count FROM memberships 
-       WHERE business_profile_id = $1 AND status IN ('ACTIVE', 'PENDING')`,
-      [req.saas.tenantId]
-    );
-
-    if (parseInt(currentMembers[0].count) >= maxSeats) {
-      return res.status(403).json({ 
-        error: 'Límite de asientos alcanzado',
-        current: parseInt(currentMembers[0].count),
-        max: maxSeats,
-        plan: req.saas.plan,
-        upgradeUrl: '/api/saas/billing/checkout'
-      });
     }
 
     // Buscar usuario por email
@@ -127,42 +106,78 @@ router.post('/invite', requireRole('ADMIN'), async (req, res) => {
 
     userId = users[0].id;
 
-    // Verificar si ya es miembro
-    const { rows: existing } = await pool.query(
-      `SELECT * FROM memberships WHERE business_profile_id = $1 AND user_id = $2`,
-      [req.saas.tenantId, userId]
-    );
+    // Serializar altas del mismo salón para que dos invitaciones simultáneas
+    // no excedan el cupo del plan.
+    const client = await pool.connect();
+    let inviteToken;
+    let membership;
+    let reactivated = false;
+    try {
+      await client.query('BEGIN');
+      await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [req.saas.tenantId]);
 
-    if (existing.length > 0) {
-      const existingM = existing[0];
-      if (existingM.status === 'ACTIVE') {
+      const { rows: existing } = await client.query(
+        `SELECT * FROM memberships WHERE business_profile_id = $1 AND user_id = $2 FOR UPDATE`,
+        [req.saas.tenantId, userId]
+      );
+      if (existing.length > 0 && existing[0].status === 'ACTIVE') {
+        await client.query('ROLLBACK');
         return res.status(409).json({ error: 'El usuario ya es miembro activo' });
       }
-      if (existingM.status === 'PENDING') {
+      if (existing.length > 0 && existing[0].status === 'PENDING') {
+        await client.query('ROLLBACK');
         return res.status(409).json({ error: 'Ya hay una invitación pendiente para este usuario' });
       }
-      // Reactivar si estaba INACTIVE/REMOVED
-      await pool.query(
-        `UPDATE memberships SET role = $1, status = 'PENDING', invited_at = NOW(), invited_by = $2 WHERE id = $3`,
-        [role, req.user.id, existingM.id]
+
+      const { rows: currentMembers } = await client.query(
+        `SELECT COUNT(*) AS count FROM memberships
+         WHERE business_profile_id = $1 AND status IN ('ACTIVE', 'PENDING')`,
+        [req.saas.tenantId]
       );
-      return res.json({ message: 'Invitación reactivada', membershipId: existingM.id });
+      const current = parseInt(currentMembers[0].count, 10);
+      const maxSeats = usageMeteringService.getLimit(req.saas.plan, 'TEAM_SEATS');
+      const consumesSeat = existing.length === 0 || !['ACTIVE', 'PENDING'].includes(existing[0].status);
+      if (consumesSeat && maxSeats !== null && current >= maxSeats) {
+        await client.query('ROLLBACK');
+        return res.status(403).json({
+          error: 'Límite de asientos alcanzado', current, max: maxSeats,
+          plan: req.saas.plan, upgradeUrl: '/api/saas/billing/checkout'
+        });
+      }
+
+      if (existing.length > 0) {
+        const { rows } = await client.query(
+          `UPDATE memberships SET role = $1, status = 'PENDING', invited_at = NOW(), invited_by = $2
+           WHERE id = $3 RETURNING *`,
+          [role, req.user.id, existing[0].id]
+        );
+        membership = rows[0];
+        reactivated = true;
+      } else {
+        inviteToken = crypto.randomBytes(32).toString('hex');
+        const { rows } = await client.query(`
+          INSERT INTO memberships (business_profile_id, user_id, role, status, invited_by, invite_token)
+          VALUES ($1, $2, $3, 'PENDING', $4, $5)
+          RETURNING *;
+        `, [req.saas.tenantId, userId, role, req.user.id, inviteToken]);
+        membership = rows[0];
+      }
+      await client.query('COMMIT');
+    } catch (transactionError) {
+      await client.query('ROLLBACK');
+      throw transactionError;
+    } finally {
+      client.release();
     }
 
-    // Crear invitación
-    const inviteToken = crypto.randomBytes(32).toString('hex');
-    const { rows } = await pool.query(`
-      INSERT INTO memberships (business_profile_id, user_id, role, status, invited_by, invite_token)
-      VALUES ($1, $2, $3, 'PENDING', $4, $5)
-      RETURNING *;
-    `, [req.saas.tenantId, userId, role, req.user.id, inviteToken]);
+    if (reactivated) return res.json({ message: 'Invitación reactivada', membershipId: membership.id });
 
     // TODO: Enviar email de invitación (integrar con email.service.js)
     console.log(`[saasTeamRoutes] Invitación creada para ${email} como ${role} en tenant ${req.saas.tenantId}`);
 
     res.status(201).json({
       message: 'Invitación enviada',
-      membership: rows[0],
+      membership,
       inviteToken // en dev; en prod no exponer
     });
   } catch (error) {

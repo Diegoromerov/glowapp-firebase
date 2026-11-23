@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// API Keys del tenant: listar, crear (la key se muestra una sola vez) y revocar.
-/// Requiere rol ADMIN/OWNER y plan con la capacidad CUSTOM_BRANDING (PRO o superior).
+/// Requiere rol ADMIN/OWNER y la capacidad explícita API_KEYS (Profesional o superior).
 class ApiKeysScreen extends ConsumerStatefulWidget {
   const ApiKeysScreen({super.key});
 
@@ -44,6 +44,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
     final profileState = ref.watch(businessProfileProvider);
     final businessProfileId = ref.watch(currentBusinessProfileIdProvider) ?? '';
     final state = ref.watch(apiKeysProvider);
+    final currentPlan = profileState.profile == null
+        ? SaasPlanTier.freeTrial
+        : profileState.profile!.currentPlan;
+    final canCreateApiKeys = currentPlan == SaasPlanTier.pro || currentPlan == SaasPlanTier.enterprise;
 
     if (profileState.profile == null) {
       return Scaffold(
@@ -72,11 +76,12 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
         foregroundColor: _ink,
         elevation: 0,
         actions: [
-          IconButton(
-            tooltip: 'Crear API Key',
-            icon: const Icon(Icons.add_rounded, color: _gold),
-            onPressed: _busy ? null : () => _showCreateDialog(businessProfileId),
-          ),
+          if (canCreateApiKeys)
+            IconButton(
+              tooltip: 'Crear API Key',
+              icon: const Icon(Icons.add_rounded, color: _gold),
+              onPressed: _busy ? null : () => _showCreateDialog(businessProfileId),
+            ),
         ],
       ),
       body: state.isLoading && state.keys.isEmpty
@@ -88,6 +93,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                 children: [
                   _infoBanner(),
                   const SizedBox(height: 16),
+                  if (!canCreateApiKeys) ...[
+                    _upgradeBanner(),
+                    const SizedBox(height: 16),
+                  ],
                   if (state.error != null) _errorBanner(state.error),
                   if (state.keys.isEmpty)
                     _emptyState(businessProfileId)

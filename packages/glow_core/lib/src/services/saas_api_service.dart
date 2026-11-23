@@ -92,10 +92,63 @@ class SaasApiService {
     return current;
   }
 
-  /// Catálogo de planes.
-  /// El backend no expone /plans: la fuente de verdad es `SaasPlanTier`
-  /// (espejo de usageMeteringService.PLAN_LIMITS + invoiceService.getPlanPrice).
+  /// Catálogo comercial y cuotas publicados por el backend.
   static Future<List<SaasPlan>> getPlans() async {
+    try {
+      final response = await ApiService.get('$_basePath/catalog');
+      final data = response as Map<String, dynamic>;
+      final rawPlans = data['plans'] as List<dynamic>? ?? const [];
+      return rawPlans.whereType<Map<String, dynamic>>().map((raw) {
+        final tier = SaasPlanTier.fromCode((raw['id'] ?? '').toString());
+        final rawQuotas = raw['quotas'] as Map<String, dynamic>? ?? const {};
+        final limits = <String, int>{};
+        final features = <String>[];
+        final catalogCapabilities = data['capabilities'] as Map<String, dynamic>? ?? const {};
+        for (final capability in (raw['capabilities'] as List<dynamic>? ?? const [])) {
+          final code = capability.toString();
+          final definition = catalogCapabilities[code];
+          if (definition is Map<String, dynamic> && definition['kind'] == 'boolean') {
+            features.add((definition['label'] ?? code).toString());
+          }
+        }
+        for (final entry in rawQuotas.entries) {
+          final quota = entry.value;
+          if (quota is! Map<String, dynamic>) continue;
+          final value = quota['limit'];
+          if (value is num) limits[entry.key] = value.toInt();
+          if (quota['kind'] == 'boolean') continue;
+          final label = quota['label']?.toString();
+          final unit = quota['unit']?.toString();
+          if (entry.key == 'API_CALLS') continue;
+          if (label != null && label.isNotEmpty && value is num && value > 0) {
+            features.add(value == 1 && quota['kind'] == 'boolean'
+                ? '$label incluido'
+                : '$value $unit de $label');
+          } else if (label != null && label.isNotEmpty && value == null) {
+            features.add('$label ilimitadas');
+          }
+        }
+
+        return SaasPlan(
+          id: (raw['id'] ?? '').toString(),
+          tier: tier,
+          name: (raw['name'] ?? tier.label).toString(),
+          description: (raw['description'] ?? '').toString(),
+          priceCents: ((raw['priceCop'] as num? ?? 0) * 100).round(),
+          trialDays: (raw['trialDays'] as num? ?? 0).toInt(),
+          limits: limits,
+          features: features,
+          isActive: true,
+          isPopular: raw['popular'] as bool? ?? false,
+        );
+      }).toList();
+    } catch (e) {
+      if (kDebugMode) debugPrint('⚠️ Catálogo SaaS no disponible; usando catálogo local compatible: $e');
+      return _legacyPlans();
+    }
+  }
+
+  static List<SaasPlan> _legacyPlans() {
     return SaasPlanTier.values.map((tier) {
       final raw = tier.limits;
       return SaasPlan(
@@ -125,9 +178,9 @@ class SaasApiService {
       case SaasPlanTier.basic:
         return 'Para salones que inician su operación digital';
       case SaasPlanTier.pro:
-        return 'Para salones con equipo y agenda completa';
+        return 'Para salones con equipo, agenda completa, integraciones y analítica avanzada';
       case SaasPlanTier.enterprise:
-        return 'Multi-sede, integraciones y soporte prioritario';
+        return 'Equipo e integraciones sin límite, WhatsApp, punto de venta y soporte prioritario';
     }
   }
 
@@ -141,13 +194,19 @@ class SaasApiService {
       return '$v $unit';
     }
 
-    return [
+    final features = <String>[
       '${limitOf('TEAM_SEATS', 'asientos')} de equipo',
       '${limitOf('ONLINE_BOOKING', 'reservas')} online/mes',
-      '${limitOf('API_CALLS', 'llamadas')} API/mes',
       'Analítica avanzada: ${limitOf('ADVANCED_ANALYTICS', '')}',
       'Marca personalizada: ${limitOf('CUSTOM_BRANDING', '')}',
     ];
+    if (tier == SaasPlanTier.pro || tier == SaasPlanTier.enterprise) {
+      features.add('Integraciones con otros sistemas');
+    }
+    if (tier == SaasPlanTier.enterprise) {
+      features.addAll(['WhatsApp', 'Punto de venta']);
+    }
+    return features;
   }
 
   // ═══════════════════════════════════════════════════════════════

@@ -1,0 +1,77 @@
+# Fase 2 — Catálogo comercial, entitlements y cuotas
+
+**Fecha:** 23 de noviembre de 2026
+
+**Estado:** implementación local terminada; despliegue y validación funcional pendientes.
+
+## 1. Objetivo y alcance ejecutado
+
+Centralizar los planes, capacidades y límites de GlowApp para que backend, onboarding y pantalla de uso consulten una oferta coherente. Se consolidaron los límites actuales, se instrumentaron reservas e integraciones, se hizo explícito el acceso a llaves API y se vinculó el control de asientos con las membresías activas y pendientes.
+
+Quedan fuera de esta fase el despliegue a producción, una migración comercial masiva de planes existentes, los complementos de pago y las notificaciones externas de consumo.
+
+## 2. Qué se hizo
+
+- Se creó `backend/src/config/saasCatalog.js`, catálogo versionado v1 de planes, capacidades booleanas, métricas, cuotas, precios, períodos y complementos. No hay complementos definidos todavía.
+- `saasEntitlements`, `usageMeteringService` y `usageTracker` derivan sus decisiones del catálogo, retirando límites duplicados.
+- Se agregó el endpoint público `GET /api/saas/catalog` y el detalle `GET /api/saas/catalog/:planId`. No exponen información de salones.
+- Las reservas nuevas verifican y consumen el cupo mensual dentro de la misma transacción que crea la reserva, con clave de idempotencia ya existente y conteo histórico de respaldo.
+- Las llaves API requieren la capacidad `API_KEYS`; las solicitudes autorizadas consumen la cuota mensual de procesos de integración y reciben `429` cuando se agota.
+- Las invitaciones y reactivaciones de miembros consultan el cupo del plan incluyendo personas activas y pendientes. El alta y el conteo se serializan por salón para evitar exceder el cupo con invitaciones simultáneas.
+- `/api/saas/usage` presenta nombres comerciales de métricas y el número real de personas del equipo. `/api/saas/usage/limits` también devuelve catálogo y versión.
+- El onboarding consume el catálogo disponible y solo permite iniciar con Prueba Gratis o Freemium. Los planes pagos siguen activándose desde Facturación; no se confía en un plan pagado enviado en el cuerpo del alta.
+- La pantalla Flutter de uso y el modelo compartido presentan etiquetas y cuotas del backend. Se actualizaron los valores de respaldo para funcionar sin conexión.
+- Facturación, suscripciones e invoices usan el catálogo como fuente de identificadores y precios.
+
+### Matriz comercial implementada
+
+| Plan | Precio mensual COP | Personas | Reservas en línea/mes | Procesos de integración/mes | Capacidades principales |
+|---|---:|---:|---:|---:|---|
+| Prueba Gratis | $0 por 14 días | 3 | 50 | 1.000 | Presencia en mapa, equipo, reservas y marca personalizada |
+| Freemium | Gratis permanente | 1 | 20 | 500 | Reservas en línea |
+| Básico | $99.000 | 5 | 200 | 10.000 | Mapa, equipo y reservas |
+| Profesional | $249.000 | 20 | Sin límite | 100.000 | Analítica avanzada, marca e integraciones con otros sistemas |
+| Empresarial | $599.000 | Sin límite | Sin límite | Sin límite | Analítica, marca, integraciones, WhatsApp y punto de venta |
+
+Las cuotas de reservas y procesos son controles técnicos internos aunque el onboarding no muestre “llamadas API” como beneficio comercial. Los precios USD previos se conservan en el catálogo (25/65/150 USD para Básico/Profesional/Empresarial); no se implementó conversión de moneda ni se cambió el mecanismo de cobro.
+
+## 3. Cómo funciona ahora
+
+El backend determina el plan y resuelve sus capacidades desde el catálogo versionado. Las capacidades booleanas —por ejemplo, WhatsApp— se autorizan como permisos; las cuotas —reservas, personas e integraciones— se cuentan por su período. Las pantallas consultan el mismo catálogo y muestran los límites recibidos del servidor, con valores de respaldo cuando no hay conexión.
+
+La medición de reservas se aplica al crear una reserva y es parte de esa transacción. Los procesos API se cuentan al autenticar una llave con alcance válido. Las personas activas y las invitaciones pendientes ocupan asiento; el backend bloquea la fila del salón durante el conteo y alta.
+
+## 4. Decisiones tomadas
+
+- Se conservaron los límites existentes para evitar cambiar silenciosamente contratos comerciales.
+- Se alinearon capacidades visibles con la propuesta actual: analítica avanzada y llaves de integración son Profesional o Empresarial; WhatsApp y POS son Empresarial. La llave API ya no se habilita por tener marca personalizada.
+- El onboarding solo provisiona planes gratuitos. Una selección pagada debe pasar por el flujo de Facturación y su confirmación; el cliente no puede elevarse de plan alterando el payload.
+- Se usan períodos mensuales UTC para evitar que el cambio de zona horaria del servidor mueva los límites.
+- Las reservas se cuentan por cita/solicitud, no por cada servicio de una cita con varios servicios.
+- No se creó migración de base de datos: el contador usa `usage_metrics` existente y reconstruye el punto de partida desde reservas históricas cuando falta el registro del mes.
+
+## 5. Verificación
+
+- Se ejecutó `node --check` sobre los módulos JavaScript backend modificados después del ajuste transaccional de invitaciones; todos pasaron.
+- `git diff --check` y `git diff --cached --check` pasaron para los cambios de esta fase.
+- No se ejecutó la suite de pruebas ni pruebas de interfaz.
+- No se ejecutaron pruebas contra PostgreSQL, ni se verificó un tenant real en producción.
+- No se desplegó el backend ni se publicó una nueva versión de Flutter.
+
+## 6. Datos y despliegue
+
+No hay migración pendiente. Al desplegar el backend se publicará el endpoint del catálogo y se aplicarán los nuevos controles en rutas de reservas, llaves y equipo. Para completar el rollout habrá que desplegar los clientes que leen el catálogo. El plan de base y complementos no modifica registros existentes en esta fase.
+
+Las llaves API de tenants en Prueba Gratis, Freemium o Básico que antes podían autorizarse por el chequeo indirecto de marca personalizada dejarán de funcionar; el contrato nuevo requiere Profesional o Empresarial. Las llaves de Profesional y Empresarial conservan el acceso. Revisar llaves existentes y avisar a tenants afectados antes de activar el cambio en producción.
+
+## 7. Riesgos y rollback
+
+- Los controles de cuotas de reserva y equipo dependen de que el esquema desplegado tenga `business_profiles`, `memberships` y `usage_metrics`, presentes en la arquitectura posterior a la Fase 1.
+- La instrumentación de integraciones cubre las solicitudes autenticadas por middleware de llaves. Otras integraciones que no usen esas llaves aún deben agregarse en una fase posterior.
+- El backend devuelve el estado/cuota y la app presenta avisos; no se añadieron envíos de correo, push ni alertas automáticas al alcanzar 80/100 %.
+- Para revertir, volver a la versión anterior del backend y los clientes. No borrar `usage_metrics`: conserva historial y no requiere cambio de esquema.
+- La selección de plan de onboarding queda limitada a opciones gratuitas, como protección contra autoasignación de planes pagos; el cobro pagado continúa en Facturación.
+
+## 8. Pendientes y fase siguiente
+
+Antes de producción: ejecutar pruebas de integración de cuotas, revisar los planes actuales de tenants, acordar migración/transición comercial, verificar llaves API afectadas y desplegar backend y clientes coordinadamente. La Fase 3 debe unificar membresías, roles y permisos operativos con el modelo de membresía SaaS; en particular, correo de invitación, auditoría y política de tokens.

@@ -24,7 +24,7 @@ describe('usageMeteringService', () => {
       expect(limits.ONLINE_BOOKING).toBe(50);
       expect(limits.TEAM_SEATS).toBe(3);
       expect(limits.API_CALLS).toBe(1000);
-      expect(limits.ADVANCED_ANALYTICS).toBe(1);
+      expect(limits.ADVANCED_ANALYTICS).toBe(0);
       expect(limits.CUSTOM_BRANDING).toBe(1);
       expect(limits.WHATSAPP_INTEGRATION).toBe(0);
       expect(limits.POS_INTEGRATION).toBe(0);
@@ -49,7 +49,7 @@ describe('usageMeteringService', () => {
       expect(limits.API_CALLS).toBe(100000);
       expect(limits.ADVANCED_ANALYTICS).toBe(1);
       expect(limits.CUSTOM_BRANDING).toBe(1);
-      expect(limits.WHATSAPP_INTEGRATION).toBe(1);
+      expect(limits.WHATSAPP_INTEGRATION).toBe(0);
       expect(limits.POS_INTEGRATION).toBe(0);
     });
 

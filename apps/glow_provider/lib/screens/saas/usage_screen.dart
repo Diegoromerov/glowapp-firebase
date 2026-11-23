@@ -474,16 +474,26 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
       return 0;
     }
 
+    final metricCodes = metrics.map((metric) => metric.type.code).toSet();
+    final codes = <String>{...limits.keys, ...metricCodes};
     final rows = <Widget>[];
-    limits.forEach((code, limit) {
+    for (final code in codes) {
       final type = UsageMetricType.fromCode(code);
+      UsageMetric? serverMetric;
+      for (final metric in metrics) {
+        if (metric.type.code == code) {
+          serverMetric = metric;
+          break;
+        }
+      }
+      final effectiveLimit = serverMetric?.limit ?? limits[code];
       final used = usedFor(code);
       final isBool = type.isBoolean;
 
       if (isBool) {
-        final included = (limit ?? 0) > 0;
+        final included = (effectiveLimit ?? 0) > 0;
         rows.add(_limitRow(
-          label: type.label,
+          label: serverMetric?.label ?? type.label,
           value: included ? 'Incluido' : 'No incluido',
           progress: null,
           color: included ? _green : _muted,
@@ -491,20 +501,20 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
         return;
       }
 
-      if (limit == null) {
-        rows.add(_limitRow(label: type.label, value: 'Ilimitado', progress: null, color: _green));
+      if (effectiveLimit == null || effectiveLimit == 0) {
+        rows.add(_limitRow(label: serverMetric?.label ?? type.label, value: 'Ilimitado', progress: null, color: _green));
         return;
       }
 
-      final progress = limit > 0 ? (used / limit).clamp(0.0, 1.0) : 0.0;
+      final progress = effectiveLimit > 0 ? (used / effectiveLimit).clamp(0.0, 1.0) : 0.0;
       final color = _progressColor(progress) ?? tier.color;
       rows.add(_limitRow(
-        label: type.label,
-        value: '${_formatNumber(used)} / ${_formatNumber(limit)}',
+        label: serverMetric?.label ?? type.label,
+        value: '${_formatNumber(used)} / ${_formatNumber(effectiveLimit)}',
         progress: progress,
         color: color,
       ));
-    });
+    }
 
     return _card(
       title: 'Límites del Plan ${tier.label}',

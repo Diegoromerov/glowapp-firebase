@@ -1,71 +1,22 @@
 // backend/src/services/usageMeteringService.js
 const { pool } = require('../config/db');
-const { hasEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
+const { PLAN_CATALOG, METRICS, getLimit: catalogGetLimit, getMonthPeriod, PLAN_IDS } = require('../config/saasCatalog');
 
 /**
  * Servicio centralizado de límites y métricas de uso por plan
  * Fuente de verdad para: featureGate, usageTracker, saasUsageRoutes, subscriptionService
  */
 
-// Límites por plan (mensuales salvo que se indique)
-const PLAN_LIMITS = {
-  FREE_TRIAL: {
-    MAP_VISIBILITY: 1,           // 1 perfil en mapa público
-    ONLINE_BOOKING: 50,          // 50 citas online/mes
-    TEAM_SEATS: 3,               // 3 asientos equipo
-    API_CALLS: 1000,             // 1000 calls API/mes
-    ADVANCED_ANALYTICS: 1,       // Habilitado (boolean)
-    CUSTOM_BRANDING: 1,          // Habilitado (boolean)
-    WHATSAPP_INTEGRATION: 0,     // No disponible
-    POS_INTEGRATION: 0           // No disponible
-  },
-  FREEMIUM: {
-    MAP_VISIBILITY: 0,           // Sin mapa público
-    ONLINE_BOOKING: 20,          // 20 citas online/mes
-    TEAM_SEATS: 1,               // 1 asiento (solo owner)
-    API_CALLS: 500,              // 500 calls API/mes
-    ADVANCED_ANALYTICS: 0,       // No disponible
-    CUSTOM_BRANDING: 0,          // No disponible
-    WHATSAPP_INTEGRATION: 0,
-    POS_INTEGRATION: 0
-  },
-  BASIC: {
-    MAP_VISIBILITY: 1,
-    ONLINE_BOOKING: 200,
-    TEAM_SEATS: 5,
-    API_CALLS: 10000,
-    ADVANCED_ANALYTICS: 0,
-    CUSTOM_BRANDING: 0,
-    WHATSAPP_INTEGRATION: 0,
-    POS_INTEGRATION: 0
-  },
-  PRO: {
-    MAP_VISIBILITY: 1,
-    ONLINE_BOOKING: null,        // Ilimitado
-    TEAM_SEATS: 20,
-    API_CALLS: 100000,
-    ADVANCED_ANALYTICS: 1,
-    CUSTOM_BRANDING: 1,
-    WHATSAPP_INTEGRATION: 1,
-    POS_INTEGRATION: 0
-  },
-  ENTERPRISE: {
-    MAP_VISIBILITY: 1,
-    ONLINE_BOOKING: null,
-    TEAM_SEATS: null,            // Ilimitado
-    API_CALLS: null,             // Ilimitado
-    ADVANCED_ANALYTICS: 1,
-    CUSTOM_BRANDING: 1,
-    WHATSAPP_INTEGRATION: 1,
-    POS_INTEGRATION: 1
-  }
-};
+// Proyección compatible con las rutas y reportes existentes.
+const PLAN_LIMITS = Object.freeze(Object.fromEntries(
+  Object.entries(PLAN_CATALOG).map(([plan, definition]) => [plan, definition.quotas])
+));
 
 /**
  * Obtiene límites para un plan
  */
 function getPlanLimits(plan) {
-  return PLAN_LIMITS[plan] || PLAN_LIMITS.FREEMIUM;
+  return PLAN_LIMITS[String(plan || '').toUpperCase().trim()] || PLAN_LIMITS.FREEMIUM;
 }
 
 /**
@@ -81,8 +32,7 @@ function hasFeature(plan, feature) {
  * Obtiene límite numérico para feature (null = ilimitado)
  */
 function getLimit(plan, feature) {
-  const limits = getPlanLimits(plan);
-  return feature in limits ? limits[feature] : 0;
+  return catalogGetLimit(plan, feature);
 }
 
 /**
@@ -105,13 +55,12 @@ async function canConsume(tenantId, feature, delta = 1) {
   if (limit === null) return { allowed: true, plan, limit: 'unlimited' };
 
   // Verificar uso actual
-  const now = new Date();
-  const periodStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const { start } = getMonthPeriod();
 
   const { rows: metric } = await pool.query(`
     SELECT count FROM usage_metrics
     WHERE tenant_id = $1 AND feature = $2 AND period_start = $3
-  `, [tenantId, feature, periodStart.toISOString().split('T')[0]]);
+  `, [tenantId, feature, start]);
 
   const current = metric[0]?.count || 0;
   const remaining = limit - current;
@@ -135,9 +84,7 @@ async function canConsume(tenantId, feature, delta = 1) {
  * Retorna nuevo conteo
  */
 async function incrementUsage(tenantId, feature, delta = 1) {
-  const now = new Date();
-  const periodStart = new Date(now.getFullYear(), now.getMonth(), 1);
-  const periodEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+  const { start, end } = getMonthPeriod();
 
   const plan = await getTenantPlan(tenantId);
   const limit = getLimit(plan, feature);
@@ -156,13 +103,41 @@ async function incrementUsage(tenantId, feature, delta = 1) {
   const { rows } = await pool.query(query, [
     tenantId,
     feature,
-    periodStart.toISOString().split('T')[0],
-    periodEnd.toISOString().split('T')[0],
+    start,
+    end,
     delta,
     limit
   ]);
 
   return rows[0];
+}
+
+/** Consume una cuota con control atómico para evitar excederla en concurrencia. */
+async function consumeUsage(tenantId, feature, delta = 1) {
+  const plan = await getTenantPlan(tenantId);
+  const limit = getLimit(plan, feature);
+  if (limit === 0) return { allowed: false, plan, limit: 0, reason: 'Feature no disponible en plan' };
+
+  const { start, end } = getMonthPeriod();
+  const { rows } = await pool.query(`
+    INSERT INTO usage_metrics (tenant_id, feature, period_start, period_end, count, "limit")
+    VALUES ($1, $2, $3, $4, $5, $6)
+    ON CONFLICT (tenant_id, feature, period_start)
+    DO UPDATE SET
+      count = usage_metrics.count + EXCLUDED.count,
+      "limit" = EXCLUDED."limit",
+      updated_at = NOW()
+    WHERE EXCLUDED."limit" IS NULL
+       OR usage_metrics.count + EXCLUDED.count <= EXCLUDED."limit"
+    RETURNING count, "limit";
+  `, [tenantId, feature, start, end, delta, limit]);
+
+  if (rows.length) return { allowed: true, plan, limit: limit === null ? 'unlimited' : limit, ...rows[0] };
+  const { rows: currentRows } = await pool.query(
+    `SELECT count FROM usage_metrics WHERE tenant_id = $1 AND feature = $2 AND period_start = $3`,
+    [tenantId, feature, start]
+  );
+  return { allowed: false, plan, limit, current: currentRows[0]?.count || 0, reason: 'Límite excedido' };
 }
 
 /**
@@ -179,13 +154,12 @@ async function getTenantPlan(tenantId) {
  * Obtiene uso actual del período para un tenant
  */
 async function getCurrentUsage(tenantId) {
-  const now = new Date();
-  const periodStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const { start } = getMonthPeriod();
 
   const { rows } = await pool.query(`
     SELECT feature, count, limit FROM usage_metrics
     WHERE tenant_id = $1 AND period_start = $2
-  `, [tenantId, periodStart.toISOString().split('T')[0]]);
+  `, [tenantId, start]);
 
   return rows;
 }
@@ -196,8 +170,7 @@ async function getCurrentUsage(tenantId) {
  */
 async function resetMonthlyCounters() {
   const now = new Date();
-  const prevMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-  const prevMonthEnd = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59);
+  const prevMonthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1));
 
   // Los contadores se "resetean" naturalmente porque period_start cambia
   // Esta función puede usarse para archivar o alertar
@@ -219,8 +192,7 @@ async function resetMonthlyCounters() {
  * Verifica y alerta si uso supera umbral (para job diario/cron)
  */
 async function checkUsageAlerts() {
-  const now = new Date();
-  const periodStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const { start } = getMonthPeriod();
 
   // Obtener tenants con alertas configuradas en metadata
   const { rows: tenants } = await pool.query(`
@@ -238,7 +210,7 @@ async function checkUsageAlerts() {
     const { rows: metrics } = await pool.query(`
       SELECT feature, count, limit FROM usage_metrics
       WHERE tenant_id = $1 AND period_start = $2
-    `, [tenant.id, periodStart.toISOString().split('T')[0]]);
+    `, [tenant.id, start]);
 
     for (const alert of configuredAlerts) {
       const metric = metrics.find(m => m.feature === alert.feature);
@@ -269,14 +241,7 @@ async function checkUsageAlerts() {
  * Features disponibles para gating
  */
 const METERED_FEATURES = [
-  'MAP_VISIBILITY',
-  'ONLINE_BOOKING',
-  'TEAM_SEATS',
-  'API_CALLS',
-  'ADVANCED_ANALYTICS',
-  'CUSTOM_BRANDING',
-  'WHATSAPP_INTEGRATION',
-  'POS_INTEGRATION'
+  ...Object.keys(METRICS),
 ];
 
 /**
@@ -294,12 +259,15 @@ const CAPABILITY_TO_FEATURE = {
 };
 
 module.exports = {
+  PLAN_IDS,
+  METRICS,
   PLAN_LIMITS,
   getPlanLimits,
   hasFeature,
   getLimit,
   canConsume,
   incrementUsage,
+  consumeUsage,
   getCurrentUsage,
   getTenantPlan,
   resetMonthlyCounters,

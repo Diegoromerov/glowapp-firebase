@@ -1,5 +1,6 @@
 // backend/src/services/invoiceService.js
 const { pool } = require('../config/db');
+const { PLAN_CATALOG } = require('../config/saasCatalog');
 const fs = require('fs');
 const path = require('path');
 
@@ -442,21 +443,9 @@ async function markInvoicePaid(invoiceId, paymentData = {}) {
  * Precios de planes (COP mensuales)
  */
 function getPlanPrice(plan, currency = 'COP') {
-  const pricesCOP = {
-    FREE_TRIAL: 0,
-    FREEMIUM: 0,
-    BASIC: 99000,
-    PRO: 249000,
-    ENTERPRISE: 599000
-  };
-  const pricesUSD = {
-    FREE_TRIAL: 0,
-    FREEMIUM: 0,
-    BASIC: 25,
-    PRO: 65,
-    ENTERPRISE: 150
-  };
-  return currency === 'USD' ? (pricesUSD[plan] || 0) : (pricesCOP[plan] || 0);
+  const definition = PLAN_CATALOG[String(plan || '').toUpperCase().trim()];
+  if (!definition) return 0;
+  return currency === 'USD' ? definition.priceUsd : definition.priceCop;
 }
 
 function calculateDaysRemaining(periodEnd) {
