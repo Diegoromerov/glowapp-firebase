@@ -295,15 +295,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   String _planDescription(SaasPlanTier plan) {
       switch (plan) {
         case SaasPlanTier.freeTrial:
-          return '14 días gratis · 3 asientos · 1.000 API/mes';
+          return 'Prueba GlowApp durante 14 días con hasta 3 personas de tu equipo.';
         case SaasPlanTier.freemium:
-          return 'Gratis permanente · 1 asiento · 500 API/mes';
+          return 'Administra tu salón gratis de forma permanente con 1 persona.';
         case SaasPlanTier.basic:
-          return '5 asientos · 200 reservas/mes · 10.000 API/mes';
+          return 'Organiza el trabajo de hasta 5 personas y gestiona hasta 200 reservas al mes.';
         case SaasPlanTier.pro:
-          return '20 asientos · reservas ilimitadas · Analítica avanzada · API Keys';
+          return 'Coordina hasta 20 personas, recibe reservas sin límite y consulta analíticas avanzadas.';
         case SaasPlanTier.enterprise:
-          return 'Asientos y API ilimitados · WhatsApp · POS · Soporte prioritario';
+          return 'Equipo sin límite de personas, WhatsApp, punto de venta y soporte prioritario.';
       }
     }
 
@@ -346,27 +346,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        plan.label,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: isSelected ? plan.color : const Color(0xFF1F1A15),
-                        ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              plan.label,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: isSelected ? plan.color : const Color(0xFF1F1A15),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            plan.formattedPrice,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: isSelected ? plan.color : const Color(0xFF8C7E74),
+                            ),
+                          ),
+                        ],
                       ),
+                      const SizedBox(height: 4),
                       Text(
-                        plan.formattedPrice,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: isSelected ? plan.color : const Color(0xFF8C7E74),
-                        ),
+                        _planDescription(plan),
+                        style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74)),
                       ),
                     ],
                   ),
-                ),
-                Text(
-                  _planDescription(plan),
-                  style: const TextStyle(fontSize: 11, color: Color(0xFF8C7E74)),
                 ),
               ],
             ),
