@@ -52,10 +52,12 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(isoAplicado, isNotNull);
-    // Viaja en UTC: se comprueba volviendo a hora local, no el literal.
-    final local = DateTime.parse(isoAplicado!).toLocal();
-    expect(local.hour, 10);
-    expect(local.minute, 0);
+    // La cita se envía en hora de Bogotá (-05:00), sin depender de la zona
+    // horaria del runner de CI (que puede ser UTC).
+    expect(isoAplicado, endsWith('-05:00'));
+    final instanteAplicado = DateTime.parse(isoAplicado!).toUtc();
+    final instanteEsperado = DateTime.parse('${fechaPedida}T10:00:00-05:00').toUtc();
+    expect(instanteAplicado, instanteEsperado);
   });
 
   testWidgets('sin franja elegida no se puede confirmar', (tester) async {
