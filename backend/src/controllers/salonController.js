@@ -2,6 +2,7 @@ const { pool } = require('../config/db');
 const crypto = require('crypto');
 const { hasEntitlement, PLAN_ENTITLEMENTS, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { ensureSalonOwnerIdentity } = require('../services/salonIdentity');
+const saasMembershipService = require('../services/saasMembershipService');
 const {
   listSalonMembers,
   getMemberRole,
@@ -198,33 +199,23 @@ exports.inviteMember = async (req, res) => {
       return res.status(403).json({ error: 'No tienes permisos de administración en este salón para invitar personal.' });
     }
 
-    // Generar token de invitación único de 32 caracteres (para URL en claro)
-    const rawToken = crypto.randomBytes(16).toString('hex');
-    const tokenHash = crypto.createHash('sha256').update(rawToken).digest('hex');
-    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 días de validez
-
-    await pool.query(
-      `INSERT INTO salon_invitaciones (salon_id, email, sub_rol, token_invitacion, expires_at, creado_por)
-       VALUES ($1, $2, $3, $4, $5, $6)`,
-      [salon_id, cleanEmail, cleanSubRol, tokenHash, expiresAt, inviterId]
+    const { rows: salonRows } = await pool.query(
+      `SELECT s.business_profile_id, bp.name, bp.saas_plan
+         FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id WHERE s.id = $1`, [salon_id]
     );
-
-    const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-frontend-production.up.railway.app').replace(/\/$/, '');
-    // La ruta /accept-invitation se retiró; el enlace tiene que apuntar a la
-    // que existe o el invitado aterriza en una pantalla en blanco.
-    const inviteLink = `${frontendBase}/#/auth/accept-invitation?token=${rawToken}`;
-
-    console.log(`✉️ Invitación creada para ${cleanEmail} como ${cleanSubRol} en Salón ID ${salon_id}`);
-
-    res.json({
-      success: true,
-      message: `Invitación generada exitosamente para ${cleanEmail}.`,
-      invitation_token: rawToken,
-      invite_link: inviteLink
-    });
+    if (!salonRows[0]) return res.status(409).json({ error: 'El salón no está vinculado a un perfil SaaS.' });
+    if (!hasEntitlement(salonRows[0].saas_plan || 'FREE_TRIAL', SAAS_CAPABILITIES.TEAM_MANAGEMENT)) {
+      return res.status(403).json({ error: 'El plan actual no incluye gestión de equipo.', currentPlan: salonRows[0].saas_plan || 'FREE_TRIAL' });
+    }
+    const saasRole = ({ ADMINISTRADOR: 'ADMIN', RECEPCIONISTA: 'MANAGER', PRESTADOR_INDEPENDIENTE: 'MEMBER', EMPLEADO: 'MEMBER' })[cleanSubRol];
+    const result = await saasMembershipService.invite({ tenantId: salonRows[0].business_profile_id, tenantName: salonRows[0].name,
+      plan: salonRows[0].saas_plan || 'FREE_TRIAL', actorId: inviterId, email: cleanEmail, role: saasRole, subRole: cleanSubRol });
+    return res.status(result.emailSent ? 201 : 202).json({ success: true,
+      message: result.emailSent ? `Invitación enviada a ${cleanEmail}.` : `Invitación creada para ${cleanEmail}, pero no se confirmó el envío del correo.`,
+      invitation_id: result.membershipId, email_sent: result.emailSent });
   } catch (error) {
     console.error('❌ ERROR INVITE MEMBER:', error.message);
-    res.status(500).json({ error: 'Error al enviar invitación de equipo' });
+    res.status(error.status || 500).json({ error: error.message || 'Error al enviar invitación de equipo', ...(error.details || {}) });
   }
 };
 
@@ -243,6 +234,18 @@ exports.acceptInvitation = async (req, res) => {
     const cleanToken = String(token).trim().toLowerCase();
     if (!/^[0-9a-f]{32}$/i.test(cleanToken)) {
       return res.status(400).json({ error: 'El formato del token de invitación es inválido.' });
+    }
+
+    try {
+      const accepted = await saasMembershipService.accept({ token: cleanToken, user: req.user });
+      const { rows: salonRows } = await pool.query(
+        'SELECT id FROM salones WHERE business_profile_id = $1 ORDER BY id LIMIT 1', [accepted.business_profile_id]
+      );
+      return res.json({ success: true, message: 'Invitación aceptada correctamente.',
+        salon_id: salonRows[0]?.id ?? null, sub_rol: accepted.sub_rol || accepted.role });
+    } catch (membershipError) {
+      // Aún se aceptan invitaciones emitidas antes de la Fase 3, almacenadas en salon_invitaciones.
+      if (membershipError.status !== 404) throw membershipError;
     }
 
     const tokenHash = crypto.createHash('sha256').update(cleanToken).digest('hex');
@@ -318,6 +321,15 @@ exports.acceptInvitation = async (req, res) => {
       [invitation.salon_id, userId, invitation.sub_rol, invitation.id]
     );
 
+    await pool.query(
+      `INSERT INTO membership_audit_logs
+         (business_profile_id, membership_id, actor_user_id, event_type, previous_role, new_role, previous_status, new_status, metadata)
+       SELECT m.business_profile_id, m.id, $2, 'INVITATION_ACCEPTED', m.role, m.role, 'PENDING', 'ACTIVE',
+              jsonb_build_object('legacySalonInvitationId', $3::text)
+         FROM salones s JOIN memberships m ON m.business_profile_id = s.business_profile_id AND m.user_id = $2
+        WHERE s.id = $1`, [invitation.salon_id, userId, invitation.id]
+    );
+
     console.log(`🤝 Usuario ID ${userId} aceptó invitación como ${invitation.sub_rol} en Salón ID ${invitation.salon_id}`);
 
     res.json({
@@ -328,7 +340,7 @@ exports.acceptInvitation = async (req, res) => {
     });
   } catch (error) {
     console.error('❌ ERROR ACCEPT INVITATION:', error.message);
-    res.status(500).json({ error: 'Error al procesar la aceptación de la invitación' });
+    res.status(error.status || 500).json({ error: error.message || 'Error al procesar la aceptación de la invitación', ...(error.details || {}) });
   }
 };
 

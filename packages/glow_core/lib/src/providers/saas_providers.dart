@@ -302,20 +302,22 @@ class TeamNotifier extends StateNotifier<TeamState> {
       // El backend no expone un listado aparte de invitaciones: se derivan
       // de las memberships en estado PENDING.
       final invitations = members
-          .where((m) => m.invitationStatus == InvitationStatus.pending)
+          .where((m) => m.invitationStatus == InvitationStatus.pending || m.invitationStatus == InvitationStatus.expired)
           .map((m) => TeamInvitation(
                 id: m.id,
                 businessProfileId: businessProfileId,
                 email: m.email,
                 role: m.role,
                 invitedByUserId: '',
-                status: InvitationStatus.pending,
-                expiresAt: DateTime.now().add(const Duration(days: 7)),
+                status: m.invitationStatus,
+                expiresAt: m.inviteExpiresAt ?? DateTime.now().add(const Duration(days: 7)),
                 createdAt: m.invitedAt ?? DateTime.now(),
               ))
           .toList();
+      final activeMembers = members.where((m) =>
+          m.invitationStatus == InvitationStatus.accepted || m.invitationStatus == InvitationStatus.suspended).toList();
       state = state.copyWith(
-        members: members,
+        members: activeMembers,
         invitations: invitations,
         isLoading: false,
         error: null,
@@ -361,6 +363,18 @@ class TeamNotifier extends StateNotifier<TeamState> {
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
       if (kDebugMode) debugPrint('TeamNotifier.remove error: $e\n$st');
+      rethrow;
+    }
+  }
+
+  Future<void> setMemberStatus(String businessProfileId, String memberId, String status) async {
+    state = state.copyWith(isLoading: true);
+    try {
+      await SaasApiService.setMemberStatus(businessProfileId, memberId, status);
+      await load(businessProfileId);
+    } catch (e, st) {
+      state = state.copyWith(isLoading: false, error: e);
+      if (kDebugMode) debugPrint('TeamNotifier.setMemberStatus error: $e\\n$st');
       rethrow;
     }
   }

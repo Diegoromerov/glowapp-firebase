@@ -1,242 +1,75 @@
-const { Membership, User, BusinessProfile } = require('../models');
+const { pool } = require('../config/db');
+const membershipService = require('../services/saasMembershipService');
+const { hasEntitlement } = require('../config/saasEntitlements');
 
-/**
- * 👥 MEMBERSHIP CONTROLLER (GLOWAPP SAAS)
- * Handles team member listings, invitations, role modifications, and status management.
- */
+function context(req) {
+  const tenantId = req.membership?.business_profile_id || req.user?.businessProfileId;
+  if (!tenantId) { const error = new Error('Contexto de negocio requerido'); error.status = 401; throw error; }
+  return tenantId;
+}
+
+function respondError(res, error) {
+  if (error.status) return res.status(error.status).json({ error: error.message, ...(error.details || {}) });
+  console.error('[membershipController] Error:', error.message);
+  return res.status(500).json({ error: 'INTERNAL_SERVER_ERROR' });
+}
+
+async function tenantInfo(tenantId) {
+  const { rows } = await pool.query('SELECT id, name, saas_plan FROM business_profiles WHERE id = $1', [tenantId]);
+  if (!rows[0]) { const error = new Error('Negocio no encontrado'); error.status = 404; throw error; }
+  return rows[0];
+}
 
 const getMembers = async (req, res) => {
   try {
-    const memberships = await Membership.findAll({
-      where: {
-        business_profile_id: req.user.businessProfileId
-      },
-      include: [{
-        model: User,
-        as: 'user',
-        attributes: ['id', 'nombre', 'email', 'phone']
-      }]
-    });
-
-    const membersData = memberships.map(membership => ({
-      id: membership.id,
-      userId: membership.user_id,
-      role: membership.role,
-      status: membership.status,
-      createdAt: membership.created_at || membership.createdAt,
-      updatedAt: membership.updated_at || membership.updatedAt,
-      user: membership.user ? {
-        id: membership.user.id,
-        nombre: membership.user.nombre,
-        email: membership.user.email,
-        phone: membership.user.phone
-      } : null
-    }));
-
-    return res.json({ success: true, data: membersData });
-  } catch (error) {
-    console.error('Error getting members:', error);
-    return res.status(500).json({ error: 'INTERNAL_SERVER_ERROR' });
-  }
+    const members = await membershipService.list(context(req));
+    return res.json({ success: true, data: members.map((m) => ({
+      id: m.id, userId: m.user_id, role: m.role, status: m.status,
+      createdAt: m.created_at, updatedAt: m.updated_at,
+      user: m.user_id ? { id: m.user_id, nombre: m.full_name, email: m.email, phone: null } : null,
+      email: m.email
+    })) });
+  } catch (error) { return respondError(res, error); }
 };
 
 const inviteMember = async (req, res) => {
   try {
-    const { email, role } = req.body;
-
-    if (!email || !role) {
-      return res.status(400).json({ 
-        error: 'MISSING_FIELDS', 
-        message: 'Email y rol son obligatorios' 
-      });
+    const tenantId = context(req);
+    const tenant = await tenantInfo(tenantId);
+    if (!hasEntitlement(tenant.saas_plan, 'TEAM_MANAGEMENT')) {
+      return res.status(403).json({ error: 'Esta función no está incluida en el plan actual.' });
     }
-
-    const validRoles = ['OWNER', 'ADMIN', 'MANAGER', 'MEMBER', 'VIEWER'];
-    if (!validRoles.includes(role)) {
-      return res.status(400).json({ 
-        error: 'INVALID_ROLE', 
-        message: 'Rol no válido' 
-      });
-    }
-
-    const user = await User.findOne({ where: { email } });
-    if (!user) {
-      return res.status(404).json({ 
-        error: 'USER_NOT_FOUND', 
-        message: 'El usuario no está registrado en GlowApp' 
-      });
-    }
-
-    const existingMembership = await Membership.findOne({
-      where: {
-        user_id: user.id,
-        business_profile_id: req.user.businessProfileId
-      }
-    });
-
-    if (existingMembership) {
-      return res.status(400).json({ 
-        error: 'MEMBERSHIP_EXISTS', 
-        message: 'Este usuario ya tiene una membresía en este establecimiento' 
-      });
-    }
-
-    const newMembership = await Membership.create({
-      user_id: user.id,
-      business_profile_id: req.user.businessProfileId,
-      role,
-      status: 'ACTIVE',
-      accepted_at: new Date(),
-      created_by_user_id: req.user.id
-    });
-
-    return res.status(201).json({ success: true, data: newMembership });
-  } catch (error) {
-    console.error('Error inviting member:', error);
-    return res.status(500).json({ error: 'INTERNAL_SERVER_ERROR' });
-  }
+    const result = await membershipService.invite({ tenantId, tenantName: tenant.name, plan: tenant.saas_plan,
+      actorId: req.user.id, email: req.body?.email, role: req.body?.role });
+    return res.status(result.emailSent ? 201 : 202).json({ success: true, message: result.emailSent ? 'Invitación enviada por correo' : 'Invitación creada; el correo no pudo confirmarse', data: result });
+  } catch (error) { return respondError(res, error); }
 };
 
 const updateRole = async (req, res) => {
   try {
-    const { id } = req.params;
-    const { role } = req.body;
-
-    if (!role) {
-      return res.status(400).json({ 
-        error: 'MISSING_ROLE', 
-        message: 'Rol es obligatorio' 
-      });
-    }
-
-    const validRoles = ['OWNER', 'ADMIN', 'MANAGER', 'MEMBER', 'VIEWER'];
-    if (!validRoles.includes(role)) {
-      return res.status(400).json({ 
-        error: 'INVALID_ROLE', 
-        message: 'Rol no válido' 
-      });
-    }
-
-    const membership = await Membership.findOne({
-      where: {
-        id,
-        business_profile_id: req.user.businessProfileId
-      }
-    });
-
-    if (!membership) {
-      return res.status(404).json({ 
-        error: 'MEMBERSHIP_NOT_FOUND', 
-        message: 'Membresía no encontrada o no pertenece a tu establecimiento' 
-      });
-    }
-
-    if (membership.role === 'OWNER') {
-      return res.status(400).json({
-        error: 'CANNOT_MODIFY_OWNER',
-        message: 'No se puede modificar el rol del Propietario (OWNER)'
-      });
-    }
-
-    membership.role = role;
-    await membership.save();
-
+    if (req.membership?.role !== 'OWNER') return res.status(403).json({ error: 'Solo el propietario puede cambiar roles.' });
+    const membership = await membershipService.changeRole({ tenantId: context(req), memberId: req.params.id,
+      actorId: req.user.id, role: req.body?.role });
     return res.json({ success: true, data: membership });
-  } catch (error) {
-    console.error('Error updating role:', error);
-    return res.status(500).json({ error: 'INTERNAL_SERVER_ERROR' });
-  }
+  } catch (error) { return respondError(res, error); }
 };
 
 const updateStatus = async (req, res) => {
   try {
-    const { id } = req.params;
-    const { status } = req.body;
-
-    if (!status) {
-      return res.status(400).json({ 
-        error: 'MISSING_STATUS', 
-        message: 'Estado es obligatorio' 
-      });
-    }
-
-    const validStatuses = ['ACTIVE', 'SUSPENDED', 'REVOKED'];
-    if (!validStatuses.includes(status)) {
-      return res.status(400).json({ 
-        error: 'INVALID_STATUS', 
-        message: 'Estado no válido' 
-      });
-    }
-
-    const membership = await Membership.findOne({
-      where: {
-        id,
-        business_profile_id: req.user.businessProfileId
-      }
-    });
-
-    if (!membership) {
-      return res.status(404).json({ 
-        error: 'MEMBERSHIP_NOT_FOUND', 
-        message: 'Membresía no encontrada o no pertenece a tu establecimiento' 
-      });
-    }
-
-    if (membership.role === 'OWNER') {
-      return res.status(400).json({
-        error: 'CANNOT_SUSPEND_OWNER',
-        message: 'No se puede suspender al Propietario (OWNER)'
-      });
-    }
-
-    membership.status = status;
-    await membership.save();
-
+    const tenantId = context(req);
+    const tenant = await tenantInfo(tenantId);
+    const membership = await membershipService.setStatus({ tenantId, memberId: req.params.id, actorId: req.user.id,
+      status: req.body?.status, plan: tenant.saas_plan });
     return res.json({ success: true, data: membership });
-  } catch (error) {
-    console.error('Error updating status:', error);
-    return res.status(500).json({ error: 'INTERNAL_SERVER_ERROR' });
-  }
+  } catch (error) { return respondError(res, error); }
 };
 
 const removeMember = async (req, res) => {
   try {
-    const { id } = req.params;
-
-    const membership = await Membership.findOne({
-      where: {
-        id,
-        business_profile_id: req.user.businessProfileId
-      }
-    });
-
-    if (!membership) {
-      return res.status(404).json({ 
-        error: 'MEMBERSHIP_NOT_FOUND', 
-        message: 'Membresía no encontrada o no pertenece a tu establecimiento' 
-      });
-    }
-
-    if (membership.role === 'OWNER') {
-      return res.status(400).json({
-        error: 'CANNOT_REMOVE_OWNER',
-        message: 'No se puede eliminar al Propietario (OWNER)'
-      });
-    }
-
-    await membership.destroy();
-
-    return res.json({ success: true, message: 'Miembro eliminado con éxito' });
-  } catch (error) {
-    console.error('Error removing member:', error);
-    return res.status(500).json({ error: 'INTERNAL_SERVER_ERROR' });
-  }
+    const membership = await membershipService.setStatus({ tenantId: context(req), memberId: req.params.id,
+      actorId: req.user.id, status: 'REMOVED' });
+    return res.json({ success: true, message: 'Miembro eliminado', data: membership });
+  } catch (error) { return respondError(res, error); }
 };
 
-module.exports = {
-  getMembers,
-  inviteMember,
-  updateRole,
-  updateStatus,
-  removeMember
-};
+module.exports = { getMembers, inviteMember, updateRole, updateStatus, removeMember };

@@ -168,7 +168,8 @@ enum InvitationStatus {
   pending('PENDING', 'Pendiente', Color(0xFFF59E0B)),
   accepted('ACCEPTED', 'Aceptada', Color(0xFF10B981)),
   expired('EXPIRED', 'Expirada', Color(0xFF9CA3AF)),
-  revoked('REVOKED', 'Revoca', Color(0xFFEF4444));
+  revoked('REVOKED', 'Retirada', Color(0xFFEF4444)),
+  suspended('SUSPENDED', 'Suspendida', Color(0xFF8B5CF6));
 
   final String code;
   final String label;
@@ -493,6 +494,7 @@ class TeamMember {
   final MembershipRole role;
   final InvitationStatus invitationStatus;
   final DateTime? invitedAt;
+  final DateTime? inviteExpiresAt;
   final DateTime? acceptedAt;
   final DateTime? lastActiveAt;
   final bool isOwner;
@@ -506,6 +508,7 @@ class TeamMember {
     required this.role,
     required this.invitationStatus,
     this.invitedAt,
+    this.inviteExpiresAt,
     this.acceptedAt,
     this.lastActiveAt,
     required this.isOwner,
@@ -526,7 +529,11 @@ class TeamMember {
         status = InvitationStatus.pending;
         break;
       case 'REVOKED':
+      case 'REMOVED':
         status = InvitationStatus.revoked;
+        break;
+      case 'SUSPENDED':
+        status = InvitationStatus.suspended;
         break;
       default:
         status = InvitationStatus.expired;
@@ -540,6 +547,7 @@ class TeamMember {
       role: role,
       invitationStatus: status,
       invitedAt: _asDate(json, ['invited_at', 'invitedAt']),
+      inviteExpiresAt: _asDate(json, ['invite_expires_at', 'inviteExpiresAt']),
       acceptedAt: _asDate(json, ['accepted_at', 'acceptedAt']),
       lastActiveAt: _asDate(json, ['last_active_at', 'lastActiveAt']),
       isOwner: _pick(json, ['is_owner', 'isOwner']) as bool? ?? role == MembershipRole.owner,
@@ -555,6 +563,7 @@ class TeamMember {
         'role': role.code,
         'invitation_status': invitationStatus.code,
         'invited_at': invitedAt?.toIso8601String(),
+        'invite_expires_at': inviteExpiresAt?.toIso8601String(),
         'accepted_at': acceptedAt?.toIso8601String(),
         'last_active_at': lastActiveAt?.toIso8601String(),
         'is_owner': isOwner,

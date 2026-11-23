@@ -44,7 +44,9 @@ router.get('/', async (req, res) => {
       const { rows: members } = await pool.query(`
         SELECT COUNT(*)::integer AS count
         FROM memberships
-        WHERE business_profile_id = $1 AND status IN ('ACTIVE', 'PENDING')
+        WHERE business_profile_id = $1
+          AND (status = 'ACTIVE' OR (status IN ('PENDING', 'INVITED')
+               AND (invite_expires_at IS NULL OR invite_expires_at > NOW())))
       `, [tenantId]);
       teamSeatsInUse = Number(members[0]?.count || 0);
     }
