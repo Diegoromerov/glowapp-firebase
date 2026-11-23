@@ -1983,6 +1983,8 @@ if (process.env.NODE_ENV !== 'test') {
         console.log('🔄 Cron fulfillment recovery iniciado (cada 10 min)');
         const { iniciarLogisticaMetricsCron } = require('./src/crons/logisticaMetricsCron');
         iniciarLogisticaMetricsCron();
+        const { iniciarRecordatoriosReservasCron } = require('./src/crons/abandonedCartCron');
+        iniciarRecordatoriosReservasCron();
         // (WORKERS DESHABILITADOS)
     // Inicializar servidor WebSocket compartiendo puerto HTTP
     initWebSocketServer(server);

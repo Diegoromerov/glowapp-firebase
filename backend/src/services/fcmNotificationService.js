@@ -117,7 +117,7 @@ class FCMNotificationService {
         return { success: false, error: error.message };
       }
     } else {
-      logger.info(`📲 [FCM SIMULATION] Push enviada a token "${deviceToken || 'MOCK_TOKEN'}": [${title}] ${body}`, data);
+      logger.info('[FCM SIMULATION] Push omitida: Firebase no está configurado.');
       return { success: true, simulated: true, title, body };
     }
   }

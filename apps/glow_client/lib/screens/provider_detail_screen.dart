@@ -1621,11 +1621,13 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                                   onTap: () {
                                     HapticFeedback.lightImpact();
                                     _irAReservar(context, {
-                                      'providerId': widget.providerId,
+                                      'providerId': (p['provider_id'] ?? p['id'] ?? widget.providerId).toString(),
                                       'providerName': p['business_name'] ??
                                           p['full_name'] ??
                                           'Prestador',
                                       'services': services,
+                                      'salonId': p['salon_id']?.toString(),
+                                      'salons': (details?['salons'] as List? ?? const []),
                                       'initialServiceId': s['id']?.toString(),
                                     });
                                   },
@@ -2186,11 +2188,13 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                   ),
                   child: ElevatedButton(
                     onPressed: () => _irAReservar(context, {
-                      'providerId': widget.providerId,
+                      'providerId': (p['provider_id'] ?? p['id'] ?? widget.providerId).toString(),
                       'providerName': p['business_name'] ??
                           p['full_name'] ??
                           'Prestador',
                       'services': services,
+                      'salonId': p['salon_id']?.toString(),
+                      'salons': (details?['salons'] as List? ?? const []),
                     }),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
@@ -2607,9 +2611,11 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
                         onPressed: () {
                           Navigator.pop(sheetCtx);
                           _irAReservar(context, {
-                            'providerId': widget.providerId,
+                            'providerId': (p['provider_id'] ?? p['id'] ?? widget.providerId).toString(),
                             'providerName': providerName,
                             'services': services,
+                            'salonId': p['salon_id']?.toString(),
+                            'salons': (details?['salons'] as List? ?? const []),
                           });
                         },
                         icon: const Icon(Icons.calendar_today_outlined,

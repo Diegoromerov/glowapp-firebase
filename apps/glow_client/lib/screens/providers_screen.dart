@@ -1156,11 +1156,13 @@ class _ProvidersScreenState extends State<ProvidersScreen>
           context,
           '/booking',
           arguments: {
-            'providerId': provider.id,
+            'providerId': (details['provider']?['provider_id'] ?? details['provider']?['id'] ?? provider.id).toString(),
             'providerName': provider.businessName.isNotEmpty
                 ? provider.businessName
                 : provider.fullName,
             'services': services,
+            'salonId': details['provider']?['salon_id']?.toString(),
+            'salons': (details['salons'] as List? ?? const []),
             'initialServiceId': initialServiceId,
           },
         );

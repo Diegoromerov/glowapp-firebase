@@ -13,8 +13,9 @@ Este documento es el plan de trabajo. No implica que las fases ya se hayan ejecu
 | 0 | Inventario realizado previamente | Contraste de arquitectura y decisiones documentadas durante el análisis. |
 | 1 | Cerrada: desplegada y conciliada en producción el 23 de noviembre de 2026 | [Informe de Fase 1](fases/FASE_1_IDENTIDAD_TENANT_SEDES.md), migración 189; API sana y sin sedes huérfanas ni perfiles compartidos. |
 | 2 | Cerrada: desplegada y comprobada en producción el 23 de noviembre de 2026 | [Informe de Fase 2](fases/FASE_2_CATALOGO_ENTITLEMENTS_CUOTAS.md). Catálogo v1 activo; Hosting proveedor, API y panel publicados. Pruebas de integración de cuotas y conciliación comercial quedan como pendientes identificados. |
-| 3 | Implementada localmente el 23 de noviembre de 2026; despliegue y cierre productivo pendientes | [Informe de Fase 3](fases/FASE_3_MEMBRESIAS_ROLES.md). Membresía canónica, RBAC, invitaciones seguras, estados y auditoría listos; falta validar migración/flujo en staging y publicar coordinadamente. |
-| 4–7 | Pendientes | Se iniciarán después del cierre operativo de la fase anterior. |
+| 3 | Cerrada: desplegada en producción el 23 de noviembre de 2026 | [Informe de Fase 3](fases/FASE_3_MEMBRESIAS_ROLES.md). Commit `a8e105f`; migración 190 aplicada; API responde 200 y Postgres está activo. Staging aún está en `65534a4` y no contiene fases 1–3. |
+| 4 | En curso: implementación local el 23 de noviembre de 2026 | [Informe de Fase 4](fases/FASE_4_AGENDA_RESERVAS.md). Alcance de negocio/sede, horarios colombianos, concurrencia, selección de sede en cliente y agenda SaaS para miembros; reprogramación con colisiones serializadas. Staging diverge (17 commits propios y 125 detrás de `main`) y tiene cuatro cambios Railway pendientes. Requiere resolver esa línea base y validar en staging antes del cierre/despliegue. |
+| 5–7 | Pendientes | Se iniciarán después del cierre operativo de la fase anterior. |
 
 ## Reglas de ejecución
 

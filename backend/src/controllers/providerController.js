@@ -1,8 +1,8 @@
 const db = require('../config/db');
-const { calcularHuecoHoy } = require('../utils/disponibilidad');
 const pool = db.pool;
 const { getPlansWithEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { runAsSystem } = require('../config/tenantRouting');
+const { getColombiaDayRange, getColombiaDateParts, isValidColombiaDate, getColombiaSchedule, buildAvailabilitySlots } = require('../utils/bookingCalendar');
 
 // GET /api/providers → LISTA DE PRESTADORES Y SALONES (Geolocalización con PostGIS y Entitlements)
 exports.getProviders = async (req, res) => {
@@ -75,6 +75,7 @@ exports.getProviders = async (req, res) => {
             COALESCE(pl.tier, 'Creative Edge') as loyalty_tier,
             p.active_start_hour as start_hour,
             p.active_end_hour as end_hour,
+            p.weekly_schedule as weekly_schedule,
             ST_Distance(p.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
           FROM perfiles_prestador p
           INNER JOIN usuarios u ON p.id = u.id
@@ -109,6 +110,7 @@ exports.getProviders = async (req, res) => {
             'Creative Edge' as loyalty_tier,
             NULL::int as start_hour,
             NULL::int as end_hour,
+            NULL::jsonb as weekly_schedule,
             ST_Distance(s.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
           FROM salones s
           JOIN usuarios salon_owner ON salon_owner.id = s.id_dueno
@@ -152,6 +154,7 @@ exports.getProviders = async (req, res) => {
           'Creative Edge' as loyalty_tier,
           p.active_start_hour as start_hour,
           p.active_end_hour as end_hour,
+          p.weekly_schedule as weekly_schedule,
           0 as distance_meters
         FROM perfiles_prestador p
         INNER JOIN usuarios u ON p.id = u.id
@@ -208,10 +211,8 @@ exports.getProviders = async (req, res) => {
     const porId = new Map(result.rows.map((r) => [String(r.id), r]));
 
     if (idsIndividuales.length) {
-      const inicioDia = new Date(ahora);
-      inicioDia.setHours(0, 0, 0, 0);
-      const finDia = new Date(ahora);
-      finDia.setHours(23, 59, 59, 999);
+      const rangoDiaBogota = getColombiaDayRange(ahora);
+      const fechaBogota = getColombiaDateParts(ahora);
 
       let reservasHoy = { rows: [] };
       let duraciones = { rows: [] };
@@ -223,8 +224,8 @@ exports.getProviders = async (req, res) => {
                LEFT JOIN services s ON s.id = b.service_id
               WHERE b.provider_id = ANY($1::int[])
                 AND b.estado::text NOT IN ('CANCELADA', 'CANCELLED')
-                AND b.scheduled_at >= $2 AND b.scheduled_at <= $3`,
-            [idsIndividuales, inicioDia, finDia]
+                AND b.scheduled_at >= $2 AND b.scheduled_at < $3`,
+            [idsIndividuales, rangoDiaBogota.start, rangoDiaBogota.endExclusive]
           ),
           pool.query(
             `SELECT provider_id, MIN(duration_minutes) AS dur
@@ -253,15 +254,26 @@ exports.getProviders = async (req, res) => {
 
       for (const prov of formattedProviders) {
         const fila = porId.get(String(prov.id));
-        prov.next_slot_today = prov.is_salon
-          ? null
-          : calcularHuecoHoy({
-              ahora,
-              horaInicio: fila?.start_hour ?? null,
-              horaFin: fila?.end_hour ?? null,
-              duracionMinutos: duracionPor.get(String(prov.id)) || 60,
-              ocupados: ocupadosPor.get(String(prov.id)) || [],
-            });
+        const schedule = getColombiaSchedule({
+          date: fechaBogota,
+          weeklySchedule: fila?.weekly_schedule,
+          activeStartHour: fila?.start_hour,
+          activeEndHour: fila?.end_hour,
+        });
+        const slots = !prov.is_salon && schedule?.isActive
+          ? buildAvailabilitySlots({
+              date: fechaBogota,
+              startHour: schedule.startHour,
+              endHour: schedule.endHour,
+              durationMinutes: duracionPor.get(String(prov.id)) || 60,
+              activeBookings: (ocupadosPor.get(String(prov.id)) || []).map((booking) => ({
+                start: booking.inicio,
+                end: booking.fin,
+              })),
+              now: ahora,
+            })
+          : [];
+        prov.next_slot_today = slots.find((slot) => slot.is_available)?.time || null;
         prov.available_today = Boolean(prov.next_slot_today);
       }
 
@@ -301,6 +313,59 @@ exports.getProviders = async (req, res) => {
 exports.getProviderById = async (req, res) => {
   try {
     const { id } = req.params;
+    if (String(id).startsWith('salon_')) {
+      const salonId = Number(String(id).slice('salon_'.length));
+      if (!Number.isSafeInteger(salonId) || salonId <= 0) return res.status(400).json({ error: 'ID inválido' });
+      const eligiblePlans = getPlansWithEntitlement(SAAS_CAPABILITIES.MAP_VISIBILITY);
+      const salonRes = await pool.query(`
+        SELECT s.id AS salon_id, s.id_dueno AS provider_id, s.nombre_salon AS business_name,
+               s.nombre_salon AS full_name, s.direccion, s.ciudad, s.business_profile_id,
+               u.foto_url AS avatar_url, u.phone
+          FROM salones s
+          JOIN usuarios u ON u.id = s.id_dueno
+          LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
+         WHERE s.id = $1
+           AND s.location_enabled = true
+           AND s.location_public = true
+           AND COALESCE(u.visibilidad_suspendida, false) = false
+           AND UPPER(COALESCE(s.plan_saas, bp.saas_plan, 'FREE_TRIAL')) = ANY($2)
+         LIMIT 1`, [salonId, eligiblePlans]);
+      if (!salonRes.rows.length) return res.status(404).json({ error: 'No encontrado' });
+      const salon = salonRes.rows[0];
+      const servicesRes = await pool.query(`
+        SELECT id, provider_id, business_profile_id, salon_id, name, description, price, duration_minutes, category
+          FROM services
+         WHERE is_active = true
+           AND (salon_id = $1 OR (salon_id IS NULL AND business_profile_id = $2))
+         ORDER BY name`, [salonId, salon.business_profile_id]);
+      const [portfolioRes, reviewsRes] = await Promise.all([
+        pool.query('SELECT id, image_url, title, category FROM portfolio_items WHERE provider_id = $1 ORDER BY created_at DESC LIMIT 10', [salon.provider_id]),
+        pool.query(`SELECT r.rating, r.comment, r.aspectos, r.created_at, u.nombre AS client_name
+                      FROM reviews r JOIN usuarios u ON u.id = r.client_id
+                     WHERE r.provider_id = $1 ORDER BY r.created_at DESC LIMIT 5`, [salon.provider_id]),
+      ]);
+      return res.json({
+        success: true,
+        data: {
+          provider: {
+            ...salon,
+            id: String(salon.provider_id),
+            is_salon: true,
+            is_verified: true,
+            rating_avg: null,
+            rating_count: 0,
+            completed_bookings_count: 0,
+            punctuality_sample_count: 0,
+            punctual_bookings_count: 0,
+            punctuality_percentage: null,
+          },
+          services: servicesRes.rows,
+          salons: [{ id: salon.salon_id, name: salon.business_name, address: salon.direccion, city: salon.ciudad }],
+          portfolio: portfolioRes.rows,
+          reviews: reviewsRes.rows,
+        },
+      });
+    }
     const numericId = parseInt(id);
     if (isNaN(numericId)) return res.status(400).json({ error: 'ID inválido' });
     
@@ -346,12 +411,30 @@ exports.getProviderById = async (req, res) => {
       : null;
 
     const servicesQ = `
-      SELECT id, name, description, price, duration_minutes, category 
-      FROM services 
-      WHERE provider_id = $1 AND is_active = true 
-      ORDER BY name;
+      SELECT s.id, s.provider_id, s.business_profile_id, s.salon_id,
+             s.name, s.description, s.price, s.duration_minutes, s.category
+        FROM services s
+       WHERE s.is_active = true
+         AND (s.provider_id = $1 OR s.business_profile_id IN (
+           SELECT bp.id FROM business_profiles bp
+            WHERE bp.provider_id = $1 OR EXISTS (
+              SELECT 1 FROM memberships m
+               WHERE m.business_profile_id = bp.id AND m.user_id = $1 AND m.status = 'ACTIVE'
+            )
+         ))
+       ORDER BY s.name;
     `;
     const servicesRes = await pool.query(servicesQ, [numericId]);
+
+    const salonsRes = await pool.query(`
+      SELECT DISTINCT s.id, s.nombre_salon AS name, s.direccion AS address, s.ciudad AS city
+        FROM salones s
+        JOIN business_profiles bp ON bp.id = s.business_profile_id
+       WHERE bp.provider_id = $1 OR EXISTS (
+         SELECT 1 FROM memberships m
+          WHERE m.business_profile_id = bp.id AND m.user_id = $1 AND m.status = 'ACTIVE'
+       )
+       ORDER BY s.id`, [numericId]);
 
     const portfolioQ = `
       SELECT id, image_url, title, category 
@@ -382,6 +465,7 @@ exports.getProviderById = async (req, res) => {
           punctuality_percentage: punctualityPercentage
         },
         services: servicesRes.rows,
+        salons: salonsRes.rows,
         portfolio: portfolioRes.rows,
         reviews: reviewsRes.rows
       }
@@ -395,120 +479,177 @@ exports.getProviderById = async (req, res) => {
 // GET /api/providers/:id/slots → Obtener slots de tiempo disponibles para un proveedor y fecha específica
 exports.getProviderSlots = async (req, res) => {
   try {
-    const providerId = req.params.id;
+    const providerId = Number(req.params.id);
     const { date, service_id } = req.query;
+    const salonId = req.query.salon_id ? Number(req.query.salon_id) : null;
 
-    if (!date || !service_id) {
+    if (!Number.isSafeInteger(providerId) || providerId <= 0 || providerId > 2147483647) {
+      return res.status(400).json({ success: false, code: 'BOOKING_PROVIDER_INVALID', error: 'Identificador de prestador inválido.' });
+    }
+    if (!date || typeof service_id !== 'string' || service_id.trim() === '') {
       return res.status(400).json({ error: 'Faltan parámetros requeridos (date, service_id)' });
     }
 
-    const serviceIds = service_id.split(',').map(s => s.trim()).filter(s => s.length > 0);
+    const serviceIds = [...new Set(service_id.split(',').map(s => s.trim()).filter(s => s.length > 0))];
     if (serviceIds.length === 0) {
       return res.status(400).json({ error: 'Formato de service_id inválido' });
     }
+    if (serviceIds.some((id) => !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id))) {
+      return res.status(400).json({ success: false, code: 'BOOKING_SERVICE_INVALID', error: 'Uno o más identificadores de servicio no son válidos.' });
+    }
+    if (req.query.salon_id && (!Number.isSafeInteger(salonId) || salonId <= 0 || salonId > 2147483647)) {
+      return res.status(400).json({ success: false, code: 'BOOKING_SALON_INVALID', error: 'salon_id inválido' });
+    }
+    if (!isValidColombiaDate(date)) {
+      return res.status(400).json({ success: false, code: 'BOOKING_DATE_INVALID', error: 'date debe tener formato YYYY-MM-DD.' });
+    }
+    const bookingDay = getColombiaDayRange(`${date}T12:00:00.000Z`);
 
     // 1. Obtener la duración total acumulada de los servicios solicitados
-    const serviceRes = await pool.query(
-      'SELECT SUM(duration_minutes) as total_duration, COUNT(*) as match_count FROM services WHERE id = ANY($1) AND provider_id = $2 AND is_active = true;',
-      [serviceIds, providerId]
-    );
+    const serviceRes = await runAsSystem({ pool }, (client) => client.query(
+      `SELECT SUM(duration_minutes) AS total_duration,
+              COUNT(*) AS match_count,
+              COUNT(*) FILTER (WHERE business_profile_id IS NULL) AS unresolved_scope_count,
+              ARRAY_REMOVE(ARRAY_AGG(DISTINCT salon_id), NULL) AS service_salon_ids,
+              ARRAY_REMOVE(ARRAY_AGG(DISTINCT business_profile_id), NULL) AS business_profile_ids
+         FROM services
+        WHERE id = ANY($1::uuid[])
+          AND is_active = true
+          AND (provider_id = $2 OR business_profile_id IN (
+            SELECT bp.id FROM business_profiles bp
+             WHERE bp.provider_id = $2 OR EXISTS (
+               SELECT 1 FROM memberships m
+                WHERE m.business_profile_id = bp.id AND m.user_id = $2 AND m.status = 'ACTIVE'
+             )
+          ))
+          AND ($3::integer IS NULL OR salon_id IS NULL OR salon_id = $3);`,
+      [serviceIds, providerId, salonId]
+    ));
     if (serviceRes.rows.length === 0 || parseInt(serviceRes.rows[0].match_count) !== serviceIds.length) {
       return res.status(404).json({ error: 'Uno o más servicios no fueron encontrados o están inactivos' });
     }
     const selectedDuration = parseInt(serviceRes.rows[0].total_duration);
+    const serviceSalonIds = (serviceRes.rows[0].service_salon_ids || []).map(Number);
+    const businessProfileIds = serviceRes.rows[0].business_profile_ids || [];
+    if (Number(serviceRes.rows[0].unresolved_scope_count) > 0) {
+      const profilesRes = await runAsSystem({ pool }, (client) => client.query(
+        'SELECT COUNT(*)::int AS count FROM business_profiles WHERE provider_id = $1',
+        [Number(providerId)]
+      ));
+      if (Number(profilesRes.rows[0]?.count || 0) > 0) {
+        return res.status(409).json({
+          success: false,
+          code: 'BOOKING_SERVICE_SCOPE_UNRESOLVED',
+          error: 'Uno o más servicios aún no están asignados a un negocio. El prestador debe asignarlos antes de habilitar reservas SaaS.',
+        });
+      }
+    }
+    if (new Set(businessProfileIds.map(String)).size > 1) {
+      return res.status(400).json({ success: false, code: 'BOOKING_SCOPE_MISMATCH', error: 'Los servicios pertenecen a negocios distintos.' });
+    }
+    if (new Set(serviceSalonIds).size > 1 || (salonId && serviceSalonIds.some((id) => id !== salonId))) {
+      return res.status(400).json({ success: false, code: 'BOOKING_SCOPE_MISMATCH', error: 'Los servicios no pertenecen a la sede seleccionada.' });
+    }
+    let targetSalonId = salonId || serviceSalonIds[0] || null;
+    if (targetSalonId) {
+      const salonRes = await runAsSystem({ pool }, (client) => client.query(
+        `SELECT id, business_profile_id FROM salones
+          WHERE id = $1
+            AND (
+              (cardinality($2::varchar[]) > 0 AND business_profile_id = ANY($2::varchar[])
+                AND EXISTS (
+                  SELECT 1 FROM business_profiles bp
+                   WHERE bp.id = salones.business_profile_id
+                     AND (bp.provider_id = $3 OR EXISTS (
+                       SELECT 1 FROM memberships m
+                        WHERE m.business_profile_id = bp.id AND m.user_id = $3 AND m.status = 'ACTIVE'
+                     ))
+                ))
+              OR (cardinality($2::varchar[]) = 0 AND (
+                (business_profile_id IS NULL AND id_dueno = $3)
+                OR EXISTS (
+                  SELECT 1 FROM business_profiles bp
+                   WHERE bp.id = salones.business_profile_id
+                     AND (bp.provider_id = $3 OR EXISTS (
+                       SELECT 1 FROM memberships m
+                        WHERE m.business_profile_id = bp.id AND m.user_id = $3 AND m.status = 'ACTIVE'
+                     ))
+                )
+              ))
+            )`,
+        [targetSalonId, businessProfileIds, Number(providerId)]
+      ));
+      if (!salonRes.rows.length) {
+        return res.status(404).json({ success: false, code: 'BOOKING_SALON_NOT_FOUND', error: 'La sede no existe o no corresponde a los servicios.' });
+      }
+      const salonBusinessProfileId = salonRes.rows[0].business_profile_id;
+      if (salonBusinessProfileId && Number(serviceRes.rows[0].unresolved_scope_count) > 0) {
+        return res.status(409).json({
+          success: false,
+          code: 'BOOKING_SERVICE_SCOPE_UNRESOLVED',
+          error: 'Uno o más servicios aún no están asignados al negocio de esta sede.',
+        });
+      }
+      if (salonBusinessProfileId && businessProfileIds.some((id) => String(id) !== String(salonBusinessProfileId))) {
+        return res.status(400).json({ success: false, code: 'BOOKING_SCOPE_MISMATCH', error: 'Los servicios no pertenecen al negocio de la sede seleccionada.' });
+      }
+    } else if (businessProfileIds.length === 1) {
+      const sedesRes = await runAsSystem({ pool }, (client) => client.query(
+        'SELECT id FROM salones WHERE business_profile_id = $1 ORDER BY id LIMIT 2',
+        [businessProfileIds[0]]
+      ));
+      if (sedesRes.rows.length > 1) {
+        return res.status(400).json({ success: false, code: 'BOOKING_SALON_REQUIRED', error: 'Selecciona la sede donde quieres reservar.' });
+      }
+      if (sedesRes.rows.length === 1) targetSalonId = Number(sedesRes.rows[0].id);
+    }
 
     // 2. Obtener todas las citas activas para ese día
     const bookingsQuery = `
-      SELECT b.scheduled_at, s.duration_minutes 
+      SELECT b.scheduled_at, COALESCE(s.duration_minutes, 60) AS duration_minutes
       FROM bookings b
-      JOIN services s ON b.service_id = s.id
+      LEFT JOIN services s ON b.service_id = s.id
       WHERE b.provider_id = $1 
-        AND b.scheduled_at::date = $2::date
-        AND b.estado NOT IN ('CANCELADA');
+        AND b.scheduled_at >= $2
+        AND b.scheduled_at < $3
+        AND b.estado::text NOT IN ('CANCELADA', 'CANCELLED');
     `;
-    const bookingsRes = await pool.query(bookingsQuery, [providerId, date]);
+    const bookingsRes = await runAsSystem({ pool }, (client) => client.query(bookingsQuery, [providerId, bookingDay.start, bookingDay.endExclusive]));
     const activeBookings = bookingsRes.rows.map(row => {
       const start = new Date(row.scheduled_at);
-      const duration = parseInt(row.duration_minutes);
+      const duration = Number(row.duration_minutes) || 60;
       const end = new Date(start.getTime() + duration * 60 * 1000);
       return { start, end };
     });
 
     // 3. Obtener el horario configurado del prestador
-    const hoursRes = await pool.query('SELECT active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = $1', [providerId]);
+    const hoursRes = await runAsSystem({ pool }, (client) => client.query('SELECT active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = $1', [providerId]));
     
-    const [year, month, day] = date.split('-').map(Number);
-    const dateObj = new Date(year, month - 1, day);
-    const dayOfWeek = dateObj.getDay(); // 0: domingo, 1: lunes, ..., 6: sabado
-    const dayNames = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
-    const currentDayName = dayNames[dayOfWeek];
+    const providerHours = hoursRes.rows[0] || {};
+    const schedule = getColombiaSchedule({
+      date,
+      weeklySchedule: providerHours.weekly_schedule,
+      activeStartHour: providerHours.active_start_hour,
+      activeEndHour: providerHours.active_end_hour,
+    });
 
-    const weeklySchedule = hoursRes.rows.length > 0 && hoursRes.rows[0].weekly_schedule ? hoursRes.rows[0].weekly_schedule : null;
-    let startHour = 6;
-    let endHour = 20;
-    let isDayActive = true;
-
-    if (weeklySchedule && weeklySchedule[currentDayName]) {
-      const dayConf = weeklySchedule[currentDayName];
-      isDayActive = dayConf.activo !== false;
-      startHour = dayConf.inicio !== undefined ? parseInt(dayConf.inicio) : 6;
-      endHour = dayConf.fin !== undefined ? parseInt(dayConf.fin) : 20;
-    } else {
-      startHour = hoursRes.rows.length > 0 && hoursRes.rows[0].active_start_hour !== null ? parseInt(hoursRes.rows[0].active_start_hour) : 6;
-      endHour = hoursRes.rows.length > 0 && hoursRes.rows[0].active_end_hour !== null ? parseInt(hoursRes.rows[0].active_end_hour) : 20;
-    }
-
-    if (!isDayActive) {
+    if (!schedule?.isActive) {
       return res.json({ success: true, slots: [] });
     }
 
-    const slots = [];
-    const startTime = new Date(year, month - 1, day, startHour, 0, 0);
-    const endTime = new Date(year, month - 1, day, endHour, 0, 0);
-
-    const now = new Date();
-
-    let currentSlot = new Date(startTime);
-    while (currentSlot < endTime) {
-      const slotStart = new Date(currentSlot);
-      const slotEnd = new Date(slotStart.getTime() + selectedDuration * 60 * 1000);
-
-      // Formato HH:MM
-      const hours = String(slotStart.getHours()).padStart(2, '0');
-      const minutes = String(slotStart.getMinutes()).padStart(2, '0');
-      const timeStr = `${hours}:${minutes}`;
-
-      let isAvailable = true;
-
-      // Deshabilitar slots pasados si la fecha consultada es hoy
-      if (slotStart < now) {
-        isAvailable = false;
-      }
-
-      // Si aún está disponible por hora, comprobar colisiones con citas existentes
-      if (isAvailable) {
-        for (const booking of activeBookings) {
-          // Colisión: start1 < end2 AND end1 > start2
-          if (slotStart.getTime() < booking.end.getTime() && slotEnd.getTime() > booking.start.getTime()) {
-            isAvailable = false;
-            break;
-          }
-        }
-      }
-
-      slots.push({
-        time: timeStr,
-        is_available: isAvailable
-      });
-
-      // Incrementar por 30 minutos
-      currentSlot.setMinutes(currentSlot.getMinutes() + 30);
-    }
+    const slots = buildAvailabilitySlots({
+      date,
+      startHour: schedule.startHour,
+      endHour: schedule.endHour,
+      durationMinutes: selectedDuration,
+      activeBookings,
+    });
 
     res.json({
       success: true,
       date,
       service_id,
+      salon_id: targetSalonId,
       slots
     });
 

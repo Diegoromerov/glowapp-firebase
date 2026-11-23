@@ -60,13 +60,13 @@ exports.getProviderServices = async (req, res) => {
     try {
       if (businessProfileId) {
         const queryRes = await pool.query(
-          'SELECT id, provider_id, business_profile_id, name, description, price, duration_minutes, category, is_active FROM services WHERE business_profile_id = $1 OR provider_id = $2 ORDER BY name ASC',
+          'SELECT id, provider_id, business_profile_id, salon_id, name, description, price, duration_minutes, category, is_active FROM services WHERE business_profile_id = $1 OR provider_id = $2 ORDER BY name ASC',
           [businessProfileId, providerId]
         );
         services = queryRes.rows;
       } else {
         const queryRes = await pool.query(
-          'SELECT id, provider_id, business_profile_id, name, description, price, duration_minutes, category, is_active FROM services WHERE provider_id = $1 ORDER BY name ASC',
+          'SELECT id, provider_id, business_profile_id, salon_id, name, description, price, duration_minutes, category, is_active FROM services WHERE provider_id = $1 ORDER BY name ASC',
           [providerId]
         );
         services = queryRes.rows;
@@ -95,7 +95,8 @@ exports.getProviderServices = async (req, res) => {
       duration_minutes: parseInt(service.duration_minutes) || 30,
       category: service.category || '',
       is_active: service.is_active !== false,
-      business_profile_id: service.business_profile_id
+      business_profile_id: service.business_profile_id,
+      salon_id: service.salon_id ?? null
     }));
 
     res.json({ success: true, count: formattedServices.length, data: formattedServices });
@@ -110,7 +111,7 @@ exports.createService = async (req, res) => {
   try {
     const { businessProfileId, providerId } = getSanitizedAuthContext(req);
 
-    const { name, description, price, duration_minutes, category, is_active } = req.body;
+    const { name, description, price, duration_minutes, category, is_active, salon_id } = req.body;
     if (!name || price === undefined || !duration_minutes) {
       return res.status(400).json({ error: 'Faltan campos obligatorios (nombre, precio, duración)' });
     }
@@ -126,47 +127,38 @@ exports.createService = async (req, res) => {
       return res.status(400).json({ error: 'Duración inválida' });
     }
 
-    let serviceData = null;
-    try {
-      const insertQ = `
-        INSERT INTO services (provider_id, business_profile_id, name, description, price, duration_minutes, category, is_active)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-        RETURNING id, provider_id, business_profile_id, name, description, price, duration_minutes, category, is_active;
-      `;
-      const insertRes = await pool.query(insertQ, [
-        providerId,
-        businessProfileId,
-        name,
-        description || null,
-        parsedPrice,
-        parsedDuration,
-        category || null,
-        isActiveVal
-      ]);
-      serviceData = insertRes.rows[0];
-    } catch (dbErr) {
-      console.warn('⚠️ Standard insert in createService failed, attempting resilient fallback insert:', dbErr.message);
-      try {
-        const fallbackInsertQ = `
-          INSERT INTO services (provider_id, name, description, price, duration_minutes, category, is_active)
-          VALUES ($1, $2, $3, $4, $5, $6, $7)
-          RETURNING id, provider_id, name, description, price, duration_minutes, category, is_active;
-        `;
-        const insertRes = await pool.query(fallbackInsertQ, [
-          providerId,
-          name,
-          description || null,
-          parsedPrice,
-          parsedDuration,
-          category || null,
-          isActiveVal
-        ]);
-        serviceData = { ...insertRes.rows[0], business_profile_id: null };
-      } catch (dbErr2) {
-        console.error('❌ Resilient fallback insert in createService failed:', dbErr2.message);
-        throw dbErr2;
+    let parsedSalonId = null;
+    if (salon_id !== undefined && salon_id !== null && salon_id !== '') {
+      parsedSalonId = Number(salon_id);
+      if (!Number.isSafeInteger(parsedSalonId) || parsedSalonId <= 0 || !businessProfileId) {
+        return res.status(400).json({ success: false, code: 'SERVICE_SALON_INVALID', error: 'Sede inválida para el negocio activo.' });
+      }
+      const salonRes = await pool.query(
+        'SELECT id FROM salones WHERE id = $1 AND business_profile_id = $2',
+        [parsedSalonId, businessProfileId]
+      );
+      if (!salonRes.rows.length) {
+        return res.status(404).json({ success: false, code: 'SERVICE_SALON_NOT_FOUND', error: 'La sede no existe dentro del negocio activo.' });
       }
     }
+
+    const insertQ = `
+      INSERT INTO services (provider_id, business_profile_id, salon_id, name, description, price, duration_minutes, category, is_active)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      RETURNING id, provider_id, business_profile_id, salon_id, name, description, price, duration_minutes, category, is_active;
+    `;
+    const insertRes = await pool.query(insertQ, [
+      providerId,
+      businessProfileId,
+      parsedSalonId,
+      name,
+      description || null,
+      parsedPrice,
+      parsedDuration,
+      category || null,
+      isActiveVal
+    ]);
+    const serviceData = insertRes.rows[0];
 
     res.status(201).json({
       success: true,
@@ -175,6 +167,7 @@ exports.createService = async (req, res) => {
         id: serviceData.id,
         provider_id: serviceData.provider_id,
         business_profile_id: serviceData.business_profile_id || null,
+        salon_id: serviceData.salon_id ?? null,
         name: serviceData.name,
         description: serviceData.description,
         price: parseFloat(serviceData.price),
@@ -194,7 +187,8 @@ exports.updateService = async (req, res) => {
   try {
     const serviceId = req.params.id;
     const { businessProfileId, providerId } = getSanitizedAuthContext(req);
-    const { name, description, price, duration_minutes, category, is_active } = req.body;
+    const { name, description, price, duration_minutes, category, is_active, salon_id } = req.body;
+    const salonIdProvided = Object.prototype.hasOwnProperty.call(req.body, 'salon_id');
 
     if (!name || price === undefined || !duration_minutes) {
       return res.status(400).json({ error: 'Faltan campos obligatorios (nombre, precio, duración)' });
@@ -210,17 +204,34 @@ exports.updateService = async (req, res) => {
       return res.status(400).json({ error: 'Duración inválida' });
     }
 
+    let parsedSalonId = null;
+    if (salon_id !== undefined && salon_id !== null && salon_id !== '') {
+      parsedSalonId = Number(salon_id);
+      if (!Number.isSafeInteger(parsedSalonId) || parsedSalonId <= 0 || !businessProfileId) {
+        return res.status(400).json({ success: false, code: 'SERVICE_SALON_INVALID', error: 'Sede inválida para el negocio activo.' });
+      }
+      const salonRes = await pool.query(
+        'SELECT id FROM salones WHERE id = $1 AND business_profile_id = $2',
+        [parsedSalonId, businessProfileId]
+      );
+      if (!salonRes.rows.length) {
+        return res.status(404).json({ success: false, code: 'SERVICE_SALON_NOT_FOUND', error: 'La sede no existe dentro del negocio activo.' });
+      }
+    }
+
     let updatedService = null;
     try {
       let updateQ, params;
       if (businessProfileId) {
         updateQ = `
           UPDATE services 
-          SET name = $1, description = $2, price = $3, duration_minutes = $4, category = $5, is_active = $6
-          WHERE id = $7 AND (provider_id = $8 OR business_profile_id = $9)
-          RETURNING id, provider_id, business_profile_id, name, description, price, duration_minutes, category, is_active;
+          SET name = $1, description = $2, price = $3, duration_minutes = $4, category = $5, is_active = $6,
+              business_profile_id = CASE WHEN $7::boolean AND $8::integer IS NOT NULL THEN COALESCE(business_profile_id, $11) ELSE business_profile_id END,
+              salon_id = CASE WHEN $7::boolean THEN $8::integer ELSE salon_id END
+          WHERE id = $9 AND (business_profile_id = $11 OR (business_profile_id IS NULL AND provider_id = $10))
+          RETURNING id, provider_id, business_profile_id, salon_id, name, description, price, duration_minutes, category, is_active;
         `;
-        params = [name, description || null, parsedPrice, parsedDuration, category || null, is_active !== false, serviceId, providerId, businessProfileId];
+        params = [name, description || null, parsedPrice, parsedDuration, category || null, is_active !== false, salonIdProvided, parsedSalonId, serviceId, providerId, businessProfileId];
       } else {
         updateQ = `
           UPDATE services 
@@ -254,6 +265,10 @@ exports.updateService = async (req, res) => {
       service.price = parsedPrice;
       service.duration_minutes = parsedDuration;
       service.category = category || null;
+      if (salonIdProvided) service.salon_id = parsedSalonId;
+      if (salonIdProvided && parsedSalonId !== null && !service.business_profile_id) {
+        service.business_profile_id = businessProfileId;
+      }
       if (is_active !== undefined) {
         service.is_active = is_active !== false;
       }
@@ -268,6 +283,7 @@ exports.updateService = async (req, res) => {
         id: updatedService.id,
         provider_id: updatedService.provider_id,
         business_profile_id: updatedService.business_profile_id,
+        salon_id: updatedService.salon_id ?? null,
         name: updatedService.name,
         description: updatedService.description,
         price: parseFloat(updatedService.price),

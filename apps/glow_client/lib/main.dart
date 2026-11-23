@@ -483,6 +483,11 @@ class GlowClientApp extends ConsumerWidget {
                 initialNotes: args?['initialNotes']?.toString(),
                 initialAddress: args?['initialAddress']?.toString(),
                 preselectedProductId: args?['preselectedProductId']?.toString(),
+                salonId: args?['salonId']?.toString(),
+                salons: ((args?['salons'] as List?) ?? const [])
+                    .whereType<Map>()
+                    .map((e) => Map<String, dynamic>.from(e))
+                    .toList(),
               ),
             );
           case '/booking-tracking':

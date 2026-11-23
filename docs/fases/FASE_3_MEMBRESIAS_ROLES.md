@@ -1,7 +1,7 @@
 # Fase 3 — Membresías, roles y permisos
 
 **Fecha:** 23 de noviembre de 2026
-**Estado:** implementación local lista; migración y despliegue de producción pendientes.
+**Estado:** desplegada en producción el 23 de noviembre de 2026.
 
 ## 1. Objetivo y alcance ejecutado
 
@@ -42,12 +42,12 @@ En interfaz, los estados `PENDING`, `EXPIRED`, `ACTIVE`, `SUSPENDED` y `REMOVED`
 - `git diff --check` pasó.
 - `dart analyze` dirigido a los modelos, proveedor y cliente API SaaS compartidos y a `team_management_screen.dart` terminó con código 0. Reportó siete avisos informativos de estilo/deprecación en la pantalla; no reportó errores en los archivos revisados.
 - El análisis amplio de `packages/glow_core` encontró 153 avisos/informaciones distribuidos por el paquete y terminó con código 1; los tres archivos SaaS compartidos revisados no aparecen entre esos diagnósticos. No se corrigieron advertencias ajenas a la Fase 3.
-- No se ejecutaron suites de pruebas ni pruebas de integración con PostgreSQL, conforme al alcance solicitado.
-- No se aplicó la migración 190 ni se desplegó a producción; el funcionamiento real del correo y RLS queda por validar en el entorno de despliegue.
+- La publicación coordinada de backend y panel terminó en producción con commit `a8e105f`; API saludable y migración 190 aplicada (62 migraciones registradas).
+- El recorrido real del correo y RLS no quedó certificado mediante invitaciones de prueba; permanece como verificación operativa pendiente.
 
 ## 6. Datos y despliegue
 
-La migración 190 es aditiva y la ejecutaría el runner de backend al desplegar. Antes de desplegar hay que aplicarla/verificarla primero en staging y validar esquema, correo, RLS y el flujo de invitación/aceptación. No se tocaron datos de tenants ni membresías existentes durante esta implementación local.
+La migración 190, aditiva, quedó aplicada en producción por el runner de backend. El entorno staging sigue en `65534a4` y no contiene el despliegue coordinado de fases 1–3; no se usó para validación previa. No se modificaron membresías históricas en la migración.
 
 ## 7. Riesgos y rollback
 
@@ -58,8 +58,8 @@ La migración 190 es aditiva y la ejecutaría el runner de backend al desplegar.
 
 ## 8. Pendientes y fase siguiente
 
-- Probar la migración y los flujos completos contra PostgreSQL de staging: correo correcto, aceptación, correo diferente, vencimiento, reenvío, concurrencia de asientos, cambio de rol, suspensión y reactivación.
+- Probar el flujo completo de correo y aceptación (correo correcto/diferente, expiración, reenvío, concurrencia de asientos, cambios de rol, suspensión y reactivación) en un ambiente controlado.
 - Revisar qué rutas operativas heredadas aún autorizan directamente mediante `salon_miembros` o roles de usuario y migrarlas gradualmente a guards basadas en `memberships`.
-- Desplegar backend, migración y app de proveedor de manera coordinada; después revisar auditoría y cuentas activas antes de cerrar la fase.
+- Incorporar fases 1–3 a staging antes de usarlo como ambiente de validación de la fase 4; verificar auditoría y cuentas activas en producción.
 
-La Fase 4 no debe iniciarse hasta completar esas verificaciones y cerrar el despliegue de esta fase.
+La Fase 4 se inició después del despliegue productivo de la Fase 3; sus pruebas operativas pendientes se mantienen como riesgo conocido.

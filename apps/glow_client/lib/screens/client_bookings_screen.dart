@@ -1191,7 +1191,13 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                           context,
                           bookingId: booking['id'].toString(),
                           providerId: booking['provider_id'].toString(),
-                          serviceId: (booking['service_id'] ?? '').toString(),
+                          serviceId: ((booking['service_ids'] as List?)
+                                  ?.map((id) => id.toString())
+                                  .where((id) => id.isNotEmpty)
+                                  .toList()
+                                  .join(','))
+                              ?? (booking['service_id'] ?? '').toString(),
+                          salonId: booking['salon_id']?.toString(),
                         );
                         if (cambiada == true && mounted) _loadBookings();
                       },

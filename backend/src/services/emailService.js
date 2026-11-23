@@ -172,7 +172,7 @@ async function sendEmail({ to, subject, template, data = {}, attachments = [] })
 
   try {
     const result = await tx.sendMail(mailOptions);
-    console.log(`[emailService] Email enviado a ${to}: ${result.messageId}`);
+    console.log(`[emailService] Email aceptado por SMTP (${result.messageId || 'sin id'})`);
     return result;
   } catch (err) {
     console.error('[emailService] Error enviando email:', err.message);
@@ -203,9 +203,7 @@ async function sendAbandonedBookingEmail(toEmail, userName, bookingId, serviceNa
   const frontendBase = (process.env.FRONTEND_URL || 'https://glowapp-frontend-production.up.railway.app').replace(/\/$/, '');
   const checkoutUrl = `${frontendBase}/#/checkout?booking_id=${bookingId}`;
   
-  console.log(`📧 [EMAIL TRANSACCIONAL] Preparando correo de recuperación para ${toEmail} (${userName}):`);
-  console.log(`   Asunto: ¡Tu cita de ${serviceName} te espera en GlowApp!`);
-  console.log(`   Link de Pago Directo: ${checkoutUrl}`);
+  console.log('[emailService] Preparando recordatorio transaccional de reserva.');
 
   return sendEmail({
     to: toEmail,

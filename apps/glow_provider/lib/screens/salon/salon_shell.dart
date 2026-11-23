@@ -100,6 +100,8 @@ class _SalonShellState extends State<SalonShell> {
           _entitlements = caps.map((c) => c.toString()).toList();
           _plan = (salon['plan_saas'] ?? 'FREE_TRIAL').toString();
           _salonId = (salon['id'] as num?)?.toInt() ?? _salonId;
+          // La agenda necesita volver a pedir citas con la sede ya resuelta.
+          _construidas[0] = null;
           // Una pestaña ya construida con el plan anterior no debe quedar cacheada.
           _construidas[2] = null;
         });
@@ -155,7 +157,7 @@ class _SalonShellState extends State<SalonShell> {
   Widget _buildTab(int i) {
     switch (i) {
       case 0:
-        return _AgendaTab(cargar: _cargarDatos);
+        return _AgendaTab(cargar: _cargarDatos, salonId: _salonId);
       case 1:
         if (_salonId == null) return const _CajaTab();
         return CajaScreen(salonId: _salonId!, cargarDatos: _cargarDatos);
@@ -218,7 +220,8 @@ class _Destino {
 
 class _AgendaTab extends StatefulWidget {
   final bool cargar;
-  const _AgendaTab({required this.cargar});
+  final int? salonId;
+  const _AgendaTab({required this.cargar, required this.salonId});
 
   @override
   State<_AgendaTab> createState() => _AgendaTabState();
@@ -245,7 +248,7 @@ class _AgendaTabState extends State<_AgendaTab> {
       _error = null;
     });
     try {
-      final citas = await ApiService.fetchProviderBookings();
+      final citas = await ApiService.fetchProviderBookings(salonId: widget.salonId);
       if (!mounted) return;
       setState(() {
         _citas = citas;

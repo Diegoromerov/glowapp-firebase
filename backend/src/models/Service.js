@@ -17,6 +17,11 @@ const Service = sequelize.define('Service', {
     allowNull: true,
     field: 'business_profile_id'
   },
+  salon_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    field: 'salon_id'
+  },
   name: {
     type: DataTypes.STRING(100),
     allowNull: false

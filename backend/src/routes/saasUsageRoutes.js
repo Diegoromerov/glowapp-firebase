@@ -1,6 +1,7 @@
 // backend/src/routes/saasUsageRoutes.js
 const express = require('express');
-const { pool } = require('../config/db');
+const { pool, systemPool } = require('../config/db');
+const { runAsSystem } = require('../config/tenantRouting');
 const saasContext = require('../middleware/saasContext');
 const { requireEntitlement } = require('../middleware/featureGate');
 const { authMiddleware } = require('../middleware/auth');
@@ -181,6 +182,80 @@ router.get('/history', async (req, res) => {
   } catch (error) {
     console.error('[saasUsageRoutes] Error getting history:', error.message);
     res.status(500).json({ error: 'Error obteniendo historial' });
+  }
+});
+
+/**
+ * GET /api/saas/usage/reminders
+ * Conteo de mensajes, intentos y costos efectivamente informados este mes.
+ * Los costos ausentes se devuelven como null, nunca como estimación.
+ */
+router.get('/reminders', async (req, res) => {
+  try {
+    if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
+
+    const tenantId = req.saas.tenantId;
+    const now = new Date();
+    const periodStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString().slice(0, 10);
+    const periodEnd = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0)).toISOString().slice(0, 10);
+    const { rows } = await runAsSystem({ pool, systemPool }, (client) => client.query(`
+      SELECT channel, provider,
+             COUNT(*) FILTER (WHERE status = 'SENT')::integer AS sent_messages,
+             COALESCE(SUM(attempt_count) FILTER (WHERE status <> 'SKIPPED'), 0)::integer AS send_attempts,
+             COUNT(*) FILTER (WHERE status = 'FAILED')::integer AS failed_deliveries,
+             COUNT(*) FILTER (WHERE status = 'SKIPPED')::integer AS skipped_deliveries,
+             SUM(cost_amount) AS known_cost,
+             COUNT(cost_amount)::integer AS cost_items_recorded,
+             cost_currency
+        FROM booking_reminder_deliveries
+       WHERE business_profile_id = $1
+         AND attempted_at >= date_trunc('month', CURRENT_TIMESTAMP)
+         AND attempted_at < date_trunc('month', CURRENT_TIMESTAMP) + INTERVAL '1 month'
+       GROUP BY channel, provider, cost_currency
+       ORDER BY channel, provider, cost_currency NULLS LAST
+    `, [tenantId]));
+
+    const totals = rows.reduce((acc, row) => {
+      acc.sentMessages += Number(row.sent_messages || 0);
+      acc.sendAttempts += Number(row.send_attempts || 0);
+      acc.failedDeliveries += Number(row.failed_deliveries || 0);
+      acc.skippedDeliveries += Number(row.skipped_deliveries || 0);
+      acc.costItemsRecorded += Number(row.cost_items_recorded || 0);
+      if (row.known_cost !== null) {
+        const currency = String(row.cost_currency || '').trim();
+        acc.knownCosts[currency] = (acc.knownCosts[currency] || 0) + Number(row.known_cost);
+      }
+      return acc;
+    }, {
+      sentMessages: 0,
+      sendAttempts: 0,
+      failedDeliveries: 0,
+      skippedDeliveries: 0,
+      costItemsRecorded: 0,
+      knownCosts: {},
+    });
+
+    res.json({
+      tenantId,
+      periodStart,
+      periodEnd,
+      channels: rows.map((row) => ({
+        channel: row.channel,
+        provider: row.provider,
+        sentMessages: Number(row.sent_messages || 0),
+        sendAttempts: Number(row.send_attempts || 0),
+        failedDeliveries: Number(row.failed_deliveries || 0),
+        skippedDeliveries: Number(row.skipped_deliveries || 0),
+        currency: row.cost_currency === null ? null : String(row.cost_currency).trim(),
+        knownCost: row.known_cost === null ? null : Number(row.known_cost),
+        costItemsRecorded: Number(row.cost_items_recorded || 0),
+      })),
+      totals: { ...totals, knownCosts: Object.entries(totals.knownCosts).map(([currency, amount]) => ({ currency, amount })) },
+      costDisclosure: 'Solo suma costos unitarios configurados para entregas aceptadas; no estima cargos desconocidos ni cargos que el proveedor pudiera cobrar por intentos fallidos.',
+    });
+  } catch (error) {
+    console.error('[saasUsageRoutes] Error getting reminder usage:', error.message);
+    res.status(500).json({ error: 'Error obteniendo uso de recordatorios' });
   }
 });
 

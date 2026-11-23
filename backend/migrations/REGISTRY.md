@@ -548,3 +548,21 @@ en 076).
 - Añade estados de baja/expiración y una bitácora append-only de invitación, aceptación, cambio de rol, suspensión y retiro.
 - Conserva `user_id` obligatorio y el índice único existente; la invitación se envía a una cuenta GlowApp existente y se valida de nuevo contra el correo al aceptar.
 - No migra ni elimina filas existentes; los datos de membresía actuales permanecen.
+
+## 191: alcance de negocio y sede en servicios y reservas
+
+- Añade a `services` el perfil SaaS y la sede propietaria, y a `bookings` la sede donde ocurre la reserva.
+- Completa únicamente relaciones inequívocas: perfiles únicos por prestador, sedes únicas por perfil y sede heredada del servicio para reservas existentes.
+- Mantiene `NULL` en relaciones ambiguas para revisión; crea claves foráneas `NOT VALID` para proteger nuevas escrituras sin bloquear la migración por datos históricos aún no conciliados, incluidas relaciones compuestas para que sede y negocio coincidan en servicios y reservas.
+- Conserva los servicios asociados al negocio sin sede fija: pueden reservarse en una sede del mismo negocio. Rechaza con error explícito las reservas de servicios sin negocio cuando la atribución es ambigua.
+- Es aditiva. Si se revierte la aplicación, volver a la versión anterior del backend y conservar las columnas/datos para evitar pérdida histórica.
+
+## 192: registro de entregas de recordatorios de reservas
+
+- Crea una bitácora por negocio, reserva, tipo de recordatorio y canal (push/correo), con estado, proveedor, identificador externo, error y costo real cuando esté disponible.
+- No vuelve a enviar entregas confirmadas; el claim evita concurrencia. Si el proveedor acepta un mensaje y el proceso cae antes de registrar la respuesta, el resultado externo es ambiguo y el reintento puede duplicar el mensaje porque FCM/SMTP/Brevo no comparten una clave de idempotencia.
+- Los mensajes se cuentan por canal y no incrementan `ONLINE_BOOKING`.
+- Conserva el contador de intentos por entrega cuando un proveedor falla, para distinguir intentos de mensajes aceptados.
+- Costos no informados por el proveedor permanecen `NULL`; no se imputan valores estimados.
+- La tabla aplica RLS de lectura mediante una membresía activa y el usuario autenticado; `app_rls_user` solo tiene `SELECT`, mientras que las escrituras quedan para `app_system`. La retención depende del negocio y la política de datos; no se guarda cuerpo del mensaje ni dirección de correo.
+- Migración aditiva. Rollback operativo: volver a la versión anterior; no borrar filas ni tabla si ya hay bitácora de producción.

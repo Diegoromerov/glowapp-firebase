@@ -14,6 +14,8 @@ class BookingScreen extends StatefulWidget {
   final String? initialNotes;
   final String? initialAddress;
   final String? preselectedProductId;
+  final String? salonId;
+  final List<Map<String, dynamic>> salons;
 
   const BookingScreen({
     super.key,
@@ -24,6 +26,8 @@ class BookingScreen extends StatefulWidget {
     this.initialNotes,
     this.initialAddress,
     this.preselectedProductId,
+    this.salonId,
+    this.salons = const [],
   });
 
   @override
@@ -34,6 +38,7 @@ class _BookingScreenState extends State<BookingScreen> {
   bool isLoading = false;
   DateTime? selectedDate;
   String? selectedServiceId;
+  String? _selectedSalonId;
   List<String> selectedServiceIds = [];
 
   /// Catálogo local: arranca con el que trajo la navegación y se refresca si
@@ -89,10 +94,19 @@ class _BookingScreenState extends State<BookingScreen> {
     selectedDate = DateTime(now.year, now.month, now.day + 1);
     _calendarMonth = selectedDate!;
     if (_servicios.isNotEmpty) {
-      selectedServiceId = _servicios.first['id']?.toString();
+      final initial = _servicios.where((s) => s['id']?.toString() == widget.initialServiceId);
+      selectedServiceId = (initial.isNotEmpty ? initial.first : _servicios.first)['id']?.toString();
       if (selectedServiceId != null) {
         selectedServiceIds = [selectedServiceId!];
       }
+    }
+    _selectedSalonId = widget.salonId;
+    final selectedService = _servicios.where((s) => s['id']?.toString() == selectedServiceId);
+    if (_selectedSalonId == null && selectedService.isNotEmpty) {
+      _selectedSalonId = selectedService.first['salon_id']?.toString();
+    }
+    if (_selectedSalonId == null && widget.salons.length == 1) {
+      _selectedSalonId = widget.salons.first['id']?.toString();
     }
     _loadSlots();
     _loadRecommendedProducts();
@@ -194,6 +208,15 @@ class _BookingScreenState extends State<BookingScreen> {
     if (selectedDate == null || selectedServiceIds.isEmpty) {
       return;
     }
+    if (widget.salons.length > 1 && (_selectedSalonId == null || _selectedSalonId!.isEmpty)) {
+      setState(() {
+        _isLoadingSlots = false;
+        _slots = [];
+        _selectedSlotTime = null;
+        _errorSlots = 'Selecciona la sede para consultar sus horarios.';
+      });
+      return;
+    }
     setState(() {
       _isLoadingSlots = true;
       _slots = [];
@@ -208,6 +231,7 @@ class _BookingScreenState extends State<BookingScreen> {
         providerId: widget.providerId,
         date: dateStr,
         serviceId: selectedServiceIds.join(','),
+        salonId: _selectedSalonId,
       );
       setState(() {
         _slots = data;
@@ -236,6 +260,12 @@ class _BookingScreenState extends State<BookingScreen> {
       );
       return;
     }
+    if (widget.salons.length > 1 && (_selectedSalonId == null || _selectedSalonId!.isEmpty)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecciona la sede para continuar.')),
+      );
+      return;
+    }
     if (selectedDate == null || _selectedSlotTime == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -258,13 +288,17 @@ class _BookingScreenState extends State<BookingScreen> {
     final hour = int.parse(timeParts[0]);
     final minute = int.parse(timeParts[1]);
 
-    final scheduledDateTime = DateTime(
-      selectedDate!.year,
-      selectedDate!.month,
-      selectedDate!.day,
-      hour,
-      minute,
-    );
+    // La agenda del producto usa la hora civil de Colombia, aunque el teléfono
+    // tenga configurada otra zona. Enviar el offset evita que el servidor
+    // interprete este valor como UTC u hora local del contenedor.
+    final localDate = [
+      selectedDate!.year.toString().padLeft(4, '0'),
+      selectedDate!.month.toString().padLeft(2, '0'),
+      selectedDate!.day.toString().padLeft(2, '0'),
+    ].join('-');
+    final localTime =
+        '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+    final scheduledAt = '${localDate}T${localTime}:00-05:00';
 
     final List<Map<String, dynamic>> productosAdicionales = [];
     _selectedProductsQty.forEach((id, qty) {
@@ -285,9 +319,10 @@ class _BookingScreenState extends State<BookingScreen> {
           providerId: widget.providerId,
           serviceId: ids.first,
           serviceIds: ids,
-          scheduledAt: scheduledDateTime.toIso8601String(),
+          scheduledAt: scheduledAt,
           serviceAddress: serviceAddress.trim(),
           notes: notes.isNotEmpty ? notes : null,
+          salonId: _selectedSalonId,
           productosAdicionales:
               productosAdicionales.isNotEmpty ? productosAdicionales : null,
         ),
@@ -805,6 +840,35 @@ class _BookingScreenState extends State<BookingScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),
       children: [
         _buildSectionTitle('1. Selecciona un Servicio'),
+        if (widget.salons.length > 1) ...[
+          const SizedBox(height: 12),
+          DropdownButtonFormField<String>(
+            value: _selectedSalonId,
+            decoration: const InputDecoration(
+              labelText: 'Sede',
+              border: OutlineInputBorder(),
+              prefixIcon: Icon(Icons.storefront_outlined),
+            ),
+            items: widget.salons.map((salon) {
+              final id = salon['id']?.toString() ?? '';
+              final name = salon['name']?.toString() ?? 'Sede $id';
+              final city = salon['city']?.toString();
+              return DropdownMenuItem(value: id, child: Text(city == null || city.isEmpty ? name : '$name · $city'));
+            }).toList(),
+            onChanged: (value) {
+              if (value == null) return;
+              setState(() {
+                _selectedSalonId = value;
+                final current = _servicios.where((service) => selectedServiceIds.contains(service['id']?.toString()));
+                if (current.any((service) => service['salon_id'] != null && service['salon_id'].toString() != value)) {
+                  selectedServiceIds.clear();
+                  selectedServiceId = null;
+                }
+              });
+              _loadSlots();
+            },
+          ),
+        ],
         const SizedBox(height: 12),
         _buildServiceSelectionList(),
         const SizedBox(height: 24),
@@ -1726,7 +1790,10 @@ class _BookingScreenState extends State<BookingScreen> {
           style: TextStyle(color: Colors.orange));
     }
     return Column(
-      children: _servicios.map((service) {
+      children: _servicios.where((service) {
+        final serviceSalon = service['salon_id']?.toString();
+        return _selectedSalonId == null || serviceSalon == null || serviceSalon == _selectedSalonId;
+      }).map((service) {
         final price = _parseDouble(service['precio'] ?? service['price']);
         final name = service['name']?.toString() ?? 'Sin nombre';
         final id = service['id']?.toString() ?? '';
@@ -1736,6 +1803,9 @@ class _BookingScreenState extends State<BookingScreen> {
         return GestureDetector(
           onTap: () {
             setState(() {
+              final serviceSalon = service['salon_id']?.toString();
+              if (serviceSalon != null && _selectedSalonId != null && serviceSalon != _selectedSalonId) return;
+              if (_selectedSalonId == null && serviceSalon != null) _selectedSalonId = serviceSalon;
               if (selectedServiceIds.contains(id)) {
                 if (selectedServiceIds.length > 1) {
                   selectedServiceIds.remove(id);

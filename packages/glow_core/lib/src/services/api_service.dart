@@ -544,6 +544,7 @@ class ApiService {
     required String scheduledAt,
     required String serviceAddress,
     String? notes,
+    String? salonId,
     List<Map<String, dynamic>>? productosAdicionales,
   }) async {
     final headers = await _getAuthHeaders();
@@ -558,6 +559,7 @@ class ApiService {
             'scheduled_at': scheduledAt,
             'service_address': serviceAddress,
             'notes': notes,
+            if (salonId != null && salonId.trim().isNotEmpty) 'salon_id': salonId,
             'productos_adicionales': productosAdicionales,
           }),
         )
@@ -1303,13 +1305,14 @@ class ApiService {
     required String providerId,
     required String date,
     required String serviceId,
+    String? salonId,
   }) async {
     await ensureBaseUrl();
     final headers = await _getAuthHeaders();
     final response = await http
         .get(
           Uri.parse(
-              '$_baseUrl$_apiPath/providers/$providerId/slots?date=$date&service_id=$serviceId'),
+              '$_baseUrl$_apiPath/providers/$providerId/slots?date=$date&service_id=$serviceId${salonId == null || salonId.isEmpty ? '' : '&salon_id=$salonId'}'),
           headers: headers,
         )
         .timeout(requestTimeout);
@@ -1462,8 +1465,11 @@ class ApiService {
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
-  static Future<List<Map<String, dynamic>>> fetchProviderBookings() async {
+  static Future<List<Map<String, dynamic>>> fetchProviderBookings({int? salonId}) async {
     final headers = await _getAuthHeaders();
+    if (salonId != null && salonId > 0) {
+      headers['x-active-salon-id'] = salonId.toString();
+    }
     final response = await http
         .get(
           Uri.parse('$_baseUrl$_apiPath/bookings/provider'),

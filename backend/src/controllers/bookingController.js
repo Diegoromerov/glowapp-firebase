@@ -1,6 +1,6 @@
 // backend/src/controllers/bookingController.js
 const { pool } = require('../config/db');
-const { runAsSystemContext } = require('../config/tenantRouting');
+const { runAsSystem, runAsSystemContext } = require('../config/tenantRouting');
 const { Booking, Service, User, Transaction } = require('../models');
 const { sequelize } = require('../config/database');
 const { Op } = require('sequelize');
@@ -35,6 +35,9 @@ const { discriminarIva } = require('../utils/iva');
 const { dedupeServiceIds, missingServiceIds } = require('../utils/serviceSelection');
 const usageMeteringService = require('../services/usageMeteringService');
 const { getMonthPeriod } = require('../config/saasCatalog');
+const { getColombiaDayRange, getColombiaSchedule, isWithinColombiaSchedule } = require('../utils/bookingCalendar');
+const { getActiveBookingSalonId, canManageBooking } = require('../utils/bookingAccess');
+const { ACTIONS } = require('../services/authorizationService');
 
 /** URL http(s) utilizable como redirect_url (no vacia, no de otro esquema). */
 function esUrlHttpValida(valor) {
@@ -85,10 +88,13 @@ exports.createBooking = async (req, res) => {
   try {
     const clientId = req.user.id;
     let { provider_id, service_id, service_ids, scheduled_at, service_address, notes, productos_adicionales } = req.body;
+    const salonIdInput = req.body.salon_id ?? req.body.salonId ?? null;
 
     // Un `provider_id` no numérico hacía que Postgres reventara con
     // «invalid input syntax for type integer» y el cliente viera un 500.
-    if (!/^\d+$/.test(String(provider_id ?? ''))) {
+    const parsedProviderId = Number(provider_id);
+    if (!/^\d+$/.test(String(provider_id ?? '')) ||
+        !Number.isSafeInteger(parsedProviderId) || parsedProviderId <= 0 || parsedProviderId > 2147483647) {
       return res.status(400).json({
         success: false,
         code: 'BOOKING_PROVIDER_INVALID',
@@ -111,6 +117,9 @@ exports.createBooking = async (req, res) => {
         error: 'Faltan campos requeridos o formato inválido para service_ids',
       });
     }
+    if (Number.isNaN(new Date(scheduled_at).getTime())) {
+      return res.status(400).json({ success: false, code: 'BOOKING_DATETIME_INVALID', error: 'Fecha de reserva inválida.' });
+    }
 
     // Obtener y validar todos los servicios solicitados.
     //
@@ -120,7 +129,7 @@ exports.createBooking = async (req, res) => {
     // fueron encontrados» con un servicio válido. La lectura se hace con el rol
     // de sistema (app_system, BYPASSRLS) en su propia transacción; el
     // aislamiento del resto de la API no cambia.
-    const { services, prestadorFiscal } = await sequelize.transaction(async (t) => {
+    const { services, prestadorFiscal, providerBusinessProfileCount } = await sequelize.transaction(async (t) => {
       await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
       // Un servicio puede pertenecer al prestador O a uno de sus perfiles de
       // negocio (así los lista serviceController.getProviderServices). Filtrar
@@ -140,6 +149,7 @@ exports.createBooking = async (req, res) => {
       const filas = await Service.findAll({
         where: {
           id: idsPedidos,
+          is_active: true,
           [Op.or]: [
             { provider_id: Number(provider_id) },
             ...(businessIds.length
@@ -160,7 +170,11 @@ exports.createBooking = async (req, res) => {
           transaction: t,
         }
       );
-      return { services: filas, prestadorFiscal: fiscal };
+      return {
+        services: filas,
+        prestadorFiscal: fiscal,
+        providerBusinessProfileCount: negocios.length,
+      };
     });
 
     // 404 estructurado: además del mensaje, se dice QUÉ ids no existen para
@@ -191,6 +205,114 @@ exports.createBooking = async (req, res) => {
     const servicesMap = {};
     services.forEach(s => { servicesMap[s.id] = s; });
     const orderedServices = idsPedidos.map((id) => servicesMap[id]);
+
+    if (providerBusinessProfileCount > 0 && orderedServices.some((service) => !service.business_profile_id)) {
+      return res.status(409).json({
+        success: false,
+        code: 'BOOKING_SERVICE_SCOPE_UNRESOLVED',
+        error: 'Uno o más servicios aún no están asignados a un negocio. El prestador debe asignarlos antes de habilitar reservas SaaS.',
+      });
+    }
+
+    const serviceBusinessProfiles = [...new Set(orderedServices
+      .map((service) => service.business_profile_id || null)
+      .filter(Boolean)
+      .map(String))];
+    const serviceSalons = [...new Set(orderedServices
+      .map((service) => service.salon_id || null)
+      .filter(Boolean)
+      .map(Number))];
+    if (serviceBusinessProfiles.length > 1 || serviceSalons.length > 1) {
+      return res.status(400).json({
+        success: false,
+        code: 'BOOKING_SCOPE_MISMATCH',
+        error: 'Los servicios seleccionados no pertenecen al mismo negocio y sede.',
+      });
+    }
+
+    const parsedSalonId = salonIdInput === null ? null : Number(salonIdInput);
+    if (salonIdInput !== null && (!/^\d+$/.test(String(salonIdInput)) ||
+        !Number.isSafeInteger(parsedSalonId) || parsedSalonId <= 0 || parsedSalonId > 2147483647)) {
+      return res.status(400).json({ success: false, code: 'BOOKING_SALON_INVALID', error: 'salon_id inválido' });
+    }
+    let salonId = salonIdInput === null ? (serviceSalons[0] || null) : parsedSalonId;
+    let businessProfileId = serviceBusinessProfiles[0] || null;
+    if (salonId !== null) {
+      const salonRows = await sequelize.transaction(async (t) => {
+        await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+        return sequelize.query(
+          `SELECT s.id, s.business_profile_id
+             FROM salones s
+            WHERE s.id = :salonId
+              AND (:businessProfileId IS NULL OR s.business_profile_id = :businessProfileId)
+              AND (
+                (:businessProfileId IS NOT NULL AND s.business_profile_id = :businessProfileId
+                  AND EXISTS (
+                    SELECT 1 FROM business_profiles bp
+                     WHERE bp.id = s.business_profile_id
+                       AND (bp.provider_id = :providerId OR EXISTS (
+                         SELECT 1 FROM memberships m
+                          WHERE m.business_profile_id = bp.id
+                            AND m.user_id = :providerId
+                            AND m.status = 'ACTIVE'
+                       ))
+                  ))
+                OR (:businessProfileId IS NULL AND (
+                  (s.business_profile_id IS NULL AND s.id_dueno = :providerId)
+                  OR EXISTS (
+                    SELECT 1 FROM business_profiles bp
+                     WHERE bp.id = s.business_profile_id
+                       AND (bp.provider_id = :providerId OR EXISTS (
+                         SELECT 1 FROM memberships m
+                          WHERE m.business_profile_id = bp.id
+                            AND m.user_id = :providerId
+                            AND m.status = 'ACTIVE'
+                       ))
+                  )
+                ))
+              )`,
+          {
+            replacements: { salonId, businessProfileId, providerId: Number(provider_id) },
+            type: sequelize.QueryTypes.SELECT,
+            transaction: t,
+          }
+        );
+      });
+      if (!salonRows.length) {
+        return res.status(404).json({ success: false, code: 'BOOKING_SALON_NOT_FOUND', error: 'La sede no existe.' });
+      }
+      const salonBusinessProfileId = salonRows[0].business_profile_id || null;
+      if (serviceSalons.length && serviceSalons[0] !== salonId) {
+        return res.status(400).json({ success: false, code: 'BOOKING_SCOPE_MISMATCH', error: 'El servicio no pertenece a la sede seleccionada.' });
+      }
+      if (businessProfileId && salonBusinessProfileId && String(businessProfileId) !== String(salonBusinessProfileId)) {
+        return res.status(400).json({ success: false, code: 'BOOKING_SCOPE_MISMATCH', error: 'La sede y el servicio pertenecen a negocios distintos.' });
+      }
+      businessProfileId = businessProfileId || salonBusinessProfileId;
+      if (businessProfileId && orderedServices.some((service) => !service.business_profile_id)) {
+        return res.status(409).json({
+          success: false,
+          code: 'BOOKING_SERVICE_SCOPE_UNRESOLVED',
+          error: 'Uno o más servicios aún no están asignados al negocio de esta sede. El prestador debe asignarlos antes de habilitar reservas.',
+        });
+      }
+    } else if (businessProfileId) {
+      const salonRows = await sequelize.transaction(async (t) => {
+        await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+        return sequelize.query(
+          'SELECT id FROM salones WHERE business_profile_id = :businessProfileId ORDER BY id LIMIT 2',
+          { replacements: { businessProfileId }, type: sequelize.QueryTypes.SELECT, transaction: t }
+        );
+      });
+      if (salonRows.length > 1) {
+        return res.status(400).json({
+          success: false,
+          code: 'BOOKING_SALON_REQUIRED',
+          error: 'Selecciona la sede donde quieres reservar.',
+        });
+      }
+      if (salonRows.length === 1) salonId = Number(salonRows[0].id);
+    }
 
     const totalServicesPrice = orderedServices.reduce((sum, s) => sum + parseFloat(s.price), 0);
     const totalDurationMinutes = orderedServices.reduce((sum, s) => sum + parseInt(s.duration_minutes), 0);
@@ -236,18 +358,32 @@ exports.createBooking = async (req, res) => {
     // segundo toque recibe un 409 «horario ya reservado» en lugar de la cita
     // que el usuario acaba de crear.
     const reciente = await sequelize.query(
-      `SELECT id FROM bookings
-        WHERE client_id = :clientId
-          AND provider_id = :providerId
-          AND scheduled_at = :scheduledAt
-          AND estado = 'PENDIENTE_PAGO'
-          AND created_at > now() - interval '2 minutes'
+      `SELECT candidate.id FROM bookings candidate
+        WHERE candidate.client_id = :clientId
+          AND candidate.provider_id = :providerId
+          AND candidate.scheduled_at = :scheduledAt
+          AND candidate.salon_id IS NOT DISTINCT FROM :salonId
+          AND candidate.estado = 'PENDIENTE_PAGO'
+          AND COALESCE(candidate.productos_adicionales->>'is_primary', 'true') = 'true'
+          AND candidate.created_at > now() - interval '2 minutes'
+          AND array_to_string(ARRAY(
+            SELECT grouped.service_id::text
+              FROM bookings grouped
+             WHERE COALESCE(grouped.productos_adicionales->>'primary_booking_id', grouped.id::text) = candidate.id::text
+             ORDER BY CASE
+               WHEN grouped.productos_adicionales->>'group_position' ~ '^-?[0-9]+$'
+                 THEN (grouped.productos_adicionales->>'group_position')::integer
+               ELSE 0
+             END, grouped.id
+          ), ',') = :serviceIds
         LIMIT 1`,
       {
         replacements: {
           clientId,
           providerId: Number(provider_id),
           scheduledAt: new Date(scheduled_at),
+          salonId,
+          serviceIds: idsPedidos.join(','),
         },
         type: sequelize.QueryTypes.SELECT,
       }
@@ -260,56 +396,11 @@ exports.createBooking = async (req, res) => {
       });
     }
 
-    // 🔸 Validación de solapamiento de horarios (Collision Check de la duración acumulada)
     const newStart = new Date(scheduled_at);
     const newEnd = new Date(newStart.getTime() + totalDurationMinutes * 60 * 1000);
-    
-    // 🇨🇴 Filtrar citas del mismo día considerando la zona horaria de Colombia (America/Bogota UTC-5)
-    const baseDate = new Date(scheduled_at);
-    // 05:00 UTC corresponde a 00:00:00 hora Colombia del mismo día
-    const startOfDay = new Date(Date.UTC(baseDate.getUTCFullYear(), baseDate.getUTCMonth(), baseDate.getUTCDate(), 5, 0, 0, 0));
-    // 04:59:59 UTC del día siguiente corresponde a 23:59:59 hora Colombia
-    const endOfDay = new Date(Date.UTC(baseDate.getUTCFullYear(), baseDate.getUTCMonth(), baseDate.getUTCDate() + 1, 4, 59, 59, 999));
-
-    // Solapamiento: la agenda del prestador es cross-tenant (sus reservas y sus
-    // servicios pertenecen a su inquilino). Con el contexto del cliente, el
-    // include de `service` vuelve null y `b.service.duration_minutes` reventaba
-    // con «Cannot read properties of null». Se lee con rol de sistema.
-    const overlaps = await sequelize.transaction(async (t) => {
-      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
-      return Booking.findAll({
-        where: {
-          provider_id,
-          estado: { [Op.ne]: 'CANCELADA' },
-          scheduled_at: {
-            [Op.between]: [startOfDay, endOfDay]
-          }
-        },
-        include: [{
-          model: Service,
-          as: 'service',
-          attributes: ['duration_minutes']
-        }],
-        transaction: t,
-      });
-    });
-
-    // Verificar solapamiento en el subconjunto filtrado
-    for (const b of overlaps) {
-      // Guarda: nunca 500 por una fila huérfana (servicio borrado). Sin
-      // duración no se puede afirmar que no haya conflicto, así que se ignora
-      // esa fila y se deja constancia.
-      if (!b.service) {
-        console.warn(`[bookings] reserva ${b.id} sin servicio asociado; se omite en el control de solape`);
-        continue;
-      }
-      const bStart = new Date(b.scheduled_at);
-      const bDuration = parseInt(b.service.duration_minutes);
-      const bEnd = new Date(bStart.getTime() + bDuration * 60 * 1000);
-
-      if (newStart.getTime() < bEnd.getTime() && newEnd.getTime() > bStart.getTime()) {
-        return res.status(409).json({ error: 'El horario seleccionado ya está reservado o entra en conflicto con otra cita' });
-      }
+    const bookingDay = getColombiaDayRange(newStart);
+    if (!bookingDay) {
+      return res.status(400).json({ success: false, code: 'BOOKING_DATETIME_INVALID', error: 'Fecha de reserva inválida.' });
     }
 
     // IVA — art. 476 num. 1 lit. a) E.T.: los tratamientos de belleza NO están
@@ -348,23 +439,64 @@ exports.createBooking = async (req, res) => {
     await sequelize.transaction(async (t) => {
       await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
 
+      // Serializa las reservas del mismo prestador y día local; la comprobación
+      // y la escritura usan este mismo lock transaccional.
+      await sequelize.query(
+        'SELECT pg_advisory_xact_lock(:providerId, hashtext(:localDate))',
+        { replacements: { providerId: Number(provider_id), localDate: bookingDay.localDate }, transaction: t }
+      );
+
+      const providerHours = await sequelize.query(
+        'SELECT active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = :providerId',
+        { replacements: { providerId: Number(provider_id) }, type: sequelize.QueryTypes.SELECT, transaction: t }
+      );
+      const hours = providerHours[0] || {};
+      const schedule = getColombiaSchedule({
+        date: bookingDay.localDate,
+        weeklySchedule: hours.weekly_schedule,
+        activeStartHour: hours.active_start_hour,
+        activeEndHour: hours.active_end_hour,
+      });
+      if (!isWithinColombiaSchedule({
+        scheduledAt: newStart,
+        durationMinutes: totalDurationMinutes,
+        schedule,
+      })) {
+        throw Object.assign(new Error('El horario ya no está disponible o está fuera del horario del prestador.'), {
+          code: 'BOOKING_SLOT_INVALID',
+        });
+      }
+
       // Idempotencia natural: dos toques seguidos en «Reservar» generaban dos
-      // citas idénticas que el cliente tenía que cancelar a mano. Si hay una
-      // reserva del mismo cliente, prestador y hora creada hace menos de dos
-      // minutos, se devuelve esa en vez de crear otra.
+      // citas idénticas que el cliente tenía que cancelar a mano. Se compara el
+      // grupo exacto de servicios y sede: compartir prestador/hora no basta.
       const duplicada = await sequelize.query(
-        `SELECT id FROM bookings
-          WHERE client_id = :clientId
-            AND provider_id = :providerId
-            AND scheduled_at = :scheduledAt
-            AND estado = 'PENDIENTE_PAGO'
-            AND created_at > now() - interval '2 minutes'
+        `SELECT candidate.id FROM bookings candidate
+          WHERE candidate.client_id = :clientId
+            AND candidate.provider_id = :providerId
+            AND candidate.scheduled_at = :scheduledAt
+            AND candidate.salon_id IS NOT DISTINCT FROM :salonId
+            AND candidate.estado = 'PENDIENTE_PAGO'
+            AND COALESCE(candidate.productos_adicionales->>'is_primary', 'true') = 'true'
+            AND candidate.created_at > now() - interval '2 minutes'
+            AND array_to_string(ARRAY(
+              SELECT grouped.service_id::text
+                FROM bookings grouped
+               WHERE COALESCE(grouped.productos_adicionales->>'primary_booking_id', grouped.id::text) = candidate.id::text
+               ORDER BY CASE
+                 WHEN grouped.productos_adicionales->>'group_position' ~ '^-?[0-9]+$'
+                   THEN (grouped.productos_adicionales->>'group_position')::integer
+                 ELSE 0
+               END, grouped.id
+            ), ',') = :serviceIds
           LIMIT 1`,
         {
           replacements: {
             clientId,
             providerId: Number(provider_id),
             scheduledAt: new Date(scheduled_at),
+            salonId,
+            serviceIds: idsPedidos.join(','),
           },
           type: sequelize.QueryTypes.SELECT,
           transaction: t,
@@ -377,15 +509,45 @@ exports.createBooking = async (req, res) => {
           bookingId: duplicada[0].id,
         });
       }
+      if (newStart.getTime() <= Date.now()) {
+        throw Object.assign(new Error('Selecciona una fecha y hora futura.'), {
+          code: 'BOOKING_DATETIME_PAST',
+        });
+      }
+
+      const existingBookings = await sequelize.query(`
+        SELECT b.scheduled_at, COALESCE(s.duration_minutes, 60) AS duration_minutes
+          FROM bookings b
+          LEFT JOIN services s ON s.id = b.service_id
+         WHERE b.provider_id = :providerId
+           AND b.estado::text NOT IN ('CANCELADA', 'CANCELLED')
+           AND b.scheduled_at >= :dayStart
+           AND b.scheduled_at < :dayEnd
+      `, {
+        replacements: {
+          providerId: Number(provider_id),
+          dayStart: bookingDay.start,
+          dayEnd: bookingDay.endExclusive,
+        },
+        type: sequelize.QueryTypes.SELECT,
+        transaction: t,
+      });
+      const collision = existingBookings.some((booking) => {
+        const start = new Date(booking.scheduled_at);
+        const end = new Date(start.getTime() + Number(booking.duration_minutes || 60) * 60_000);
+        return newStart.getTime() < end.getTime() && newEnd.getTime() > start.getTime();
+      });
+      if (collision) {
+        throw Object.assign(new Error('El horario seleccionado ya está reservado o entra en conflicto con otra cita.'), {
+          code: 'BOOKING_SLOT_TAKEN',
+        });
+      }
 
       // Medir y aplicar reservas SaaS dentro de la misma transacción que crea
       // las citas. Así una carrera no permite superar el límite mensual y una
       // reserva duplicada no consume cuota.
       const serviciosPorTenant = new Map();
-      for (const service of orderedServices) {
-        const tenantId = service.business_profile_id || service.businessProfileId;
-        if (tenantId) serviciosPorTenant.set(String(tenantId), 1);
-      }
+      if (businessProfileId) serviciosPorTenant.set(String(businessProfileId), 1);
       const servicesHaveTenantColumn = await servicesTieneBusinessProfileId(t);
       if (serviciosPorTenant.size === 0 && servicesHaveTenantColumn) {
         const serviceTenants = await sequelize.query(
@@ -424,17 +586,19 @@ exports.createBooking = async (req, res) => {
           // Inicialización transparente para el mes en curso: toma el historial
           // de reservas previo a activar la medición, sin resetear ni perder datos.
           const historicalQuery = servicesHaveTenantColumn
-            ? `SELECT COUNT(DISTINCT (b.client_id, b.provider_id, b.scheduled_at))::integer AS count
+            ? `SELECT COUNT(DISTINCT COALESCE(b.productos_adicionales->>'primary_booking_id', b.id::text))::integer AS count
                FROM bookings b
                JOIN services s ON s.id = b.service_id
                WHERE s.business_profile_id = :tenantId
                  AND b.created_at >= CAST(:periodStart AS date)
-                 AND b.created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')`
-            : `SELECT COUNT(DISTINCT (client_id, provider_id, scheduled_at))::integer AS count
+                 AND b.created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')
+                 AND COALESCE((b.productos_adicionales->>'is_primary')::boolean, true) = true`
+            : `SELECT COUNT(DISTINCT COALESCE(productos_adicionales->>'primary_booking_id', id::text))::integer AS count
                FROM bookings
                WHERE provider_id = :providerId
                  AND created_at >= CAST(:periodStart AS date)
-                 AND created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')`;
+                 AND created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')
+                 AND COALESCE((productos_adicionales->>'is_primary')::boolean, true) = true`;
           const historicalRows = await sequelize.query(historicalQuery, {
             replacements: {
               tenantId,
@@ -496,14 +660,17 @@ exports.createBooking = async (req, res) => {
           products: bookingProducts,
           linked_booking_ids: generatedIds.filter(id => id !== currentId),
           is_primary: isPrimary,
-          primary_booking_id: generatedIds[0]
+          primary_booking_id: generatedIds[0],
+          group_position: i
         };
 
         const booking = await Booking.create({
           id: currentId,
           client_id: clientId,
-          provider_id,
+          provider_id: Number(provider_id),
           service_id: currentService.id,
+          business_profile_id: currentService.business_profile_id || businessProfileId,
+          salon_id: currentService.salon_id || salonId,
           scheduled_at: new Date(currentScheduledTime),
           valor_bruto: bookingBruto,
           tarifa_reserva: bookingTarife,
@@ -560,6 +727,9 @@ exports.createBooking = async (req, res) => {
         idempotente: true,
       });
     }
+    if (error.code === 'BOOKING_DATETIME_PAST') {
+      return res.status(400).json({ success: false, code: error.code, error: error.message });
+    }
     if (error.code === 'SAAS_QUOTA_EXCEEDED') {
       return res.status(429).json({
         success: false,
@@ -572,6 +742,12 @@ exports.createBooking = async (req, res) => {
         upgradeUrl: '/api/saas/billing/checkout',
       });
     }
+    if (error.code === 'BOOKING_SLOT_TAKEN') {
+      return res.status(409).json({ success: false, code: error.code, error: error.message });
+    }
+    if (error.code === 'BOOKING_SLOT_INVALID') {
+      return res.status(409).json({ success: false, code: error.code, error: error.message });
+    }
     console.error('❌ ERROR EN /api/bookings:', { message: error.message, code: error.code });
     res.status(500).json({ error: 'Error al crear la reserva' });
   }
@@ -580,18 +756,14 @@ exports.createBooking = async (req, res) => {
 // 🔹 Panel de Prestador: Obtener citas
 exports.getProviderBookings = async (req, res) => {
   try {
-    const allowedRoles = ['provider', 'PRESTADOR', 'salon', 'SALON'];
-    if (!allowedRoles.includes(req.user.role)) {
-      return res.status(403).json({ error: 'Acceso denegado: solo para proveedores o salones' });
-    }
-
     // Usamos pool para queries directas si son a tablas no mapeadas (o complejas), 
-    // pero Sequelize es genial para obtener la estructura limpia.
+    // La propiedad/operación se decide en SQL (titular o membresía operativa), no por el rol
+    // global del usuario: los empleados SaaS pueden tener rol CLIENTE en auth.
     const query = `
       SELECT 
         b.id, b.booking_number, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount,
         b.comision_plataforma AS platform_commission, b.impuestos_estado AS state_tax, b.pago_neto_prestador AS provider_net_amount,
-        b.client_id, b.pin_verificacion, b.service_address,
+        b.client_id, b.service_id, b.pin_verificacion, b.service_address,
         s.name as service_name, s.price,
         u.nombre as client_name, u.phone as client_phone,
         t.external_id AS wompi_reference, t.status AS payout_status
@@ -599,11 +771,59 @@ exports.getProviderBookings = async (req, res) => {
       JOIN services s ON b.service_id = s.id
       JOIN usuarios u ON b.client_id = u.id
       LEFT JOIN transactions t ON b.id = t.booking_id
-      WHERE b.provider_id = $1
+      WHERE (
+        (b.provider_id = $1 AND (
+          (b.business_profile_id IS NULL OR EXISTS (
+            SELECT 1 FROM business_profiles owner_profile
+             WHERE owner_profile.id = b.business_profile_id AND owner_profile.provider_id = $1
+          ))
+          AND (
+          ($2::integer IS NULL AND b.salon_id IS NULL)
+          OR ($2::integer IS NOT NULL AND b.salon_id = $2 AND EXISTS (
+            SELECT 1 FROM salones selected_owner_salon
+             WHERE selected_owner_salon.id = $2
+               AND (
+                 (b.business_profile_id IS NULL AND selected_owner_salon.business_profile_id IS NULL AND selected_owner_salon.id_dueno = $1)
+                 OR (selected_owner_salon.business_profile_id = b.business_profile_id AND EXISTS (
+                   SELECT 1 FROM business_profiles owner_profile
+                    WHERE owner_profile.id = selected_owner_salon.business_profile_id
+                      AND owner_profile.provider_id = $1
+                 ))
+               )
+          ))
+          )
+        ))
+        OR (
+          b.business_profile_id IS NOT NULL
+          AND EXISTS (
+            SELECT 1 FROM memberships m
+             WHERE m.business_profile_id = b.business_profile_id
+               AND m.user_id = $1 AND m.status = 'ACTIVE'
+               -- memberships.role es canónico. VIEWER puede consultar agenda,
+               -- pero el helper de escritura aplica acciones RBAC por separado.
+               AND m.role IN ('OWNER', 'ADMIN', 'MANAGER', 'MEMBER', 'VIEWER')
+               AND (($2::integer IS NULL AND b.salon_id IS NULL) OR EXISTS (
+                 SELECT 1 FROM salones selected_salon
+                  WHERE selected_salon.id = $2
+                    AND selected_salon.business_profile_id = b.business_profile_id
+                    AND (b.salon_id IS NULL OR b.salon_id = selected_salon.id)
+               ))
+               AND (b.salon_id IS NULL OR EXISTS (
+                 SELECT 1 FROM salones booking_salon
+                  WHERE booking_salon.id = b.salon_id
+                    AND booking_salon.business_profile_id = b.business_profile_id
+               ))
+          )
+        )
+      )
       ORDER BY b.scheduled_at ASC;
     `;
-    
-    const result = await pool.query(query, [req.user.id]);
+
+    const salonId = getActiveBookingSalonId(req);
+    if (Number.isNaN(salonId)) {
+      return res.status(400).json({ error: 'salon_id inválido.' });
+    }
+    const result = await runAsSystem({ pool }, (client) => client.query(query, [req.user.id, salonId]));
     
     const formattedBookings = result.rows.map(row => ({
       id: row.id,
@@ -640,34 +860,35 @@ exports.updateBookingStatus = async (req, res) => {
   try {
     const { status } = req.body;
     const bookingId = req.params.id;
-    const providerId = req.user.id;
-
     const mapStatusToDb = (status) => {
+      if (typeof status !== 'string' || !status.trim()) return '';
       const s = status.toUpperCase();
-      if (s === 'PENDING' || s === 'PENDIENTE_PAGO') return 'PENDIENTE_PAGO';
-      if (s === 'CONFIRMED' || s === 'CONFIRMADA') return 'CONFIRMADA';
-      if (s === 'COMPLETED' || s === 'COMPLETADA') return 'COMPLETADA';
-      if (s === 'CANCELLED' || s === 'CANCELADA') return 'CANCELADA';
       return s;
     };
 
     const dbStatus = mapStatusToDb(status);
 
-    const validStatuses = ['PENDIENTE_PAGO', 'CONFIRMADA', 'EN_PROGRESO', 'FINALIZADA_PRESTADOR', 'COMPLETADA', 'CANCELADA'];
+    // Esta ruta queda limitada al cambio operativo que usa la app para escalar
+    // una cita a soporte. Pago, inicio, finalización y cancelación tienen rutas
+    // propias que validan sus efectos (Wompi/OTP/reembolso); permitirlos aquí
+    // saltaría partes del ciclo comercial.
+    const validStatuses = ['EN_DISPUTA'];
     if (!validStatuses.includes(dbStatus)) {
       return res.status(400).json({ error: `Estado inválido. Permitidos: ${validStatuses.join(', ')}` });
     }
 
-    const booking = await Booking.findOne({
-      where: { id: bookingId, provider_id: providerId }
-    });
+    if (!(await canManageBooking(req, bookingId))) {
+      return res.status(404).json({ error: 'Cita no encontrada o no te pertenece' });
+    }
+
+    const booking = await runAsSystemContext(() => Booking.findByPk(bookingId));
 
     if (!booking) {
       return res.status(404).json({ error: 'Cita no encontrada o no te pertenece' });
     }
 
     booking.estado = dbStatus;
-    await booking.save();
+    await runAsSystemContext(() => booking.save());
 
     console.log('✅ Cita actualizada a estado:', dbStatus);
     
@@ -693,7 +914,12 @@ exports.getClientBookings = async (req, res) => {
     const query = `
       SELECT 
         b.id, b.booking_number, b.scheduled_at, b.estado AS status, b.payment_status, b.valor_bruto AS total_amount, b.service_address, b.notes, b.pin_verificacion,
-        b.service_id, b.provider_id, s.name as service_name, s.duration_minutes as service_duration,
+        b.service_id, b.provider_id, b.salon_id,
+        b.productos_adicionales->>'primary_booking_id' AS primary_booking_id,
+        CASE WHEN jsonb_typeof(b.productos_adicionales->'linked_booking_ids') = 'array'
+             THEN b.productos_adicionales->'linked_booking_ids' ELSE '[]'::jsonb END AS linked_booking_ids,
+        group_services.service_ids,
+        s.name as service_name, s.duration_minutes as service_duration,
         u_prov.nombre as provider_name,
         p.business_name as provider_business_name,
         u_prov.foto_url as provider_avatar_url,
@@ -707,6 +933,17 @@ exports.getClientBookings = async (req, res) => {
       JOIN usuarios u_prov ON p.id = u_prov.id
       LEFT JOIN reviews r ON b.id = r.booking_id
       LEFT JOIN reembolsos re ON re.booking_id = b.id
+      LEFT JOIN LATERAL (
+        SELECT array_agg(g.service_id::text ORDER BY g.scheduled_at, g.id) AS service_ids
+          FROM bookings g
+         WHERE g.id::text = COALESCE(b.productos_adicionales->>'primary_booking_id', b.id::text)
+            OR g.id::text = ANY(ARRAY(
+                 SELECT jsonb_array_elements_text(
+                   CASE WHEN jsonb_typeof(b.productos_adicionales->'linked_booking_ids') = 'array'
+                        THEN b.productos_adicionales->'linked_booking_ids' ELSE '[]'::jsonb END
+                 )
+               ))
+      ) group_services ON TRUE
       WHERE b.client_id = $1
       ORDER BY b.scheduled_at DESC;
     `;
@@ -738,6 +975,10 @@ exports.getClientBookings = async (req, res) => {
       // dos campos el sheet abría la fecha pero no podía pedir horarios.
       service_id: row.service_id,
       provider_id: row.provider_id,
+      salon_id: row.salon_id,
+      primary_booking_id: row.primary_booking_id || row.id,
+      linked_booking_ids: Array.isArray(row.linked_booking_ids) ? row.linked_booking_ids : [],
+      service_ids: Array.isArray(row.service_ids) ? row.service_ids : [row.service_id].filter(Boolean),
       service_name: row.service_name,
       service_duration: parseInt(row.service_duration) || 0,
       provider_name: row.provider_name,
@@ -871,7 +1112,7 @@ exports.createBookingPaymentLink = async (req, res) => {
     const bookingId = req.params.id;
     const clientId = req.user.id;
 
-    const booking = await Booking.findOne({
+    let booking = await Booking.findOne({
       where: { id: bookingId, client_id: clientId }
     });
 
@@ -985,6 +1226,27 @@ exports.cancelBooking = async (req, res) => {
       return res.status(404).json({ error: 'Cita no encontrada o no tienes permisos para cancelarla' });
     }
 
+    let bookingMetadata = booking.productos_adicionales || {};
+    if (typeof bookingMetadata === 'string') {
+      try { bookingMetadata = JSON.parse(bookingMetadata); } catch (_) { bookingMetadata = {}; }
+    }
+    const primaryBookingId = bookingMetadata.primary_booking_id;
+    if (primaryBookingId && String(primaryBookingId) !== String(booking.id)) {
+      booking = await Booking.findOne({ where: { id: primaryBookingId, client_id: clientId } });
+      if (!booking) return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar el pago vinculado a esta cita.' });
+      bookingMetadata = booking.productos_adicionales || {};
+      if (typeof bookingMetadata === 'string') {
+        try { bookingMetadata = JSON.parse(bookingMetadata); } catch (_) { bookingMetadata = {}; }
+      }
+    }
+    const rawLinkedIds = Array.isArray(bookingMetadata.linked_booking_ids)
+      ? bookingMetadata.linked_booking_ids.map(String)
+      : [];
+    if (rawLinkedIds.some((id) => !UUID_CITA.test(id))) {
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar todos los servicios vinculados a esta reserva.' });
+    }
+    const bookingIds = [...new Set([String(booking.id), ...rawLinkedIds])];
+
     if (booking.estado === 'CANCELADA') {
       return res.status(400).json({ error: 'La cita ya está cancelada' });
     }
@@ -1023,6 +1285,26 @@ exports.cancelBooking = async (req, res) => {
     // Todo dentro de la MISMA transacción que el cambio de estado: o se cancela y se
     // devuelve el stock, o no ocurre ninguna de las dos cosas.
     await sequelize.transaction(async (t) => {
+      // La cancelación acredita saldos/stock que pueden pertenecer a otro tenant.
+      // El dueño de la operación ya se verificó por client_id arriba; se escala
+      // solo esta transacción para que sus asientos cruzados no fallen por RLS.
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      const groupRows = await sequelize.query(
+        `SELECT id, client_id, provider_id, estado, business_profile_id, salon_id
+           FROM bookings
+          WHERE id = ANY(ARRAY[:bookingIds]::uuid[])
+          ORDER BY id FOR UPDATE`,
+        { replacements: { bookingIds }, type: sequelize.QueryTypes.SELECT, transaction: t }
+      );
+      if (groupRows.length !== bookingIds.length || groupRows.some((row) =>
+        String(row.client_id) !== String(clientId) || Number(row.provider_id) !== Number(booking.provider_id) ||
+        String(row.business_profile_id || '') !== String(booking.business_profile_id || '') ||
+        String(row.salon_id || '') !== String(booking.salon_id || ''))) {
+        throw Object.assign(new Error('La reserva tiene servicios vinculados inconsistentes.'), { code: 'BOOKING_GROUP_INVALID' });
+      }
+      if (groupRows.some((row) => ['CANCELADA', 'COMPLETADA'].includes(row.estado))) {
+        throw Object.assign(new Error('Uno de los servicios vinculados ya no se puede cancelar.'), { code: 'BOOKING_GROUP_STATE_CONFLICT' });
+      }
       const wasPaid = booking.payment_status === 'paid';
 
       const productsList = Array.isArray(booking.productos_adicionales)
@@ -1067,6 +1349,11 @@ exports.cancelBooking = async (req, res) => {
       booking.cancelado_por = 'CLIENTE';
       booking.cancelado_at = new Date();
       await booking.save({ transaction: t });
+      await sequelize.query(
+        `UPDATE bookings SET estado = 'CANCELADA', cancelado_por = 'CLIENTE', cancelado_at = :canceladoAt
+          WHERE id = ANY(ARRAY[:bookingIds]::uuid[]) AND id <> :primaryBookingId`,
+        { replacements: { bookingIds, primaryBookingId: booking.id, canceladoAt: booking.cancelado_at }, transaction: t }
+      );
 
       // ── D-GL-023 · Asientos de la cancelación ────────────────────────────
       if (estabaPagada) {
@@ -1151,6 +1438,12 @@ exports.cancelBooking = async (req, res) => {
     });
 
   } catch (error) {
+    if (error.code === 'BOOKING_GROUP_INVALID') {
+      return res.status(409).json({ code: error.code, error: 'No pudimos validar todos los servicios vinculados a esta reserva.' });
+    }
+    if (error.code === 'BOOKING_GROUP_STATE_CONFLICT') {
+      return res.status(409).json({ code: error.code, error: 'Uno de los servicios vinculados ya no se puede cancelar.' });
+    }
     console.error('❌ ERROR EN PATCH /api/bookings/:id/cancel:', { message: error.message, code: error.code });
     res.status(500).json({ error: 'Error interno al cancelar la cita' });
   }
@@ -1205,10 +1498,160 @@ exports.rescheduleBooking = async (req, res) => {
     if (isNaN(nuevaFecha.getTime()) || nuevaFecha.getTime() <= Date.now()) {
       return res.status(400).json({ error: 'La nueva fecha debe ser futura.' });
     }
+    const newBookingDay = getColombiaDayRange(nuevaFecha);
+    if (!newBookingDay) {
+      return res.status(400).json({ error: 'La nueva fecha no es válida.' });
+    }
 
+    const rescheduled = await sequelize.transaction(async (transaction) => {
+      await sequelize.query('SET LOCAL ROLE app_system', { transaction });
+      const details = await sequelize.query(
+        `SELECT b.provider_id, b.estado, b.reschedule_count, b.scheduled_at,
+                b.productos_adicionales,
+                COALESCE(s.duration_minutes, 60) AS duration_minutes
+           FROM bookings b LEFT JOIN services s ON s.id = b.service_id
+          WHERE b.id = :bookingId AND b.client_id = :clientId
+          LIMIT 1`,
+        { replacements: { bookingId, clientId }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      if (!details.length) return { missing: true };
+      const locked = details[0];
+      const providerId = Number(details[0].provider_id);
+
+      let bookingMetadata = locked.productos_adicionales || {};
+      if (typeof bookingMetadata === 'string') {
+        try { bookingMetadata = JSON.parse(bookingMetadata); } catch (_) { bookingMetadata = {}; }
+      }
+      const rawLinkedIds = Array.isArray(bookingMetadata.linked_booking_ids)
+        ? bookingMetadata.linked_booking_ids.map(String)
+        : [];
+      if (rawLinkedIds.some((id) => !UUID_CITA.test(id))) return { groupInvalid: true };
+      const linkedIds = rawLinkedIds;
+      const bookingIds = [...new Set([String(bookingId), ...linkedIds])];
+      const bookingGroup = await sequelize.query(
+        `SELECT b.id, b.provider_id, b.client_id, b.estado, b.reschedule_count,
+                b.scheduled_at, b.business_profile_id, b.salon_id, b.productos_adicionales,
+                COALESCE(s.duration_minutes, 60) AS duration_minutes
+           FROM bookings b LEFT JOIN services s ON s.id = b.service_id
+          WHERE b.id = ANY(ARRAY[:bookingIds]::uuid[]) AND b.client_id = :clientId
+          ORDER BY b.id
+          FOR UPDATE OF b`,
+        { replacements: { bookingIds, clientId }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      if (bookingGroup.length !== bookingIds.length || bookingGroup.some((row) => Number(row.provider_id) !== providerId)) {
+        return { groupInvalid: true };
+      }
+      const clickedBooking = bookingGroup.find((row) => String(row.id) === String(bookingId));
+      if (!clickedBooking) return { missing: true };
+      if (!['PENDIENTE_PAGO', 'CONFIRMADA'].includes(clickedBooking.estado)) return { stateConflict: clickedBooking.estado };
+      if (Number(clickedBooking.reschedule_count) >= 1) return { limitReached: true };
+      if (bookingGroup.some((row) => !['PENDIENTE_PAGO', 'CONFIRMADA'].includes(row.estado))) {
+        return { stateConflict: bookingGroup.find((row) => !['PENDIENTE_PAGO', 'CONFIRMADA'].includes(row.estado)).estado };
+      }
+      if (bookingGroup.some((row) => Number(row.reschedule_count) >= 1)) return { limitReached: true };
+      const firstBookingAt = new Date(bookingGroup[0].scheduled_at);
+      const hoursBefore = (firstBookingAt.getTime() - Date.now()) / 3_600_000;
+      if (hoursBefore < 24) return { cutoff: true, hoursBefore };
+      if (new Set(bookingGroup.map((row) => String(row.business_profile_id || ''))).size > 1 ||
+          new Set(bookingGroup.map((row) => String(row.salon_id || ''))).size > 1) {
+        return { groupInvalid: true };
+      }
+      bookingGroup.sort((a, b) => {
+        const metadataFor = (row) => {
+          if (row.productos_adicionales && typeof row.productos_adicionales === 'object') return row.productos_adicionales;
+          try { return JSON.parse(row.productos_adicionales || '{}'); } catch (_) { return {}; }
+        };
+        const aPosition = Number(metadataFor(a).group_position);
+        const bPosition = Number(metadataFor(b).group_position);
+        if (Number.isInteger(aPosition) && Number.isInteger(bPosition)) return aPosition - bPosition;
+        return new Date(a.scheduled_at) - new Date(b.scheduled_at);
+      });
+      const totalDurationMinutes = bookingGroup.reduce((sum, row) => sum + Number(row.duration_minutes || 60), 0);
+
+      const oldBookingDay = getColombiaDayRange(locked.scheduled_at);
+      if (!oldBookingDay) return { groupInvalid: true };
+      const lockDates = [...new Set([oldBookingDay.localDate, newBookingDay.localDate])].sort();
+      for (const localDate of lockDates) {
+        await sequelize.query(
+          'SELECT pg_advisory_xact_lock(:providerId, hashtext(:localDate))',
+          { replacements: { providerId, localDate }, transaction }
+        );
+      }
+      const providerHours = await sequelize.query(
+        'SELECT active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = :providerId',
+        { replacements: { providerId }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      const hours = providerHours[0] || {};
+      const schedule = getColombiaSchedule({
+        date: newBookingDay.localDate,
+        weeklySchedule: hours.weekly_schedule,
+        activeStartHour: hours.active_start_hour,
+        activeEndHour: hours.active_end_hour,
+      });
+      if (!isWithinColombiaSchedule({
+        scheduledAt: nuevaFecha,
+        durationMinutes: totalDurationMinutes,
+        schedule,
+      })) return { invalidSchedule: true };
+
+      const durationMs = totalDurationMinutes * 60_000;
+      const candidateEnd = nuevaFecha.getTime() + durationMs;
+      const dayBookings = await sequelize.query(
+        `SELECT b.id, b.scheduled_at, COALESCE(s.duration_minutes, 60) AS duration_minutes
+           FROM bookings b LEFT JOIN services s ON s.id = b.service_id
+          WHERE b.provider_id = :providerId AND b.id <> ALL(ARRAY[:bookingIds]::uuid[])
+            AND b.estado::text NOT IN ('CANCELADA', 'CANCELLED')
+            AND b.scheduled_at >= :dayStart AND b.scheduled_at < :dayEnd`,
+        { replacements: { providerId, bookingIds, dayStart: newBookingDay.start, dayEnd: newBookingDay.endExclusive }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      const collision = dayBookings.some((other) => {
+        const otherStart = new Date(other.scheduled_at).getTime();
+        const otherEnd = otherStart + Number(other.duration_minutes || 60) * 60_000;
+        return nuevaFecha.getTime() < otherEnd && candidateEnd > otherStart;
+      });
+      if (collision) return { conflict: true };
+      let nextScheduledAt = new Date(nuevaFecha);
+      for (const row of bookingGroup) {
+        await sequelize.query(
+          `UPDATE bookings SET scheduled_at = :scheduledAt, reschedule_count = :rescheduleCount
+            WHERE id = :bookingId AND client_id = :clientId`,
+          {
+            replacements: {
+              scheduledAt: nextScheduledAt,
+              rescheduleCount: Number(row.reschedule_count || 0) + 1,
+              bookingId: row.id,
+              clientId,
+            },
+            transaction,
+          }
+        );
+        nextScheduledAt = new Date(nextScheduledAt.getTime() + Number(row.duration_minutes || 60) * 60_000);
+      }
+      return { success: true, bookingIds };
+    });
+    if (rescheduled.missing) {
+      return res.status(404).json({ error: 'Cita no encontrada o sin permisos para reprogramarla.' });
+    }
+    if (rescheduled.groupInvalid) {
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar todos los servicios vinculados a esta reserva. Contacta a soporte.' });
+    }
+    if (rescheduled.stateConflict) {
+      return res.status(409).json({ error: `No se puede reprogramar una cita en estado ${rescheduled.stateConflict}.`, accion: 'CANCELAR' });
+    }
+    if (rescheduled.limitReached) {
+      return res.status(409).json({ error: 'Ya usaste tu reprogramación gratuita. Una segunda reprogramación cuenta como cancelación.', accion: 'CANCELAR', reprogramaciones_usadas: 1 });
+    }
+    if (rescheduled.cutoff) {
+      return res.status(409).json({ error: 'La reprogramación gratuita se cierra 24 horas antes del servicio.', accion: 'CANCELAR', horas_anticipacion: Number(Math.max(0, rescheduled.hoursBefore).toFixed(1)) });
+    }
+    if (rescheduled.conflict) {
+      return res.status(409).json({ code: 'BOOKING_SLOT_TAKEN', error: 'El horario seleccionado ya está reservado o entra en conflicto con otra cita.' });
+    }
+    if (rescheduled.invalidSchedule) {
+      return res.status(409).json({ code: 'BOOKING_SLOT_INVALID', error: 'El nuevo horario no coincide con la jornada y los intervalos disponibles del prestador.' });
+    }
     booking.scheduled_at = nuevaFecha;
     booking.reschedule_count = veces + 1;
-    await booking.save();
 
     res.json({
       success: true,
@@ -1216,7 +1659,8 @@ exports.rescheduleBooking = async (req, res) => {
       booking: {
         id: booking.id,
         scheduled_at: booking.scheduled_at,
-        reschedule_count: booking.reschedule_count
+        reschedule_count: booking.reschedule_count,
+        booking_ids: rescheduled.bookingIds
       },
       puede_reprogramar: false
     });
@@ -1230,45 +1674,95 @@ exports.rescheduleBooking = async (req, res) => {
 // D-GL-023: >24 h no hay sanción; <24 h cuenta en el score y tres en 90 días
 // suspenden los retiros. Antes el prestador simplemente no tenía forma de cancelar.
 exports.cancelBookingByProvider = async (req, res) => {
+  const bookingId = req.params.id;
+  const client = await pool.connect();
   try {
-    const bookingId = req.params.id;
-    const providerId = req.user.id;
+    await client.query('BEGIN');
+    await client.query('SET LOCAL ROLE app_system');
 
-    const booking = await Booking.findOne({ where: { id: bookingId, provider_id: providerId } });
-
-    if (!booking) {
+    if (!(await canManageBooking(req, bookingId, client, ACTIONS.UPDATE))) {
+      await client.query('ROLLBACK');
       return res.status(404).json({ error: 'Cita no encontrada o sin permisos para cancelarla.' });
     }
-    if (booking.estado === 'CANCELADA') {
-      return res.status(400).json({ error: 'La cita ya está cancelada' });
+    const { rows } = await client.query(
+      `SELECT id, provider_id, client_id, estado, scheduled_at, payment_status, valor_bruto,
+              business_profile_id, salon_id, productos_adicionales
+         FROM bookings WHERE id = $1`,
+      [bookingId]
+    );
+
+    if (!rows.length) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'Cita no encontrada o sin permisos para cancelarla.' });
     }
-    if (booking.estado === 'COMPLETADA') {
-      return res.status(400).json({ error: 'No se puede cancelar una cita completada' });
+    let booking = rows[0];
+    let metadata = booking.productos_adicionales || {};
+    if (typeof metadata === 'string') {
+      try { metadata = JSON.parse(metadata); } catch (_) { metadata = {}; }
+    }
+    const rawLinkedIds = Array.isArray(metadata.linked_booking_ids)
+      ? metadata.linked_booking_ids.map(String)
+      : [];
+    if (rawLinkedIds.some((id) => !UUID_CITA.test(id))) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar todos los servicios vinculados a esta reserva.' });
+    }
+    const bookingIds = [...new Set([String(booking.id), ...rawLinkedIds])];
+    const primaryBookingId = metadata.primary_booking_id && UUID_CITA.test(String(metadata.primary_booking_id))
+      ? String(metadata.primary_booking_id)
+      : String(booking.id);
+    const group = await client.query(
+      `SELECT id, provider_id, client_id, estado, scheduled_at, payment_status,
+              valor_bruto, business_profile_id, salon_id
+         FROM bookings
+        WHERE id = ANY($1::uuid[])
+        ORDER BY id FOR UPDATE`,
+      [bookingIds]
+    );
+    if (group.rows.length !== bookingIds.length || group.rows.some((row) =>
+      Number(row.provider_id) !== Number(booking.provider_id) ||
+      String(row.client_id) !== String(booking.client_id) ||
+      String(row.business_profile_id || '') !== String(booking.business_profile_id || '') ||
+      String(row.salon_id || '') !== String(booking.salon_id || ''))) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar todos los servicios vinculados a esta reserva.' });
+    }
+    const invalidGroupState = group.rows.find((row) => ['CANCELADA', 'COMPLETADA'].includes(row.estado));
+    if (invalidGroupState) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ error: invalidGroupState.estado === 'CANCELADA' ? 'La cita ya está cancelada' : 'No se puede cancelar una cita completada' });
+    }
+    booking = group.rows.find((row) => String(row.id) === primaryBookingId);
+    if (!booking) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar el servicio principal de esta reserva.' });
+    }
+    const invalidState = group.rows.find((row) => ['CANCELADA', 'COMPLETADA'].includes(row.estado));
+    if (invalidState) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ error: invalidState.estado === 'CANCELADA' ? 'La cita ya está cancelada' : 'No se puede cancelar una cita completada' });
     }
 
-    const horasAntes = (new Date(booking.scheduled_at).getTime() - Date.now()) / (60 * 60 * 1000);
+    const firstBookingAt = group.rows.reduce((earliest, row) =>
+      new Date(row.scheduled_at) < new Date(earliest) ? row.scheduled_at : earliest,
+    group.rows[0].scheduled_at);
+    const horasAntes = (new Date(firstBookingAt).getTime() - Date.now()) / (60 * 60 * 1000);
     const tardia = horasAntes < 24;
 
-    booking.estado = 'CANCELADA';
-    booking.cancelado_por = 'PRESTADOR';
-    booking.cancelado_at = new Date();
-    await booking.save();
+    const updated = await client.query(
+      `UPDATE bookings SET estado = 'CANCELADA', cancelado_por = 'PRESTADOR', cancelado_at = NOW()
+        WHERE id = ANY($1::uuid[]) RETURNING id, estado`,
+      [bookingIds]
+    );
 
     // Devolución íntegra al cliente: la falta es del prestador.
     if (booking.payment_status === 'paid') {
-      await sequelize.query(
+      await client.query(
         `INSERT INTO reembolsos
            (booking_id, client_id, monto, porcentaje_devolucion, tramo, motivo, estado)
-         VALUES (:bookingId, :clientId, :monto, 100, 'CANCELA_PRESTADOR', :motivo, 'PENDIENTE');`,
-        {
-          replacements: {
-            bookingId,
-            clientId: booking.client_id,
-            monto: Number(booking.valor_bruto) || 0,
-            motivo: `Cancelación del prestador con ${Math.max(0, horasAntes).toFixed(1)} h de anticipación`
-          },
-          type: sequelize.QueryTypes.INSERT
-        }
+         VALUES ($1, $2, $3, 100, 'CANCELA_PRESTADOR', $4, 'PENDIENTE')`,
+        [primaryBookingId, booking.client_id, Number(booking.valor_bruto) || 0,
+          `Cancelación del prestador con ${Math.max(0, horasAntes).toFixed(1)} h de anticipación`]
       );
     }
 
@@ -1276,40 +1770,42 @@ exports.cancelBookingByProvider = async (req, res) => {
     let cancelaciones90d = 0;
 
     if (tardia) {
-      const { rows } = await pool.query(
-        `SELECT COUNT(*)::int AS total
+      const countResult = await client.query(
+        `SELECT COUNT(DISTINCT COALESCE(productos_adicionales->>'primary_booking_id', id::text))::int AS total
            FROM bookings
           WHERE provider_id = $1
             AND cancelado_por = 'PRESTADOR'
             AND cancelado_at > NOW() - INTERVAL '90 days'`,
-        [providerId]
+        [booking.provider_id]
       );
-      cancelaciones90d = rows[0]?.total || 0;
+      cancelaciones90d = countResult.rows[0]?.total || 0;
 
-      await pool.query(
+      await client.query(
         `UPDATE perfiles_prestador
             SET cancelaciones_tardias = cancelaciones_tardias + 1
           WHERE id = $1`,
-        [providerId]
+        [booking.provider_id]
       );
 
       if (cancelaciones90d >= 3) {
         suspendido = true;
-        await pool.query(
+        await client.query(
           `INSERT INTO provider_wallet (provider_id, retiros_pausados)
            VALUES ($1, TRUE)
            ON CONFLICT (provider_id) DO UPDATE SET retiros_pausados = TRUE, updated_at = NOW()`,
-          [providerId]
+          [booking.provider_id]
         );
       }
     }
+
+    await client.query('COMMIT');
 
     res.json({
       success: true,
       message: tardia
         ? 'Cita cancelada. Por cancelar con menos de 24 h se registró en tu historial.'
         : 'Cita cancelada sin sanción.',
-      booking: { id: booking.id, status: booking.estado },
+      booking: { id: booking.id, status: updated.rows[0].estado, booking_ids: bookingIds },
       cancelacion: {
         horas_anticipacion: Number(Math.max(0, horasAntes).toFixed(1)),
         tardia,
@@ -1319,8 +1815,11 @@ exports.cancelBookingByProvider = async (req, res) => {
       }
     });
   } catch (error) {
+    try { await client.query('ROLLBACK'); } catch (_) { /* la transacción pudo cerrarse */ }
     console.error('❌ ERROR EN PATCH /api/bookings/:id/cancel-provider:', error.message);
     res.status(500).json({ error: 'Error interno al cancelar la cita' });
+  } finally {
+    client.release();
   }
 };
 
@@ -1874,9 +2373,10 @@ exports.startService = async (req, res) => {
     const bookingId = req.params.id;
     const providerId = req.user.id;
 
-    const booking = await Booking.findOne({
-      where: { id: bookingId, provider_id: providerId }
-    });
+    if (!(await canManageBooking(req, bookingId, null, ACTIONS.CONFIRM_BOOKING))) {
+      return res.status(404).json({ error: 'Cita no encontrada o no tienes permisos para iniciarla' });
+    }
+    const booking = await runAsSystemContext(() => Booking.findByPk(bookingId));
 
     if (!booking) {
       return res.status(404).json({ error: 'Cita no encontrada o no tienes permisos para iniciarla' });
@@ -1890,7 +2390,7 @@ exports.startService = async (req, res) => {
     // Fallback para flujos que no pasan por el check-in GPS: registra el
     // evento real de inicio. Si hubo check-in antes, conserva su hora.
     booking.checkin_at = booking.checkin_at || new Date();
-    await booking.save();
+    await runAsSystemContext(() => booking.save());
 
     console.log(`🚀 Servicio iniciado para cita ${bookingId} por prestador ${providerId}`);
 

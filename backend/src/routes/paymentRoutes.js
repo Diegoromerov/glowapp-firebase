@@ -15,6 +15,7 @@ const { authMiddleware } = require('../middleware/auth');
 const { paymentLimiter, otpLimiter } = require('../middleware/rateLimiter');
 const { exigirCapacidad } = require('../middleware/exigirCapacidad');
 const { CAPACIDADES } = require('../services/capacidadesProveedor');
+const saasContext = require('../middleware/saasContext');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const wompiService = require('../services/wompiService');
@@ -25,6 +26,17 @@ const { OAuth2Client } = require('google-auth-library');
 const { notifyDisputeUsers } = require('../services/disputeNotifications');
 const { validarEvidencias } = require('../utils/disputaEvidencias');
 const payoutData = require('../services/payoutSensitiveDataService');
+const { canManageBooking } = require('../utils/bookingAccess');
+const { AuthorizationService, RESOURCES, ACTIONS } = require('../services/authorizationService');
+
+const exigirCapacidadReservasPrestador = exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS);
+
+function autorizarOperacionReserva(req, res, next) {
+  if (AuthorizationService.can(req.saas?.role, RESOURCES.BOOKING, ACTIONS.CONFIRM_BOOKING)) {
+    return next();
+  }
+  return exigirCapacidadReservasPrestador(req, res, next);
+}
 
 const payoutEvidenceUpload = multer({
   storage: multer.memoryStorage(),
@@ -210,31 +222,41 @@ router.get(
 router.post(
   '/bookings/:id/checkin',
   authMiddleware,
-  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  saasContext,
+  autorizarOperacionReserva,
   async (req, res) => {
-  if (!await requirePrestador(req, res)) return;
-
   const { id } = req.params;
   const { latitud, longitud } = req.body;
-
-  if (!latitud || !longitud) {
+  const latitude = Number(latitud);
+  const longitude = Number(longitud);
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
     return res.status(400).json({ error: 'Se requieren coordenadas GPS para el check-in.' });
   }
 
+  const client = await pool.connect();
   try {
-    const { rows } = await pool.query(
-      `SELECT b.*, u.nombre as cliente_nombre
-       FROM bookings b
-       JOIN usuarios u ON b.client_id = u.id
-       WHERE b.id = $1 AND b.provider_id = $2 AND b.estado = 'CONFIRMADA'`,
-      [id, req.user.id]
-    );
-
-    if (!rows.length) {
+    await client.query('BEGIN');
+    await client.query('SET LOCAL ROLE app_system');
+    if (!(await canManageBooking(req, id, client, ACTIONS.CONFIRM_BOOKING))) {
+      await client.query('ROLLBACK');
       return res.status(404).json({ error: 'Reserva no encontrada o no disponible para check-in.' });
     }
 
-    const tolerancia = parseInt(await getConfig('gps_tolerancia_metros', '500'));
+    const { rows } = await client.query(
+      `SELECT b.*, u.nombre as cliente_nombre
+       FROM bookings b
+       JOIN usuarios u ON b.client_id = u.id
+       WHERE b.id = $1 AND b.estado = 'CONFIRMADA' FOR UPDATE OF b`,
+      [id]
+    );
+
+    if (!rows.length) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'Reserva no encontrada o no disponible para check-in.' });
+    }
+
+    const configResult = await client.query('SELECT value FROM platform_config WHERE key = $1', ['gps_tolerancia_metros']);
+    const tolerancia = parseInt(configResult.rows[0]?.value || '500', 10);
     const booking = rows[0];
 
     // La tolerancia se leía y nunca se validaba: el check-in era decorativo.
@@ -242,12 +264,13 @@ router.post(
     // radio. Si no las tiene, se registra el punto y se marca como no validado
     // (la dirección estructurada no se puede geocodificar aquí).
     const distancia = distanciaMetros(
-      Number(latitud), Number(longitud),
+      latitude, longitude,
       booking.service_lat != null ? Number(booking.service_lat) : null,
       booking.service_lng != null ? Number(booking.service_lng) : null
     );
 
     if (distancia !== null && distancia > tolerancia) {
+      await client.query('ROLLBACK');
       return res.status(409).json({
         error: `Estás a ${Math.round(distancia)} m del punto del servicio. El máximo permitido es ${tolerancia} m.`,
         distancia_metros: Math.round(distancia),
@@ -255,16 +278,17 @@ router.post(
       });
     }
 
-    await pool.query(
+    await client.query(
       `UPDATE bookings SET estado = 'CHECKIN_REALIZADO',
        checkin_lat = $3, checkin_lng = $4, checkin_at = NOW(),
        notes = COALESCE(notes, '') || $5
-       WHERE id = $1 AND provider_id = $2`,
+       WHERE id = $1 AND estado = 'CONFIRMADA'`,
       [
-        id, req.user.id, Number(latitud), Number(longitud),
+        id, req.user.id, latitude, longitude,
         ` [CHECKIN: ${latitud},${longitud}${distancia !== null ? ` @ ${Math.round(distancia)}m` : ' (sin referencia)'} @ ${new Date().toISOString()}]`
       ]
     );
+    await client.query('COMMIT');
 
     res.json({
       ok: true,
@@ -274,8 +298,11 @@ router.post(
       gps_validado: distancia !== null
     });
   } catch (err) {
+    try { await client.query('ROLLBACK'); } catch (_) { /* la transacción pudo cerrarse */ }
     console.error('Error en check-in:', err);
     res.status(500).json({ error: 'Error al registrar check-in.' });
+  } finally {
+    client.release();
   }
 });
 
@@ -330,29 +357,32 @@ router.get('/bookings/:id/otp', authMiddleware, otpLimiter, async (req, res) => 
 router.post(
   '/bookings/:id/complete',
   authMiddleware,
-  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
+  saasContext,
+  autorizarOperacionReserva,
   async (req, res) => {
-  if (!await requirePrestador(req, res)) return;
-
   const { id } = req.params;
   const client = await pool.connect();
 
   try {
     await client.query('BEGIN');
 
-    // El prestador y el cliente viven en inquilinos distintos: con el contexto
-    // del prestador, RLS oculta la reserva y el JOIN con `usuarios` la descarta
-    // igual, asi que el servicio no se podia terminar NUNCA (404). La propiedad
-    // se comprueba en el WHERE, no en la politica.
+    // El prestador y el cliente viven en inquilinos distintos: RLS oculta la
+    // reserva y su cliente. Se escala esta transacción y se comprueba titular o
+    // membresía operativa + sede activa antes de emitir el OTP.
     await client.query('SET LOCAL ROLE app_system');
+
+    if (!(await canManageBooking(req, id, client, ACTIONS.CONFIRM_BOOKING))) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'Reserva no encontrada o sin permisos para completarla.' });
+    }
 
     const { rows } = await client.query(
       `SELECT b.*, u.email as cliente_email, u.nombre as cliente_nombre
        FROM bookings b
        JOIN usuarios u ON b.client_id = u.id
-       WHERE b.id = $1 AND b.provider_id = $2
+       WHERE b.id = $1
          AND b.estado IN ('CONFIRMADA', 'CHECKIN_REALIZADO', 'EN_PROGRESO')`,
-      [id, req.user.id]
+      [id]
     );
 
     if (!rows.length) {

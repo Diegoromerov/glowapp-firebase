@@ -46,10 +46,16 @@ exports.reportProviderNoShow = async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    // La cita y el proveedor pueden vivir en un tenant distinto al del cliente.
+    // Se entra como sistema solo después de abrir la transacción y se limita la
+    // reserva de inmediato al client_id autenticado antes de emitir devolución,
+    // crédito o débitos al proveedor.
+    await client.query('SET LOCAL ROLE app_system');
 
     const { rows } = await client.query(
-      `SELECT id, client_id, provider_id, estado, valor_bruto, payment_status, scheduled_at
-         FROM bookings WHERE id = $1 FOR UPDATE`,
+      `SELECT id, client_id, provider_id, estado, valor_bruto, payment_status, scheduled_at,
+              business_profile_id, salon_id, productos_adicionales
+         FROM bookings WHERE id = $1`,
       [bookingId]
     );
 
@@ -58,20 +64,60 @@ exports.reportProviderNoShow = async (req, res) => {
       return res.status(404).json({ error: 'Reserva no encontrada.' });
     }
 
-    const booking = rows[0];
+    let booking = rows[0];
 
     if (booking.client_id !== clientId) {
       await client.query('ROLLBACK');
       return res.status(403).json({ error: 'Solo el cliente puede reportar el no-show del prestador.' });
     }
 
-    if (!['CONFIRMADA', 'EN_PROGRESO', 'PENDIENTE_PAGO'].includes(booking.estado)) {
+    let metadata = booking.productos_adicionales || {};
+    if (typeof metadata === 'string') {
+      try { metadata = JSON.parse(metadata); } catch (_) { metadata = {}; }
+    }
+    const rawLinkedIds = Array.isArray(metadata.linked_booking_ids)
+      ? metadata.linked_booking_ids.map(String)
+      : [];
+    const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (rawLinkedIds.some((id) => !uuidPattern.test(id))) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar todos los servicios vinculados a esta reserva.' });
+    }
+    const bookingIds = [...new Set([String(booking.id), ...rawLinkedIds])];
+    const primaryBookingId = metadata.primary_booking_id && uuidPattern.test(String(metadata.primary_booking_id))
+      ? String(metadata.primary_booking_id)
+      : String(booking.id);
+    const groupResult = await client.query(
+      `SELECT id, client_id, provider_id, estado, valor_bruto, payment_status, scheduled_at,
+              business_profile_id, salon_id
+         FROM bookings
+        WHERE id = ANY($1::uuid[])
+        ORDER BY id FOR UPDATE`,
+      [bookingIds]
+    );
+    if (groupResult.rows.length !== bookingIds.length || groupResult.rows.some((row) =>
+      String(row.client_id) !== String(clientId) || Number(row.provider_id) !== Number(booking.provider_id) ||
+      String(row.business_profile_id || '') !== String(booking.business_profile_id || '') ||
+      String(row.salon_id || '') !== String(booking.salon_id || ''))) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar todos los servicios vinculados a esta reserva.' });
+    }
+    booking = groupResult.rows.find((row) => String(row.id) === primaryBookingId);
+    if (!booking) {
+      await client.query('ROLLBACK');
+      return res.status(409).json({ code: 'BOOKING_GROUP_INVALID', error: 'No pudimos validar el servicio principal de esta reserva.' });
+    }
+    const firstBookingAt = groupResult.rows.reduce((earliest, row) =>
+      new Date(row.scheduled_at) < new Date(earliest) ? row.scheduled_at : earliest,
+    groupResult.rows[0].scheduled_at);
+
+    if (groupResult.rows.some((row) => !['CONFIRMADA', 'EN_PROGRESO', 'PENDIENTE_PAGO'].includes(row.estado))) {
       await client.query('ROLLBACK');
       return res.status(409).json({ error: `No se puede reportar no-show en estado ${booking.estado}.` });
     }
 
     // Solo después de la hora de la cita, con 15 minutos de gracia.
-    const minutosDesdeCita = (Date.now() - new Date(booking.scheduled_at).getTime()) / 60000;
+    const minutosDesdeCita = (Date.now() - new Date(firstBookingAt).getTime()) / 60000;
     if (minutosDesdeCita < 15) {
       await client.query('ROLLBACK');
       return res.status(409).json({
@@ -82,8 +128,8 @@ exports.reportProviderNoShow = async (req, res) => {
 
     // Si el prestador ya hizo check-in, no es no-show.
     const otp = await client.query(
-      `SELECT id FROM otp_validaciones WHERE booking_id = $1 AND estado = 'USADO'`,
-      [bookingId]
+      `SELECT id FROM otp_validaciones WHERE booking_id = ANY($1::uuid[]) AND estado = 'USADO'`,
+      [bookingIds]
     );
     if (otp.rows.length) {
       await client.query('ROLLBACK');
@@ -92,7 +138,7 @@ exports.reportProviderNoShow = async (req, res) => {
 
     const yaCompensado = await client.query(
       `SELECT id FROM creditos WHERE origen = 'NO_SHOW_PRESTADOR' AND referencia_id = $1`,
-      [bookingId]
+      [primaryBookingId]
     );
     if (yaCompensado.rows.length) {
       await client.query('ROLLBACK');
@@ -105,7 +151,7 @@ exports.reportProviderNoShow = async (req, res) => {
         `INSERT INTO reembolsos
            (booking_id, client_id, monto, porcentaje_devolucion, tramo, motivo, estado)
          VALUES ($1, $2, $3, 100, 'CANCELA_PRESTADOR', 'No-show del prestador', 'PENDIENTE')`,
-        [bookingId, clientId, Number(booking.valor_bruto) || 0]
+        [primaryBookingId, clientId, Number(booking.valor_bruto) || 0]
       );
     }
 
@@ -114,7 +160,7 @@ exports.reportProviderNoShow = async (req, res) => {
       usuarioId: clientId,
       origen: 'NO_SHOW_PRESTADOR',
       monto: COMPENSACION_NO_SHOW,
-      referenciaId: bookingId
+      referenciaId: primaryBookingId
     });
 
     // 3. Se descuenta al prestador del saldo disponible; lo que no alcance queda
@@ -141,15 +187,15 @@ exports.reportProviderNoShow = async (req, res) => {
          SELECT $1, $2, 'AJUSTE_ADMIN', $3, saldo_disponible + saldo_pendiente, 'COMPLETADO',
                 'Compensación al cliente por no-show', CAST($4 AS jsonb)
          FROM provider_wallet WHERE provider_id = $1`,
-        [booking.provider_id, bookingId, debitado, JSON.stringify({ deuda_pendiente: deuda })]
+        [booking.provider_id, primaryBookingId, debitado, JSON.stringify({ deuda_pendiente: deuda })]
       );
     }
 
     await client.query(
       `UPDATE bookings
           SET estado = 'CANCELADA', cancelado_por = 'NO_SHOW_PRESTADOR', cancelado_at = NOW()
-        WHERE id = $1`,
-      [bookingId]
+          WHERE id = ANY($1::uuid[])`,
+      [bookingIds]
     );
 
     await client.query('COMMIT');

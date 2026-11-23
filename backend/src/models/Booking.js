@@ -27,6 +27,11 @@ const Booking = sequelize.define('Booking', {
     allowNull: true,
     field: 'business_profile_id'
   },
+  salon_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    field: 'salon_id'
+  },
   scheduled_at: {
     type: DataTypes.DATE,
     allowNull: false,

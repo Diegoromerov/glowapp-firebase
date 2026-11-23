@@ -14,6 +14,7 @@ Future<bool?> showRescheduleSheet(
   required String bookingId,
   required String providerId,
   required String serviceId,
+  String? salonId,
   CargarSlots? cargarSlots,
   AplicarCambio? aplicar,
 }) {
@@ -25,6 +26,7 @@ Future<bool?> showRescheduleSheet(
       bookingId: bookingId,
       providerId: providerId,
       serviceId: serviceId,
+      salonId: salonId,
       cargarSlots: cargarSlots,
       aplicar: aplicar,
     ),
@@ -35,6 +37,7 @@ class _RescheduleSheet extends StatefulWidget {
   final String bookingId;
   final String providerId;
   final String serviceId;
+  final String? salonId;
   final CargarSlots? cargarSlots;
   final AplicarCambio? aplicar;
 
@@ -42,6 +45,7 @@ class _RescheduleSheet extends StatefulWidget {
     required this.bookingId,
     required this.providerId,
     required this.serviceId,
+    this.salonId,
     this.cargarSlots,
     this.aplicar,
   });
@@ -62,7 +66,10 @@ class _RescheduleSheetState extends State<_RescheduleSheet> {
   @override
   void initState() {
     super.initState();
-    final hoy = DateTime.now();
+    // Los días de agenda son colombianos aunque el dispositivo esté en otra
+    // zona horaria.
+    final ahoraColombia = DateTime.now().toUtc().subtract(const Duration(hours: 5));
+    final hoy = DateTime(ahoraColombia.year, ahoraColombia.month, ahoraColombia.day);
     // Dos semanas hacia delante: suficiente para encontrar hueco sin convertir
     // esto en un calendario completo.
     _dias = List.generate(14, (i) {
@@ -88,6 +95,7 @@ class _RescheduleSheetState extends State<_RescheduleSheet> {
                 providerId: widget.providerId,
                 date: fecha,
                 serviceId: widget.serviceId,
+                salonId: widget.salonId,
               );
       final slots = await cargar(_fechaApi(dia));
       if (!mounted) return;
@@ -110,8 +118,8 @@ class _RescheduleSheetState extends State<_RescheduleSheet> {
     if (dia == null || hora == null || _aplicando) return;
 
     final partes = hora.split(':');
-    final fecha = DateTime(dia.year, dia.month, dia.day,
-        int.parse(partes[0]), int.parse(partes[1]));
+    final fechaBogota =
+        '${_fechaApi(dia)}T${partes[0].padLeft(2, '0')}:${partes[1].padLeft(2, '0')}:00-05:00';
 
     final navigator = Navigator.of(context);
     final messenger = ScaffoldMessenger.of(context);
@@ -122,7 +130,7 @@ class _RescheduleSheetState extends State<_RescheduleSheet> {
     try {
       final aplicar = widget.aplicar ??
           (String iso) => ApiService.rescheduleBooking(widget.bookingId, iso);
-      await aplicar(fecha.toUtc().toIso8601String());
+      await aplicar(fechaBogota);
       if (!mounted) return;
       navigator.pop(true);
       messenger.showSnackBar(const SnackBar(

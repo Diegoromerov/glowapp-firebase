@@ -5,23 +5,21 @@ const fcm = require('./fcmNotificationService');
 /**
  * Enviar notificación Push a un usuario específico mediante su fcm_token almacenado
  */
-async function sendPushToUser(userId, title, body, dataPayload = {}) {
+async function sendPushToUser(userId, title, body, dataPayload = {}, options = {}) {
   try {
-    const userRes = await pool.query(
+    const user = options.user || (await pool.query(
       `SELECT u.id, u.email, u.fcm_token, 
               COALESCE(up.push_enabled, true) as push_enabled
        FROM usuarios u
        LEFT JOIN user_preferences up ON up.user_id = u.id
        WHERE u.id = $1 AND u.is_active = true`,
       [userId]
-    );
+    )).rows[0];
 
-    if (userRes.rows.length === 0 || !userRes.rows[0].fcm_token) {
+    if (!user || !user.fcm_token) {
       console.log(`⚠️ Push no enviado: Usuario ID ${userId} no tiene token FCM registrado.`);
       return false;
     }
-
-    const user = userRes.rows[0];
     
     // Verificar preferencia de push
     if (!user.push_enabled) {
@@ -36,7 +34,7 @@ async function sendPushToUser(userId, title, body, dataPayload = {}) {
     });
     return result?.success === true && !result?.simulated;
   } catch (err) {
-    console.error(`❌ Error enviando Push Notification a usuario ID ${userId}:`, err.message);
+    console.error('❌ Error enviando Push Notification:', err.code || 'FCM_SEND_FAILED');
     return false;
   }
 }
