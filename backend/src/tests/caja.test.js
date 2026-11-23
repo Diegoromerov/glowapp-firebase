@@ -100,7 +100,7 @@ describe('Caja — resumen por rol', () => {
 describe('Caja — registro de movimientos', () => {
   const base = {
     sub_rol: 'ADMINISTRADOR',
-    body: { tipo: 'INGRESO', concepto: 'SERVICIO', monto: 100000, metodo_pago: 'EFECTIVO' },
+    body: { tipo: 'INGRESO', concepto: 'SERVICIO', monto: 100000, metodo_pago: 'EFECTIVO', idempotency_key: 'cash-test-01' },
   };
 
   it('registra un ingreso y emite constancia propia del salón', async () => {

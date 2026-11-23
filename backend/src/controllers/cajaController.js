@@ -14,6 +14,7 @@
 //     tenga que adivinar el formato.
 
 const { pool } = require('../config/db');
+const crypto = require('crypto');
 
 const ROLES_QUE_VEN_TODO = new Set(['DUEÑO', 'ADMINISTRADOR', 'RECEPCIONISTA', 'MANAGER']);
 const ROLES_QUE_REGISTRAN = new Set(['DUEÑO', 'ADMINISTRADOR', 'RECEPCIONISTA', 'MANAGER']);
@@ -196,6 +197,7 @@ function crearControladorCaja(db = pool) {
     const {
       tipo, concepto, monto, metodo_pago: metodoPago, descripcion,
       persona_id: personaId, booking_id: bookingId, fecha_movimiento: fecha,
+      idempotency_key: idempotencyKey,
     } = req.body || {};
 
     const tipoNorm = String(tipo || '').toUpperCase();
@@ -218,6 +220,18 @@ function crearControladorCaja(db = pool) {
     if (montoNum > 999999999) {
       return res.status(400).json({ error: 'monto fuera de rango.' });
     }
+    const key = String(idempotencyKey || req.get?.('Idempotency-Key') || '').trim();
+    if (!key || key.length > 100) {
+      return res.status(400).json({ error: 'idempotency_key es obligatorio y debe tener máximo 100 caracteres.' });
+    }
+
+    const solicitud = {
+      tipo: tipoNorm, concepto: conceptoNorm, monto: montoNum,
+      metodo_pago: metodoNorm, descripcion: descripcion || null,
+      persona_id: personaId || null, booking_id: bookingId || null,
+      fecha_movimiento: fecha || null,
+    };
+    const requestHash = crypto.createHash('sha256').update(JSON.stringify(solicitud)).digest('hex');
 
     try {
       // El inquilino sale del perfil de negocio, que es la fuente única
@@ -242,22 +256,43 @@ function crearControladorCaja(db = pool) {
       const { rows } = await db.query(
         `INSERT INTO caja_movimientos
            (tenant_id, salon_id, tipo, concepto, descripcion, monto, metodo_pago,
-            persona_id, booking_id, constancia_ref, registrado_por, fecha_movimiento)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, COALESCE($12::timestamptz, NOW()))
+            persona_id, booking_id, constancia_ref, registrado_por, fecha_movimiento,
+            idempotency_key, request_hash)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, COALESCE($12::timestamptz, NOW()), $13, $14)
+         ON CONFLICT (tenant_id, salon_id, idempotency_key)
+           WHERE idempotency_key IS NOT NULL DO NOTHING
          RETURNING id, tipo, concepto, monto, metodo_pago, constancia_ref, fecha_movimiento`,
         [
           perfilRows[0].tenant_id, req.salonId, tipoNorm, conceptoNorm,
           descripcion || null, montoNum, metodoNorm,
           personaId || null, bookingId || null, constancia, req.user.id,
-          fecha || null,
+          fecha || null, key, requestHash,
         ]
       );
+
+      if (!rows.length) {
+        const { rows: previos } = await db.query(
+          `SELECT id, request_hash, tipo, concepto, monto, metodo_pago, constancia_ref, fecha_movimiento
+             FROM caja_movimientos
+            WHERE tenant_id = $1 AND salon_id = $2 AND idempotency_key = $3`,
+          [perfilRows[0].tenant_id, req.salonId, key]
+        );
+        if (!previos.length || previos[0].request_hash !== requestHash) {
+          return res.status(409).json({ error: 'La clave de idempotencia ya se usó con otros datos.' });
+        }
+        return res.status(200).json({
+          success: true,
+          repetido: true,
+          movimiento: { ...previos[0], monto: Number(previos[0].monto) },
+        });
+      }
 
       return res.status(201).json({
         success: true,
         movimiento: { ...rows[0], monto: Number(rows[0].monto) },
       });
     } catch (error) {
+      req.tenantTransactionError = error;
       console.error('❌ ERROR registrarMovimientoCaja:', error.message);
       return res.status(500).json({ error: 'No se pudo registrar el movimiento.' });
     }

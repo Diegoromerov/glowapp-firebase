@@ -73,9 +73,12 @@ class _CajaScreenState extends State<CajaScreen> {
       _error = null;
     });
     try {
-      final resumen = await ApiService.get('/api/salon/${widget.salonId}/caja/resumen');
-      final lista =
-          await ApiService.get('/api/salon/${widget.salonId}/caja/movimientos?limite=50');
+      final resumen = await ApiService.get(
+        '/api/salon/${widget.salonId}/caja/resumen',
+      );
+      final lista = await ApiService.get(
+        '/api/salon/${widget.salonId}/caja/movimientos?limite=50',
+      );
 
       if (!mounted) return;
       if (resumen is Map && resumen['success'] == true) {
@@ -135,13 +138,11 @@ class _CajaScreenState extends State<CajaScreen> {
               Text(
                 _error!,
                 textAlign: TextAlign.center,
-                style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary),
+                style: TypographyTokens.bodySmall(t)
+                    .copyWith(color: t.textSecondary),
               ),
               const SizedBox(height: Spacing.lg),
-              TextButton(
-                onPressed: _cargar,
-                child: const Text('Reintentar'),
-              ),
+              TextButton(onPressed: _cargar, child: const Text('Reintentar')),
             ],
           ),
         ),
@@ -162,12 +163,19 @@ class _CajaScreenState extends State<CajaScreen> {
           color: t.brandPrimary,
           child: ListView(
             padding: const EdgeInsets.fromLTRB(
-              Spacing.lg, Spacing.lg, Spacing.lg, Spacing.xxl + 56,
+              Spacing.lg,
+              Spacing.lg,
+              Spacing.lg,
+              Spacing.xxl + 56,
             ),
             children: [
               Row(
                 children: [
-                  GlowIcon.resolve('money', size: GlowIconSize.sm, color: t.brandPrimary),
+                  GlowIcon.resolve(
+                    'money',
+                    size: GlowIconSize.sm,
+                    color: t.brandPrimary,
+                  ),
                   const SizedBox(width: Spacing.sm),
                   Expanded(
                     child: Text(
@@ -179,7 +187,10 @@ class _CajaScreenState extends State<CajaScreen> {
                     SizedBox(
                       width: 14,
                       height: 14,
-                      child: CircularProgressIndicator(strokeWidth: 2, color: t.brandPrimary),
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: t.brandPrimary,
+                      ),
                     ),
                 ],
               ),
@@ -219,16 +230,18 @@ class _CajaScreenState extends State<CajaScreen> {
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.info_outline, size: 15, color: t.textSecondary),
+                      Icon(
+                        Icons.info_outline,
+                        size: 15,
+                        color: t.textSecondary,
+                      ),
                       const SizedBox(width: Spacing.xs),
                       Expanded(
                         child: Text(
                           'Ves sólo los movimientos a tu nombre. La caja completa '
                           'del salón la administra el dueño o su equipo.',
-                          style: TypographyTokens.bodySmall(t).copyWith(
-                            color: t.textSecondary,
-                            fontSize: 11,
-                          ),
+                          style: TypographyTokens.bodySmall(t)
+                              .copyWith(color: t.textSecondary, fontSize: 11),
                         ),
                       ),
                     ],
@@ -236,7 +249,8 @@ class _CajaScreenState extends State<CajaScreen> {
                 ),
               Text(
                 'Movimientos',
-                style: TypographyTokens.body(t).copyWith(fontWeight: FontWeight.w700),
+                style: TypographyTokens.body(t)
+                    .copyWith(fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: Spacing.sm),
               if (_movimientos.isEmpty)
@@ -249,12 +263,17 @@ class _CajaScreenState extends State<CajaScreen> {
                   ),
                   child: Column(
                     children: [
-                      Icon(Icons.receipt_long_outlined, color: t.textSecondary, size: 26),
+                      Icon(
+                        Icons.receipt_long_outlined,
+                        color: t.textSecondary,
+                        size: 26,
+                      ),
                       const SizedBox(height: Spacing.sm),
                       Text(
                         'Aún no hay movimientos en este periodo.',
                         textAlign: TextAlign.center,
-                        style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary),
+                        style: TypographyTokens.bodySmall(t)
+                            .copyWith(color: t.textSecondary),
                       ),
                     ],
                   ),
@@ -265,10 +284,8 @@ class _CajaScreenState extends State<CajaScreen> {
               Text(
                 'Las constancias de pago son comprobantes del salón. '
                 'No son facturas electrónicas.',
-                style: TypographyTokens.bodySmall(t).copyWith(
-                  color: t.textSecondary,
-                  fontSize: 10,
-                ),
+                style: TypographyTokens.bodySmall(t)
+                    .copyWith(color: t.textSecondary, fontSize: 10),
               ),
             ],
           ),
@@ -324,10 +341,8 @@ class _Kpi extends StatelessWidget {
                 Expanded(
                   child: Text(
                     titulo,
-                    style: TypographyTokens.bodySmall(t).copyWith(
-                      color: t.textSecondary,
-                      fontSize: 10,
-                    ),
+                    style: TypographyTokens.bodySmall(t)
+                        .copyWith(color: t.textSecondary, fontSize: 10),
                   ),
                 ),
               ],
@@ -361,7 +376,8 @@ class _MovimientoTile extends StatelessWidget {
     final t = Token.of(context);
     final esIngreso = (movimiento['tipo'] ?? '') == 'INGRESO';
     final monto = (movimiento['monto'] as num?) ?? 0;
-    final fecha = DateTime.tryParse('${movimiento['fecha_movimiento']}')?.toLocal();
+    final fecha =
+        DateTime.tryParse('${movimiento['fecha_movimiento']}')?.toLocal();
 
     return Container(
       margin: const EdgeInsets.only(bottom: Spacing.sm),
@@ -376,14 +392,19 @@ class _MovimientoTile extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(7),
             decoration: BoxDecoration(
-              color: (esIngreso ? const Color(0xFF2E7D32) : const Color(0xFFC62828))
+              color: (esIngreso
+                      ? const Color(0xFF2E7D32)
+                      : const Color(0xFFC62828))
                   .withOpacity(0.10),
               borderRadius: BorderRadius.circular(Radii.round),
             ),
             child: Icon(
-              esIngreso ? Icons.arrow_downward_rounded : Icons.arrow_upward_rounded,
+              esIngreso
+                  ? Icons.arrow_downward_rounded
+                  : Icons.arrow_upward_rounded,
               size: 15,
-              color: esIngreso ? const Color(0xFF2E7D32) : const Color(0xFFC62828),
+              color:
+                  esIngreso ? const Color(0xFF2E7D32) : const Color(0xFFC62828),
             ),
           ),
           const SizedBox(width: Spacing.sm),
@@ -393,24 +414,22 @@ class _MovimientoTile extends StatelessWidget {
               children: [
                 Text(
                   '${movimiento['concepto'] ?? ''}',
-                  style: TypographyTokens.bodySmall(t).copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: t.textPrimary,
-                  ),
+                  style: TypographyTokens.bodySmall(
+                    t,
+                  ).copyWith(fontWeight: FontWeight.w600, color: t.textPrimary),
                 ),
                 Text(
                   [
-                    if (movimiento['metodo_pago'] != null) '${movimiento['metodo_pago']}',
+                    if (movimiento['metodo_pago'] != null)
+                      '${movimiento['metodo_pago']}',
                     if (fecha != null)
                       '${fecha.day.toString().padLeft(2, '0')}/'
                           '${fecha.month.toString().padLeft(2, '0')}',
                     if (movimiento['constancia_ref'] != null)
                       '${movimiento['constancia_ref']}',
                   ].join(' · '),
-                  style: TypographyTokens.bodySmall(t).copyWith(
-                    color: t.textSecondary,
-                    fontSize: 10,
-                  ),
+                  style: TypographyTokens.bodySmall(t)
+                      .copyWith(color: t.textSecondary, fontSize: 10),
                 ),
               ],
             ),
@@ -419,7 +438,8 @@ class _MovimientoTile extends StatelessWidget {
             formatearCop(esIngreso ? monto : -monto, conSigno: true),
             style: TypographyTokens.bodySmall(t).copyWith(
               fontWeight: FontWeight.w700,
-              color: esIngreso ? const Color(0xFF2E7D32) : const Color(0xFFC62828),
+              color:
+                  esIngreso ? const Color(0xFF2E7D32) : const Color(0xFFC62828),
             ),
           ),
         ],
@@ -438,12 +458,25 @@ class _FormularioMovimiento extends StatefulWidget {
 }
 
 class _FormularioMovimientoState extends State<_FormularioMovimiento> {
+  late final String _idempotencyKey =
+      'caja-${widget.salonId}-${DateTime.now().microsecondsSinceEpoch}';
   static const _conceptos = [
-    'SERVICIO', 'PRODUCTO', 'PROPINA', 'ALQUILER', 'COMISION',
-    'INSUMO', 'NOMINA', 'OTRO',
+    'SERVICIO',
+    'PRODUCTO',
+    'PROPINA',
+    'ALQUILER',
+    'COMISION',
+    'INSUMO',
+    'NOMINA',
+    'OTRO',
   ];
   static const _metodos = [
-    'EFECTIVO', 'TARJETA', 'TRANSFERENCIA', 'NEQUI', 'DAVIPLATA', 'OTRO',
+    'EFECTIVO',
+    'TARJETA',
+    'TRANSFERENCIA',
+    'NEQUI',
+    'DAVIPLATA',
+    'OTRO',
   ];
 
   String _tipo = 'INGRESO';
@@ -462,7 +495,9 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
   }
 
   Future<void> _guardar() async {
-    final monto = num.tryParse(_monto.text.replaceAll('.', '').replaceAll(',', '.'));
+    final monto = num.tryParse(
+      _monto.text.replaceAll('.', '').replaceAll(',', '.'),
+    );
     if (monto == null || monto <= 0) {
       setState(() => _error = 'Escribe un monto mayor que cero.');
       return;
@@ -480,7 +515,9 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
         'concepto': _concepto,
         'monto': monto,
         'metodo_pago': _metodo,
-        if (_descripcion.text.trim().isNotEmpty) 'descripcion': _descripcion.text.trim(),
+        'idempotency_key': _idempotencyKey,
+        if (_descripcion.text.trim().isNotEmpty)
+          'descripcion': _descripcion.text.trim(),
       },
     );
 
@@ -500,12 +537,16 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
   Widget build(BuildContext context) {
     final t = Token.of(context);
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: Container(
         padding: const EdgeInsets.all(Spacing.xl),
         decoration: BoxDecoration(
           color: t.surfaceLevel1,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(Radii.lg)),
+          borderRadius: const BorderRadius.vertical(
+            top: Radius.circular(Radii.lg),
+          ),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -535,8 +576,8 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
             ),
             const SizedBox(height: Spacing.md),
             DropdownButtonFormField<String>(
-                          value: _concepto,
-                          decoration: const InputDecoration(labelText: 'Concepto'),
+              value: _concepto,
+              decoration: const InputDecoration(labelText: 'Concepto'),
               items: _conceptos
                   .map((c) => DropdownMenuItem(value: c, child: Text(c)))
                   .toList(),
@@ -544,8 +585,8 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
             ),
             const SizedBox(height: Spacing.md),
             DropdownButtonFormField<String>(
-                          value: _metodo,
-                          decoration: const InputDecoration(labelText: 'Método de pago'),
+              value: _metodo,
+              decoration: const InputDecoration(labelText: 'Método de pago'),
               items: _metodos
                   .map((c) => DropdownMenuItem(value: c, child: Text(c)))
                   .toList(),
@@ -563,9 +604,8 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
               const SizedBox(height: Spacing.sm),
               Text(
                 _error!,
-                style: TypographyTokens.bodySmall(t).copyWith(
-                  color: const Color(0xFFC62828),
-                ),
+                style: TypographyTokens.bodySmall(t)
+                    .copyWith(color: const Color(0xFFC62828)),
               ),
             ],
             const SizedBox(height: Spacing.lg),
@@ -586,7 +626,10 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
                     ? const SizedBox(
                         width: 18,
                         height: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
                       )
                     : const Text(
                         'Guardar',
@@ -597,10 +640,8 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
             const SizedBox(height: Spacing.sm),
             Text(
               'Se emitirá una constancia de pago con número propio del salón.',
-              style: TypographyTokens.bodySmall(t).copyWith(
-                color: t.textSecondary,
-                fontSize: 10,
-              ),
+              style: TypographyTokens.bodySmall(t)
+                  .copyWith(color: t.textSecondary, fontSize: 10),
             ),
           ],
         ),

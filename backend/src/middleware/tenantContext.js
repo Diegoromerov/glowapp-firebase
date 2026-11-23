@@ -116,7 +116,7 @@ async function tenantContextMiddleware(req, res, next) {
     // Respuesta ya iniciada (streaming, sendFile): no se puede diferir.
     if (res.headersSent) return escribirOriginal(cuerpo);
     respuestaDiferida = { tipo, cuerpo, status: res.statusCode, escribirOriginal };
-    if (terminarTransaccion) terminarTransaccion();
+    if (terminarTransaccion) terminarTransaccion(req.tenantTransactionError || null);
     return res;
   };
 
@@ -135,7 +135,7 @@ async function tenantContextMiddleware(req, res, next) {
         };
         // Se expone para que res.json/res.send puedan cerrar la transacción
         // antes de escribir.
-        terminarTransaccion = () => finalizar();
+        terminarTransaccion = (error) => finalizar(error);
 
         // Respaldo para las respuestas que no pasan por res.json/res.send:
         // 'finish' (respuesta enviada por otra vía) y 'close' (el cliente cortó).

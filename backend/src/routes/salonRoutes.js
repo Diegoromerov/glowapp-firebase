@@ -21,6 +21,9 @@ const {
   crearRecurso: postRecurso,
   crearAlquiler: postAlquiler,
   listarAlquileres: getAlquileres,
+  finalizarAlquiler: patchFinalizarAlquiler,
+  listarInsumosServicio: getInsumosServicio,
+  guardarInsumosServicio: putInsumosServicio,
 } = require('../controllers/salonOpsController');
 const {
   resumen: getCajaResumen,
@@ -185,4 +188,26 @@ router.post(
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
   postAlquiler
+);
+
+router.patch(
+  '/:salonId/alquileres/:alquilerId/finalizar',
+  authMiddleware,
+  requireSalonRole(...ROLES_CAJA_REGISTRO),
+  patchFinalizarAlquiler
+);
+
+// Receta de insumos del servicio. El consumo automático ocurre en la misma
+// transacción que confirma la finalización vía OTP.
+router.get(
+  '/:salonId/services/:serviceId/inventory',
+  authMiddleware,
+  requireSalonRole(...ROLES_CAJA_LECTURA),
+  getInsumosServicio
+);
+router.put(
+  '/:salonId/services/:serviceId/inventory',
+  authMiddleware,
+  requireSalonRole(...ROLES_CAJA_REGISTRO),
+  putInsumosServicio
 );

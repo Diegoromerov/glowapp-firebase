@@ -25,7 +25,10 @@ import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/widgets/provider_services_screen.dart';
 import 'package:glow_core/widgets/locked_feature_card.dart';
+
 import 'caja_screen.dart';
+import 'inventario_screen.dart';
+import 'recursos_screen.dart';
 
 class SalonShell extends StatefulWidget {
   /// Pestaña inicial (0 = Agenda). Útil para deep-links internos.
@@ -94,7 +97,8 @@ class _SalonShellState extends State<SalonShell> {
       final res = await AuthService.getMySalon();
       final salon = res?['salon'];
       if (salon is Map) {
-        final caps = (salon['entitlements'] as List<dynamic>?) ?? const <dynamic>[];
+        final caps =
+            (salon['entitlements'] as List<dynamic>?) ?? const <dynamic>[];
         if (!mounted) return;
         setState(() {
           _entitlements = caps.map((c) => c.toString()).toList();
@@ -127,7 +131,11 @@ class _SalonShellState extends State<SalonShell> {
         titleSpacing: Spacing.lg,
         title: Row(
           children: [
-            GlowIcon.resolve('store', size: GlowIconSize.sm, color: t.brandPrimary),
+            GlowIcon.resolve(
+              'store',
+              size: GlowIconSize.sm,
+              color: t.brandPrimary,
+            ),
             const SizedBox(width: Spacing.sm),
             Text(
               'Mi salón',
@@ -138,7 +146,11 @@ class _SalonShellState extends State<SalonShell> {
         actions: [
           IconButton(
             tooltip: 'Resumen del salón',
-            icon: GlowIcon.resolve('dashboard', size: GlowIconSize.sm, color: t.textSecondary),
+            icon: GlowIcon.resolve(
+              'dashboard',
+              size: GlowIconSize.sm,
+              color: t.textSecondary,
+            ),
             onPressed: () => Navigator.pushNamed(context, '/salon'),
           ),
         ],
@@ -165,7 +177,8 @@ class _SalonShellState extends State<SalonShell> {
         if (!_tiene('TEAM_MANAGEMENT')) {
           return LockedFeatureCard(
             titulo: 'Equipo',
-            descripcion: 'Tu plan no incluye la gestión de colaboradores de este salón.',
+            descripcion:
+                'Tu plan no incluye la gestión de colaboradores de este salón.',
             capacidadRequerida: 'TEAM_MANAGEMENT',
             planActual: _plan,
             beneficio: 'Invita, cambia roles y da de baja a tu equipo.',
@@ -174,9 +187,11 @@ class _SalonShellState extends State<SalonShell> {
         }
         return _EquipoTab(cargar: _cargarDatos);
       case 3:
-        return _cargarDatos ? const ProviderServicesScreen() : const _ServiciosPlaceholder();
+        return _cargarDatos
+            ? const ProviderServicesScreen()
+            : const _ServiciosPlaceholder();
       default:
-        return const _MasTab();
+        return _MasTab(salonId: _salonId);
     }
   }
 
@@ -248,7 +263,9 @@ class _AgendaTabState extends State<_AgendaTab> {
       _error = null;
     });
     try {
-      final citas = await ApiService.fetchProviderBookings(salonId: widget.salonId);
+      final citas = await ApiService.fetchProviderBookings(
+        salonId: widget.salonId,
+      );
       if (!mounted) return;
       setState(() {
         _citas = citas;
@@ -290,7 +307,8 @@ class _AgendaTabState extends State<_AgendaTab> {
       separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
       itemBuilder: (context, i) {
         final c = _citas[i];
-        final servicio = (c['service_name'] ?? c['servicio'] ?? 'Servicio').toString();
+        final servicio =
+            (c['service_name'] ?? c['servicio'] ?? 'Servicio').toString();
         final estado = (c['estado'] ?? '').toString();
         final fecha = (c['scheduled_at'] ?? c['fecha'] ?? '').toString();
         return Container(
@@ -302,24 +320,36 @@ class _AgendaTabState extends State<_AgendaTab> {
           ),
           child: Row(
             children: [
-              GlowIcon.resolve('calendar', size: GlowIconSize.sm, color: t.brandPrimary),
+              GlowIcon.resolve(
+                'calendar',
+                size: GlowIconSize.sm,
+                color: t.brandPrimary,
+              ),
               const SizedBox(width: Spacing.md),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(servicio, style: TypographyTokens.body(t).copyWith(fontWeight: FontWeight.w600)),
+                    Text(
+                      servicio,
+                      style: TypographyTokens.body(t)
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
                     if (fecha.isNotEmpty)
                       Text(
                         fecha.replaceFirst('T', ' ').split('.').first,
-                        style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary),
+                        style: TypographyTokens.bodySmall(t)
+                            .copyWith(color: t.textSecondary),
                       ),
                   ],
                 ),
               ),
               if (estado.isNotEmpty)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: Spacing.sm, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: Spacing.sm,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: t.brandPrimary.withOpacity(0.10),
                     borderRadius: BorderRadius.circular(Radii.sm),
@@ -392,7 +422,8 @@ class _EquipoTabState extends State<_EquipoTab> {
       final raw = (res?['members'] as List<dynamic>?) ?? const [];
       if (!mounted) return;
       setState(() {
-        _miembros = raw.map((m) => Map<String, dynamic>.from(m as Map)).toList();
+        _miembros =
+            raw.map((m) => Map<String, dynamic>.from(m as Map)).toList();
         _cargando = false;
       });
     } catch (e) {
@@ -448,7 +479,10 @@ class _EquipoTabState extends State<_EquipoTab> {
                 backgroundColor: t.brandPrimary.withOpacity(0.12),
                 child: Text(
                   nombre.trim().isEmpty ? '?' : nombre.trim()[0].toUpperCase(),
-                  style: TextStyle(color: t.brandPrimary, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                    color: t.brandPrimary,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               const SizedBox(width: Spacing.md),
@@ -456,10 +490,15 @@ class _EquipoTabState extends State<_EquipoTab> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(nombre, style: TypographyTokens.body(t).copyWith(fontWeight: FontWeight.w600)),
+                    Text(
+                      nombre,
+                      style: TypographyTokens.body(t)
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
                     Text(
                       [rol, estatus].where((s) => s.isNotEmpty).join(' · '),
-                      style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary),
+                      style: TypographyTokens.bodySmall(t)
+                          .copyWith(color: t.textSecondary),
                     ),
                   ],
                 ),
@@ -490,7 +529,8 @@ class _ServiciosPlaceholder extends StatelessWidget {
 // ── Más ──────────────────────────────────────────────────────────────────────
 
 class _MasTab extends StatelessWidget {
-  const _MasTab();
+  final int? salonId;
+  const _MasTab({required this.salonId});
 
   @override
   Widget build(BuildContext context) {
@@ -518,12 +558,14 @@ class _MasTab extends StatelessWidget {
                         children: [
                           Text(
                             titulo,
-                            style: TypographyTokens.body(t).copyWith(fontWeight: FontWeight.w600),
+                            style: TypographyTokens.body(t)
+                                .copyWith(fontWeight: FontWeight.w600),
                           ),
                           if (detalle != null)
                             Text(
                               detalle,
-                              style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary),
+                              style: TypographyTokens.bodySmall(t)
+                                  .copyWith(color: t.textSecondary),
                             ),
                         ],
                       ),
@@ -552,8 +594,16 @@ class _MasTab extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(titulo, style: TypographyTokens.body(t).copyWith(color: t.textSecondary)),
-                    Text(motivo, style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary)),
+                    Text(
+                      titulo,
+                      style: TypographyTokens.body(t)
+                          .copyWith(color: t.textSecondary),
+                    ),
+                    Text(
+                      motivo,
+                      style: TypographyTokens.bodySmall(t)
+                          .copyWith(color: t.textSecondary),
+                    ),
                   ],
                 ),
               ),
@@ -561,18 +611,50 @@ class _MasTab extends StatelessWidget {
           ),
         );
 
+    Widget accion(
+      String titulo,
+      String detalle,
+      VoidCallback? onTap,
+    ) =>
+        Container(
+          margin: const EdgeInsets.only(bottom: Spacing.sm),
+          decoration: BoxDecoration(
+            color: t.surfaceLevel1,
+            borderRadius: BorderRadius.circular(Radii.md),
+            border: Border.all(color: t.borderSubtle),
+          ),
+          child: ListTile(
+            title: Text(
+              titulo,
+              style: TypographyTokens.body(t)
+                  .copyWith(fontWeight: FontWeight.w600),
+            ),
+            subtitle: Text(
+              detalle,
+              style: TypographyTokens.bodySmall(t)
+                  .copyWith(color: t.textSecondary),
+            ),
+            trailing: Icon(Icons.chevron_right, color: t.textSecondary),
+            onTap: onTap,
+          ),
+        );
+
     return ListView(
       padding: const EdgeInsets.all(Spacing.lg),
       children: [
-              enlace('Resumen del salón', '/salon', detalle: 'KPIs, equipo y ajustes'),
-              enlace('Facturación del plan', '/saas/billing'),
+        enlace(
+          'Resumen del salón',
+          '/salon',
+          detalle: 'KPIs, equipo y ajustes',
+        ),
+        enlace('Facturación del plan', '/saas/billing'),
         enlace('Uso del plan', '/saas/usage'),
         enlace('API keys', '/saas/api-keys'),
         enlace('Configuración', '/settings'),
         enlace('Ayuda y soporte', '/support'),
         const SizedBox(height: Spacing.lg),
         Text(
-          'No incluido en esta etapa',
+          'Operación del salón',
           style: TypographyTokens.bodySmall(t).copyWith(
             color: t.textSecondary,
             fontWeight: FontWeight.w700,
@@ -580,8 +662,34 @@ class _MasTab extends StatelessWidget {
           ),
         ),
         const SizedBox(height: Spacing.sm),
-        bloqueado('Inventario', 'Llega con E-06'),
-        bloqueado('Recursos alquilables', 'Llega con E-06'),
+        accion(
+          'Inventario',
+          salonId == null
+              ? 'Abre primero un salón activo'
+              : 'Existencias, movimientos y alertas de stock bajo',
+          salonId == null
+              ? null
+              : () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => InventarioScreen(salonId: salonId!),
+                    ),
+                  ),
+        ),
+        accion(
+          'Recursos alquilables',
+          salonId == null
+              ? 'Abre primero un salón activo'
+              : 'Disponibilidad y responsables de sillas, cabinas y puestos',
+          salonId == null
+              ? null
+              : () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => RecursosScreen(salonId: salonId!),
+                    ),
+                  ),
+        ),
         bloqueado('Analytics', 'Se consulta por Aura'),
       ],
     );
@@ -623,9 +731,13 @@ class _Estado extends StatelessWidget {
             Text(
               detalle,
               textAlign: TextAlign.center,
-              style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary),
+              style: TypographyTokens.bodySmall(t)
+                  .copyWith(color: t.textSecondary),
             ),
-            if (accion != null) ...[const SizedBox(height: Spacing.md), accion!],
+            if (accion != null) ...[
+              const SizedBox(height: Spacing.md),
+              accion!,
+            ],
           ],
         ),
       ),

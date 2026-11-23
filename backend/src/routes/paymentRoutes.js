@@ -28,6 +28,7 @@ const { validarEvidencias } = require('../utils/disputaEvidencias');
 const payoutData = require('../services/payoutSensitiveDataService');
 const { canManageBooking } = require('../utils/bookingAccess');
 const { AuthorizationService, RESOURCES, ACTIONS } = require('../services/authorizationService');
+const { consumirInsumosDeReserva } = require('../services/salonInventoryService');
 
 const exigirCapacidadReservasPrestador = exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS);
 
@@ -551,10 +552,12 @@ router.post(
 
     const otpResult = await client.query(
       `SELECT ov.*, b.valor_bruto, b.comision_plataforma, b.pago_neto_prestador,
-              b.provider_id, b.client_id
+              b.provider_id, b.client_id, b.service_id, b.salon_id,
+              b.business_profile_id
        FROM otp_validaciones ov
        JOIN bookings b ON ov.booking_id = b.id
-       WHERE ov.booking_id = $1 AND ov.estado = 'ACTIVO'`,
+       WHERE ov.booking_id = $1 AND ov.estado = 'ACTIVO'
+       FOR UPDATE OF ov, b`,
       [id]
     );
 
@@ -648,6 +651,23 @@ router.post(
       `UPDATE bookings SET estado = 'COMPLETADA', payment_status = 'paid', completed_at = NOW() WHERE id = $1`,
       [id]
     );
+
+    let resultadoInventario = { consumidos: 0, faltantes: 0 };
+    if (otp.salon_id && otp.business_profile_id) {
+      const { rows: tenantRows } = await client.query(
+        `SELECT tenant_id FROM business_profiles WHERE id = $1`,
+        [otp.business_profile_id]
+      );
+      if (tenantRows.length) {
+        resultadoInventario = await consumirInsumosDeReserva(client, {
+          bookingId: id,
+          serviceId: otp.service_id,
+          salonId: otp.salon_id,
+          tenantId: tenantRows[0].tenant_id,
+          actorId: otp.provider_id,
+        });
+      }
+    }
 
     const walletResult = await client.query(
       `INSERT INTO provider_wallet (provider_id, saldo_pendiente, total_ganado)
@@ -783,6 +803,7 @@ router.post(
       ok: true,
       mensaje: '¡Servicio confirmado! El pago estará disponible para el prestador en breve.',
       monto_neto_prestador: montoNeto,
+      inventario: resultadoInventario,
       disponible_en: maduraAt,
       ventana_horas: ventanaHoras
     });

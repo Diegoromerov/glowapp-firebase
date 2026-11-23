@@ -17,12 +17,12 @@ function resMock() {
   return r;
 }
 
-function reqMock({ sub_rol = 'DUEÑO', salonId = 1, userId = 7, body = {}, params = {}, query = {} } = {}) {
+function reqMock({ sub_rol = 'DUEÑO', salonId = 1, userId = 7, body = { idempotency_key: 'inventory-test-01' }, params = {}, query = {} } = {}) {
   return {
     user: { id: userId, tenant_id: 'tenant-1' },
     salonId,
     salonMembership: { sub_rol },
-    body,
+    body: { idempotency_key: 'inventory-test-01', ...body },
     params,
     query,
   };
@@ -52,12 +52,15 @@ function dbFalso(opts = {}) {
         throw e;
       }
       if (/FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id/i.test(limpio)) return { rows: estado.salones };
+      if (/FROM inventario_salon i LEFT JOIN/i.test(limpio)) return { rows: estado.items };
       if (/FROM inventario_salon WHERE salon_id/i.test(limpio)) return { rows: estado.items };
       if (/FROM inventario_salon WHERE id = \$1 AND salon_id/i.test(limpio)) {
         return { rows: estado.item ? [estado.item] : [] };
       }
       if (/INSERT INTO inventario_salon/i.test(limpio)) return { rows: [opts.insertRow] };
       if (/UPDATE inventario_salon/i.test(limpio)) return { rows: estado.updateRows };
+      if (/pg_advisory_xact_lock/i.test(limpio)) return { rows: [] };
+      if (/SELECT id, request_hash FROM inventario_movimientos/i.test(limpio)) return { rows: opts.movimientoPrevio ? [opts.movimientoPrevio] : [] };
       if (/INSERT INTO inventario_movimientos/i.test(limpio)) return { rows: [] };
       if (/FROM inventario_movimientos/i.test(limpio)) return { rows: [] };
       if (/SELECT id, tenant_id, canon_mensual, estado FROM recursos_alquilables/i.test(limpio)) {
@@ -150,6 +153,19 @@ describe('Inventario — movimientos', () => {
     expect(res.statusCode).toBe(201);
     expect(res.body.item.stock_actual).toBe(13);
     expect(db.llamadas.find((l) => /UPDATE inventario_salon/i.test(l.sql)).params[0]).toBe(13);
+  });
+
+  it('un reintento con la misma clave no vuelve a cambiar el stock', async () => {
+    const db = dbFalso({ item, movimientoPrevio: { id: 'mov-1', request_hash: require('crypto').createHash('sha256').update(JSON.stringify({ item_id: 'i1', tipo: 'ENTRADA', cantidad: 10, motivo: null })).digest('hex') } });
+    const res = resMock();
+    await crearControladorOps(db).registrarMovimiento(
+      reqMock({ params: { itemId: 'i1' }, body: { tipo: 'ENTRADA', cantidad: 10 } }),
+      res
+    );
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body.repetido).toBe(true);
+    expect(db.llamadas.some((l) => /UPDATE inventario_salon/i.test(l.sql))).toBe(false);
   });
 
   it('un ajuste fija el saldo en la cantidad contada', async () => {

@@ -15,6 +15,7 @@
 //     nunca del cuerpo de la petición.
 
 const { pool } = require('../config/db');
+const crypto = require('crypto');
 
 const CATEGORIAS = new Set(['INSUMO', 'PRODUCTO', 'HERRAMIENTA', 'OTRO']);
 const TIPOS_MOVIMIENTO = new Set(['ENTRADA', 'SALIDA', 'AJUSTE']);
@@ -34,6 +35,16 @@ function numero(valor) {
   return Number.isFinite(n) ? n : null;
 }
 
+function idempotencyKey(req) {
+  const raw = req.body?.idempotency_key || req.get?.('Idempotency-Key');
+  const key = raw == null ? null : String(raw).trim();
+  return key && key.length <= 100 ? key : null;
+}
+
+function hashSolicitud(value) {
+  return crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
+}
+
 function crearControladorOps(db = pool) {
   // ── Inventario ────────────────────────────────────────────────────────────
 
@@ -41,12 +52,19 @@ function crearControladorOps(db = pool) {
   async function listarInventario(req, res) {
     try {
       const { rows } = await db.query(
-        `SELECT id, nombre, categoria, unidad, stock_actual, stock_minimo,
-                costo_unitario, proveedor,
-                (stock_actual <= stock_minimo) AS stock_bajo
-           FROM inventario_salon
-          WHERE salon_id = $1 AND activo = TRUE
-          ORDER BY (stock_actual <= stock_minimo) DESC, nombre ASC`,
+        `SELECT i.id, i.nombre, i.categoria, i.unidad, i.stock_actual, i.stock_minimo,
+                i.costo_unitario, i.proveedor,
+                (i.stock_actual <= i.stock_minimo) AS stock_bajo,
+                COALESCE(c.faltante_reservas, 0)::numeric AS faltante_reservas_acumulado
+           FROM inventario_salon i
+           LEFT JOIN (
+             SELECT item_id, SUM(faltante) AS faltante_reservas
+               FROM inventario_consumos_reserva
+              WHERE salon_id = $1 AND faltante > 0
+              GROUP BY item_id
+           ) c ON c.item_id = i.id
+          WHERE i.salon_id = $1 AND i.activo = TRUE
+          ORDER BY (i.stock_actual <= i.stock_minimo) DESC, i.nombre ASC`,
         [req.salonId]
       );
 
@@ -55,6 +73,7 @@ function crearControladorOps(db = pool) {
         stock_actual: Number(r.stock_actual),
         stock_minimo: Number(r.stock_minimo),
         costo_unitario: r.costo_unitario === null ? null : Number(r.costo_unitario),
+        faltante_reservas_acumulado: Number(r.faltante_reservas_acumulado || 0),
       }));
 
       return res.json({
@@ -133,6 +152,15 @@ function crearControladorOps(db = pool) {
         ]
       );
 
+      if (inicial > 0) {
+        await db.query(
+          `INSERT INTO inventario_movimientos
+             (tenant_id, salon_id, item_id, tipo, cantidad, motivo, registrado_por)
+           VALUES ($1, $2, $3, 'ENTRADA', $4, 'Stock inicial', $5)`,
+          [perfilRows[0].tenant_id, req.salonId, rows[0].id, inicial, req.user.id]
+        );
+      }
+
       return res.status(201).json({
         success: true,
         item: {
@@ -147,6 +175,7 @@ function crearControladorOps(db = pool) {
       if (error.code === '23505') {
         return res.status(409).json({ error: 'Ya existe un insumo con ese nombre en el salón.' });
       }
+      req.tenantTransactionError = error;
       console.error('❌ ERROR crearItemInventario:', error.message);
       return res.status(500).json({ error: 'No se pudo crear el insumo.' });
     }
@@ -161,6 +190,10 @@ function crearControladorOps(db = pool) {
     const { tipo, cantidad, motivo } = req.body || {};
     const tipoNorm = String(tipo || '').toUpperCase();
     const cant = numero(cantidad);
+    const key = idempotencyKey(req);
+    if (!key || key.length < 8) {
+      return res.status(400).json({ error: 'idempotency_key es obligatorio (8–100 caracteres).' });
+    }
 
     if (!TIPOS_MOVIMIENTO.has(tipoNorm)) {
       return res.status(400).json({
@@ -175,7 +208,7 @@ function crearControladorOps(db = pool) {
     try {
       const { rows: itemRows } = await db.query(
         `SELECT id, tenant_id, stock_actual FROM inventario_salon
-          WHERE id = $1 AND salon_id = $2`,
+          WHERE id = $1 AND salon_id = $2 FOR UPDATE`,
         [req.params.itemId, req.salonId]
       );
       if (itemRows.length === 0) {
@@ -184,6 +217,27 @@ function crearControladorOps(db = pool) {
 
       const item = itemRows[0];
       const actual = Number(item.stock_actual);
+
+      const requestHash = hashSolicitud({ item_id: item.id, tipo: tipoNorm, cantidad: cant, motivo: motivo || null });
+      // Serializa la misma clave incluso cuando dos reintentos apuntan a
+      // insumos distintos; el bloqueo por fila solo cubriría el mismo insumo.
+      await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [key]);
+      if (key) {
+        const { rows: repetido } = await db.query(
+          `SELECT id, request_hash FROM inventario_movimientos
+            WHERE tenant_id = $1 AND salon_id = $2 AND idempotency_key = $3`,
+          [item.tenant_id, req.salonId, key]
+        );
+        if (repetido.length) {
+          if (repetido[0].request_hash !== requestHash) {
+            return res.status(409).json({ error: 'La clave de idempotencia ya se usó con otros datos.' });
+          }
+          return res.status(200).json({ success: true, repetido: true, movimiento_id: repetido[0].id });
+        }
+      }
+
+      // El bloqueo serializa movimientos simultáneos del mismo insumo.
+      // La primera lectura también se bloquea (FOR UPDATE) en el SELECT de arriba.
 
       // AJUSTE fija el saldo; ENTRADA suma; SALIDA resta.
       const nuevo = tipoNorm === 'AJUSTE'
@@ -210,9 +264,10 @@ function crearControladorOps(db = pool) {
 
       await db.query(
         `INSERT INTO inventario_movimientos
-           (tenant_id, salon_id, item_id, tipo, cantidad, motivo, registrado_por)
-         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-        [item.tenant_id, req.salonId, item.id, tipoNorm, cant, motivo || null, req.user.id]
+           (tenant_id, salon_id, item_id, tipo, cantidad, motivo, registrado_por,
+            idempotency_key, request_hash)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        [item.tenant_id, req.salonId, item.id, tipoNorm, cant, motivo || null, req.user.id, key, key ? requestHash : null]
       );
 
       return res.status(201).json({
@@ -225,6 +280,7 @@ function crearControladorOps(db = pool) {
         movimiento: { tipo: tipoNorm, cantidad: cant },
       });
     } catch (error) {
+      req.tenantTransactionError = error;
       console.error('❌ ERROR registrarMovimientoInventario:', error.message);
       return res.status(500).json({ error: 'No se pudo registrar el movimiento.' });
     }
@@ -259,7 +315,7 @@ function crearControladorOps(db = pool) {
     try {
       const { rows } = await db.query(
         `SELECT r.id, r.nombre, r.tipo, r.canon_mensual, r.estado,
-                a.persona_id, a.periodo_inicio
+                a.id AS alquiler_id, a.persona_id, a.periodo_inicio
            FROM recursos_alquilables r
            LEFT JOIN alquileres a ON a.recurso_id = r.id AND a.estado = 'ACTIVO'
           WHERE r.salon_id = $1
@@ -346,12 +402,15 @@ function crearControladorOps(db = pool) {
 
     const { recurso_id: recursoId, persona_id: personaId, periodo_inicio: inicio } = req.body || {};
     if (!recursoId) return res.status(400).json({ error: 'recurso_id es obligatorio.' });
-    if (!personaId) return res.status(400).json({ error: 'persona_id es obligatorio.' });
+    const personaIdNorm = Number(personaId);
+    if (!Number.isInteger(personaIdNorm) || personaIdNorm <= 0) {
+      return res.status(400).json({ error: 'persona_id debe ser un identificador entero positivo.' });
+    }
 
     try {
       const { rows: recursoRows } = await db.query(
         `SELECT id, tenant_id, canon_mensual, estado FROM recursos_alquilables
-          WHERE id = $1 AND salon_id = $2`,
+          WHERE id = $1 AND salon_id = $2 FOR UPDATE`,
         [recursoId, req.salonId]
       );
       if (recursoRows.length === 0) {
@@ -373,7 +432,7 @@ function crearControladorOps(db = pool) {
            (tenant_id, salon_id, recurso_id, persona_id, canon_mensual, periodo_inicio, creado_por)
          VALUES ($1, $2, $3, $4, $5, COALESCE($6::date, CURRENT_DATE), $7)
          RETURNING id, recurso_id, persona_id, canon_mensual, periodo_inicio, estado`,
-        [recurso.tenant_id, req.salonId, recurso.id, personaId, canon, inicio || null, req.user.id]
+        [recurso.tenant_id, req.salonId, recurso.id, personaIdNorm, canon, inicio || null, req.user.id]
       );
 
       await db.query(
@@ -390,8 +449,126 @@ function crearControladorOps(db = pool) {
       if (error.code === '23505') {
         return res.status(409).json({ error: 'Ese recurso ya tiene un alquiler activo.' });
       }
+      req.tenantTransactionError = error;
       console.error('❌ ERROR crearAlquiler:', error.message);
       return res.status(500).json({ error: 'No se pudo registrar el alquiler.' });
+    }
+  }
+
+  /** PATCH /api/salon/:salonId/alquileres/:alquilerId/finalizar */
+  async function finalizarAlquiler(req, res) {
+    if (!puedeEscribir(req)) {
+      return res.status(403).json({ error: 'Tu rol no administra los alquileres del salón.' });
+    }
+
+    try {
+      const { rows } = await db.query(
+        `UPDATE alquileres
+            SET estado = 'FINALIZADO', periodo_fin = COALESCE(periodo_fin, CURRENT_DATE)
+          WHERE id = $1 AND salon_id = $2 AND estado = 'ACTIVO'
+          RETURNING id, recurso_id, persona_id, estado, periodo_fin`,
+        [req.params.alquilerId, req.salonId]
+      );
+      if (!rows.length) {
+        const { rows: existente } = await db.query(
+          `SELECT id, estado FROM alquileres WHERE id = $1 AND salon_id = $2`,
+          [req.params.alquilerId, req.salonId]
+        );
+        return existente.length
+          ? res.status(409).json({ error: 'El alquiler ya está finalizado.', estado: existente[0].estado })
+          : res.status(404).json({ error: 'El alquiler no existe en este salón.' });
+      }
+
+      await db.query(
+        `UPDATE recursos_alquilables SET estado = 'DISPONIBLE'
+          WHERE id = $1 AND salon_id = $2`,
+        [rows[0].recurso_id, req.salonId]
+      );
+      return res.json({ success: true, alquiler: rows[0] });
+    } catch (error) {
+      req.tenantTransactionError = error;
+      console.error('❌ ERROR finalizarAlquiler:', error.message);
+      return res.status(500).json({ error: 'No se pudo finalizar el alquiler.' });
+    }
+  }
+
+  async function listarInsumosServicio(req, res) {
+    try {
+      const { rows } = await db.query(
+        `SELECT si.id, si.service_id, si.item_id, i.nombre, i.unidad, si.cantidad
+           FROM salon_servicio_insumos si
+           JOIN inventario_salon i ON i.id = si.item_id AND i.salon_id = si.salon_id
+          WHERE si.salon_id = $1 AND si.service_id = $2 AND si.activo = TRUE
+          ORDER BY i.nombre`,
+        [req.salonId, req.params.serviceId]
+      );
+      return res.json({ success: true, items: rows.map((r) => ({ ...r, cantidad: Number(r.cantidad) })) });
+    } catch (error) {
+      console.error('❌ ERROR listarInsumosServicio:', error.message);
+      return res.status(500).json({ error: 'No se pudieron consultar los insumos del servicio.' });
+    }
+  }
+
+  async function guardarInsumosServicio(req, res) {
+    if (!puedeEscribir(req)) {
+      return res.status(403).json({ error: 'Tu rol no puede modificar los insumos de servicios.' });
+    }
+    const items = req.body?.items;
+    if (!Array.isArray(items) || items.length > 100) {
+      return res.status(400).json({ error: 'items debe ser una lista de hasta 100 insumos.' });
+    }
+    const vistos = new Set();
+    for (const item of items) {
+      const qty = numero(item?.cantidad);
+      if (!item?.item_id || qty === null || qty <= 0 || vistos.has(String(item.item_id))) {
+        return res.status(400).json({ error: 'Cada insumo debe ser único y tener una cantidad mayor que cero.' });
+      }
+      vistos.add(String(item.item_id));
+    }
+    try {
+      const { rows: servicio } = await db.query(
+        `SELECT sv.id FROM services sv
+           JOIN salones s ON s.id = sv.salon_id
+          WHERE sv.id = $1 AND sv.salon_id = $2 AND sv.is_active = TRUE
+            AND sv.business_profile_id = s.business_profile_id`,
+        [req.params.serviceId, req.salonId]
+      );
+      if (!servicio.length) return res.status(404).json({ error: 'El servicio no existe en este salón.' });
+      const { rows: perfil } = await db.query(
+        `SELECT bp.tenant_id FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id WHERE s.id = $1`,
+        [req.salonId]
+      );
+      if (!perfil.length) return res.status(409).json({ error: 'El salón no tiene identidad de negocio provisionada.' });
+      if (items.length) {
+        const ids = items.map((x) => x.item_id);
+        const { rows: válidos } = await db.query(
+          `SELECT id FROM inventario_salon
+            WHERE salon_id = $1 AND tenant_id = $3 AND id = ANY($2::uuid[]) AND activo = TRUE`,
+          [req.salonId, ids, perfil[0].tenant_id]
+        );
+        if (válidos.length !== ids.length) return res.status(400).json({ error: 'Hay insumos inexistentes o inactivos en esta sede.' });
+      }
+      await db.query(
+        `UPDATE salon_servicio_insumos SET activo = FALSE, actualizado_en = NOW()
+          WHERE salon_id = $1 AND service_id = $2 AND activo = TRUE`,
+        [req.salonId, req.params.serviceId]
+      );
+      for (const item of items) {
+        await db.query(
+          `INSERT INTO salon_servicio_insumos
+             (tenant_id, salon_id, service_id, item_id, cantidad, activo, creado_por, actualizado_en)
+           VALUES ($1, $2, $3, $4, $5, TRUE, $6, NOW())
+           ON CONFLICT (salon_id, service_id, item_id)
+           DO UPDATE SET cantidad = EXCLUDED.cantidad, activo = TRUE,
+                         actualizado_en = NOW(), creado_por = EXCLUDED.creado_por`,
+          [perfil[0].tenant_id, req.salonId, req.params.serviceId, item.item_id, Number(item.cantidad), req.user.id]
+        );
+      }
+      return res.json({ success: true, service_id: req.params.serviceId, total_insumos: items.length });
+    } catch (error) {
+      req.tenantTransactionError = error;
+      console.error('❌ ERROR guardarInsumosServicio:', error.message);
+      return res.status(500).json({ error: 'No se pudieron guardar los insumos del servicio.' });
     }
   }
 
@@ -430,6 +607,9 @@ function crearControladorOps(db = pool) {
     crearRecurso,
     crearAlquiler,
     listarAlquileres,
+    finalizarAlquiler,
+    listarInsumosServicio,
+    guardarInsumosServicio,
   };
 }
 

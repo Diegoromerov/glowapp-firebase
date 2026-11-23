@@ -262,4 +262,26 @@ describe('tenantContext — ciclo de vida de la transacción por petición', () 
     expect(next).toHaveBeenLastCalledWith(expect.any(Error));
     mockFalloCommit = false;
   });
+
+  test('un controlador puede solicitar ROLLBACK tras un error parcialmente aplicado', async () => {
+    activarFlag('true');
+    const res = fakeRes();
+    const error = new Error('falló el registro del movimiento de auditoría');
+    const req = { user: { id: 1, tenant_id: 7 } };
+    let invocaciones = 0;
+    const next = jest.fn(() => {
+      invocaciones += 1;
+      if (invocaciones === 1) {
+        req.tenantTransactionError = error;
+        res.status(500).json({ error: 'No se guardó la operación.' });
+      }
+    });
+
+    await tenantContext(req, res, next);
+
+    expect(mockLlamadas).toContain('ROLLBACK');
+    expect(mockLlamadas).not.toContain('COMMIT');
+    expect(mockLlamadas.some((l) => l.startsWith('RESPUESTA_ENVIADA'))).toBe(false);
+    expect(next).toHaveBeenLastCalledWith(error);
+  });
 });
