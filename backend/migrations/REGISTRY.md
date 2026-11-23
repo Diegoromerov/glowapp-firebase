@@ -528,3 +528,9 @@ en 076).
 - Registra sesiones del prestador para medir inicios, envíos, abandonos, revisiones, aperturas de soporte y fallos de transferencia.
 - Permite solicitar soporte de titularidad solo ante una diferencia, rechazo de transferencia o revisión de seguridad; la evidencia se cifra y se elimina a los 30 días.
 - No integra verificación bancaria automática para cuentas tradicionales; la revisión permanece administrativa.
+
+## 188: acceso del prestador a su billetera bajo RLS
+
+- Permite al prestador leer y registrar su propia `provider_wallet`, incluso cuando su cuenta no tiene `tenant_id`.
+- Mantiene el aislamiento por tenant para las filas pertenecientes al tenant y elimina políticas históricas que podrían ampliar permisos por OR.
+- Fija también el contexto de tenant en la transacción de registro de cuenta cuando está disponible.

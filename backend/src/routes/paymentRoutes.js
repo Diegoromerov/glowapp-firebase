@@ -1584,6 +1584,9 @@ const handleSaveBankAccount = async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    if (req.user.tenant_id) {
+      await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(req.user.tenant_id)]);
+    }
     await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
     if (flow_session_id) {
       const flow = await client.query(
