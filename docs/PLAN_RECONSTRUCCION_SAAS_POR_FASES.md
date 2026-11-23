@@ -11,7 +11,7 @@ Este documento es el plan de trabajo. No implica que las fases ya se hayan ejecu
 | Fase | Estado | Evidencia |
 |---|---|---|
 | 0 | Inventario realizado previamente | Contraste de arquitectura y decisiones documentadas durante el análisis. |
-| 1 | Implementada en el código local; pendiente aplicar migración y conciliar la base objetivo | [Informe de Fase 1](fases/FASE_1_IDENTIDAD_TENANT_SEDES.md), migración 189. |
+| 1 | Cerrada: desplegada y conciliada en producción el 23 de noviembre de 2026 | [Informe de Fase 1](fases/FASE_1_IDENTIDAD_TENANT_SEDES.md), migración 189; API sana y sin sedes huérfanas ni perfiles compartidos. |
 | 2–7 | Pendientes | Se iniciarán después del cierre operativo de la fase anterior. |
 
 ## Reglas de ejecución

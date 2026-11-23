@@ -1,8 +1,8 @@
 # Cierre de Fase 1 — Identidad SaaS y sedes
 
-**Estado:** cambios implementados en el árbol local; migración 189 pendiente de ejecutarse en la base objetivo y de conciliación posterior.
+**Estado:** cerrada; implementada, desplegada y conciliada en producción el 23 de noviembre de 2026.
 
-**Alcance de este cierre:** código backend, migración y documentación. No se desplegó el backend ni se modificó una base remota.
+**Commit de implementación:** `3a7895d3fde187c64d9bf8bf1474245c9a7105ca` (`Implement explicit SaaS salon identity`).
 
 ## Objetivo
 
@@ -40,9 +40,12 @@ La política RLS heredada continúa usando `tenantContext` y `salones.tenant_id`
 ## Verificación y estado operativo
 
 - Inspección estática: se revisaron consultas y referencias bajo `backend/src`; no deben quedar consultas de runtime que deriven una relación desde `left('salon-' || ...)` o que extraigan el ID con `substring(bp.id ...)`. La convención `salon-<id>` permanece solo para crear identidades históricas nuevas y para el backfill de datos.
-- Se actualizaron pruebas unitarias pertinentes; **no se ejecutó la suite**, ni una base remota, ni el despliegue.
-- El runner `backend/src/config/migrationRunner.js` recoge archivos `.sql` por orden alfabético en el arranque y registra su checksum. La 189 se aplicará cuando se despliegue/inicie el backend con el archivo incluido.
-- Después de aplicarla, revisar `/api/health` y la tabla `schema_migrations`, y medir:
+- Se revisó la sintaxis JavaScript de 16 archivos cambiados y `git diff --check`; no se ejecutó la suite de pruebas.
+- Railway desplegó `glowapp-api` y `admin-dashboard`; ambos quedaron `SUCCESS`/en línea, sin fallos recientes.
+- Los logs de arranque confirman `189_explicit_salon_business_profile.sql` aplicada exitosamente.
+- `GET /api/health` respondió `OK`, con PostgreSQL disponible, 61 migraciones registradas y el commit indicado arriba.
+- Consulta de solo lectura a la base de producción: `sedes_sin_perfil = 0` y `perfiles_compartidos = 0`.
+- El runner `backend/src/config/migrationRunner.js` recoge archivos `.sql` por orden alfabético en el arranque y registra su checksum. La verificación de nulidad y duplicidad usada fue:
 
 ```sql
 SELECT COUNT(*) AS sedes_sin_perfil
@@ -56,7 +59,7 @@ GROUP BY business_profile_id
 HAVING COUNT(*) > 1;
 ```
 
-La segunda consulta debe mantenerse en cero hasta que Fase 3 defina membresía y autorización por sede. Si aparecen sedes sin perfil, se deben asociar manualmente mediante datos verificados; no se debe inventar identidad a partir de `salones.tenant_id`.
+Ambas consultas devolvieron cero en producción tras aplicar la migración. La segunda debe mantenerse en cero hasta que Fase 3 defina membresía y autorización por sede. Si cambia el estado de la base, asociar las sedes mediante datos verificados; no inferir la relación desde `salones.tenant_id`.
 
 ## Riesgos y decisiones
 
@@ -69,9 +72,6 @@ La segunda consulta debe mantenerse en cero hasta que Fase 3 defina membresía y
 
 La migración es aditiva. Para revertir solo el código, volver a la revisión anterior y mantener la columna, FK e índice sin uso. No eliminar la columna mientras existan versiones que la consulten o haya datos que deban conservarse. Si se decide retirar el esquema más adelante, hacerlo en una migración nueva tras confirmar dependencias y respaldar la base.
 
-## Pendiente para cerrar la fase en producción
+## Preparación para la siguiente fase
 
-1. Desplegar el backend con la 189 y verificar que quedó registrada.
-2. Revisar `sedes_sin_perfil` y duplicidades de perfil por sede; investigar cualquier excepción.
-3. Confirmar flujos de selección de sede para un propietario con más de una sede y para un miembro invitado.
-4. Mantener la relación uno-a-uno hasta entregar Fase 3.
+La migración y la conciliación de esquema/datos quedaron completas. La Fase 3 deberá definir la autorización por sede antes de compartir una identidad SaaS entre varias sedes. La Fase 1 no habilita ese patrón ni cambia el contrato RLS heredado.
