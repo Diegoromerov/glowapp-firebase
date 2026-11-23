@@ -294,6 +294,27 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
         if (res['success'] != true) {
           throw Exception(res['error']?.toString() ?? 'La pasarela no confirmó el pago.');
         }
+
+        // En pedidos de tienda, payOrder confirma que la transacción fue creada,
+        // no que Wompi ya aprobó el cobro. Esperar el webhook igual que en Nequi
+        // y los métodos de redirección antes de mostrar la pantalla de éxito.
+        if (widget.itemType == 'product') {
+          final resultado = await _esperarConfirmacionPedido();
+          if (resultado != 'pagado') {
+            if (mounted) {
+              setState(() {
+                _isProcessing = false;
+                _errorMsg = resultado == 'rechazado'
+                    ? 'El pago fue rechazado por Wompi. No se cobró: intenta con otro medio.'
+                    : resultado == 'cancelado'
+                        ? 'El pedido fue cancelado antes de confirmarse el pago.'
+                        : 'El pago sigue pendiente de confirmación de Wompi. '
+                            'No vuelvas a pagar mientras se verifica.';
+              });
+            }
+            return;
+          }
+        }
         
         await _onPaymentSuccess(res);
         return;

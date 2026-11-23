@@ -231,8 +231,7 @@ class _StoreScreenState extends State<StoreScreen> {
     if (_cart.isEmpty) return;
 
     final double subtotal = _getCartSubtotal();
-    final double iva = subtotal * 0.19;
-    final double total = subtotal + iva;
+    final double total = subtotal;
 
     final TextEditingController nameCtrl = TextEditingController();
     final TextEditingController addressCtrl = TextEditingController();
@@ -240,6 +239,13 @@ class _StoreScreenState extends State<StoreScreen> {
     bool processing = false;
     bool loadingAddress = true;
     Map<String, dynamic>? defaultAddress;
+    StateSetter? checkoutStateUpdater;
+    Map<String, dynamic>? shippingQuote;
+    String? shippingQuoteKey;
+    String? requestedQuoteKey;
+    String? shippingQuoteError;
+    bool quotingShipping = false;
+    bool autoQuotePending = true;
 
     // Precarga de los datos del comprador al abrir el dialog
     Future<void> prefillCheckoutData() async {
@@ -266,7 +272,15 @@ class _StoreScreenState extends State<StoreScreen> {
         }
       } catch (_) {}
       finally {
-        if (mounted) setState(() => loadingAddress = false);
+        if (mounted) {
+          final updateCheckout = checkoutStateUpdater;
+          if (updateCheckout != null) {
+            updateCheckout(() => loadingAddress = false);
+          } else {
+            setState(() => loadingAddress = false);
+          }
+          if (addressCtrl.text.trim().isNotEmpty) autoQuotePending = true;
+        }
       }
     }
 
@@ -478,6 +492,7 @@ class _StoreScreenState extends State<StoreScreen> {
       builder: (ctx) {
         return StatefulBuilder(
           builder: (context, setCheckoutState) {
+            checkoutStateUpdater = setCheckoutState;
             if (processing) {
               return Dialog(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -509,6 +524,94 @@ class _StoreScreenState extends State<StoreScreen> {
                 ),
               );
             }
+
+            final quoteItems = _cart.values.map((item) {
+              final product = item['product'] as Map<String, dynamic>;
+              return {
+                'producto_id': product['id'],
+                'cantidad': item['quantity'] as int,
+              };
+            }).toList();
+            final destinationCity = defaultAddress?['ciudad']?.toString();
+            final currentQuoteKey = jsonEncode({
+              'direccion': addressCtrl.text.trim(),
+              'ciudad': destinationCity,
+              'items': quoteItems,
+              'booking_id': widget.bookingId,
+            });
+
+            Future<void> refreshShippingQuote() async {
+              if (addressCtrl.text.trim().isEmpty || quoteItems.isEmpty) return;
+              final cityForRequest = defaultAddress?['ciudad']?.toString();
+              final itemsForRequest = _cart.values.map((item) {
+                final product = item['product'] as Map<String, dynamic>;
+                return {
+                  'producto_id': product['id'],
+                  'cantidad': item['quantity'] as int,
+                };
+              }).toList();
+              final requestKey = jsonEncode({
+                'direccion': addressCtrl.text.trim(),
+                'ciudad': cityForRequest,
+                'items': itemsForRequest,
+                'booking_id': widget.bookingId,
+              });
+              requestedQuoteKey = requestKey;
+              setCheckoutState(() {
+                quotingShipping = true;
+                shippingQuoteError = null;
+              });
+              try {
+                final response = await ApiService.post(
+                  '/api/store/envio/cotizacion',
+                  {
+                    'items': itemsForRequest,
+                    'direccion_entrega': addressCtrl.text.trim(),
+                    if (cityForRequest != null && cityForRequest.isNotEmpty)
+                      'ciudad_entrega': cityForRequest,
+                    if (widget.bookingId != null) 'booking_id': widget.bookingId,
+                  },
+                );
+                if (!context.mounted || requestedQuoteKey != requestKey) return;
+                if (response == null || response['success'] != true || response['data'] is! Map) {
+                  throw Exception(response?['error'] ?? 'No se pudo calcular el envío.');
+                }
+                setCheckoutState(() {
+                  shippingQuote = Map<String, dynamic>.from(response['data'] as Map);
+                  shippingQuoteKey = requestKey;
+                  quotingShipping = false;
+                });
+              } catch (e) {
+                if (!context.mounted || requestedQuoteKey != requestKey) return;
+                setCheckoutState(() {
+                  shippingQuote = null;
+                  shippingQuoteKey = null;
+                  shippingQuoteError = mensajeHumano(e);
+                  quotingShipping = false;
+                });
+              }
+            }
+
+            if (autoQuotePending && !loadingAddress && addressCtrl.text.trim().isNotEmpty &&
+                requestedQuoteKey != currentQuoteKey && !quotingShipping) {
+              autoQuotePending = false;
+              requestedQuoteKey = currentQuoteKey;
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (context.mounted) refreshShippingQuote();
+              });
+            }
+
+            final bool quoteIsCurrent = shippingQuote != null &&
+                shippingQuoteKey == currentQuoteKey && !quotingShipping;
+            final double? quoteProducts = toDoubleOrNull(shippingQuote?['subtotal_con_iva']);
+            final double? quoteIva = toDoubleOrNull(shippingQuote?['iva']);
+            final double? quoteShipping = toDoubleOrNull(shippingQuote?['envio']);
+            final double? quoteTotal = toDoubleOrNull(shippingQuote?['total']);
+            final Map<String, dynamic>? shippingDetails = shippingQuote?['envio_detalle'] is Map
+                ? Map<String, dynamic>.from(shippingQuote!['envio_detalle'] as Map)
+                : null;
+            final double? freeShippingFrom =
+                toDoubleOrNull(shippingDetails?['gratis_desde_monto']);
 
             final double screenWidth = MediaQuery.of(context).size.width;
             final bool isMobile = screenWidth < 680;
@@ -559,6 +662,14 @@ class _StoreScreenState extends State<StoreScreen> {
                       children: [
                         TextFormField(
                           controller: addressCtrl,
+                          onChanged: (_) {
+                            autoQuotePending = true;
+                            setCheckoutState(() {
+                              shippingQuote = null;
+                              shippingQuoteKey = null;
+                              shippingQuoteError = null;
+                            });
+                          },
                           decoration: InputDecoration(
                             labelText: 'Dirección de Entrega',
                             border: const OutlineInputBorder(),
@@ -581,6 +692,12 @@ class _StoreScreenState extends State<StoreScreen> {
                                         setState(() {
                                           defaultAddress = result;
                                           addressCtrl.text = result['direccion_formateada'] ?? '';
+                                        });
+                                        autoQuotePending = true;
+                                        setCheckoutState(() {
+                                          shippingQuote = null;
+                                          shippingQuoteKey = null;
+                                          shippingQuoteError = null;
                                         });
                                       }
                                     },
@@ -634,18 +751,25 @@ class _StoreScreenState extends State<StoreScreen> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () async {
+                              if (!quoteIsCurrent) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(shippingQuoteError ??
+                                        'Espera a que calculemos el envío antes de pagar.'),
+                                  ),
+                                );
+                                return;
+                              }
                               if (formKey.currentState!.validate()) {
-                                final itemsList = _cart.values.map((item) {
-                                  final prod = item['product'] as Map<String, dynamic>;
-                                  final qty = item['quantity'] as int;
-                                  return {
-                                    'producto_id': prod['id'],
-                                    'cantidad': qty
-                                  };
-                                }).toList();
-
                                 // Preparar datos del checkout (incluir dirección estructurada si hay dirección seleccionada)
                                 Map<String, dynamic> checkoutData;
+                                final itemsForCheckout = _cart.values.map((item) {
+                                  final product = item['product'] as Map<String, dynamic>;
+                                  return {
+                                    'producto_id': product['id'],
+                                    'cantidad': item['quantity'] as int,
+                                  };
+                                }).toList();
                                 if (defaultAddress != null) {
                                   checkoutData = {
                                     'nombre_entrega': nameCtrl.text,
@@ -662,14 +786,14 @@ class _StoreScreenState extends State<StoreScreen> {
                                     'codigo_postal': defaultAddress!['codigo_postal'],
                                     'referencia': defaultAddress!['referencia'],
                                     'direccion_entrega_id': defaultAddress!['id'],
-                                    'items': itemsList,
+                                    'items': itemsForCheckout,
                                     if (widget.bookingId != null) 'booking_id': widget.bookingId,
                                   };
                                 } else {
                                   checkoutData = {
                                     'nombre_entrega': nameCtrl.text,
                                     'direccion_entrega': addressCtrl.text,
-                                    'items': itemsList,
+                                    'items': itemsForCheckout,
                                     if (widget.bookingId != null) 'booking_id': widget.bookingId,
                                   };
                                 }
@@ -717,7 +841,43 @@ class _StoreScreenState extends State<StoreScreen> {
                                 final totalServidor =
                                     toDoubleOrNull(orderResponse['data']?['order']?['total']) ??
                                         toDoubleOrNull(orderResponse['order']?['total']) ??
-                                        total;
+                                        quoteTotal ?? total;
+
+                                if (quoteTotal != null &&
+                                    (totalServidor - quoteTotal).abs() >= 1) {
+                                  final aceptarNuevoTotal = await showDialog<bool>(
+                                    context: context,
+                                    builder: (dialogContext) => AlertDialog(
+                                      title: const Text('El total fue actualizado'),
+                                      content: Text(
+                                        'El total confirmado para tu pedido es '
+                                        '${_formatCOP(totalServidor)}, en lugar de '
+                                        '${_formatCOP(quoteTotal)}. ¿Deseas continuar al pago?',
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(dialogContext, false),
+                                          child: const Text('Revisar pedido'),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () => Navigator.pop(dialogContext, true),
+                                          child: const Text('Aceptar y pagar'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                  if (aceptarNuevoTotal != true) {
+                                    setCheckoutState(() { processing = false; });
+                                    if (mounted) {
+                                      messenger.showSnackBar(
+                                        const SnackBar(
+                                          content: Text('El pedido quedó pendiente. No se inició el pago.'),
+                                        ),
+                                      );
+                                    }
+                                    return;
+                                  }
+                                }
 
                                 // 2. Cobrar el pedido usando el orderId real
                                 // Si abrir la pasarela falla, se cierra el dialogo y se
@@ -880,9 +1040,73 @@ class _StoreScreenState extends State<StoreScreen> {
                 const SizedBox(height: 20),
                   const Divider(),
                   const SizedBox(height: 10),
-                  _buildSummaryRow('Subtotal', _formatCOP(subtotal)),
+                  _buildSummaryRow(
+                    'Productos (IVA incluido)',
+                    _formatCOP(quoteProducts ?? subtotal),
+                  ),
                   const SizedBox(height: 6),
-                  _buildSummaryRow('IVA (19%)', _formatCOP(iva)),
+                  _buildSummaryRow(
+                    'IVA incluido',
+                    quoteIva == null ? 'Incluido' : _formatCOP(quoteIva),
+                  ),
+                  const SizedBox(height: 6),
+                  _buildSummaryRow(
+                    'Envío (transporte y gestión)',
+                    quotingShipping
+                        ? 'Calculando…'
+                        : quoteIsCurrent
+                            ? ((quoteShipping ?? 0) == 0 ? 'Gratis' : _formatCOP(quoteShipping!))
+                            : 'Pendiente de cotizar',
+                  ),
+                  if (quoteIsCurrent && shippingDetails != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      [
+                        'Destino: ${shippingDetails['zona'] ?? 'por confirmar'}',
+                        if (shippingDetails['peso_kg'] != null)
+                          'Peso estimado: ${shippingDetails['peso_kg']} kg',
+                      ].join(' · '),
+                      textAlign: TextAlign.right,
+                      style: TextStyle(fontSize: 10, color: AppTheme.text.withOpacity(0.65)),
+                    ),
+                  ],
+                  if (quoteIsCurrent && freeShippingFrom != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      'Envío gratis desde ${_formatCOP(freeShippingFrom)} en esta zona.',
+                      style: TextStyle(fontSize: 11, color: AppTheme.text.withOpacity(0.65)),
+                    ),
+                  ],
+                  if (quotingShipping || shippingQuoteError != null) ...[
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        if (quotingShipping)
+                          const SizedBox(
+                            width: 14,
+                            height: 14,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        else
+                          Icon(Icons.error_outline, size: 16, color: Colors.red.shade700),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            shippingQuoteError ?? 'Calculando costo de envío…',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: shippingQuoteError == null ? AppTheme.text : Colors.red.shade700,
+                            ),
+                          ),
+                        ),
+                        if (shippingQuoteError != null)
+                          TextButton(
+                            onPressed: refreshShippingQuote,
+                            child: const Text('Reintentar'),
+                          ),
+                      ],
+                    ),
+                  ],
                   const SizedBox(height: 10),
                   const Divider(),
                   const SizedBox(height: 10),
@@ -898,7 +1122,11 @@ class _StoreScreenState extends State<StoreScreen> {
                         ),
                       ),
                       Text(
-                        _formatCOP(total),
+                        quoteIsCurrent && quoteTotal != null
+                            ? _formatCOP(quoteTotal)
+                            : quotingShipping
+                                ? 'Calculando…'
+                                : 'Pendiente de cotizar',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w800,
