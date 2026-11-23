@@ -35,18 +35,29 @@ async function resolveVerticalId() {
 }
 
 /** Tenant actual del usuario, o null si aún no está provisionado. */
-async function findTenant(userId) {
+async function findTenant(userId, salonId = null) {
   const { rows } = await pool.query(
     `SELECT m.id AS membership_id, m.role, m.status,
             bp.id AS business_profile_id, bp.name, bp.saas_plan, bp.tenant_id
      FROM memberships m
      JOIN business_profiles bp ON bp.id = m.business_profile_id
+     LEFT JOIN salones s ON s.business_profile_id = bp.id
      WHERE m.user_id = $1 AND m.status = 'ACTIVE'
-     ORDER BY m.accepted_at DESC NULLS LAST, m.created_at DESC
+       AND ($2::integer IS NULL OR s.id = $2)
+     ORDER BY m.accepted_at DESC NULLS LAST, m.created_at DESC, s.id ASC
      LIMIT 1`,
-    [userId]
+    [userId, salonId]
   );
   return rows[0] || null;
+}
+
+function parseActiveSalonId(req) {
+  const value = req.headers?.['x-active-salon-id'] || req.headers?.['x-salon-id'];
+  if (value === undefined || value === null || value === '') return null;
+  const normalized = String(value).trim();
+  if (!/^\d+$/.test(normalized)) return false;
+  const id = Number(normalized);
+  return Number.isSafeInteger(id) && id > 0 ? id : false;
 }
 
 function toPayload(row) {
@@ -66,7 +77,11 @@ function toPayload(row) {
  */
 router.get('/', async (req, res) => {
   try {
-    const tenant = await findTenant(req.user.id);
+    const salonId = parseActiveSalonId(req);
+    if (salonId === false) {
+      return res.status(400).json({ error: 'x-active-salon-id debe ser un identificador numérico válido.' });
+    }
+    const tenant = await findTenant(req.user.id, salonId);
     if (!tenant) {
       return res.status(404).json({ error: 'Usuario sin tenant SaaS provisionado', provisioned: false });
     }
@@ -85,7 +100,11 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const client = await pool.connect();
   try {
-    const existing = await findTenant(req.user.id);
+    const requestedSalonId = parseActiveSalonId(req);
+    if (requestedSalonId === false) {
+      return res.status(400).json({ error: 'x-active-salon-id debe ser un identificador numérico válido.' });
+    }
+    const existing = await findTenant(req.user.id, requestedSalonId);
     if (existing) {
       return res.status(200).json({ provisioned: true, created: false, profile: toPayload(existing) });
     }
@@ -96,15 +115,24 @@ router.post('/', async (req, res) => {
     }
 
     const { rows: salones } = await pool.query(
-      `SELECT id, nombre_salon FROM salones
-       WHERE id_dueno = $1
+      `SELECT id, nombre_salon, business_profile_id FROM salones
+       WHERE id_dueno = $1 AND ($2::integer IS NULL OR id = $2)
        ORDER BY id DESC LIMIT 1`,
-      [req.user.id]
+      [req.user.id, requestedSalonId]
     );
     const salon = salones[0];
     if (!salon) {
       return res.status(409).json({
         error: 'El usuario no tiene un salón registrado; crea el salón antes de provisionar el tenant SaaS',
+      });
+    }
+
+    // No convertir automáticamente en OWNER a un usuario cuyo salón ya quedó
+    // asociado a un tenant existente. La pertenencia debe venir de memberships.
+    if (salon.business_profile_id) {
+      return res.status(409).json({
+        error: 'La sede ya pertenece a un negocio SaaS. Solicita una invitación al propietario.',
+        businessProfileId: salon.business_profile_id,
       });
     }
 
@@ -136,6 +164,9 @@ router.post('/', async (req, res) => {
        RETURNING id, name, saas_plan, tenant_id`,
       [profileId, req.user.id, verticalId, name, tenantId, plan]
     );
+    if (!inserted.length) {
+      throw new Error(`No existe el perfil SaaS asociado a la sede ${salon.id}`);
+    }
 
     await client.query(
       `INSERT INTO memberships
@@ -149,9 +180,21 @@ router.post('/', async (req, res) => {
       [membershipId, req.user.id, profileId]
     );
 
+    const { rows: linkedSalon } = await client.query(
+      `UPDATE salones
+          SET business_profile_id = $1, updated_at = CURRENT_TIMESTAMP
+        WHERE id = $2
+          AND (business_profile_id IS NULL OR business_profile_id = $1)
+        RETURNING business_profile_id`,
+      [profileId, salon.id]
+    );
+    if (linkedSalon.length === 0) {
+      throw new Error(`La sede ${salon.id} ya está vinculada a otro perfil SaaS`);
+    }
+
     await client.query('COMMIT');
 
-    const tenant = await findTenant(req.user.id);
+    const tenant = await findTenant(req.user.id, salon.id);
     console.log(`[saasBootstrap] Tenant provisionado para usuario ${req.user.id} → ${inserted[0].id} (${plan})`);
 
     res.status(201).json({

@@ -15,6 +15,15 @@ const {
 exports.getMySalon = async (req, res) => {
   try {
     const userId = req.user.id;
+    const activeSalonHeader = req.headers?.['x-active-salon-id'] || req.headers?.['x-salon-id'];
+    let activeSalonId = null;
+    if (activeSalonHeader !== undefined && activeSalonHeader !== null && activeSalonHeader !== '') {
+      const normalized = String(activeSalonHeader).trim();
+      if (!/^\d+$/.test(normalized) || !Number.isSafeInteger(Number(normalized)) || Number(normalized) < 1) {
+        return res.status(400).json({ error: 'x-active-salon-id debe ser un identificador numérico válido.' });
+      }
+      activeSalonId = Number(normalized);
+    }
 
     // La pertenencia se resuelve en `memberships`, que es la fuente única
     // (D-GL-027, D-0). Antes se buscaba sólo por `salones.id_dueno`, de modo que
@@ -24,12 +33,12 @@ exports.getMySalon = async (req, res) => {
               s.plan_saas, s.id_dueno, s.latitude, s.longitude,
               s.location_enabled, s.location_public
          FROM memberships m
-         JOIN business_profiles bp ON bp.id = m.business_profile_id
-         JOIN salones s ON bp.id = left('salon-' || s.id::text, 36)
+         JOIN salones s ON s.business_profile_id = m.business_profile_id
         WHERE m.user_id = $1 AND m.status = 'ACTIVE'
+          AND ($2::integer IS NULL OR s.id = $2)
         ORDER BY s.id
         LIMIT 1`,
-      [userId]
+      [userId, activeSalonId]
     );
 
     const salon = salonRes.rows[0] || null;
@@ -274,7 +283,7 @@ exports.acceptInvitation = async (req, res) => {
     // entre consultas.
     await pool.query(
       `WITH perfil AS (
-         SELECT id FROM business_profiles WHERE id = left('salon-' || $1::text, 36)
+         SELECT business_profile_id AS id FROM salones WHERE id = $1
        ), membresia AS (
          -- E-02b (D-GL-027): la membership canónica se escribe en la MISMA
          -- sentencia. Si el salón no está provisionado, el perfil viene vacío y

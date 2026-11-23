@@ -16,8 +16,7 @@ exports.getOwnerSalones = async (req, res) => {
               s.latitude, s.longitude, s.location_enabled, s.location_public,
               COUNT(DISTINCT m.user_id) FILTER (WHERE m.status = 'ACTIVE') AS total_colaboradores
          FROM salones s
-    LEFT JOIN business_profiles bp ON bp.id = left('salon-' || s.id::text, 36)
-    LEFT JOIN memberships m ON m.business_profile_id = bp.id
+    LEFT JOIN memberships m ON m.business_profile_id = s.business_profile_id
         WHERE s.id = ANY($1::int[])
      GROUP BY s.id
      ORDER BY s.id ASC`,
@@ -88,12 +87,12 @@ exports.getDashboardMetrics = async (req, res) => {
 
     // GRAVE 4 FIX: Calcular sedes_compartidas (intra-propietario) sobre TODAS las sedes del propietario
     const allProvidersRes = await pool.query(
-      `SELECT m.user_id AS provider_id, substring(bp.id from 7)::int AS salon_id, u.nombre AS nombre_prestador
+      `SELECT m.user_id AS provider_id, s.id AS salon_id, u.nombre AS nombre_prestador
          FROM memberships m
          JOIN business_profiles bp ON bp.id = m.business_profile_id
+         JOIN salones s ON s.business_profile_id = bp.id
          JOIN usuarios u ON m.user_id = u.id
-        WHERE substring(bp.id from 7)::int = ANY($1::int[]) AND m.status = 'ACTIVE'
-          AND bp.id ~ '^salon-[0-9]+$'`,
+        WHERE s.id = ANY($1::int[]) AND m.status = 'ACTIVE'`,
       [ownedIds]
     );
 
@@ -129,8 +128,8 @@ exports.getDashboardMetrics = async (req, res) => {
       `SELECT DISTINCT m.user_id AS provider_id
          FROM memberships m
          JOIN business_profiles bp ON bp.id = m.business_profile_id
-        WHERE substring(bp.id from 7)::int = ANY($1::int[]) AND m.status = 'ACTIVE'
-          AND bp.id ~ '^salon-[0-9]+$'`,
+         JOIN salones s ON s.business_profile_id = bp.id
+        WHERE s.id = ANY($1::int[]) AND m.status = 'ACTIVE'`,
       [targetSalonIds]
     );
 
@@ -158,13 +157,13 @@ exports.getDashboardMetrics = async (req, res) => {
 
     // GRAVE 3 FIX: Detección de Fuga Cross-Tenant (membresía en salones de OTROS propietarios)
     const externalCheckRes = await pool.query(
-      `SELECT m.user_id AS provider_id, substring(bp.id from 7)::int AS salon_id
+      `SELECT m.user_id AS provider_id, s.id AS salon_id
          FROM memberships m
          JOIN business_profiles bp ON bp.id = m.business_profile_id
+         JOIN salones s ON s.business_profile_id = bp.id
         WHERE m.user_id = ANY($1::int[])
           AND m.status = 'ACTIVE'
-          AND bp.id ~ '^salon-[0-9]+$'
-          AND NOT (substring(bp.id from 7)::int = ANY($2::int[]))`,
+          AND NOT (s.id = ANY($2::int[]))`,
       [providerIds, ownedIds]
     );
 

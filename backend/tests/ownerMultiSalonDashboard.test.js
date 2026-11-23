@@ -422,10 +422,11 @@ describeE2EReal('E2E REAL contra PostgreSQL: OWNER multi-sede (sin mocks de pool
       // caso «usuario sin sedes».
       await client.query(`DELETE FROM memberships WHERE business_profile_id = ANY($1::text[])`,
         [f.salones.map((s) => `salon-${s}`)]);
+      // La migración 189 agrega FK desde la sede al perfil: retirar primero la referencia.
+      await client.query(`DELETE FROM salones WHERE id = ANY($1::int[])`, [f.salones]);
       await client.query(`DELETE FROM business_profiles WHERE id = ANY($1::text[])`,
         [f.salones.map((s) => `salon-${s}`)]);
       await client.query(`DELETE FROM services WHERE id = $1`, [SERVICIO]);
-      await client.query(`DELETE FROM salones WHERE id = ANY($1::int[])`, [f.salones]);
       await client.query(`DELETE FROM perfiles_prestador WHERE id = ANY($1::int[])`, [f.usuarios]);
       await client.query(
         `DELETE FROM usuarios WHERE id = ANY($1::int[]) OR email = ANY($2::varchar[])`,
@@ -494,6 +495,10 @@ describeE2EReal('E2E REAL contra PostgreSQL: OWNER multi-sede (sin mocks de pool
       [SEDE_NORTE, SEDE_SUR]
     );
     await client.query(
+      `UPDATE salones SET business_profile_id = 'salon-' || id::text WHERE id = ANY($1::int[])`,
+      [[SEDE_NORTE, SEDE_SUR]]
+    );
+    await client.query(
       `INSERT INTO memberships (id, user_id, business_profile_id, role, sub_rol, status, accepted_at) VALUES
          (md5('e2e-a1'), $3, 'salon-' || $1::text, 'OWNER',  'DUEÑO',                   'ACTIVE',    CURRENT_TIMESTAMP),
          (md5('e2e-a2'), $3, 'salon-' || $2::text, 'OWNER',  'DUEÑO',                   'ACTIVE',    CURRENT_TIMESTAMP),
@@ -542,6 +547,10 @@ describeE2EReal('E2E REAL contra PostgreSQL: OWNER multi-sede (sin mocks de pool
               s.nombre_salon, s.tenant_id::text
          FROM salones s WHERE s.id = $1
        ON CONFLICT (id) DO NOTHING`,
+      [SEDE_AJENA]
+    );
+    await client.query(
+      `UPDATE salones SET business_profile_id = 'salon-' || id::text WHERE id = $1`,
       [SEDE_AJENA]
     );
     await client.query(

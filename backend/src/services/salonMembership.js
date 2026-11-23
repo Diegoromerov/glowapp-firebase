@@ -18,8 +18,8 @@
  * `memberships.role` manda para autorizar; `memberships.sub_rol` (migración 114)
  * conserva la etiqueta que el cliente Flutter muestra y edita.
  *
- * Convención de perfil: `business_profiles.id = 'salon-<salonId>'`, la misma que
- * usan `saasBootstrapRoutes`, `salonIdentity` y la migración 113.
+ * La sede conserva `business_profile_id`; este servicio resuelve la relación
+ * explícita y mantiene el vocabulario de rol que ya consume Flutter.
  */
 
 /** sub_rol heredado → rol canónico. */
@@ -49,7 +49,17 @@ const ROLE_TO_SUB_ROL = Object.freeze({
 /** Los roles que pueden administrar el equipo de un salón. */
 const ROLES_ADMIN = Object.freeze(['OWNER', 'ADMIN']);
 
-const profileIdForSalon = (salonId) => `salon-${salonId}`.slice(0, 36);
+async function resolveBusinessProfileId(db, salonId) {
+  const { rows } = await db.query(
+    `SELECT business_profile_id FROM salones WHERE id = $1`,
+    [salonId]
+  );
+  const profileId = rows[0]?.business_profile_id;
+  if (!profileId) {
+    throw new Error(`La sede ${salonId} no tiene un perfil SaaS asociado`);
+  }
+  return profileId;
+}
 
 /** Normaliza un sub_rol libre al rol canónico. Desconocido → MEMBER. */
 function roleForSubRol(subRol) {
@@ -79,9 +89,10 @@ async function listSalonMembers(db, salonId) {
             m.created_at AS creado_at
        FROM memberships m
        JOIN usuarios u ON u.id = m.user_id
-      WHERE m.business_profile_id = $1
+      JOIN salones s ON s.business_profile_id = m.business_profile_id
+      WHERE s.id = $1
       ORDER BY m.created_at ASC`,
-    [profileIdForSalon(salonId)]
+    [salonId]
   );
 
   // La etiqueta guardada puede venir nula en filas viejas: se deriva del rol.
@@ -99,10 +110,11 @@ async function listSalonMembers(db, salonId) {
  */
 async function getMemberRole(db, salonId, userId) {
   const { rows } = await db.query(
-    `SELECT role, sub_rol
-       FROM memberships
-      WHERE business_profile_id = $1 AND user_id = $2 AND status = 'ACTIVE'`,
-    [profileIdForSalon(salonId), userId]
+    `SELECT m.role, m.sub_rol
+       FROM memberships m
+       JOIN salones s ON s.business_profile_id = m.business_profile_id
+      WHERE s.id = $1 AND m.user_id = $2 AND m.status = 'ACTIVE'`,
+    [salonId, userId]
   );
   if (rows.length === 0) return null;
   const role = String(rows[0].role || '').toUpperCase();
@@ -129,6 +141,7 @@ async function canAdminSalon(db, salonId, userId) {
 async function ensureMembership(db, { salonId, userId, subRol, status = 'ACTIVE', createdBy = null }) {
   const role = roleForSubRol(subRol);
   const etiqueta = String(subRol || '').trim().toUpperCase() || subRolForRole(role);
+  const businessProfileId = await resolveBusinessProfileId(db, salonId);
 
   const { rows } = await db.query(
     `INSERT INTO memberships
@@ -142,7 +155,7 @@ async function ensureMembership(db, { salonId, userId, subRol, status = 'ACTIVE'
        accepted_at = COALESCE(memberships.accepted_at, EXCLUDED.accepted_at),
        updated_at = CURRENT_TIMESTAMP
      RETURNING id, role, sub_rol, status`,
-    [require('crypto').randomUUID(), userId, profileIdForSalon(salonId), role, etiqueta, status, createdBy]
+    [require('crypto').randomUUID(), userId, businessProfileId, role, etiqueta, status, createdBy]
   );
   return rows[0];
 }
@@ -151,7 +164,7 @@ module.exports = {
   SUB_ROL_TO_ROLE,
   ROLE_TO_SUB_ROL,
   ROLES_ADMIN,
-  profileIdForSalon,
+  resolveBusinessProfileId,
   roleForSubRol,
   subRolForRole,
   listSalonMembers,

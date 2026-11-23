@@ -91,6 +91,22 @@ async function ensureSalonOwnerIdentity(db, { salonId, ownerUserId, name, plan =
     [crypto.randomUUID(), ownerUserId, profileId]
   );
 
+  // La sede conserva una FK al perfil SaaS para que el resto del backend no
+  // tenga que reconstruir `salon-<id>` para resolver la identidad del negocio.
+  // La provisión actual conserva un perfil por sede; compartirlo requiere que
+  // Fase 3 agregue y aplique permisos con alcance explícito por sede.
+  const { rows: linkedSalon } = await db.query(
+    `UPDATE salones
+        SET business_profile_id = $1, updated_at = CURRENT_TIMESTAMP
+      WHERE id = $2
+        AND (business_profile_id IS NULL OR business_profile_id = $1)
+      RETURNING business_profile_id`,
+    [profileId, salonId]
+  );
+  if (linkedSalon.length === 0) {
+    throw new Error(`La sede ${salonId} ya está vinculada a otro perfil SaaS`);
+  }
+
   return { provisioned: true, profileId, tenantId };
 }
 

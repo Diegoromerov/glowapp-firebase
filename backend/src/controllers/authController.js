@@ -272,10 +272,11 @@ exports.login = async (req, res) => {
       const salonCheck = await pool.query(
         `SELECT s.id FROM salones s WHERE s.id_dueno = $1
          UNION
-         SELECT substring(bp.id from 7)::int AS salon_id
+         SELECT s.id AS salon_id
          FROM memberships m
          JOIN business_profiles bp ON bp.id = m.business_profile_id
-         WHERE m.user_id = $1 AND m.status = 'ACTIVE' AND bp.id ~ '^salon-[0-9]+$'`,
+         JOIN salones s ON s.business_profile_id = bp.id
+         WHERE m.user_id = $1 AND m.status = 'ACTIVE'`,
         [user.id]
       );
       if (salonCheck.rows.length > 0) {

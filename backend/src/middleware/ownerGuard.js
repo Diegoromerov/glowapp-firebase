@@ -99,9 +99,9 @@ async function getActiveMembership(salonId, userId, tenantId) {
                 WHEN m.role = 'MANAGER' THEN 'RECEPCIONISTA'
                 ELSE 'EMPLEADO'
               END AS sub_rol
-         FROM memberships m
-         JOIN business_profiles bp ON bp.id = m.business_profile_id
-        WHERE bp.id = left('salon-' || $1::text, 36)
+         FROM salones s
+         JOIN memberships m ON m.business_profile_id = s.business_profile_id
+        WHERE s.id = $1
           AND m.user_id = $2 AND m.status = $3`,
       [salonId, userId, 'ACTIVE']
     );
@@ -209,9 +209,9 @@ async function protectOwnerMember(req, res, next) {
     const owners = await pool.query(
       // E-02c: propietarios desde el modelo canónico.
       `SELECT m.user_id
-         FROM memberships m
-         JOIN business_profiles bp ON bp.id = m.business_profile_id
-        WHERE bp.id = left('salon-' || $1::text, 36)
+         FROM salones s
+         JOIN memberships m ON m.business_profile_id = s.business_profile_id
+        WHERE s.id = $1
           AND m.role = 'OWNER' AND m.status = $2`,
       [req.salonId, 'ACTIVE']
     );
@@ -255,8 +255,7 @@ async function requireAnyOwnerSede(req, res, next) {
       // E-02c: sedes propias por id_dueno o por membership OWNER canónica.
       `SELECT DISTINCT s.id
          FROM salones s
-    LEFT JOIN business_profiles bp ON bp.id = left('salon-' || s.id::text, 36)
-    LEFT JOIN memberships m ON m.business_profile_id = bp.id
+    LEFT JOIN memberships m ON m.business_profile_id = s.business_profile_id
                             AND m.user_id = $1 AND m.status = 'ACTIVE'
         WHERE s.id_dueno = $1 OR m.role = 'OWNER'`,
       [req.user.id]

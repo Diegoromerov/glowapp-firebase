@@ -45,7 +45,7 @@ describe('saasContext middleware', () => {
     expect(next).toHaveBeenCalled();
     expect(pool.query).toHaveBeenCalledWith(
       expect.stringContaining('SELECT m.*, bp.saas_plan'),
-      [1]
+      [1, null]
     );
   });
 
@@ -58,6 +58,7 @@ describe('saasContext middleware', () => {
         business_name: 'Salón Bella',
         saas_plan: 'PRO',
         role: 'OWNER',
+        active_salon_id: 42,
         accepted_at: '2024-01-15T10:00:00Z'
       }] 
     });
@@ -66,6 +67,7 @@ describe('saasContext middleware', () => {
     
     expect(req.saas).toEqual({
       tenantId: 'bp_456',
+      salonId: 42,
       name: 'Salón Bella',
       plan: 'PRO',
       role: 'OWNER',
@@ -117,6 +119,29 @@ describe('saasContext middleware', () => {
     expect(req.saas.tenantId).toBe('bp_new');
     expect(req.saas.plan).toBe('PRO');
     expect(req.saas.role).toBe('OWNER');
+  });
+
+  test('la sede activa de la petición se aplica al resolver la membership', async () => {
+    req.user = { id: 7 };
+    req.headers = { 'x-active-salon-id': '42' };
+    pool.query.mockResolvedValue({ rows: [{ id: 'm-42', business_profile_id: 'bp-42', active_salon_id: 42, saas_plan: 'BASIC', role: 'OWNER' }] });
+
+    await saasContext(req, res, next);
+
+    expect(pool.query).toHaveBeenCalledWith(expect.stringContaining('s.business_profile_id = bp.id'), [7, 42]);
+    expect(req.saas.salonId).toBe(42);
+    expect(next).toHaveBeenCalled();
+  });
+
+  test('rechaza una sede activa con formato inválido', async () => {
+    req.user = { id: 7 };
+    req.headers = { 'x-active-salon-id': 'salon-42' };
+
+    await saasContext(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(pool.query).not.toHaveBeenCalled();
+    expect(next).not.toHaveBeenCalled();
   });
 
   test('error en BD → fail-open: req.saas = null, next() sin romper', async () => {

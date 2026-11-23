@@ -22,7 +22,6 @@ const {
   getMemberRole,
   canAdminSalon,
   ensureMembership,
-  profileIdForSalon,
 } = require('../services/salonMembership');
 
 function dbCon(filas) {
@@ -66,7 +65,7 @@ describe('E-02b — lectura del equipo', () => {
 
     const miembros = await listSalonMembers(db, 42);
 
-    expect(db.consultas[0].params[0]).toBe('salon-42');
+    expect(db.consultas[0].params[0]).toBe(42);
     expect(db.consultas[0].sql).toContain('FROM memberships');
     expect(miembros).toHaveLength(2);
     expect(miembros[0].sub_rol).toBe('ADMINISTRADOR');
@@ -97,27 +96,43 @@ describe('E-02b — lectura del equipo', () => {
 });
 
 describe('E-02b — escritura canónica', () => {
-  test('ensureMembership hace upsert idempotente y guarda la etiqueta', async () => {
-    const db = dbCon([{ id: 'm9', role: 'MANAGER', sub_rol: 'RECEPCIONISTA', status: 'ACTIVE' }]);
+  test('ensureMembership resuelve el perfil explícito y guarda la etiqueta', async () => {
+    const consultas = [];
+    const db = {
+      consultas,
+      async query(sql, params) {
+        consultas.push({ sql, params });
+        if (sql.includes('FROM salones')) return { rows: [{ business_profile_id: 'bp-5' }] };
+        return { rows: [{ id: 'm9', role: 'MANAGER', sub_rol: 'RECEPCIONISTA', status: 'ACTIVE' }] };
+      },
+    };
 
     const res = await ensureMembership(db, { salonId: 5, userId: 11, subRol: 'RECEPCIONISTA' });
 
     expect(res.role).toBe('MANAGER');
-    const { sql, params } = db.consultas[0];
+    const { sql, params } = db.consultas[1];
     expect(sql).toContain('INSERT INTO memberships');
     expect(sql).toMatch(/ON CONFLICT \(user_id, business_profile_id\) DO UPDATE/);
     expect(params[1]).toBe(11);
-    expect(params[2]).toBe('salon-5');
+    expect(params[2]).toBe('bp-5');
     expect(params[3]).toBe('MANAGER');
     expect(params[4]).toBe('RECEPCIONISTA');
   });
 
   test('una baja se escribe como SUSPENDED, no como borrado', async () => {
-    const db = dbCon([{ id: 'm9', role: 'MEMBER', sub_rol: 'EMPLEADO', status: 'SUSPENDED' }]);
+    const consultas = [];
+    const db = {
+      consultas,
+      async query(sql, params) {
+        consultas.push({ sql, params });
+        if (sql.includes('FROM salones')) return { rows: [{ business_profile_id: 'bp-5' }] };
+        return { rows: [{ id: 'm9', role: 'MEMBER', sub_rol: 'EMPLEADO', status: 'SUSPENDED' }] };
+      },
+    };
 
     await ensureMembership(db, { salonId: 5, userId: 11, subRol: 'EMPLEADO', status: 'SUSPENDED' });
 
-    expect(db.consultas[0].params[5]).toBe('SUSPENDED');
+    expect(db.consultas[1].params[5]).toBe('SUSPENDED');
   });
 });
 
@@ -134,7 +149,10 @@ describe('E-02b — compuerta: los controladores no vuelven a leer salon_miembro
     expect(lecturas).toHaveLength(0);
   });
 
-  test('el perfil del salón usa la convención que comparten bootstrap, identidad y migraciones', () => {
-    expect(profileIdForSalon(10)).toBe('salon-10');
+  test('el acceso a membresías resuelve el perfil desde la relación explícita de la sede', async () => {
+    const db = dbCon([{ id: 'm1', role: 'OWNER', sub_rol: 'DUEÑO' }]);
+    await getMemberRole(db, 10, 2);
+    expect(db.consultas[0].sql).toContain('JOIN salones s ON s.business_profile_id = m.business_profile_id');
+    expect(db.consultas[0].params[0]).toBe(10);
   });
 });

@@ -36,8 +36,8 @@ function dbFalso({ totales, porConcepto = [], salon = [{ tenant_id: 'tenant-1' }
     query: async (sql, params) => {
       const limpio = sql.replace(/\s+/g, ' ').trim();
       llamadas.push({ sql: limpio, params });
-      // El inquilino se resuelve en business_profiles (fuente única, D-GL-027).
-      if (/FROM business_profiles WHERE id = left/i.test(limpio)) return { rows: salon };
+      // El perfil del negocio se resuelve desde la relación explícita de la sede.
+      if (/FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id/i.test(limpio)) return { rows: salon };
       if (/GROUP BY tipo, concepto/i.test(limpio)) return { rows: porConcepto };
       if (/COALESCE\(SUM\(CASE WHEN tipo = 'INGRESO'/i.test(limpio)) return { rows: [totales] };
       if (/INSERT INTO caja_movimientos/i.test(limpio)) return { rows: insert };

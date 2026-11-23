@@ -26,6 +26,7 @@ function fakeDb(verticales) {
       if (sql.includes('FROM business_verticals')) {
         return { rows: verticales.map((id) => ({ id })) };
       }
+      if (sql.includes('UPDATE salones')) return { rows: [{ business_profile_id: params[0] }] };
       return { rows: [] };
     },
   };

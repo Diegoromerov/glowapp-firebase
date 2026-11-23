@@ -51,7 +51,7 @@ function dbFalso(opts = {}) {
         e.code = '23505';
         throw e;
       }
-      if (/FROM business_profiles WHERE id = left/i.test(limpio)) return { rows: estado.salones };
+      if (/FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id/i.test(limpio)) return { rows: estado.salones };
       if (/FROM inventario_salon WHERE salon_id/i.test(limpio)) return { rows: estado.items };
       if (/FROM inventario_salon WHERE id = \$1 AND salon_id/i.test(limpio)) {
         return { rows: estado.item ? [estado.item] : [] };

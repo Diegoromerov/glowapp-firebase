@@ -534,3 +534,10 @@ en 076).
 - Permite al prestador leer y registrar su propia `provider_wallet`, incluso cuando su cuenta no tiene `tenant_id`.
 - Mantiene el aislamiento por tenant para las filas pertenecientes al tenant y elimina políticas históricas que podrían ampliar permisos por OR.
 - Fija también el contexto de tenant en la transacción de registro de cuenta cuando está disponible.
+
+## 189: relación explícita entre sede y perfil SaaS
+
+- Añade `salones.business_profile_id` como vínculo explícito y nullable hacia `business_profiles`.
+- Completa las sedes existentes con el mapeo histórico `salon-<id>` únicamente durante el backfill; el código de ejecución deja de reconstruir esa identidad para resolver relaciones.
+- No altera `salones.tenant_id`, que continúa siendo el identificador legado entero hacia `tenants`.
+- La migración es aditiva y deja pendiente convertir la columna a `NOT NULL` hasta conciliar toda fila de producción.

@@ -225,8 +225,10 @@ function crearControladorCaja(db = pool) {
       // dejaba la caja en 500 con salones reales, porque el INSERT recibía NULL
       // en una columna NOT NULL.
       const { rows: perfilRows } = await db.query(
-        `SELECT tenant_id FROM business_profiles
-          WHERE id = left('salon-' || $1::text, 36)`,
+        `SELECT bp.tenant_id
+           FROM salones s
+           JOIN business_profiles bp ON bp.id = s.business_profile_id
+          WHERE s.id = $1`,
         [req.salonId]
       );
       if (perfilRows.length === 0) {

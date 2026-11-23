@@ -569,12 +569,10 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
             s.ciudad,
             s.plan_saas,
             (SELECT COUNT(*) FROM memberships m
-              JOIN business_profiles bp ON bp.id = m.business_profile_id
-             WHERE bp.id = left('salon-' || s.id::text, 36) AND m.status = 'ACTIVE') as total_profesionales,
+             WHERE m.business_profile_id = s.business_profile_id AND m.status = 'ACTIVE') as total_profesionales,
             (SELECT COUNT(*) FROM bookings b WHERE b.provider_id IN (
                SELECT m2.user_id FROM memberships m2
-                 JOIN business_profiles bp2 ON bp2.id = m2.business_profile_id
-                WHERE bp2.id = left('salon-' || s.id::text, 36) AND m2.status = 'ACTIVE'
+                WHERE m2.business_profile_id = s.business_profile_id AND m2.status = 'ACTIVE'
              ) AND b.scheduled_at >= DATE_TRUNC('month', CURRENT_DATE)) as total_citas_mes
           FROM salones s
           WHERE s.id_dueno = $1
