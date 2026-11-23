@@ -2,13 +2,13 @@
 
 **Fecha:** 23 de noviembre de 2026
 
-**Estado:** implementación local terminada; despliegue y validación funcional pendientes.
+**Estado:** publicada en producción el 23 de noviembre de 2026.
 
 ## 1. Objetivo y alcance ejecutado
 
 Centralizar los planes, capacidades y límites de GlowApp para que backend, onboarding y pantalla de uso consulten una oferta coherente. Se consolidaron los límites actuales, se instrumentaron reservas e integraciones, se hizo explícito el acceso a llaves API y se vinculó el control de asientos con las membresías activas y pendientes.
 
-Quedan fuera de esta fase el despliegue a producción, una migración comercial masiva de planes existentes, los complementos de pago y las notificaciones externas de consumo.
+Quedan fuera de esta fase una migración comercial masiva de planes existentes, los complementos de pago y las notificaciones externas de consumo.
 
 ## 2. Qué se hizo
 
@@ -54,15 +54,17 @@ La medición de reservas se aplica al crear una reserva y es parte de esa transa
 
 - Se ejecutó `node --check` sobre los módulos JavaScript backend modificados después del ajuste transaccional de invitaciones; todos pasaron.
 - `git diff --check` y `git diff --cached --check` pasaron para los cambios de esta fase.
-- No se ejecutó la suite de pruebas ni pruebas de interfaz.
-- No se ejecutaron pruebas contra PostgreSQL, ni se verificó un tenant real en producción.
-- No se desplegó el backend ni se publicó una nueva versión de Flutter.
+- GitHub Actions, ejecución [45215955186](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/45215955186), pasó `Analyze & Tests`, la compilación web de `glow_provider` y el despliegue de Firebase Hosting de producción. El análisis/pruebas de Flutter de proveedor y las pruebas `GlowGuide Video Mapping` pasaron.
+- Se comprobó `GET https://glowapp-provider.web.app` con respuesta HTTP 200.
+- Se comprobó `GET https://glowapp-api-production.up.railway.app/api/saas/catalog` con `X-App-Audience: provider`: catálogo versión 1 y cinco planes (`FREE_TRIAL`, `FREEMIUM`, `BASIC`, `PRO`, `ENTERPRISE`).
+- Los despliegues Railway del commit de backend `fa96bf7` quedaron en `SUCCESS`: `glowapp-api` (`cab649c3-e749-4e73-894e-2318f0bf1b5c`) y `admin-dashboard` (`6e02fe66-c883-4453-8d09-59ea8e0bf3cf`).
+- No se ejecutaron pruebas de integración contra PostgreSQL ni una conciliación de tenants reales; la comprobación HTTP confirma disponibilidad del catálogo, no la corrección de todas las cuotas para cada cuenta.
 
 ## 6. Datos y despliegue
 
-No hay migración pendiente. Al desplegar el backend se publicará el endpoint del catálogo y se aplicarán los nuevos controles en rutas de reservas, llaves y equipo. Para completar el rollout habrá que desplegar los clientes que leen el catálogo. El plan de base y complementos no modifica registros existentes en esta fase.
+No hay migración pendiente. El backend, el panel administrativo y la app web del proveedor están desplegados. Los cambios SaaS del backend se publicaron en `fa96bf7`; los ajustes de compilación de la app de proveedor en `1decdca`. El flujo de Hosting se ejecutó contra `main` y finalizó correctamente. Esta fase no modifica planes existentes mediante migración masiva.
 
-Las llaves API de tenants en Prueba Gratis, Freemium o Básico que antes podían autorizarse por el chequeo indirecto de marca personalizada dejarán de funcionar; el contrato nuevo requiere Profesional o Empresarial. Las llaves de Profesional y Empresarial conservan el acceso. Revisar llaves existentes y avisar a tenants afectados antes de activar el cambio en producción.
+Las llaves API de tenants en Prueba Gratis, Freemium o Básico que antes podían autorizarse por el chequeo indirecto de marca personalizada dejan de cumplir el contrato nuevo, que requiere Profesional o Empresarial. Antes de una migración comercial más amplia, revisar las llaves existentes y avisar a tenants afectados.
 
 ## 7. Riesgos y rollback
 
@@ -74,4 +76,8 @@ Las llaves API de tenants en Prueba Gratis, Freemium o Básico que antes podían
 
 ## 8. Pendientes y fase siguiente
 
-Antes de producción: ejecutar pruebas de integración de cuotas, revisar los planes actuales de tenants, acordar migración/transición comercial, verificar llaves API afectadas y desplegar backend y clientes coordinadamente. La Fase 3 debe unificar membresías, roles y permisos operativos con el modelo de membresía SaaS; en particular, correo de invitación, auditoría y política de tokens.
+- Ejecutar pruebas de integración de cuotas en PostgreSQL y cubrir reintentos/concurrencia.
+- Revisar los planes actuales de tenants y acordar la transición comercial; verificar llaves API afectadas.
+- No se implementaron alertas externas de consumo ni complementos.
+
+La Fase 3 unificará membresías, roles y permisos operativos con el modelo SaaS; en particular, correo de invitación, auditoría y política de tokens. Estos pendientes no bloquean que el código de la Fase 2 desplegado quede registrado como publicado, pero deben revisarse como parte de la preparación comercial y de integración.
