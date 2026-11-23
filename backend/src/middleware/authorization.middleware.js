@@ -12,9 +12,7 @@ const { AuthorizationService, RESOURCES, ACTIONS } = require('../services/author
 const requirePermission = (resource, action) => {
   return (req, res, next) => {
     // 1. Validar que la membresía haya sido resuelta previamente
-    const userRole = (req.user?.role || '').toString().toLowerCase();
-    const isProviderOrAdmin = userRole === 'provider' || userRole === 'admin' || userRole === 'owner';
-    const role = req.membership?.role || req.user?.membershipRole || (isProviderOrAdmin ? 'OWNER' : null);
+    const role = req.saas?.role || req.membership?.role || null;
 
     if (!role) {
       return res.status(403).json({

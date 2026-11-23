@@ -23,11 +23,42 @@ const Membership = sequelize.define('Membership', {
     defaultValue: 'MEMBER',
     field: 'role'
   },
+  sub_rol: {
+    type: DataTypes.STRING(50),
+    allowNull: true,
+    field: 'sub_rol'
+  },
   status: {
-    type: DataTypes.ENUM('INVITED', 'ACTIVE', 'SUSPENDED', 'REVOKED'),
+    type: DataTypes.STRING(20),
     allowNull: false,
     defaultValue: 'ACTIVE',
-    field: 'status'
+    field: 'status',
+    validate: { isIn: [['PENDING', 'INVITED', 'ACTIVE', 'SUSPENDED', 'REVOKED', 'REMOVED', 'EXPIRED']] }
+  },
+  invite_email: {
+    type: DataTypes.STRING(254),
+    allowNull: true,
+    field: 'invite_email'
+  },
+  invite_token_hash: {
+    type: DataTypes.STRING(64),
+    allowNull: true,
+    field: 'invite_token_hash'
+  },
+  invite_expires_at: {
+    type: DataTypes.DATE,
+    allowNull: true,
+    field: 'invite_expires_at'
+  },
+  removed_at: {
+    type: DataTypes.DATE,
+    allowNull: true,
+    field: 'removed_at'
+  },
+  removed_by: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    field: 'removed_by'
   },
   invited_at: {
     type: DataTypes.DATE,

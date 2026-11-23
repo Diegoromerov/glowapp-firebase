@@ -1,332 +1,98 @@
-// backend/src/routes/saasTeamRoutes.js
 const express = require('express');
 const { pool } = require('../config/db');
 const saasContext = require('../middleware/saasContext');
 const { requireRole, requireOwner, requireEntitlement } = require('../middleware/featureGate');
+const { requirePermission, RESOURCES, ACTIONS } = require('../middleware/authorization.middleware');
 const { authMiddleware } = require('../middleware/auth');
-const crypto = require('crypto');
-const usageMeteringService = require('../services/usageMeteringService');
+const membershipService = require('../services/saasMembershipService');
 
 const router = express.Router();
-
-// Todos los endpoints requieren auth + contexto SaaS + rol mínimo ADMIN (salvo listar)
 router.use(authMiddleware);
 router.use(saasContext);
 
-/**
- * GET /api/saas/team
- * Lista miembros del tenant actual
- * Requiere: membership activa (cualquier rol)
- */
+function handleError(res, error, fallback) {
+  if (error.status) return res.status(error.status).json({ error: error.message, ...(error.details || {}) });
+  console.error(`[saasTeamRoutes] ${fallback}:`, error.message);
+  return res.status(500).json({ error: fallback });
+}
+
+function membershipDto(membership) {
+  if (!membership) return membership;
+  const safe = { ...membership };
+  delete safe.invite_token;
+  delete safe.invite_token_hash;
+  return safe;
+}
+
 router.get('/', async (req, res) => {
+  if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
   try {
-    if (!req.saas) {
-      return res.status(401).json({ error: 'Contexto SaaS requerido' });
-    }
-
-    const { rows } = await pool.query(`
-      SELECT m.id, m.user_id, m.role, m.status, m.invited_at, m.accepted_at,
-             u.email, u.nombre AS full_name, u.foto_url AS avatar_url
-      FROM memberships m
-      JOIN usuarios u ON u.id = m.user_id
-      WHERE m.business_profile_id = $1
-      ORDER BY 
-        CASE m.role 
-          WHEN 'OWNER' THEN 1 
-          WHEN 'ADMIN' THEN 2 
-          WHEN 'MANAGER' THEN 3 
-          WHEN 'MEMBER' THEN 4 
-          WHEN 'VIEWER' THEN 5 
-          ELSE 6 
-        END,
-        m.accepted_at DESC NULLS LAST, m.invited_at DESC;
-    `, [req.saas.tenantId]);
-
-    // Agregar "yo" (current user) para UI
-    const me = rows.find(r => r.user_id === req.user.id);
-    const others = rows.filter(r => r.user_id !== req.user.id);
-
-    res.json({
-      tenantId: req.saas.tenantId,
-      tenantName: req.saas.name,
-      plan: req.saas.plan,
-      myRole: me?.role,
-      members: [
-        me ? { ...me, isMe: true } : null,
-        ...others.map(m => ({ ...m, isMe: false }))
-      ].filter(Boolean)
-    });
-  } catch (error) {
-    console.error('[saasTeamRoutes] Error listing members:', error.message);
-    res.status(500).json({ error: 'Error obteniendo equipo' });
-  }
+    const members = await membershipService.list(req.saas.tenantId);
+    const me = members.find((member) => Number(member.user_id) === Number(req.user.id));
+    return res.json({ tenantId: req.saas.tenantId, tenantName: req.saas.name, plan: req.saas.plan,
+      myRole: me?.role, members: members.map((member) => ({ ...member, isMe: Number(member.user_id) === Number(req.user.id) })) });
+  } catch (error) { return handleError(res, error, 'Error obteniendo equipo'); }
 });
 
-/**
- * POST /api/saas/team/invite
- * Invita un nuevo miembro al tenant
- * Requiere: ADMIN u OWNER
- */
-router.post('/invite', requireRole('ADMIN'), requireEntitlement('TEAM_MANAGEMENT'), async (req, res) => {
-  try {
-    const { email, role = 'MEMBER', message } = req.body;
-
-    if (!email || !email.includes('@')) {
-      return res.status(400).json({ error: 'Email inválido' });
-    }
-
-    const validRoles = ['ADMIN', 'MANAGER', 'MEMBER', 'VIEWER'];
-    if (!validRoles.includes(role)) {
-      return res.status(400).json({ error: 'Rol inválido', validRoles });
-    }
-
-    // No permitir invitar OWNER (solo uno por tenant)
-    if (role === 'OWNER') {
-      return res.status(400).json({ error: 'No se puede invitar como OWNER' });
-    }
-
-    // Buscar usuario por email
-    const { rows: users } = await pool.query(
-      `SELECT id, email, nombre AS full_name FROM usuarios WHERE email = $1`,
-      [email.toLowerCase()]
-    );
-
-    let userId;
-    let isNewUser = false;
-
-    if (users.length === 0) {
-      // Usuario no existe - crear invitado pendiente (pre-registro)
-      // En producción: enviar email de invitación con link de registro
-      return res.status(404).json({ 
-        error: 'Usuario no registrado',
-        message: 'El usuario debe registrarse primero en GlowApp. Envíale el link de registro.',
-        registerUrl: `${process.env.FRONTEND_URL}/register?invite=${req.saas.tenantId}&role=${role}`
-      });
-    }
-
-    userId = users[0].id;
-
-    // Serializar altas del mismo salón para que dos invitaciones simultáneas
-    // no excedan el cupo del plan.
-    const client = await pool.connect();
-    let inviteToken;
-    let membership;
-    let reactivated = false;
+router.post('/invite', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.MANAGE_MEMBERS),
+  requireEntitlement('TEAM_MANAGEMENT'), async (req, res) => {
     try {
-      await client.query('BEGIN');
-      await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [req.saas.tenantId]);
+      const result = await membershipService.invite({ tenantId: req.saas.tenantId, tenantName: req.saas.name,
+        plan: req.saas.plan, actorId: req.user.id, email: req.body?.email, role: req.body?.role });
+      return res.status(result.emailSent ? 201 : 202).json({ message: result.emailSent ? 'Invitación enviada por correo' : 'Invitación creada; no se pudo confirmar el envío del correo', ...result });
+    } catch (error) { return handleError(res, error, 'Error enviando invitación'); }
+  });
 
-      const { rows: existing } = await client.query(
-        `SELECT * FROM memberships WHERE business_profile_id = $1 AND user_id = $2 FOR UPDATE`,
-        [req.saas.tenantId, userId]
-      );
-      if (existing.length > 0 && existing[0].status === 'ACTIVE') {
-        await client.query('ROLLBACK');
-        return res.status(409).json({ error: 'El usuario ya es miembro activo' });
-      }
-      if (existing.length > 0 && existing[0].status === 'PENDING') {
-        await client.query('ROLLBACK');
-        return res.status(409).json({ error: 'Ya hay una invitación pendiente para este usuario' });
-      }
-
-      const { rows: currentMembers } = await client.query(
-        `SELECT COUNT(*) AS count FROM memberships
-         WHERE business_profile_id = $1 AND status IN ('ACTIVE', 'PENDING')`,
-        [req.saas.tenantId]
-      );
-      const current = parseInt(currentMembers[0].count, 10);
-      const maxSeats = usageMeteringService.getLimit(req.saas.plan, 'TEAM_SEATS');
-      const consumesSeat = existing.length === 0 || !['ACTIVE', 'PENDING'].includes(existing[0].status);
-      if (consumesSeat && maxSeats !== null && current >= maxSeats) {
-        await client.query('ROLLBACK');
-        return res.status(403).json({
-          error: 'Límite de asientos alcanzado', current, max: maxSeats,
-          plan: req.saas.plan, upgradeUrl: '/api/saas/billing/checkout'
-        });
-      }
-
-      if (existing.length > 0) {
-        const { rows } = await client.query(
-          `UPDATE memberships SET role = $1, status = 'PENDING', invited_at = NOW(), invited_by = $2
-           WHERE id = $3 RETURNING *`,
-          [role, req.user.id, existing[0].id]
-        );
-        membership = rows[0];
-        reactivated = true;
-      } else {
-        inviteToken = crypto.randomBytes(32).toString('hex');
-        const { rows } = await client.query(`
-          INSERT INTO memberships (business_profile_id, user_id, role, status, invited_by, invite_token)
-          VALUES ($1, $2, $3, 'PENDING', $4, $5)
-          RETURNING *;
-        `, [req.saas.tenantId, userId, role, req.user.id, inviteToken]);
-        membership = rows[0];
-      }
-      await client.query('COMMIT');
-    } catch (transactionError) {
-      await client.query('ROLLBACK');
-      throw transactionError;
-    } finally {
-      client.release();
-    }
-
-    if (reactivated) return res.json({ message: 'Invitación reactivada', membershipId: membership.id });
-
-    // TODO: Enviar email de invitación (integrar con email.service.js)
-    console.log(`[saasTeamRoutes] Invitación creada para ${email} como ${role} en tenant ${req.saas.tenantId}`);
-
-    res.status(201).json({
-      message: 'Invitación enviada',
-      membership,
-      inviteToken // en dev; en prod no exponer
-    });
-  } catch (error) {
-    console.error('[saasTeamRoutes] Error inviting member:', error.message);
-    res.status(500).json({ error: 'Error enviando invitación' });
-  }
-});
-
-/**
- * POST /api/saas/team/accept/:token
- * Acepta invitación (usuario logueado)
- */
 router.post('/accept/:token', async (req, res) => {
   try {
-    const { token } = req.params;
-
-    const { rows } = await pool.query(`
-      UPDATE memberships 
-      SET status = 'ACTIVE', accepted_at = NOW(), invite_token = NULL
-      WHERE invite_token = $1 AND user_id = $2 AND status = 'PENDING'
-      RETURNING *;
-    `, [token, req.user.id]);
-
-    if (rows.length === 0) {
-      return res.status(404).json({ error: 'Invitación no encontrada o ya procesada' });
-    }
-
-    res.json({ message: 'Invitación aceptada', membership: rows[0] });
-  } catch (error) {
-    console.error('[saasTeamRoutes] Error accepting invite:', error.message);
-    res.status(500).json({ error: 'Error aceptando invitación' });
-  }
+    const membership = await membershipService.accept({ token: req.params.token, user: req.user });
+    return res.json({ message: 'Invitación aceptada', membership: membershipDto(membership) });
+  } catch (error) { return handleError(res, error, 'Error aceptando invitación'); }
 });
 
-/**
- * PATCH /api/saas/team/:memberId/role
- * Cambia rol de un miembro
- * Requiere: OWNER (no ADMIN)
- */
-router.patch('/:memberId/role', requireOwner, async (req, res) => {
+router.patch('/:memberId/role', requireOwner, requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.CHANGE_ROLE), async (req, res) => {
   try {
-    const { memberId } = req.params;
-    const { role } = req.body;
-
-    const validRoles = ['ADMIN', 'MANAGER', 'MEMBER', 'VIEWER'];
-    if (!validRoles.includes(role)) {
-      return res.status(400).json({ error: 'Rol inválido', validRoles });
-    }
-
-    // No permitir cambiar rol del owner
-    const { rows: target } = await pool.query(
-      `SELECT * FROM memberships WHERE id = $1 AND business_profile_id = $2`,
-      [memberId, req.saas.tenantId]
-    );
-
-    if (target.length === 0) {
-      return res.status(404).json({ error: 'Miembro no encontrado' });
-    }
-
-    if (target[0].role === 'OWNER') {
-      return res.status(400).json({ error: 'No se puede cambiar el rol del propietario' });
-    }
-
-    // No permitir auto-degradarse (seguridad)
-    if (target[0].user_id === req.user.id) {
-      return res.status(400).json({ error: 'No puedes cambiar tu propio rol' });
-    }
-
-    const { rows } = await pool.query(`
-      UPDATE memberships SET role = $1, updated_at = NOW()
-      WHERE id = $2 AND business_profile_id = $3
-      RETURNING *;
-    `, [role, memberId, req.saas.tenantId]);
-
-    res.json({ message: 'Rol actualizado', membership: rows[0] });
-  } catch (error) {
-    console.error('[saasTeamRoutes] Error changing role:', error.message);
-    res.status(500).json({ error: 'Error cambiando rol' });
-  }
+    const membership = await membershipService.changeRole({ tenantId: req.saas.tenantId, memberId: req.params.memberId,
+      actorId: req.user.id, role: req.body?.role });
+    return res.json({ message: 'Rol actualizado', membership: membershipDto(membership) });
+  } catch (error) { return handleError(res, error, 'Error cambiando rol'); }
 });
 
-/**
- * DELETE /api/saas/team/:memberId
- * Elimina miembro del tenant
- * Requiere: ADMIN u OWNER (OWNER no se puede eliminar)
- */
-router.delete('/:memberId', requireRole('ADMIN'), async (req, res) => {
+router.patch('/:memberId/status', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.MANAGE_MEMBERS), async (req, res) => {
   try {
-    const { memberId } = req.params;
-
-    const { rows: target } = await pool.query(
-      `SELECT * FROM memberships WHERE id = $1 AND business_profile_id = $2`,
-      [memberId, req.saas.tenantId]
-    );
-
-    if (target.length === 0) {
-      return res.status(404).json({ error: 'Miembro no encontrado' });
-    }
-
-    if (target[0].role === 'OWNER') {
-      return res.status(400).json({ error: 'No se puede eliminar al propietario' });
-    }
-
-    // No permitir auto-eliminación
-    if (target[0].user_id === req.user.id) {
-      return res.status(400).json({ error: 'No puedes eliminarte a ti mismo' });
-    }
-
-    await pool.query(
-      `UPDATE memberships SET status = 'REMOVED', removed_at = NOW(), removed_by = $1 WHERE id = $2`,
-      [req.user.id, memberId]
-    );
-
-    res.json({ message: 'Miembro eliminado' });
-  } catch (error) {
-    console.error('[saasTeamRoutes] Error removing member:', error.message);
-    res.status(500).json({ error: 'Error eliminando miembro' });
-  }
+    const membership = await membershipService.setStatus({ tenantId: req.saas.tenantId, memberId: req.params.memberId,
+      actorId: req.user.id, status: req.body?.status, plan: req.saas.plan });
+    return res.json({ message: 'Estado actualizado', membership: membershipDto(membership) });
+  } catch (error) { return handleError(res, error, 'Error actualizando estado'); }
 });
 
-/**
- * POST /api/saas/team/:memberId/resend-invite
- * Reenvía invitación pendiente
- * Requiere: ADMIN u OWNER
- */
-router.post('/:memberId/resend-invite', requireRole('ADMIN'), async (req, res) => {
+router.delete('/:memberId', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.MANAGE_MEMBERS), async (req, res) => {
   try {
-    const { memberId } = req.params;
+    const membership = await membershipService.setStatus({ tenantId: req.saas.tenantId, memberId: req.params.memberId,
+      actorId: req.user.id, status: 'REMOVED', plan: req.saas.plan });
+    return res.json({ message: 'Miembro eliminado', membership: membershipDto(membership) });
+  } catch (error) { return handleError(res, error, 'Error eliminando miembro'); }
+});
 
-    const inviteToken = crypto.randomBytes(32).toString('hex');
-    const { rows } = await pool.query(`
-      UPDATE memberships 
-      SET invite_token = $1, invited_at = NOW(), invited_by = $2, status = 'PENDING'
-      WHERE id = $3 AND business_profile_id = $4 AND status = 'PENDING'
-      RETURNING *;
-    `, [inviteToken, req.user.id, memberId, req.saas.tenantId]);
+router.post('/:memberId/resend-invite', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.MANAGE_MEMBERS), async (req, res) => {
+  try {
+    const result = await membershipService.resend({ tenantId: req.saas.tenantId, memberId: req.params.memberId,
+      actorId: req.user.id, tenantName: req.saas.name, plan: req.saas.plan });
+    return res.status(result.emailSent ? 200 : 202).json({ message: result.emailSent ? 'Invitación reenviada' : 'Invitación renovada; no se pudo confirmar el envío del correo', ...result });
+  } catch (error) { return handleError(res, error, 'Error reenviando invitación'); }
+});
 
-    if (rows.length === 0) {
-      return res.status(404).json({ error: 'Invitación pendiente no encontrada' });
-    }
-
-    // TODO: Enviar email
-    console.log(`[saasTeamRoutes] Invitación reenviada para membership ${memberId}`);
-
-    res.json({ message: 'Invitación reenviada', membership: rows[0] });
-  } catch (error) {
-    console.error('[saasTeamRoutes] Error resending invite:', error.message);
-    res.status(500).json({ error: 'Error reenviando invitación' });
-  }
+// Acceso de solo lectura al historial auditable para OWNER/ADMIN.
+router.get('/audit', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.READ), async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      `SELECT a.id, a.membership_id, a.actor_user_id, a.event_type, a.previous_role, a.new_role,
+              a.previous_status, a.new_status, a.metadata, a.created_at, u.email AS actor_email
+         FROM membership_audit_logs a LEFT JOIN usuarios u ON u.id = a.actor_user_id
+        WHERE a.business_profile_id = $1 ORDER BY a.created_at DESC LIMIT 100`, [req.saas.tenantId]
+    );
+    return res.json({ tenantId: req.saas.tenantId, events: rows });
+  } catch (error) { return handleError(res, error, 'Error obteniendo auditoría del equipo'); }
 });
 
 module.exports = router;

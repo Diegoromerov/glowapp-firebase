@@ -13,7 +13,8 @@ Este documento es el plan de trabajo. No implica que las fases ya se hayan ejecu
 | 0 | Inventario realizado previamente | Contraste de arquitectura y decisiones documentadas durante el análisis. |
 | 1 | Cerrada: desplegada y conciliada en producción el 23 de noviembre de 2026 | [Informe de Fase 1](fases/FASE_1_IDENTIDAD_TENANT_SEDES.md), migración 189; API sana y sin sedes huérfanas ni perfiles compartidos. |
 | 2 | Cerrada: desplegada y comprobada en producción el 23 de noviembre de 2026 | [Informe de Fase 2](fases/FASE_2_CATALOGO_ENTITLEMENTS_CUOTAS.md). Catálogo v1 activo; Hosting proveedor, API y panel publicados. Pruebas de integración de cuotas y conciliación comercial quedan como pendientes identificados. |
-| 3–7 | Pendientes | Se iniciarán después del cierre operativo de la fase anterior. |
+| 3 | Implementada localmente el 23 de noviembre de 2026; despliegue y cierre productivo pendientes | [Informe de Fase 3](fases/FASE_3_MEMBRESIAS_ROLES.md). Membresía canónica, RBAC, invitaciones seguras, estados y auditoría listos; falta validar migración/flujo en staging y publicar coordinadamente. |
+| 4–7 | Pendientes | Se iniciarán después del cierre operativo de la fase anterior. |
 
 ## Reglas de ejecución
 

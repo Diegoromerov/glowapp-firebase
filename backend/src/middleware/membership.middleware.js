@@ -10,9 +10,6 @@ const membershipMiddleware = async (req, res, next) => {
     return res.status(401).json({ error: 'UNAUTHORIZED', message: 'Autenticación requerida antes de verificar membresía.' });
   }
 
-  const userRole = (req.user.role || '').toString().toLowerCase();
-  const isProviderOrAdmin = userRole === 'provider' || userRole === 'admin' || userRole === 'owner';
-
   const userId = req.user.id;
   let targetBusinessProfileId = req.user.businessProfileId || 
                                 req.headers?.['x-business-profile-id'] || 
@@ -39,11 +36,6 @@ const membershipMiddleware = async (req, res, next) => {
       }
 
       if (activeMemberships.length === 0) {
-        if (isProviderOrAdmin) {
-          req.user.businessProfileId = req.user.businessProfileId || null;
-          req.user.membershipRole = req.user.membershipRole || 'OWNER';
-          return next();
-        }
         return res.status(403).json({
           error: 'NO_ACTIVE_MEMBERSHIP',
           message: 'El usuario no tiene ninguna membresía activa.'
@@ -91,11 +83,6 @@ const membershipMiddleware = async (req, res, next) => {
     }
 
     if (!membership) {
-      if (isProviderOrAdmin) {
-        req.user.businessProfileId = targetBusinessProfileId;
-        req.user.membershipRole = req.user.membershipRole || 'OWNER';
-        return next();
-      }
       return res.status(403).json({
         error: 'MEMBERSHIP_INACTIVE_OR_INVALID',
         message: 'No posee una membresía activa en este establecimiento.'
@@ -108,11 +95,7 @@ const membershipMiddleware = async (req, res, next) => {
     next();
   } catch (err) {
     console.error('❌ Error en membershipMiddleware:', err.message);
-    if (isProviderOrAdmin) {
-      req.user.membershipRole = req.user.membershipRole || 'OWNER';
-      return next();
-    }
-    res.status(500).json({ error: 'INTERNAL_SERVER_ERROR', message: 'Error verificando membresía de usuario.' });
+    return res.status(503).json({ error: 'MEMBERSHIP_CONTEXT_UNAVAILABLE', message: 'No se pudo verificar la membresía del usuario.' });
   }
 };
 

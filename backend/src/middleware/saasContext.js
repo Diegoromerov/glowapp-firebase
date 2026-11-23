@@ -11,7 +11,7 @@ const { hasEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlement
  * - saasContext.js: lógica de negocio SaaS (planes, features, billing, límites)
  *
  * Se ejecuta DESPUÉS de authMiddleware (req.user disponible).
- * Fail-open: si hay error, req.saas = null y continúa (no rompe rutas existentes).
+ * Fail-closed: si hay error de base de datos, la ruta no continúa sin autorización.
  */
 module.exports = async function saasContext(req, res, next) {
   // Sin usuario autenticado → rutas públicas, sin contexto SaaS
@@ -72,8 +72,10 @@ module.exports = async function saasContext(req, res, next) {
     next();
   } catch (err) {
     console.error('[saasContext] Error resolviendo contexto SaaS:', err.message);
-    // Fail-open: no bloquear request por error de contexto SaaS
     req.saas = null;
-    next();
+    return res.status(503).json({
+      error: 'No se pudo comprobar la membresía activa.',
+      code: 'SAAS_CONTEXT_UNAVAILABLE'
+    });
   }
 };

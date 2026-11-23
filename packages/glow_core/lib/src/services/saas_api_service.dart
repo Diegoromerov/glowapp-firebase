@@ -243,6 +243,11 @@ class SaasApiService {
     await ApiService.delete('$_basePath/team/$memberId');
   }
 
+  /// Suspender o reactivar una membresía activa.
+  static Future<void> setMemberStatus(String businessProfileId, String memberId, String status) async {
+    await ApiService.patch('$_basePath/team/$memberId/status', {'status': status});
+  }
+
   /// Reenviar invitación. POST /api/saas/team/:memberId/resend-invite
   static Future<void> resendInvitation(String businessProfileId, String invitationId) async {
     await ApiService.post('$_basePath/team/$invitationId/resend-invite', {});

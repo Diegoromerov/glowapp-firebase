@@ -541,3 +541,10 @@ en 076).
 - Completa las sedes existentes con el mapeo histórico `salon-<id>` únicamente durante el backfill; el código de ejecución deja de reconstruir esa identidad para resolver relaciones.
 - No altera `salones.tenant_id`, que continúa siendo el identificador legado entero hacia `tenants`.
 - La migración es aditiva y deja pendiente convertir la columna a `NOT NULL` hasta conciliar toda fila de producción.
+
+## 190: gobierno de membresías SaaS
+
+- Extiende `memberships` para soportar invitaciones nominales a usuarios registrados, vencimiento y hash de token; conserva compatibles las columnas históricas de invitación.
+- Añade estados de baja/expiración y una bitácora append-only de invitación, aceptación, cambio de rol, suspensión y retiro.
+- Conserva `user_id` obligatorio y el índice único existente; la invitación se envía a una cuenta GlowApp existente y se valida de nuevo contra el correo al aceptar.
+- No migra ni elimina filas existentes; los datos de membresía actuales permanecen.

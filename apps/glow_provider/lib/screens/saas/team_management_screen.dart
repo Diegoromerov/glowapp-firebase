@@ -212,12 +212,36 @@ class TeamManagementScreen extends ConsumerWidget {
                   }
                 }
                 break;
+              case 'suspend':
+              case 'reactivate':
+                if (businessProfileId != null && member.id.isNotEmpty) {
+                  try {
+                    await ref.read(teamProvider.notifier).setMemberStatus(
+                      businessProfileId,
+                      member.id,
+                      value == 'suspend' ? 'SUSPENDED' : 'ACTIVE',
+                    );
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(value == 'suspend' ? 'Miembro suspendido' : 'Miembro reactivado'),
+                      ));
+                    }
+                  } catch (e) {
+                    if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${mensajeHumano(e)}')));
+                  }
+                }
+                break;
             }
           },
-          itemBuilder: (ctx) => [
-            const PopupMenuItem(value: 'change_role', child: Row(children: [Icon(Icons.badge_outlined, size: 18), SizedBox(width: 8), Text('Cambiar rol')])),
-            const PopupMenuItem(value: 'resend', child: Row(children: [Icon(Icons.send_rounded, size: 18), SizedBox(width: 8), Text('Reenviar invitación')])),
-            const PopupMenuItem(value: 'remove', child: Row(children: [Icon(Icons.delete_outline, size: 18, color: Colors.red), SizedBox(width: 8), Text('Eliminar', style: TextStyle(color: Colors.red))])),
+          itemBuilder: (ctx) => member.isOwner ? const [] : [
+            if (member.invitationStatus == InvitationStatus.accepted)
+              const PopupMenuItem(value: 'change_role', child: Row(children: [Icon(Icons.badge_outlined, size: 18), SizedBox(width: 8), Text('Cambiar rol')])),
+            if (member.invitationStatus == InvitationStatus.accepted)
+              const PopupMenuItem(value: 'suspend', child: Row(children: [Icon(Icons.pause_circle_outline, size: 18), SizedBox(width: 8), Text('Suspender')])),
+            if (member.invitationStatus == InvitationStatus.suspended)
+              const PopupMenuItem(value: 'reactivate', child: Row(children: [Icon(Icons.play_circle_outline, size: 18), SizedBox(width: 8), Text('Reactivar')])),
+            if (member.invitationStatus == InvitationStatus.accepted || member.invitationStatus == InvitationStatus.suspended)
+              const PopupMenuItem(value: 'remove', child: Row(children: [Icon(Icons.delete_outline, size: 18, color: Colors.red), SizedBox(width: 8), Text('Eliminar', style: TextStyle(color: Colors.red))])),
           ],
         ),
       ),
