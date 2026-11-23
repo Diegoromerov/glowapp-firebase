@@ -71,6 +71,7 @@ export 'src/core/theme/tokens.dart' hide AppTheme;  // hide legacy AppTheme from
 export 'src/shared/app_tokens.dart';
 export 'src/shared/calculations.dart';
 export 'src/shared/currency_formatter.dart';
+export 'src/shared/store_price.dart';
 export 'src/shared/glow_store_tokens.dart';
 export 'src/shared/glow_tokens.dart';
 export 'src/shared/mens_theme.dart';

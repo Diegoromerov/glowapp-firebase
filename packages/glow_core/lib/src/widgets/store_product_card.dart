@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import '../services/api_service.dart';
 import '../shared/theme.dart';
 import '../shared/currency_formatter.dart';
+import '../shared/store_price.dart';
 
 class StoreProductCard extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -35,7 +36,7 @@ class StoreProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final price = double.tryParse(product['precio']?.toString() ?? '0') ?? 0.0;
+    final price = StorePrice.finalPrice(product, bookingId: bookingId);
     final stock = product['stock'] as int? ?? 0;
     final imageUrl = product['imagen_url']?.toString() ?? '';
 
@@ -174,8 +175,11 @@ class StoreProductCard extends StatelessWidget {
                         child: Builder(
                           builder: (context) {
                             if (bookingId != null && product.containsKey('precio_con_reserva')) {
-                              final originalPrice = double.tryParse(product['precio']?.toString() ?? '0') ?? 0.0;
-                              final discountPrice = double.tryParse(product['precio_con_reserva']?.toString() ?? '0') ?? 0.0;
+                              final originalPrice = StorePrice.finalPrice(product);
+                              final discountPrice = StorePrice.finalPrice(
+                                product,
+                                bookingId: bookingId,
+                              );
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
@@ -199,9 +203,8 @@ class StoreProductCard extends StatelessWidget {
                                 ],
                               );
                             }
-                            final priceWithIva = price * 1.19;
                             return Text(
-                              _formatCOP(priceWithIva),
+                              _formatCOP(price),
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,

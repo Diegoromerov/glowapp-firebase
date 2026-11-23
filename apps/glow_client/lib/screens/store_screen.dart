@@ -40,10 +40,7 @@ class _StoreScreenState extends State<StoreScreen> {
   }
 
   double _getProductPrice(Map<String, dynamic> product) {
-    if (widget.bookingId != null && product.containsKey('precio_con_reserva')) {
-      return double.tryParse(product['precio_con_reserva']?.toString() ?? '0') ?? 0.0;
-    }
-    return double.tryParse(product['precio']?.toString() ?? '0') ?? 0.0;
+    return StorePrice.finalPrice(product, bookingId: widget.bookingId);
   }
 
   @override
@@ -619,7 +616,7 @@ class _StoreScreenState extends State<StoreScreen> {
             final bool isMobile = screenWidth < 680;
             final bool quoteIsCurrent = shippingQuote != null &&
                 shippingQuoteKey == currentQuoteKey && !quotingShipping;
-            final double? quoteProducts = toDoubleOrNull(shippingQuote?['subtotal_con_iva']);
+            final double? quoteProductBase = toDoubleOrNull(shippingQuote?['subtotal']);
             final double? quoteIva = toDoubleOrNull(shippingQuote?['iva']);
             final double? quoteShipping = toDoubleOrNull(shippingQuote?['envio']);
             final double? quoteTotal = toDoubleOrNull(shippingQuote?['total']);
@@ -1082,13 +1079,13 @@ class _StoreScreenState extends State<StoreScreen> {
                   const Divider(),
                   const SizedBox(height: 10),
                   _buildSummaryRow(
-                    'Productos (IVA incluido)',
-                    _formatCOP(quoteProducts ?? subtotal),
+                    'Productos (antes de IVA)',
+                    quoteProductBase == null ? 'Pendiente de cotizar' : _formatCOP(quoteProductBase),
                   ),
                   const SizedBox(height: 6),
                   _buildSummaryRow(
-                    'IVA incluido',
-                    quoteIva == null ? 'Incluido' : _formatCOP(quoteIva),
+                    'IVA',
+                    quoteIva == null ? 'Pendiente de cotizar' : _formatCOP(quoteIva),
                   ),
                   const SizedBox(height: 6),
                   _buildSummaryRow(

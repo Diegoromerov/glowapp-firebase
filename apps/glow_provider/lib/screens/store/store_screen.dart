@@ -47,10 +47,7 @@ class _StoreScreenState extends State<StoreScreen> {
   }
 
   double _getProductPrice(Map<String, dynamic> product) {
-    if (widget.bookingId != null && product.containsKey('precio_con_reserva')) {
-      return double.tryParse(product['precio_con_reserva']?.toString() ?? '0') ?? 0.0;
-    }
-    return double.tryParse(product['precio']?.toString() ?? '0') ?? 0.0;
+    return StorePrice.finalPrice(product, bookingId: widget.bookingId);
   }
 
   @override
@@ -603,7 +600,7 @@ class _StoreScreenState extends State<StoreScreen> {
 
             final bool quoteIsCurrent = shippingQuote != null &&
                 shippingQuoteKey == currentQuoteKey && !quotingShipping;
-            final double? quoteProducts = toDoubleOrNull(shippingQuote?['subtotal_con_iva']);
+            final double? quoteProductBase = toDoubleOrNull(shippingQuote?['subtotal']);
             final double? quoteIva = toDoubleOrNull(shippingQuote?['iva']);
             final double? quoteShipping = toDoubleOrNull(shippingQuote?['envio']);
             final double? quoteTotal = toDoubleOrNull(shippingQuote?['total']);
@@ -1041,13 +1038,13 @@ class _StoreScreenState extends State<StoreScreen> {
                   const Divider(),
                   const SizedBox(height: 10),
                   _buildSummaryRow(
-                    'Productos (IVA incluido)',
-                    _formatCOP(quoteProducts ?? subtotal),
+                    'Productos (antes de IVA)',
+                    quoteProductBase == null ? 'Pendiente de cotizar' : _formatCOP(quoteProductBase),
                   ),
                   const SizedBox(height: 6),
                   _buildSummaryRow(
-                    'IVA incluido',
-                    quoteIva == null ? 'Incluido' : _formatCOP(quoteIva),
+                    'IVA',
+                    quoteIva == null ? 'Pendiente de cotizar' : _formatCOP(quoteIva),
                   ),
                   const SizedBox(height: 6),
                   _buildSummaryRow(
@@ -1074,7 +1071,7 @@ class _StoreScreenState extends State<StoreScreen> {
                     const SizedBox(height: 4),
                     Text(
                       'Envío gratis desde ${_formatCOP(freeShippingFrom)} en esta zona.',
-                      style: TextStyle(fontSize: 11, color: AppTheme.text.withOpacity(0.65)),
+                      style: TextStyle(fontSize: 12, color: AppTheme.text.withOpacity(0.65)),
                     ),
                   ],
                   if (quotingShipping || shippingQuoteError != null) ...[
@@ -1094,7 +1091,7 @@ class _StoreScreenState extends State<StoreScreen> {
                           child: Text(
                             shippingQuoteError ?? 'Calculando costo de envío…',
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 12,
                               color: shippingQuoteError == null ? AppTheme.text : Colors.red.shade700,
                             ),
                           ),

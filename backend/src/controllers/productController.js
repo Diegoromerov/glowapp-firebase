@@ -16,7 +16,7 @@ exports.getProducts = async (req, res) => {
     const executeGetProducts = async (dbClient) => {
       let query = `
         SELECT p.id, p.nombre, p.descripcion, p.stock, p.imagen_url, p.tag_especialidad, p.tipo_visibilidad,
-               pp.precio, pp.unidad_minima
+               pp.precio, pp.unidad_minima, lp.incluye_iva
         FROM productos p
         INNER JOIN precios_producto pp ON pp.producto_id = p.id
         INNER JOIN listas_precios lp ON lp.id = pp.lista_id
@@ -41,6 +41,7 @@ exports.getProducts = async (req, res) => {
         nombre: r.nombre,
         descripcion: r.descripcion,
         precio: parseFloat(r.precio),
+        incluye_iva: r.incluye_iva === true,
         unidad_minima: parseInt(r.unidad_minima, 10),
         stock: r.stock,
         imagen_url: r.imagen_url,
@@ -112,6 +113,7 @@ exports.getProductById = async (req, res) => {
         nombre: product.nombre,
         descripcion: product.descripcion,
         precio: resPrecio.precio,
+        incluye_iva: resPrecio.incluye_iva === true,
         unidad_minima: resPrecio.unidad_minima,
         stock: product.stock,
         imagen_url: product.imagen_url,

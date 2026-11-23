@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../shared/theme.dart';
 import '../services/api_service.dart';
 import '../services/share_prestador_service.dart';
+import '../shared/store_price.dart';
 
 class ProductQuickViewDialog extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -59,7 +60,10 @@ class _ProductQuickViewDialogState extends State<ProductQuickViewDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final price = double.tryParse(widget.product['precio']?.toString() ?? '0') ?? 0.0;
+    final price = StorePrice.finalPrice(
+      widget.product,
+      bookingId: widget.bookingId,
+    );
     final stock = widget.product['stock'] as int? ?? 0;
     final imageUrl = widget.product['imagen_url']?.toString() ?? '';
 
@@ -208,8 +212,11 @@ class _ProductQuickViewDialogState extends State<ProductQuickViewDialog> {
                     Builder(
                       builder: (context) {
                         if (widget.bookingId != null && widget.product.containsKey('precio_con_reserva')) {
-                          final originalPrice = double.tryParse(widget.product['precio']?.toString() ?? '0') ?? 0.0;
-                          final discountPrice = double.tryParse(widget.product['precio_con_reserva']?.toString() ?? '0') ?? 0.0;
+                          final originalPrice = StorePrice.finalPrice(widget.product);
+                          final discountPrice = StorePrice.finalPrice(
+                            widget.product,
+                            bookingId: widget.bookingId,
+                          );
                           return Row(
                             children: [
                               Text(
@@ -232,9 +239,8 @@ class _ProductQuickViewDialogState extends State<ProductQuickViewDialog> {
                             ],
                           );
                         }
-                        final priceWithIva = price * 1.19;
                         return Text(
-                          _formatCOP(priceWithIva),
+                          _formatCOP(price),
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
