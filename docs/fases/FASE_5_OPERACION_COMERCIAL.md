@@ -1,6 +1,6 @@
 # Fase 5 — Operación comercial del salón
 
-**Estado:** implementación y validación en curso.
+**Estado:** Completada y desplegada en producción el 23 de noviembre de 2026.
 
 **Entorno elegido:** producción directa, por instrucción expresa del usuario; no se usa staging.
 
@@ -34,7 +34,14 @@ Las alertas de bajo stock se calculan al comparar `stock_actual` con `stock_mini
 
 ## Verificación y despliegue
 
-Pendiente hasta la publicación: resultado de pruebas automatizadas/análisis, migración 194 aplicada en PostgreSQL de producción, estado de Railway, smoke checks de salud y de esquema, y publicación de la app prestador en Firebase Hosting. Se registrarán aquí los SHA, ejecución de CI, número de migración observado y URLs/estados una vez comprobados.
+- **Commit de la fase:** `9d977e7bf9105e8e276178fc1498e3d32a177559` (`9d977e7`, rama `main`).
+- **Backend y panel:** despliegues Railway `895151fb-cca8-4724-bef2-ccfad7c34756` (API) y `c5b1a55f-efef-4dfd-afea-40aa665a313a` (panel), ambos `SUCCESS`; 1/1 réplicas en línea y ningún servicio con fallos recientes en el entorno `production`.
+- **Base de datos:** `GET https://glowapp-api-production.up.railway.app/api/health` respondió HTTP 200; PostgreSQL disponible (`dbMode=postgres`, sin datos fabricados), commit reportado `9d977e7...`, **66 migraciones registradas**, incluida la 194, última aplicación observada `2026-11-23T22:26:25Z`.
+- **CI backend/PostgreSQL:** ejecución `45279610910`, ambos jobs completados con `success`; incluyó sintaxis, pruebas, inicialización/re-ejecución de esquema con RLS, aislamiento multi-tenant, contratos, integración PostgreSQL y endpoints críticos.
+- **App prestador:** workflow `45279621779`; análisis y pruebas (`Analyze & Tests`), build web (`Build glow_provider`) y publicación de Firebase Hosting (`Deploy glow_provider`) completados con `success`. URL productiva `https://glowapp-provider.web.app/` respondió HTTP 200 después de la publicación.
+- **Verificación Railway:** entorno `production` con 8/8 servicios en línea, 0 con incidencias, 0 fallos recientes y sin cambios pendientes.
+- **Ejecución local previa:** backend Jest dirigido pasó 36/36 pruebas; pruebas Node de consumo de recetas, 3/3; suite Flutter del proveedor pasó; análisis dirigido de Dart sin errores de compilación. `git diff --check` y `node --check` pasaron.
+- No se usó staging, conforme a la autorización explícita del usuario. No se modificaron saldos ni movimientos históricos.
 
 ## Trabajo posterior
 
