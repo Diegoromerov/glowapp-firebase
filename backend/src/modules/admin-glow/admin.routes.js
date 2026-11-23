@@ -36,6 +36,12 @@ router.patch('/sos/resolve/:id', adminController.resolveSOSAlert);
  */
 router.get('/provider/pending', adminController.getPendingProvidersList);
 
+/** Lista el estado operativo y requisitos de todos los prestadores. */
+router.get('/provider/operational', adminController.getProvidersOperationalStatus);
+
+/** Habilitación operativa auditada; el servidor vuelve a validar requisitos. */
+router.post('/provider/:providerId/enable-operational', adminController.enableProviderOperational);
+
 /**
  * @route POST /api/glow-admin/provider/approve
  * @desc Aprueba la verificación del perfil de un prestador

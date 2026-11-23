@@ -124,6 +124,91 @@ async function setProviderVerifiedStatus(providerId, isVerified) {
   return await executeAdminQuery(query, [status, providerId]);
 }
 
+/** Lista prestadores con los estados que determinan su operación. */
+async function getProvidersOperationalStatus() {
+  return runAsSystem({ pool, systemPool }, async (client) => {
+    const { rows } = await client.query(`
+      SELECT u.id, u.nombre, u.email, u.rol, u.is_active,
+             u.estado_operativo, u.estado_operativo_desde, u.estado_operativo_motivo,
+             u.revision_estado AS rut_revision_estado, u.rut_numero,
+             p.estatus_verificacion,
+             (p.documento_id_url IS NOT NULL AND BTRIM(p.documento_id_url) <> '') AS tiene_documento,
+             (p.certificacion_url IS NOT NULL AND BTRIM(p.certificacion_url) <> '') AS tiene_acreditacion
+        FROM usuarios u
+        LEFT JOIN perfiles_prestador p ON p.id = u.id
+       WHERE u.rol::text = 'PRESTADOR'
+       ORDER BY CASE WHEN u.estado_operativo = 'HABILITADO' THEN 1 ELSE 0 END,
+                LOWER(u.nombre), u.id
+    `);
+
+    return rows.map((row) => {
+      const requisitos = [];
+      if (!row.is_active) requisitos.push('La cuenta está inactiva.');
+      if (row.estatus_verificacion !== 'APROBADO') requisitos.push('Falta aprobar identidad y acreditación profesional.');
+      if (!row.tiene_documento) requisitos.push('Falta el documento de identidad.');
+      if (!row.tiene_acreditacion) requisitos.push('Falta la acreditación profesional.');
+      if (row.rut_revision_estado !== 'APROBADA' || !row.rut_numero) requisitos.push('Falta la aprobación del RUT.');
+
+      return {
+        ...row,
+        estado_operativo: row.estado_operativo || 'EXPLORACION',
+        puede_habilitar: requisitos.length === 0 && row.estado_operativo !== 'SUSPENDIDO' && row.estado_operativo !== 'HABILITADO',
+        requisitos_pendientes: requisitos,
+      };
+    });
+  });
+}
+
+/** Habilita en una transacción, revalidando requisitos y guardando ambas bitácoras. */
+async function enableProviderOperational(providerId, adminId) {
+  return runAsSystem({ pool, systemPool }, async (client) => {
+    const { rows } = await client.query(`
+      SELECT u.id, u.nombre, u.rol, u.is_active, u.estado_operativo,
+             u.revision_estado, u.rut_numero,
+             p.estatus_verificacion, p.documento_id_url, p.certificacion_url
+        FROM usuarios u
+        LEFT JOIN perfiles_prestador p ON p.id = u.id
+       WHERE u.id = $1 AND u.rol::text = 'PRESTADOR'
+       FOR UPDATE OF u
+    `, [providerId]);
+
+    if (!rows.length) return { ok: false, reason: 'NOT_FOUND' };
+    const provider = rows[0];
+    if (provider.estado_operativo === 'HABILITADO') return { ok: true, alreadyEnabled: true, provider };
+    if (provider.estado_operativo === 'SUSPENDIDO') return { ok: false, reason: 'SUSPENDED' };
+
+    const requisitos = [];
+    if (!provider.is_active) requisitos.push('La cuenta está inactiva.');
+    if (provider.estatus_verificacion !== 'APROBADO') requisitos.push('Identidad y acreditación deben estar aprobadas.');
+    if (!provider.documento_id_url || !provider.documento_id_url.trim()) requisitos.push('Falta el documento de identidad.');
+    if (!provider.certificacion_url || !provider.certificacion_url.trim()) requisitos.push('Falta la acreditación profesional.');
+    if (provider.revision_estado !== 'APROBADA' || !provider.rut_numero) requisitos.push('El RUT debe estar aprobado y registrado.');
+    if (requisitos.length) return { ok: false, reason: 'REQUIREMENTS', requisitos };
+
+    const { rows: updated } = await client.query(`
+      UPDATE usuarios
+         SET estado_operativo = 'HABILITADO',
+             estado_operativo_desde = NOW(),
+             estado_operativo_motivo = $2
+       WHERE id = $1
+       RETURNING id, nombre, estado_operativo, estado_operativo_desde, estado_operativo_motivo
+    `, [providerId, `Habilitado manualmente desde el dashboard por administrador ${adminId}; identidad, acreditación y RUT aprobados.`]);
+
+    await client.query(`
+      INSERT INTO estado_operativo_historial
+        (usuario_id, estado_anterior, estado_nuevo, motivo, cambiado_por, creado_en)
+      VALUES ($1, $2, 'HABILITADO', $3, $4, NOW())
+    `, [providerId, provider.estado_operativo || 'EXPLORACION', updated[0].estado_operativo_motivo, adminId]);
+
+    await client.query(`
+      INSERT INTO admin_actions (admin_id, accion, descripcion, fecha_creacion)
+      VALUES ($1, 'HABILITAR_ESTADO_OPERATIVO', $2, NOW())
+    `, [adminId, `Prestador ID ${providerId} habilitado operativamente tras validar identidad, acreditación y RUT.`]);
+
+    return { ok: true, alreadyEnabled: false, provider: updated[0] };
+  });
+}
+
 /**
  * Obtiene el saldo disponible de un prestador en su billetera.
  */
@@ -256,6 +341,8 @@ module.exports = {
   updateSOSAlertStatus,
   logAdminAction,
   getPendingProviders,
+  getProvidersOperationalStatus,
+  enableProviderOperational,
   getProviderFcmToken,
   setProviderVerifiedStatus,
   getProviderWalletBalance,

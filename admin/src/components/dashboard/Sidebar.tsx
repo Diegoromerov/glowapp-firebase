@@ -37,7 +37,7 @@ export default function Sidebar() {
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
     Reclamaciones: pathname === '/admin/pqrsf' || pathname.startsWith('/admin/disputas'),
     Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
-    Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/prestadores'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
+    Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/proveedores/operativo', '/admin/prestadores'].some((path) => pathname === path || pathname.startsWith(`${path}/`)),
     Usuarios: pathname === '/admin/usuarios/perfil' || pathname.startsWith('/admin/usuarios/perfil/'),
   });
 
@@ -53,7 +53,7 @@ export default function Sidebar() {
     const rutasPorGrupo: Record<string, string[]> = {
       Reclamaciones: ['/admin/pqrsf', '/admin/disputas'],
       Tienda: ['/admin/precios', '/admin/productos', '/admin/store/orders'],
-      Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/prestadores'],
+      Proveedores: ['/admin/proveedores/perfil', '/admin/proveedores/validacion', '/admin/proveedores/operativo', '/admin/prestadores'],
       Usuarios: ['/admin/usuarios/perfil'],
     };
     setOpenGroups((current) => Object.fromEntries(
@@ -93,6 +93,7 @@ export default function Sidebar() {
           children: [
             { href: '/admin/proveedores/perfil', label: 'Perfil' },
             { href: '/admin/proveedores/validacion', label: 'Validación' },
+            { href: '/admin/proveedores/operativo', label: 'Operativo' },
             { href: '/admin/prestadores', label: 'RUT e IVA' },
           ],
         },
