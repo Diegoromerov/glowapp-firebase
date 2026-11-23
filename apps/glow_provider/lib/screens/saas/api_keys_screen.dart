@@ -108,6 +108,19 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
     );
   }
 
+  Widget _upgradeBanner() => Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFF8E8),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: const Color(0xFFE8D4A5)),
+        ),
+        child: const Text(
+          'La creación de integraciones está incluida en Profesional y Empresarial. Puedes cambiar tu plan desde Facturación.',
+          style: TextStyle(fontSize: 13, color: _ink, height: 1.4),
+        ),
+      );
+
   Widget _infoBanner() {
     return Container(
       padding: const EdgeInsets.all(14),

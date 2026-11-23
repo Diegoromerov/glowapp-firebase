@@ -498,12 +498,12 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
           progress: null,
           color: included ? _green : _muted,
         ));
-        return;
+        continue;
       }
 
       if (effectiveLimit == null || effectiveLimit == 0) {
         rows.add(_limitRow(label: serverMetric?.label ?? type.label, value: 'Ilimitado', progress: null, color: _green));
-        return;
+        continue;
       }
 
       final progress = effectiveLimit > 0 ? (used / effectiveLimit).clamp(0.0, 1.0) : 0.0;
