@@ -564,5 +564,11 @@ en 076).
 - Los mensajes se cuentan por canal y no incrementan `ONLINE_BOOKING`.
 - Conserva el contador de intentos por entrega cuando un proveedor falla, para distinguir intentos de mensajes aceptados.
 - Costos no informados por el proveedor permanecen `NULL`; no se imputan valores estimados.
-- La tabla aplica RLS de lectura mediante una membresía activa y el usuario autenticado; `app_rls_user` solo tiene `SELECT`, mientras que las escrituras quedan para `app_system`. La retención depende del negocio y la política de datos; no se guarda cuerpo del mensaje ni dirección de correo.
+- La tabla aplica RLS mediante una membresía activa y el usuario autenticado. La migración 192 otorga `SELECT` directo al rol RLS y escrituras al rol de sistema; la migración 193 revoca privilegios directos de escritura que venían de los privilegios por defecto del esquema. La membresía existente de `app_rls_user` a `app_system` permite al backend cambiar de rol explícitamente dentro de operaciones de sistema confiables; RLS no reemplaza esa frontera de confianza. La retención depende del negocio y la política de datos; no se guarda cuerpo del mensaje ni dirección de correo.
 - Migración aditiva. Rollback operativo: volver a la versión anterior; no borrar filas ni tabla si ya hay bitácora de producción.
+
+## 193: privilegios directos de lectura para ledger de recordatorios
+
+- Revoca todos los privilegios directos de tabla/secuencia del ledger a `app_rls_user` y concede únicamente `SELECT` sobre la tabla.
+- Conserva las escrituras para `app_system`, que el backend utiliza mediante transacciones de sistema explícitas.
+- No elimina ni modifica filas del ledger.
