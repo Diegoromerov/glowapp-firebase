@@ -22,7 +22,6 @@ import 'dart:convert';
 import 'package:glow_core/services/audio_player.dart';
 import 'package:glow_core/services/audience_service.dart';
 import 'package:glow_core/shared/theme.dart' hide AppTheme;
-import 'package:glow_core/design/icons/glow_icon.dart';
 import 'package:glow_core/glowguide/config/provider_guide.dart';
 import 'package:glow_core/glowguide/contracts/navigation_delegate.dart';
 import 'package:glow_core/glowguide/engine/glowguide_engine.dart';
@@ -529,7 +528,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                           Expanded(
                             child: Text(
                               'PIN verificado. Los fondos han sido aprobados y la transferencia a tu cuenta está en proceso.',
-                              style: TextStyle(fontSize: 11, color: Color(0xFF166534), height: 1.25),
+                              style: TextStyle(fontSize: 12, color: Color(0xFF166534), height: 1.25),
                             ),
                           ),
                         ],
@@ -586,7 +585,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                                       : 'Acreditación estimada: En menos de 2 horas vía Wompi/Nequi.',
                                   style: const TextStyle(
                                     fontFamily: 'Inter',
-                                    fontSize: 11,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     color: Color(0xFF1F1A15),
                                   ),
@@ -641,11 +640,11 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                             children: [
                               _breakdownRow('• Comisión Neta (12%)',
                                   '-\$${platformCut.toStringAsFixed(0)} COP',
-                                  color: const Color(0xFF8C7E74), fontSize: 11.0),
+                                  color: const Color(0xFF8C7E74), fontSize: 12),
                               const SizedBox(height: 2),
                               _breakdownRow('• Impuesto Estatal (8%)',
                                   '-\$${stateTax.toStringAsFixed(0)} COP',
-                                  color: const Color(0xFF8C7E74), fontSize: 11.0),
+                                  color: const Color(0xFF8C7E74), fontSize: 12),
                             ],
                           ),
                         ),
@@ -746,7 +745,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                                 payoutStatus,
                                 style: TextStyle(
                                   fontFamily: 'Inter',
-                                  fontSize: 11,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   color: currentPayoutStep == 3
                                       ? const Color(0xFF15803D)
@@ -818,7 +817,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                                       'Ref Wompi: ${wompiRef.length > 18 ? '${wompiRef.substring(0, 18)}...' : wompiRef}',
                                       style: const TextStyle(
                                         fontFamily: 'Inter',
-                                        fontSize: 11,
+                                        fontSize: 12,
                                         fontStyle: FontStyle.italic,
                                         color: Color(0xFF8C7E74),
                                       ),
@@ -1184,7 +1183,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               child: const Text(
                 'El cliente no puede confirmar / Reportar soporte',
                 style: TextStyle(
-                    fontSize: 11,
+                    fontSize: 12,
                     color: Colors.grey,
                     fontWeight: FontWeight.bold),
               ),
@@ -2391,7 +2390,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                   label: const Text(
                     'El cliente no puede confirmar / Reportar soporte',
                     style: TextStyle(
-                        fontSize: 11,
+                        fontSize: 12,
                         color: Color(0xFF9E948A),
                         fontWeight: FontWeight.bold),
                   ),
@@ -2589,7 +2588,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                             Icon(Icons.note_alt_outlined, size: 14, color: Color(0xFFC5A052)),
                             SizedBox(width: 4),
                             Text('Notas VIP',
-                                style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
+                                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
                           ],
                         ),
                       ),
@@ -2614,7 +2613,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                             Icon(Icons.calendar_month_outlined, size: 14, color: Color(0xFFC5A052)),
                             SizedBox(width: 4),
                             Text('Calendario',
-                                style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
+                                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
                           ],
                         ),
                       ),
@@ -2715,7 +2714,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 ),
                 Text(
                   'No aparecerás en el mapa de clientes ni recibirás nuevas citas.',
-                  style: TextStyle(color: Color(0xFF786C60), fontSize: 11),
+                  style: TextStyle(color: Color(0xFF786C60), fontSize: 12),
                 ),
               ],
             ),
@@ -3537,7 +3536,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                                   Icon(Icons.note_alt_outlined, size: 13, color: Color(0xFFC5A052)),
                                   SizedBox(width: 4),
                                   Text('Notas VIP',
-                                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
+                                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
                                 ],
                               ),
                             ),
@@ -3562,7 +3561,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                                   Icon(Icons.calendar_month_outlined, size: 13, color: Color(0xFFC5A052)),
                                   SizedBox(width: 4),
                                   Text('Calendario',
-                                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
+                                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15))),
                                 ],
                               ),
                             ),
@@ -3631,9 +3630,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
 
   Widget _buildNavItem({
     required int index,
-    required String semanticName,
     required String label,
-    String? assetPath,
     bool isMen = false,
   }) {
     final isSelected = _currentIndex == index;
@@ -3652,40 +3649,23 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           },
           borderRadius: BorderRadius.circular(20),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6.0),
+            padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 8.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Transform.scale(
-                  scale: isSelected ? 1.12 : 0.95,
-                  child: Opacity(
-                    opacity: isSelected ? 1.0 : 0.6,
-                    child: assetPath != null
-                        ? Image.asset(
-                            assetPath,
-                            width: 24,
-                            height: 24,
-                            fit: BoxFit.contain,
-                          )
-                        : GlowIcon.resolve(
-                            semanticName,
-                            size: 20,
-                            color: isSelected ? activeColor : inactiveColor,
-                            semanticLabel: label,
-                          ),
-                  ),
-                ),
-                const SizedBox(height: 3),
-                Text(
-                  label,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 9.5,
-                    fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
-                    color: isSelected ? activeColor : inactiveColor,
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight:
+                          isSelected ? FontWeight.w800 : FontWeight.w600,
+                      color: isSelected ? activeColor : inactiveColor,
+                    ),
                   ),
                 ),
                 if (isSelected)
@@ -3709,7 +3689,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   Widget _buildMoreNavItem({bool isMen = false}) {
     final moreIsSelected = const {2, 4, 6}.contains(_currentIndex);
     const activeColor = Color(0xFFC5A052);
-    final inactiveColor = isMen ? const Color(0xFFB0A89F) : const Color(0xFF8C7A6B);
+    final inactiveColor =
+        isMen ? const Color(0xFFB0A89F) : const Color(0xFF8C7A6B);
     final menuColor = isMen ? const Color(0xFF1F1A15) : const Color(0xFFFFFDF8);
 
     return Expanded(
@@ -3756,19 +3737,18 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.more_horiz_rounded,
-                size: 23,
-                color: moreIsSelected ? activeColor : inactiveColor,
-              ),
-              const SizedBox(height: 3),
-              Text(
-                'Más',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 9.5,
-                  fontWeight: moreIsSelected ? FontWeight.w800 : FontWeight.w600,
-                  color: moreIsSelected ? activeColor : inactiveColor,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  'Más',
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight:
+                        moreIsSelected ? FontWeight.w800 : FontWeight.w600,
+                    color: moreIsSelected ? activeColor : inactiveColor,
+                  ),
                 ),
               ),
               if (moreIsSelected)
@@ -4072,29 +4052,21 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                 children: [
                   _buildNavItem(
                     index: 0,
-                    semanticName: 'home',
-                    assetPath: 'assets/icons/glow/nav_provider_home.png',
                     label: 'Inicio',
                     isMen: isMen,
                   ),
                   _buildNavItem(
                     index: 1,
-                    semanticName: 'calendar',
-                    assetPath: 'assets/icons/glow/nav_citas.webp',
                     label: 'Agenda',
                     isMen: isMen,
                   ),
                   _buildNavItem(
                     index: 3,
-                    semanticName: 'bag',
-                    assetPath: 'assets/icons/glow/nav_glowshop.webp',
                     label: 'GlowShop',
                     isMen: isMen,
                   ),
                   _buildNavItem(
                     index: 5,
-                    semanticName: 'chat',
-                    assetPath: 'assets/icons/glow/nav_provider_chat.png',
                     label: 'Chat',
                     isMen: isMen,
                   ),
@@ -4207,7 +4179,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
             label,
             style: const TextStyle(
               fontFamily: 'Inter',
-              fontSize: 11,
+              fontSize: 12,
               color: Color(0xFF8C7E74),
               fontWeight: FontWeight.w600,
             ),
@@ -4289,7 +4261,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
             label,
             style: const TextStyle(
               fontFamily: 'Inter',
-              fontSize: 11,
+              fontSize: 12,
               color: Color(0xFF8C7E74),
               fontWeight: FontWeight.w600,
             ),
