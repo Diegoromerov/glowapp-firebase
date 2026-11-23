@@ -472,6 +472,12 @@ const CRITICAL_MOUNTS = {
  */
 const KNOWN_DUPLICATE_OPERATIONS = [
   'GET /api/admin/disputes',
+  // Compatibilidade duplicada entre paymentRoutes y disputeRoutes, ambos
+  // montados en /api. Mantener este allowlist explícito para que nuevas
+  // duplicaciones sigan haciendo fallar la compuerta.
+  'GET /api/disputas/:id',
+  'GET /api/disputas/my-disputes',
+  'POST /api/disputas',
   'POST /api/portfolio',
 ];
 

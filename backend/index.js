@@ -569,6 +569,7 @@ app.use('/api/v1/memberships', membershipRoutes);
 // ==========================================
 const saasTeamRoutes = require('./src/routes/saasTeamRoutes');
 const saasUsageRoutes = require('./src/routes/saasUsageRoutes');
+const saasAnalyticsRoutes = require('./src/routes/saasAnalyticsRoutes');
 const saasBillingRoutes = require('./src/routes/saasBillingRoutes');
 const saasApiKeyRoutes = require('./src/routes/saasApiKeyRoutes');
 const saasCatalogRoutes = require('./src/routes/saasCatalogRoutes');
@@ -579,6 +580,7 @@ app.use('/api/saas/bootstrap', saasBootstrapRoutes);
 app.use('/api/saas/catalog', saasCatalogRoutes);
 app.use('/api/saas/team', saasTeamRoutes);
 app.use('/api/saas/usage', saasUsageRoutes);
+app.use('/api/saas/analytics', saasAnalyticsRoutes);
 app.use('/api/saas/billing', saasBillingRoutes);
 app.use('/api/saas/api-keys', saasApiKeyRoutes);
 app.use('/api/superadmin', superAdminRoutes);

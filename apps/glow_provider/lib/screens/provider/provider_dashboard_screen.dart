@@ -14,6 +14,7 @@ import '../chat/chat_list_screen.dart';
 import 'provider_profile_screen.dart';
 import '../store/store_screen.dart';
 import '../academy/academy_screen.dart';
+import 'business/provider_business_analytics_screen.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/services/analytics_service.dart';
@@ -3687,7 +3688,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   }
 
   Widget _buildMoreNavItem({bool isMen = false}) {
-    final moreIsSelected = const {2, 4, 6}.contains(_currentIndex);
+    final moreIsSelected = const {2, 4, 6, 7}.contains(_currentIndex);
     const activeColor = Color(0xFFC5A052);
     final inactiveColor =
         isMen ? const Color(0xFFB0A89F) : const Color(0xFF8C7A6B);
@@ -3715,19 +3716,21 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           _buildMoreMenuItem(
             index: 2,
             label: 'Wallet',
-            icon: Icons.account_balance_wallet_outlined,
             isMen: isMen,
           ),
           _buildMoreMenuItem(
             index: 4,
             label: 'Academia',
-            icon: Icons.school_outlined,
             isMen: isMen,
           ),
           _buildMoreMenuItem(
             index: 6,
             label: 'Perfil',
-            icon: Icons.person_outline_rounded,
+            isMen: isMen,
+          ),
+          _buildMoreMenuItem(
+            index: 7,
+            label: 'Analítica del negocio',
             isMen: isMen,
           ),
         ],
@@ -3771,7 +3774,6 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   PopupMenuItem<int> _buildMoreMenuItem({
     required int index,
     required String label,
-    required IconData icon,
     required bool isMen,
   }) {
     final isSelected = _currentIndex == index;
@@ -3782,12 +3784,6 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       height: 56,
       child: Row(
         children: [
-          Icon(
-            icon,
-            size: 21,
-            color: isSelected ? const Color(0xFFC5A052) : const Color(0xFF8C7A6B),
-          ),
-          const SizedBox(width: 14),
           Expanded(
             child: Text(
               label,
@@ -3916,6 +3912,9 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
         break;
       case 6:
         bodyWidget = const ProviderProfileScreen(isEmbedded: true);
+        break;
+      case 7:
+        bodyWidget = const ProviderBusinessAnalyticsScreen();
         break;
       default:
         bodyWidget = _buildDashboardHome();

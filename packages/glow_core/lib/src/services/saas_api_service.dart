@@ -297,6 +297,26 @@ class SaasApiService {
     return response as Map<String, dynamic>;
   }
 
+  /// Indicadores comerciales agregados del negocio activo.
+  /// El backend valida el plan SaaS, el rol y la sede seleccionada.
+  static Future<Map<String, dynamic>> getBusinessAnalytics({
+    String? from,
+    String? to,
+  }) async {
+    final query = <String, String>{};
+    if (from != null) query['from'] = from;
+    if (to != null) query['to'] = to;
+    final endpoint = Uri(
+      path: '$_basePath/analytics',
+      queryParameters: query.isEmpty ? null : query,
+    ).toString();
+    final response = await ApiService.get(endpoint);
+    if (response is! Map<String, dynamic>) {
+      throw const FormatException('Respuesta de analítica inválida');
+    }
+    return response;
+  }
+
   /// Crear sesión de checkout (Stripe) o link de pago (Wompi) para upgrade.
   /// POST /api/saas/billing/checkout → { provider, checkoutUrl, sessionId? }
   static Future<CheckoutSessionResponse> createCheckoutSession(
