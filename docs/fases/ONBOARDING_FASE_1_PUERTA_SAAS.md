@@ -1,6 +1,6 @@
 # Onboarding SaaS — Fase 1: puerta de entrada
 
-**Estado:** correcciones publicadas en producción; validación automatizada y health de API aprobados. Pendiente prueba funcional de onboarding con una cuenta de QA controlada.
+**Estado:** puerta de entrada implementada y desplegada en producción. Alta, provisión del tenant y reintento idempotente verificados con cuentas QA. Pendientes: validación visual completa, cuenta heredada con plan pago y recorrido visual de Caja.
 **Fecha:** 24 de noviembre de 2026.
 
 ## Objetivo
@@ -65,12 +65,27 @@ Se completó el recorrido con una cuenta de QA sintética, usando PostgreSQL de 
 
 La primera ejecución reveló que RLS ocultaba business_profiles al usuario recién provisionado. Se corrigió con la política de lectura para proveedor o membresía ACTIVE en la migración 197, integrada por PR #60 y desplegada en Railway production. Después de la corrección, los seis pasos anteriores respondieron correctamente. El despliegue activo quedó en SUCCESS para el commit 4d6a89c21f10a5cfd02d688e72817054b1d31519. La comprobación de /api/health informó PostgreSQL disponible y sin fallback a datos inventados.
 
+## Validación adicional en producción — 24 de noviembre de 2026
+
+Después de publicar la idempotencia de creación del salón, se repitió el alta con una cuenta QA nueva:
+
+1. Antes del alta, la cuenta no tenía salón asociado.
+2. El primer `POST /api/salon/create` respondió HTTP 201, `created: true`, sede 11.
+3. El reintento idéntico respondió HTTP 200, `created: false`, y devolvió la misma sede 11; no creó una segunda sede.
+4. `GET /api/saas/bootstrap` respondió HTTP 200 con rol OWNER.
+5. `GET /api/saas/team` respondió HTTP 200 con rol OWNER.
+6. `GET /api/salon/my-salon` respondió HTTP 200 y devolvió la sede con el propietario activo.
+
+El backend activo es el commit `590f8a159b22884495cf7cf0233b85e2b7a9d5fe` y reportó PostgreSQL disponible, sin datos fabricados y 69 migraciones registradas. El workflow de publicación del proveedor `45347597202` terminó exitosamente (análisis, compilación web y despliegue).
+
+El shell confirma el tenant con el bootstrap antes de construir las pestañas; si falla, presenta reintento y no muestra módulos operativos. La ruta directa `/salon/caja` instancia el mismo shell con Caja seleccionada. Esta última verificación es inspección del código publicado, no una prueba visual automatizada en el navegador.
+
+Las pruebas de producción crearon cuentas y sedes sintéticas. Durante una reproducción anterior al fix se generó una sede duplicada; los registros de QA no se eliminaron como parte de esta validación.
+
 ## Alcance aún no verificado
 
-- Flujo visual completo en navegador/dispositivo; la comprobación fue por las APIs reales de producción.
-- Recuperación de una cuenta heredada con plan distinto de FREE_TRIAL.
-- Reintento después de que el cliente pierda la respuesta de creación del salón.
-- Usuario sin salón que aún no ha completado el alta.
-- Entrada directa a Caja y validación de permisos en pantalla.
+- Recorrido visual completo en navegador/dispositivo. La herramienta de navegador no estuvo disponible en esta sesión; el flujo de API sí se verificó en producción.
+- Alta/reintento de una cuenta heredada con plan distinto de FREE_TRIAL.
+- Verificación visual de la entrada directa a Caja y de la experiencia por rol. El código publicado enruta este deep link por el shell que exige un tenant, y las rutas de caja validan la membresía activa en backend.
 
 La ruta principal nueva de onboarding SaaS queda funcionalmente validada en producción. Estos escenarios quedan como verificación adicional antes de dar por cerrada toda la validación visual y de migración heredada.
