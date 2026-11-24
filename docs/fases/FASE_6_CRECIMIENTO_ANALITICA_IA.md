@@ -94,9 +94,16 @@ Por tanto, el catálogo SaaS conserva **Analítica avanzada** como único comple
 
 ## Pendiente para cerrar Fase 6
 
+### Actualización posterior: fidelización desplegada
+
+- El bloque inicial de fidelización por salón se publicó en producción desde `main` en el commit `0388dea` el 23 de noviembre de 2026. El despliegue Railway de la API y el flujo Firebase de las apps web finalizaron con `SUCCESS`; ambos sitios responden HTTP 200 y `/api/health` reporta PostgreSQL activo y el mismo commit.
+- Incluye reglas de puntos y recompensas separadas por salón, historial/auditoría, acreditación manual sobre servicios completados y pagados, y solicitud/gestión de redenciones. La acreditación todavía no es automática.
+- Limitación de evidencia: el endpoint público de salud informa el total de migraciones, pero no permite comprobar el nombre de la migración 195; no se obtuvo una lectura SQL posterior del registro `schema_migrations`. Por eso se confirma el despliegue de aplicación, no la verificación independiente del registro de la migración ni el flujo autenticado con una cuenta de producción.
+- El despliegue web no publicó APK Android porque el secreto `GOOGLE_SERVICES_JSON` no está configurado; no afectó los sitios web.
+
 1. Revisión final de consultas y permisos con casos de aislamiento entre negocios/sedes; validar PostgreSQL real de producción de manera controlada y de solo lectura.
 2. Probar la pantalla con una cuenta de producción autorizada de plan/rol compatible, sin revelar datos personales.
-3. Publicar y validar la migración/API/interfaces de fidelización directamente en producción; probar acceso autorizado del salón y la experiencia del cliente sin leer ni revelar información personal ajena.
+3. Verificar por lectura PostgreSQL que la migración 195 esté registrada y probar acceso autorizado del salón y la experiencia del cliente sin leer ni revelar información personal ajena.
 4. Automatizar la acreditación ante el evento de negocio confiable (pago y servicio completado), y diseñar reversos ante devoluciones o disputas posteriores antes de ofrecerlo comercialmente.
 5. Añadir vigencia, topes, controles de fraude y consentimiento de campañas; decidir el nivel comercial y sus límites antes de cobrar la fidelización.
 6. Si se empaqueta Glow Academy, migrar su autorización y progreso al negocio SaaS y definir catálogo, precio y consentimiento separado para cualquier tratamiento sensible.

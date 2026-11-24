@@ -14,7 +14,6 @@ import 'package:http/http.dart' as http;
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/services/permission_rationale_service.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:glow_core/shared/theme.dart' hide AppTheme;
 import 'package:glow_core/shared/background_video_player.dart';
 import 'package:glow_core/data/colombia_municipalities.dart';
 import 'package:glow_core/glow_core.dart';
@@ -340,6 +339,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       children: plans.map((commercialPlan) {
         final plan = commercialPlan.tier;
         final isSelected = _selectedPlan == plan;
+        final terms = <String>[];
+        if (commercialPlan.trialDays > 0) {
+          terms.add('${commercialPlan.trialDays} días de prueba');
+        }
+        final teamSeats = commercialPlan.limits['TEAM_SEATS'];
+        if (teamSeats != null && teamSeats > 0) {
+          terms.add('$teamSeats ${teamSeats == 1 ? 'persona' : 'personas'}');
+        }
+        final monthlyBookings = commercialPlan.limits['ONLINE_BOOKING'];
+        if (monthlyBookings != null && monthlyBookings > 0) {
+          terms.add('$monthlyBookings reservas al mes');
+        }
         return GestureDetector(
           onTap: () => setState(() => _selectedPlan = plan),
           child: Container(
@@ -403,6 +414,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         commercialPlan.description,
                         style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74)),
                       ),
+                      if (terms.isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          terms.join(' · '),
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: isSelected ? plan.color : const Color(0xFF67584D),
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),
