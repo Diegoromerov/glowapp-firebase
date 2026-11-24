@@ -47,12 +47,16 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
     final currentPlan = profileState.profile == null
         ? SaasPlanTier.freeTrial
         : profileState.profile!.currentPlan;
-    final canCreateApiKeys = currentPlan == SaasPlanTier.pro || currentPlan == SaasPlanTier.enterprise;
+    final canCreateApiKeys = currentPlan == SaasPlanTier.pro ||
+        currentPlan == SaasPlanTier.enterprise;
 
     if (profileState.profile == null) {
       return Scaffold(
         backgroundColor: _bg,
-        appBar: AppBar(title: const Text('API Keys'), backgroundColor: _bg, foregroundColor: _ink),
+        appBar: AppBar(
+            title: const Text('API Keys'),
+            backgroundColor: _bg,
+            foregroundColor: _ink),
         body: profileState.isLoading
             ? const Center(child: CircularProgressIndicator())
             : const Center(
@@ -80,14 +84,16 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
             IconButton(
               tooltip: 'Crear API Key',
               icon: const Icon(Icons.add_rounded, color: _gold),
-              onPressed: _busy ? null : () => _showCreateDialog(businessProfileId),
+              onPressed:
+                  _busy ? null : () => _showCreateDialog(businessProfileId),
             ),
         ],
       ),
       body: state.isLoading && state.keys.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : RefreshIndicator(
-              onRefresh: () => ref.read(apiKeysProvider.notifier).load(businessProfileId),
+              onRefresh: () =>
+                  ref.read(apiKeysProvider.notifier).load(businessProfileId),
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
@@ -134,10 +140,12 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
         children: const [
           Row(
             children: [
-              Icon(Icons.info_outline_rounded, color: Color(0xFF0284C7), size: 18),
+              Icon(Icons.info_outline_rounded,
+                  color: Color(0xFF0284C7), size: 18),
               SizedBox(width: 8),
               Text('Sobre las API Keys',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: _ink)),
+                  style: TextStyle(
+                      fontSize: 13, fontWeight: FontWeight.bold, color: _ink)),
             ],
           ),
           SizedBox(height: 8),
@@ -146,7 +154,8 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
             '• Usa el scope mínimo necesario (principio de menor privilegio).\n'
             '• Revoca cualquier key que ya no uses o que sospeches comprometida.\n'
             '• Encabezado de autenticación: Authorization: Bearer <key>',
-            style: TextStyle(fontSize: 11, color: Color(0xFF0369A1), height: 1.55),
+            style:
+                TextStyle(fontSize: 11, color: Color(0xFF0369A1), height: 1.55),
           ),
         ],
       ),
@@ -183,7 +192,8 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
             const Icon(Icons.vpn_key_rounded, size: 42, color: _gold),
             const SizedBox(height: 12),
             const Text('Sin API Keys',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: _ink)),
+                style: TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.bold, color: _ink)),
             const SizedBox(height: 6),
             const Text(
               'Crea tu primera key para integrar GlowApp con tus sistemas '
@@ -193,8 +203,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
             ),
             const SizedBox(height: 16),
             FilledButton.icon(
-              style: FilledButton.styleFrom(backgroundColor: _gold, foregroundColor: _ink),
-              onPressed: _busy ? null : () => _showCreateDialog(businessProfileId),
+              style: FilledButton.styleFrom(
+                  backgroundColor: _gold, foregroundColor: _ink),
+              onPressed:
+                  _busy ? null : () => _showCreateDialog(businessProfileId),
               icon: const Icon(Icons.add_rounded, size: 18),
               label: const Text('Crear API Key'),
             ),
@@ -228,11 +240,17 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(key.name,
-                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: _ink)),
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: _ink)),
                     const SizedBox(height: 2),
                     Text(
-                      key.keyPrefix.isEmpty ? key.displayKey : '${key.keyPrefix}…',
-                      style: const TextStyle(fontSize: 11, color: _muted, fontFamily: 'monospace'),
+                      key.keyPrefix.isEmpty
+                          ? key.displayKey
+                          : '${key.keyPrefix}…',
+                      style: const TextStyle(
+                          fontSize: 11, color: _muted, fontFamily: 'monospace'),
                     ),
                   ],
                 ),
@@ -246,7 +264,8 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                 ),
                 child: Text(
                   active ? 'ACTIVA' : (key.isRevoked ? 'REVOCADA' : 'EXPIRADA'),
-                  style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: color),
+                  style: TextStyle(
+                      fontSize: 9, fontWeight: FontWeight.bold, color: color),
                 ),
               ),
             ],
@@ -257,13 +276,17 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
             runSpacing: 4,
             children: key.scopes
                 .map((s) => Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
                         color: _gold.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(s.code,
-                          style: const TextStyle(fontSize: 10, color: _gold, fontFamily: 'monospace')),
+                          style: const TextStyle(
+                              fontSize: 10,
+                              color: _gold,
+                              fontFamily: 'monospace')),
                     ))
                 .toList(),
           ),
@@ -272,7 +295,8 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
             children: [
               _meta('Creada', _formatDate(key.createdAt)),
               const SizedBox(width: 14),
-              if (key.lastUsedAt != null) _meta('Último uso', _formatDate(key.lastUsedAt!)),
+              if (key.lastUsedAt != null)
+                _meta('Último uso', _formatDate(key.lastUsedAt!)),
               if (key.expiresAt != null) ...[
                 const SizedBox(width: 14),
                 _meta('Expira', _formatDate(key.expiresAt!)),
@@ -280,10 +304,15 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
               const Spacer(),
               if (active)
                 TextButton.icon(
-                  onPressed: _busy ? null : () => _confirmRevoke(businessProfileId, key),
-                  icon: const Icon(Icons.block_rounded, size: 15, color: Colors.red),
-                  label: const Text('Revocar', style: TextStyle(fontSize: 12, color: Colors.red)),
-                  style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
+                  onPressed: _busy
+                      ? null
+                      : () => _confirmRevoke(businessProfileId, key),
+                  icon: const Icon(Icons.block_rounded,
+                      size: 15, color: Colors.red),
+                  label: const Text('Revocar',
+                      style: TextStyle(fontSize: 12, color: Colors.red)),
+                  style: TextButton.styleFrom(
+                      visualDensity: VisualDensity.compact),
                 ),
             ],
           ),
@@ -299,7 +328,9 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text('$label: ', style: const TextStyle(fontSize: 10, color: _muted)),
-        Text(value, style: const TextStyle(fontSize: 10, color: _ink, fontWeight: FontWeight.w500)),
+        Text(value,
+            style: const TextStyle(
+                fontSize: 10, color: _ink, fontWeight: FontWeight.w500)),
       ],
     );
   }
@@ -335,7 +366,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                   ),
                   const SizedBox(height: 16),
                   const Text('Permisos (scopes)',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: _ink)),
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: _ink)),
                   const SizedBox(height: 4),
                   const Text('Empieza con lectura y agrega solo lo necesario.',
                       style: TextStyle(fontSize: 10, color: _muted)),
@@ -354,12 +388,16 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                       }),
                       title: Text('${scope.label} (${scope.code})',
                           style: const TextStyle(fontSize: 12, color: _ink)),
-                      subtitle: Text(scope.description, style: const TextStyle(fontSize: 10, color: _muted)),
+                      subtitle: Text(scope.description,
+                          style: const TextStyle(fontSize: 10, color: _muted)),
                     ),
                   ),
                   const SizedBox(height: 8),
                   const Text('Vigencia',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: _ink)),
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: _ink)),
                   const SizedBox(height: 6),
                   Wrap(
                     spacing: 8,
@@ -368,13 +406,16 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                               label: Text(d == 365 ? '1 año' : '$d días',
                                   style: const TextStyle(fontSize: 11)),
                               selected: expiresInDays == d,
-                              onSelected: (_) => setDialogState(() => expiresInDays = d),
+                              onSelected: (_) =>
+                                  setDialogState(() => expiresInDays = d),
                             ))
                         .toList(),
                   ),
                   if (error != null) ...[
                     const SizedBox(height: 10),
-                    Text(error!, style: const TextStyle(fontSize: 11, color: Colors.red)),
+                    Text(error!,
+                        style:
+                            const TextStyle(fontSize: 11, color: Colors.red)),
                   ],
                 ],
               ),
@@ -386,17 +427,20 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
               child: const Text('Cancelar'),
             ),
             FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: _gold, foregroundColor: _ink),
+              style: FilledButton.styleFrom(
+                  backgroundColor: _gold, foregroundColor: _ink),
               onPressed: submitting
                   ? null
                   : () async {
                       final name = nameCtrl.text.trim();
                       if (name.length < 3) {
-                        setDialogState(() => error = 'El nombre debe tener al menos 3 caracteres.');
+                        setDialogState(() => error =
+                            'El nombre debe tener al menos 3 caracteres.');
                         return;
                       }
                       if (selected.isEmpty) {
-                        setDialogState(() => error = 'Selecciona al menos un scope.');
+                        setDialogState(
+                            () => error = 'Selecciona al menos un scope.');
                         return;
                       }
                       setDialogState(() {
@@ -404,14 +448,15 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                         error = null;
                       });
                       try {
-                        final created = await ref.read(apiKeysProvider.notifier).create(
-                              businessProfileId,
-                              CreateApiKeyRequest(
-                                name: name,
-                                scopes: selected.toList(),
-                                expiresInDays: expiresInDays,
-                              ),
-                            );
+                        final created =
+                            await ref.read(apiKeysProvider.notifier).create(
+                                  businessProfileId,
+                                  CreateApiKeyRequest(
+                                    name: name,
+                                    scopes: selected.toList(),
+                                    expiresInDays: expiresInDays,
+                                  ),
+                                );
                         if (!ctx.mounted) return;
                         Navigator.pop(ctx);
                         _showKeyOnce(created);
@@ -433,8 +478,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
   Future<void> _showKeyOnce(ApiKey key) async {
     final raw = key.rawKey;
     if (raw == null) {
-      _toast('La key se creó pero el servidor no devolvió el valor completo. '
-          'Revócala y crea una nueva.', error: true);
+      _toast(
+          'La key se creó pero el servidor no devolvió el valor completo. '
+          'Revócala y crea una nueva.',
+          error: true);
       return;
     }
     await showDialog(
@@ -456,7 +503,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
             children: [
               const Text(
                 'Copia la key ahora. No se volverá a mostrar.',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.red),
+                style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.red),
               ),
               const SizedBox(height: 12),
               Container(
@@ -491,7 +541,8 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
         ),
         actions: [
           FilledButton(
-            style: FilledButton.styleFrom(backgroundColor: _ink, foregroundColor: Colors.white),
+            style: FilledButton.styleFrom(
+                backgroundColor: _ink, foregroundColor: Colors.white),
             onPressed: () => Navigator.pop(ctx),
             child: const Text('Ya la guardé'),
           ),
@@ -513,7 +564,9 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
           style: const TextStyle(fontSize: 12, height: 1.5),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Volver')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Volver')),
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: Colors.red),
             onPressed: () => Navigator.pop(ctx, true),
@@ -526,7 +579,9 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
 
     setState(() => _busy = true);
     try {
-      await ref.read(apiKeysProvider.notifier).revoke(businessProfileId, key.id);
+      await ref
+          .read(apiKeysProvider.notifier)
+          .revoke(businessProfileId, key.id);
       if (!mounted) return;
       _toast('API Key revocada');
     } catch (e) {

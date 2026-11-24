@@ -152,7 +152,7 @@ describe('subscriptionService', () => {
       expect(wompiSubscriptionService.createSubscription).not.toHaveBeenCalled();
     });
 
-    test('plan ENTERPRISE → trial 30 días aunque sea de pago', async () => {
+    test('plan ENTERPRISE → sin prueba gratuita implícita', async () => {
       stripeService.createOrGetCustomer.mockResolvedValue({ id: 'cus_stripe' });
       stripeService.createSubscription.mockResolvedValue({
         id: 'sub_ent',
@@ -172,9 +172,7 @@ describe('subscriptionService', () => {
         currency: 'USD'
       });
 
-      expect(stripeService.createSubscription).toHaveBeenCalledWith(expect.objectContaining({
-        trialDays: 30
-      }));
+      expect(stripeService.createSubscription).not.toHaveBeenCalledWith(expect.objectContaining({ trialDays: 30 }));
     });
 
     test('error en Stripe → ROLLBACK y relanza error', async () => {
@@ -654,18 +652,19 @@ describe('subscriptionService', () => {
   });
 
   describe('_comparePlans', () => {
-    test('FREE_TRIAL < FREEMIUM < BASIC < PRO < ENTERPRISE', () => {
+    test('FREE_TRIAL < FREEMIUM < BASIC < GROWTH < PRO < ENTERPRISE', () => {
       expect(subscriptionService._comparePlans('FREE_TRIAL', 'FREEMIUM')).toBe(-1);
       expect(subscriptionService._comparePlans('FREEMIUM', 'BASIC')).toBe(-1);
-      expect(subscriptionService._comparePlans('BASIC', 'PRO')).toBe(-1);
+      expect(subscriptionService._comparePlans('BASIC', 'GROWTH')).toBe(-1);
+      expect(subscriptionService._comparePlans('GROWTH', 'PRO')).toBe(-1);
       expect(subscriptionService._comparePlans('PRO', 'ENTERPRISE')).toBe(-1);
-      expect(subscriptionService._comparePlans('ENTERPRISE', 'FREE_TRIAL')).toBe(4);
+      expect(subscriptionService._comparePlans('ENTERPRISE', 'FREE_TRIAL')).toBe(5);
       expect(subscriptionService._comparePlans('PRO', 'PRO')).toBe(0);
     });
 
     test('plan desconocido → nivel 0', () => {
-      expect(subscriptionService._comparePlans('UNKNOWN', 'PRO')).toBe(-3);
-      expect(subscriptionService._comparePlans('PRO', 'UNKNOWN')).toBe(3);
+      expect(subscriptionService._comparePlans('UNKNOWN', 'PRO')).toBe(-5);
+      expect(subscriptionService._comparePlans('PRO', 'UNKNOWN')).toBe(5);
     });
   });
 

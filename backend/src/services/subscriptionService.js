@@ -31,7 +31,9 @@ class SubscriptionService {
       const planDefinition = PLAN_CATALOG[plan];
       if (!planDefinition) throw new Error('Plan SaaS inválido');
       const isPaidPlan = planDefinition.priceCop > 0;
-      const trialDays = plan === 'FREE_TRIAL' ? planDefinition.trialDays : (isPaidPlan ? 30 : null);
+      // Solo FREE_TRIAL ofrece período de prueba. Un plan pago nunca debe
+      // activar 30 días gratuitos por una regla implícita.
+      const trialDays = planDefinition.trialDays > 0 ? planDefinition.trialDays : null;
 
       if (currency === 'USD') {
         // Stripe para pagos internacionales

@@ -221,7 +221,7 @@ router.post('/checkout', requireOwner, async (req, res) => {
 
     const { plan, currency = 'COP', successUrl, cancelUrl } = req.body;
 
-    const validPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop > 0);
+    const validPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop > 0 && PLAN_CATALOG[id].commerciallyAvailable !== false);
     if (!validPlans.includes(plan)) {
       return res.status(400).json({ error: 'Plan inválido', validPlans });
     }
@@ -333,7 +333,7 @@ router.post('/change-plan', requireOwner, async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const { plan, prorate = true } = req.body;
-    const validPlans = PLAN_IDS.filter((id) => id !== 'FREE_TRIAL');
+    const validPlans = PLAN_IDS.filter((id) => id !== 'FREE_TRIAL' && PLAN_CATALOG[id].commerciallyAvailable !== false);
     
     if (!validPlans.includes(plan)) {
       return res.status(400).json({ error: 'Plan inválido', validPlans });

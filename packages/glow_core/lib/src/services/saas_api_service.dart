@@ -18,7 +18,8 @@ class SaasApiService {
 
   /// Provisiona el tenant del usuario a partir de su salón (idempotente).
   /// POST /api/saas/bootstrap → { provisioned, created, profile }
-  static Future<SaasBusinessProfile> provisionTenant({String plan = 'FREE_TRIAL'}) async {
+  static Future<SaasBusinessProfile> provisionTenant(
+      {String plan = 'FREE_TRIAL'}) async {
     final response = await ApiService.post(
       '$_basePath/bootstrap',
       {'plan': plan},
@@ -44,7 +45,8 @@ class SaasApiService {
   }
 
   /// Perfil + rol del tenant activo (lo que necesita la UI para permisos).
-  static Future<({SaasBusinessProfile profile, MembershipRole role})?> getMyTenant() async {
+  static Future<({SaasBusinessProfile profile, MembershipRole role})?>
+      getMyTenant() async {
     try {
       final response = await ApiService.get('$_basePath/bootstrap');
       if (response is! Map<String, dynamic>) return null;
@@ -84,7 +86,8 @@ class SaasApiService {
   }
 
   /// Obtener perfil por ID (resuelve el tenant activo del usuario).
-  static Future<SaasBusinessProfile> getBusinessProfile(String businessProfileId) async {
+  static Future<SaasBusinessProfile> getBusinessProfile(
+      String businessProfileId) async {
     final current = await getMyBusinessProfile();
     if (current == null) {
       throw StateError('No hay perfil de negocio provisionado');
@@ -103,11 +106,14 @@ class SaasApiService {
         final rawQuotas = raw['quotas'] as Map<String, dynamic>? ?? const {};
         final limits = <String, int>{};
         final features = <String>[];
-        final catalogCapabilities = data['capabilities'] as Map<String, dynamic>? ?? const {};
-        for (final capability in (raw['capabilities'] as List<dynamic>? ?? const [])) {
+        final catalogCapabilities =
+            data['capabilities'] as Map<String, dynamic>? ?? const {};
+        for (final capability
+            in (raw['capabilities'] as List<dynamic>? ?? const [])) {
           final code = capability.toString();
           final definition = catalogCapabilities[code];
-          if (definition is Map<String, dynamic> && definition['kind'] == 'boolean') {
+          if (definition is Map<String, dynamic> &&
+              definition['kind'] == 'boolean') {
             features.add((definition['label'] ?? code).toString());
           }
         }
@@ -138,12 +144,14 @@ class SaasApiService {
           trialDays: (raw['trialDays'] as num? ?? 0).toInt(),
           limits: limits,
           features: features,
-          isActive: true,
+          isActive: raw['commerciallyAvailable'] as bool? ?? true,
           isPopular: raw['popular'] as bool? ?? false,
         );
       }).toList();
     } catch (e) {
-      if (kDebugMode) debugPrint('⚠️ Catálogo SaaS no disponible; usando catálogo local compatible: $e');
+      if (kDebugMode)
+        debugPrint(
+            '⚠️ Catálogo SaaS no disponible; usando catálogo local compatible: $e');
       return _legacyPlans();
     }
   }
@@ -177,6 +185,8 @@ class SaasApiService {
         return 'Presencia básica sin costo mensual';
       case SaasPlanTier.basic:
         return 'Para salones que inician su operación digital';
+      case SaasPlanTier.growth:
+        return 'Para salones en crecimiento que necesitan marca, fidelización y más recursos';
       case SaasPlanTier.pro:
         return 'Para salones con equipo, agenda completa, integraciones y analítica avanzada';
       case SaasPlanTier.enterprise:
@@ -189,7 +199,10 @@ class SaasApiService {
     String limitOf(String k, String unit) {
       final v = l[k];
       if (v == null) return 'ilimitado';
-      if (v == 1 && (k.endsWith('ANALYTICS') || k.endsWith('BRANDING') || k.endsWith('INTEGRATION'))) return 'incluido';
+      if (v == 1 &&
+          (k.endsWith('ANALYTICS') ||
+              k.endsWith('BRANDING') ||
+              k.endsWith('INTEGRATION'))) return 'incluido';
       if (v == 0) return 'no incluido';
       return '$v $unit';
     }
@@ -214,7 +227,8 @@ class SaasApiService {
   // ═══════════════════════════════════════════════════════════════
 
   /// Miembros del equipo del tenant activo. GET /api/saas/team → { members: [...] }
-  static Future<List<TeamMember>> getTeamMembers(String businessProfileId) async {
+  static Future<List<TeamMember>> getTeamMembers(
+      String businessProfileId) async {
     final response = await ApiService.get('$_basePath/team');
     final data = response as Map<String, dynamic>;
     final members = (data['members'] ?? data['data']) as List<dynamic>? ?? [];
@@ -225,7 +239,8 @@ class SaasApiService {
   }
 
   /// Invitar miembro. POST /api/saas/team/invite { email, role }
-  static Future<void> inviteMember(String businessProfileId, InviteMemberRequest request) async {
+  static Future<void> inviteMember(
+      String businessProfileId, InviteMemberRequest request) async {
     await ApiService.post('$_basePath/team/invite', request.toJson());
   }
 
@@ -235,27 +250,33 @@ class SaasApiService {
     String memberId,
     MembershipRole role,
   ) async {
-    await ApiService.patch('$_basePath/team/$memberId/role', {'role': role.code});
+    await ApiService.patch(
+        '$_basePath/team/$memberId/role', {'role': role.code});
   }
 
   /// Remover miembro. DELETE /api/saas/team/:memberId
-  static Future<void> removeMember(String businessProfileId, String memberId) async {
+  static Future<void> removeMember(
+      String businessProfileId, String memberId) async {
     await ApiService.delete('$_basePath/team/$memberId');
   }
 
   /// Suspender o reactivar una membresía activa.
-  static Future<void> setMemberStatus(String businessProfileId, String memberId, String status) async {
-    await ApiService.patch('$_basePath/team/$memberId/status', {'status': status});
+  static Future<void> setMemberStatus(
+      String businessProfileId, String memberId, String status) async {
+    await ApiService.patch(
+        '$_basePath/team/$memberId/status', {'status': status});
   }
 
   /// Reenviar invitación. POST /api/saas/team/:memberId/resend-invite
-  static Future<void> resendInvitation(String businessProfileId, String invitationId) async {
+  static Future<void> resendInvitation(
+      String businessProfileId, String invitationId) async {
     await ApiService.post('$_basePath/team/$invitationId/resend-invite', {});
   }
 
   /// Invitaciones pendientes: el backend no expone un endpoint aparte,
   /// se derivan de las memberships en estado PENDING.
-  static Future<List<TeamInvitation>> getPendingInvitations(String businessProfileId) async {
+  static Future<List<TeamInvitation>> getPendingInvitations(
+      String businessProfileId) async {
     final members = await getTeamMembers(businessProfileId);
     return members
         .where((m) => m.invitationStatus == InvitationStatus.pending)
@@ -361,7 +382,8 @@ class SaasApiService {
   }
 
   /// Obtener facturas. GET /api/saas/billing/invoices → { invoices: [...] }
-  static Future<List<Invoice>> getInvoices(String businessProfileId, {int limit = 50, int offset = 0}) async {
+  static Future<List<Invoice>> getInvoices(String businessProfileId,
+      {int limit = 50, int offset = 0}) async {
     final response = await ApiService.get(
       '$_basePath/billing/invoices?limit=$limit&offset=$offset',
     );
@@ -380,7 +402,8 @@ class SaasApiService {
       '$_basePath/billing/invoices/$invoiceId/pdf';
 
   /// Obtener métodos de pago. GET /api/saas/billing/payment-methods → { paymentMethods: [...] }
-  static Future<List<Map<String, dynamic>>> getPaymentMethods(String businessProfileId) async {
+  static Future<List<Map<String, dynamic>>> getPaymentMethods(
+      String businessProfileId) async {
     final response = await ApiService.get('$_basePath/billing/payment-methods');
     final data = response as Map<String, dynamic>;
     return (data['paymentMethods'] as List<dynamic>? ?? [])
@@ -415,7 +438,8 @@ class SaasApiService {
   /// thresholdPercent), no eventos disparados, así que no alimenta esta lista.
   static Future<UsageSummary> getUsageSummary(String businessProfileId) async {
     final response = await ApiService.get('$_basePath/usage');
-    final data = response is Map<String, dynamic> ? response : <String, dynamic>{};
+    final data =
+        response is Map<String, dynamic> ? response : <String, dynamic>{};
     final summary = UsageSummary.fromJson(data);
 
     final derived = <UsageAlert>[];
@@ -447,7 +471,8 @@ class SaasApiService {
   }
 
   /// Métricas detalladas (misma fuente que el resumen).
-  static Future<List<UsageMetric>> getUsageMetrics(String businessProfileId) async {
+  static Future<List<UsageMetric>> getUsageMetrics(
+      String businessProfileId) async {
     final summary = await getUsageSummary(businessProfileId);
     return summary.metrics;
   }
@@ -464,7 +489,8 @@ class SaasApiService {
 
   /// Historial de uso de los últimos meses. GET /api/saas/usage/history
   static Future<Map<String, dynamic>> getUsageHistory({int months = 6}) async {
-    final response = await ApiService.get('$_basePath/usage/history?months=$months');
+    final response =
+        await ApiService.get('$_basePath/usage/history?months=$months');
     return response as Map<String, dynamic>;
   }
 
@@ -505,7 +531,8 @@ class SaasApiService {
   }
 
   /// Revocar API key. POST /api/saas/api-keys/:keyId/revoke
-  static Future<void> revokeApiKey(String businessProfileId, String keyId) async {
+  static Future<void> revokeApiKey(
+      String businessProfileId, String keyId) async {
     await ApiService.post('$_basePath/api-keys/$keyId/revoke', {});
   }
 

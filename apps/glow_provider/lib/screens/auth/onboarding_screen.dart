@@ -26,7 +26,8 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  String? _selectedRole; // 'PRESTADOR' o 'SALON' — la app del proveedor no crea clientes
+  String?
+      _selectedRole; // 'PRESTADOR' o 'SALON' — la app del proveedor no crea clientes
   bool _habeasDataAccepted = false;
   bool _terminosAccepted = false;
   bool _isLoading = false;
@@ -199,7 +200,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Future<void> _submitSalonOnboarding() async {
     if (!_habeasDataAccepted || !_terminosAccepted) {
       setState(() {
-        _error = 'Debes aceptar la Política de Tratamiento de Datos (Habeas Data) y los Términos y Condiciones para continuar.';
+        _error =
+            'Debes aceptar la Política de Tratamiento de Datos (Habeas Data) y los Términos y Condiciones para continuar.';
       });
       return;
     }
@@ -249,7 +251,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       // Crea business_profile + membership OWNER (idempotente). Sin esto,
       // /api/saas/* responde 401 "Contexto SaaS requerido".
       try {
-        final profile = await SaasApiService.provisionTenant(plan: _selectedPlan.code);
+        final profile =
+            await SaasApiService.provisionTenant(plan: _selectedPlan.code);
 
         // Paso 3: enviar invitaciones de equipo con el id real del tenant
         // (antes se pasaba el slug, que no identifica al tenant).
@@ -263,18 +266,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         }
         if (inviteFailures > 0 && mounted) {
           setState(() {
-            _saasError = 'El salón quedó creado, pero $inviteFailures invitación(es) '
+            _saasError =
+                'El salón quedó creado, pero $inviteFailures invitación(es) '
                 'no se enviaron. Puedes reenviarlas desde Mi Equipo.';
           });
         }
       } catch (e) {
         if (mounted) {
           setState(() {
-            _saasError = 'El salón quedó creado, pero el perfil SaaS no se pudo '
+            _saasError =
+                'El salón quedó creado, pero el perfil SaaS no se pudo '
                 'provisionar. Podrás completarlo desde Facturación.';
           });
         }
-        if (kDebugMode) debugPrint('Onboarding: provisionamiento SaaS falló: $e');
+        if (kDebugMode)
+          debugPrint('Onboarding: provisionamiento SaaS falló: $e');
       }
 
       final prefs = await SharedPreferences.getInstance();
@@ -283,7 +289,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         final warning = _saasError;
         if (warning != null) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(warning), duration: const Duration(seconds: 6)),
+            SnackBar(
+                content: Text(warning), duration: const Duration(seconds: 6)),
           );
         }
         Navigator.pushReplacementNamed(context, '/salon/hub');
@@ -291,10 +298,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     } catch (e) {
       setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
     } finally {
-      if (mounted) setState(() {
-        _isLoading = false;
-        _isCreatingSaasProfile = false;
-      });
+      if (mounted)
+        setState(() {
+          _isLoading = false;
+          _isCreatingSaasProfile = false;
+        });
     }
   }
 
@@ -303,38 +311,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   // ═══════════════════════════════════════════════════════════════
 
   String _planDescription(SaasPlanTier plan) {
-      switch (plan) {
-        case SaasPlanTier.freeTrial:
-          return 'Prueba GlowApp durante 14 días con hasta 3 personas de tu equipo.';
-        case SaasPlanTier.freemium:
-          return 'Administra tu salón gratis de forma permanente con 1 persona.';
-        case SaasPlanTier.basic:
-          return 'Organiza el trabajo de hasta 5 personas y gestiona hasta 200 reservas al mes.';
-        case SaasPlanTier.pro:
-          return 'Coordina hasta 20 personas, recibe reservas sin límite y consulta analíticas avanzadas.';
-        case SaasPlanTier.enterprise:
-          return 'Equipo sin límite de personas, WhatsApp, punto de venta y soporte prioritario.';
-      }
+    switch (plan) {
+      case SaasPlanTier.freeTrial:
+        return 'Prueba GlowApp durante 14 días con hasta 3 personas de tu equipo.';
+      case SaasPlanTier.freemium:
+        return 'Administra tu salón gratis de forma permanente con 1 persona.';
+      case SaasPlanTier.basic:
+        return 'Agenda, caja, inventario y recursos para un salón de hasta 5 personas.';
+      case SaasPlanTier.growth:
+        return 'Facturación, marca propia y fidelización para equipos de hasta 10 personas.';
+      case SaasPlanTier.pro:
+        return 'Coordina hasta 20 personas, recibe reservas sin límite y consulta analíticas avanzadas.';
+      case SaasPlanTier.enterprise:
+        return 'Equipo sin límite de personas, WhatsApp, punto de venta y soporte prioritario.';
     }
+  }
 
   Widget _buildPlanSelector() {
-    final availablePlans = _commercialPlans.where((plan) =>
-        plan.tier == SaasPlanTier.freeTrial || plan.tier == SaasPlanTier.freemium).toList();
+    final availablePlans = _commercialPlans;
     final plans = availablePlans.isNotEmpty
         ? availablePlans
-        : SaasPlanTier.values.where((tier) =>
-            tier == SaasPlanTier.freeTrial || tier == SaasPlanTier.freemium).map((tier) => SaasPlan(
-              id: tier.code,
-              tier: tier,
-              name: tier.label,
-              description: _planDescription(tier),
-              priceCents: tier.priceCents,
-              trialDays: tier == SaasPlanTier.freeTrial ? 14 : 0,
-              limits: const {},
-              features: const [],
-              isActive: true,
-              isPopular: tier == SaasPlanTier.pro,
-            )).toList();
+        : SaasPlanTier.values
+            .map((tier) => SaasPlan(
+                  id: tier.code,
+                  tier: tier,
+                  name: tier.label,
+                  description: _planDescription(tier),
+                  priceCents: tier.priceCents,
+                  trialDays: tier == SaasPlanTier.freeTrial ? 14 : 0,
+                  limits: const {},
+                  features: const [],
+                  isActive: true,
+                  isPopular: tier == SaasPlanTier.pro,
+                ))
+            .toList();
     return Column(
       children: plans.map((commercialPlan) {
         final plan = commercialPlan.tier;
@@ -347,17 +357,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         if (teamSeats != null && teamSeats > 0) {
           terms.add('$teamSeats ${teamSeats == 1 ? 'persona' : 'personas'}');
         }
-        final monthlyBookings = commercialPlan.limits['ONLINE_BOOKING'];
+        final monthlyBookings = commercialPlan.limits['DIRECT_BOOKINGS'] ??
+            commercialPlan.limits['ONLINE_BOOKING'];
         if (monthlyBookings != null && monthlyBookings > 0) {
           terms.add('$monthlyBookings reservas al mes');
+        } else if (commercialPlan.tier != SaasPlanTier.freemium &&
+            commercialPlan.tier != SaasPlanTier.freeTrial) {
+          terms.add('Reservas ilimitadas');
         }
+        final proposedMonthly =
+            commercialPlan.tier == SaasPlanTier.enterprise ? 449000 : null;
+        final canSelectPlan =
+            plan == SaasPlanTier.freeTrial || plan == SaasPlanTier.freemium;
         return GestureDetector(
-          onTap: () => setState(() => _selectedPlan = plan),
+          onTap:
+              canSelectPlan ? () => setState(() => _selectedPlan = plan) : null,
           child: Container(
             margin: const EdgeInsets.only(bottom: 8),
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: isSelected ? plan.color.withOpacity(0.1) : Colors.transparent,
+              color:
+                  isSelected ? plan.color.withOpacity(0.1) : Colors.transparent,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: isSelected ? plan.color : const Color(0xFFEFE8DE),
@@ -394,17 +414,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                color: isSelected ? plan.color : const Color(0xFF1F1A15),
+                                color: isSelected
+                                    ? plan.color
+                                    : const Color(0xFF1F1A15),
                               ),
                             ),
                           ),
                           Text(
-                            commercialPlan.priceCents == 0
-                                ? 'Gratis'
-                                : '\$${(commercialPlan.priceCents / 100).round().toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]}.')} COP/mes',
+                            commercialPlan.tier == SaasPlanTier.growth
+                                ? 'Propuesto · \$169.000/mes'
+                                : commercialPlan.tier == SaasPlanTier.enterprise
+                                    ? 'Propuesto · \$${proposedMonthly!.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]}.')}/mes'
+                                    : commercialPlan.priceCents == 0
+                                        ? 'Gratis'
+                                        : commercialPlan.tier ==
+                                                SaasPlanTier.pro
+                                            ? 'Activación comercial próximamente'
+                                            : '\$${(commercialPlan.priceCents / 100).round().toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]}.')} COP/mes',
                             style: TextStyle(
                               fontSize: 12,
-                              color: isSelected ? plan.color : const Color(0xFF8C7E74),
+                              color: isSelected
+                                  ? plan.color
+                                  : const Color(0xFF8C7E74),
                             ),
                           ),
                         ],
@@ -412,8 +443,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       const SizedBox(height: 4),
                       Text(
                         commercialPlan.description,
-                        style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74)),
+                        style: const TextStyle(
+                            fontSize: 12, color: Color(0xFF8C7E74)),
                       ),
+                      if (!canSelectPlan) ...[
+                        const SizedBox(height: 3),
+                        Text(
+                          commercialPlan.isActive
+                              ? 'Puedes activarlo después desde Facturación.'
+                              : 'Precio y activación propuestos; aún no disponibles.',
+                          style: const TextStyle(
+                              fontSize: 10, color: Color(0xFF9A6B42)),
+                        ),
+                      ],
                       if (terms.isNotEmpty) ...[
                         const SizedBox(height: 4),
                         Text(
@@ -421,7 +463,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: isSelected ? plan.color : const Color(0xFF67584D),
+                            color: isSelected
+                                ? plan.color
+                                : const Color(0xFF67584D),
                           ),
                         ),
                       ],
@@ -451,7 +495,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(width: 6),
           Text(
             invite.email,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: invite.role.color),
+            style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: invite.role.color),
           ),
           const SizedBox(width: 6),
           Container(
@@ -462,13 +509,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             child: Text(
               invite.role.label,
-              style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.white),
+              style: const TextStyle(
+                  fontSize: 9,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
           ),
           const SizedBox(width: 6),
           GestureDetector(
             onTap: () => setState(() => _teamInvites.remove(invite)),
-            child: Icon(Icons.close_rounded, size: 14, color: invite.role.color),
+            child:
+                Icon(Icons.close_rounded, size: 14, color: invite.role.color),
           ),
         ],
       ),
@@ -502,7 +553,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 labelText: 'Rol',
                 prefixIcon: Icon(Icons.badge_outlined),
               ),
-              items: [MembershipRole.admin, MembershipRole.manager, MembershipRole.staff]
+              items: [
+                MembershipRole.admin,
+                MembershipRole.manager,
+                MembershipRole.staff
+              ]
                   .map((r) => DropdownMenuItem(value: r, child: Text(r.label)))
                   .toList(),
               onChanged: (v) => selectedRole = v ?? MembershipRole.staff,
@@ -519,7 +574,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               final email = emailCtrl.text.trim();
               if (email.isNotEmpty && email.contains('@')) {
                 setState(() {
-                  _teamInvites.add(InviteMemberRequest(email: email, role: selectedRole));
+                  _teamInvites.add(
+                      InviteMemberRequest(email: email, role: selectedRole));
                 });
                 Navigator.pop(ctx);
               }
@@ -566,7 +622,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       });
 
       final Uint8List bytes = await file.readAsBytes();
-      
+
       // Convertir a Base64 Data URI para almacenar directamente en la BD
       final ext = file.name.toLowerCase().split('.').last;
       final mimeTypes = {
@@ -601,7 +657,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     if (!_habeasDataAccepted || !_terminosAccepted) {
       setState(() {
-        _error = 'Debes aceptar la Política de Privacidad (Habeas Data) y los Términos y Condiciones para continuar.';
+        _error =
+            'Debes aceptar la Política de Privacidad (Habeas Data) y los Términos y Condiciones para continuar.';
       });
       return;
     }
@@ -615,7 +672,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       if (_selectedRole == 'PRESTADOR') {
         // D-GL-030: sin RUT (documento + número + casilla 53) no se publica.
         if (_rutUrl == null) {
-          setState(() => _error = 'Sube tu RUT: es obligatorio para publicar servicios.');
+          setState(() =>
+              _error = 'Sube tu RUT: es obligatorio para publicar servicios.');
           return;
         }
         final rutNumero = _rutNumeroCtrl.text.trim();
@@ -636,10 +694,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           final codigo = (envioRut?['error'] ?? '').toString();
           final detalle =
               (envioRut?['detalle'] ?? envioRut?['mensaje'] ?? '').toString();
-          final errorHumano = codigo.isNotEmpty &&
-                  !RegExp(r'^[A-Z0-9_]+$').hasMatch(codigo)
-              ? codigo
-              : '';
+          final errorHumano =
+              codigo.isNotEmpty && !RegExp(r'^[A-Z0-9_]+$').hasMatch(codigo)
+                  ? codigo
+                  : '';
           final mensajeError = codigo == 'SIN_SESION'
               ? 'Tu sesión expiró. Vuelve a iniciar sesión para enviar tu RUT.'
               : detalle.isNotEmpty
@@ -679,7 +737,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Future<void> _saveDraft() async {
     if (!_habeasDataAccepted || !_terminosAccepted) {
       setState(() {
-        _error = 'Debes aceptar la Política de Privacidad (Habeas Data) y los Términos y Condiciones para guardar tu borrador.';
+        _error =
+            'Debes aceptar la Política de Privacidad (Habeas Data) y los Términos y Condiciones para guardar tu borrador.';
       });
       return;
     }
@@ -699,7 +758,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       if (result != null && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('✓ Borrador guardado. Puedes completar tu perfil más tarde.'),
+            content: const Text(
+                '✓ Borrador guardado. Puedes completar tu perfil más tarde.'),
             backgroundColor: AppTheme.primary,
           ),
         );
@@ -715,7 +775,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   // Clave global para coordinar el desmuteo en el primer tap del usuario
-  final GlobalKey<BackgroundVideoPlayerState> _videoPlayerKey = GlobalKey<BackgroundVideoPlayerState>();
+  final GlobalKey<BackgroundVideoPlayerState> _videoPlayerKey =
+      GlobalKey<BackgroundVideoPlayerState>();
 
   @override
   Widget build(BuildContext context) {
@@ -738,50 +799,53 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 alignment: Alignment.topCenter,
               ),
             ),
-          SafeArea(
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 680),
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Espaciador superior ampliado para bajar los botones hacia el área inferior
-                      const SizedBox(height: 380),
+            SafeArea(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 680),
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Espaciador superior ampliado para bajar los botones hacia el área inferior
+                        const SizedBox(height: 380),
 
-                      _buildRoleSelectionCards(),
-                      if (_selectedRole == 'PRESTADOR') _buildProviderForm(),
-                      if (_selectedRole == 'SALON') _buildSalonView(),
-                      if (_error != null)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 16),
-                          child: Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.redAccent.withOpacity(0.5)),
-                            ),
-                            child: Text(
-                              _error!,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  color: Colors.redAccent, fontWeight: FontWeight.w600),
+                        _buildRoleSelectionCards(),
+                        if (_selectedRole == 'PRESTADOR') _buildProviderForm(),
+                        if (_selectedRole == 'SALON') _buildSalonView(),
+                        if (_error != null)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                    color: Colors.redAccent.withOpacity(0.5)),
+                              ),
+                              child: Text(
+                                _error!,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    color: Colors.redAccent,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ),
                           ),
-                        ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildRoleSelectionCards() {
     return Column(
@@ -839,7 +903,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   shape: BoxShape.circle,
                   border: Border.all(color: const Color(0xFFEFE8DE)),
                 ),
-                child: const Icon(Icons.domain_rounded, color: Color(0xFFC5A052), size: 28),
+                child: const Icon(Icons.domain_rounded,
+                    color: Color(0xFFC5A052), size: 28),
               ),
               const SizedBox(width: 14),
               const Expanded(
@@ -877,7 +942,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               labelText: 'Nombre del Salón *',
               labelStyle: const TextStyle(color: Color(0xFF4A3E39)),
               hintText: 'Ej. Salón Luxe Suite',
-              prefixIcon: const Icon(Icons.store_outlined, color: Color(0xFFC5A052)),
+              prefixIcon:
+                  const Icon(Icons.store_outlined, color: Color(0xFFC5A052)),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
@@ -888,7 +954,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFC5A052), width: 1.5),
+                borderSide:
+                    const BorderSide(color: Color(0xFFC5A052), width: 1.5),
               ),
             ),
           ),
@@ -901,7 +968,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               labelText: 'NIT o Doc. Tributario',
               labelStyle: const TextStyle(color: Color(0xFF4A3E39)),
               hintText: 'Ej. 901.234.567-8',
-              prefixIcon: const Icon(Icons.badge_outlined, color: Color(0xFFC5A052)),
+              prefixIcon:
+                  const Icon(Icons.badge_outlined, color: Color(0xFFC5A052)),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
@@ -912,7 +980,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFC5A052), width: 1.5),
+                borderSide:
+                    const BorderSide(color: Color(0xFFC5A052), width: 1.5),
               ),
             ),
           ),
@@ -925,13 +994,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 return colombiaMunicipalities.take(15);
               }
               final query = textEditingValue.text.toLowerCase();
-              return colombiaMunicipalities.where((municipality) =>
-                  municipality.toLowerCase().contains(query)).take(25);
+              return colombiaMunicipalities
+                  .where((municipality) =>
+                      municipality.toLowerCase().contains(query))
+                  .take(25);
             },
             onSelected: (String selection) {
               _salonCityCtrl.text = selection;
             },
-            fieldViewBuilder: (context, controller, focusNode, onFieldSubmitted) {
+            fieldViewBuilder:
+                (context, controller, focusNode, onFieldSubmitted) {
               controller.addListener(() {
                 _salonCityCtrl.text = controller.text;
               });
@@ -944,7 +1016,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   labelText: 'Ciudad o Municipio de Colombia',
                   labelStyle: const TextStyle(color: Color(0xFF4A3E39)),
                   hintText: 'Ej. Chía (Cundinamarca) o Medellín (Antioquia)',
-                  prefixIcon: const Icon(Icons.location_city_outlined, color: Color(0xFFC5A052)),
+                  prefixIcon: const Icon(Icons.location_city_outlined,
+                      color: Color(0xFFC5A052)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
@@ -955,7 +1028,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Color(0xFFC5A052), width: 1.5),
+                    borderSide:
+                        const BorderSide(color: Color(0xFFC5A052), width: 1.5),
                   ),
                 ),
               );
@@ -985,7 +1059,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 const Row(
                   children: [
-                    Icon(Icons.workspace_premium_rounded, color: Color(0xFFC5A052), size: 20),
+                    Icon(Icons.workspace_premium_rounded,
+                        color: Color(0xFFC5A052), size: 20),
                     SizedBox(width: 8),
                     Text(
                       'Plan SaaS para tu Salón',
@@ -1034,7 +1109,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     const Row(
                       children: [
-                        Icon(Icons.group_add_rounded, color: Color(0xFFC5A052), size: 20),
+                        Icon(Icons.group_add_rounded,
+                            color: Color(0xFFC5A052), size: 20),
                         SizedBox(width: 8),
                         Text(
                           'Invitar a mi Equipo (Opcional)',
@@ -1048,8 +1124,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     TextButton.icon(
                       onPressed: _showInviteMemberDialog,
-                      icon: const Icon(Icons.person_add_rounded, size: 16, color: Color(0xFFC5A052)),
-                      label: const Text('Agregar', style: TextStyle(fontSize: 12, color: Color(0xFFC5A052), fontWeight: FontWeight.bold)),
+                      icon: const Icon(Icons.person_add_rounded,
+                          size: 16, color: Color(0xFFC5A052)),
+                      label: const Text('Agregar',
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFFC5A052),
+                              fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
@@ -1065,16 +1146,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     decoration: BoxDecoration(
                       color: const Color(0xFFFAF6EE),
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Color(0xFFEFE8DE).withOpacity(0.5)),
+                      border:
+                          Border.all(color: Color(0xFFEFE8DE).withOpacity(0.5)),
                     ),
                     child: const Row(
                       children: [
-                        Icon(Icons.info_outline, size: 16, color: Color(0xFFC5A052)),
+                        Icon(Icons.info_outline,
+                            size: 16, color: Color(0xFFC5A052)),
                         SizedBox(width: 8),
                         Expanded(
                           child: Text(
                             'Sin invitaciones pendientes. Agrega miembros de tu equipo si lo deseas.',
-                            style: TextStyle(fontSize: 12, color: Color(0xFF8C7E74)),
+                            style: TextStyle(
+                                fontSize: 12, color: Color(0xFF8C7E74)),
                           ),
                         ),
                       ],
@@ -1084,7 +1168,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: _teamInvites.map((invite) => _buildInviteChip(invite)).toList(),
+                    children: _teamInvites
+                        .map((invite) => _buildInviteChip(invite))
+                        .toList(),
                   ),
               ],
             ),
@@ -1114,7 +1200,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     const Row(
                       children: [
-                        Icon(Icons.signpost_outlined, color: Color(0xFFC5A052), size: 18),
+                        Icon(Icons.signpost_outlined,
+                            color: Color(0xFFC5A052), size: 18),
                         SizedBox(width: 8),
                         Text(
                           'Dirección de la Sede',
@@ -1136,8 +1223,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         });
                       },
                       child: Text(
-                        _useManualAddress ? 'Usar Asistente Guiado' : 'Escribir Manual',
-                        style: const TextStyle(fontSize: 11, color: Color(0xFFC5A052), fontWeight: FontWeight.bold),
+                        _useManualAddress
+                            ? 'Usar Asistente Guiado'
+                            : 'Escribir Manual',
+                        style: const TextStyle(
+                            fontSize: 11,
+                            color: Color(0xFFC5A052),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -1155,17 +1247,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             filled: true,
                             fillColor: const Color(0xFFFAF6EE),
                             labelText: 'Tipo de Vía',
-                            labelStyle: const TextStyle(fontSize: 12, color: Color(0xFF4A3E39)),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                            labelStyle: const TextStyle(
+                                fontSize: 12, color: Color(0xFF4A3E39)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 10),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFEFE8DE)),
                             ),
                           ),
-                          items: _viaTypes.map((t) => DropdownMenuItem(
-                            value: t,
-                            child: Text(t, style: const TextStyle(fontSize: 13, color: Color(0xFF1F1A15))),
-                          )).toList(),
+                          items: _viaTypes
+                              .map((t) => DropdownMenuItem(
+                                    value: t,
+                                    child: Text(t,
+                                        style: const TextStyle(
+                                            fontSize: 13,
+                                            color: Color(0xFF1F1A15))),
+                                  ))
+                              .toList(),
                           onChanged: (val) {
                             if (val != null) {
                               setState(() {
@@ -1187,11 +1287,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fillColor: const Color(0xFFFAF6EE),
                             labelText: 'Número / Letra',
                             hintText: 'Ej. 93, 15A',
-                            labelStyle: const TextStyle(fontSize: 12, color: Color(0xFF4A3E39)),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                            labelStyle: const TextStyle(
+                                fontSize: 12, color: Color(0xFF4A3E39)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 10),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFEFE8DE)),
                             ),
                           ),
                         ),
@@ -1202,7 +1305,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   // FILA 2: Generador (#) + Placa (-)
                   Row(
                     children: [
-                      const Text('#', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFFC5A052))),
+                      const Text('#',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFC5A052))),
                       const SizedBox(width: 8),
                       Expanded(
                         child: TextField(
@@ -1213,17 +1320,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fillColor: const Color(0xFFFAF6EE),
                             labelText: 'Cruce (#)',
                             hintText: 'Ej. 11',
-                            labelStyle: const TextStyle(fontSize: 12, color: Color(0xFF4A3E39)),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                            labelStyle: const TextStyle(
+                                fontSize: 12, color: Color(0xFF4A3E39)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 10),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFEFE8DE)),
                             ),
                           ),
                         ),
                       ),
                       const SizedBox(width: 8),
-                      const Text('-', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFFC5A052))),
+                      const Text('-',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFFC5A052))),
                       const SizedBox(width: 8),
                       Expanded(
                         child: TextField(
@@ -1234,11 +1348,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fillColor: const Color(0xFFFAF6EE),
                             labelText: 'Placa (-)',
                             hintText: 'Ej. 45',
-                            labelStyle: const TextStyle(fontSize: 12, color: Color(0xFF4A3E39)),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                            labelStyle: const TextStyle(
+                                fontSize: 12, color: Color(0xFF4A3E39)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 10),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFEFE8DE)),
                             ),
                           ),
                         ),
@@ -1254,9 +1371,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       filled: true,
                       fillColor: const Color(0xFFFAF6EE),
                       labelText: 'Complemento (Opcional)',
-                      hintText: 'Ej. Local 102, Piso 2, Centro Comercial Unicentro',
-                      labelStyle: const TextStyle(fontSize: 12, color: Color(0xFF4A3E39)),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      hintText:
+                          'Ej. Local 102, Piso 2, Centro Comercial Unicentro',
+                      labelStyle: const TextStyle(
+                          fontSize: 12, color: Color(0xFF4A3E39)),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 10),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
@@ -1267,15 +1387,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   // PREVIEW DE DIRECCIÓN ARMADA
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFAF6EE),
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Color(0xFFC5A052).withOpacity(0.4)),
+                      border:
+                          Border.all(color: Color(0xFFC5A052).withOpacity(0.4)),
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.pin_drop_rounded, size: 16, color: Color(0xFFC5A052)),
+                        const Icon(Icons.pin_drop_rounded,
+                            size: 16, color: Color(0xFFC5A052)),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
@@ -1298,26 +1421,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                      onPressed: _isGeocodingAddress || _salonAddressCtrl.text.trim().isEmpty
+                      onPressed: _isGeocodingAddress ||
+                              _salonAddressCtrl.text.trim().isEmpty
                           ? null
                           : _geocodeAddressAndFixOnMap,
                       icon: _isGeocodingAddress
                           ? const SizedBox(
                               width: 14,
                               height: 14,
-                              child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF1F1A15)),
+                              child: CircularProgressIndicator(
+                                  strokeWidth: 2, color: Color(0xFF1F1A15)),
                             )
-                          : const Icon(Icons.location_searching_rounded, size: 16),
+                          : const Icon(Icons.location_searching_rounded,
+                              size: 16),
                       label: Text(
-                        _isGeocodingAddress ? 'Fijando en mapa...' : 'Fijar Dirección en el Mapa',
-                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        _isGeocodingAddress
+                            ? 'Fijando en mapa...'
+                            : 'Fijar Dirección en el Mapa',
+                        style: const TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFAF6EE),
                         foregroundColor: const Color(0xFF1F1A15),
                         elevation: 0,
-                        side: const BorderSide(color: Color(0xFFC5A052), width: 1.2),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        side: const BorderSide(
+                            color: Color(0xFFC5A052), width: 1.2),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.symmetric(vertical: 10),
                       ),
                     ),
@@ -1331,7 +1462,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       fillColor: const Color(0xFFFAF6EE),
                       labelText: 'Dirección Completa (Texto Libre)',
                       hintText: 'Ej. Km 5 Vía Cajicá - Chía Vereda Fonquetá',
-                      labelStyle: const TextStyle(fontSize: 12, color: Color(0xFF4A3E39)),
+                      labelStyle: const TextStyle(
+                          fontSize: 12, color: Color(0xFF4A3E39)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
@@ -1342,26 +1474,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                      onPressed: _isGeocodingAddress || _salonAddressCtrl.text.trim().isEmpty
+                      onPressed: _isGeocodingAddress ||
+                              _salonAddressCtrl.text.trim().isEmpty
                           ? null
                           : _geocodeAddressAndFixOnMap,
                       icon: _isGeocodingAddress
                           ? const SizedBox(
                               width: 14,
                               height: 14,
-                              child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF1F1A15)),
+                              child: CircularProgressIndicator(
+                                  strokeWidth: 2, color: Color(0xFF1F1A15)),
                             )
-                          : const Icon(Icons.location_searching_rounded, size: 16),
+                          : const Icon(Icons.location_searching_rounded,
+                              size: 16),
                       label: Text(
-                        _isGeocodingAddress ? 'Fijando en mapa...' : 'Fijar Dirección en el Mapa',
-                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        _isGeocodingAddress
+                            ? 'Fijando en mapa...'
+                            : 'Fijar Dirección en el Mapa',
+                        style: const TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFAF6EE),
                         foregroundColor: const Color(0xFF1F1A15),
                         elevation: 0,
-                        side: const BorderSide(color: Color(0xFFC5A052), width: 1.2),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        side: const BorderSide(
+                            color: Color(0xFFC5A052), width: 1.2),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.symmetric(vertical: 10),
                       ),
                     ),
@@ -1379,7 +1519,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: _salonLocationConfirmed ? const Color(0xFFC5A052) : const Color(0xFFEFE8DE),
+                color: _salonLocationConfirmed
+                    ? const Color(0xFFC5A052)
+                    : const Color(0xFFEFE8DE),
                 width: _salonLocationConfirmed ? 1.5 : 1,
               ),
               boxShadow: [
@@ -1400,7 +1542,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         Icon(
                           Icons.map_rounded,
-                          color: _salonLocationConfirmed ? const Color(0xFFC5A052) : const Color(0xFF4A3E39),
+                          color: _salonLocationConfirmed
+                              ? const Color(0xFFC5A052)
+                              : const Color(0xFF4A3E39),
                           size: 20,
                         ),
                         const SizedBox(width: 8),
@@ -1420,20 +1564,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           : () async {
                               setState(() => _isLocatingSalon = true);
                               try {
-                                LocationPermission permission = await Geolocator.checkPermission();
+                                LocationPermission permission =
+                                    await Geolocator.checkPermission();
                                 if (permission == LocationPermission.denied) {
                                   // FIX-FLUTTER-02: rationale en UI antes del prompt del SO.
                                   if (!mounted) return;
-                                  final accepted = await PermissionRationaleService
-                                      .showRationaleDialog(context, Permission.location);
+                                  final accepted =
+                                      await PermissionRationaleService
+                                          .showRationaleDialog(
+                                              context, Permission.location);
                                   if (accepted) {
-                                    permission = await Geolocator.requestPermission();
+                                    permission =
+                                        await Geolocator.requestPermission();
                                   }
                                 }
-                                if (permission == LocationPermission.whileInUse ||
+                                if (permission ==
+                                        LocationPermission.whileInUse ||
                                     permission == LocationPermission.always) {
-                                  final pos = await Geolocator.getCurrentPosition();
-                                  final newLoc = LatLng(pos.latitude, pos.longitude);
+                                  final pos =
+                                      await Geolocator.getCurrentPosition();
+                                  final newLoc =
+                                      LatLng(pos.latitude, pos.longitude);
                                   setState(() {
                                     _salonLocation = newLoc;
                                     _salonLocationConfirmed = true;
@@ -1441,18 +1592,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   _salonMapController.move(newLoc, 15.5);
                                 }
                               } catch (_) {}
-                              if (mounted) setState(() => _isLocatingSalon = false);
+                              if (mounted)
+                                setState(() => _isLocatingSalon = false);
                             },
                       icon: _isLocatingSalon
                           ? const SizedBox(
                               width: 14,
                               height: 14,
-                              child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFFC5A052)),
+                              child: CircularProgressIndicator(
+                                  strokeWidth: 2, color: Color(0xFFC5A052)),
                             )
-                          : const Icon(Icons.my_location, size: 16, color: Color(0xFFC5A052)),
+                          : const Icon(Icons.my_location,
+                              size: 16, color: Color(0xFFC5A052)),
                       label: const Text(
                         'Usar mi GPS',
-                        style: TextStyle(fontSize: 12, color: Color(0xFFC5A052), fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFFC5A052),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -1483,7 +1640,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                           children: [
                             TileLayer(
-                              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                              urlTemplate:
+                                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                               userAgentPackageName: 'com.glowapp.beauty_app',
                             ),
                             MarkerLayer(
@@ -1496,7 +1654,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     decoration: BoxDecoration(
                                       color: const Color(0xFFC5A052),
                                       shape: BoxShape.circle,
-                                      border: Border.all(color: Colors.white, width: 2.5),
+                                      border: Border.all(
+                                          color: Colors.white, width: 2.5),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.black.withOpacity(0.35),
@@ -1521,7 +1680,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           left: 8,
                           right: 8,
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.75),
                               borderRadius: BorderRadius.circular(8),
@@ -1529,8 +1689,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             child: Row(
                               children: [
                                 Icon(
-                                  _salonLocationConfirmed ? Icons.check_circle : Icons.touch_app,
-                                  color: _salonLocationConfirmed ? const Color(0xFFC5A052) : Colors.white,
+                                  _salonLocationConfirmed
+                                      ? Icons.check_circle
+                                      : Icons.touch_app,
+                                  color: _salonLocationConfirmed
+                                      ? const Color(0xFFC5A052)
+                                      : Colors.white,
                                   size: 15,
                                 ),
                                 const SizedBox(width: 6),
@@ -1539,7 +1703,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     _salonLocationConfirmed
                                         ? 'Ubicación confirmada: ${_salonLocation.latitude.toStringAsFixed(4)}, ${_salonLocation.longitude.toStringAsFixed(4)}'
                                         : 'Toca el mapa para fijar el marcador exacto',
-                                    style: const TextStyle(color: Colors.white, fontSize: 11),
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 11),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -1561,7 +1726,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   contentPadding: EdgeInsets.zero,
                   title: const Text(
                     'Publicar ubicación en el Mapa de GlowApp',
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF1F1A15)),
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF1F1A15)),
                   ),
                   subtitle: const Text(
                     'Permite que nuevos clientes vean tu salón y reserven citas directas desde Home.',
@@ -1581,7 +1749,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               labelText: 'Teléfono de Contacto',
               labelStyle: const TextStyle(color: Color(0xFF4A3E39)),
               hintText: 'Ej. +573009998877',
-              prefixIcon: const Icon(Icons.phone_outlined, color: Color(0xFFC5A052)),
+              prefixIcon:
+                  const Icon(Icons.phone_outlined, color: Color(0xFFC5A052)),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: Color(0xFFEFE8DE)),
@@ -1592,17 +1761,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFC5A052), width: 1.5),
+                borderSide:
+                    const BorderSide(color: Color(0xFFC5A052), width: 1.5),
               ),
             ),
           ),
           const SizedBox(height: 18),
           CheckboxListTile(
             value: _habeasDataAccepted,
-            onChanged: (val) => setState(() => _habeasDataAccepted = val ?? false),
+            onChanged: (val) =>
+                setState(() => _habeasDataAccepted = val ?? false),
             title: const Text(
               'Acepto la Política de Tratamiento de Datos Personales (Habeas Data - Ley 1581 de 2012).',
-              style: TextStyle(fontSize: 12, color: Color(0xFF1F1A15), fontWeight: FontWeight.w500),
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF1F1A15),
+                  fontWeight: FontWeight.w500),
             ),
             activeColor: const Color(0xFFC5A052),
             contentPadding: EdgeInsets.zero,
@@ -1610,10 +1784,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           CheckboxListTile(
             value: _terminosAccepted,
-            onChanged: (val) => setState(() => _terminosAccepted = val ?? false),
+            onChanged: (val) =>
+                setState(() => _terminosAccepted = val ?? false),
             title: const Text(
               'Acepto los Términos y Condiciones de Licencia SaaS de la plataforma GlowApp.',
-              style: TextStyle(fontSize: 12, color: Color(0xFF1F1A15), fontWeight: FontWeight.w500),
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF1F1A15),
+                  fontWeight: FontWeight.w500),
             ),
             activeColor: const Color(0xFFC5A052),
             contentPadding: EdgeInsets.zero,
@@ -1644,7 +1822,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 backgroundColor: Colors.transparent,
                 shadowColor: Colors.transparent,
                 foregroundColor: const Color(0xFF1F1A15),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
                 elevation: 0,
               ),
               child: _isLoading
@@ -1655,11 +1834,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         const SizedBox(
                           width: 22,
                           height: 22,
-                          child: CircularProgressIndicator(color: Color(0xFF1F1A15), strokeWidth: 2.5),
+                          child: CircularProgressIndicator(
+                              color: Color(0xFF1F1A15), strokeWidth: 2.5),
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          _isCreatingSaasProfile ? 'PROVISIONANDO CUENTA…' : 'CREANDO SALÓN…',
+                          _isCreatingSaasProfile
+                              ? 'PROVISIONANDO CUENTA…'
+                              : 'CREANDO SALÓN…',
                           style: const TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 12,
@@ -1689,7 +1871,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget _buildProviderForm() {
     final bool atLeastOneDocUploaded =
         _documentoUrl != null || _rutUrl != null || _certificacionUrl != null;
-    final bool isSubmitEnabled = _habeasDataAccepted && _terminosAccepted && atLeastOneDocUploaded;
+    final bool isSubmitEnabled =
+        _habeasDataAccepted && _terminosAccepted && atLeastOneDocUploaded;
 
     return Container(
       margin: const EdgeInsets.only(top: 16),
@@ -1738,7 +1921,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: 8),
           const Row(
             children: [
-              Icon(Icons.account_balance_wallet, color: Color(0xFFC5A052), size: 20),
+              Icon(Icons.account_balance_wallet,
+                  color: Color(0xFFC5A052), size: 20),
               SizedBox(width: 10),
               Expanded(
                 child: Text(
@@ -1764,7 +1948,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: 14),
           const Text(
             'La ley colombiana nos pide verificar tu formación profesional — ¡es por tu seguridad y la de tus clientes!',
-            style: TextStyle(fontSize: 11, color: Color(0xFF5C4E48), height: 1.3),
+            style:
+                TextStyle(fontSize: 11, color: Color(0xFF5C4E48), height: 1.3),
           ),
           const SizedBox(height: 18),
 
@@ -1828,7 +2013,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Text(
                         'GlowApp invierte en publicidad para traerte clientes, cubre el procesamiento seguro de pagos con Wompi, provee soporte 24/7 y gestiona el reporte de impuestos estatales. A cambio, retenemos una comisión fija del 20% sobre servicios exitosos. ¡Si tú no ganas, nosotros tampoco!',
                         style: TextStyle(
-                          fontSize: 12, color: Color(0xFF4A3E39), height: 1.3),
+                            fontSize: 12,
+                            color: Color(0xFF4A3E39),
+                            height: 1.3),
                       ),
                     ],
                   ),
@@ -1841,10 +2028,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           // Checkbox Habeas Data
           CheckboxListTile(
             value: _habeasDataAccepted,
-            onChanged: (val) => setState(() => _habeasDataAccepted = val ?? false),
+            onChanged: (val) =>
+                setState(() => _habeasDataAccepted = val ?? false),
             title: const Text(
               'Acepto la política de protección de datos (Habeas Data - Ley 1581 de 2012) de la aplicación GlowApp.',
-              style: TextStyle(fontSize: 12, color: Color(0xFF1F1A15), fontWeight: FontWeight.w500),
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF1F1A15),
+                  fontWeight: FontWeight.w500),
             ),
             activeColor: const Color(0xFFC5A052),
             contentPadding: EdgeInsets.zero,
@@ -1852,10 +2043,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           CheckboxListTile(
             value: _terminosAccepted,
-            onChanged: (val) => setState(() => _terminosAccepted = val ?? false),
+            onChanged: (val) =>
+                setState(() => _terminosAccepted = val ?? false),
             title: const Text(
               'Acepto los Términos y Condiciones y el Contrato de Prestación de Servicios de GlowApp.',
-              style: TextStyle(fontSize: 12, color: Color(0xFF1F1A15), fontWeight: FontWeight.w500),
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF1F1A15),
+                  fontWeight: FontWeight.w500),
             ),
             activeColor: const Color(0xFFC5A052),
             contentPadding: EdgeInsets.zero,
@@ -1865,7 +2060,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             padding: EdgeInsets.only(left: 16, top: 4),
             child: Text(
               'Sin contratos de permanencia. Puedes pausar o eliminar tu cuenta en cualquier momento.',
-              style: TextStyle(fontSize: 11, color: Color(0xFF5C4E48), height: 1.3),
+              style: TextStyle(
+                  fontSize: 11, color: Color(0xFF5C4E48), height: 1.3),
             ),
           ),
           const SizedBox(height: 24),
@@ -1894,20 +2090,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   : null,
             ),
             child: ElevatedButton(
-              onPressed: (_isLoading || !isSubmitEnabled) ? null : _submitOnboarding,
+              onPressed:
+                  (_isLoading || !isSubmitEnabled) ? null : _submitOnboarding,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
                 shadowColor: Colors.transparent,
                 foregroundColor: const Color(0xFF1F1A15),
                 disabledBackgroundColor: Colors.transparent,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
                 elevation: 0,
               ),
               child: _isLoading
                   ? const SizedBox(
                       width: 22,
                       height: 22,
-                      child: CircularProgressIndicator(color: Color(0xFF1F1A15), strokeWidth: 2.5),
+                      child: CircularProgressIndicator(
+                          color: Color(0xFF1F1A15), strokeWidth: 2.5),
                     )
                   : const Text(
                       'ENVIAR PARA VERIFICACIÓN',
@@ -1940,7 +2139,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: Text(
                     'Nuestro equipo validará tus documentos en menos de 24 horas hábiles. Te notificaremos por la app apenas tu cuenta esté activa.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 11, color: Color(0xFF5C4E48), height: 1.3),
+                    style: TextStyle(
+                        fontSize: 11, color: Color(0xFF5C4E48), height: 1.3),
                   ),
                 ),
               ],
@@ -1961,7 +2161,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               foregroundColor: const Color(0xFF8C5D00),
               side: const BorderSide(color: Color(0xFFC5A052), width: 1.2),
               padding: const EdgeInsets.symmetric(vertical: 14),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
               elevation: 0,
               minimumSize: const Size(double.infinity, 48),
             ),
@@ -1978,7 +2179,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget _buildProgressStepper() {
     final int currentStep = _isLoading
         ? 3
-        : (_documentoUrl != null || _rutUrl != null || _certificacionUrl != null) ? 2 : 1;
+        : (_documentoUrl != null ||
+                _rutUrl != null ||
+                _certificacionUrl != null)
+            ? 2
+            : 1;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
@@ -2037,7 +2242,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           text,
           style: TextStyle(
             fontSize: 10,
-            color: isCompleted ? const Color(0xFF1F1A15) : const Color(0xFF8C7E74),
+            color:
+                isCompleted ? const Color(0xFF1F1A15) : const Color(0xFF8C7E74),
             fontWeight: isCompleted ? FontWeight.bold : FontWeight.normal,
           ),
         ),
@@ -2193,13 +2399,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ChoiceChip(
                 label: const Text('Sí, responsable (48)'),
                 selected: _rutCodigoResponsabilidad == 48,
-                onSelected: (_) => setState(() => _rutCodigoResponsabilidad = 48),
+                onSelected: (_) =>
+                    setState(() => _rutCodigoResponsabilidad = 48),
                 selectedColor: const Color(0xFFC5A052),
               ),
               ChoiceChip(
                 label: const Text('No responsable (49)'),
                 selected: _rutCodigoResponsabilidad == 49,
-                onSelected: (_) => setState(() => _rutCodigoResponsabilidad = 49),
+                onSelected: (_) =>
+                    setState(() => _rutCodigoResponsabilidad = 49),
                 selectedColor: const Color(0xFFC5A052),
               ),
             ],
@@ -2230,7 +2438,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: isUploaded ? const Color(0xFFC5A052) : const Color(0xFFEFE8DE),
+            color:
+                isUploaded ? const Color(0xFFC5A052) : const Color(0xFFEFE8DE),
             width: 1.5,
           ),
           boxShadow: [
@@ -2265,7 +2474,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   const SizedBox(height: 2),
                   Text(
                     subtitle,
-                    style: const TextStyle(fontSize: 11, color: Color(0xFF5C4E48)),
+                    style:
+                        const TextStyle(fontSize: 11, color: Color(0xFF5C4E48)),
                   ),
                 ],
               ),
@@ -2291,7 +2501,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               )
             else
-              const Icon(Icons.arrow_forward_ios, size: 14, color: Color(0xFF8C7E74)),
+              const Icon(Icons.arrow_forward_ios,
+                  size: 14, color: Color(0xFF8C7E74)),
           ],
         ),
       ),
@@ -2327,7 +2538,8 @@ class _RoleCard extends StatelessWidget {
               : Colors.white.withOpacity(0.94),
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
-            color: isSelected ? const Color(0xFFC5A052) : const Color(0xFFEFE8DE),
+            color:
+                isSelected ? const Color(0xFFC5A052) : const Color(0xFFEFE8DE),
             width: isSelected ? 1.5 : 1,
           ),
           boxShadow: [
@@ -2359,7 +2571,9 @@ class _RoleCard extends StatelessWidget {
               child: Icon(
                 icon,
                 size: 18,
-                color: isSelected ? const Color(0xFFC5A052) : const Color(0xFF8C7E74),
+                color: isSelected
+                    ? const Color(0xFFC5A052)
+                    : const Color(0xFF8C7E74),
               ),
             ),
             const SizedBox(width: 12),
@@ -2375,7 +2589,9 @@ class _RoleCard extends StatelessWidget {
                         fontFamily: 'CormorantGaramond',
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: isSelected ? const Color(0xFF1F1A15) : const Color(0xFF4A3E39),
+                        color: isSelected
+                            ? const Color(0xFF1F1A15)
+                            : const Color(0xFF4A3E39),
                       ),
                     ),
                     TextSpan(
@@ -2383,7 +2599,9 @@ class _RoleCard extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 12,
-                        color: isSelected ? const Color(0xFF1F1A15) : const Color(0xFF8C7E74),
+                        color: isSelected
+                            ? const Color(0xFF1F1A15)
+                            : const Color(0xFF8C7E74),
                       ),
                     ),
                   ],
@@ -2392,9 +2610,13 @@ class _RoleCard extends StatelessWidget {
             ),
             const SizedBox(width: 6),
             Icon(
-              isSelected ? Icons.check_circle_rounded : Icons.arrow_forward_ios_rounded,
+              isSelected
+                  ? Icons.check_circle_rounded
+                  : Icons.arrow_forward_ios_rounded,
               size: isSelected ? 20 : 14,
-              color: isSelected ? const Color(0xFFC5A052) : const Color(0xFF8C7E74),
+              color: isSelected
+                  ? const Color(0xFFC5A052)
+                  : const Color(0xFF8C7E74),
             ),
           ],
         ),

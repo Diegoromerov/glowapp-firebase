@@ -445,7 +445,8 @@ async function markInvoicePaid(invoiceId, paymentData = {}) {
 function getPlanPrice(plan, currency = 'COP') {
   const definition = PLAN_CATALOG[String(plan || '').toUpperCase().trim()];
   if (!definition) return 0;
-  return currency === 'USD' ? definition.priceUsd : definition.priceCop;
+  const price = currency === 'USD' ? definition.priceUsd : definition.priceCop;
+  return Number.isFinite(Number(price)) ? Number(price) : 0;
 }
 
 function calculateDaysRemaining(periodEnd) {

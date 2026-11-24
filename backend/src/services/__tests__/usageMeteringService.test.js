@@ -21,22 +21,22 @@ describe('usageMeteringService', () => {
       const limits = usageMeteringService.getPlanLimits('FREE_TRIAL');
       
       expect(limits.MAP_VISIBILITY).toBe(1);
-      expect(limits.ONLINE_BOOKING).toBe(50);
+      expect(limits.ONLINE_BOOKING).toBe(150);
       expect(limits.TEAM_SEATS).toBe(3);
-      expect(limits.API_CALLS).toBe(1000);
-      expect(limits.ADVANCED_ANALYTICS).toBe(0);
+      expect(limits.API_CALLS).toBe(0);
+      expect(limits.ADVANCED_ANALYTICS).toBe(1);
       expect(limits.CUSTOM_BRANDING).toBe(1);
-      expect(limits.WHATSAPP_INTEGRATION).toBe(0);
-      expect(limits.POS_INTEGRATION).toBe(0);
+      expect(limits.WHATSAPP_MESSAGES).toBe(20);
+      expect(limits.POS_INTEGRATION).toBe(1);
     });
 
     test('plan FREEMIUM → límites restrictivos', () => {
       const limits = usageMeteringService.getPlanLimits('FREEMIUM');
       
-      expect(limits.MAP_VISIBILITY).toBe(0);
-      expect(limits.ONLINE_BOOKING).toBe(20);
+      expect(limits.MAP_VISIBILITY).toBe(1);
+      expect(limits.ONLINE_BOOKING).toBe(30);
       expect(limits.TEAM_SEATS).toBe(1);
-      expect(limits.API_CALLS).toBe(500);
+      expect(limits.API_CALLS).toBe(0);
       expect(limits.ADVANCED_ANALYTICS).toBe(0);
       expect(limits.CUSTOM_BRANDING).toBe(0);
     });
@@ -82,13 +82,13 @@ describe('usageMeteringService', () => {
 
     test('feature deshabilitada (0) → false', () => {
       expect(usageMeteringService.hasFeature('FREEMIUM', 'ADVANCED_ANALYTICS')).toBe(false);
-      expect(usageMeteringService.hasFeature('FREEMIUM', 'MAP_VISIBILITY')).toBe(false);
+      expect(usageMeteringService.hasFeature('FREEMIUM', 'MAP_VISIBILITY')).toBe(true);
     });
   });
 
   describe('getLimit', () => {
     test('retorna valor numérico', () => {
-      expect(usageMeteringService.getLimit('BASIC', 'ONLINE_BOOKING')).toBe(200);
+      expect(usageMeteringService.getLimit('BASIC', 'ONLINE_BOOKING')).toBeNull();
     });
 
     test('retorna null para ilimitado', () => {
@@ -96,7 +96,7 @@ describe('usageMeteringService', () => {
     });
 
     test('retorna 0 para feature no disponible', () => {
-      expect(usageMeteringService.getLimit('FREEMIUM', 'MAP_VISIBILITY')).toBe(0);
+      expect(usageMeteringService.getLimit('FREEMIUM', 'API_CALLS')).toBe(0);
     });
   });
 
@@ -115,7 +115,7 @@ describe('usageMeteringService', () => {
         .mockResolvedValueOnce({ rows: [{ saas_plan: 'FREEMIUM' }] })  // getTenantPlan
         .mockResolvedValueOnce({ rows: [] }); // usage_metrics
       
-      const result = await usageMeteringService.canConsume('bp_123', 'MAP_VISIBILITY');
+      const result = await usageMeteringService.canConsume('bp_123', 'API_CALLS');
       
       expect(result.allowed).toBe(false);
       expect(result.reason).toBe('Feature no disponible en plan');
@@ -135,27 +135,27 @@ describe('usageMeteringService', () => {
 
     test('uso actual < límite → allowed: true con remaining', async () => {
       pool.query
-        .mockResolvedValueOnce({ rows: [{ saas_plan: 'BASIC' }] })
-        .mockResolvedValueOnce({ rows: [{ count: 50 }] }); // usage actual
+        .mockResolvedValueOnce({ rows: [{ saas_plan: 'FREEMIUM' }] })
+        .mockResolvedValueOnce({ rows: [{ count: 20 }] }); // usage actual
       
       const result = await usageMeteringService.canConsume('bp_123', 'ONLINE_BOOKING', 1);
       
       expect(result.allowed).toBe(true);
-      expect(result.limit).toBe(200);
-      expect(result.current).toBe(50);
-      expect(result.remaining).toBe(149); // 200 - 50 - 1
+      expect(result.limit).toBe(30);
+      expect(result.current).toBe(20);
+      expect(result.remaining).toBe(9);
     });
 
     test('uso actual + delta > límite → allowed: false', async () => {
       pool.query
-        .mockResolvedValueOnce({ rows: [{ saas_plan: 'BASIC' }] })
-        .mockResolvedValueOnce({ rows: [{ count: 199 }] });
+        .mockResolvedValueOnce({ rows: [{ saas_plan: 'FREEMIUM' }] })
+        .mockResolvedValueOnce({ rows: [{ count: 29 }] });
       
       const result = await usageMeteringService.canConsume('bp_123', 'ONLINE_BOOKING', 5);
       
       expect(result.allowed).toBe(false);
       expect(result.reason).toBe('Límite excedido');
-      expect(result.remaining).toBe(1); // remaining = limit - current = 200 - 199 = 1, then max(0, 1) = 1
+      expect(result.remaining).toBe(1);
     });
   });
 
@@ -163,15 +163,15 @@ describe('usageMeteringService', () => {
     test('incrementa contador y retorna nuevo count', async () => {
       pool.query
         .mockResolvedValueOnce({ rows: [{ saas_plan: 'BASIC' }] })  // getTenantPlan
-        .mockResolvedValueOnce({ rows: [{ count: 51, limit: 200 }] }); // UPSERT result
+        .mockResolvedValueOnce({ rows: [{ count: 51, limit: null }] }); // UPSERT result
       
       const result = await usageMeteringService.incrementUsage('bp_123', 'ONLINE_BOOKING', 1);
       
       expect(result.count).toBe(51);
-      expect(result.limit).toBe(200);
+      expect(result.limit).toBeNull();
       expect(pool.query).toHaveBeenCalledWith(
         expect.stringContaining('INSERT INTO usage_metrics'),
-        expect.arrayContaining(['bp_123', 'ONLINE_BOOKING', expect.any(String), expect.any(String), 1, 200])
+        expect.arrayContaining(['bp_123', 'ONLINE_BOOKING', expect.any(String), expect.any(String), 1, null])
       );
     });
   });

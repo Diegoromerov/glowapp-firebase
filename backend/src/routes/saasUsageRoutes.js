@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
     // explícita servicio→perfil; el provider_id sirve solo para el esquema viejo
     // cuando identifica un único perfil.
     let existingBookings = null;
-    if (!metricMap.has('ONLINE_BOOKING')) {
+    if (!metricMap.has('DIRECT_BOOKINGS')) {
       const { rows: businesses } = await pool.query(
         'SELECT provider_id FROM business_profiles WHERE id = $1', [tenantId]
       );
@@ -72,6 +72,7 @@ router.get('/', async (req, res) => {
           FROM bookings b
           JOIN services s ON s.id = b.service_id
           WHERE s.business_profile_id = $1 AND b.created_at >= $2
+            AND b.productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
         `, [tenantId, periodStart.toISOString().split('T')[0]]);
         existingBookings = Number(rows[0]?.count || 0);
       } else if (providerId) {
@@ -82,6 +83,7 @@ router.get('/', async (req, res) => {
           const { rows } = await pool.query(`
             SELECT COUNT(DISTINCT (client_id, provider_id, scheduled_at))::integer AS count
             FROM bookings WHERE provider_id = $1 AND created_at >= $2
+              AND productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
           `, [providerId, periodStart.toISOString().split('T')[0]]);
           existingBookings = Number(rows[0]?.count || 0);
         }
@@ -92,12 +94,13 @@ router.get('/', async (req, res) => {
     const planLimits = usageMeteringService.getPlanLimits(plan);
 
     // Calcular % de uso y alertas
-    const usage = Object.keys(planLimits).map(feature => {
+    const visibleFeatures = Object.keys(planLimits).filter((feature) => feature !== 'ONLINE_BOOKING');
+    const usage = visibleFeatures.map(feature => {
       const metric = metrics.find(m => m.feature === feature);
       const limit = planLimits[feature];
       const used = feature === 'TEAM_SEATS' && teamSeatsInUse !== null
         ? teamSeatsInUse
-        : feature === 'ONLINE_BOOKING' && existingBookings !== null
+        : feature === 'DIRECT_BOOKINGS' && existingBookings !== null
           ? existingBookings
           : metric?.count || 0;
       const percentage = limit && limit > 0 ? Math.round((used / limit) * 100) : 0;

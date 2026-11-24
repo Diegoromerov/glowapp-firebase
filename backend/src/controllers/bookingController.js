@@ -546,7 +546,12 @@ exports.createBooking = async (req, res) => {
       // Medir y aplicar reservas SaaS dentro de la misma transacción que crea
       // las citas. Así una carrera no permite superar el límite mensual y una
       // reserva duplicada no consume cuota.
+      // Solo una reserva creada desde la app del salón consume la cuota
+      // comercial de reservas directas. Las reservas de clientes del
+      // marketplace se procesan igual, pero no entran en este contador.
       const serviciosPorTenant = new Map();
+      const isDirectProviderBooking = req.appAudience === 'provider';
+      if (isDirectProviderBooking) {
       if (businessProfileId) serviciosPorTenant.set(String(businessProfileId), 1);
       const servicesHaveTenantColumn = await servicesTieneBusinessProfileId(t);
       if (serviciosPorTenant.size === 0 && servicesHaveTenantColumn) {
@@ -575,10 +580,10 @@ exports.createBooking = async (req, res) => {
         );
         if (tenants.length === 0) continue;
         const plan = tenants[0].saas_plan || 'FREEMIUM';
-        const limit = usageMeteringService.getLimit(plan, 'ONLINE_BOOKING');
+        const limit = usageMeteringService.getLimit(plan, 'DIRECT_BOOKINGS');
         const { start: periodStart, end: periodEnd } = getMonthPeriod();
         const existingUsage = await sequelize.query(
-          `SELECT count FROM usage_metrics WHERE tenant_id = :tenantId AND feature = 'ONLINE_BOOKING' AND period_start = :periodStart`,
+          `SELECT count FROM usage_metrics WHERE tenant_id = :tenantId AND feature = 'DIRECT_BOOKINGS' AND period_start = :periodStart`,
           { replacements: { tenantId, periodStart }, type: sequelize.QueryTypes.SELECT, transaction: t }
         );
         let currentUsage = Number(existingUsage[0]?.count || 0);
@@ -592,12 +597,14 @@ exports.createBooking = async (req, res) => {
                WHERE s.business_profile_id = :tenantId
                  AND b.created_at >= CAST(:periodStart AS date)
                  AND b.created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')
+                 AND b.productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
                  AND COALESCE((b.productos_adicionales->>'is_primary')::boolean, true) = true`
             : `SELECT COUNT(DISTINCT COALESCE(productos_adicionales->>'primary_booking_id', id::text))::integer AS count
                FROM bookings
                WHERE provider_id = :providerId
                  AND created_at >= CAST(:periodStart AS date)
                  AND created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')
+                 AND productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
                  AND COALESCE((productos_adicionales->>'is_primary')::boolean, true) = true`;
           const historicalRows = await sequelize.query(historicalQuery, {
             replacements: {
@@ -612,12 +619,12 @@ exports.createBooking = async (req, res) => {
         }
         if (limit === 0 || (limit !== null && currentUsage + delta > limit)) {
           throw Object.assign(new Error('límite mensual de reservas alcanzado'), {
-            code: 'SAAS_QUOTA_EXCEEDED', feature: 'ONLINE_BOOKING', limit, current: currentUsage, plan,
+            code: 'SAAS_QUOTA_EXCEEDED', feature: 'DIRECT_BOOKINGS', limit, current: currentUsage, plan,
           });
         }
         const usageRows = await sequelize.query(`
           INSERT INTO usage_metrics (tenant_id, feature, period_start, period_end, count, "limit")
-          VALUES (:tenantId, 'ONLINE_BOOKING', :periodStart, :periodEnd, :initialCount, :limit)
+          VALUES (:tenantId, 'DIRECT_BOOKINGS', :periodStart, :periodEnd, :initialCount, :limit)
           ON CONFLICT (tenant_id, feature, period_start)
           DO UPDATE SET
             count = usage_metrics.count + EXCLUDED.count,
@@ -636,14 +643,15 @@ exports.createBooking = async (req, res) => {
         });
         if (usageRows.length === 0) {
           const currentRows = await sequelize.query(
-            `SELECT count FROM usage_metrics WHERE tenant_id = :tenantId AND feature = 'ONLINE_BOOKING' AND period_start = :periodStart`,
+            `SELECT count FROM usage_metrics WHERE tenant_id = :tenantId AND feature = 'DIRECT_BOOKINGS' AND period_start = :periodStart`,
             { replacements: { tenantId, periodStart }, type: sequelize.QueryTypes.SELECT, transaction: t }
           );
           throw Object.assign(new Error('límite mensual de reservas alcanzado'), {
-            code: 'SAAS_QUOTA_EXCEEDED', feature: 'ONLINE_BOOKING', limit,
+            code: 'SAAS_QUOTA_EXCEEDED', feature: 'DIRECT_BOOKINGS', limit,
           current: Number(currentRows[0]?.count ?? currentUsage), plan,
           });
         }
+      }
       }
 
       for (let i = 0; i < orderedServices.length; i++) {
@@ -658,6 +666,7 @@ exports.createBooking = async (req, res) => {
 
         const metadata = {
           products: bookingProducts,
+          booking_origin: req.appAudience === 'provider' ? 'SALON_DIRECT' : 'MARKETPLACE',
           linked_booking_ids: generatedIds.filter(id => id !== currentId),
           is_primary: isPrimary,
           primary_booking_id: generatedIds[0],

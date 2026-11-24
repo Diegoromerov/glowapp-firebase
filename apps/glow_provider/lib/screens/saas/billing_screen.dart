@@ -60,7 +60,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       if (!mounted) return;
       _toast('Cuenta SaaS activada');
     } catch (e) {
-      if (mounted) _toast('No se pudo activar la cuenta: ${mensajeHumano(e)}', error: true);
+      if (mounted)
+        _toast('No se pudo activar la cuenta: ${mensajeHumano(e)}',
+            error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -76,7 +78,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     if (profileState.profile == null) {
       return Scaffold(
         backgroundColor: _bg,
-        appBar: AppBar(title: const Text('Facturación'), backgroundColor: _bg, foregroundColor: _ink),
+        appBar: AppBar(
+            title: const Text('Facturación'),
+            backgroundColor: _bg,
+            foregroundColor: _ink),
         body: profileState.isLoading
             ? const Center(child: CircularProgressIndicator())
             : _notProvisioned(),
@@ -105,7 +110,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
           ? const Center(child: CircularProgressIndicator())
           : RefreshIndicator(
               onRefresh: () async {
-                await ref.read(billingProvider.notifier).load(businessProfileId);
+                await ref
+                    .read(billingProvider.notifier)
+                    .load(businessProfileId);
                 await ref.read(plansProvider.notifier).load();
               },
               child: ListView(
@@ -139,7 +146,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
             const Icon(Icons.storefront_rounded, size: 48, color: _gold),
             const SizedBox(height: 12),
             const Text('Cuenta SaaS no activada',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: _ink)),
+                style: TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.bold, color: _ink)),
             const SizedBox(height: 8),
             const Text(
               'Tu salón existe, pero aún no tiene perfil SaaS con plan y facturación. '
@@ -149,7 +157,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
             ),
             const SizedBox(height: 16),
             FilledButton.icon(
-              style: FilledButton.styleFrom(backgroundColor: _gold, foregroundColor: _ink),
+              style: FilledButton.styleFrom(
+                  backgroundColor: _gold, foregroundColor: _ink),
               onPressed: _busy ? null : _provision,
               icon: const Icon(Icons.rocket_launch_rounded, size: 18),
               label: const Text('Activar cuenta SaaS'),
@@ -212,8 +221,11 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
               children: [
                 Container(
                   padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(color: tier.color, borderRadius: BorderRadius.circular(12)),
-                  child: const Icon(Icons.workspace_premium_rounded, color: Colors.white, size: 26),
+                  decoration: BoxDecoration(
+                      color: tier.color,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: const Icon(Icons.workspace_premium_rounded,
+                      color: Colors.white, size: 26),
                 ),
                 const SizedBox(width: 14),
                 Expanded(
@@ -222,15 +234,20 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                     children: [
                       Text(
                         'Plan ${tier.label}',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: tier.color),
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: tier.color),
                       ),
                       const SizedBox(height: 2),
-                      Text(tier.formattedPrice, style: const TextStyle(fontSize: 13, color: _muted)),
+                      Text(tier.formattedPrice,
+                          style: const TextStyle(fontSize: 13, color: _muted)),
                     ],
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
                     color: statusColor.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(20),
@@ -238,7 +255,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                   ),
                   child: Text(
                     statusLabel,
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: statusColor),
+                    style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: statusColor),
                   ),
                 ),
               ],
@@ -282,7 +302,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       children: [
         Icon(icon, size: 16, color: color),
         const SizedBox(width: 8),
-        Expanded(child: Text(text, style: TextStyle(fontSize: 12, color: color, height: 1.4))),
+        Expanded(
+            child: Text(text,
+                style: TextStyle(fontSize: 12, color: color, height: 1.4))),
       ],
     );
   }
@@ -291,15 +313,20 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
   Widget _changePlanSection(List<SaasPlan> plans, SaasPlanTier current) {
     final candidates = plans
-        .where((p) => p.tier != current && p.tier != SaasPlanTier.freeTrial)
+        .where((p) =>
+            p.isActive && p.tier != current && p.tier != SaasPlanTier.freeTrial)
         .toList()
       ..sort((a, b) => a.tier.index.compareTo(b.tier.index));
 
     return _section(
       title: 'Cambiar Plan',
-      subtitle: 'Los upgrades se pagan en línea; los downgrades aplican de inmediato.',
+      subtitle:
+          'Los upgrades se pagan en línea; los downgrades aplican de inmediato.',
       children: candidates.isEmpty
-          ? [const Text('No hay otros planes disponibles.', style: TextStyle(color: _muted, fontSize: 13))]
+          ? [
+              const Text('No hay otros planes disponibles.',
+                  style: TextStyle(color: _muted, fontSize: 13))
+            ]
           : candidates.map((p) => _planRow(p, current)).toList(),
     );
   }
@@ -326,25 +353,34 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                     Row(
                       children: [
                         Text(plan.name,
-                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: plan.tier.color)),
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: plan.tier.color)),
                         if (plan.isPopular) ...[
                           const SizedBox(width: 8),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
                               color: _gold.withOpacity(0.15),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: const Text('Recomendado',
-                                style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: _gold)),
+                                style: TextStyle(
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.bold,
+                                    color: _gold)),
                           ),
                         ],
                       ],
                     ),
                     const SizedBox(height: 2),
-                    Text(plan.tier.formattedPrice, style: const TextStyle(fontSize: 12, color: _muted)),
+                    Text(plan.tier.formattedPrice,
+                        style: const TextStyle(fontSize: 12, color: _muted)),
                     const SizedBox(height: 4),
-                    Text(plan.description, style: const TextStyle(fontSize: 11, color: _muted)),
+                    Text(plan.description,
+                        style: const TextStyle(fontSize: 11, color: _muted)),
                   ],
                 ),
               ),
@@ -354,7 +390,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                   backgroundColor: isUpgrade ? plan.tier.color : _line,
                   foregroundColor: isUpgrade ? Colors.white : _ink,
                 ),
-                onPressed: _busy ? null : () => _onPlanSelected(plan, isUpgrade),
+                onPressed:
+                    _busy ? null : () => _onPlanSelected(plan, isUpgrade),
                 child: Text(isUpgrade ? 'Mejorar' : 'Cambiar'),
               ),
             ],
@@ -365,12 +402,15 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
             runSpacing: 4,
             children: plan.features
                 .map((f) => Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
                         color: plan.tier.color.withOpacity(0.08),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Text(f, style: TextStyle(fontSize: 10, color: plan.tier.color)),
+                      child: Text(f,
+                          style:
+                              TextStyle(fontSize: 10, color: plan.tier.color)),
                     ))
                 .toList(),
           ),
@@ -408,13 +448,15 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     try {
       final session = await ref.read(billingProvider.notifier).createCheckout(
             id,
-            CreateCheckoutRequest(planId: plan.tier.code, successUrl: '', cancelUrl: ''),
+            CreateCheckoutRequest(
+                planId: plan.tier.code, successUrl: '', cancelUrl: ''),
           );
       if (session.url.isEmpty) {
         _toast('El servidor no devolvió una URL de pago', error: true);
         return;
       }
-      await launchUrl(Uri.parse(session.url), mode: LaunchMode.externalApplication);
+      await launchUrl(Uri.parse(session.url),
+          mode: LaunchMode.externalApplication);
     } catch (e) {
       _toast('No se pudo iniciar el pago: ${mensajeHumano(e)}', error: true);
     } finally {
@@ -427,7 +469,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
   Widget _invoicesSection(List<Invoice> invoices) {
     return _section(
       title: 'Historial de Facturas',
-      subtitle: invoices.isEmpty ? 'Aún no hay facturas emitidas.' : '${invoices.length} facturas',
+      subtitle: invoices.isEmpty
+          ? 'Aún no hay facturas emitidas.'
+          : '${invoices.length} facturas',
       children: invoices.map(_invoiceTile).toList(),
     );
   }
@@ -443,7 +487,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       ),
       child: Row(
         children: [
-          Icon(Icons.receipt_long_rounded, size: 20, color: invoice.status.color),
+          Icon(Icons.receipt_long_rounded,
+              size: 20, color: invoice.status.color),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -451,7 +496,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
               children: [
                 Text(
                   'Factura ${invoice.number.isEmpty ? invoice.id : invoice.number}',
-                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: _ink),
+                  style: const TextStyle(
+                      fontSize: 13, fontWeight: FontWeight.w600, color: _ink),
                 ),
                 Text(
                   '${_formatDate(invoice.issuedAt)} · ${invoice.status.label}',
@@ -461,11 +507,13 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
             ),
           ),
           Text(invoice.formattedAmount,
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: _ink)),
+              style: const TextStyle(
+                  fontSize: 13, fontWeight: FontWeight.bold, color: _ink)),
           IconButton(
             tooltip: 'Ver factura',
             icon: Icon(Icons.open_in_new_rounded,
-                size: 18, color: invoice.hostedInvoiceUrl != null ? _gold : _muted),
+                size: 18,
+                color: invoice.hostedInvoiceUrl != null ? _gold : _muted),
             onPressed: () => _openInvoice(invoice),
           ),
         ],
@@ -476,7 +524,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
   Future<void> _openInvoice(Invoice invoice) async {
     final url = invoice.hostedInvoiceUrl ?? invoice.pdfUrl;
     if (url == null || url.isEmpty) {
-      _toast('Esta factura no tiene enlace público: el PDF se genera en el servidor '
+      _toast(
+          'Esta factura no tiene enlace público: el PDF se genera en el servidor '
           'y requiere sesión autenticada.');
       return;
     }
@@ -496,7 +545,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
           final card = pm['card'] as Map<String, dynamic>?;
           final brand = (card?['brand'] ?? 'tarjeta').toString();
           final last4 = (card?['last4'] ?? '••••').toString();
-          final exp = card != null ? '${card['expMonth']}/${card['expYear']}' : '';
+          final exp =
+              card != null ? '${card['expMonth']}/${card['expYear']}' : '';
           return Container(
             margin: const EdgeInsets.only(bottom: 8),
             padding: const EdgeInsets.all(12),
@@ -511,10 +561,14 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text('${brand.toUpperCase()} •••• $last4',
-                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: _ink)),
+                      style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: _ink)),
                 ),
                 if (exp.isNotEmpty)
-                  Text('Vence $exp', style: const TextStyle(fontSize: 11, color: _muted)),
+                  Text('Vence $exp',
+                      style: const TextStyle(fontSize: 11, color: _muted)),
               ],
             ),
           );
@@ -559,20 +613,24 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     if (subscription.cancelAtPeriodEnd) {
       return _section(
         title: 'Suscripción',
-        subtitle: 'Cancelada: mantiene acceso hasta ${_formatDate(subscription.currentPeriodEnd)}.',
+        subtitle:
+            'Cancelada: mantiene acceso hasta ${_formatDate(subscription.currentPeriodEnd)}.',
         children: const [],
       );
     }
     return _section(
       title: 'Suscripción',
-      subtitle: 'Puedes cancelar la renovación automática al final del período.',
+      subtitle:
+          'Puedes cancelar la renovación automática al final del período.',
       children: [
         Align(
           alignment: Alignment.centerLeft,
           child: TextButton.icon(
             onPressed: _busy ? null : () => _cancel(subscription),
-            icon: const Icon(Icons.cancel_outlined, size: 18, color: Colors.red),
-            label: const Text('Cancelar renovación', style: TextStyle(color: Colors.red)),
+            icon:
+                const Icon(Icons.cancel_outlined, size: 18, color: Colors.red),
+            label: const Text('Cancelar renovación',
+                style: TextStyle(color: Colors.red)),
           ),
         ),
       ],
@@ -623,9 +681,13 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: _ink)),
+            Text(title,
+                style: const TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.bold, color: _ink)),
             const SizedBox(height: 4),
-            Text(subtitle, style: const TextStyle(fontSize: 11, color: _muted, height: 1.4)),
+            Text(subtitle,
+                style:
+                    const TextStyle(fontSize: 11, color: _muted, height: 1.4)),
             if (children.isNotEmpty) const SizedBox(height: 14),
             ...children,
           ],
@@ -634,16 +696,20 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     );
   }
 
-  Future<bool?> _confirm(String title, String body, String action, {bool danger = false}) {
+  Future<bool?> _confirm(String title, String body, String action,
+      {bool danger = false}) {
     return showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(title),
         content: Text(body, style: const TextStyle(fontSize: 13, height: 1.5)),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Volver')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Volver')),
           FilledButton(
-            style: FilledButton.styleFrom(backgroundColor: danger ? Colors.red : _ink),
+            style: FilledButton.styleFrom(
+                backgroundColor: danger ? Colors.red : _ink),
             onPressed: () => Navigator.pop(ctx, true),
             child: Text(action),
           ),
