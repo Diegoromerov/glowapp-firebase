@@ -1,6 +1,6 @@
 # Fase 7 — Puntos por resolver
 
-**Estado:** pendientes de definición, implementación o verificación.  
+**Estado:** implementación parcial en producción; faltantes prioritarios aplazados por cambio de tarea.
 **Fecha de elaboración:** 23 de noviembre de 2026.  
 **Contexto:** plan comercial SaaS de GlowApp para salones. El trabajo se publica directamente en producción, sin usar staging, conforme a la instrucción del usuario.
 
@@ -36,7 +36,7 @@ La Fase 7 podrá cerrarse cuando cada plan tenga una descripción comercial coin
 
 ## Relación con el informe de Fase 7
 
-Este documento amplía la sección de asuntos pendientes del [informe principal de Fase 7](FASE_7_PAQUETES_Y_LANZAMIENTO.md). La auditoría y el despliegue inicial de onboarding están registrados allí; los nueve puntos de esta lista continúan abiertos hasta completar sus decisiones y verificaciones.
+Este documento amplía la sección de asuntos pendientes del [informe principal de Fase 7](FASE_7_PAQUETES_Y_LANZAMIENTO.md). La tabla original conserva los nueve puntos levantados; algunos ya tienen avances parciales registrados abajo. Los faltantes vigentes y su prioridad están consolidados en «Faltantes prioritarios — aplazados».
 
 ## Especificación comercial recibida
 
@@ -68,3 +68,21 @@ Los puntos sobre el proveedor tecnológico DIAN, facturación real, complementos
 - Publicado en producción en el commit `f93cfb90f44a029a04a8e8193b392925396ed45d`. Backend CI y pipeline de calidad/build Flutter pasaron; Firebase Hosting live del proveedor se desplegó correctamente. `/api/health` confirma PostgreSQL disponible y el portal proveedor responde HTTP 200.
 
 Pendiente todavía: la comprobación cubre la paridad de disponibilidad/contratación, no la matriz completa de cuotas y descripciones. El resto de herramientas (inventario, POS, recursos, facturación, Aura, WhatsApp y multi-sede) requiere mapear cada ruta de escritura/lectura con sus entitlements antes de afirmar que todos sus límites están aplicados. No se ejecutó una reserva real en producción ni se configuró un proveedor DIAN o cobro recurrente, para no alterar datos ni activar condiciones comerciales sin configuración.
+
+## Faltantes prioritarios — aplazados
+
+**Estado de trabajo:** no ejecutar en esta etapa. El usuario cambia de tarea y retomará estos puntos más adelante. No se activan nuevos precios, cobros ni módulos hasta reanudar y resolver los bloqueos que correspondan.
+
+| Prioridad | Faltante | Trabajo pendiente al retomarlo | Condición para cerrarlo |
+|---|---|---|---|
+| P0 | Decisiones comerciales | Aprobar precios y niveles finales; días de prueba; ciclo de cuotas; anualidad; excedentes; reglas de mejora/reducción; período de gracia y comportamiento al vencer la prueba. | Oferta comercial aprobada y coherente con contratos, catálogo, onboarding y facturación. |
+| P0 | Cobro de suscripciones | Integrar y validar cobro recurrente, renovaciones, cancelaciones, pagos rechazados, webhooks, reintentos y conciliación de suscripciones existentes. | Pruebas completas con credenciales y productos configurados en la pasarela, sin cobrar importes propuestos antes de su aprobación. |
+| P0 | Facturación electrónica | Elegir e integrar proveedor tecnológico habilitado; completar configuración del salón/NIT, ambiente de pruebas, emisión, notas y errores. Confirmar costos y obligaciones aplicables. | Emisión y consulta probadas con el proveedor; funciones fiscales reales no se presentan como disponibles antes de esa validación. |
+| P1 | Entitlements por plan | Auditar rutas y pantallas de inventario, caja/POS, recursos, recetas, analítica, Aura, WhatsApp, equipo y multi-sede; aplicar gates y cuotas backend donde falten. El gate `LOYALTY` ya fue publicado; faltan los demás módulos. | Matriz V3 reflejada en backend y UI, con pruebas de acceso permitido y denegado por nivel. |
+| P1 | Cuotas y medición | Definir los eventos que consumen API, documentos, recursos, sedes, Aura y WhatsApp; implementar contadores independientes, umbrales del 80/100% y respuesta al agotamiento. Completar paridad de cuotas, capacidades y descripciones; hoy solo se compara disponibilidad/contratación. | Contadores reconciliables y límites que coinciden entre API, Flutter y la oferta comercial. |
+| P1 | Reservas directas | Completar una prueba integral segura que confirme que las reservas de la app del salón consumen cuota y las del marketplace no, incluyendo reintentos, reservas agrupadas y concurrencia. | Evidencia de integración sin crear o modificar reservas reales de clientes sin autorización operativa específica. |
+| P2 | Piloto y salida comercial | Definir salones piloto, instrumentación, soporte, comunicación, monitoreo, procedimiento de reversión y criterios de expansión. | Piloto medido y aprobado antes de ampliar disponibilidad de niveles o complementos. |
+
+### Punto de reanudación
+
+Al retomar Fase 7, comenzar por las decisiones P0. Después, revisar entitlements/cuotas P1 y cerrar con pruebas y piloto. La oferta comercial V3 sirve como propuesta base; sus precios e hipótesis no se consideran aprobados por estar documentados aquí.
