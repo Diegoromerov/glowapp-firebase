@@ -594,7 +594,7 @@ class AuthService {
         'location_public': locationPublic,
       }),
     );
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return json.decode(response.body);
     }
     return null;
