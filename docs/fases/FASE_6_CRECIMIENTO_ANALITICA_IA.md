@@ -53,6 +53,9 @@ Por tanto, el catálogo SaaS conserva **Analítica avanzada** como único comple
 - `flutter analyze --no-pub` de la pantalla nueva: sin hallazgos.
 - La pantalla ofrece períodos de 7/30/90 días y rango manual (máximo 366); `flutter analyze --no-pub` del cambio y `flutter build web --release` finalizaron correctamente.
 - Intento inicial de la prueba focalizada sin `JWT_SECRET` no inició las pruebas; reejecutada con una clave efímera de pruebas: 3/3 aprobadas.
+- Actualización de filtros publicada desde `main` en el flujo Firebase live [45294582988](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/45294582988): análisis/pruebas, build del proveedor y Deploy to Firebase Hosting finalizaron en `SUCCESS`; los jobs de la app cliente se omitieron.
+- Verificación posterior a publicación: `https://glowapp-provider.web.app/` HTTP 200; `main.dart.js` HTTP 200 y contiene las opciones del selector, el límite de período y la URL de API de producción.
+- API de producción respondió HTTP 200 y reportó commit `6da8d1e5b2d6bc94ec8810164c1d0131028c4cc2`; `/api/saas/analytics` sin sesión continúa respondiendo HTTP 401.
 - `git diff --check`: aprobado.
 - Generación y compuerta de OpenAPI: cobertura 458/458 (100%), 23 operaciones documentadas explícitamente; artefacto sincronizado con rutas montadas.
 - Suite completa de Jest ejecutada: finalizó con fallos en varias áreas que no fueron modificadas por Fase 6 (por ejemplo, dashboard multi-sede, suscripciones, biometría y contratos de pedidos). El test focalizado de analítica sí pasa 3/3. El test OpenAPI inicial detectó duplicados preexistentes de disputas; se incorporaron al allowlist de defectos heredados y `npm run openapi:check` quedó en verde.
