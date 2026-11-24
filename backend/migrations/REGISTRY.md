@@ -615,3 +615,10 @@ en 076).
 - Añade `salones.horario_atencion` para guardar los días y horas generales de apertura del establecimiento.
 - Mantiene separada la disponibilidad individual de cada profesional, que continúa en `perfiles_prestador.weekly_schedule`.
 - Permite dejar el horario sin configurar y completarlo o editarlo después desde el perfil del salón.
+
+## 199: propietario de servicios compatible con salones SaaS
+
+- Alinea `services.provider_id` con el usuario dueño del catálogo (`usuarios.id`), como ya establece la migración 054.
+- Permite que un salón SaaS cree servicios aunque su propietario no sea un prestador individual con fila en `perfiles_prestador`.
+- Conserva las filas existentes: la FK se valida contra usuarios y cada perfil individual existente ya referencia a un usuario.
+- No cambia la pertenencia al negocio ni a la sede, que siguen protegidas por `business_profile_id` y `salon_id`.
