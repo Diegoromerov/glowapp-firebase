@@ -95,6 +95,31 @@ class SaasApiService {
     return current;
   }
 
+  /// Lee la configuración de una sede del salón. El backend comprueba que la
+  /// persona autenticada sea propietaria o administradora de esa sede.
+  static Future<Map<String, dynamic>> getSalonProfile(int salonId) async {
+    final response = await ApiService.get('/api/salon/$salonId/profile');
+    if (response is Map<String, dynamic> &&
+        response['salon'] is Map<String, dynamic>) {
+      return Map<String, dynamic>.from(response['salon'] as Map);
+    }
+    throw StateError('No pudimos cargar el perfil del salón.');
+  }
+
+  /// Guarda los datos editables del salón, incluido su horario comercial.
+  static Future<Map<String, dynamic>> updateSalonProfile(
+    int salonId,
+    Map<String, dynamic> updates,
+  ) async {
+    final response =
+        await ApiService.patch('/api/salon/$salonId/profile', updates);
+    if (response is Map<String, dynamic> &&
+        response['salon'] is Map<String, dynamic>) {
+      return Map<String, dynamic>.from(response['salon'] as Map);
+    }
+    throw StateError('No pudimos guardar los datos del salón.');
+  }
+
   /// Catálogo comercial y cuotas publicados por el backend.
   static Future<List<SaasPlan>> getPlans() async {
     try {

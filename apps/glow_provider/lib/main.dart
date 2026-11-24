@@ -47,6 +47,7 @@ import 'screens/saas/api_keys_screen.dart';
 // Salon
 import 'screens/salon/salon_shell.dart';
 import 'screens/salon/salon_hub_screen.dart';
+import 'screens/salon/salon_profile_screen.dart';
 
 // Owner
 import 'screens/owner/owner_dashboard_screen.dart';
@@ -253,6 +254,7 @@ class GlowProviderApp extends ConsumerWidget {
                 // Salon
                 '/salon': (_) => const SalonShell(),
                 '/salon/hub': (_) => const SalonHubScreen(),
+                '/salon/profile': (_) => const SalonProfileScreen(),
 
                 // Owner
                 '/owner/dashboard': (_) => const OwnerDashboardScreen(),
