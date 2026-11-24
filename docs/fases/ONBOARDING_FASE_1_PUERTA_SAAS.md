@@ -76,9 +76,11 @@ Después de publicar la idempotencia de creación del salón, se repitió el alt
 5. `GET /api/saas/team` respondió HTTP 200 con rol OWNER.
 6. `GET /api/salon/my-salon` respondió HTTP 200 y devolvió la sede con el propietario activo.
 
-El backend activo, tras corregir y desplegar el guard de membresía, es el commit `a8b833576877e9ac1878c14894027e3f15420378`. `/api/health` respondió `OK`, con PostgreSQL disponible, sin datos fabricados y 69 migraciones registradas. El workflow de publicación del proveedor `45347597202` terminó exitosamente (análisis, compilación web y despliegue).
+La corrección del guard de membresía se desplegó en el commit `a8b833576877e9ac1878c14894027e3f15420378`. Tras el despliegue documental posterior, `/api/health` reportó commit `e1824d03763eb687b4bad3b6250a536fc5bc20e2`, `OK`, PostgreSQL disponible, sin datos fabricados y 69 migraciones registradas. El workflow de publicación del proveedor `45347597202` terminó exitosamente (análisis, compilación web y despliegue).
 
 El shell confirma el tenant con el bootstrap antes de construir las pestañas; si falla, presenta reintento y no muestra módulos operativos. La ruta directa `/salon/caja` instancia el mismo shell con Caja seleccionada. Esta última verificación es inspección del código publicado, no una prueba visual automatizada en el navegador.
+
+La validación funcional de Caja quedó completada por API: con una cuenta QA recién creada como propietaria, `POST /api/salon/create` respondió 201 para la sede 12, bootstrap y equipo devolvieron 200, y `GET /api/salon/12/caja/resumen` devolvió 200 con `mi_rol: DUEÑO` y alcance SALON. Una sesión autenticada sin membresía recibió 403 en Caja tras corregir el argumento de transacción en PR #65. Ambas lecturas fueron de solo lectura y no hubo movimientos financieros.
 
 Las pruebas de producción crearon cuentas y sedes sintéticas. Durante una reproducción anterior al fix se generó una sede duplicada; los registros de QA no se eliminaron como parte de esta validación.
 
@@ -88,6 +90,6 @@ Comprobación adicional del despliegue activo: Firebase Hosting devolvió HTTP 2
 
 - Recorrido visual completo en navegador/dispositivo. La herramienta de navegador no estuvo disponible en esta sesión; el flujo de API sí se verificó en producción.
 - Alta/reintento de una cuenta heredada con plan distinto de FREE_TRIAL.
-- Recorrido visual de la entrada directa a Caja y de la experiencia por rol. La ruta directa pasa por el shell que exige un tenant; además, la API se probó con usuario autenticado sin membresía y respondió 403.
+- Recorrido visual completo en navegador/dispositivo, incluida la entrada directa a Caja. La puerta, el rol propietario (200) y la denegación de un usuario sin membresía (403) quedaron verificados por API; la herramienta visual no estuvo disponible.
 
 La ruta principal nueva de onboarding SaaS queda funcionalmente validada en producción. Estos escenarios quedan como verificación adicional antes de dar por cerrada toda la validación visual y de migración heredada.
