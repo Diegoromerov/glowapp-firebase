@@ -114,4 +114,20 @@ describe('POST /api/saas/bootstrap — recuperación del tenant del salón', () 
     expect(response.body.error).toMatch(/conservar tu suscripción/i);
     expect(client.queries).toHaveLength(0);
   });
+
+  test('no considera tenant provisionado un perfil preliminar que aún no tiene salón', async () => {
+    mockPool.query
+      .mockResolvedValueOnce({ rows: [] }) // findTenant: JOIN requiere un salón asociado
+      .mockResolvedValueOnce({ rows: [] }); // búsqueda del salón propiedad del usuario
+
+    const response = await request(app)
+      .post('/api/saas/bootstrap')
+      .send({ plan: 'FREE_TRIAL' });
+
+    expect(response.status).toBe(409);
+    expect(response.body.error).toMatch(/no tiene un salón registrado/i);
+    expect(mockPool.query.mock.calls[0][0]).toContain('JOIN salones s');
+    expect(mockPool.query.mock.calls[0][0]).not.toContain('LEFT JOIN salones s');
+    expect(client.queries).toHaveLength(0);
+  });
 });
