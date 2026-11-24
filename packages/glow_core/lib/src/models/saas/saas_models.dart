@@ -81,34 +81,65 @@ enum SaasPlanTier {
         return {
           'MAP_VISIBILITY': 1,
           'ONLINE_BOOKING': 150,
+          'DIRECT_BOOKINGS': 150,
           'TEAM_SEATS': 3,
           'API_CALLS': 0,
+          'INVOICING_DOCUMENTS': 0,
+          'INVOICING_TAX_IDS': 1,
           'ADVANCED_ANALYTICS': 1,
           'CUSTOM_BRANDING': 1,
-          'WHATSAPP_INTEGRATION': 0,
-          'POS_INTEGRATION': 0,
+          'WHATSAPP_INTEGRATION': 1,
+          'WHATSAPP_MESSAGES': 20,
+          'SITES': 1,
+          'POS_INTEGRATION': 1,
+          'INVENTORY': 1,
+          'BASIC_REPORTS': 1,
+          'RESOURCES': null,
+          'COMPLIANCE': 1,
+          'RECIPES': 1,
+          'AURA_QUERIES': 10,
         };
       case SaasPlanTier.freemium:
         return {
           'MAP_VISIBILITY': 1,
           'ONLINE_BOOKING': 30,
+          'DIRECT_BOOKINGS': 30,
           'TEAM_SEATS': 1,
           'API_CALLS': 0,
           'ADVANCED_ANALYTICS': 0,
           'CUSTOM_BRANDING': 0,
           'WHATSAPP_INTEGRATION': 0,
           'POS_INTEGRATION': 0,
+          'POS_RECEIPTS_ONLY': 1,
+          'INVENTORY': 0,
+          'BASIC_REPORTS': 1,
+          'RESOURCES': 0,
+          'INVOICING_DOCUMENTS': 0,
+          'INVOICING_TAX_IDS': 0,
+          'AURA_QUERIES': 0,
+          'WHATSAPP_MESSAGES': 0,
+          'SITES': 1,
         };
       case SaasPlanTier.basic:
         return {
           'MAP_VISIBILITY': 1,
           'ONLINE_BOOKING': null,
+          'DIRECT_BOOKINGS': null,
           'TEAM_SEATS': 5,
           'API_CALLS': 0,
           'ADVANCED_ANALYTICS': 0,
           'CUSTOM_BRANDING': 0,
           'WHATSAPP_INTEGRATION': 0,
           'POS_INTEGRATION': 1,
+          'INVENTORY': 1,
+          'BASIC_REPORTS': 1,
+          'RESOURCES': 5,
+          'COMPLIANCE': 1,
+          'INVOICING_DOCUMENTS': 0,
+          'INVOICING_TAX_IDS': 0,
+          'AURA_QUERIES': 0,
+          'WHATSAPP_MESSAGES': 0,
+          'SITES': 1,
         };
       case SaasPlanTier.growth:
         return {
@@ -336,8 +367,10 @@ class SaasPlan {
   final String name;
   final String description;
   final int priceCents; // COP * 100
+  final int? proposedPriceCents;
   final int trialDays;
   final Map<String, int> limits; // metric_code -> limit
+  final Set<String> unlimitedLimits;
   final List<String> features;
   final bool isActive;
   final bool isPopular;
@@ -348,24 +381,33 @@ class SaasPlan {
     required this.name,
     required this.description,
     required this.priceCents,
+    this.proposedPriceCents,
     required this.trialDays,
     required this.limits,
+    this.unlimitedLimits = const {},
     required this.features,
     required this.isActive,
     this.isPopular = false,
   });
 
   factory SaasPlan.fromJson(Map<String, dynamic> json) {
+    final rawLimits = json['limits'] as Map<String, dynamic>? ?? const {};
     return SaasPlan(
       id: json['id'] as String? ?? '',
       tier: SaasPlanTier.fromCode(json['tier'] as String? ?? 'FREE_TRIAL'),
       name: json['name'] as String? ?? '',
       description: json['description'] as String? ?? '',
       priceCents: (json['price_cents'] as num? ?? 0).toInt(),
+      proposedPriceCents: (json['proposed_price_cents'] as num?)?.toInt(),
       trialDays: (json['trial_days'] as num? ?? 0).toInt(),
-      limits: (json['limits'] as Map<String, dynamic>?)
-              ?.map((k, v) => MapEntry(k, (v as num).toInt())) ??
-          {},
+      limits: {
+        for (final entry in rawLimits.entries)
+          if (entry.value is num) entry.key: (entry.value as num).toInt(),
+      },
+      unlimitedLimits: {
+        for (final entry in rawLimits.entries)
+          if (entry.value == null) entry.key,
+      },
       features: (json['features'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??

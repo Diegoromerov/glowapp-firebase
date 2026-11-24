@@ -13,6 +13,61 @@ test('availability in the catalog matches offers that are active in production',
   }
 });
 
+test('published quotas and modules are explicit for active onboarding levels', () => {
+  assert.equal(PLAN_CATALOG.FREE_TRIAL.quotas.TEAM_SEATS, 3);
+  assert.equal(PLAN_CATALOG.FREE_TRIAL.quotas.DIRECT_BOOKINGS, 150);
+  assert.equal(PLAN_CATALOG.FREEMIUM.quotas.TEAM_SEATS, 1);
+  assert.equal(PLAN_CATALOG.FREEMIUM.quotas.DIRECT_BOOKINGS, 30);
+  assert.equal(PLAN_CATALOG.BASIC.quotas.TEAM_SEATS, 5);
+  assert.equal(PLAN_CATALOG.BASIC.quotas.DIRECT_BOOKINGS, null);
+  for (const id of ['FREE_TRIAL', 'BASIC']) {
+    assert.ok(hasCapability(id, 'INVENTORY'));
+    assert.ok(hasCapability(id, 'RESOURCES'));
+  }
+  assert.ok(hasCapability('FREE_TRIAL', 'RECIPES'));
+  assert.ok(hasCapability('FREEMIUM', 'POS_RECEIPTS_ONLY'));
+  assert.equal(hasCapability('FREEMIUM', 'INVENTORY'), false);
+});
+
+test('Flutter local fallback team and booking limits match the backend catalog', () => {
+  const modelPath = path.resolve(
+    __dirname,
+    '../../../packages/glow_core/lib/src/models/saas/saas_models.dart'
+  );
+  const model = fs.readFileSync(modelPath, 'utf8');
+  const tierNames = {
+    FREE_TRIAL: 'freeTrial',
+    FREEMIUM: 'freemium',
+    BASIC: 'basic',
+  };
+
+  for (const [planId, tierName] of Object.entries(tierNames)) {
+    const block = model.match(new RegExp(
+      `case SaasPlanTier\\.${tierName}:\\s*return \\{([\\s\\S]*?)\\n        \\};`
+    ))?.[1];
+    assert.ok(block, `missing local limits for ${planId}`);
+    const localLimits = Object.fromEntries(
+      [...block.matchAll(/'([A-Z_]+)':\s*(null|\d+)/g)].map((match) => [
+        match[1], match[2] === 'null' ? null : Number(match[2]),
+      ])
+    );
+    for (const [metric, expected] of Object.entries(PLAN_CATALOG[planId].quotas)) {
+      assert.equal(localLimits[metric], expected, `${planId}.${metric}`);
+    }
+  }
+});
+
+test('fallback onboarding only offers production levels and uses catalog-backed plans', () => {
+  const servicePath = path.resolve(
+    __dirname,
+    '../../../packages/glow_core/lib/src/services/saas_api_service.dart'
+  );
+  const service = fs.readFileSync(servicePath, 'utf8');
+  assert.match(service, /static List<SaasPlan> get fallbackPlans => _legacyPlans\(\)/);
+  assert.match(service, /where\(\(tier\) => tier\.isCommerciallyAvailable\)/);
+  assert.match(service, /proposedPriceCents: null/);
+});
+
 test('proposed prices and add-ons are not exposed as collectible amounts or available products', () => {
   const catalog = publicCatalog();
   const byId = Object.fromEntries(catalog.plans.map((plan) => [plan.id, plan]));

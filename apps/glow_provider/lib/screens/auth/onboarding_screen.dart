@@ -326,41 +326,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   // SAAS HELPER METHODS (class level)
   // ═══════════════════════════════════════════════════════════════
 
-  String _planDescription(SaasPlanTier plan) {
-    switch (plan) {
-      case SaasPlanTier.freeTrial:
-        return 'Prueba GlowApp durante 14 días con hasta 3 personas de tu equipo.';
-      case SaasPlanTier.freemium:
-        return 'Administra tu salón gratis de forma permanente con 1 persona.';
-      case SaasPlanTier.basic:
-        return 'Agenda, caja, inventario y recursos para un salón de hasta 5 personas.';
-      case SaasPlanTier.growth:
-        return 'Facturación, marca propia y fidelización para equipos de hasta 10 personas.';
-      case SaasPlanTier.pro:
-        return 'Coordina hasta 20 personas, recibe reservas sin límite y consulta analíticas avanzadas.';
-      case SaasPlanTier.enterprise:
-        return 'Equipo sin límite de personas, WhatsApp, punto de venta y soporte prioritario.';
-    }
+  String _formatCop(int cents) {
+    final pesos = (cents / 100).round().toString().replaceAllMapped(
+          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+          (match) => match[1]! + '.',
+        );
+    return r'$' + pesos;
   }
 
   Widget _buildPlanSelector() {
     final availablePlans = _commercialPlans;
     final plans = availablePlans.isNotEmpty
         ? availablePlans
-        : SaasPlanTier.values
-            .map((tier) => SaasPlan(
-                  id: tier.code,
-                  tier: tier,
-                  name: tier.label,
-                  description: _planDescription(tier),
-                  priceCents: tier.priceCents,
-                  trialDays: tier == SaasPlanTier.freeTrial ? 14 : 0,
-                  limits: const {},
-                  features: const [],
-                  isActive: true,
-                  isPopular: tier == SaasPlanTier.pro,
-                ))
-            .toList();
+        : SaasApiService.fallbackPlans;
     return Column(
       children: plans.map((commercialPlan) {
         final plan = commercialPlan.tier;
@@ -372,19 +350,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         final teamSeats = commercialPlan.limits['TEAM_SEATS'];
         if (teamSeats != null && teamSeats > 0) {
           terms.add('$teamSeats ${teamSeats == 1 ? 'persona' : 'personas'}');
+        } else if (commercialPlan.unlimitedLimits.contains('TEAM_SEATS')) {
+          terms.add('Equipo sin límite de personas');
         }
         final monthlyBookings = commercialPlan.limits['DIRECT_BOOKINGS'] ??
             commercialPlan.limits['ONLINE_BOOKING'];
         if (monthlyBookings != null && monthlyBookings > 0) {
           terms.add('$monthlyBookings reservas al mes');
-        } else if (commercialPlan.tier != SaasPlanTier.freemium &&
-            commercialPlan.tier != SaasPlanTier.freeTrial) {
+        } else if (commercialPlan.unlimitedLimits.contains('DIRECT_BOOKINGS') ||
+            commercialPlan.unlimitedLimits.contains('ONLINE_BOOKING')) {
           terms.add('Reservas ilimitadas');
         }
-        final proposedMonthly =
-            commercialPlan.tier == SaasPlanTier.enterprise ? 449000 : null;
         final canSelectPlan =
             plan == SaasPlanTier.freeTrial || plan == SaasPlanTier.freemium;
+        final proposedPrice = commercialPlan.proposedPriceCents;
+        final priceLabel = !commercialPlan.isActive
+            ? 'Propuesto · ' +
+                (proposedPrice == null
+                    ? 'sin precio publicado'
+                    : _formatCop(proposedPrice) + '/mes')
+            : commercialPlan.priceCents == 0
+                ? 'Gratis'
+                : _formatCop(commercialPlan.priceCents) + ' COP/mes';
         return GestureDetector(
           onTap:
               canSelectPlan ? () => setState(() => _selectedPlan = plan) : null,
@@ -437,16 +424,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
                           Text(
-                            commercialPlan.tier == SaasPlanTier.growth
-                                ? 'Propuesto · \$169.000/mes'
-                                : commercialPlan.tier == SaasPlanTier.enterprise
-                                    ? 'Propuesto · \$${proposedMonthly!.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]}.')}/mes'
-                                    : commercialPlan.priceCents == 0
-                                        ? 'Gratis'
-                                        : commercialPlan.tier ==
-                                                SaasPlanTier.pro
-                                            ? 'Activación comercial próximamente'
-                                            : '\$${(commercialPlan.priceCents / 100).round().toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]}.')} COP/mes',
+                            priceLabel,
                             style: TextStyle(
                               fontSize: 12,
                               color: isSelected
@@ -462,6 +440,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         style: const TextStyle(
                             fontSize: 12, color: Color(0xFF8C7E74)),
                       ),
+                      if (commercialPlan.features.isNotEmpty) ...[
+                        const SizedBox(height: 6),
+                        Wrap(
+                          spacing: 6,
+                          runSpacing: 4,
+                          children: commercialPlan.features.map((feature) {
+                            return Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 7, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF8F4ED),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text(
+                                feature,
+                                style: const TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xFF67584D),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ],
                       if (!canSelectPlan) ...[
                         const SizedBox(height: 3),
                         Text(

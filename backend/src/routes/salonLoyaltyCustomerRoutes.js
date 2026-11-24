@@ -1,5 +1,6 @@
 const express = require('express');
 const { authMiddleware } = require('../middleware/auth');
+const { requireSalonEntitlement } = require('../middleware/salonEntitlement');
 const loyalty = require('../services/salonLoyaltyService');
 
 const router = express.Router();
@@ -24,7 +25,7 @@ function handleError(res, error) {
  *       200: { description: Saldo y últimos 50 movimientos del usuario autenticado, solo para esa sede. }
  *       401: { description: Sesión requerida. }
  */
-router.get('/salons/:salonId/me', async (req, res) => {
+router.get('/salons/:salonId/me', requireSalonEntitlement('LOYALTY'), async (req, res) => {
   const salonId = Number(req.params.salonId);
   if (!Number.isSafeInteger(salonId) || salonId < 1) return res.status(400).json({ error: 'Identificador de sede inválido.' });
   try { return res.json(await loyalty.customerSummary({ salonId, customerUserId: req.user.id })); }
@@ -43,7 +44,7 @@ router.get('/salons/:salonId/me', async (req, res) => {
  *     responses:
  *       200: { description: Catálogo activo; no incluye reglas internas ni datos de otros clientes. }
  */
-router.get('/salons/:salonId/rewards', async (req, res) => {
+router.get('/salons/:salonId/rewards', requireSalonEntitlement('LOYALTY'), async (req, res) => {
   const salonId = Number(req.params.salonId);
   if (!Number.isSafeInteger(salonId) || salonId < 1) return res.status(400).json({ error: 'Identificador de sede inválido.' });
   try { return res.json(await loyalty.customerRewards({ salonId })); }
@@ -70,7 +71,7 @@ router.get('/salons/:salonId/rewards', async (req, res) => {
  *       200: { description: Canje pendiente, con descuento atómico del saldo del salón. }
  *       409: { description: Programa desactivado, saldo insuficiente o límite de canjes alcanzado. }
  */
-router.post('/salons/:salonId/rewards/:rewardId/redeem', async (req, res) => {
+router.post('/salons/:salonId/rewards/:rewardId/redeem', requireSalonEntitlement('LOYALTY'), async (req, res) => {
   const salonId = Number(req.params.salonId);
   if (!Number.isSafeInteger(salonId) || salonId < 1) return res.status(400).json({ error: 'Identificador de sede inválido.' });
   try {

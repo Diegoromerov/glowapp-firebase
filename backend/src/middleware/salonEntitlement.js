@@ -20,7 +20,7 @@ const { hasEntitlement } = require('../config/saasEntitlements');
  * Exige que el plan del salón incluya la capacidad indicada.
  * Requiere `req.salonId` resuelto antes (p. ej. por `requireSalonAdmin`).
  *
- * @param {string} capability capacidad de `saasEntitlements`
+ * @param {string|string[]} capability capacidad o capacidades alternativas de `saasEntitlements`
  * @param {{ query: Function }} [db] inyectable para pruebas
  */
 function requireSalonEntitlement(capability, db = pool) {
@@ -41,10 +41,11 @@ function requireSalonEntitlement(capability, db = pool) {
       }
 
       const plan = String(rows[0].plan_saas || 'FREE_TRIAL').toUpperCase();
-      if (!hasEntitlement(plan, capability)) {
+      const required = Array.isArray(capability) ? capability : [capability];
+      if (!required.some((item) => hasEntitlement(plan, item))) {
         return res.status(403).json({
           error: 'Plan no incluye esta función',
-          required: capability,
+          required: Array.isArray(capability) ? capability : capability,
           currentPlan: plan,
           upgradeUrl: '/api/saas/checkout',
         });

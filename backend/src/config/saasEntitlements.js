@@ -16,6 +16,18 @@ const SAAS_CAPABILITIES = {
   API_KEYS: 'API_KEYS',                       // Integraciones mediante llaves API
   WHATSAPP_INTEGRATION: 'WHATSAPP_INTEGRATION', // Integración con WhatsApp
   POS_INTEGRATION: 'POS_INTEGRATION',         // Punto de venta
+  POS_RECEIPTS_ONLY: 'POS_RECEIPTS_ONLY',     // Recibos sin integración POS
+  INVENTORY: 'INVENTORY',                     // Inventario del salón
+  RESOURCES: 'RESOURCES',                     // Puestos y recursos alquilables
+  COMPLIANCE: 'COMPLIANCE',                   // Diagnóstico y tareas de cumplimiento
+  INVOICING: 'INVOICING',                     // Facturación electrónica
+  INVOICING_TEST: 'INVOICING_TEST',           // Modo de pruebas de facturación
+  INVOICING_ADDON: 'INVOICING_ADDON',         // Complemento de facturación
+  LOYALTY: 'LOYALTY',                         // Fidelización propia del salón
+  RECIPES: 'RECIPES',                         // Recetas de consumo de productos
+  CONTRACTS: 'CONTRACTS',                     // Contratos y alquiler de silla
+  AURA_BUSINESS: 'AURA_BUSINESS',             // Consultas de Aura para el negocio
+  MULTI_SITE: 'MULTI_SITE',                   // Operación multi-sede
 };
 
 // Compatibilidad con consumidores anteriores; ahora se deriva del catálogo.

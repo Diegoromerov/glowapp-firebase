@@ -110,6 +110,7 @@ router.get(
   '/:salonId/caja/resumen',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement(['POS_INTEGRATION', 'POS_RECEIPTS_ONLY']),
   getCajaResumen
 );
 
@@ -117,6 +118,7 @@ router.get(
   '/:salonId/caja/movimientos',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement(['POS_INTEGRATION', 'POS_RECEIPTS_ONLY']),
   getCajaMovimientos
 );
 
@@ -124,6 +126,7 @@ router.post(
   '/:salonId/caja/movimientos',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_REGISTRO),
+  requireSalonEntitlement(['POS_INTEGRATION', 'POS_RECEIPTS_ONLY']),
   postCajaMovimiento
 );
 
@@ -131,6 +134,7 @@ router.get(
   '/:salonId/caja/movimientos/:movimientoId/constancia',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement(['POS_INTEGRATION', 'POS_RECEIPTS_ONLY']),
   getCajaConstancia
 );
 
@@ -141,6 +145,7 @@ router.get(
   '/:salonId/inventario',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('INVENTORY'),
   getInventarioSalon
 );
 
@@ -148,6 +153,7 @@ router.post(
   '/:salonId/inventario',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('INVENTORY'),
   postInventarioItem
 );
 
@@ -155,6 +161,7 @@ router.post(
   '/:salonId/inventario/:itemId/movimientos',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('INVENTORY'),
   postInventarioMovimiento
 );
 
@@ -162,6 +169,7 @@ router.get(
   '/:salonId/inventario/:itemId/movimientos',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('INVENTORY'),
   getInventarioHistorial
 );
 
@@ -169,6 +177,7 @@ router.get(
   '/:salonId/recursos',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('RESOURCES'),
   getRecursos
 );
 
@@ -176,6 +185,7 @@ router.post(
   '/:salonId/recursos',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('RESOURCES'),
   postRecurso
 );
 
@@ -183,6 +193,7 @@ router.get(
   '/:salonId/alquileres',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('RESOURCES'),
   getAlquileres
 );
 
@@ -190,6 +201,7 @@ router.post(
   '/:salonId/alquileres',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('RESOURCES'),
   postAlquiler
 );
 
@@ -197,6 +209,7 @@ router.patch(
   '/:salonId/alquileres/:alquilerId/finalizar',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_REGISTRO),
+  requireSalonEntitlement('RESOURCES'),
   patchFinalizarAlquiler
 );
 
@@ -206,11 +219,13 @@ router.get(
   '/:salonId/services/:serviceId/inventory',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_LECTURA),
+  requireSalonEntitlement('RECIPES'),
   getInsumosServicio
 );
 router.put(
   '/:salonId/services/:serviceId/inventory',
   authMiddleware,
   requireSalonRole(...ROLES_CAJA_REGISTRO),
+  requireSalonEntitlement('RECIPES'),
   putInsumosServicio
 );

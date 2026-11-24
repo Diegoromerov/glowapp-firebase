@@ -105,7 +105,14 @@ class SaasApiService {
         final tier = SaasPlanTier.fromCode((raw['id'] ?? '').toString());
         final rawQuotas = raw['quotas'] as Map<String, dynamic>? ?? const {};
         final limits = <String, int>{};
+        final unlimitedLimits = <String>{};
         final features = <String>[];
+        final proposedOffer = raw['proposedOffer'];
+        final proposedPriceCop = raw['proposedPriceCop'] is num
+            ? raw['proposedPriceCop'] as num
+            : proposedOffer is Map<String, dynamic>
+                ? proposedOffer['priceCop'] as num?
+                : null;
         final catalogCapabilities =
             data['capabilities'] as Map<String, dynamic>? ?? const {};
         for (final capability
@@ -122,10 +129,13 @@ class SaasApiService {
           if (quota is! Map<String, dynamic>) continue;
           final value = quota['limit'];
           if (value is num) limits[entry.key] = value.toInt();
+          if (value == null) unlimitedLimits.add(entry.key);
           if (quota['kind'] == 'boolean') continue;
           final label = quota['label']?.toString();
           final unit = quota['unit']?.toString();
           if (entry.key == 'API_CALLS') continue;
+          if (const {'TEAM_SEATS', 'DIRECT_BOOKINGS', 'ONLINE_BOOKING'}
+              .contains(entry.key)) continue;
           if (label != null && label.isNotEmpty && value is num && value > 0) {
             features.add(value == 1 && quota['kind'] == 'boolean'
                 ? '$label incluido'
@@ -141,8 +151,12 @@ class SaasApiService {
           name: (raw['name'] ?? tier.label).toString(),
           description: (raw['description'] ?? '').toString(),
           priceCents: ((raw['priceCop'] as num? ?? 0) * 100).round(),
+          proposedPriceCents: proposedPriceCop == null
+              ? null
+              : (proposedPriceCop * 100).round(),
           trialDays: (raw['trialDays'] as num? ?? 0).toInt(),
           limits: limits,
+          unlimitedLimits: unlimitedLimits,
           features: features,
           isActive: raw['commerciallyAvailable'] as bool? ?? true,
           isPopular: raw['popular'] as bool? ?? false,
@@ -169,10 +183,15 @@ class SaasApiService {
         name: tier.label,
         description: _planDescription(tier),
         priceCents: tier.priceCents,
+        proposedPriceCents: null,
         trialDays: tier == SaasPlanTier.freeTrial ? 14 : 0,
         limits: {
           for (final e in raw.entries)
             if (e.value != null) e.key: e.value!,
+        },
+        unlimitedLimits: {
+          for (final e in raw.entries)
+            if (e.value == null) e.key,
         },
         features: _planFeatures(tier),
         isActive: tier.isCommerciallyAvailable,
@@ -181,14 +200,18 @@ class SaasApiService {
     }).toList();
   }
 
+  /// Niveles disponibles para el primer render y para uso sin conexión.
+  /// Evita que el onboarding invente una oferta distinta mientras carga el API.
+  static List<SaasPlan> get fallbackPlans => _legacyPlans();
+
   static String _planDescription(SaasPlanTier tier) {
     switch (tier) {
       case SaasPlanTier.freeTrial:
-        return '14 días para probar la plataforma completa';
+        return 'Prueba GlowApp durante 14 días con hasta 3 personas y 150 reservas al mes.';
       case SaasPlanTier.freemium:
-        return 'Presencia básica sin costo mensual';
+        return 'Administra tu salón gratis de forma permanente con 1 persona y 30 reservas al mes.';
       case SaasPlanTier.basic:
-        return 'Para salones que inician su operación digital';
+        return 'Agenda, caja, inventario y recursos para un salón de hasta 5 personas, con reservas ilimitadas.';
       case SaasPlanTier.growth:
         return 'Para salones en crecimiento que necesitan marca, fidelización y más recursos';
       case SaasPlanTier.pro:
@@ -199,31 +222,33 @@ class SaasApiService {
   }
 
   static List<String> _planFeatures(SaasPlanTier tier) {
-    final l = tier.limits;
-    String limitOf(String k, String unit) {
-      final v = l[k];
-      if (v == null) return 'ilimitado';
-      if (v == 1 &&
-          (k.endsWith('ANALYTICS') ||
-              k.endsWith('BRANDING') ||
-              k.endsWith('INTEGRATION'))) return 'incluido';
-      if (v == 0) return 'no incluido';
-      return '$v $unit';
+    switch (tier) {
+      case SaasPlanTier.freeTrial:
+        return const [
+          'Presencia en el mapa', 'Gestión de equipo', 'Reservas en línea',
+          'Caja y ventas', 'Inventario', 'Reportes básicos',
+          'Recursos ilimitados', 'Checklists de cumplimiento',
+          'Marca personalizada', 'Fidelización y puntos del salón',
+          'Recetas y consumo de productos', 'Analítica avanzada',
+          'Facturación electrónica en modo de pruebas',
+          'Aura para el negocio', 'Mensajes de WhatsApp',
+        ];
+      case SaasPlanTier.freemium:
+        return const [
+          'Presencia en el mapa', 'Reservas en línea', 'Recibos no fiscales',
+          'Reportes básicos',
+        ];
+      case SaasPlanTier.basic:
+        return const [
+          'Presencia en el mapa', 'Gestión de equipo', 'Reservas en línea',
+          'Caja y ventas', 'Inventario', 'Reportes básicos',
+          'Gestión de recursos', 'Checklists de cumplimiento',
+        ];
+      case SaasPlanTier.growth:
+      case SaasPlanTier.pro:
+      case SaasPlanTier.enterprise:
+        return const [];
     }
-
-    final features = <String>[
-      '${limitOf('TEAM_SEATS', 'asientos')} de equipo',
-      '${limitOf('ONLINE_BOOKING', 'reservas')} online/mes',
-      'Analítica avanzada: ${limitOf('ADVANCED_ANALYTICS', '')}',
-      'Marca personalizada: ${limitOf('CUSTOM_BRANDING', '')}',
-    ];
-    if (tier == SaasPlanTier.pro || tier == SaasPlanTier.enterprise) {
-      features.add('Integraciones con otros sistemas');
-    }
-    if (tier == SaasPlanTier.enterprise) {
-      features.addAll(['WhatsApp', 'Punto de venta']);
-    }
-    return features;
   }
 
   // ═══════════════════════════════════════════════════════════════

@@ -9,6 +9,8 @@ const router = express.Router();
 const businessController = require('../controllers/businessController');
 const { authMiddleware, adminMiddleware } = require('../middleware/auth');
 const membershipMiddleware = require('../middleware/membership.middleware');
+const saasContext = require('../middleware/saasContext');
+const { requireEntitlement } = require('../middleware/featureGate');
 const { requirePermission, RESOURCES, ACTIONS } = require('../middleware/authorization.middleware');
 const subirEvidencia = require('../middleware/evidenceUpload');
 const { adminAuditLog } = require('../middleware/adminAuditLog');
@@ -20,6 +22,8 @@ router.get('/verticals', businessController.getVerticals);
 router.post(
   '/diagnostic',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.UPDATE),
   businessController.runDiagnostic
@@ -28,6 +32,8 @@ router.post(
 router.get(
   '/summary',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.READ),
   businessController.getSummary
@@ -37,6 +43,8 @@ router.get(
 router.get(
   '/tasks',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.READ),
   businessController.getTasks
@@ -45,6 +53,8 @@ router.get(
 router.post(
   '/tasks/:id/advance',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.UPDATE),
   businessController.advanceTask
@@ -53,6 +63,8 @@ router.post(
 router.post(
   '/tasks/:id/evidence',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.UPDATE),
   subirEvidencia,
@@ -63,6 +75,8 @@ router.post(
 router.get(
   '/templates',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.SETTINGS, ACTIONS.READ),
   businessController.getTemplates
@@ -71,6 +85,8 @@ router.get(
 router.post(
   '/documents/generate',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.CREATE),
   adminAuditLog('document.generate', 'document'),
@@ -80,6 +96,8 @@ router.post(
 router.get(
   '/documents/:id/download',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.READ),
   businessController.downloadDocument
@@ -88,6 +106,8 @@ router.get(
 router.post(
   '/documents/:id/request-signature',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.UPDATE),
   businessController.requestDocumentSignature
@@ -96,6 +116,8 @@ router.post(
 router.post(
   '/documents/:id/sign',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.UPDATE),
   businessController.signDocument
@@ -104,6 +126,8 @@ router.post(
 router.post(
   '/documents/:id/version',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.UPDATE),
   businessController.createDocumentVersion
@@ -112,6 +136,8 @@ router.post(
 router.get(
   '/documents/:id/audit',
   authMiddleware,
+  saasContext,
+  requireEntitlement('COMPLIANCE'),
   membershipMiddleware,
   requirePermission(RESOURCES.BUSINESS_PROFILE, ACTIONS.READ),
   businessController.getDocumentAuditTrail
