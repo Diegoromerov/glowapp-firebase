@@ -13,9 +13,9 @@
  *   aislamiento desde 9cb3fb077 y las 4 eligieron el 073.
  *
  * POR QUÉ HAY UN BASELINE
- *   15 números históricos ya están duplicados en `main` — 002, 003, 004, 008,
- *   011, 012, 026, 029, 030, 032, 033, 034, 065, 066, 067. La colisión 179 entre
- *   notificaciones y mensajes de disputa también quedó aplicada en producción.
+ *   Los duplicados aplicados en producción se congelan por lista exacta. Incluyen
+ *   las colisiones históricas 002..067, la 117, la 179 y la 186. La verificación
+ *   de producción confirmó que los dos archivos 186 están registrados por nombre.
  *   `schema_migrations` los rastrea por nombre de archivo: renombrarlos los haría
  *   re-ejecutar (varias de esas migraciones no son idempotentes) o dejaría el
  *   registro huérfano, y `prepareRlsDatabase.js` / `verifyCatalogoAutorizado.js`
@@ -52,7 +52,7 @@ const PREFIJO_NUMERADO = /^(\d{3})_(.+)$/;
 const esRollback = (archivo) => archivo.endsWith('.down.sql');
 
 /**
- * Duplicados de número que YA existían antes de la Fase D. Cada entrada lista los
+ * Duplicados de número que ya se aplicaron en producción. Cada entrada lista los
  * archivos EXACTOS que conviven bajo ese número: si el conjunto cambia, el guard
  * falla y obliga a decidir (renumerar de verdad o actualizar el registro), en vez
  * de dejar que el backlog crezca sin que nadie lo vea.
@@ -80,10 +80,13 @@ const BASELINE_DUPLICADOS_LEGACY = {
   // Ambas migraciones están registradas en producción por nombre de archivo;
   // renumerarlas volvería a ejecutarlas y dejaría drift entre código y esquema.
   '179': ['179_add_notification_prefs_metadata.sql', '179_dispute_messages.sql'],
+  // Consulta de solo lectura a schema_migrations en producción (2026-11-23, Bogotá)
+  // confirmó ambas entradas. Nunca renumerarlas: ya están aplicadas.
+  '186': ['186_disputas_workflow_audit.sql', '186_encrypt_payout_data_and_review_sla.sql'],
 };
 
 /** Frontera del baseline: por encima de este número no se admite ningún duplicado. */
-const LEGACY_MAX = 179;
+const LEGACY_MAX = 186;
 
 /**
  * Asignación determinista de la resolución de la colisión de Fase D.

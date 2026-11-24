@@ -4,6 +4,9 @@
  */
 const saasContext = require('../saasContext');
 const { pool } = require('../../config/db');
+const tenantRouting = require('../../config/tenantRouting');
+
+jest.mock('../../config/tenantRouting', () => ({ getActiveClient: jest.fn() }));
 
 // Mock de pool.query
 jest.mock('../../config/db', () => ({
@@ -23,6 +26,7 @@ describe('saasContext middleware', () => {
     };
     next = jest.fn();
     jest.clearAllMocks();
+    tenantRouting.getActiveClient.mockReturnValue({ query: jest.fn().mockResolvedValue({ rows: [] }) });
   });
 
   test('sin usuario autenticado → req.saas = null, next()', async () => {
@@ -80,6 +84,9 @@ describe('saasContext middleware', () => {
         'CUSTOM_BRANDING'
       ])
     });
+    expect(tenantRouting.getActiveClient().query).toHaveBeenCalledWith(
+      "SELECT set_config('app.business_profile_id', $1, true)", ['bp_456']
+    );
     expect(next).toHaveBeenCalled();
   });
 
@@ -144,14 +151,22 @@ describe('saasContext middleware', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  test('error en BD → fail-open: req.saas = null, next() sin romper', async () => {
+  test('error al establecer el alcance SaaS en BD → cierra la petición con 503', async () => {
     req.user = { id: 1 };
-    pool.query.mockRejectedValue(new Error('Connection refused'));
+    pool.query.mockImplementation(async (sql) => {
+      if (sql.includes('SELECT m.*, bp.saas_plan')) return { rows: [{
+        id: 'm_123', business_profile_id: 'bp_456', business_name: 'Salón',
+        saas_plan: 'PRO', role: 'OWNER', active_salon_id: 42,
+      }] };
+      return { rows: [] };
+    });
+    const transactionQuery = jest.fn().mockRejectedValue(new Error('Connection refused while setting business scope'));
+    tenantRouting.getActiveClient.mockReturnValue({ query: transactionQuery });
     
     await saasContext(req, res, next);
     
     expect(req.saas).toBeNull();
-    expect(next).toHaveBeenCalled();
-    expect(res.status).not.toHaveBeenCalled();
+    expect(next).not.toHaveBeenCalled();
+    expect(res.status).toHaveBeenCalledWith(503);
   });
 });

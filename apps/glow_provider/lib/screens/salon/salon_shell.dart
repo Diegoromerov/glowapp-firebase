@@ -29,6 +29,7 @@ import 'package:glow_core/widgets/locked_feature_card.dart';
 import 'caja_screen.dart';
 import 'inventario_screen.dart';
 import 'recursos_screen.dart';
+import 'salon_loyalty_screen.dart';
 
 class SalonShell extends StatefulWidget {
   /// Pestaña inicial (0 = Agenda). Útil para deep-links internos.
@@ -673,6 +674,20 @@ class _MasTab extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (_) => InventarioScreen(salonId: salonId!),
+                    ),
+                  ),
+        ),
+        accion(
+          'Fidelización del salón',
+          salonId == null
+              ? 'Abre primero un salón activo'
+              : 'Configura puntos y recompensas propios para tus clientes',
+          salonId == null
+              ? null
+              : () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SalonLoyaltyScreen(salonId: salonId!),
                     ),
                   ),
         ),

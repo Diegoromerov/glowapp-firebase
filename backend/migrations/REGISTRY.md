@@ -69,9 +69,9 @@ sentencia SQL fue tocada.
 
 ---
 
-## 2. Deuda histórica y colisión 179 ya desplegada
+## 2. Deuda de duplicados ya desplegada
 
-`main` ya llegaba con estos duplicados, **todos aplicados en producción**:
+`main` ya llegaba con estos duplicados históricos, **todos aplicados en producción**:
 
 ```
 002  003  004  008  011  012  026  029  030  032  033  034  065  066  067
@@ -81,6 +81,18 @@ Después se desplegaron dos migraciones con prefijo `179` desde ramas independie
 `179_add_notification_prefs_metadata.sql` y `179_dispute_messages.sql`. Ambas están
 registradas en producción por nombre de archivo. Se congelan en el baseline exacto;
 no deben renombrarse, porque el runner podría volver a ejecutarlas.
+
+También se desplegaron dos migraciones con prefijo `186` desde ramas independientes:
+`186_disputas_workflow_audit.sql` y `186_encrypt_payout_data_and_review_sla.sql`.
+Una consulta de solo lectura a `schema_migrations` de Railway production, ejecutada
+el 23 de noviembre de 2026 (hora Bogotá), confirmó que **ambos nombres están registrados**. Se
+congelan en `backend/tests/migrationsNoDuplicateNumbers.test.js`; no se renumeran ni
+se cambian sus nombres porque el runner las repetiría por `filename`.
+
+El techo del baseline de duplicados aplicados queda fijado en `186`. Cualquier
+duplicado nuevo por encima de `186` sigue fallando el guard; solo se puede sumar un
+duplicado existente al baseline con evidencia del nombre exacto registrado en
+producción y una anotación aquí.
 
 **Por qué NO se renumeran aquí.** `schema_migrations` rastrea por **nombre de
 archivo**: renombrar un legacy cambiaría su `filename` y el runner lo trataría como
@@ -129,9 +141,9 @@ antes de mergear, no ampliar el baseline.
 
 ## 4. Reglas para añadir una migración
 
-1. **Toma el número libre más alto + 1**, comprobando el directorio **y las ramas
-   en vuelo**, no solo tu worktree. Hoy: el máximo es `076` ⇒ el siguiente libre es
-   **`077`**.
+1. **Toma un número libre**, comprobando el directorio **y las ramas en vuelo**, no
+   solo tu worktree. No uses el siguiente consecutivo a ciegas: consulta el
+   inventario actual y ejecuta el guard antes de integrar.
 2. Formato `NNN_descripcion_en_snake_case.sql` (3 dígitos, con ceros a la izquierda).
 3. Un `.down.sql` va en `rollback/`, con **el mismo prefijo y el mismo tallo** que su
    `up` (`074_x.sql` ⟺ `rollback/074_x.down.sql`). El guard lo verifica.
@@ -143,8 +155,10 @@ antes de mergear, no ampliar el baseline.
    `.github/workflows/ci.yml` (antes de levantar PostgreSQL, porque el paso de jest
    queda `skipped` detrás de CI-46) y como test dentro del gate de jest
    (`testMatch` `**/tests/**/*.test.js`).
-5. Si tu número choca con otra rama: **renumera tu migración** (la que aún no está
-   aplicada). Nunca renumeres una ya aplicada, y nunca amplíes el baseline.
+5. Si tu número choca con otra rama antes del despliegue: **renumera tu migración**.
+   Nunca renumeres un archivo registrado en producción. Un duplicado que ya esté
+   aplicado se congela solo tras verificar cada `filename` en `schema_migrations` y
+   dejar evidencia en este registro y en el guard.
 
 ---
 

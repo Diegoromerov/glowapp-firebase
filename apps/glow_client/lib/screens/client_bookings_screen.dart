@@ -7,6 +7,7 @@ import '../widgets/reschedule_sheet.dart';
 import '../widgets/service_review_sheet.dart';
 import '../widgets/auth_gate.dart';
 import 'otp_confirm_screen.dart';
+import 'salon_loyalty_customer_screen.dart';
 class ClientBookingsScreen extends StatefulWidget {
   const ClientBookingsScreen({super.key});
 
@@ -1147,6 +1148,31 @@ class _ClientBookingsScreenState extends State<ClientBookingsScreen>
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     elevation: 0,
+                  ),
+                ),
+              ),
+            ],
+            if (booking['salon_id'] != null && int.tryParse(booking['salon_id'].toString()) != null) ...[
+              const SizedBox(height: 8),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SalonLoyaltyCustomerScreen(
+                        salonId: int.parse(booking['salon_id'].toString()),
+                        salonName: (booking['salon_name'] ?? booking['provider_business_name'] ?? providerName).toString(),
+                      ),
+                    ),
+                  ),
+                  icon: const Icon(Icons.stars_rounded, size: 18),
+                  label: const Text('Puntos y recompensas del salón'),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: const Color(0xFF8A6A2F),
+                    side: const BorderSide(color: Color(0xFFE4D3AD)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                   ),
                 ),
               ),

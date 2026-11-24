@@ -7300,6 +7300,386 @@
         "x-glowapp-documented": false
       }
     },
+    "/api/saas/loyalty/bookings/eligible": {
+      "get": {
+        "operationId": "listEligibleSalonLoyaltyBookings",
+        "responses": {
+          "200": {
+            "con indicador de acreditación previa.": null,
+            "description": "Hasta 100 reservas lógicas de la sede"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Listar reservas completadas y pagadas para acreditar puntos",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/saas/loyalty/bookings/{bookingId}/award": {
+      "post": {
+        "operationId": "awardSalonLoyaltyBooking",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "bookingId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Acreditación idempotente del programa de esta sede."
+          },
+          "409": {
+            "description": "Reserva no elegible o programa inactivo."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Acreditar puntos por una reserva completada y pagada",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/saas/loyalty/program": {
+      "get": {
+        "operationId": "getSalonLoyaltyProgram",
+        "responses": {
+          "200": {
+            "description": "Reglas y estado del programa independiente del programa global de GlowApp."
+          },
+          "400": {
+            "description": "Falta seleccionar una sede."
+          },
+          "401": {
+            "description": "Contexto SaaS requerido."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Consultar reglas de fidelización de la sede activa",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      },
+      "put": {
+        "operationId": "saveSalonLoyaltyProgram",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "isEnabled": {
+                    "type": "boolean"
+                  },
+                  "pointsPer1000Cop": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "pointsPerCompletedBooking": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "pointsPerCompletedBooking",
+                  "pointsPer1000Cop",
+                  "isEnabled"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Regla guardada y auditada por creador/actualizador."
+          },
+          "400": {
+            "description": "Regla inválida."
+          },
+          "401": {
+            "description": "Contexto SaaS requerido."
+          },
+          "403": {
+            "description": "Rol insuficiente."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Configurar el programa de puntos de la sede",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/saas/loyalty/program/audit": {
+      "get": {
+        "operationId": "getapi_saas_loyalty_program_audit",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "GET /api/saas/loyalty/program/audit (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
+    "/api/saas/loyalty/redemptions": {
+      "get": {
+        "operationId": "listSalonLoyaltyRedemptions",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "default": "PENDING",
+              "enum": [
+                "PENDING",
+                "FULFILLED",
+                "CANCELLED",
+                "ALL"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de canjes en alcance del negocio/sede activos."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Consultar canjes de recompensas de la sede",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/saas/loyalty/redemptions/{redemptionId}": {
+      "patch": {
+        "operationId": "updateSalonLoyaltyRedemption",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "redemptionId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "FULFILLED",
+                      "CANCELLED"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Estado final registrado; el reintegro es idempotente."
+          },
+          "409": {
+            "description": "El canje ya alcanzó un estado final."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Entregar o cancelar un canje; cancelar devuelve los puntos",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/saas/loyalty/rewards": {
+      "get": {
+        "operationId": "listSalonLoyaltyRewards",
+        "responses": {
+          "200": {
+            "description": "Recompensas activas; ADMIN y superior pueden incluir inactivas con includeInactive=true."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Listar recompensas propias de la sede",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      },
+      "post": {
+        "operationId": "createSalonLoyaltyReward",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "description": {
+                    "maxLength": 500,
+                    "type": "string"
+                  },
+                  "maxRedemptionsPerCustomer": {
+                    "minimum": 1,
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "name": {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  "pointsCost": {
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "pointsCost"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Recompensa creada."
+          },
+          "400": {
+            "description": "Datos inválidos."
+          },
+          "403": {
+            "description": "Rol insuficiente."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Crear una recompensa del salón",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/saas/loyalty/rewards/audit": {
+      "get": {
+        "operationId": "getapi_saas_loyalty_rewards_audit",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "GET /api/saas/loyalty/rewards/audit (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
+    "/api/saas/loyalty/rewards/{rewardId}": {
+      "patch": {
+        "operationId": "updateSalonLoyaltyReward",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rewardId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recompensa actualizada."
+          },
+          "404": {
+            "description": "Recompensa no encontrada en la sede."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Actualizar o desactivar una recompensa",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
     "/api/saas/team": {
       "get": {
         "operationId": "getapi_saas_team",
@@ -7590,6 +7970,140 @@
           "saas"
         ],
         "x-glowapp-documented": false
+      }
+    },
+    "/api/salon-loyalty/salons/{salonId}/me": {
+      "get": {
+        "operationId": "getMySalonLoyaltyBalance",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "salonId",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Saldo y últimos 50 movimientos del usuario autenticado",
+            "solo para esa sede.": null
+          },
+          "401": {
+            "description": "Sesión requerida."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Consultar saldo y movimientos propios del programa de un salón",
+        "tags": [
+          "loyalty"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/salon-loyalty/salons/{salonId}/rewards": {
+      "get": {
+        "operationId": "listPublicSalonLoyaltyRewards",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "salonId",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Catálogo activo; no incluye reglas internas ni datos de otros clientes."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Consultar recompensas activas de un salón",
+        "tags": [
+          "loyalty"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/salon-loyalty/salons/{salonId}/rewards/{rewardId}/redeem": {
+      "post": {
+        "operationId": "redeemSalonLoyaltyReward",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "salonId",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rewardId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "idempotencyKey": {
+                    "maxLength": 120,
+                    "minLength": 8,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "idempotencyKey"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "con descuento atómico del saldo del salón.": null,
+            "description": "Canje pendiente"
+          },
+          "409": {
+            "description": "Programa desactivado",
+            "saldo insuficiente o límite de canjes alcanzado.": null
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Solicitar el canje de una recompensa del salón",
+        "tags": [
+          "loyalty"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
       }
     },
     "/api/salon/accept-invitation": {
@@ -9980,8 +10494,8 @@
   ],
   "x-glowapp-contract": {
     "generator": "backend/src/openapi/buildOpenApi.js",
-    "operationsDiscovered": 439,
-    "operationsDocumented": 23,
-    "routesMounted": 462
+    "operationsDiscovered": 441,
+    "operationsDocumented": 35,
+    "routesMounted": 476
   }
 }

@@ -1,6 +1,7 @@
 // backend/src/middleware/saasContext.js
 const { pool } = require('../config/db');
 const { hasEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
+const { getActiveClient } = require('../config/tenantRouting');
 
 /**
  * Middleware SaaS B2B: resuelve el business_profile activo del usuario autenticado
@@ -68,6 +69,14 @@ module.exports = async function saasContext(req, res, next) {
       membershipId: m.id,
       capabilities
     };
+
+    // Si el scope se necesita en PostgreSQL, establecerlo en el cliente
+    // transaccional de tenant evita que un set_config local en pool.query()
+    // desaparezca inmediatamente al cerrar esa consulta.
+    const transactionClient = getActiveClient();
+    if (transactionClient) {
+      await transactionClient.query("SELECT set_config('app.business_profile_id', $1, true)", [m.business_profile_id]);
+    }
 
     next();
   } catch (err) {
