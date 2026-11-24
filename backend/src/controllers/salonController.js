@@ -172,7 +172,7 @@ exports.createSalon = async (req, res) => {
         `UPDATE usuarios SET rol = 'SALON', onboarding_completo = true WHERE id = $1`,
         [ownerId]
       );
-      return { salon, identity };
+      return { salon, identity, created: true };
     };
 
     let salon, identity, created;
