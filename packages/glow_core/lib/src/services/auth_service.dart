@@ -594,7 +594,7 @@ class AuthService {
         'location_public': locationPublic,
       }),
     );
-    if (response.statusCode == 200 || response.statusCode == 201) {
+    if (response.statusCode == 201) {
       return json.decode(response.body);
     }
     return null;
@@ -680,6 +680,52 @@ class AuthService {
     return null;
   }
 
+  /// Actualiza los datos básicos y el horario comercial de una sede propia.
+  /// La API limita esta operación a propietarios y administradores activos.
+  static Future<Map<String, dynamic>?> updateSalonProfile({
+    required int salonId,
+    required Map<String, dynamic> changes,
+  }) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    if (token == null) return null;
+    final response = await http.patch(
+      Uri.parse('$baseUrl/api/salon/$salonId/profile'),
+      headers: {
+        ..._jsonHeaders,
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode(changes),
+    );
+    try {
+      final body = json.decode(response.body);
+      if (body is Map<String, dynamic>) return body;
+    } catch (_) {
+      // El llamador presenta el mensaje por defecto si no llega JSON.
+    }
+    return null;
+  }
+
+  static Future<Map<String, dynamic>?> getSalonProfile(int salonId) async {
+    final baseUrl = await getBaseUrl();
+    final token = await getToken();
+    if (token == null) return null;
+    final response = await http.get(
+      Uri.parse('$baseUrl/api/salon/$salonId/profile'),
+      headers: {
+        ..._jsonHeaders,
+        'Authorization': 'Bearer $token',
+      },
+    );
+    try {
+      final body = json.decode(response.body);
+      if (body is Map<String, dynamic>) return body;
+    } catch (_) {
+      // El llamador presenta el mensaje por defecto si no llega JSON.
+    }
+    return null;
+  }
+
   static Future<Map<String, dynamic>?> switchContext(
       String businessProfileId) async {
     try {
@@ -758,3 +804,4 @@ String? codigoInvitacionDeLaUrl(Uri url) {
   final limpio = codigo?.trim();
   return (limpio == null || limpio.isEmpty) ? null : limpio;
 }
+
