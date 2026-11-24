@@ -52,8 +52,25 @@ flowchart TD
 - Railway production desplegó `9d4f6c44-55bc-479e-8ec2-c196d2e5f3af` en `SUCCESS` para `9a0d9df`. Verificación posterior: `/api/health` respondió HTTP 200, `env=production`, commit `9a0d9df2bf59bb7723449b9fff565f0c249aa548`, PostgreSQL disponible, `servingFabricatedData=false`, `memoryFallbackAllowed=false`; `/api/saas/bootstrap` sin token respondió 401.
 - El análisis local no reportó errores de Dart; los diagnósticos restantes eran lint/estilo y deprecaciones.
 
-## Pendiente para cerrar la fase
+## Verificación funcional en producción — 24 de noviembre de 2026
 
-1. Ejecutar con una cuenta de QA controlada en producción el alta nueva, el reintento tras una respuesta perdida, la cuenta con tenant existente, el usuario sin salón y el acceso directo a Caja.
-2. Confirmar con una cuenta heredada de QA que el bootstrap recupera tenant/salón sin alterar el plan existente.
-3. Cerrar la fase cuando se hayan revisado los flujos de extremo a extremo en navegador; no se crearon cuentas, salones ni invitaciones de prueba durante esta validación.
+Se completó el recorrido con una cuenta de QA sintética, usando PostgreSQL de producción y la misma secuencia del onboarding:
+
+1. Registro y autenticación del usuario proveedor.
+2. Creación del salón con plan FREE_TRIAL.
+3. Lectura de GET /api/saas/bootstrap: perfil salon-<id>, tenant tenant-<id>, rol OWNER.
+4. Reintento de POST /api/saas/bootstrap: respuesta idempotente, created=false.
+5. GET /api/saas/team: contexto SaaS resuelto, rol OWNER y membresía activa.
+6. GET /api/salon/my-salon: salón y plan FREE_TRIAL presentes.
+
+La primera ejecución reveló que RLS ocultaba business_profiles al usuario recién provisionado. Se corrigió con la política de lectura para proveedor o membresía ACTIVE en la migración 197, integrada por PR #60 y desplegada en Railway production. Después de la corrección, los seis pasos anteriores respondieron correctamente. El despliegue activo quedó en SUCCESS para el commit 4d6a89c21f10a5cfd02d688e72817054b1d31519. La comprobación de /api/health informó PostgreSQL disponible y sin fallback a datos inventados.
+
+## Alcance aún no verificado
+
+- Flujo visual completo en navegador/dispositivo; la comprobación fue por las APIs reales de producción.
+- Recuperación de una cuenta heredada con plan distinto de FREE_TRIAL.
+- Reintento después de que el cliente pierda la respuesta de creación del salón.
+- Usuario sin salón que aún no ha completado el alta.
+- Entrada directa a Caja y validación de permisos en pantalla.
+
+La ruta principal nueva de onboarding SaaS queda funcionalmente validada en producción. Estos escenarios quedan como verificación adicional antes de dar por cerrada toda la validación visual y de migración heredada.
