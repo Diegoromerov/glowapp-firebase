@@ -157,7 +157,11 @@ class SaasApiService {
   }
 
   static List<SaasPlan> _legacyPlans() {
-    return SaasPlanTier.values.map((tier) {
+    // Fail closed: without the API catalog, never present proposed prices as
+    // purchasable offers. Only include tiers currently available in production.
+    return SaasPlanTier.values
+        .where((tier) => tier.isCommerciallyAvailable)
+        .map((tier) {
       final raw = tier.limits;
       return SaasPlan(
         id: tier.code,
@@ -171,7 +175,7 @@ class SaasApiService {
             if (e.value != null) e.key: e.value!,
         },
         features: _planFeatures(tier),
-        isActive: true,
+        isActive: tier.isCommerciallyAvailable,
         isPopular: tier == SaasPlanTier.pro,
       );
     }).toList();

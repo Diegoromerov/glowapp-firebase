@@ -1,11 +1,15 @@
 const express = require('express');
 const { authMiddleware } = require('../middleware/auth');
 const saasContext = require('../middleware/saasContext');
-const { requireRole } = require('../middleware/featureGate');
+const { requireRole, requireEntitlement } = require('../middleware/featureGate');
 const loyalty = require('../services/salonLoyaltyService');
 
 const router = express.Router();
 router.use(authMiddleware, saasContext);
+// El programa de puntos pertenece al salón y solo está incluido en los planes
+// que declaran LOYALTY en el catálogo. Evita administrar el módulo desde planes
+// que no lo incluyen, aunque el usuario tenga un rol suficiente.
+router.use(requireEntitlement('LOYALTY'));
 
 function activeSalon(req, res) {
   if (!req.saas) {

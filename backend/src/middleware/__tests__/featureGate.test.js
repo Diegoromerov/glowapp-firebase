@@ -66,6 +66,21 @@ describe('featureGate middleware', () => {
       
       expect(next).toHaveBeenCalled();
     });
+
+    test('fidelización queda bloqueada en Básico y disponible en Prueba Gratis', () => {
+      const middleware = requireEntitlement('LOYALTY');
+      req.saas = { plan: 'BASIC' };
+
+      middleware(req, res, next);
+      expect(res.status).toHaveBeenCalledWith(403);
+      expect(next).not.toHaveBeenCalled();
+
+      res.status.mockClear();
+      res.json.mockClear();
+      req.saas = { plan: 'FREE_TRIAL' };
+      middleware(req, res, next);
+      expect(next).toHaveBeenCalled();
+    });
   });
 
   describe('requireRole', () => {

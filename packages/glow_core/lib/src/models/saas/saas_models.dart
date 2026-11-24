@@ -146,12 +146,15 @@ enum SaasPlanTier {
     }
   }
 
-  /// Planes que admiten checkout, sujeto a la configuración comercial vigente.
-  bool get isPurchasable =>
-      this == SaasPlanTier.basic ||
-      this == SaasPlanTier.pro ||
-      this == SaasPlanTier.enterprise ||
-      this == SaasPlanTier.growth;
+  /// Planes contratables en producción según el catálogo SaaS V2.
+  /// Pro, Crecimiento y Empresarial conservan compatibilidad para cuentas
+  /// existentes, pero sus nuevas condiciones no están habilitadas para venta.
+  bool get isPurchasable => this == SaasPlanTier.basic;
+
+  bool get isCommerciallyAvailable =>
+      this == SaasPlanTier.freeTrial ||
+      this == SaasPlanTier.freemium ||
+      this == SaasPlanTier.basic;
 
   int get sortOrder => index;
 }

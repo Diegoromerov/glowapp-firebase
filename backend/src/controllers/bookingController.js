@@ -37,6 +37,7 @@ const usageMeteringService = require('../services/usageMeteringService');
 const { getMonthPeriod } = require('../config/saasCatalog');
 const { getColombiaDayRange, getColombiaSchedule, isWithinColombiaSchedule } = require('../utils/bookingCalendar');
 const { getActiveBookingSalonId, canManageBooking } = require('../utils/bookingAccess');
+const { isSaasDirectBookingAudience, bookingOriginForAudience } = require('../utils/bookingOrigin');
 const { ACTIONS } = require('../services/authorizationService');
 
 /** URL http(s) utilizable como redirect_url (no vacia, no de otro esquema). */
@@ -550,7 +551,7 @@ exports.createBooking = async (req, res) => {
       // comercial de reservas directas. Las reservas de clientes del
       // marketplace se procesan igual, pero no entran en este contador.
       const serviciosPorTenant = new Map();
-      const isDirectProviderBooking = req.appAudience === 'provider';
+      const isDirectProviderBooking = isSaasDirectBookingAudience(req.appAudience);
       if (isDirectProviderBooking) {
       if (businessProfileId) serviciosPorTenant.set(String(businessProfileId), 1);
       const servicesHaveTenantColumn = await servicesTieneBusinessProfileId(t);
@@ -666,7 +667,7 @@ exports.createBooking = async (req, res) => {
 
         const metadata = {
           products: bookingProducts,
-          booking_origin: req.appAudience === 'provider' ? 'SALON_DIRECT' : 'MARKETPLACE',
+          booking_origin: bookingOriginForAudience(req.appAudience),
           linked_booking_ids: generatedIds.filter(id => id !== currentId),
           is_primary: isPrimary,
           primary_booking_id: generatedIds[0],
