@@ -117,6 +117,33 @@ exports.createSalon = async (req, res) => {
       RETURNING id, nombre_salon, nit, direccion, ciudad, telefono, plan_saas, latitude, longitude, location_enabled, location_public`;
 
     const provision = async (client) => {
+      // Serializa el alta por dueño. Si el cliente perdió la respuesta del
+      // primer POST, la repetición ve la sede y no crea una segunda.
+      await client.query('SELECT pg_advisory_xact_lock(73001, $1::integer)', [ownerId]);
+      const existingSalonRes = await client.query(
+        `SELECT s.id, s.nombre_salon, s.nit, s.direccion, s.ciudad, s.telefono,
+                s.plan_saas, s.latitude, s.longitude, s.location_enabled, s.location_public
+           FROM salones s
+           JOIN memberships m ON m.business_profile_id = s.business_profile_id
+          WHERE s.id_dueno = $1
+            AND m.user_id = $1
+            AND m.role = 'OWNER'
+            AND m.status = 'ACTIVE'
+          ORDER BY s.id ASC
+          LIMIT 1`,
+        [ownerId]
+      );
+      if (existingSalonRes.rows.length > 0) {
+        await client.query(
+          `UPDATE usuarios SET rol = 'SALON', onboarding_completo = true WHERE id = $1`,
+          [ownerId]
+        );
+        return {
+          salon: existingSalonRes.rows[0],
+          identity: { provisioned: true },
+          created: false,
+        };
+      }
       const salonRes = await client.query(query, [
         nombre_salon,
         nit || null,
@@ -145,16 +172,16 @@ exports.createSalon = async (req, res) => {
         `UPDATE usuarios SET rol = 'SALON', onboarding_completo = true WHERE id = $1`,
         [ownerId]
       );
-      return { salon, identity };
+      return { salon, identity, created: true };
     };
 
-    let salon, identity;
+    let salon, identity, created;
     const activeClient = tenantRouting.getActiveClient();
     if (activeClient) {
       await activeClient.query('SAVEPOINT salon_saas_provisioning');
       try {
         await activeClient.query('SET LOCAL ROLE app_system');
-        ({ salon, identity } = await provision(activeClient));
+        ({ salon, identity, created } = await provision(activeClient));
         await activeClient.query('SET LOCAL ROLE app_rls_user');
         await activeClient.query('RELEASE SAVEPOINT salon_saas_provisioning');
       } catch (provisionError) {
@@ -171,6 +198,7 @@ exports.createSalon = async (req, res) => {
       const result = await tenantRouting.runAsSystem({ pool }, provision);
       salon = result.salon;
       identity = result.identity;
+      created = result.created;
     }
 
     // T-127 (D-GL-027): el dueño queda en memberships; no se escribe la tabla heredada.
@@ -180,8 +208,18 @@ exports.createSalon = async (req, res) => {
 
     console.log(`🏢 Salón '${nombre_salon}' creado exitosamente para Dueño ID ${ownerId} (Ubicación: ${hasValidCoords ? `${lat}, ${lon}` : 'No especificada'})`);
 
+    if (!created) {
+      return res.status(200).json({
+        success: true,
+        created: false,
+        message: 'El salón ya estaba registrado; se devolvió la sede existente.',
+        salon
+      });
+    }
+
     res.status(201).json({
       success: true,
+      created: true,
       message: 'Salón registrado exitosamente en el sistema SaaS.',
       salon
     });
