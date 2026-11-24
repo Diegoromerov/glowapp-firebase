@@ -15,6 +15,7 @@
 //     nunca del cuerpo de la petición.
 
 const { pool } = require('../config/db');
+const usageMeteringService = require('../services/usageMeteringService');
 const crypto = require('crypto');
 
 const CATEGORIAS = new Set(['INSUMO', 'PRODUCTO', 'HERRAMIENTA', 'OTRO']);
@@ -356,41 +357,72 @@ function crearControladorOps(db = pool) {
       return res.status(400).json({ error: 'canon_mensual no puede ser negativo.' });
     }
 
+    const client = typeof db.connect === 'function' ? await db.connect() : db;
+    const inTransaction = client !== db;
     try {
+      if (inTransaction) await client.query('BEGIN');
       // Inquilino desde el perfil de negocio (fuente única, D-GL-027).
       // `salones.tenant_id` es legado y puede ser NULL: usarlo producía un
       // INSERT con NULL en una columna NOT NULL.
-      const { rows: perfilRows } = await db.query(
-        `SELECT bp.tenant_id
+      const { rows: perfilRows } = await client.query(
+        `SELECT bp.tenant_id, bp.saas_plan
            FROM salones s
            JOIN business_profiles bp ON bp.id = s.business_profile_id
-          WHERE s.id = $1`,
+          WHERE s.id = $1
+          FOR UPDATE OF bp`,
         [req.salonId]
       );
       if (perfilRows.length === 0) {
+        if (inTransaction) await client.query('ROLLBACK');
         return res.status(409).json({
           error: 'El salón no tiene identidad provisionada (business_profiles).',
           salon_id: Number(req.salonId),
         });
       }
 
-      const { rows } = await db.query(
+      const plan = perfilRows[0].saas_plan || 'FREEMIUM';
+      const limit = usageMeteringService.getLimit(plan, 'RESOURCES');
+      const { rows: countRows } = await client.query(
+        `SELECT COUNT(*)::int AS count FROM recursos_alquilables WHERE salon_id = $1`,
+        [req.salonId]
+      );
+      const current = Number(countRows[0]?.count || 0);
+      if (limit === 0 || (limit !== null && current >= limit)) {
+        if (inTransaction) await client.query('ROLLBACK');
+        return res.status(403).json({
+          error: limit === 0
+              ? 'El plan actual no incluye la gestión de recursos.'
+              : 'Límite de recursos alcanzado para el plan actual.',
+          code: 'SAAS_QUOTA_EXCEEDED',
+          feature: 'RESOURCES',
+          current,
+          limit,
+          plan,
+          upgradeUrl: '/api/saas/billing/checkout',
+        });
+      }
+
+      const { rows } = await client.query(
         `INSERT INTO recursos_alquilables (tenant_id, salon_id, nombre, tipo, canon_mensual)
          VALUES ($1, $2, $3, $4, $5)
          RETURNING id, nombre, tipo, canon_mensual, estado`,
         [perfilRows[0].tenant_id, req.salonId, String(nombre).trim(), tipoNorm, canon]
       );
+      if (inTransaction) await client.query('COMMIT');
 
       return res.status(201).json({
         success: true,
         recurso: { ...rows[0], canon_mensual: Number(rows[0].canon_mensual) },
       });
     } catch (error) {
+      if (inTransaction) await client.query('ROLLBACK').catch(() => {});
       if (error.code === '23505') {
         return res.status(409).json({ error: 'Ya existe un recurso con ese nombre en el salón.' });
       }
       console.error('❌ ERROR crearRecurso:', error.message);
       return res.status(500).json({ error: 'No se pudo crear el recurso.' });
+    } finally {
+      if (inTransaction) client.release();
     }
   }
 
