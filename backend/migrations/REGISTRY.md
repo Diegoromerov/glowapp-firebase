@@ -353,6 +353,20 @@ era imposible. La migración siembra la vertical `BELLEZA` si la tabla está vac
 revertida con ROLLBACK; también aplicada dos veces seguidas para confirmar
 idempotencia. No se ha aplicado de forma persistente.
 
+## 196_seed_business_vertical_catalog.sql
+
+**Motivo:** la base de producción no tenía filas en `business_verticals`. El alta
+de salón respondía 201, pero `ensureSalonOwnerIdentity` no podía insertar el perfil;
+el bootstrap posterior devolvía 409 porque no encontraba una vertical. La siembra
+del catálogo de aplicación no se ejecuta automáticamente en Railway.
+
+**Qué hace:** persiste de forma idempotente las cuatro verticales ya definidas en
+`src/db/seed_business_data.js`, sin modificar registros existentes. El código
+`BEAUTY_SALON` satisface la búsqueda de vertical de belleza del provisionamiento SaaS.
+
+**Validación:** pendiente en esta rama. Tras el despliegue en producción se repetirá
+el alta, bootstrap idempotente y lectura de la sede con una cuenta QA nueva.
+
 ## Separación de migraciones del RAG → `migrations/rag/`
 
 **Motivo:** `index.js` aplica `migrations/*.sql` contra `DATABASE_URL` (base principal),
