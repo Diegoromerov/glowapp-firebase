@@ -608,3 +608,10 @@ en 076).
 - Corrige el caso del onboarding en el que el tenant se crea, pero el contexto de tenant legado no coincide con business_profiles.tenant_id; bootstrap y saasContext dejaban de encontrar la membership válida.
 - La política existente de aislamiento por tenant se conserva. No se conceden permisos de escritura ni acceso por el identificador de salón enviado en la petición.
 - La migración es aditiva e idempotente. Rollback: DROP POLICY IF EXISTS business_profiles_active_membership_read ON public.business_profiles.
+
+
+## 198: horario comercial de la sede
+
+- Añade `salones.horario_atencion` para guardar los días y horas generales de apertura del establecimiento.
+- Mantiene separada la disponibilidad individual de cada profesional, que continúa en `perfiles_prestador.weekly_schedule`.
+- Permite dejar el horario sin configurar y completarlo o editarlo después desde el perfil del salón.
