@@ -12,12 +12,12 @@
 | 1. Identidad de negocio y sedes | Desplegada y conciliada en producción según su informe (migración 189) | Mantener la restricción de no compartir identidad entre sedes sin autorización por sede. Reauditar si cambia aprovisionamiento o esquema. |
 | 2. Catálogo, entitlements y cuotas | Catálogo v1 publicado; API y Hosting desplegados, según el informe | Ejecutar integración PostgreSQL/concurrencia; conciliar planes y llaves API ya existentes; documentar integraciones aún no instrumentadas. |
 | 3. Membresías, roles y permisos | Informe remoto afirma despliegue en producción y migración 190 aplicada | Completar verificación controlada de correo/aceptación/RLS y revisar rutas operativas heredadas que aún usen roles o membresías antiguas. |
-| 4. Agenda y reservas | Pendiente/en ejecución posterior al despliegue de fase 3 | No cerrar hasta normalizar ciclo de reserva, cuotas, sede y compatibilidad cliente/proveedor. |
-| 5. Operación comercial | Pendiente | Integrar caja, inventario, recursos y tienda con permisos, auditoría e idempotencia. |
-| 6. Crecimiento y herramientas avanzadas | Pendiente | Analítica, fidelización, Academia e IA como módulos medibles y autorizados. |
-| 7. Paquetes y salida comercial | Pendiente | Empaquetar solo capacidades verificadas y alinear catálogo, onboarding, cobro y límites. |
+| 4. Agenda y reservas | Desplegada y comprobada en producción según su informe | Seguimiento: validaciones operativas no destructivas y conciliación de checksums de migración. No se modificaron reservas reales para probar. |
+| 5. Operación comercial | Completada y desplegada en producción según su informe | No queda implementación principal pendiente en la fase; atender observaciones registradas en el informe de cierre. |
+| 6. Crecimiento y herramientas avanzadas | En curso; analítica desplegada. Fidelización tiene esquema, pero rutas e interfaces siguen pendientes según su informe | Continuar fidelización; definir estado y alcance de Academia, diagnóstico e IA; verificar despliegue de cada capacidad antes de ofertarla. |
+| 7. Paquetes y salida comercial | En curso; auditoría comercial iniciada según su informe | Terminar contraste de precios, límites y promesas con checkout/permisos; cerrar matriz y onboarding comercial antes del lanzamiento gradual. |
 
-> Los estados anteriores resumen informes presentes en la rama principal consultada; no sustituyen una consulta en vivo al despliegue ni una validación funcional de producción. Fase 3 aparece como desplegada, pero su informe conserva verificaciones operativas abiertas.
+[Hoja de ejecución detallada](HOJA_EJECUCION_SAAS_POR_FASES.md). Los estados anteriores resumen los informes presentes en la rama principal consultada; no sustituyen una consulta en vivo al despliegue ni una validación funcional de producción. Las fases 3 y 4 están marcadas como desplegadas en sus informes, pero conservan verificaciones operativas abiertas.
 
 ## Fase 0 — Línea base y decisiones
 
