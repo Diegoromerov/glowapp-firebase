@@ -23,6 +23,7 @@ import 'package:glow_core/core/theme/tokens.dart';
 import 'package:glow_core/design/icons/glow_icon.dart';
 import 'package:glow_core/services/api_service.dart';
 import 'package:glow_core/services/auth_service.dart';
+import 'package:glow_core/services/saas_api_service.dart';
 import 'package:glow_core/widgets/provider_services_screen.dart';
 import 'package:glow_core/widgets/locked_feature_card.dart';
 
@@ -64,6 +65,9 @@ class _SalonShellState extends State<SalonShell> {
   late List<String> _entitlements;
   late String _plan;
   int? _salonId;
+  bool _tenantReady = false;
+  bool _tenantLoading = true;
+  String? _tenantError;
 
   /// Construcción perezosa y recordada: no se instancia una pestaña hasta que
   /// se visita, y una vez construida conserva su estado (no hay `IndexedStack`
@@ -85,6 +89,7 @@ class _SalonShellState extends State<SalonShell> {
     _cargarDatos = widget.cargarDatos;
     _entitlements = widget.entitlements ?? const <String>[];
     _plan = widget.plan;
+    _tenantReady = widget.entitlements != null || !widget.cargarDatos;
     if (widget.entitlements == null && widget.cargarDatos) {
       _cargarPlan();
     }
@@ -94,25 +99,43 @@ class _SalonShellState extends State<SalonShell> {
   /// sola vez para todo el shell; si la lectura falla, el módulo queda bloqueado
   /// y el backend sigue siendo la compuerta real.
   Future<void> _cargarPlan() async {
+    if (mounted) {
+      setState(() {
+        _tenantLoading = true;
+        _tenantError = null;
+      });
+    }
     try {
+      // La pantalla operativa no se habilita hasta confirmar el tenant. El
+      // bootstrap es idempotente: también repara salones existentes cuya
+      // respuesta de alta se perdió después de crear el registro.
+      await SaasApiService.provisionTenant();
       final res = await AuthService.getMySalon();
       final salon = res?['salon'];
-      if (salon is Map) {
-        final caps =
-            (salon['entitlements'] as List<dynamic>?) ?? const <dynamic>[];
-        if (!mounted) return;
-        setState(() {
-          _entitlements = caps.map((c) => c.toString()).toList();
-          _plan = (salon['plan_saas'] ?? 'FREE_TRIAL').toString();
-          _salonId = (salon['id'] as num?)?.toInt() ?? _salonId;
-          // La agenda necesita volver a pedir citas con la sede ya resuelta.
-          _construidas[0] = null;
-          // Una pestaña ya construida con el plan anterior no debe quedar cacheada.
-          _construidas[2] = null;
-        });
+      if (salon is! Map) {
+        throw StateError('No encontramos una sede vinculada a tu cuenta.');
       }
-    } catch (_) {
-      // Sin plan conocido no se desbloquea nada.
+      final caps =
+          (salon['entitlements'] as List<dynamic>?) ?? const <dynamic>[];
+      if (!mounted) return;
+      setState(() {
+        _entitlements = caps.map((c) => c.toString()).toList();
+        _plan = (salon['plan_saas'] ?? 'FREE_TRIAL').toString();
+        _salonId = (salon['id'] as num?)?.toInt() ?? _salonId;
+        _tenantReady = true;
+        _tenantLoading = false;
+        // La agenda necesita volver a pedir citas con la sede ya resuelta.
+        _construidas[0] = null;
+        // Una pestaña ya construida con el plan anterior no debe quedar cacheada.
+        _construidas[2] = null;
+      });
+    } catch (error) {
+      if (!mounted) return;
+      setState(() {
+        _tenantReady = false;
+        _tenantLoading = false;
+        _tenantError = mensajeHumano(error);
+      });
     }
   }
 
@@ -122,6 +145,63 @@ class _SalonShellState extends State<SalonShell> {
 
   @override
   Widget build(BuildContext context) {
+    if (!_tenantReady) {
+      final t = _t;
+      return Scaffold(
+        backgroundColor: t.surfaceLevel0,
+        body: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(Spacing.xl),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 420),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (_tenantLoading)
+                      CircularProgressIndicator(color: t.brandPrimary)
+                    else
+                      Icon(Icons.storefront_outlined,
+                          size: 42, color: t.brandPrimary),
+                    const SizedBox(height: Spacing.lg),
+                    Text(
+                      _tenantLoading
+                          ? 'Preparando tu espacio SaaS'
+                          : 'No pudimos abrir tu espacio SaaS',
+                      textAlign: TextAlign.center,
+                      style: TypographyTokens.h3(t),
+                    ),
+                    if (!_tenantLoading) ...[
+                      const SizedBox(height: Spacing.sm),
+                      Text(
+                        _tenantError ??
+                            'Completa o reintenta la configuración de tu salón para continuar.',
+                        textAlign: TextAlign.center,
+                        style: TypographyTokens.body(t)
+                            .copyWith(color: t.textSecondary),
+                      ),
+                      const SizedBox(height: Spacing.lg),
+                      FilledButton.icon(
+                        onPressed: _cargarPlan,
+                        icon: const Icon(Icons.refresh),
+                        label: const Text('Reintentar'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          '/auth/onboarding',
+                        ),
+                        child: const Text('Completar registro del salón'),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     final t = _t;
     return Scaffold(
       backgroundColor: t.surfaceLevel0,

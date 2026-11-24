@@ -220,67 +220,77 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     });
 
     try {
-      // Paso 1: Crear salón en Business Engine (existente)
-      final res = await AuthService.createSalon(
-        nombreSalon: _salonNameCtrl.text.trim(),
-        nit: _salonNitCtrl.text.trim(),
-        direccion: _salonAddressCtrl.text.trim(),
-        telefono: _salonPhoneCtrl.text.trim(),
-        ciudad: _salonCityCtrl.text.trim(),
-        latitude: _salonLocationConfirmed ? _salonLocation.latitude : null,
-        longitude: _salonLocationConfirmed ? _salonLocation.longitude : null,
-        locationPublic: _salonLocationPublic,
-      );
-
-      if (res == null || res['success'] != true) {
-        // Fallback: completar onboarding sin SaaS
-        await AuthService.completeOnboarding(
-          role: 'SALON',
-          aceptarHabeasData: _habeasDataAccepted,
-          aceptarTerminos: _terminosAccepted,
-        );
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('userRole', 'salon');
-        if (mounted) {
-          Navigator.pushReplacementNamed(context, '/salon/hub');
-        }
-        return;
-      }
-
-      // Paso 2: provisionar el tenant SaaS desde el salón recién creado.
-      // Crea business_profile + membership OWNER (idempotente). Sin esto,
-      // /api/saas/* responde 401 "Contexto SaaS requerido".
+      // Si el usuario vuelve tras una respuesta perdida o una provisión
+      // incompleta, el bootstrap idempotente recupera el tenant antes de
+      // intentar crear otro salón. Solo un 409 que confirme que no hay salón
+      // autoriza iniciar la creación.
+      SaasBusinessProfile profile;
       try {
-        final profile =
+        profile =
             await SaasApiService.provisionTenant(plan: _selectedPlan.code);
+      } catch (error) {
+        final message = error.toString().toLowerCase();
+        final salonMissing = message.contains('409') &&
+            message.contains('no tiene un salón registrado');
+        if (!salonMissing) rethrow;
 
-        // Paso 3: enviar invitaciones de equipo con el id real del tenant
-        // (antes se pasaba el slug, que no identifica al tenant).
-        var inviteFailures = 0;
-        for (final invite in _teamInvites) {
-          try {
-            await SaasApiService.inviteMember(profile.id, invite);
-          } catch (_) {
-            inviteFailures++;
+        final created = await AuthService.createSalon(
+          nombreSalon: _salonNameCtrl.text.trim(),
+          nit: _salonNitCtrl.text.trim(),
+          direccion: _salonAddressCtrl.text.trim(),
+          telefono: _salonPhoneCtrl.text.trim(),
+          ciudad: _salonCityCtrl.text.trim(),
+          latitude: _salonLocationConfirmed ? _salonLocation.latitude : null,
+          longitude: _salonLocationConfirmed ? _salonLocation.longitude : null,
+          locationPublic: _salonLocationPublic,
+        );
+
+        // createSalon puede haber guardado el salón aunque la respuesta se
+        // pierda. El bootstrap vuelve a consultar por el usuario y crea su
+        // identidad SaaS de forma idempotente, evitando duplicar el salón.
+        profile = await SaasApiService.provisionTenant(
+          plan: _selectedPlan.code,
+        );
+        if (created == null || created['success'] != true) {
+          if (kDebugMode) {
+            debugPrint(
+              'Onboarding: createSalon no confirmó la respuesta; '
+              'el bootstrap recuperó el tenant existente.',
+            );
           }
         }
-        if (inviteFailures > 0 && mounted) {
-          setState(() {
-            _saasError =
-                'El salón quedó creado, pero $inviteFailures invitación(es) '
-                'no se enviaron. Puedes reenviarlas desde Mi Equipo.';
-          });
+      }
+
+      // El registro legal se confirma solo cuando ya existe el tenant que
+      // habilita la entrada al SaaS. Si falla, el usuario puede reintentar:
+      // la siguiente ejecución recupera el tenant existente.
+      final onboardingResult = await AuthService.completeOnboarding(
+        role: 'SALON',
+        aceptarHabeasData: _habeasDataAccepted,
+        aceptarTerminos: _terminosAccepted,
+      );
+      if (onboardingResult == null || onboardingResult['success'] != true) {
+        throw StateError(
+          'El salón ya tiene perfil SaaS, pero no pudimos guardar la aceptación legal. Inténtalo de nuevo.',
+        );
+      }
+
+      // Las invitaciones no bloquean el acceso al tenant; se pueden reenviar
+      // desde Mi Equipo cuando exista un fallo de correo o de cupo.
+      var inviteFailures = 0;
+      for (final invite in _teamInvites) {
+        try {
+          await SaasApiService.inviteMember(profile.id, invite);
+        } catch (_) {
+          inviteFailures++;
         }
-      } catch (e) {
-        if (mounted) {
-          setState(() {
-            _saasError =
-                'El salón quedó creado, pero el perfil SaaS no se pudo '
-                'provisionar. Podrás completarlo desde Facturación.';
-          });
-        }
-        if (kDebugMode)
-          debugPrint('Onboarding: provisionamiento SaaS falló: $e');
+      }
+      if (inviteFailures > 0 && mounted) {
+        setState(() {
+          _saasError =
+              'El salón quedó configurado, pero $inviteFailures invitación(es) '
+              'no se enviaron. Puedes reenviarlas desde Mi Equipo.';
+        });
       }
 
       final prefs = await SharedPreferences.getInstance();
@@ -293,10 +303,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 content: Text(warning), duration: const Duration(seconds: 6)),
           );
         }
-        Navigator.pushReplacementNamed(context, '/salon/hub');
+        Navigator.pushReplacementNamed(context, '/salon');
       }
     } catch (e) {
-      setState(() => _error = 'Error de conexión: ${mensajeHumano(e)}');
+      if (mounted) {
+        setState(() {
+          _error = e is StateError
+              ? e.message.toString()
+              : 'No pudimos completar la configuración SaaS: ${mensajeHumano(e)}. Puedes reintentar; no se creará otro salón.';
+        });
+      }
     } finally {
       if (mounted)
         setState(() {
