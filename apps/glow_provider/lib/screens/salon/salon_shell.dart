@@ -31,6 +31,7 @@ import 'caja_screen.dart';
 import 'inventario_screen.dart';
 import 'recursos_screen.dart';
 import 'salon_loyalty_screen.dart';
+import 'salon_business_profile_screen.dart';
 
 class SalonShell extends StatefulWidget {
   /// Pestaña inicial (0 = Agenda). Útil para deep-links internos.
@@ -272,7 +273,10 @@ class _SalonShellState extends State<SalonShell> {
             ? const ProviderServicesScreen()
             : const _ServiciosPlaceholder();
       default:
-        return _MasTab(salonId: _salonId);
+        return _MasTab(
+          salonId: _salonId,
+          onOpenServices: () => setState(() => _index = 3),
+        );
     }
   }
 
@@ -611,7 +615,8 @@ class _ServiciosPlaceholder extends StatelessWidget {
 
 class _MasTab extends StatelessWidget {
   final int? salonId;
-  const _MasTab({required this.salonId});
+  final VoidCallback onOpenServices;
+  const _MasTab({required this.salonId, required this.onOpenServices});
 
   @override
   Widget build(BuildContext context) {
@@ -732,6 +737,24 @@ class _MasTab extends StatelessWidget {
         enlace('Uso del plan', '/saas/usage'),
         enlace('API keys', '/saas/api-keys'),
         enlace('Configuración', '/settings'),
+        accion(
+          'Datos y horario del salón',
+          'Completa o corrige la información de tu sede',
+          salonId == null
+              ? null
+              : () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SalonBusinessProfileScreen(
+                        salonId: salonId!,
+                        onOpenServices: () {
+                          Navigator.pop(context);
+                          onOpenServices();
+                        },
+                      ),
+                    ),
+                  ),
+        ),
         enlace('Ayuda y soporte', '/support'),
         const SizedBox(height: Spacing.lg),
         Text(
@@ -839,3 +862,4 @@ class _Estado extends StatelessWidget {
     );
   }
 }
+
