@@ -119,26 +119,8 @@ exports.register = async (req, res) => {
       console.warn('⚠️ No se pudo registrar la aceptación de términos:', e.message);
     }
 
-    // 🏢 Si el rol es SALON, crear BusinessProfile y Membership OWNER de forma atómica
-    if (userRole === 'SALON') {
-      try {
-        const bp = await BusinessProfile.create({
-          name: `${user.nombre} Studio`,
-          user_id: user.id,
-          city: 'Bogotá',
-          country: 'Colombia'
-        });
-        await Membership.create({
-          user_id: user.id,
-          business_profile_id: bp.id,
-          role: 'OWNER',
-          status: 'ACTIVE',
-          accepted_at: new Date()
-        });
-      } catch (bpErr) {
-        console.warn('⚠️ No se pudo auto-crear BusinessProfile/Membership en registro:', bpErr.message);
-      }
-    }
+    // El perfil SaaS nace al crear una sede. No crear aquí un perfil huérfano:
+    // business_profiles no tiene user_id y el perfil debe enlazar una sede real.
 
     res.status(201).json({ 
       success: true, 
@@ -1161,6 +1143,7 @@ exports.switchContext = async (req, res) => {
     res.status(500).json({ error: 'Error al cambiar de contexto' });
   }
 };
+
 
 
 
