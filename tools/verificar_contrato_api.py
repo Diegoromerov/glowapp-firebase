@@ -61,6 +61,8 @@ ROUTE_MOUNTS = {
     'saasUsageRoutes.js': '/api/saas/usage',
     'saasBillingRoutes.js': '/api/saas/billing',
     'saasApiKeyRoutes.js': '/api/saas/api-keys',
+    'saasLoyaltyRoutes.js': '/api/saas/loyalty',
+    'salonLoyaltyCustomerRoutes.js': '/api/salon-loyalty',
     'superAdminRoutes.js': '/api/superadmin',
     'shortcutRoutes.js': '/api',
     'v1/beautyRoutes.js': '/api/v1/beauty',
