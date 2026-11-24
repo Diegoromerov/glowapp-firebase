@@ -10,6 +10,7 @@ const {
   updateMemberRole,
   removeMember,
 } = require('../controllers/salonController');
+const { getSalonProfile, updateSalonProfile } = require('../controllers/salonProfileController');
 const { authMiddleware } = require('../middleware/auth');
 const { requireSalonEntitlement } = require('../middleware/salonEntitlement');
 const {
@@ -41,6 +42,8 @@ const {
 
 router.get('/my-salon', authMiddleware, getMySalon);
 router.post('/create', authMiddleware, createSalon);
+router.get('/:salonId/profile', authMiddleware, requireSalonAdmin, getSalonProfile);
+router.patch('/:salonId/profile', authMiddleware, requireSalonAdmin, updateSalonProfile);
 
 // requireSalonAdmin resuelve y valida salon_id del body antes del controlador
 // y deja req.salonId / req.salonMembership disponibles (defensa en profundidad:
