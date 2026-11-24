@@ -600,3 +600,11 @@ en 076).
 - Revoca todos los privilegios directos de tabla/secuencia del ledger a `app_rls_user` y concede únicamente `SELECT` sobre la tabla.
 - Conserva las escrituras para `app_system`, que el backend utiliza mediante transacciones de sistema explícitas.
 - No elimina ni modifica filas del ledger.
+
+
+## 197: lectura de perfiles SaaS por membresía activa
+
+- Añade una política SELECT para app_rls_user que deja leer business_profiles al proveedor propietario o a un usuario con membership ACTIVE.
+- Corrige el caso del onboarding en el que el tenant se crea, pero el contexto de tenant legado no coincide con business_profiles.tenant_id; bootstrap y saasContext dejaban de encontrar la membership válida.
+- La política existente de aislamiento por tenant se conserva. No se conceden permisos de escritura ni acceso por el identificador de salón enviado en la petición.
+- La migración es aditiva e idempotente. Rollback: DROP POLICY IF EXISTS business_profiles_active_membership_read ON public.business_profiles.
