@@ -14,20 +14,37 @@ class _ProviderBusinessAnalyticsScreenState
   Map<String, dynamic>? _data;
   Object? _error;
   bool _loading = true;
+  late DateTime _from;
+  late DateTime _to;
+  int? _presetDays = 30;
 
   @override
   void initState() {
     super.initState();
+    final today = DateTime.now();
+    _to = DateTime(today.year, today.month, today.day);
+    _from = _to.subtract(const Duration(days: 29));
     _load();
   }
 
-  Future<void> _load() async {
+  String _apiDate(DateTime date) =>
+      '${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+
+  String _displayDate(DateTime date) =>
+      '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
+
+  Future<void> _load({DateTime? from, DateTime? to}) async {
+    final queryFrom = from ?? _from;
+    final queryTo = to ?? _to;
     setState(() {
       _loading = true;
       _error = null;
     });
     try {
-      final data = await SaasApiService.getBusinessAnalytics();
+      final data = await SaasApiService.getBusinessAnalytics(
+        from: _apiDate(queryFrom),
+        to: _apiDate(queryTo),
+      );
       if (!mounted) return;
       setState(() => _data = data);
     } catch (error) {
@@ -57,6 +74,52 @@ class _ProviderBusinessAnalyticsScreenState
       (_) => '.',
     );
     return currency == 'COP' ? '\$$grouped COP' : '$grouped $currency';
+  }
+
+  Future<void> _selectPreset(int days) async {
+    final today = DateTime.now();
+    final to = DateTime(today.year, today.month, today.day);
+    final from = to.subtract(Duration(days: days - 1));
+    setState(() {
+      _from = from;
+      _to = to;
+      _presetDays = days;
+    });
+    await _load(from: from, to: to);
+  }
+
+  Future<void> _selectCustomPeriod() async {
+    final today = DateTime.now();
+    final selected = await showDateRangePicker(
+      context: context,
+      firstDate: DateTime(2020),
+      lastDate: DateTime(today.year, today.month, today.day),
+      initialDateRange: DateTimeRange(start: _from, end: _to),
+      helpText: 'Elige el período de consulta',
+      saveText: 'Aplicar período',
+      builder: (context, child) => Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: Theme.of(context).colorScheme.copyWith(
+                primary: const Color(0xFFC5A052),
+                onPrimary: Colors.white,
+              ),
+        ),
+        child: child!,
+      ),
+    );
+    if (selected == null || !mounted) return;
+    if (selected.end.difference(selected.start).inDays >= 366) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('El período no puede superar 366 días.')),
+      );
+      return;
+    }
+    setState(() {
+      _from = selected.start;
+      _to = selected.end;
+      _presetDays = null;
+    });
+    await _load(from: selected.start, to: selected.end);
   }
 
   @override
@@ -101,9 +164,32 @@ class _ProviderBusinessAnalyticsScreenState
                   child: ListView(
                     padding: const EdgeInsets.fromLTRB(18, 8, 18, 28),
                     children: [
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          for (final days in const [7, 30, 90])
+                            ChoiceChip(
+                              label: Text('Últimos $days días'),
+                              selected: _presetDays == days,
+                              onSelected: _loading
+                                  ? null
+                                  : (_) => _selectPreset(days),
+                              selectedColor: const Color(0xFFF2E6CC),
+                              side: const BorderSide(color: Color(0xFFE9DFD3)),
+                            ),
+                          OutlinedButton.icon(
+                            onPressed: _loading ? null : _selectCustomPeriod,
+                            icon: const Icon(Icons.date_range_rounded, size: 18),
+                            label: Text('${_displayDate(_from)} – ${_displayDate(_to)}'),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
                       _sectionCaption(
                         'PERÍODO',
-                        '${period['from'] ?? 'Últimos 30 días'}  —  ${period['to'] ?? ''}',
+                        '${period['from'] ?? _apiDate(_from)}  —  ${period['to'] ?? _apiDate(_to)} · calendario de Colombia',
                       ),
                       const SizedBox(height: 14),
                       _cardGrid([
