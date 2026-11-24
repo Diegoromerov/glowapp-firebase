@@ -1,6 +1,6 @@
 # Onboarding SaaS — Fase 1: puerta de entrada
 
-**Estado:** implementada en el worktree; pendiente de validación funcional y publicación.
+**Estado:** publicada en producción; validación automatizada aprobada. Pendiente revisión funcional de los flujos con cuentas reales.
 **Fecha:** 24 de noviembre de 2026.
 
 ## Objetivo
@@ -39,14 +39,15 @@ flowchart TD
 
 ## Validación y estado de publicación
 
-- `git diff --check` pasó sin errores de whitespace.
-- Se revisó el flujo y los contratos existentes de `createSalon`, `saas/bootstrap`, aceptación legal y rutas del shell.
-- `flutter analyze --no-pub` sobre los tres archivos Flutter no reportó errores; sí reportó diagnósticos de lint/estilo y deprecación (84 en total).
-- No se ejecutaron pruebas funcionales automatizadas.
-- No se desplegó a producción. La fase requiere validación funcional del alta nueva, reintento después de una respuesta perdida, cuenta con tenant existente, usuario sin salón y acceso directo a Caja antes de publicar.
+- La suite de análisis y pruebas del proveedor pasó en GitHub Actions (workflow de verificación previa `45335504674`).
+- El build web del proveedor pasó en el workflow de publicación `45336126415`.
+- El deploy del job `Deploy glow_provider` terminó con éxito el 24 de noviembre de 2026.
+- Producción: [GlowApp Proveedor](https://glowapp-provider.web.app/#/auth/onboarding). La raíz respondió HTTP 200 y el bundle servido contiene los textos de preparación SaaS y recuperación del registro.
+- Código integrado en `main` mediante [PR #52](https://github.com/Diegoromerov/glowapp-firebase/pull/52), commit `34f8d185fa09ec4afec8a5c674e1a239af033371`.
+- El análisis local no reportó errores de Dart; los diagnósticos restantes eran lint/estilo y deprecaciones.
 
 ## Pendiente para cerrar la fase
 
-1. Ejecutar las pruebas funcionales de esos escenarios en un entorno autorizado.
-2. Corregir cualquier incompatibilidad observada y validar el flujo en web/móvil según aplique.
-3. Publicar en producción cuando la validación sea satisfactoria y actualizar este informe con la revisión desplegada y evidencia.
+1. Revisar en producción el alta nueva, el reintento tras una respuesta perdida, la cuenta con tenant existente, el usuario sin salón y el acceso directo a Caja.
+2. Confirmar con una cuenta heredada que el bootstrap recupera tenant/salón sin alterar el plan existente.
+3. Corregir y volver a desplegar solo si la revisión funcional encuentra incompatibilidades.
