@@ -79,6 +79,11 @@ jobs:
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
+      - name: Recuperación de tenant conserva el plan del salón
+        env:
+          JWT_SECRET: phase1-test-secret
+        run: npx jest src/tests/saasBootstrapRoutes.test.js --runInBand --forceExit --verbose
+
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
           # trust auth: sin password en la URL

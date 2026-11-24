@@ -108,18 +108,8 @@ router.post('/', async (req, res) => {
       return res.status(200).json({ provisioned: true, created: false, profile: toPayload(existing) });
     }
 
-    const plan = String(req.body?.plan || 'FREE_TRIAL').toUpperCase();
-    const initialPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop === 0);
-    if (!initialPlans.includes(plan)) {
-      return res.status(400).json({
-        error: 'El alta inicial debe usar Prueba Gratis o Freemium. Los planes pagos se activan desde Facturación.',
-        validPlans: initialPlans,
-        upgradeUrl: '/api/saas/billing/checkout',
-      });
-    }
-
     const { rows: salones } = await pool.query(
-      `SELECT id, nombre_salon, business_profile_id FROM salones
+      `SELECT id, nombre_salon, business_profile_id, plan_saas FROM salones
        WHERE id_dueno = $1 AND ($2::integer IS NULL OR id = $2)
        ORDER BY id DESC LIMIT 1`,
       [req.user.id, requestedSalonId]
@@ -137,6 +127,31 @@ router.post('/', async (req, res) => {
       return res.status(409).json({
         error: 'La sede ya pertenece a un negocio SaaS. Solicita una invitación al propietario.',
         businessProfileId: salon.business_profile_id,
+      });
+    }
+
+    // La app solo puede elegir planes gratuitos durante el alta inicial. Si el
+    // salón ya existía con un plan válido, se conserva el nivel guardado aunque
+    // el cliente envíe el valor por defecto FREE_TRIAL al reintentar bootstrap.
+    const storedPlan = String(salon.plan_saas || '').trim().toUpperCase();
+    const requestedPlan = String(req.body?.plan || 'FREE_TRIAL').trim().toUpperCase();
+    const storedPlanIsKnown = PLAN_IDS.includes(storedPlan);
+    if (storedPlan && !storedPlanIsKnown) {
+      return res.status(409).json({
+        error: 'El plan actual del salón no se puede recuperar automáticamente. Contacta a soporte para conservar tu suscripción.',
+      });
+    }
+
+    const preserveStoredPlan = storedPlan && storedPlan !== 'FREE_TRIAL';
+    const plan = preserveStoredPlan
+      ? storedPlan
+      : requestedPlan;
+    const initialPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop === 0);
+    if (!initialPlans.includes(plan) && !(preserveStoredPlan && plan === storedPlan)) {
+      return res.status(400).json({
+        error: 'El alta inicial debe usar Prueba Gratis o Freemium. Los planes pagos se activan desde Facturación.',
+        validPlans: initialPlans,
+        upgradeUrl: '/api/saas/billing/checkout',
       });
     }
 
