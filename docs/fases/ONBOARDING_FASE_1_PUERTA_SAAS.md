@@ -76,18 +76,18 @@ Después de publicar la idempotencia de creación del salón, se repitió el alt
 5. `GET /api/saas/team` respondió HTTP 200 con rol OWNER.
 6. `GET /api/salon/my-salon` respondió HTTP 200 y devolvió la sede con el propietario activo.
 
-El backend activo es el commit `590f8a159b22884495cf7cf0233b85e2b7a9d5fe` y reportó PostgreSQL disponible, sin datos fabricados y 69 migraciones registradas. El workflow de publicación del proveedor `45347597202` terminó exitosamente (análisis, compilación web y despliegue).
+El backend activo, tras corregir y desplegar el guard de membresía, es el commit `a8b833576877e9ac1878c14894027e3f15420378`. `/api/health` respondió `OK`, con PostgreSQL disponible, sin datos fabricados y 69 migraciones registradas. El workflow de publicación del proveedor `45347597202` terminó exitosamente (análisis, compilación web y despliegue).
 
 El shell confirma el tenant con el bootstrap antes de construir las pestañas; si falla, presenta reintento y no muestra módulos operativos. La ruta directa `/salon/caja` instancia el mismo shell con Caja seleccionada. Esta última verificación es inspección del código publicado, no una prueba visual automatizada en el navegador.
 
 Las pruebas de producción crearon cuentas y sedes sintéticas. Durante una reproducción anterior al fix se generó una sede duplicada; los registros de QA no se eliminaron como parte de esta validación.
 
-Comprobación adicional del despliegue activo: Firebase Hosting devolvió HTTP 200 para el onboarding y para `main.dart.js`; el bundle servido incluye el estado «Preparando tu espacio SaaS», el botón «Reintentar» y el mensaje de recuperación. Una solicitud sin autenticación a `GET /api/salon/11/caja/resumen`, con `X-App-Audience: provider`, devolvió HTTP 401 `Se requiere autenticación`. Esto confirma el bloqueo de anónimos; la autorización de una sesión autenticada con rol no permitido queda para la prueba visual/funcional pendiente.
+Comprobación adicional del despliegue activo: Firebase Hosting devolvió HTTP 200 para el onboarding y para `main.dart.js`; el bundle servido incluye el estado «Preparando tu espacio SaaS», el botón «Reintentar» y el mensaje de recuperación. Una solicitud sin autenticación a `GET /api/salon/11/caja/resumen`, con `X-App-Audience: provider`, devolvió HTTP 401 `Se requiere autenticación`. Después se probó con una cuenta QA autenticada y sin membresía: la primera petición reveló HTTP 500 porque `ownerGuard` llamaba a `runInTenantTransaction` con una firma incorrecta. Se corrigió en PR #65; Backend CI (run `45351069452`) pasó y Railway desplegó el commit `a8b833576877e9ac1878c14894027e3f15420378`. Al repetir la lectura de Caja, respondió HTTP 403 `No perteneces a este salón.` No se modificaron movimientos ni se accedió a los datos.
 
 ## Alcance aún no verificado
 
 - Recorrido visual completo en navegador/dispositivo. La herramienta de navegador no estuvo disponible en esta sesión; el flujo de API sí se verificó en producción.
 - Alta/reintento de una cuenta heredada con plan distinto de FREE_TRIAL.
-- Verificación visual de la entrada directa a Caja y de la experiencia por rol. El código publicado enruta este deep link por el shell que exige un tenant, y las rutas de caja validan la membresía activa en backend.
+- Recorrido visual de la entrada directa a Caja y de la experiencia por rol. La ruta directa pasa por el shell que exige un tenant; además, la API se probó con usuario autenticado sin membresía y respondió 403.
 
 La ruta principal nueva de onboarding SaaS queda funcionalmente validada en producción. Estos escenarios quedan como verificación adicional antes de dar por cerrada toda la validación visual y de migración heredada.
