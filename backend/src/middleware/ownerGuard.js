@@ -108,7 +108,7 @@ async function getActiveMembership(salonId, userId, tenantId) {
     return r;
   };
 
-  const res = await runInTenantTransaction({ pool }, null, consultar);
+  const res = await runInTenantTransaction({ pool }, tenantId ?? null, userId, consultar);
   if (res.rows.length === 0) return null;
   return { sub_rol: String(res.rows[0].sub_rol || '').toUpperCase() };
 }
