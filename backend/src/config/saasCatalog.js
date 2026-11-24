@@ -105,7 +105,7 @@ const PLAN_CATALOG = Object.freeze({
     },
   },
   GROWTH: {
-    id: 'GROWTH', name: 'Crecimiento', priceCop: 169000, annualPriceCop: 135200, priceUsd: null,
+    id: 'GROWTH', name: 'Crecimiento', priceCop: null, proposedPriceCop: 169000, proposedAnnualPriceCop: 135200, priceUsd: null,
     interval: 'month', trialDays: 0,
     description: 'Plan propuesto: facturación, marca propia y fidelización para equipos de hasta 10 personas.', popular: false, commerciallyAvailable: false,
     capabilities: [...COMMON_PAID, 'CUSTOM_BRANDING', 'LOYALTY', 'INVOICING', 'AURA_BUSINESS', 'WHATSAPP_INTEGRATION'],
