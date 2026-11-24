@@ -40,7 +40,7 @@ async function findTenant(userId, salonId = null) {
             bp.id AS business_profile_id, bp.name, bp.saas_plan, bp.tenant_id
      FROM memberships m
      JOIN business_profiles bp ON bp.id = m.business_profile_id
-     LEFT JOIN salones s ON s.business_profile_id = bp.id
+     JOIN salones s ON s.business_profile_id = bp.id
      WHERE m.user_id = $1 AND m.status = 'ACTIVE'
        AND ($2::integer IS NULL OR s.id = $2)
      ORDER BY m.accepted_at DESC NULLS LAST, m.created_at DESC, s.id ASC
@@ -103,6 +103,9 @@ router.post('/', async (req, res) => {
     if (requestedSalonId === false) {
       return res.status(400).json({ error: 'x-active-salon-id debe ser un identificador numérico válido.' });
     }
+    // Un perfil preliminar creado durante el registro no constituye todavía
+    // un tenant operativo: sin salón, el shell no puede resolver la sede y el
+    // usuario quedaría atrapado sin poder completar el alta.
     const existing = await findTenant(req.user.id, requestedSalonId);
     if (existing) {
       return res.status(200).json({ provisioned: true, created: false, profile: toPayload(existing) });
