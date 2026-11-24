@@ -47,7 +47,6 @@ import 'screens/saas/api_keys_screen.dart';
 // Salon
 import 'screens/salon/salon_shell.dart';
 import 'screens/salon/salon_hub_screen.dart';
-import 'screens/salon/caja_screen.dart';
 
 // Owner
 import 'screens/owner/owner_dashboard_screen.dart';
@@ -355,11 +354,10 @@ class GlowProviderApp extends ConsumerWidget {
                         ),
                       );
                     case '/salon/caja':
-                      final args = settings.arguments as Map<String, dynamic>?;
                       return MaterialPageRoute(
-                        builder: (_) => CajaScreen(
-                          salonId: args?['salonId'] ?? 0,
-                        ),
+                        // Los deep links a Caja pasan por el mismo control de
+                        // tenant que el acceso normal al SaaS del salón.
+                        builder: (_) => const SalonShell(initialIndex: 1),
                       );
                     case '/booking':
                       final args = settings.arguments as Map<String, dynamic>?;
