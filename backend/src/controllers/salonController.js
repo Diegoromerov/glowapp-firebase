@@ -1,4 +1,5 @@
 const { pool } = require('../config/db');
+const tenantRouting = require('../config/tenantRouting');
 const crypto = require('crypto');
 const { hasEntitlement, PLAN_ENTITLEMENTS, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { ensureSalonOwnerIdentity } = require('../services/salonIdentity');
@@ -115,49 +116,67 @@ exports.createSalon = async (req, res) => {
       )
       RETURNING id, nombre_salon, nit, direccion, ciudad, telefono, plan_saas, latitude, longitude, location_enabled, location_public`;
 
-    const salonRes = await pool.query(query, [
-      nombre_salon,
-      nit || null,
-      direccion || null,
-      telefono || null,
-      ciudad || null,
-      ownerId,
-      hasValidCoords ? lat : null,
-      hasValidCoords ? lon : null,
-      locationEnabled,
-      isPublic
-    ]);
+    const provision = async (client) => {
+      const salonRes = await client.query(query, [
+        nombre_salon,
+        nit || null,
+        direccion || null,
+        telefono || null,
+        ciudad || null,
+        ownerId,
+        hasValidCoords ? lat : null,
+        hasValidCoords ? lon : null,
+        locationEnabled,
+        isPublic
+      ]);
+      const salon = salonRes.rows[0];
 
-    const salon = salonRes.rows[0];
-
-    // T-127 (D-GL-027): la tabla heredada `salon_miembros` ya no se escribe.
-    // El dueño queda en `memberships` con el rol canónico mediante
-    // `ensureSalonOwnerIdentity`, que es la única fuente de identidad.
-
-    // E-02a (D-GL-027): el salón nace con su identidad canónica
-    // (business_profiles + memberships). Sin esto, `req.saas` queda vacío y toda
-    // la capa SaaS responde 401 hasta que alguien llame a /api/saas/bootstrap a
-    // mano. No se aborta la creación del salón si falla: la migración 113 hace
-    // el backfill y el error queda en el log con el id del salón.
-    try {
-      const identity = await ensureSalonOwnerIdentity(pool, {
+      // T-127 (D-GL-027): memberships es la fuente canónica del owner.
+      const identity = await ensureSalonOwnerIdentity(client, {
         salonId: salon.id,
         ownerUserId: ownerId,
         name: salon.nombre_salon,
         plan: salon.plan_saas || 'FREE_TRIAL',
       });
       if (!identity.provisioned) {
-        console.warn(`⚠️ [createSalon] identidad no provisionada para salón ${salon.id}: ${identity.reason}`);
+        throw new Error(`No se pudo provisionar identidad SaaS: ${identity.reason}`);
       }
-    } catch (identityError) {
-      console.error(`⚠️ [createSalon] identidad del salón ${salon.id} falló:`, identityError.message);
+      await client.query(
+        `UPDATE usuarios SET rol = 'SALON', onboarding_completo = true WHERE id = $1`,
+        [ownerId]
+      );
+      return { salon, identity };
+    };
+
+    let salon, identity;
+    const activeClient = tenantRouting.getActiveClient();
+    if (activeClient) {
+      await activeClient.query('SAVEPOINT salon_saas_provisioning');
+      try {
+        await activeClient.query('SET LOCAL ROLE app_system');
+        ({ salon, identity } = await provision(activeClient));
+        await activeClient.query('SET LOCAL ROLE app_rls_user');
+        await activeClient.query('RELEASE SAVEPOINT salon_saas_provisioning');
+      } catch (provisionError) {
+        try {
+          await activeClient.query('ROLLBACK TO SAVEPOINT salon_saas_provisioning');
+          await activeClient.query('SET LOCAL ROLE app_rls_user');
+          await activeClient.query('RELEASE SAVEPOINT salon_saas_provisioning');
+        } catch (rollbackError) {
+          console.error('⚠️ No se pudo restaurar el contexto del alta SaaS:', rollbackError.message);
+        }
+        throw provisionError;
+      }
+    } else {
+      const result = await tenantRouting.runAsSystem({ pool }, provision);
+      salon = result.salon;
+      identity = result.identity;
     }
 
-    // Marcar rol del usuario como SALON y onboarding_completo = true
-    await pool.query(
-      `UPDATE usuarios SET rol = 'SALON', onboarding_completo = true WHERE id = $1`,
-      [ownerId]
-    );
+    // T-127 (D-GL-027): el dueño queda en memberships; no se escribe la tabla heredada.
+    if (!identity.provisioned) {
+      console.warn(`⚠️ [createSalon] identidad no provisionada para salón ${salon.id}: ${identity.reason}`);
+    }
 
     console.log(`🏢 Salón '${nombre_salon}' creado exitosamente para Dueño ID ${ownerId} (Ubicación: ${hasValidCoords ? `${lat}, ${lon}` : 'No especificada'})`);
 
@@ -447,3 +466,4 @@ exports.removeMember = async (req, res) => {
     res.status(500).json({ error: 'Error al remover el colaborador del salón' });
   }
 };
+
