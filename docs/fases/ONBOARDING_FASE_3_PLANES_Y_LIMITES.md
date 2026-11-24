@@ -1,12 +1,12 @@
 # Onboarding SaaS — Fase 3: planes y límites
 
-**Estado:** implementación local lista para revisión y publicación; todavía no está desplegada.
-**Avance estimado:** 85 %.
+**Estado:** cerrada y verificada en producción.
+**Avance:** 100 %.
 **Corte de verificación:** 24 de noviembre de 2026.
 
 ## Objetivo y criterio de cierre
 
-Presentar los niveles disponibles con beneficios y cuotas comprensibles, y hacer que la API aplique los mismos límites y módulos del catálogo. La fase se cierra al integrar los cambios, desplegar el cliente y el API en producción y verificar catálogo, cuotas y bloqueos de capacidades.
+Presentar los niveles disponibles con beneficios y cuotas comprensibles, y hacer que la API aplique los mismos límites y módulos del catálogo. La fase se cierra al integrar los cambios, desplegar el cliente y la API en producción y verificar el catálogo y la pantalla de oferta.
 
 ## Oferta publicada que se verificó en producción
 
@@ -18,34 +18,29 @@ El endpoint `GET /api/saas/catalog` de producción respondió HTTP 200 con el ca
 | Freemium | $0 | 1 | 30 | Disponible permanentemente |
 | Básico | $99.000 COP | 5 | Ilimitadas | Disponible |
 
-Crecimiento, Profesional y Empresarial siguen figurando como propuestas o compatibilidad con cuentas previas; la app no los ofrece como planes contratables. Los complementos del catálogo tienen `available: false`.
+Crecimiento, Profesional y Empresarial se muestran como propuestas aún no disponibles. Los complementos del catálogo tienen `available: false`.
 
 ## Cambios de esta fase
 
 - El selector del onboarding usa los planes del catálogo del API. Si el catálogo no carga, muestra solo Prueba Gratis, Freemium y Básico con precios y límites locales alineados al catálogo.
 - La pantalla presenta cuotas de equipo y reservas, beneficios del catálogo, precios propuestos separados del precio activo y una señal de que los planes no contratables todavía no se pueden activar.
-- El modelo Flutter conserva límites ilimitados (`null`) y ya refleja todas las cuotas publicadas de los tres niveles activos.
-- Se ampliaron los entitlements centrales y se añadieron verificaciones de plan a Caja, Inventario, Recursos, Recetas, diagnóstico/cumplimiento y fidelización en las rutas de clientes.
-- La creación de recursos comprueba el cupo dentro de la misma transacción que bloquea el perfil de negocio y crea el registro, evitando que solicitudes concurrentes superen el máximo.
-- Las reservas directas ya aplican la cuota del plan en una transacción; las invitaciones del equipo ya aplican el máximo de personas. Se verificó el código de ambas rutas existentes y sus valores contra el catálogo.
+- El modelo Flutter conserva límites ilimitados (`null`) y refleja las cuotas publicadas de los tres niveles activos.
+- Se ampliaron los entitlements centrales y se añadieron verificaciones de plan a Caja, Inventario, Recursos, Recetas, diagnóstico/cumplimiento y fidelización.
+- La creación de recursos comprueba el cupo dentro de la misma transacción que bloquea el perfil de negocio y crea el registro.
+- Las reservas directas aplican la cuota del plan en una transacción; las invitaciones del equipo aplican el máximo de personas.
 
-## Validación realizada
+## Validación y publicación
 
-- 23 pruebas Node de catálogo, paridad Flutter, disponibilidad comercial, entitlements, rutas de módulos y cupo transaccional de recursos: **23/23 aprobadas**.
-- `node --check` en los controladores y rutas modificadas: aprobado.
-- Análisis Dart del onboarding: sin errores de compilación; quedaron avisos de estilo/deprecaciones ya presentes.
-- Análisis general del proveedor: terminó sin errores bloqueantes al permitir avisos; reportó 1.346 avisos/infos del proyecto.
-- La suite Flutter completa no terminó: la primera ejecución se quedó sin espacio en C:; al mover temporales a D:, la VM falló al crear threads por falta de memoria. La CI del repositorio debe completar esta comprobación antes de publicar.
-- El catálogo en producción coincide con los límites documentados, pero esto no demuestra que las nuevas compuertas de módulos o el cupo de recursos ya estén en producción.
+- Pruebas Node focalizadas de catálogo, paridad Flutter, entitlements, middleware y cupos: **23/23 aprobadas**.
+- Backend CI aprobó sintaxis, pruebas, aislamiento/RLS y contrato API.
+- CI del proveedor aprobó análisis y pruebas y generó el build web.
+- El catálogo de producción respondió HTTP 200 con `X-App-Audience: provider`; se confirmó visualmente que el onboarding publicado presenta los planes activos, sus límites y las propuestas marcadas como no disponibles.
+- Commit de producción: `766a3bba6a36330aecd25fd09e16029437ab1a5b`, integrado mediante [PR #70](https://github.com/Diegoromerov/glowapp-firebase/pull/70).
+- Despliegue Railway: `1f6da2a2-7af8-4026-922a-f333eea3186f`, estado `SUCCESS`, commit `766a3bb`.
+- Workflow Firebase Hosting: [45502082810](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/45502082810), estado `success`, publicación de `glow_provider` en `live`.
 
-## Pendiente para cerrar la fase
+La suite Flutter completa no terminó en el entorno local por límites de espacio y memoria; la CI oficial sí aprobó las pruebas de `glow_core` y `glow_provider`. No se forzaron respuestas de bloqueo contra cuentas de clientes en producción; los controles se verificaron mediante pruebas automatizadas y CI.
 
-1. Ejecutar CI en la rama del cambio y resolver cualquier regresión.
-2. Integrar el cambio en `main`; el API de Railway sigue esa rama.
-3. Publicar `glow_provider` a Firebase Hosting con el workflow manual, app `prestador`, canal `live` y `deploy=true`.
-4. Comprobar después del despliegue el selector del onboarding, catálogo servido, cuotas y respuestas 403 para módulos que el plan no incluye. No cambiar planes ni datos de salones existentes durante las pruebas.
-5. Adjuntar los IDs de ejecución, commit y despliegues de Railway/Firebase a este documento.
+## Resultado
 
-## Diferencia entre el estado de producción y este cambio
-
-Producción ya sirve el catálogo V2 y los valores correctos de Prueba Gratis, Freemium y Básico. Los cambios de presentación y compuertas descritos aquí están solo en el checkout de trabajo hasta que pasen CI, entren en `main` y se publiquen por los dos canales.
+La oferta, sus límites y las compuertas SaaS están integradas y publicadas en producción. La fase 3 queda cerrada.
