@@ -82,6 +82,8 @@ El shell confirma el tenant con el bootstrap antes de construir las pestañas; s
 
 Las pruebas de producción crearon cuentas y sedes sintéticas. Durante una reproducción anterior al fix se generó una sede duplicada; los registros de QA no se eliminaron como parte de esta validación.
 
+Comprobación adicional del despliegue activo: Firebase Hosting devolvió HTTP 200 para el onboarding y para `main.dart.js`; el bundle servido incluye el estado «Preparando tu espacio SaaS», el botón «Reintentar» y el mensaje de recuperación. Una solicitud sin autenticación a `GET /api/salon/11/caja/resumen`, con `X-App-Audience: provider`, devolvió HTTP 401 `Se requiere autenticación`. Esto confirma el bloqueo de anónimos; la autorización de una sesión autenticada con rol no permitido queda para la prueba visual/funcional pendiente.
+
 ## Alcance aún no verificado
 
 - Recorrido visual completo en navegador/dispositivo. La herramienta de navegador no estuvo disponible en esta sesión; el flujo de API sí se verificó en producción.
