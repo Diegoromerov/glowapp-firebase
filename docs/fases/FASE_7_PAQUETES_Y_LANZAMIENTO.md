@@ -1,6 +1,6 @@
 # Fase 7 — Paquetes comerciales y lanzamiento gradual
 
-**Estado:** En curso; auditoría de catálogo y alcance comercial iniciada el 23 de noviembre de 2026.
+**Estado:** En curso; primer ajuste de onboarding publicado en producción el 23 de noviembre de 2026.
 
 **Entorno objetivo:** producción directa, por instrucción expresa del usuario; no se usa staging.
 
@@ -53,7 +53,7 @@ Esta es una inspección de código, no un resultado de prueba de producción ni 
 - No anunciar más beneficios exclusivos hasta que una ruta del backend aplique su permiso y exista una definición operativa verificable.
 - Mantener la selección inicial de opciones gratuitas. Para mostrar contratación paga en el onboarding se deberá diseñar y validar el paso de pago; el bootstrap rechaza actualmente planes pagos.
 - La fidelización propia del salón permanece conceptualmente separada de puntos globales GlowApp. Su nivel comercial sigue pendiente.
-- El selector de plan en onboarding ahora incluye los días de prueba, personas y reservas mensuales usando los límites del catálogo recibido. Falta publicar este cambio para marcarlo como disponible en producción.
+- El selector de plan en onboarding incluye días de prueba, personas y reservas mensuales usando los límites del catálogo recibido; cambio publicado en Firebase Hosting de producción.
 
 ## Siguiente trabajo de Fase 7
 
@@ -67,10 +67,10 @@ Esta es una inspección de código, no un resultado de prueba de producción ni 
 
 - Inspección estática del catálogo, entitlements, checkout, facturación, onboarding Flutter y endpoints de uso; no se modificaron rutas de cobro ni precios en esta etapa.
 - Cambio local de onboarding: añade los términos visibles `días de prueba`, `personas` y `reservas al mes`, generados a partir de `SaasPlan.trialDays` y `SaasPlan.limits`.
-- El backend responde catálogo público y el onboarding Flutter lo consume; los sitios web cliente/proveedor responden HTTP 200 en producción desde el commit `0388dea`.
+- El backend responde catálogo público y el onboarding Flutter lo consume; los sitios web cliente/proveedor responden HTTP 200 en producción desde el commit `0388dea`; se volvió a comprobar que el proveedor responde HTTP 200 tras el despliegue `66ad30f`.
 - `flutter build web --release --no-wasm-dry-run` en `apps/glow_provider`: compilación correcta (88,9 s).
 - `flutter analyze --no-pub lib/screens/auth/onboarding_screen.dart`: 42 hallazgos informativos existentes (imports redundantes, deprecaciones y estilo); no reporta errores en la lógica añadida. El comando devuelve código 1 por hallazgos del archivo.
-- El cambio de onboarding aún no se ha desplegado; no se afirma todavía que esté publicado.
+- `main` contiene el commit `66ad30f` (`Start Phase 7 commercial packaging`); workflow de producción `45310977489` completó CI, build y deploy Firebase Hosting para el proveedor. URL del run: https://github.com/Diegoromerov/glowapp-firebase/actions/runs/45310977489.
 - No se cambió el comportamiento comercial de cobro ni los precios.
 
 ## Riesgos y rollback
@@ -80,3 +80,4 @@ Cambiar precios, días de prueba o capacidades puede alterar cobros, renovacione
 ## Pendientes y fase siguiente
 
 La Fase 7 continúa abierta. Las cifras actuales son la línea base observada, no una nueva aprobación comercial ni la afirmación de que todas las capacidades están disponibles. La Fase 6 también permanece abierta por validaciones autenticadas de fidelización y otros complementos indicados en su informe.
+
