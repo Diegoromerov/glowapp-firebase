@@ -20,10 +20,10 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
   beforeAll(async () => {
     adminPool = new Pool({ connectionString: ADMIN_URL });
     const result = await adminPool.query(
-      "SELECT id FROM business_verticals WHERE code = 'BELLEZA' ORDER BY id LIMIT 1"
+      "SELECT id FROM business_verticals WHERE code = 'BEAUTY_SALON' ORDER BY id LIMIT 1"
     );
     if (!result.rows.length) {
-      throw new Error('The BELLEZA business vertical must be seeded before this integration suite');
+      throw new Error('The BEAUTY_SALON business vertical must be seeded before this integration suite');
     }
     verticalId = result.rows[0].id;
   });
