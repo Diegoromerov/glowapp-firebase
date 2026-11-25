@@ -1,13 +1,21 @@
 jest.mock('../../config/db', () => ({
   pool: { connect: jest.fn() },
 }));
+jest.mock('../emailService', () => ({ sendEmail: jest.fn() }));
 
+const initialBrevoApiKey = process.env.BREVO_API_KEY;
 const { pool } = require('../../config/db');
+const emailService = require('../emailService');
 const saasMembershipService = require('../saasMembershipService');
 
 describe('saasMembershipService invitation audit', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    if (initialBrevoApiKey === undefined) delete process.env.BREVO_API_KEY;
+    else process.env.BREVO_API_KEY = initialBrevoApiKey;
   });
 
   test('records the acting user when expiring invitations during invite creation', async () => {
@@ -162,4 +170,76 @@ describe('saasMembershipService invitation audit', () => {
     expect(calls.some(({ sql }) => sql.includes('UPDATE memberships SET status'))).toBe(false);
     expect(client.query).toHaveBeenCalledWith('ROLLBACK');
   });
+
+  test('resends an expired invitation when a seat is available', async () => {
+    process.env.BREVO_API_KEY = 'test-api-key';
+    emailService.sendEmail.mockResolvedValue({ devMode: false });
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql, params = []) => {
+        calls.push({ sql, params });
+        if (sql.includes('WHERE m.id = $1 AND m.business_profile_id = $2')) {
+          return { rows: [{
+            id: 'expired-invite', business_profile_id: 'salon-1', user_id: 42,
+            email: 'expired.member@example.com', role: 'MEMBER', status: 'EXPIRED',
+          }] };
+        }
+        if (sql.includes('COUNT(*)::int AS count')) return { rows: [{ count: 4 }] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.resend({
+      tenantId: 'salon-1', memberId: 'expired-invite', actorId: 7,
+      tenantName: 'Salón de prueba', plan: 'BASIC',
+    })).resolves.toEqual({ emailSent: true });
+
+    expect(calls.some(({ sql, params }) =>
+      sql.includes("UPDATE memberships SET status = 'PENDING'") && params[2] === 7 && params[3] === 'expired-invite'
+    )).toBe(true);
+    expect(calls.some(({ sql, params }) =>
+      sql.includes('INSERT INTO membership_audit_logs') && params[3] === 'INVITATION_RESENT'
+    )).toBe(true);
+    expect(client.query).toHaveBeenCalledWith('COMMIT');
+    expect(emailService.sendEmail).toHaveBeenCalledWith(
+      expect.objectContaining({ to: 'expired.member@example.com' })
+    );
+    expect(client.release).toHaveBeenCalled();
+  });
+
+  test('rejects expired invitation resend at the seat limit without sending email', async () => {
+    process.env.BREVO_API_KEY = 'test-api-key';
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql, params = []) => {
+        calls.push({ sql, params });
+        if (sql.includes('WHERE m.id = $1 AND m.business_profile_id = $2')) {
+          return { rows: [{
+            id: 'expired-invite', business_profile_id: 'salon-1', user_id: 42,
+            email: 'expired.member@example.com', role: 'MEMBER', status: 'EXPIRED',
+          }] };
+        }
+        if (sql.includes('COUNT(*)::int AS count')) return { rows: [{ count: 5 }] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.resend({
+      tenantId: 'salon-1', memberId: 'expired-invite', actorId: 7,
+      tenantName: 'Salón de prueba', plan: 'BASIC',
+    })).rejects.toMatchObject({
+      status: 403,
+      message: 'Límite de asientos alcanzado para reenviar la invitación',
+    });
+
+    expect(calls.some(({ sql }) => sql.includes("UPDATE memberships SET status = 'PENDING'"))).toBe(false);
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
+    expect(emailService.sendEmail).not.toHaveBeenCalled();
+    expect(client.release).toHaveBeenCalled();
+  });
+
 });
