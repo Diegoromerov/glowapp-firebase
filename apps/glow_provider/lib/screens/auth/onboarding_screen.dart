@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/services/permission_rationale_service.dart';
+import '../salon/salon_business_hours_editor.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:glow_core/shared/background_video_player.dart';
 import 'package:glow_core/data/colombia_municipalities.dart';
@@ -46,6 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   bool _salonLocationConfirmed = false;
   bool _salonLocationPublic = true;
   bool _isLocatingSalon = false;
+  Map<String, dynamic>? _salonBusinessHours;
 
   // Módulo Constructor de Dirección Estructurada (Colombia)
   bool _useManualAddress = false;
@@ -259,6 +261,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             );
           }
         }
+      }
+
+      // El horario comercial es opcional. Se guarda después del bootstrap para
+      // reutilizar el salon_id canónico y también cubrir reintentos del alta.
+      if (_salonBusinessHours != null) {
+        final salonResult = await AuthService.getMySalon();
+        final salon = salonResult?['salon'];
+        final salonId = salon is Map ? (salon['id'] as num?)?.toInt() : null;
+        if (salonId == null) {
+          throw StateError(
+            'No pudimos identificar tu salón para guardar el horario.',
+          );
+        }
+        await SaasApiService.updateSalonProfile(salonId, {
+          'horario_atencion': _salonBusinessHours,
+        });
       }
 
       // El registro legal se confirma solo cuando ya existe el tenant que
@@ -1098,6 +1116,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 const SizedBox(height: 12),
                 _buildPlanSelector(),
               ],
+            ),
+          ),
+          const SizedBox(height: 14),
+
+          // Horario general de apertura de la sede (no son turnos individuales).
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: const Color(0xFFEFE8DE)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.03),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: SalonBusinessHoursEditor(
+              title: 'Horario comercial (opcional)',
+              description:
+                  'Indica cuándo abre el salón. Podrás ajustarlo después desde el perfil.',
+              onChanged: (value) => _salonBusinessHours = value,
             ),
           ),
           const SizedBox(height: 14),

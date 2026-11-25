@@ -728,6 +728,11 @@ class _MasTab extends StatelessWidget {
           '/salon',
           detalle: 'KPIs, equipo y ajustes',
         ),
+        enlace(
+          'Perfil del salón',
+          '/salon/profile',
+          detalle: 'Datos, ubicación y horario comercial',
+        ),
         enlace('Facturación del plan', '/saas/billing'),
         enlace('Uso del plan', '/saas/usage'),
         enlace('API keys', '/saas/api-keys'),
