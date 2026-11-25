@@ -58,8 +58,18 @@ async function call(method, path, body, auth = token) {
 
 (async () => {
   console.log(`QA SaaS E2E · ${BASE}`);
-  if (BASE.includes('belleza-app-production') && !FORCE) {
-    console.error('ABORTADO: este entorno es producción y el arnés crea cuentas. Usa staging o --force.');
+  const productionHosts = new Set([
+    'glowapp-api-production.up.railway.app',
+    'belleza-app-production.up.railway.app',
+  ]);
+  let productionTarget = false;
+  try {
+    productionTarget = productionHosts.has(new URL(BASE).hostname.toLowerCase());
+  } catch {
+    // Una URL inválida no se trata como entorno seguro; fetch fallará si se continúa.
+  }
+  if (productionTarget && !FORCE) {
+    console.error('ABORTADO: este entorno es producción y el arnés crea datos. Usa staging o confirma con --force.');
     process.exit(2);
   }
 
