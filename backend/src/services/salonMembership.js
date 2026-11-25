@@ -124,6 +124,18 @@ async function getMemberRole(db, salonId, userId) {
   return { role, sub_rol: subRol };
 }
 
+/** Resolve the canonical active membership row for the legacy salon routes. */
+async function getMembershipForSalonUser(db, salonId, userId) {
+  const { rows } = await db.query(
+    `SELECT m.id, m.business_profile_id, m.user_id, m.role, m.sub_rol, m.status
+       FROM memberships m
+       JOIN salones s ON s.business_profile_id = m.business_profile_id
+      WHERE s.id = $1 AND m.user_id = $2 AND m.status = 'ACTIVE'
+      LIMIT 1`, [salonId, userId]
+  );
+  return rows[0] || null;
+}
+
 /** ¿El usuario puede administrar el equipo de este salón? */
 async function canAdminSalon(db, salonId, userId) {
   const m = await getMemberRole(db, salonId, userId);
@@ -169,6 +181,7 @@ module.exports = {
   subRolForRole,
   listSalonMembers,
   getMemberRole,
+  getMembershipForSalonUser,
   canAdminSalon,
   ensureMembership,
 };

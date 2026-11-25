@@ -1,14 +1,14 @@
 const { pool } = require('../config/db');
 const tenantRouting = require('../config/tenantRouting');
-const crypto = require('crypto');
 const { hasEntitlement, PLAN_ENTITLEMENTS, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { ensureSalonOwnerIdentity } = require('../services/salonIdentity');
 const saasMembershipService = require('../services/saasMembershipService');
 const {
   listSalonMembers,
   getMemberRole,
+  getMembershipForSalonUser,
   canAdminSalon,
-  ensureMembership,
+  roleForSubRol,
 } = require('../services/salonMembership');
 
 // ==========================================
@@ -305,99 +305,18 @@ exports.acceptInvitation = async (req, res) => {
       if (membershipError.status !== 404) throw membershipError;
     }
 
-    const tokenHash = crypto.createHash('sha256').update(cleanToken).digest('hex');
-
-    // Buscar invitación válida por hash SHA-256
-    const inviteRes = await pool.query(
-      `SELECT id, salon_id, email, sub_rol, expires_at, usado
-       FROM salon_invitaciones
-       WHERE token_invitacion = $1 AND usado = false AND expires_at > NOW()`,
-      [tokenHash]
-    );
-
-    if (inviteRes.rows.length === 0) {
-      return res.status(400).json({ error: 'La invitación es inválida, ya fue usada o ha expirado.' });
-    }
-
-    const invitation = inviteRes.rows[0];
-
-    // La invitación es NOMINAL: se emitió para un correo concreto. Sin esta
-    // comprobación, cualquiera que obtuviera el token entraba al salón como
-    // EMPLEADO o ADMINISTRADOR aunque la invitación fuera para otra persona, y
-    // el invitado legítimo se encontraba la invitación ya consumida. Se compara
-    // en minúsculas porque el correo se guarda normalizado.
-    const emailInvitado = String(invitation.email || '').trim().toLowerCase();
-    const emailUsuario = String(req.user.email || '').trim().toLowerCase();
-    if (emailInvitado && emailUsuario && emailInvitado !== emailUsuario) {
-      return res.status(403).json({
-        error: `Esta invitación es para ${invitation.email}. Estás conectado como ${req.user.email}: entra con la cuenta invitada para aceptarla.`,
-        code: 'INVITATION_EMAIL_MISMATCH'
-      });
-    }
-
-    // Las dos escrituras van en UNA sola sentencia: si el INSERT entrara y el
-    // UPDATE no, la invitación seguiría siendo usable y el mismo token valdría
-    // dos veces. No se puede confiar en el middleware para esto: el modo
-    // transacción-por-petición está ACTIVO POR DEFECTO, pero este salón no
-    // depende de él (ver middleware/tenantContext.js) y no comparte transacción
-    // entre consultas.
-    await pool.query(
-      `WITH perfil AS (
-         SELECT business_profile_id AS id FROM salones WHERE id = $1
-       ), membresia AS (
-         -- E-02b (D-GL-027): la membership canónica se escribe en la MISMA
-         -- sentencia. Si el salón no está provisionado, el perfil viene vacío y
-         -- esta rama no inserta: la aceptación no se rompe por eso.
-         INSERT INTO memberships
-           (id, user_id, business_profile_id, role, sub_rol, status, accepted_at)
-         SELECT
-           md5(random()::text || clock_timestamp()::text || $2::text),
-           $2,
-           perfil.id,
-           CASE upper(trim($3))
-             WHEN 'DUEÑO' THEN 'OWNER'
-             WHEN 'DUENO' THEN 'OWNER'
-             WHEN 'ADMINISTRADOR' THEN 'ADMIN'
-             WHEN 'ADMIN' THEN 'ADMIN'
-             WHEN 'RECEPCIONISTA' THEN 'MANAGER'
-             ELSE 'MEMBER'
-           END,
-           upper(trim($3)),
-           'ACTIVE',
-           CURRENT_TIMESTAMP
-         FROM perfil
-         ON CONFLICT (user_id, business_profile_id) DO UPDATE SET
-           role = EXCLUDED.role,
-           sub_rol = EXCLUDED.sub_rol,
-           status = 'ACTIVE',
-           accepted_at = COALESCE(memberships.accepted_at, CURRENT_TIMESTAMP),
-           updated_at = CURRENT_TIMESTAMP
-         RETURNING 1
-       )
-       UPDATE salon_invitaciones SET usado = true WHERE id = $4;`,
-      [invitation.salon_id, userId, invitation.sub_rol, invitation.id]
-    );
-
-    await pool.query(
-      `INSERT INTO membership_audit_logs
-         (business_profile_id, membership_id, actor_user_id, event_type, previous_role, new_role, previous_status, new_status, metadata)
-       SELECT m.business_profile_id, m.id, $2, 'INVITATION_ACCEPTED', m.role, m.role, 'PENDING', 'ACTIVE',
-              jsonb_build_object('legacySalonInvitationId', $3::text)
-         FROM salones s JOIN memberships m ON m.business_profile_id = s.business_profile_id AND m.user_id = $2
-        WHERE s.id = $1`, [invitation.salon_id, userId, invitation.id]
-    );
-
-    console.log(`🤝 Usuario ID ${userId} aceptó invitación como ${invitation.sub_rol} en Salón ID ${invitation.salon_id}`);
+    const accepted = await saasMembershipService.acceptLegacySalonInvitation({ token: cleanToken, user: req.user });
+    console.log(`🤝 Usuario ID ${userId} aceptó invitación como ${accepted.sub_rol} en Salón ID ${accepted.salon_id}`);
 
     res.json({
       success: true,
-      message: `Te has unido exitosamente al salón con el rol de ${invitation.sub_rol}.`,
-      salon_id: invitation.salon_id,
-      sub_rol: invitation.sub_rol
+      message: `Te has unido exitosamente al salón con el rol de ${accepted.sub_rol}.`,
+      salon_id: accepted.salon_id,
+      sub_rol: accepted.sub_rol
     });
   } catch (error) {
     console.error('❌ ERROR ACCEPT INVITATION:', error.message);
-    res.status(error.status || 500).json({ error: error.message || 'Error al procesar la aceptación de la invitación', ...(error.details || {}) });
+    res.status(error.status || 500).json({ error: error.message || 'Error al procesar la aceptación de la invitación', ...(error.code ? { code: error.code } : {}), ...(error.details || {}) });
   }
 };
 
@@ -442,19 +361,18 @@ exports.updateMemberRole = async (req, res) => {
       return res.status(400).json({ error: `El sub-rol '${sub_rol}' no es válido.` });
     }
 
-    // E-02b: pertenencia sobre `memberships`, que es la única fuente.
-    // T-127: ya no se escribe el espejo en `salon_miembros`.
-    const actual = await getMemberRole(pool, salonId, targetUserId);
+    const actual = await getMembershipForSalonUser(pool, salonId, targetUserId);
 
     if (!actual) {
       return res.status(404).json({ error: 'El colaborador no pertenece a este salón.' });
     }
 
-    await ensureMembership(pool, {
-      salonId,
-      userId: targetUserId,
-      subRol: cleanSubRol,
-      createdBy: req.user.id,
+    const updated = await saasMembershipService.changeRole({
+      tenantId: actual.business_profile_id,
+      memberId: actual.id,
+      actorId: req.user.id,
+      role: roleForSubRol(cleanSubRol),
+      subRole: cleanSubRol,
     });
 
     res.json({
@@ -462,11 +380,11 @@ exports.updateMemberRole = async (req, res) => {
       message: `Rol del colaborador actualizado a ${cleanSubRol}.`,
       salon_id: Number(salonId),
       user_id: Number(targetUserId),
-      new_sub_rol: cleanSubRol
+      new_sub_rol: updated.sub_rol || cleanSubRol
     });
   } catch (error) {
     console.error('❌ ERROR UPDATE MEMBER ROLE:', error.message);
-    res.status(500).json({ error: 'Error al actualizar el rol del colaborador' });
+    res.status(error.status || 500).json({ error: error.message || 'Error al actualizar el rol del colaborador', ...(error.details || {}) });
   }
 };
 
@@ -478,19 +396,17 @@ exports.removeMember = async (req, res) => {
     const salonId = req.salonId || req.params.salonId;
     const targetUserId = req.targetUserId || req.params.userId || req.params.memberId || req.body.user_id || req.body.userId;
 
-    const actual = await getMemberRole(pool, salonId, targetUserId);
+    const actual = await getMembershipForSalonUser(pool, salonId, targetUserId);
 
     if (!actual) {
       return res.status(404).json({ error: 'El colaborador no existe o ya está inactivo en este salón.' });
     }
 
-    // E-02b: la baja se refleja en la fuente canónica.
-    await ensureMembership(pool, {
-      salonId,
-      userId: targetUserId,
-      subRol: actual.sub_rol,
-      status: 'SUSPENDED',
-      createdBy: req.user.id,
+    await saasMembershipService.setStatus({
+      tenantId: actual.business_profile_id,
+      memberId: actual.id,
+      actorId: req.user.id,
+      status: 'REMOVED',
     });
 
     res.json({
@@ -501,7 +417,7 @@ exports.removeMember = async (req, res) => {
     });
   } catch (error) {
     console.error('❌ ERROR REMOVE MEMBER:', error.message);
-    res.status(500).json({ error: 'Error al remover el colaborador del salón' });
+    res.status(error.status || 500).json({ error: error.message || 'Error al remover el colaborador del salón', ...(error.details || {}) });
   }
 };
 
