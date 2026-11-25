@@ -9,7 +9,8 @@
  * correr contra producción salvo que se pase --force de forma explícita.
  *
  *   node scripts/qaSaasE2E.js --base=https://staging.example.com \
- *     --email=qa+<timestamp>@glowapp.test --password=... [--admin-email=... --admin-password=...]
+ *     --email=qa+<timestamp>@glowapp.test --password=... \
+ *     --invite-email=<cuenta-GlowApp-ya-registrada> [--admin-email=... --admin-password=...]
  *
  * Salida: una línea PASS/FAIL por paso y código de salida 1 si algo falla.
  */
@@ -27,6 +28,7 @@ const EMAIL = arg('email') || `qa+${Date.now()}@glowapp.test`;
 const PASSWORD = arg('password') || 'QaTemporal123!';
 const ADMIN_EMAIL = arg('admin-email');
 const ADMIN_PASSWORD = arg('admin-password');
+const INVITE_EMAIL = arg('invite-email') || process.env.QA_INVITE_EMAIL || null;
 
 const results = [];
 let token = null;
@@ -97,18 +99,28 @@ async function call(method, path, body, auth = token) {
   record('3. bootstrap de tenant (idempotente)', idempotente,
     `HTTP ${boot1.status}/${boot2.status} · profile ${boot1.json?.profile?.id || 'n/a'}`);
 
-  const profileId = boot1.json?.profile?.id;
 
-  // 4. Invitar miembro
-  const invite = await call('POST', `/api/saas/team/${profileId}/invite`, {
-    email: `invitado+${Date.now()}@glowapp.test`,
-    role: 'MEMBER',
-  });
-  record('4. invitar equipo', [200, 201, 409].includes(invite.status), `HTTP ${invite.status}`);
-  const team = await call('GET', `/api/saas/team/${profileId}`);
-  const members = team.json?.members || team.json?.memberships || [];
-  record('4b. listar equipo', team.status === 200 && Array.isArray(members),
-    `HTTP ${team.status} · ${members.length} miembros`);
+  // 4. Invitación. El backend solo admite correos de cuentas ya registradas.
+  // Un 202 significa que se creó la invitación, pero el envío del correo no
+  // quedó confirmado; no se cuenta como E2E exitoso.
+  if (!INVITE_EMAIL) {
+    record('4. invitación por correo', false,
+      'OMITIDO: usa --invite-email con una cuenta GlowApp registrada');
+  } else {
+    const invite = await call('POST', '/api/saas/team/invite', {
+      email: INVITE_EMAIL,
+      role: 'MEMBER',
+    });
+    const inviteOk = invite.status === 201 &&
+      invite.json?.emailSent === true &&
+      Boolean(invite.json?.membershipId);
+    record('4. invitación por correo', inviteOk,
+      `HTTP ${invite.status} · emailSent=${invite.json?.emailSent === true}`);
+    const team = await call('GET', '/api/saas/team');
+    const members = team.json?.members || [];
+    record('4b. listar equipo', team.status === 200 && Array.isArray(members),
+      `HTTP ${team.status} · ${members.length} miembros`);
+  }
 
   // 5. Cambio de plan (sin pagar: solo se exige que la API responda con un contrato válido)
   const plan = await call('POST', '/api/saas/billing/checkout', { plan: 'BASIC', successUrl: `${BASE}/ok`, cancelUrl: `${BASE}/no` });
