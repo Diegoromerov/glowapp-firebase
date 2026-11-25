@@ -20,6 +20,7 @@ const {
   subRolForRole,
   listSalonMembers,
   getMemberRole,
+  getMembershipForSalonUser,
   canAdminSalon,
   ensureMembership,
 } = require('../services/salonMembership');
@@ -81,6 +82,15 @@ describe('E-02b — lectura del equipo', () => {
     const rol = await getMemberRole(db, 1, 2);
     expect(rol).toEqual({ role: 'MANAGER', sub_rol: 'RECEPCIONISTA' });
     expect(db.consultas[0].sql).toContain("status = 'ACTIVE'");
+  });
+
+  test('resuelve el id y tenant de la membership activa para la ruta heredada del salón', async () => {
+    const db = dbCon([{ id: 'm-5', business_profile_id: 'bp-5', user_id: 11, role: 'MEMBER', status: 'ACTIVE' }]);
+    const membership = await getMembershipForSalonUser(db, 5, 11);
+
+    expect(membership).toMatchObject({ id: 'm-5', business_profile_id: 'bp-5', user_id: 11 });
+    expect(db.consultas[0].sql).toContain('JOIN salones s ON s.business_profile_id = m.business_profile_id');
+    expect(db.consultas[0].sql).toContain("m.status = 'ACTIVE'");
   });
 
   test('sólo OWNER y ADMIN administran el equipo', async () => {

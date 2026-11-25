@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const { pool } = require('../config/db');
 const emailService = require('./emailService');
 const usageMeteringService = require('./usageMeteringService');
+const { roleForSubRol } = require('./salonMembership');
 
 const VALID_ROLES = new Set(['ADMIN', 'MANAGER', 'MEMBER', 'VIEWER']);
 const TOKEN_TTL_DAYS = 7;
@@ -222,7 +223,128 @@ async function accept({ token, user }) {
   } finally { client.release(); }
 }
 
-async function changeRole({ tenantId, memberId, actorId, role }) {
+/**
+ * Accepts invitations created by the retired salon_invitaciones flow.
+ * Compatibility must preserve the same tenant lock, seat limit and audit
+ * guarantees as a canonical membership invitation; otherwise an old link can
+ * bypass the current plan or reactivate a removed membership.
+ */
+async function acceptLegacySalonInvitation({ token, user }) {
+  if (!/^[0-9a-f]{32}$/i.test(String(token || ''))) {
+    const error = new Error('Token de invitación inválido'); error.status = 400; throw error;
+  }
+  const currentEmail = String(user?.email || '').trim().toLowerCase();
+  if (!Number.isSafeInteger(Number(user?.id)) || Number(user.id) <= 0 || !currentEmail) {
+    const error = new Error('La sesión no tiene un usuario y correo válidos'); error.status = 401; throw error;
+  }
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const tokenHash = hashToken(token);
+    const { rows: inviteRows } = await client.query(
+      `SELECT si.id, si.salon_id, si.email, si.sub_rol, si.creado_por, si.creado_at,
+              s.business_profile_id, bp.saas_plan, bp.name AS business_name
+         FROM salon_invitaciones si
+         JOIN salones s ON s.id = si.salon_id
+         JOIN business_profiles bp ON bp.id = s.business_profile_id
+        WHERE si.token_invitacion = $1 AND si.usado = false AND si.expires_at > NOW()
+        LIMIT 1`, [tokenHash]
+    );
+    const initialInvite = inviteRows[0];
+    if (!initialInvite) {
+      const error = new Error('La invitación es inválida, ya fue usada o ha expirado.'); error.status = 400; throw error;
+    }
+
+    const invitedEmail = String(initialInvite.email || '').trim().toLowerCase();
+    if (invitedEmail && invitedEmail !== currentEmail) {
+      const error = new Error(`Esta invitación es para ${initialInvite.email}. Entra con esa cuenta para aceptarla.`);
+      error.status = 403; error.code = 'INVITATION_EMAIL_MISMATCH'; throw error;
+    }
+    if (!initialInvite.business_profile_id) {
+      const error = new Error('El salón no está vinculado a un perfil SaaS.'); error.status = 409; throw error;
+    }
+
+    // Serialize legacy acceptance with canonical invitations and reactivations.
+    await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [initialInvite.business_profile_id]);
+    const { rows: lockedInvites } = await client.query(
+      `SELECT si.id, si.salon_id, si.email, si.sub_rol, si.creado_por, si.creado_at,
+              s.business_profile_id, bp.saas_plan, bp.name AS business_name
+         FROM salon_invitaciones si
+         JOIN salones s ON s.id = si.salon_id
+         JOIN business_profiles bp ON bp.id = s.business_profile_id
+        WHERE si.id = $1 AND si.token_invitacion = $2 AND si.usado = false AND si.expires_at > NOW()
+        FOR UPDATE OF si`, [initialInvite.id, tokenHash]
+    );
+    const invitation = lockedInvites[0];
+    if (!invitation) {
+      const error = new Error('La invitación es inválida, ya fue usada o ha expirado.'); error.status = 400; throw error;
+    }
+
+    const normalizedSubRole = String(invitation.sub_rol || '').trim().toUpperCase();
+    const legacyRoleMap = {
+      ADMINISTRADOR: 'ADMIN', ADMIN: 'ADMIN',
+      RECEPCIONISTA: 'MANAGER', MANAGER: 'MANAGER',
+      PRESTADOR_INDEPENDIENTE: 'MEMBER', EMPLEADO: 'MEMBER', MEMBER: 'MEMBER', VIEWER: 'VIEWER',
+    };
+    const role = legacyRoleMap[normalizedSubRole];
+    if (!role || role === 'OWNER' || roleForSubRol(normalizedSubRole) === 'OWNER') {
+      const error = new Error('El rol de la invitación ya no es válido. Solicita una nueva invitación.'); error.status = 409; throw error;
+    }
+
+    await expireInvitations(client, invitation.business_profile_id);
+    const { rows: existingRows } = await client.query(
+      `SELECT id, status FROM memberships
+        WHERE business_profile_id = $1 AND user_id = $2
+        FOR UPDATE`, [invitation.business_profile_id, user.id]
+    );
+    if (existingRows.length) {
+      const error = new Error('Ya existe una membresía para este usuario. Pide al propietario que gestione el acceso desde Equipo.');
+      error.status = 409; throw error;
+    }
+
+    const { rows: countRows } = await client.query(
+      `SELECT COUNT(*)::int AS count FROM memberships
+        WHERE business_profile_id = $1 AND status IN ('ACTIVE','PENDING','INVITED')`, [invitation.business_profile_id]
+    );
+    const current = Number(countRows[0]?.count || 0);
+    const plan = invitation.saas_plan || 'FREE_TRIAL';
+    const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
+    if (maxSeats !== null && current >= maxSeats) {
+      const error = new Error('Límite de asientos alcanzado'); error.status = 403;
+      error.details = { current, max: maxSeats, plan }; throw error;
+    }
+
+    const { rows: membershipRows } = await client.query(
+      `INSERT INTO memberships
+         (id, user_id, business_profile_id, role, sub_rol, status, invite_email,
+          invited_by, invited_at, accepted_at, created_by_user_id)
+       VALUES ($1,$2,$3,$4,$5,'ACTIVE',$6,$7,COALESCE($8,NOW()),NOW(),$7)
+       RETURNING *`,
+      [crypto.randomUUID(), user.id, invitation.business_profile_id, role, normalizedSubRole,
+        invitedEmail || currentEmail, invitation.creado_por || null, invitation.creado_at || null]
+    );
+    const membership = membershipRows[0];
+    const { rowCount } = await client.query(
+      `UPDATE salon_invitaciones SET usado = true, updated_at = NOW()
+        WHERE id = $1 AND usado = false RETURNING id`, [invitation.id]
+    );
+    if (rowCount !== 1) {
+      const error = new Error('La invitación ya fue aceptada por otra solicitud.'); error.status = 409; throw error;
+    }
+    await audit(client, { tenantId: invitation.business_profile_id, membershipId: membership.id, actorId: user.id,
+      event: 'INVITATION_ACCEPTED', newRole: role, previousStatus: 'PENDING', newStatus: 'ACTIVE',
+      metadata: { legacySalonInvitationId: invitation.id, businessName: invitation.business_name } });
+    await client.query('COMMIT');
+    return { ...membership, salon_id: invitation.salon_id, sub_rol: normalizedSubRole };
+  } catch (error) {
+    await client.query('ROLLBACK');
+    if (error.code === '23505') { error.status = 409; error.message = 'Ya tienes una membresía en este salón'; }
+    throw error;
+  } finally { client.release(); }
+}
+
+async function changeRole({ tenantId, memberId, actorId, role, subRole }) {
   const nextRole = String(role || '').toUpperCase();
   if (!VALID_ROLES.has(nextRole)) { const error = new Error('Rol inválido'); error.status = 400; throw error; }
   const client = await pool.connect();
@@ -233,7 +355,11 @@ async function changeRole({ tenantId, memberId, actorId, role }) {
     if (!target) { const error = new Error('Miembro no encontrado'); error.status = 404; throw error; }
     if (target.role === 'OWNER') { const error = new Error('No se puede cambiar el rol del propietario'); error.status = 400; throw error; }
     if (Number(target.user_id) === Number(actorId)) { const error = new Error('No puedes cambiar tu propio rol'); error.status = 400; throw error; }
-    const legacyRole = ({ ADMIN: 'ADMINISTRADOR', MANAGER: 'RECEPCIONISTA', MEMBER: 'EMPLEADO', VIEWER: 'EMPLEADO' })[nextRole];
+    const defaultLegacyRole = ({ ADMIN: 'ADMINISTRADOR', MANAGER: 'RECEPCIONISTA', MEMBER: 'EMPLEADO', VIEWER: 'EMPLEADO' })[nextRole];
+    const legacyRole = String(subRole || defaultLegacyRole).trim().toUpperCase();
+    if (subRole && roleForSubRol(legacyRole) !== nextRole) {
+      const error = new Error('El subrol no corresponde al rol SaaS solicitado'); error.status = 400; throw error;
+    }
     const updated = await client.query('UPDATE memberships SET role = $1, sub_rol = $2, updated_at = NOW() WHERE id = $3 RETURNING *', [nextRole, legacyRole, memberId]);
     await audit(client, { tenantId, membershipId: memberId, actorId, event: 'ROLE_CHANGED', previousRole: target.role, newRole: nextRole,
       previousStatus: target.status, newStatus: target.status });
@@ -344,4 +470,4 @@ async function resend({ tenantId, memberId, actorId, tenantName, plan }) {
   catch (error) { console.error('[saasMembershipService] resend email failed:', error.message); return { emailSent: false }; }
 }
 
-module.exports = { VALID_ROLES, list, invite, accept, changeRole, setStatus, resend };
+module.exports = { VALID_ROLES, list, invite, accept, acceptLegacySalonInvitation, changeRole, setStatus, resend };
