@@ -50,16 +50,17 @@ La prueba transaccional se revirtió antes del despliegue: no dejó invitaciones
 
 La inspección posterior en PostgreSQL confirma la migración registrada a las 06:18:41 UTC, RLS habilitado y forzado en ambas tablas, cinco políticas en `memberships` y cuatro en `membership_audit_logs`. Con `app_rls_user` (`BYPASSRLS=false`), el propietario ve su equipo, el sondeo entre perfiles no devuelve filas y la función de consulta del equipo funciona. `/api/health` devuelve `OK`; los checks de Railway API y admin-dashboard están en `success`.
 
+Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN pudo invitar, pero no cambiar roles; MEMBER no pudo invitar; OWNER sí pudo cambiar el rol de un miembro; los eventos de auditoría no se pudieron actualizar. La transacción se revirtió completa.
+
 ## Pendientes para el cierre
 
-1. Ejecutar una invitación con una cuenta QA y comprobar correo entregado, aceptación con correo correcto, rechazo con otro correo, vencimiento y reenvío.
-2. Probar los permisos de `ADMIN`, `MANAGER`, `MEMBER` y `VIEWER`, incluida la regla de que solo OWNER cambia roles.
+1. Ejecutar una invitación por API con una cuenta QA y comprobar correo entregado, aceptación con correo correcto, rechazo con otro correo, vencimiento y reenvío.
+2. Completar la matriz de permisos por API para `MANAGER` y `VIEWER`, y verificar las acciones por sede con cuentas miembro y propietario.
 3. Probar en producción el límite de asientos, concurrencia y reactivación.
-4. Verificar todas las acciones por sede con cuentas miembro y propietario después de activar RLS.
 
 ## Avance
 
-**70 % estimado de criterios de salida verificados; fase abierta.** Ponderación: modelo y pantalla de equipo publicados (25 %), guards básicos comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación heredada con protecciones de cupo (10 %), RLS dirigido desplegado y verificado en PostgreSQL (5 %). Restan: invitación/correo/aceptación E2E (15 %), permisos por rol y alcance por sede (10 %), y cupos con concurrencia/reactivación (5 %). Los pesos miden criterios cumplidos, no líneas de código ni cantidad de despliegues.
+**75 % estimado de criterios de salida verificados; fase abierta.** Ponderación: modelo y pantalla de equipo publicados (25 %), guards básicos comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación heredada con protecciones de cupo (10 %), RLS dirigido desplegado y verificado en PostgreSQL (5 %), y verificación transaccional de reglas OWNER/ADMIN/MEMBER y auditoría (5 % de los 10 % asignados a roles/alcance por sede). Restan: invitación/correo/aceptación por API E2E (15 %), matriz completa de roles y alcance por sede (5 %), y cupos con concurrencia/reactivación (5 %). Los pesos miden criterios cumplidos, no líneas de código ni cantidad de despliegues.
 
 - Implementación canónica de equipo y pantalla publicada: comprobado en documentación de release.
 - Guard del propietario/tenant para lectura de equipo y auditoría, y rechazo de cuenta sin membresía: comprobado por respuestas HTTP de producción.
@@ -67,8 +68,9 @@ La inspección posterior en PostgreSQL confirma la migración registrada a las 0
 - CI oficial de backend del PR #73: aprobado; pruebas locales focalizadas: **22/22 aprobadas** con Jest/Babel.
 - Railway producción: despliegue `ea6b9b44-f99f-4c50-8441-066622b5f6d2`, `SUCCESS`, commit `8efabdfec726360425f3fc54406e53550fb17f0d`. El arranque reporta `app_rls_user` sin `BYPASSRLS` y aplicación exitosa de migración 200.
 - PostgreSQL productivo: migración registrada; `memberships` y `membership_audit_logs` tienen RLS habilitado/forzado con 5 y 4 políticas. Pruebas de lectura bajo `app_rls_user` confirman visibilidad del propio equipo y aislamiento de otros perfiles.
+- Pruebas transaccionales de roles/auditoría: ADMIN puede invitar y no puede cambiar roles; MEMBER no puede invitar; OWNER cambia rol; auditoría append-only. Todas las filas sintéticas se revirtieron.
 - Invitación/aceptación sintética a nivel PostgreSQL se comprobó en transacción revertida antes del despliegue. Invitación por API, correo real y aceptación real siguen pendientes; no se dejaron filas de prueba.
 
-El 60 % y el 80 % reportados antes eran estimaciones, no métricas instrumentadas. El 80 % sobrecontó criterios al tratar el despliegue de compatibilidad como prueba de aceptación E2E y al describir mal el rol PostgreSQL. La estimación actual de 70 % reconoce el RLS desplegado y verificado, pero mantiene la fase abierta hasta contar con recorridos reales de invitación, permisos y cupos.
+El 60 % y el 80 % reportados antes eran estimaciones, no métricas instrumentadas. El 80 % sobrecontó criterios al tratar el despliegue de compatibilidad como prueba de aceptación E2E y al describir mal el rol PostgreSQL. La estimación actual de 75 % reconoce el RLS desplegado y verificado, más una matriz parcial de permisos comprobada en PostgreSQL; la fase sigue abierta hasta terminar los recorridos por API, correo y cupos.
 
 No se persistieron invitaciones ni cambios de membresía de prueba, y no se enviaron correos durante esta revisión.
