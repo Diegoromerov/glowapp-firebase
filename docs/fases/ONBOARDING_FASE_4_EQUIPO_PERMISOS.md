@@ -1,7 +1,7 @@
 # Onboarding SaaS — Fase 4: equipo y permisos
 
 **Estado:** correcciones de compatibilidad desplegadas en producción; validación funcional parcial. Fase abierta.
-**Corte:** 24 de noviembre de 2026.
+**Corte:** 25 de noviembre de 2026.
 
 ## Objetivo y criterio de cierre
 
@@ -34,15 +34,13 @@ Pruebas de solo lectura o denegación de acceso, realizadas con las cuentas QA e
 | La misma cuenta solicita `PATCH /api/saas/team/132/role` | HTTP 401 | Una cuenta sin contexto no puede cambiar roles. El cambio no se ejecutó. |
 | Catálogo y perfil SaaS | Catálogo HTTP 200; perfil QA HTTP 200 | El API de producción sigue disponible durante estas verificaciones. |
 
-## Hallazgo de RLS
+## Hallazgo de RLS y corrección de evidencia
 
-Consulta de solo lectura a los catálogos PostgreSQL en producción:
+La afirmación anterior de que `DATABASE_URL` conectaba como `postgres` con `BYPASSRLS` era incorrecta. Se contrastó con los logs de arranque del despliegue Railway de producción `d9cdecc9-ab7c-467a-9296-96afa2e26df6` (25 de noviembre de 2026): el contenedor verificó explícitamente `current_user = app_rls_user` y `bypassrls = false`. El despliegue terminó en `SUCCESS`.
 
-- `memberships`: RLS deshabilitado, sin políticas.
-- `membership_audit_logs`: RLS deshabilitado, sin políticas.
-- `DATABASE_URL` conecta como rol `postgres`, con `rolsuper=true` y `rolbypassrls=true`.
+Eso acredita que la conexión ordinaria de la aplicación no es superusuario ni elude RLS. **No acredita que todas las tablas de equipo estén aisladas por RLS.** La revisión del código vigente encontró que las migraciones 082 y 190 crean `memberships` y `membership_audit_logs`, respectivamente, pero ninguna habilita RLS ni declara políticas para esas tablas. El validador de `prepareRlsDatabase.js` inspecciona únicamente tablas con columna `tenant_id`; `memberships` usa `business_profile_id` y `membership_audit_logs` tampoco tiene `tenant_id`, así que el mensaje general `sin política: ninguna` no las cubre.
 
-Por tanto, las verificaciones HTTP demuestran los guards de la aplicación, pero no demuestran aislamiento mediante RLS. Activar RLS a ciegas no resolvería esto: el usuario actual de base de datos elude las políticas y el servicio usa conexiones de pool separadas para transacciones de membresía. Se requiere un cambio coordinado a una identidad de base de datos de privilegio mínimo, con contexto y políticas compatibles, y validación de las rutas que escriben membresías. No se hizo ese cambio durante esta ejecución.
+Conclusión: rol runtime con privilegio mínimo **verificado**; RLS específico de membresías y auditoría **no configurado en las migraciones revisadas y pendiente de consulta dirigida a producción**. No atribuir al RLS protección que hoy demuestran los guards del API. Antes de activarlo, hay que definir políticas y contexto compatibles con las transacciones de `saasMembershipService`, desplegar la migración y probar todos los flujos.
 
 ## Pendientes para el cierre
 
@@ -50,21 +48,21 @@ Por tanto, las verificaciones HTTP demuestran los guards de la aplicación, pero
 2. Verificar rechazo con otro correo, vencimiento y reenvío del token.
 3. Probar de forma controlada los permisos de `ADMIN`, `MANAGER`, `MEMBER` y `VIEWER`, incluida la restricción de que solo OWNER cambia roles.
 4. Probar en producción el límite de asientos al llegar al máximo y las condiciones de concurrencia/reactivación.
-5. Diseñar e implementar la separación de privilegios de PostgreSQL y el RLS real de membresías/auditoría sin dejar rutas productivas fuera de compatibilidad.
+5. Consultar directamente en producción `relrowsecurity`, `relforcerowsecurity` y `pg_policies` para ambas tablas; después diseñar e implementar RLS compatible con los contextos y transacciones de `saasMembershipService`.
 6. Verificar todas las acciones por sede con cuentas miembro y propietario.
 
 ## Avance
 
-**80 % estimado; fase abierta, no equivale a cierre.** Cálculo por criterios ponderados: funcionalidad canónica publicada (35 %), guards SaaS comprobados en producción (20 %), aceptación heredada transaccional con cupo/auditoría desplegada (15 %) y cambios/retiros heredados conectados al servicio canónico (10 %). Quedan sin completar los recorridos E2E de invitación (10 %), prueba productiva de corte de asientos (5 %) y RLS efectivo (5 %).
+**65 % estimado de criterios de salida verificados; fase abierta.** Ponderación revisada: modelo y pantalla de equipo implementados/publicados (25 %), guards de acceso básico comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación de invitaciones heredadas endurecida y desplegada (10 %). Quedan pendientes: recorrido E2E de invitación/correo/aceptación (15 %), comprobación de permisos por rol y alcance por sede (10 %), corte y concurrencia de asientos en integración (5 %), y RLS dirigido para membresías/auditoría (5 %). Los pesos miden criterios cumplidos, no líneas de código ni despliegues.
 
 - Implementación canónica de equipo y pantalla publicada: comprobado en documentación de release.
 - Guard del propietario/tenant para lectura de equipo y auditoría, y rechazo de cuenta sin membresía: comprobado por respuestas HTTP de producción.
 - Aceptación heredada con límite de asientos y transacción, cambio de rol que conserva el subrol y retiro con estado `REMOVED` y auditoría: desplegados mediante PR #73, commit de producción `b8899c002303f7f4218db3f4452362f6db53c2da`.
 - CI oficial de backend del PR #73: aprobado; pruebas locales focalizadas: **22/22 aprobadas** con Jest/Babel.
-- Railway producción: despliegue `f961ee37-a7b0-4742-b74f-965a4fb7dff3`, estado `SUCCESS`. `/api/health` respondió HTTP 200, commit `b8899c002303f7f4218db3f4452362f6db53c2da`, PostgreSQL disponible y sin datos fabricados ni fallback de memoria.
+- Railway producción: el despliegue inicial del código fue `f961ee37-a7b0-4742-b74f-965a4fb7dff3`, estado `SUCCESS`, para el commit `b8899c002303f7f4218db3f4452362f6db53c2da`. El despliegue documental posterior vigente al corte es `d9cdecc9-ab7c-467a-9296-96afa2e26df6`, estado `SUCCESS`. Sus logs de arranque verifican `app_rls_user` con `bypassrls=false`; PostgreSQL disponible, sin datos fabricados ni fallback de memoria.
 - Invitación/correo/aceptación reales en producción: no probados; la consulta anterior encontró cero invitaciones heredadas pendientes.
-- RLS efectivo: no cumple todavía, porque el rol productivo de conexión tiene `BYPASSRLS`.
+- RLS dirigido en `memberships` y `membership_audit_logs`: pendiente; las migraciones vigentes no activan políticas para ellas. El rol general de aplicación sí está verificado sin `BYPASSRLS`.
 
-El 60 % previo era una estimación, no una métrica instrumentada. El 80 % actual reconoce la integración, CI y despliegue de las correcciones, pero no se da por cerrada la fase sin las pruebas funcionales pendientes.
+El 60 % y el 80 % reportados antes eran estimaciones, no métricas instrumentadas. El 80 % sobrecontó criterios al tratar el despliegue de compatibilidad como prueba de aceptación E2E y al describir mal el rol PostgreSQL. La estimación actual de 65 % mantiene la fase abierta hasta contar con recorridos de invitación, permisos/cupos e inspección de RLS específica.
 
 No se crearon invitaciones, no se enviaron correos ni se modificaron membresías durante esta revisión.
