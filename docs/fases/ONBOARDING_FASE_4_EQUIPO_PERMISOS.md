@@ -1,6 +1,6 @@
 # Onboarding SaaS — Fase 4: equipo y permisos
 
-**Estado:** implementación base desplegada; correcciones de compatibilidad en preparación local. Fase abierta.
+**Estado:** correcciones de compatibilidad desplegadas en producción; validación funcional parcial. Fase abierta.
 **Corte:** 24 de noviembre de 2026.
 
 ## Objetivo y criterio de cierre
@@ -46,25 +46,25 @@ Por tanto, las verificaciones HTTP demuestran los guards de la aplicación, pero
 
 ## Pendientes para el cierre
 
-1. Integrar, pasar CI oficial y desplegar la corrección local de las rutas heredadas de aceptación, cambio de rol y retiro.
-2. Ejecutar la invitación de prueba para una cuenta QA autorizada; comprobar el correo entregado y la aceptación con el correo correcto.
-3. Verificar rechazo con otro correo, vencimiento y reenvío del token.
-4. Probar de forma controlada los permisos de `ADMIN`, `MANAGER`, `MEMBER` y `VIEWER`, incluida la restricción de que solo OWNER cambia roles.
-5. Probar el límite de asientos al llegar al máximo y las condiciones de concurrencia/reactivación.
-6. Diseñar e implementar la separación de privilegios de PostgreSQL y el RLS real de membresías/auditoría sin dejar rutas productivas fuera de compatibilidad.
-7. Verificar todas las acciones por sede con cuentas miembro y propietario.
+1. Ejecutar la invitación de prueba para una cuenta QA autorizada; comprobar el correo entregado y la aceptación con el correo correcto.
+2. Verificar rechazo con otro correo, vencimiento y reenvío del token.
+3. Probar de forma controlada los permisos de `ADMIN`, `MANAGER`, `MEMBER` y `VIEWER`, incluida la restricción de que solo OWNER cambia roles.
+4. Probar en producción el límite de asientos al llegar al máximo y las condiciones de concurrencia/reactivación.
+5. Diseñar e implementar la separación de privilegios de PostgreSQL y el RLS real de membresías/auditoría sin dejar rutas productivas fuera de compatibilidad.
+6. Verificar todas las acciones por sede con cuentas miembro y propietario.
 
 ## Avance
 
-**68 % estimado; fase abierta, no equivale a cierre.**
+**80 % estimado; fase abierta, no equivale a cierre.** Cálculo por criterios ponderados: funcionalidad canónica publicada (35 %), guards SaaS comprobados en producción (20 %), aceptación heredada transaccional con cupo/auditoría desplegada (15 %) y cambios/retiros heredados conectados al servicio canónico (10 %). Quedan sin completar los recorridos E2E de invitación (10 %), prueba productiva de corte de asientos (5 %) y RLS efectivo (5 %).
 
 - Implementación canónica de equipo y pantalla publicada: comprobado en documentación de release.
 - Guard del propietario/tenant para lectura de equipo y auditoría, y rechazo de cuenta sin membresía: comprobado por respuestas HTTP de producción.
-- Aceptación heredada con límite de asientos y transacción, cambio de rol que conserva el subrol y retiro con estado `REMOVED` y auditoría: corrección local, aún no desplegada.
-- Pruebas locales de la corrección: **22/22 aprobadas** (17 de servicios/mapeos y 5 de la ruta HTTP), usando la configuración normal de Jest/Babel después de completar `npm ci`.
+- Aceptación heredada con límite de asientos y transacción, cambio de rol que conserva el subrol y retiro con estado `REMOVED` y auditoría: desplegados mediante PR #73, commit de producción `b8899c002303f7f4218db3f4452362f6db53c2da`.
+- CI oficial de backend del PR #73: aprobado; pruebas locales focalizadas: **22/22 aprobadas** con Jest/Babel.
+- Railway producción: despliegue `f961ee37-a7b0-4742-b74f-965a4fb7dff3`, estado `SUCCESS`. `/api/health` respondió HTTP 200, commit `b8899c002303f7f4218db3f4452362f6db53c2da`, PostgreSQL disponible y sin datos fabricados ni fallback de memoria.
 - Invitación/correo/aceptación reales en producción: no probados; la consulta anterior encontró cero invitaciones heredadas pendientes.
 - RLS efectivo: no cumple todavía, porque el rol productivo de conexión tiene `BYPASSRLS`.
 
-El 60 % previo era una estimación, no una métrica instrumentada. El 68 % actual reconoce la corrección y pruebas locales, pero no se cuenta como despliegue.
+El 60 % previo era una estimación, no una métrica instrumentada. El 80 % actual reconoce la integración, CI y despliegue de las correcciones, pero no se da por cerrada la fase sin las pruebas funcionales pendientes.
 
 No se crearon invitaciones, no se enviaron correos ni se modificaron membresías durante esta revisión.
