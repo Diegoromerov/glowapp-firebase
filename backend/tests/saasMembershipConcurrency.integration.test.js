@@ -22,7 +22,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     verticalId = crypto.randomUUID();
     await adminPool.query(
       'INSERT INTO business_verticals (id, code, name, description) VALUES ($1, $2, $3, $4)',
-      [verticalId, 'SAAS_SEAT_TEST_' + verticalId, 'SaaS seat test', 'Ephemeral test fixture']
+      [verticalId, 'STEST_' + verticalId, 'SaaS seat test', 'Ephemeral test fixture']
     );
   });
 
