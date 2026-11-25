@@ -48,7 +48,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       const createUser = async (label) => {
         const email = 'saas-seat-' + crypto.randomUUID() + '-' + label + '@test.local';
         const user = await client.query(
-          'INSERT INTO usuarios (email, password_hash, nombre, auth_provider, provider_id) VALUES ($1, $2, $3, 'LOCAL', $1) RETURNING id',
+          "INSERT INTO usuarios (email, password_hash, nombre, auth_provider, provider_id) VALUES ($1, $2, $3, 'LOCAL', $1) RETURNING id",
           [email, 'integration-test-only', 'SaaS seat test ' + label]
         );
         fixture.userIds.push(user.rows[0].id);
