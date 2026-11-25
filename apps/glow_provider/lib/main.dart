@@ -299,6 +299,20 @@ class GlowProviderApp extends ConsumerWidget {
                 '/services': (_) => const ProviderServicesScreen(),
       },
       onGenerateRoute: (settings) {
+        // Los enlaces enviados por correo añaden el token como query al hash:
+        // /#/auth/accept-invitation?token=.... La tabla `routes` solo compara
+        // nombres exactos, por eso atendemos aquí la variante con query.
+        final invitationUri = Uri.tryParse(settings.name ?? '');
+        if (invitationUri?.path == '/auth/accept-invitation') {
+          final fragmentUri = Uri.tryParse(Uri.base.fragment);
+          final token = invitationUri?.queryParameters['token'] ??
+              fragmentUri?.queryParameters['token'] ??
+              Uri.base.queryParameters['token'];
+          return MaterialPageRoute<void>(
+            settings: settings,
+            builder: (_) => AcceptInvitationScreen(token: token),
+          );
+        }
         switch (settings.name) {
           case '/auth/context-selection':
             final args = settings.arguments as Map<String, dynamic>?;
