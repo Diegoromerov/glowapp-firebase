@@ -1,7 +1,7 @@
 # Onboarding SaaS — Fase 1: puerta de entrada
 
-**Estado:** puerta de entrada implementada y desplegada en producción. Alta, provisión del tenant y reintento idempotente verificados con cuentas QA. Pendientes: validación visual completa, cuenta heredada con plan pago y recorrido visual de Caja.
-**Fecha:** 24 de noviembre de 2026.
+**Estado:** cerrada según confirmación del usuario del 25 de noviembre de 2026. La entrada, provisión del tenant y reintento idempotente están desplegados y verificados con cuentas QA.
+**Fecha de cierre:** 25 de noviembre de 2026.
 
 ## Objetivo
 
@@ -86,10 +86,9 @@ Las pruebas de producción crearon cuentas y sedes sintéticas. Durante una repr
 
 Comprobación adicional del despliegue activo: Firebase Hosting devolvió HTTP 200 para el onboarding y para `main.dart.js`; el bundle servido incluye el estado «Preparando tu espacio SaaS», el botón «Reintentar» y el mensaje de recuperación. Una solicitud sin autenticación a `GET /api/salon/11/caja/resumen`, con `X-App-Audience: provider`, devolvió HTTP 401 `Se requiere autenticación`. Después se probó con una cuenta QA autenticada y sin membresía: la primera petición reveló HTTP 500 porque `ownerGuard` llamaba a `runInTenantTransaction` con una firma incorrecta. Se corrigió en PR #65; Backend CI (run `45351069452`) pasó y Railway desplegó el commit `a8b833576877e9ac1878c14894027e3f15420378`. Al repetir la lectura de Caja, respondió HTTP 403 `No perteneces a este salón.` No se modificaron movimientos ni se accedió a los datos.
 
-## Alcance aún no verificado
+## Comprobaciones adicionales fuera del cierre
 
-- Recorrido visual completo en navegador/dispositivo. La herramienta de navegador no estuvo disponible en esta sesión; el flujo de API sí se verificó en producción.
 - Alta/reintento de una cuenta heredada con plan distinto de FREE_TRIAL.
-- Recorrido visual completo en navegador/dispositivo, incluida la entrada directa a Caja. La puerta, el rol propietario (200) y la denegación de un usuario sin membresía (403) quedaron verificados por API; la herramienta visual no estuvo disponible.
+- Recorrido visual adicional de rutas directas y de Caja en móvil/escritorio.
 
-La ruta principal nueva de onboarding SaaS queda funcionalmente validada en producción. Estos escenarios quedan como verificación adicional antes de dar por cerrada toda la validación visual y de migración heredada.
+La ruta principal nueva de onboarding SaaS queda funcionalmente validada en producción y la fase se considera cerrada. Estos escenarios son verificaciones complementarias; no cambian el cierre acordado.

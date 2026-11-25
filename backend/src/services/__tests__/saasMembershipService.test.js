@@ -76,4 +76,90 @@ describe('saasMembershipService invitation audit', () => {
     expect(calls.some(({ sql }) => sql.includes('UPDATE salon_invitaciones SET usado = true'))).toBe(false);
     expect(client.query).toHaveBeenCalledWith('ROLLBACK');
   });
+
+  test('rejects canonical acceptance from an account with a different email', async () => {
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql, params = []) => {
+        calls.push({ sql, params });
+        if (sql.includes('SELECT business_profile_id FROM memberships')) {
+          return { rows: [{ business_profile_id: 'salon-1' }] };
+        }
+        if (sql.includes('SELECT m.* FROM memberships m')) {
+          return { rows: [{
+            id: 'invite-1', business_profile_id: 'salon-1', user_id: 42,
+            invite_email: 'sonia@example.com', role: 'MEMBER', status: 'PENDING',
+            invite_expires_at: new Date(Date.now() + 86400000),
+          }] };
+        }
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.accept({
+      token: 'a'.repeat(32),
+      user: { id: 99, email: 'other@example.com' },
+    })).rejects.toMatchObject({ status: 403 });
+
+    expect(calls.some(({ sql }) => sql.includes('UPDATE memberships SET user_id'))).toBe(false);
+    expect(calls.some(({ sql }) => sql === 'COMMIT')).toBe(false);
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
+  });
+
+  test('rejects an expired canonical invitation without activating membership', async () => {
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql, params = []) => {
+        calls.push({ sql, params });
+        if (sql.includes('SELECT business_profile_id FROM memberships')) {
+          return { rows: [{ business_profile_id: 'salon-1' }] };
+        }
+        if (sql.includes('SELECT m.* FROM memberships m')) {
+          return { rows: [{
+            id: 'invite-1', business_profile_id: 'salon-1', user_id: 42,
+            invite_email: 'staff@example.com', role: 'MEMBER', status: 'PENDING',
+            invite_expires_at: new Date(Date.now() - 86400000),
+          }] };
+        }
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.accept({
+      token: 'b'.repeat(32),
+      user: { id: 42, email: 'staff@example.com' },
+    })).rejects.toMatchObject({ status: 404 });
+
+    expect(calls.some(({ sql }) => sql.includes('UPDATE memberships SET user_id'))).toBe(false);
+    expect(calls.some(({ sql }) => sql === 'COMMIT')).toBe(false);
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
+  });
+
+  test('returns 404 when a resend targets an already accepted membership', async () => {
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql, params = []) => {
+        calls.push({ sql, params });
+        if (sql.includes('WHERE m.id = $1 AND m.business_profile_id = $2')) return { rows: [] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.resend({
+      tenantId: 'salon-1', memberId: 'active-member', actorId: 7,
+      tenantName: 'Salón de prueba', plan: 'BASIC',
+    })).rejects.toMatchObject({
+      status: 404,
+      message: 'Invitación pendiente no encontrada',
+    });
+
+    expect(calls.some(({ sql }) => sql.includes('UPDATE memberships SET status'))).toBe(false);
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
+  });
 });

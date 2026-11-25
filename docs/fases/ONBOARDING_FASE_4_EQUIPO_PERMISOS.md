@@ -54,7 +54,7 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 
 ## Pendientes para el cierre
 
-1. Ejecutar una invitación por API con una cuenta QA y comprobar correo entregado, aceptación con correo correcto, rechazo con otro correo, vencimiento y reenvío.
+1. Invitación real por API, correo y aceptación con la cuenta autorizada comprobados el 25 de noviembre. Faltan rechazo de aceptación con otro correo, vencimiento y reenvío de una invitación que siga pendiente o haya expirado.
 
    Nota de auditoría: se corrigió `backend/scripts/qaSaasE2E.js` en `main` (`9c55f5383faf5157c792a928cf94bffe49d690c6`) para usar las rutas actuales, requerir correo registrado y solo aprobar el envío cuando `emailSent=true`; HTTP 409 ya no cuenta como éxito. Backend CI `45704648626` completó con `success`. El arnés aún no se ejecutó contra producción: hacerlo requiere la confirmación pendiente para enviar la invitación real a la cuenta especificada.
 2. La matriz HTTP local ahora cubre OWNER, ADMIN, MANAGER, MEMBER y VIEWER para lectura del equipo/auditoría, invitación, cambio de rol, suspensión, retiro y reenvío. Aún hay que ejecutarla con contexto SaaS y datos reales para comprobar el alcance por sede/tenant en producción.
@@ -72,7 +72,7 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 - Corrección del enlace publicada en `main` (`aac672ccc5832e89bb9942745f86a181a29f1e49`, extendida por `c0653cea57076bd83bd053aef46dec5570e10a86`) y desplegada por el workflow `45702221814`: Flutter Web ahora captura la ruta de invitación con query dentro del hash. En producción se abrió `/#/auth/accept-invitation?token=` con token ficticio de 32 caracteres; la pantalla cargó y lo precargó. No se pulsó aceptar ni se llamó al API.
 - El diálogo de invitación ahora explica que la persona debe tener cuenta GlowApp registrada, aceptar con ese correo y usar el enlace dentro de siete días. Publicado en `main` (`12bef27c996cd37c5bdfc1a022a6141481efb693`), con análisis, build y despliegue Firebase exitosos en el workflow `45703320465`.
 - El analizador Dart de ambos archivos no reporta errores (solo avisos informativos), la compilación web local terminó correctamente y CI/build/deploy live aprobaron en el workflow `45696306835`.
-- El avance sube de **70 % a 75 %** al quedar publicada y comprobada la pantalla de equipo. La invitación real por API/correo, aceptación, aislamiento por rol/tenant con cuentas reales y cupos/concurrencia siguen pendientes.
+- El avance de salida permanece en **75 %**: la pantalla de equipo está publicada y se confirmó una invitación/aceptación real. Aún faltan escenarios E2E de correo equivocado/vencimiento/reenvío, aislamiento real entre tenants y cupos/concurrencia/reactivación.
 
 
 ### Verificación adicional de producción (25 Nov 2026)
@@ -83,7 +83,7 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 
 ## Avance
 
-**75 % estimado de criterios de salida verificados; fase abierta.** Ponderación vigente: modelo y backend de membresías disponibles (20/25 %), guards básicos comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación heredada con protecciones de cupo (10 %), RLS dirigido desplegado y verificado en PostgreSQL (5 %), verificación transaccional de reglas OWNER/ADMIN/MEMBER y auditoría (5 % de los 10 % asignados a roles/alcance por sede), y UI de Equipo publicada y visualmente validada (5 %). Restan: invitación/correo/aceptación por API E2E (15 %), matriz y alcance por sede con tenant real (5 %), y cupos con concurrencia/reactivación (5 %). Los pesos miden criterios cumplidos, no líneas de código ni cantidad de despliegues.
+**75 % estimado de criterios de salida verificados; fase abierta.** Ponderación vigente: modelo y backend de membresías disponibles (20/25 %), guards básicos comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación heredada con protecciones de cupo (10 %), RLS dirigido desplegado y verificado en PostgreSQL (5 %), verificación transaccional de reglas OWNER/ADMIN/MEMBER y auditoría (5 % de los 10 % asignados a roles/alcance por sede), y UI de Equipo publicada y visualmente validada (5 %). El grupo E2E de invitaciones/correo/aceptación pesa 15 % y sigue incompleto: ya se verificó una invitación y aceptación real; faltan correo equivocado, vencimiento y reenvío pendiente/expirado. También restan matriz y alcance por sede con tenant real (5 %), y cupos con concurrencia/reactivación (5 %). Los pesos miden criterios cumplidos, no líneas de código ni cantidad de despliegues.
 
 - Implementación canónica de equipo y pantalla publicada: comprobado en documentación de release.
 - Guard del propietario/tenant para lectura de equipo y auditoría, y rechazo de cuenta sin membresía: comprobado por respuestas HTTP de producción.
@@ -92,9 +92,21 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 - Railway producción: despliegue `ea6b9b44-f99f-4c50-8441-066622b5f6d2`, `SUCCESS`, commit `8efabdfec726360425f3fc54406e53550fb17f0d`. El arranque reporta `app_rls_user` sin `BYPASSRLS` y aplicación exitosa de migración 200.
 - PostgreSQL productivo: migración registrada; `memberships` y `membership_audit_logs` tienen RLS habilitado/forzado con 5 y 4 políticas. Pruebas de lectura bajo `app_rls_user` confirman visibilidad del propio equipo y aislamiento de otros perfiles.
 - Pruebas transaccionales de roles/auditoría: ADMIN puede invitar y no puede cambiar roles; MEMBER no puede invitar; OWNER cambia rol; auditoría append-only. Todas las filas sintéticas se revirtieron.
-- Invitación/aceptación sintética a nivel PostgreSQL se comprobó en transacción revertida antes del despliegue. Invitación por API, correo real y aceptación real siguen pendientes; no se dejaron filas de prueba.
+- Invitación/aceptación sintética a nivel PostgreSQL se comprobó en transacción revertida antes del despliegue. La invitación por API, correo y aceptación de Sonia se verificaron después; no se creó una invitación extra para las pruebas restantes.
 
-El 60 % y el 80 % reportados antes eran estimaciones, no métricas instrumentadas. El 80 % sobrecontó criterios al tratar el despliegue de compatibilidad como prueba de aceptación E2E y al describir mal el rol PostgreSQL. La estimación actual de 75 % reconoce el RLS desplegado y verificado, más una matriz parcial de permisos comprobada en PostgreSQL; la fase sigue abierta hasta terminar los recorridos por API, correo y cupos.
+El 60 % y el 80 % reportados antes eran estimaciones, no métricas instrumentadas. El 80 % sobrecontó criterios al tratar el despliegue de compatibilidad como prueba de aceptación E2E y al describir mal el rol PostgreSQL. La estimación actual de 75 % reconoce el RLS desplegado y verificado, una matriz parcial de permisos comprobada en PostgreSQL y la invitación/aceptación real descrita abajo; la fase sigue abierta hasta completar los casos restantes por API, correo, alcance por tenant y cupos.
 
 No se persistieron invitaciones ni cambios de membresía de prueba, y no se enviaron correos durante esta revisión.
+
+### Continuación de pruebas (25 Nov 2026)
+
+- En producción se creó la invitación autorizada a Sonia como Personal. `POST /api/saas/team/invite` respondió HTTP 201 y la app mostró confirmación de envío. Después, `POST /api/salon/accept-invitation` respondió HTTP 200; al recargar el panel del propietario, Sonia aparece como miembro del equipo. Esto confirma la invitación y aceptación de esa cuenta.
+- Dos intentos posteriores de reenviar la misma invitación respondieron HTTP 404. Es el resultado esperado porque la membresía ya está `ACTIVE`, no pendiente. La pantalla del propietario conservó su lista previa hasta recargar; al recibir el 404, la app mantuvo el estado obsoleto y mostró `Exception: Invitación pendiente no encontrada`. Queda como mejora de UX: actualizar el equipo tras ese 404 y presentar un aviso entendible de que la invitación ya fue aceptada.
+- Sobre el commit de producción `fa9ef02ea919a6f6c6b2d0148ee5485bf25fce82` se ejecutaron tres suites focalizadas en checkout aislado: `saas-team-rbac.test.js`, `saasMembershipLegacyAcceptance.test.js` y `saasMembershipService.test.js`. Resultado actualizado: **3 suites, 21/21 pruebas aprobadas**. Incluyen la matriz simulada OWNER/ADMIN/MANAGER/MEMBER/VIEWER, rechazo de correo distinto (canónico y legado), invitación expirada, rechazo por cupo y el 404 esperado al intentar reenviar una membresía aceptada.
+- Estas suites usan servicios o base de datos simulados: no prueban concurrencia real en PostgreSQL ni separación entre dos tenants autenticados en producción. Tampoco se generó una invitación nueva para probar correo equivocado, vencimiento o reenvío, para no enviar correos adicionales ni modificar el acceso real de Sonia.
+- Las comprobaciones pendientes siguen siendo la matriz autenticada entre tenants/sedes reales, cupos concurrentes y reactivación en producción, además de corregir y verificar el estado obsoleto/error técnico del botón de reenvío. Sonia revisará su acceso y rol desde su propia sesión más adelante.
+
+- Corrección local para el estado obsoleto del reenvío: la pantalla recarga el equipo si la invitación ya no está pendiente, comunica el resultado con un mensaje entendible y limpia errores anteriores cuando la carga tiene éxito. Prueba Flutter de `TeamState` aprobada (2/2). Build web de proveedor completado localmente; emitió advertencias de prueba WASM originadas en `flutter_secure_storage_web` y `rive_common`, pero generó `build/web`. La corrección todavía no está desplegada.
+
+El 75 % se mantiene: la aceptación real aumenta la evidencia, pero no satisface por sí sola los escenarios pendientes del criterio E2E ni los casos de concurrencia/aislamiento.
 

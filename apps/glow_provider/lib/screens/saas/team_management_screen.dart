@@ -143,7 +143,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
             if (teamState.error != null)
               Padding(
                 padding: const EdgeInsets.all(16),
-                child: Text('Error: ${teamState.error}', style: const TextStyle(color: Colors.red)),
+                child: Text('Error: ${mensajeHumano(teamState.error!)}', style: const TextStyle(color: Colors.red)),
               ),
           ],
         ),
@@ -224,8 +224,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
                 break;
               case 'resend':
                 if (member.id.isNotEmpty && businessProfileId != null) {
-                  final emailSent = await ref.read(teamProvider.notifier).resendInvitation(businessProfileId, member.id);
-                  if (context.mounted) _showInvitationResult(context, emailSent, isResend: true);
+                  await _resendInvitation(context, ref, businessProfileId, member.id);
                 }
                 break;
               case 'remove':
@@ -296,8 +295,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
               icon: const Icon(Icons.send_rounded, color: Color(0xFFC5A052), size: 20),
               onPressed: () async {
                 if (businessProfileId != null) {
-                  final emailSent = await ref.read(teamProvider.notifier).resendInvitation(businessProfileId, invitation.id);
-                  if (context.mounted) _showInvitationResult(context, emailSent, isResend: true);
+                  await _resendInvitation(context, ref, businessProfileId, invitation.id);
                 }
               },
               tooltip: 'Reenviar',
@@ -373,6 +371,33 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
             ? 'La invitación se renovó, pero no se confirmó el envío del correo.'
             : 'La invitación se creó, pero no se confirmó el envío del correo.');
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  Future<void> _resendInvitation(
+    BuildContext context,
+    WidgetRef ref,
+    String businessProfileId,
+    String invitationId,
+  ) async {
+    try {
+      final emailSent = await ref.read(teamProvider.notifier)
+          .resendInvitation(businessProfileId, invitationId);
+      if (context.mounted) {
+        _showInvitationResult(context, emailSent, isResend: true);
+      }
+    } catch (error) {
+      // The invite may have been accepted from another session. Reload so the
+      // stale pending row disappears and the active member becomes visible.
+      await ref.read(teamProvider.notifier).load(businessProfileId);
+      if (!context.mounted) return;
+
+      final errorText = error.toString();
+      final message = errorText.contains('404') ||
+              errorText.contains('Invitación pendiente no encontrada')
+          ? 'La invitación ya no está pendiente. Actualizamos el equipo; revisa si la persona ya se unió.'
+          : 'No se pudo reenviar la invitación: ${mensajeHumano(error)}';
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    }
   }
 
   Future<void> _showChangeRoleDialog(BuildContext context, WidgetRef ref, String? businessProfileId, TeamMember member) async {

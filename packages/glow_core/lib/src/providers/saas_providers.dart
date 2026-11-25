@@ -106,12 +106,13 @@ class TeamState {
     List<TeamInvitation>? invitations,
     bool? isLoading,
     Object? error,
+    bool clearError = false,
   }) {
     return TeamState(
       members: members ?? this.members,
       invitations: invitations ?? this.invitations,
       isLoading: isLoading ?? this.isLoading,
-      error: error ?? this.error,
+      error: clearError ? null : error ?? this.error,
     );
   }
 }
@@ -320,7 +321,7 @@ class TeamNotifier extends StateNotifier<TeamState> {
         members: activeMembers,
         invitations: invitations,
         isLoading: false,
-        error: null,
+        clearError: true,
       );
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
