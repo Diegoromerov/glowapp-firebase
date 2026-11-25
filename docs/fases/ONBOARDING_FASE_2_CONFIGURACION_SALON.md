@@ -1,6 +1,7 @@
 # Onboarding SaaS — Fase 2: configuración inicial del salón
 
-**Estado:** implementación y backend publicados en producción; verificaciones funcionales autenticadas completadas. Pendiente únicamente la inspección visual manual final en móvil y escritorio.  
+**Estado:** cerrada y desplegada en producción; verificaciones funcionales autenticadas y evaluación visual manual confirmadas.
+**Avance:** 100 % (25 de noviembre de 2026).
 **Alcance:** recopilar y mantener datos básicos, ubicación y horario comercial de una sede, y permitir completar su catálogo de servicios desde el módulo existente.
 
 ## Implementación
@@ -38,6 +39,6 @@
 - [x] Restricción de acceso por rol y autenticación.
 - [x] Catálogo operativo: crear y listar un servicio QA en borrador.
 - [x] Backend, migración y cliente desplegados.
-- [ ] Inspección visual manual final en escritorio y móvil, incluyendo siete días, días cerrados y validación de horarios. Esta sesión no dispone de navegador interactivo; las capturas headless no fueron fiables.
+- [x] Evaluación visual manual final confirmada por el usuario el 25 de noviembre de 2026.
 
-**Cierre:** desarrollo y verificación funcional completados; la fase queda pendiente solo de la revisión visual manual para marcarla cerrada al 100%.
+**Cierre:** desarrollo, publicación y verificación funcional completados. La inspección visual manual también fue confirmada por el usuario; la fase queda cerrada al 100 %.
