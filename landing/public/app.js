@@ -3,6 +3,8 @@
   const configUrl = '/landing.config.json';
   let config;
   let apiBase;
+  let env;
+  let turnstileSiteKey;
   const dialog = document.querySelector('#lead-dialog');
   const form = document.querySelector('#lead-form');
   const status = document.querySelector('.form-status');
@@ -11,10 +13,17 @@
   async function init() {
     const response = await fetch(configUrl, { cache: 'no-cache' });
     config = await response.json();
-    const env = location.hostname.includes('staging') ? 'staging' : ['localhost', '127.0.0.1'].includes(location.hostname) ? 'development' : 'production';
+    const hostname = location.hostname;
+    env = config.domainEnvMap?.[hostname];
+    if (!env) {
+      // Dominio desconocido: deshabilitar formulario
+      document.querySelectorAll('[data-button]').forEach(button => { button.disabled = true; });
+      return;
+    }
     apiBase = config.apiBaseUrl[env];
-    document.querySelector('#privacy-link').href = `${apiBase}/privacy-policy.html`;
-    if (config.turnstileSiteKey) {
+    turnstileSiteKey = config.turnstileSiteKey?.[env] || '';
+    document.querySelector('#privacy-link').href = '/privacidad';
+    if (turnstileSiteKey) {
       await new Promise((resolve, reject) => {
         const script = document.createElement('script'); script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; script.async = true; script.defer = true; script.onload = resolve; script.onerror = reject; document.head.append(script);
       });
@@ -44,8 +53,8 @@
     form.businessName.required = role === 'salon';
     form.neighborhood.required = role !== 'salon';
     const slot = document.querySelector('#turnstile-slot'); slot.replaceChildren();
-    if (config.turnstileSiteKey && window.turnstile) {
-      window.turnstile.render(slot, { sitekey: config.turnstileSiteKey, callback: token => { let field = form.querySelector('[name="cf-turnstile-response"]'); if (!field) { field = document.createElement('input'); field.type = 'hidden'; field.name = 'cf-turnstile-response'; form.append(field); } field.value = token; }, 'expired-callback': () => { const field = form.querySelector('[name="cf-turnstile-response"]'); if (field) field.value = ''; } });
+    if (turnstileSiteKey && window.turnstile) {
+      window.turnstile.render(slot, { sitekey: turnstileSiteKey, callback: token => { let field = form.querySelector('[name="cf-turnstile-response"]'); if (!field) { field = document.createElement('input'); field.type = 'hidden'; field.name = 'cf-turnstile-response'; form.append(field); } field.value = token; }, 'expired-callback': () => { const field = form.querySelector('[name="cf-turnstile-response"]'); if (field) field.value = ''; } });
     }
     updateContact();
     dialog.showModal();
@@ -73,8 +82,8 @@
       consent: data.get('consent') === 'on', consentTextVersion: config.consentTextVersion, turnstileToken,
       website: data.get('website') || '', utm: { source: new URLSearchParams(location.search).get('utm_source') || '', medium: new URLSearchParams(location.search).get('utm_medium') || '', campaign: new URLSearchParams(location.search).get('utm_campaign') || '' }
     };
-    if (!turnstileToken && config.turnstileSiteKey) { status.textContent = 'Completa la verificación de seguridad.'; return; }
-    if (!config.turnstileSiteKey) { status.textContent = 'El formulario aún no está habilitado. Vuelve pronto.'; return; }
+    if (!turnstileToken && turnstileSiteKey) { status.textContent = 'Completa la verificación de seguridad.'; return; }
+    if (!turnstileSiteKey) { status.textContent = 'El formulario aún no está habilitado. Vuelve pronto.'; return; }
     status.textContent = '';
     const submit = form.querySelector('.submit'); submit.disabled = true; submit.textContent = 'Enviando…';
     try {

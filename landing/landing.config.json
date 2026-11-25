@@ -4,9 +4,17 @@
     "staging": "https://glowapp-api-staging-staging.up.railway.app",
     "production": "https://glowapp-api-production.up.railway.app"
   },
+  "domainEnvMap": {
+    "localhost": "development",
+    "127.0.0.1": "development"
+  },
   "flashAt": 5,
   "consentTextVersion": "v1",
-  "turnstileSiteKey": "",
+  "turnstileSiteKey": {
+    "development": "1x00000000000000000000AA",
+    "staging": "1x00000000000000000000AA",
+    "production": ""
+  },
   "buttons": [
     { "id": "cliente", "label": "Quiero reservar", "mode": "form", "role": "client", "redirectUrl": null },
     { "id": "profesional", "label": "Soy profesional", "mode": "form", "role": "professional", "redirectUrl": null },
