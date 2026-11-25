@@ -252,6 +252,11 @@ app.use(cors({
   credentials: true
 }));
 
+// Leads de la landing: parser independiente y limitado, antes del parser global.
+// Las rutas públicas verifican Turnstile y validan todo el cuerpo.
+app.use('/api/public/leads', express.json({ limit: '4kb' }));
+app.use('/api/public', require('./src/routes/public/leads'));
+
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(traceIdMiddleware); // Trace ID middleware for consistent tracking

@@ -33,9 +33,9 @@ const MACHINE_CALLBACK_PATHS = new Set([
   '/payments/wompi-webhook',
 ]);
 
-// La vitrina pública se abre desde un navegador cualquiera (enlace compartido),
-// así que no puede exigir la cabecera de la app. Es de sólo lectura y no expone
-// nada que no esté ya en el perfil público, por eso se admite todo el prefijo.
+// Las rutas públicas se abren desde navegadores cualesquiera y no pueden exigir
+// X-App-Audience. Su protección corresponde a cada ruta (validación, límites,
+// Turnstile, etc.); CORS por sí solo no autentica clientes sin Origin.
 const PUBLIC_PREFIX = '/public/';
 
 function isMachineCallback(req) {

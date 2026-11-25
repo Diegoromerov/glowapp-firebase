@@ -6659,6 +6659,112 @@
         "x-glowapp-documented": false
       }
     },
+    "/api/public/leads": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "businessName": {
+                    "maxLength": 160,
+                    "type": "string"
+                  },
+                  "city": {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  "consent": {
+                    "enum": [
+                      true
+                    ],
+                    "type": "boolean"
+                  },
+                  "consentTextVersion": {
+                    "maxLength": 40,
+                    "type": "string"
+                  },
+                  "contact": {
+                    "maxLength": 200,
+                    "type": "string"
+                  },
+                  "contactType": {
+                    "enum": [
+                      "email",
+                      "whatsapp"
+                    ],
+                    "type": "string"
+                  },
+                  "name": {
+                    "maxLength": 120,
+                    "type": "string"
+                  },
+                  "neighborhood": {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  "referralCode": {
+                    "maxLength": 40,
+                    "type": "string"
+                  },
+                  "role": {
+                    "enum": [
+                      "client",
+                      "professional",
+                      "salon"
+                    ],
+                    "type": "string"
+                  },
+                  "turnstileToken": {
+                    "type": "string"
+                  },
+                  "utm": {
+                    "type": "object"
+                  },
+                  "website": {
+                    "description": "Honeypot; dejar vacío",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "role",
+                  "name",
+                  "contactType",
+                  "contact",
+                  "city",
+                  "consent",
+                  "consentTextVersion",
+                  "turnstileToken"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Solicitud aceptada",
+            "incluso si ya existía": null
+          },
+          "400": {
+            "description": "Cuerpo inválido o verificación fallida"
+          },
+          "429": {
+            "description": "Límite de solicitudes excedido"
+          },
+          "503": {
+            "description": "Servicio temporalmente no disponible"
+          }
+        },
+        "summary": "Registra una solicitud de interés de la landing",
+        "tags": [
+          "public"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
     "/api/public/provider/{slug}": {
       "get": {
         "operationId": "getapi_public_provider_slug",
@@ -8554,6 +8660,54 @@
           }
         },
         "summary": "PATCH /api/salon/{salonId}/members/{memberId}/role (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "salon"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
+    "/api/salon/{salonId}/profile": {
+      "get": {
+        "operationId": "getapi_salon_salonId_profile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "salonId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "GET /api/salon/{salonId}/profile (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "salon"
+        ],
+        "x-glowapp-documented": false
+      },
+      "patch": {
+        "operationId": "patchapi_salon_salonId_profile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "salonId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "PATCH /api/salon/{salonId}/profile (autodescubierto, sin contrato declarado)",
         "tags": [
           "salon"
         ],
@@ -10494,8 +10648,8 @@
   ],
   "x-glowapp-contract": {
     "generator": "backend/src/openapi/buildOpenApi.js",
-    "operationsDiscovered": 441,
-    "operationsDocumented": 35,
-    "routesMounted": 476
+    "operationsDiscovered": 443,
+    "operationsDocumented": 36,
+    "routesMounted": 479
   }
 }

@@ -632,3 +632,11 @@ en 076).
 - La auditoría permite insertar eventos autorizados, pero no actualizar ni borrar registros.
 - Añade funciones `SECURITY DEFINER` de alcance limitado para resolver datos mínimos del equipo y buscar el correo de destino; no se exponen consultas libres sobre `usuarios`.
 - Es aditiva. Reversión: desplegar código compatible anterior y retirar las políticas/triggers únicamente después de confirmar que no hay escrituras que dependan del nuevo contrato; no se borran filas.
+
+---
+
+## 201: leads de la landing comercial
+
+- Crea `landing_leads`, separada de los datos operativos, con consentimiento versionado, UTM y hash de IP.
+- Deduplica por rol y contacto normalizado; habilita y fuerza RLS con INSERT concedido al rol `app_system` para el flujo backend explícito `runAsSystem`.
+- La aplicación usa un pool dedicado limitado a tres conexiones. No crea un usuario de base de datos nuevo ni modifica pools existentes.

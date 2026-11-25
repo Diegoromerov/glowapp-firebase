@@ -1,0 +1,7 @@
+{
+  "name": "glowapp-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing estática de GlowApp",
+  "scripts": { "start": "node server.js" }
+}

@@ -44,6 +44,12 @@ describe('E-01 — routers publicados en la app real (D-GL-027)', () => {
     expect(res.status).toBe(404);
   });
 
+  test('las rutas públicas de leads no exigen X-App-Audience', async () => {
+    const res = await request(app).post('/api/public/leads').send({});
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe('invalid_request');
+  });
+
   test('el prefijo versionado /api/v1/owner no se publica por accidente', async () => {
     const res = await request(app).get('/api/v1/owner/salones').set(PROVIDER_AUDIENCE_HEADER);
     expect(res.status).toBe(404);
