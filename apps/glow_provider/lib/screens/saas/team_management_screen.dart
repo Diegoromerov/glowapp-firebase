@@ -292,6 +292,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
+              key: Key('team-resend-invitation-${invitation.id}'),
               icon: const Icon(Icons.send_rounded, color: Color(0xFFC5A052), size: 20),
               onPressed: () async {
                 if (businessProfileId != null) {
