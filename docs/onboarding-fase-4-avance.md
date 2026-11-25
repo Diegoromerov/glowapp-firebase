@@ -2,7 +2,7 @@
 
 **Corte de evidencia:** 25 de noviembre de 2026
 **Rama del endurecimiento RLS:** `codex/fase4-membership-rls`
-**Estado productivo de la fase:** abierta; **70 % de criterios de salida verificados**.
+**Estado productivo de la fase:** abierta; **75 % de criterios de salida verificados**.
 **Despliegue:** commit `8efabdfec726360425f3fc54406e53550fb17f0d`; Railway `ea6b9b44-f99f-4c50-8441-066622b5f6d2` (`SUCCESS`).
 
 > La fase técnica SaaS 3 (membresías) corresponde a la fase 4 del plan de onboarding. El 75 % es un estimado de criterios de salida cumplidos; los recorridos E2E de correo, matriz completa de permisos y cupos siguen pendientes.
