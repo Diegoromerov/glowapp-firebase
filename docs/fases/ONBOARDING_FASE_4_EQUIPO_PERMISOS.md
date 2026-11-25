@@ -74,6 +74,13 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 - El analizador Dart de ambos archivos no reporta errores (solo avisos informativos), la compilación web local terminó correctamente y CI/build/deploy live aprobaron en el workflow `45696306835`.
 - El avance sube de **70 % a 75 %** al quedar publicada y comprobada la pantalla de equipo. La invitación real por API/correo, aceptación, aislamiento por rol/tenant con cuentas reales y cupos/concurrencia siguen pendientes.
 
+
+### Verificación adicional de producción (25 Nov 2026)
+
+- El commit `0b2285bf92410f216a8f9e7af7fe79537be0f45c` corrigió el guard del arnés E2E para reconocer el host real de producción `glowapp-api-production.up.railway.app`; sin `--force`, el script aborta antes de crear datos. Checks de Railway `glowapp - glowapp-api` y `glowapp - admin-dashboard`: `success`.
+- Verificación HTTP de solo lectura: `GET /api/health` devolvió 200, `env=production`, `dbMode=postgres` y el mismo SHA de commit. `GET /api/saas/team` y `GET /api/saas/team/audit`, con `X-App-Audience: salon` pero sin credenciales, devolvieron 401. Sin esa cabecera devolvían 400 por el middleware de audiencia.
+- Estas respuestas confirman disponibilidad del servicio y rechazo anónimo. No prueban el acceso de un miembro autenticado, la separación entre dos tenants ni la aplicación de cupos bajo concurrencia. No se crearon membresías ni se enviaron correos en estas consultas.
+
 ## Avance
 
 **75 % estimado de criterios de salida verificados; fase abierta.** Ponderación vigente: modelo y backend de membresías disponibles (20/25 %), guards básicos comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación heredada con protecciones de cupo (10 %), RLS dirigido desplegado y verificado en PostgreSQL (5 %), verificación transaccional de reglas OWNER/ADMIN/MEMBER y auditoría (5 % de los 10 % asignados a roles/alcance por sede), y UI de Equipo publicada y visualmente validada (5 %). Restan: invitación/correo/aceptación por API E2E (15 %), matriz y alcance por sede con tenant real (5 %), y cupos con concurrencia/reactivación (5 %). Los pesos miden criterios cumplidos, no líneas de código ni cantidad de despliegues.
