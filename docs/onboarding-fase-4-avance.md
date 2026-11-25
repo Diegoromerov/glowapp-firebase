@@ -2,7 +2,7 @@
 
 **Corte de evidencia:** 25 de noviembre de 2026
 **Rama del endurecimiento RLS:** `codex/fase4-membership-rls`
-**Estado productivo de la fase:** abierta; **75 % de criterios de salida verificados**.
+**Estado productivo de la fase:** abierta; **70 % de criterios de salida verificados**.
 **Despliegue:** commit `8efabdfec726360425f3fc54406e53550fb17f0d`; Railway `ea6b9b44-f99f-4c50-8441-066622b5f6d2` (`SUCCESS`).
 
 > La fase técnica SaaS 3 (membresías) corresponde a la fase 4 del plan de onboarding. El 75 % es un estimado de criterios de salida cumplidos; los recorridos E2E de correo, matriz completa de permisos y cupos siguen pendientes.
@@ -35,6 +35,13 @@ El cierre sigue pendiente porque no se ha hecho el recorrido real de invitación
 ## Verificación local
 
 - Seis suites dirigidas pasan: **38/38 pruebas**, incluyendo `saasMembershipService`, `salonMembership`, `saasContext`, `saasBootstrapRoutes`, `sequelizeTenantContext` y `membership-management`.
+- Verificación adicional de Fase 4: en la última ejecución, **6 suites, 43/43 pruebas** pasan, incluyendo una matriz HTTP del router SaaS para OWNER, ADMIN, MANAGER, MEMBER y VIEWER. Comprueba lectura del equipo, acceso a auditoría, invitaciones, cambio de rol, suspensión, retiro y reenvío; el contexto SaaS y los servicios de negocio se simulan, por lo que esta prueba no demuestra aislamiento de tenants en PostgreSQL productivo.
+- La suite existente de aceptación de invitaciones heredadas tenía una expectativa obsoleta de `FOR UPDATE` sobre `business_profiles`; se actualizó para comprobar el bloqueo advisory por tenant y el bloqueo de la invitación (`FOR UPDATE OF si`) que usa el servicio vigente.
+- Evaluación visual autenticada con la cuenta QA `qa.fase2.202611241931@example.com`: el acceso directo `/#/saas/team` mostró “No hay perfil de negocio configurado”, aunque la sesión sí tiene un salón QA. La pantalla no iniciaba `BusinessProfileNotifier.load()`. Se corrigió localmente con carga inicial, indicador de espera y reintento. El cambio aún no está en Firebase Hosting.
+- La pestaña `Equipo` del shell del salón carga miembros por la ruta heredada y su estado vacío indica crear la invitación desde el resumen; no presenta el formulario de invitación. El recorrido real de invitación aún no está disponible desde la pantalla que se comprobó.
+- Corrección local: el tab `Equipo` ahora reutiliza `TeamManagementScreen`, el flujo SaaS canónico para invitar y administrar miembros; el analizador Dart de ambos widgets no encontró errores. El cambio aún necesita compilación web, publicación y validación visual autenticada.
+- Se baja la estimación productiva de 75 % a **70 %**: los 5 puntos atribuidos a la pantalla de equipo no estaban demostrados como flujo funcional en producción. El 70 % conserva solo criterios respaldados por el despliegue y las verificaciones previas.
+- La compilación Flutter web de la corrección no concluyó (el compilador quedó activo sin emitir `main.dart.js`); Firebase CLI también falla al leer la sesión (`EPERM` en `firebase-tools.json`). No se publicó la corrección.
 - La suite `membership-management` se actualizó para el contrato actual del controlador PostgreSQL. Ejercita las rutas y la autorización real del router; sustituye solo los middleware de autenticación/contexto, cubiertos por pruebas específicas aparte, y simula el servicio transaccional.
 - `node --check` pasó en los archivos JavaScript revisados.
 - Las migraciones 082, 112, 114, 190 y 200 pasaron escenarios de RLS en PGlite: alta y reintento del OWNER, invitación, aceptación y auditoría, denegación entre perfiles, bloqueo de cambio de rol del OWNER y protección contra modificación del historial.
@@ -46,11 +53,12 @@ El cierre sigue pendiente porque no se ha hecho el recorrido real de invitación
 
 ## Pendientes para cerrar la fase
 
-1. Comprobar invitación por API, entrega de correo, aceptación con cuenta correcta, rechazo con cuenta distinta, vencimiento y reenvío.
-2. Completar por API los permisos de `MANAGER` y `VIEWER`, y el alcance de las acciones de todos los roles por sede.
+1. Comprobar invitación por API en producción, entrega de correo, aceptación con cuenta correcta, rechazo con cuenta distinta, vencimiento y reenvío.
+2. La matriz de guards HTTP para los cinco roles ahora pasa localmente; falta validarla con contexto y datos de PostgreSQL, incluyendo el alcance por sede/tenant en producción.
 3. Verificar límite de asientos, concurrencia y reactivación mediante recorridos completos.
 4. Confirmar en esos recorridos que la auditoría sigue siendo append-only.
 
 ## Decisión
 
-La fase permanece abierta con 75 % de criterios estimados. El refuerzo RLS está desplegado y verificado en el PostgreSQL productivo; faltan recorridos E2E por API/correo, completar la matriz de roles y validar cupos para cerrar el trabajo.
+La fase permanece abierta con 70 % de criterios estimados. El refuerzo RLS está desplegado y verificado en PostgreSQL productivo; faltan corregir y publicar el acceso a Equipo, recorrer invitación y correo, validar roles con tenant real y probar cupos.
+

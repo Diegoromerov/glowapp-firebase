@@ -46,7 +46,8 @@ describe('acceptLegacySalonInvitation', () => {
 
     expect(membership).toMatchObject({ id: 'm-new', role: 'MEMBER', status: 'ACTIVE' });
     expect(calls[0].sql).toBe('BEGIN');
-    expect(calls.some(({ sql }) => sql.includes('FROM business_profiles') && sql.includes('FOR UPDATE'))).toBe(true);
+    expect(calls.some(({ sql }) => sql.includes('pg_advisory_xact_lock(hashtextextended($1, 0))'))).toBe(true);
+    expect(calls.some(({ sql }) => sql.includes('FOR UPDATE OF si'))).toBe(true);
     expect(calls.some(({ sql }) => sql.includes('COUNT(*)::int') && sql.includes("'ACTIVE','PENDING','INVITED'"))).toBe(true);
     expect(calls.some(({ sql }) => sql.startsWith('INSERT INTO membership_audit_logs'))).toBe(true);
     expect(calls.some(({ sql }) => sql.startsWith('UPDATE salon_invitaciones'))).toBe(true);
@@ -94,3 +95,4 @@ describe('acceptLegacySalonInvitation', () => {
     expect(mockPoolConnect).not.toHaveBeenCalled();
   });
 });
+

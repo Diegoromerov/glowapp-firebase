@@ -31,6 +31,7 @@ import 'caja_screen.dart';
 import 'inventario_screen.dart';
 import 'recursos_screen.dart';
 import 'salon_loyalty_screen.dart';
+import '../saas/team_management_screen.dart';
 
 class SalonShell extends StatefulWidget {
   /// Pestaña inicial (0 = Agenda). Útil para deep-links internos.
@@ -266,7 +267,9 @@ class _SalonShellState extends State<SalonShell> {
             onMejorarPlan: () => Navigator.pushNamed(context, '/saas/billing'),
           );
         }
-        return _EquipoTab(cargar: _cargarDatos);
+        // Un solo flujo canónico para que el tab Equipo permita invitar,
+        // administrar roles y revisar invitaciones desde la app del salón.
+        return const TeamManagementScreen();
       case 3:
         return _cargarDatos
             ? const ProviderServicesScreen()
@@ -464,130 +467,6 @@ class _CajaTab extends StatelessWidget {
       titulo: 'Caja sin salón activo',
       detalle: 'Abre el resumen del salón para entrar a la caja. '
           'Sin salón identificado no se muestran cifras.',
-    );
-  }
-}
-
-// ── Equipo ───────────────────────────────────────────────────────────────────
-
-class _EquipoTab extends StatefulWidget {
-  final bool cargar;
-  const _EquipoTab({required this.cargar});
-
-  @override
-  State<_EquipoTab> createState() => _EquipoTabState();
-}
-
-class _EquipoTabState extends State<_EquipoTab> {
-  bool _cargando = true;
-  String? _error;
-  List<Map<String, dynamic>> _miembros = const [];
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.cargar) {
-      _cargar();
-    } else {
-      _cargando = false;
-    }
-  }
-
-  Future<void> _cargar() async {
-    setState(() {
-      _cargando = true;
-      _error = null;
-    });
-    try {
-      final res = await AuthService.getMySalon();
-      final raw = (res?['members'] as List<dynamic>?) ?? const [];
-      if (!mounted) return;
-      setState(() {
-        _miembros =
-            raw.map((m) => Map<String, dynamic>.from(m as Map)).toList();
-        _cargando = false;
-      });
-    } catch (e) {
-      if (!mounted) return;
-      setState(() {
-        _error = 'No se pudo cargar el equipo: ${mensajeHumano(e)}';
-        _cargando = false;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final t = Token.of(context);
-    if (_cargando) {
-      return Center(child: CircularProgressIndicator(color: t.brandPrimary));
-    }
-    if (_error != null) {
-      return _Estado(
-        icono: Icons.cloud_off_outlined,
-        titulo: 'Equipo no disponible',
-        detalle: _error!,
-        accion: TextButton(onPressed: _cargar, child: const Text('Reintentar')),
-      );
-    }
-    if (_miembros.isEmpty) {
-      return const _Estado(
-        icono: Icons.groups_outlined,
-        titulo: 'Todavía no hay equipo',
-        detalle: 'Invita a tu primer colaborador desde el resumen del salón.',
-      );
-    }
-    return ListView.separated(
-      padding: const EdgeInsets.all(Spacing.lg),
-      itemCount: _miembros.length,
-      separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
-      itemBuilder: (context, i) {
-        final m = _miembros[i];
-        final nombre = (m['nombre'] ?? 'Colaborador').toString();
-        final rol = (m['sub_rol'] ?? '').toString();
-        final estatus = (m['estatus'] ?? '').toString();
-        return Container(
-          padding: const EdgeInsets.all(Spacing.lg),
-          decoration: BoxDecoration(
-            color: t.surfaceLevel1,
-            borderRadius: BorderRadius.circular(Radii.md),
-            border: Border.all(color: t.borderSubtle),
-          ),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 18,
-                backgroundColor: t.brandPrimary.withOpacity(0.12),
-                child: Text(
-                  nombre.trim().isEmpty ? '?' : nombre.trim()[0].toUpperCase(),
-                  style: TextStyle(
-                    color: t.brandPrimary,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              const SizedBox(width: Spacing.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      nombre,
-                      style: TypographyTokens.body(t)
-                          .copyWith(fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      [rol, estatus].where((s) => s.isNotEmpty).join(' · '),
-                      style: TypographyTokens.bodySmall(t)
-                          .copyWith(color: t.textSecondary),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
@@ -844,3 +723,4 @@ class _Estado extends StatelessWidget {
     );
   }
 }
+

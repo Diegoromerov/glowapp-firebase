@@ -1,14 +1,27 @@
 // lib/screens/saas/team_management_screen.dart
-import 'package:glow_core/models/saas/saas_models.dart';
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TeamManagementScreen extends ConsumerWidget {
+class TeamManagementScreen extends ConsumerStatefulWidget {
   const TeamManagementScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<TeamManagementScreen> createState() =>
+      _TeamManagementScreenState();
+}
+
+class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) ref.read(businessProfileProvider.notifier).load();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final businessProfileState = ref.watch(businessProfileProvider);
     final teamState = ref.watch(teamProvider);
     final businessProfileId = ref.watch(currentBusinessProfileIdProvider);
@@ -28,7 +41,26 @@ class TeamManagementScreen extends ConsumerWidget {
           backgroundColor: const Color(0xFFFAF8F5),
           foregroundColor: const Color(0xFF1F1A15),
         ),
-        body: const Center(child: Text('No hay perfil de negocio configurado')),
+        body: Center(
+          child: businessProfileState.isLoading
+              ? const CircularProgressIndicator()
+              : businessProfileState.error != null
+                  ? Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text('No se pudo cargar el perfil del salón.'),
+                        const SizedBox(height: 12),
+                        FilledButton.icon(
+                          onPressed: () => ref
+                              .read(businessProfileProvider.notifier)
+                              .load(),
+                          icon: const Icon(Icons.refresh),
+                          label: const Text('Reintentar'),
+                        ),
+                      ],
+                    )
+                  : const Text('No hay perfil de negocio configurado'),
+        ),
       );
     }
 
@@ -359,3 +391,4 @@ class TeamManagementScreen extends ConsumerWidget {
     );
   }
 }
+

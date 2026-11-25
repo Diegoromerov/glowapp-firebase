@@ -55,12 +55,24 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 ## Pendientes para el cierre
 
 1. Ejecutar una invitación por API con una cuenta QA y comprobar correo entregado, aceptación con correo correcto, rechazo con otro correo, vencimiento y reenvío.
-2. Completar la matriz de permisos por API para `MANAGER` y `VIEWER`, y verificar las acciones por sede con cuentas miembro y propietario.
+2. La matriz HTTP local ahora cubre OWNER, ADMIN, MANAGER, MEMBER y VIEWER para lectura del equipo/auditoría, invitación, cambio de rol, suspensión, retiro y reenvío. Aún hay que ejecutarla con contexto SaaS y datos reales para comprobar el alcance por sede/tenant en producción.
 3. Probar en producción el límite de asientos, concurrencia y reactivación.
+
+### Evidencia adicional de la revisión actual
+
+- Seis suites focalizadas: **43/43 pruebas aprobadas** en la última ejecución. La suite nueva `saas-team-rbac.test.js` usa el router real y sus guards; simula autenticación, contexto SaaS y servicio, por lo que acredita el comportamiento RBAC de las rutas, no una prueba de tenant completo.
+- Se corrigió una expectativa obsoleta en `saasMembershipLegacyAcceptance.test.js`: la implementación serializa el cupo con `pg_advisory_xact_lock` por tenant y bloquea la fila de invitación con `FOR UPDATE OF si`, en vez de bloquear `business_profiles` directamente.
+- Railway producción permanece en `SUCCESS`, despliegue `6483a9d8-dcc0-4526-9fb0-6ff62511eb6c`, commit `58a5e5fe138ce4e69b9da0565f8e871a34b966ad`; sin cambios staged. La suite adicional está local y no se ha publicado.
+- Las consultas HTTP directas a `/api/health`, `/api/saas/team` sin autenticación y `POST /api/saas/team/invite` sin autenticación no llegaron a recibir respuesta: el entorno de ejecución no pudo completar el handshake TLS con el dominio Railway, incluso con permiso de red. La invitación anónima no modificó datos ni envió correo; esas rutas siguen sin una comprobación HTTP nueva en producción.
+- En la app de producción, tras autenticar la cuenta QA `qa.fase2.202611241931@example.com`, el salón se mostró en `/#/salon`; el acceso directo a `/#/saas/team` mostró “No hay perfil de negocio configurado”. La pantalla no cargaba `BusinessProfileNotifier` al abrir. Se corrigió localmente para cargarlo al iniciar y mostrar espera/reintento. No se desplegó: Firebase CLI no puede leer la sesión local (`EPERM`) y este entorno no tiene las variables `--dart-define` para compilar Firebase.
+- La pestaña `Equipo` del shell visible en producción carga la lista por API heredada y no ofrece el formulario de invitación; el estado vacío dirige a “resumen del salón”. Por ello la UI de equipo no se cuenta como funcional de extremo a extremo.
+- Corrección local adicional: el tab `Equipo` del shell ahora monta la pantalla SaaS canónica, con invitación, administración de roles y estados de invitación; se retiró la lista heredada de solo lectura. El analizador Dart revisó ambos archivos sin errores (solo avisos informativos). Falta compilar y desplegar para verificarlo en producción.
+- La compilación web Flutter no concluyó: el proceso quedó activo en el compilador sin emitir `main.dart.js`. Firebase CLI tampoco puede leer su sesión local (`EPERM` en `firebase-tools.json`); la corrección sigue sin publicar.
+- La estimación productiva se recalibra de **75 % a 70 %**: se retiran los cinco puntos que se habían contado por pantalla funcional sin una comprobación visual satisfactoria. La matriz de guards pasa localmente, pero falta validarla con tenant real; aceptación/correo y cupos E2E siguen pendientes.
 
 ## Avance
 
-**75 % estimado de criterios de salida verificados; fase abierta.** Ponderación: modelo y pantalla de equipo publicados (25 %), guards básicos comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación heredada con protecciones de cupo (10 %), RLS dirigido desplegado y verificado en PostgreSQL (5 %), y verificación transaccional de reglas OWNER/ADMIN/MEMBER y auditoría (5 % de los 10 % asignados a roles/alcance por sede). Restan: invitación/correo/aceptación por API E2E (15 %), matriz completa de roles y alcance por sede (5 %), y cupos con concurrencia/reactivación (5 %). Los pesos miden criterios cumplidos, no líneas de código ni cantidad de despliegues.
+**70 % estimado de criterios de salida verificados; fase abierta.** Ponderación vigente: modelo y backend de membresías disponibles (20/25 %; se descuentan 5 puntos porque la pantalla SaaS no cargaba perfil en producción y el shell no permite invitar), guards básicos comprobados en producción (15 %), políticas de invitación/roles/cupo implementadas y CI probada (15 %), aceptación heredada con protecciones de cupo (10 %), RLS dirigido desplegado y verificado en PostgreSQL (5 %), y verificación transaccional de reglas OWNER/ADMIN/MEMBER y auditoría (5 % de los 10 % asignados a roles/alcance por sede). Restan: invitación/correo/aceptación por API E2E (15 %), matriz y alcance por sede con tenant real (5 %), cupos con concurrencia/reactivación (5 %), y publicación/verificación funcional de la UI de Equipo (5 %). Los pesos miden criterios cumplidos, no líneas de código ni cantidad de despliegues.
 
 - Implementación canónica de equipo y pantalla publicada: comprobado en documentación de release.
 - Guard del propietario/tenant para lectura de equipo y auditoría, y rechazo de cuenta sin membresía: comprobado por respuestas HTTP de producción.
@@ -74,3 +86,4 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 El 60 % y el 80 % reportados antes eran estimaciones, no métricas instrumentadas. El 80 % sobrecontó criterios al tratar el despliegue de compatibilidad como prueba de aceptación E2E y al describir mal el rol PostgreSQL. La estimación actual de 75 % reconoce el RLS desplegado y verificado, más una matriz parcial de permisos comprobada en PostgreSQL; la fase sigue abierta hasta terminar los recorridos por API, correo y cupos.
 
 No se persistieron invitaciones ni cambios de membresía de prueba, y no se enviaron correos durante esta revisión.
+
