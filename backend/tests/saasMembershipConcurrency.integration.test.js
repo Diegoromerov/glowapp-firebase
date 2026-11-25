@@ -19,17 +19,20 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
 
   beforeAll(async () => {
     adminPool = new Pool({ connectionString: ADMIN_URL });
-    const result = await adminPool.query(
-      "SELECT id FROM business_verticals WHERE code = 'BEAUTY_SALON' ORDER BY id LIMIT 1"
+    verticalId = crypto.randomUUID();
+    await adminPool.query(
+      'INSERT INTO business_verticals (id, code, name, description) VALUES ($1, $2, $3, $4)',
+      [verticalId, 'SAAS_SEAT_TEST_' + verticalId, 'SaaS seat test', 'Ephemeral test fixture']
     );
-    if (!result.rows.length) {
-      throw new Error('The BEAUTY_SALON business vertical must be seeded before this integration suite');
-    }
-    verticalId = result.rows[0].id;
   });
 
   afterAll(async () => {
-    if (adminPool) await adminPool.end();
+    if (adminPool) {
+      if (verticalId) {
+        await adminPool.query('DELETE FROM business_verticals WHERE id = $1', [verticalId]);
+      }
+      await adminPool.end();
+    }
   });
 
   async function createFixture() {
