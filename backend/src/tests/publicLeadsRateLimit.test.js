@@ -1,5 +1,6 @@
 'use strict';
 process.env.NODE_ENV = 'test';
+const previousTestRateLimit = process.env.TEST_RATE_LIMIT;
 process.env.TEST_RATE_LIMIT = 'true';
 jest.mock('../config/publicPool', () => ({ connect: jest.fn() }));
 jest.mock('../config/tenantRouting', () => ({ runAsSystem: jest.fn().mockResolvedValue({}) }));
@@ -7,6 +8,11 @@ jest.mock('../config/tenantRouting', () => ({ runAsSystem: jest.fn().mockResolve
 const express = require('express');
 const request = require('supertest');
 const router = require('../routes/public/leads');
+
+afterAll(() => {
+  if (previousTestRateLimit === undefined) delete process.env.TEST_RATE_LIMIT;
+  else process.env.TEST_RATE_LIMIT = previousTestRateLimit;
+});
 
 describe('límites de POST /api/public/leads', () => {
   test('responde 429 al superar 5 solicitudes por minuto desde la misma IP', async () => {
