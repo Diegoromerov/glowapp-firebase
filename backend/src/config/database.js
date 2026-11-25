@@ -81,9 +81,19 @@ function cablearContextoEnSequelize(instanciaSequelize) {
     } else if (ctx && ctx.tenantId) {
       try {
         await real.query('SELECT set_config(\'app.tenant_id\', $1, false)', [String(ctx.tenantId)]);
+        if (ctx.userId !== null && ctx.userId !== undefined && `${ctx.userId}` !== '') {
+          await real.query('SELECT set_config(\'app.user_id\', $1, false)', [String(ctx.userId)]);
+        }
         conexionesConContexto.add(real);
       } catch (error) {
         console.warn('⚠️ Sequelize: no se pudo establecer app.tenant_id:', error.message);
+      }
+    } else if (ctx && ctx.userId !== null && ctx.userId !== undefined && `${ctx.userId}` !== '') {
+      try {
+        await real.query('SELECT set_config(\'app.user_id\', $1, false)', [String(ctx.userId)]);
+        conexionesConContexto.add(real);
+      } catch (error) {
+        console.warn('⚠️ Sequelize: no se pudo establecer app.user_id:', error.message);
       }
     }
     return conexion;
@@ -95,6 +105,9 @@ function cablearContextoEnSequelize(instanciaSequelize) {
       try {
         await real.query('RESET ROLE');
         await real.query('RESET app.tenant_id');
+        await real.query('RESET app.user_id');
+        await real.query('RESET app.business_profile_id');
+        await real.query('RESET app.membership_accepting_id');
         conexionesConContexto.delete(real);
       } catch (error) {
         console.error('❌ Sequelize: no se pudo limpiar el contexto de inquilino; se destruye la conexión:', error.message);

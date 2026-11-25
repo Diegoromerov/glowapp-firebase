@@ -133,6 +133,10 @@ const MIGRACIONES_BASE_NUEVA = [
   '182_fix_logistics_metrics_destination_schema.sql',
   // 183: suspend visibility without disabling account access.
   '183_user_public_visibility_suspension.sql',
+// SaaS membership governance and row-level policies, exercised by the RLS test suite.
+'190_saas_membership_governance.sql',
+'197_business_profiles_membership_read.sql',
+'200_saas_memberships_rls.sql',
 ];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
@@ -267,6 +271,9 @@ const MIGRACIONES_ARRANQUE = [
   '182_fix_logistics_metrics_destination_schema.sql',
   // Keep existing databases aligned with the public visibility checks.
   '183_user_public_visibility_suspension.sql',
+  '190_saas_membership_governance.sql',
+  '197_business_profiles_membership_read.sql',
+  '200_saas_memberships_rls.sql',
   ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {

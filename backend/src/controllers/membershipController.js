@@ -22,7 +22,7 @@ async function tenantInfo(tenantId) {
 
 const getMembers = async (req, res) => {
   try {
-    const members = await membershipService.list(context(req));
+    const members = await membershipService.list(context(req), req.user.id);
     return res.json({ success: true, data: members.map((m) => ({
       id: m.id, userId: m.user_id, role: m.role, status: m.status,
       createdAt: m.created_at, updatedAt: m.updated_at,

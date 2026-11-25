@@ -27,7 +27,7 @@ function membershipDto(membership) {
 router.get('/', async (req, res) => {
   if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
   try {
-    const members = await membershipService.list(req.saas.tenantId);
+    const members = await membershipService.list(req.saas.tenantId, req.user.id);
     const me = members.find((member) => Number(member.user_id) === Number(req.user.id));
     return res.json({ tenantId: req.saas.tenantId, tenantName: req.saas.name, plan: req.saas.plan,
       myRole: me?.role, members: members.map((member) => ({ ...member, isMe: Number(member.user_id) === Number(req.user.id) })) });
@@ -88,7 +88,10 @@ router.get('/audit', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHI
     const { rows } = await pool.query(
       `SELECT a.id, a.membership_id, a.actor_user_id, a.event_type, a.previous_role, a.new_role,
               a.previous_status, a.new_status, a.metadata, a.created_at, u.email AS actor_email
-         FROM membership_audit_logs a LEFT JOIN usuarios u ON u.id = a.actor_user_id
+         FROM membership_audit_logs a
+         LEFT JOIN LATERAL (
+           SELECT info.email FROM app_saas_team_user_info($1) info WHERE info.user_id = a.actor_user_id
+         ) u ON TRUE
         WHERE a.business_profile_id = $1 ORDER BY a.created_at DESC LIMIT 100`, [req.saas.tenantId]
     );
     return res.json({ tenantId: req.saas.tenantId, events: rows });

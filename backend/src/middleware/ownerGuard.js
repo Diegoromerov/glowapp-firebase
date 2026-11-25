@@ -17,6 +17,7 @@
 
 const { pool } = require('../config/db');
 const { runInTenantTransaction } = require('../config/tenantRouting');
+const { withMembershipContext } = require('../services/salonMembership');
 
 // Sub-roles válidos en salon_miembros (alineados con salonController.inviteMember)
 const SUB_ROLES = Object.freeze({
@@ -206,7 +207,8 @@ async function protectOwnerMember(req, res, next) {
   }
 
   try {
-    const owners = await pool.query(
+    const ownerIds = await withMembershipContext(pool, req.salonId, req.user.id, async (client) => {
+    const owners = await client.query(
       // E-02c: propietarios desde el modelo canónico.
       `SELECT m.user_id
          FROM salones s
@@ -216,7 +218,8 @@ async function protectOwnerMember(req, res, next) {
       [req.salonId, 'ACTIVE']
     );
 
-    const ownerIds = owners.rows.map((r) => Number(r.user_id));
+    return owners.rows.map((r) => Number(r.user_id));
+    });
 
     if (ownerIds.includes(targetId) && ownerIds.length <= 1) {
       return res.status(409).json({

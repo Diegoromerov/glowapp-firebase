@@ -49,6 +49,29 @@ const ROLE_TO_SUB_ROL = Object.freeze({
 /** Los roles que pueden administrar el equipo de un salón. */
 const ROLES_ADMIN = Object.freeze(['OWNER', 'ADMIN']);
 
+async function withMembershipContext(db, salonId, userId, callback) {
+  const routing = require('../config/tenantRouting');
+  const activeClient = routing.getActiveClient();
+  const run = async (client) => {
+    const businessProfileId = await resolveBusinessProfileId(client, salonId);
+    return withBusinessProfileContext(db, businessProfileId, userId, callback, client);
+  };
+  return activeClient ? run(activeClient) : routing.runInTenantTransaction({ pool: db }, null, userId, run);
+}
+
+async function withBusinessProfileContext(db, businessProfileId, userId, callback, existingClient = null) {
+  const routing = require('../config/tenantRouting');
+  const run = async (client) => {
+    if (userId !== null && userId !== undefined) {
+      await client.query("SELECT set_config('app.user_id', $1, true)", [String(userId)]);
+    }
+    await client.query("SELECT set_config('app.business_profile_id', $1, true)", [String(businessProfileId)]);
+    return callback(client, businessProfileId);
+  };
+  const client = existingClient || routing.getActiveClient();
+  return client ? run(client) : routing.runInTenantTransaction({ pool: db }, null, userId, run);
+}
+
 async function resolveBusinessProfileId(db, salonId) {
   const { rows } = await db.query(
     `SELECT business_profile_id FROM salones WHERE id = $1`,
@@ -76,8 +99,9 @@ function subRolForRole(role) {
  * Miembros del salón, con la forma que ya consume el cliente Flutter
  * (`id, user_id, nombre, email, phone, sub_rol, estatus, creado_at`).
  */
-async function listSalonMembers(db, salonId) {
-  const { rows } = await db.query(
+async function listSalonMembers(db, salonId, userId) {
+  return withMembershipContext(db, salonId, userId, async (client) => {
+  const { rows } = await client.query(
     `SELECT m.id,
             m.user_id,
             u.nombre,
@@ -102,6 +126,7 @@ async function listSalonMembers(db, salonId) {
       ? String(r.sub_rol).toUpperCase()
       : subRolForRole(r.role),
   }));
+  });
 }
 
 /**
@@ -109,7 +134,8 @@ async function listSalonMembers(db, salonId) {
  * @returns {Promise<{role: string, sub_rol: string}|null>}
  */
 async function getMemberRole(db, salonId, userId) {
-  const { rows } = await db.query(
+  return withMembershipContext(db, salonId, userId, async (client) => {
+  const { rows } = await client.query(
     `SELECT m.role, m.sub_rol
        FROM memberships m
        JOIN salones s ON s.business_profile_id = m.business_profile_id
@@ -122,6 +148,7 @@ async function getMemberRole(db, salonId, userId) {
     ? String(rows[0].sub_rol).toUpperCase()
     : subRolForRole(role);
   return { role, sub_rol: subRol };
+  });
 }
 
 /** Resolve the canonical active membership row for the legacy salon routes. */
@@ -153,9 +180,9 @@ async function canAdminSalon(db, salonId, userId) {
 async function ensureMembership(db, { salonId, userId, subRol, status = 'ACTIVE', createdBy = null }) {
   const role = roleForSubRol(subRol);
   const etiqueta = String(subRol || '').trim().toUpperCase() || subRolForRole(role);
-  const businessProfileId = await resolveBusinessProfileId(db, salonId);
+  return withMembershipContext(db, salonId, createdBy || userId, async (client, businessProfileId) => {
 
-  const { rows } = await db.query(
+  const { rows } = await client.query(
     `INSERT INTO memberships
        (id, user_id, business_profile_id, role, sub_rol, status, invited_at, accepted_at, created_by_user_id)
      VALUES ($1, $2, $3, $4, $5, $6, CURRENT_TIMESTAMP,
@@ -170,6 +197,7 @@ async function ensureMembership(db, { salonId, userId, subRol, status = 'ACTIVE'
     [require('crypto').randomUUID(), userId, businessProfileId, role, etiqueta, status, createdBy]
   );
   return rows[0];
+  });
 }
 
 module.exports = {
@@ -177,6 +205,8 @@ module.exports = {
   ROLE_TO_SUB_ROL,
   ROLES_ADMIN,
   resolveBusinessProfileId,
+  withMembershipContext,
+  withBusinessProfileContext,
   roleForSubRol,
   subRolForRole,
   listSalonMembers,

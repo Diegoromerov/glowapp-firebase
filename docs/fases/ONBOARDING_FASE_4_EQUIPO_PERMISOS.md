@@ -42,6 +42,12 @@ Eso acredita que la conexión ordinaria de la aplicación no es superusuario ni 
 
 Conclusión: rol runtime con privilegio mínimo **verificado**; RLS específico de membresías y auditoría **no configurado en las migraciones revisadas y pendiente de consulta dirigida a producción**. No atribuir al RLS protección que hoy demuestran los guards del API. Antes de activarlo, hay que definir políticas y contexto compatibles con las transacciones de `saasMembershipService`, desplegar la migración y probar todos los flujos.
 
+### Prueba transaccional previa a despliegue (25 Nov 2026)
+
+Se inspeccionó la base PostgreSQL nativa desde el contenedor activo de Railway, sin extraer ni mostrar credenciales. La migración 200 se ejecutó dentro de transacciones temporales, con rollback explícito al terminar. Bajo `app_rls_user` (`BYPASSRLS=false`), el OWNER de prueba pudo leer su propio equipo, no pudo ver membresías ni auditoría de otro perfil y la búsqueda de usuarios del equipo funcionó. También se creó una invitación sintética, se confirmó que otra cuenta no puede leerla, se aceptó con la cuenta correcta y se escribieron los dos eventos de auditoría. Dentro de la transacción, las dos tablas mostraron RLS habilitado y forzado, con cinco políticas para `memberships` y cuatro para `membership_audit_logs`.
+
+La transacción se revirtió. Una consulta posterior confirma que en producción la migración 200 sigue sin registrarse, ambas tablas conservan RLS deshabilitado y no hay políticas persistidas. Esta prueba valida la migración contra el esquema productivo actual; no cuenta como despliegue ni como verificación de flujos completos.
+
 ## Pendientes para el cierre
 
 1. Ejecutar la invitación de prueba para una cuenta QA autorizada; comprobar el correo entregado y la aceptación con el correo correcto.

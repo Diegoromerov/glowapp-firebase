@@ -1,206 +1,143 @@
-// backend/src/tests/membership-management.test.js
 const request = require('supertest');
 const express = require('express');
-const { Membership, User, BusinessProfile } = require('../models');
+
+// This suite targets the current HTTP/controller contract. The authentication
+// and membership-context middleware are isolated here; their behavior is
+// covered by auth, membership-flow, and SaaS-context suites.
+jest.mock('../middleware/auth', () => ({
+  authMiddleware(req, _res, next) {
+    req.user = { id: Number(req.get('x-test-user-id') || 1), email: 'owner@glow.test' };
+    next();
+  },
+}));
+
+jest.mock('../middleware/membership.middleware', () => (req, _res, next) => {
+  req.membership = {
+    business_profile_id: req.get('x-test-business-profile-id') || 'bp-100',
+    role: req.get('x-test-role') || 'OWNER',
+  };
+  next();
+});
+
+jest.mock('../services/saasMembershipService', () => ({
+  list: jest.fn(),
+  invite: jest.fn(),
+  changeRole: jest.fn(),
+  setStatus: jest.fn(),
+}));
+
+const { pool } = require('../config/db');
+const membershipService = require('../services/saasMembershipService');
 const membershipRoutes = require('../routes/membershipRoutes');
 
-// Crear una app express ligera para probar el router de membresías
 const app = express();
 app.use(express.json());
 app.use('/api/v1/memberships', membershipRoutes);
 
-const { pool } = require('../config/db');
+function as(method, path, role = 'OWNER', userId = 1) {
+  return request(app)[method](path)
+    .set('x-test-role', role)
+    .set('x-test-user-id', String(userId));
+}
 
-describe('Suite de Integración: SaaS Team & Membership Management Module (Fase 2B.5 / Goal 03)', () => {
+function serviceError(message, status) {
+  const error = new Error(message);
+  error.status = status;
+  return error;
+}
+
+describe('SaaS membership HTTP contract and route permissions', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    jest.spyOn(pool, 'query').mockResolvedValue({ rows: [{ id: 1, rol: 'PRESTADOR', tenant_id: 1 }] });
+    jest.spyOn(pool, 'query').mockResolvedValue({ rows: [{ id: 'bp-100', name: 'Salón QA', saas_plan: 'BASIC' }] });
   });
 
-  describe('1. Controller Logic & Security Guards (membershipController.js)', () => {
-    test('GET /api/v1/memberships — Retorna los miembros del negocio activo', async () => {
-      // Mock de autenticación y membresía activa (OWNER)
-      const mockMemberships = [
-        {
-          id: 'mem-1',
-          user_id: 1,
-          role: 'OWNER',
-          status: 'ACTIVE',
-          created_at: new Date(),
-          user: { id: 1, nombre: 'Propietario Demo', email: 'owner@glow.com', phone: '3001234567' }
-        },
-        {
-          id: 'mem-2',
-          user_id: 2,
-          role: 'MEMBER',
-          status: 'ACTIVE',
-          created_at: new Date(),
-          user: { id: 2, nombre: 'Empleado Demo', email: 'staff@glow.com', phone: '3007654321' }
-        }
-      ];
+  afterEach(() => jest.restoreAllMocks());
 
-      jest.spyOn(Membership, 'findAll').mockResolvedValue(mockMemberships);
+  test('OWNER lists members using the canonical SaaS membership service', async () => {
+    membershipService.list.mockResolvedValue([{
+      id: 'mem-owner', user_id: 1, role: 'OWNER', status: 'ACTIVE',
+      full_name: 'Dueño QA', email: 'owner@glow.test', created_at: '2026-11-25T00:00:00Z',
+    }]);
 
-      // Simular middleware req.user
-      const jwt = require('jsonwebtoken');
-      const { getJwtSecret } = require('../config/jwt');
-      const token = jwt.sign({ id: 1, email: 'owner@glow.com' }, getJwtSecret());
+    const res = await as('get', '/api/v1/memberships');
 
-      // Mockear resolución de membresía activa para middleware
-      jest.spyOn(Membership, 'findAll')
-        .mockImplementation(async (options) => {
-          if (options && options.where && options.where.business_profile_id) {
-            return mockMemberships; // Para el controller (filtrado por business_profile_id)
-          }
-          return [{
-            id: 'mem-1',
-            user_id: 1,
-            business_profile_id: 'bp-100',
-            role: 'OWNER',
-            status: 'ACTIVE',
-            businessProfile: { id: 'bp-100', name: 'Salón Principal' }
-          }]; // Para el membershipMiddleware
-        });
+    expect(res.status).toBe(200);
+    expect(res.body.data).toEqual([expect.objectContaining({
+      id: 'mem-owner', role: 'OWNER', status: 'ACTIVE',
+      user: expect.objectContaining({ id: 1, nombre: 'Dueño QA', email: 'owner@glow.test' }),
+    })]);
+    expect(membershipService.list).toHaveBeenCalledWith('bp-100', 1);
+  });
 
-      const res = await request(app)
-        .get('/api/v1/memberships')
-        .set('Authorization', `Bearer ${token}`);
-
-      expect(res.status).toBe(200);
-      expect(res.body.success).toBe(true);
-      expect(res.body.data).toHaveLength(2);
-      expect(res.body.data[0].user.email).toBe('owner@glow.com');
+  test('OWNER invitation returns the canonical service result without exposing a token', async () => {
+    membershipService.invite.mockResolvedValue({
+      membershipId: 'mem-pending', email: 'staff@glow.test', role: 'MEMBER',
+      expiresAt: '2026-12-02T00:00:00Z', emailSent: true,
     });
 
-    test('POST /api/v1/memberships/invite — Rechaza invitación si el usuario no existe (404)', async () => {
-      jest.spyOn(User, 'findOne').mockResolvedValue(null);
+    const res = await as('post', '/api/v1/memberships/invite')
+      .send({ email: 'staff@glow.test', role: 'MEMBER' });
 
-      const jwt = require('jsonwebtoken');
-      const { getJwtSecret } = require('../config/jwt');
-      const token = jwt.sign({ id: 1, email: 'owner@glow.com' }, getJwtSecret());
+    expect(res.status).toBe(201);
+    expect(res.body.data).toMatchObject({ membershipId: 'mem-pending', emailSent: true });
+    expect(res.body.data).not.toHaveProperty('token');
+    expect(membershipService.invite).toHaveBeenCalledWith(expect.objectContaining({
+      tenantId: 'bp-100', tenantName: 'Salón QA', plan: 'BASIC', actorId: 1,
+      email: 'staff@glow.test', role: 'MEMBER',
+    }));
+  });
 
-      jest.spyOn(Membership, 'findAll').mockResolvedValue([{
-        id: 'mem-1',
-        user_id: 1,
-        business_profile_id: 'bp-100',
-        role: 'OWNER',
-        status: 'ACTIVE'
-      }]);
+  test('invitation errors preserve service status for an unregistered account', async () => {
+    membershipService.invite.mockRejectedValue(serviceError('La persona debe crear su cuenta GlowApp antes de recibir una invitación.', 404));
 
-      const res = await request(app)
-        .post('/api/v1/memberships/invite')
-        .set('Authorization', `Bearer ${token}`)
-        .send({ email: 'inexistente@glow.com', role: 'MEMBER' });
+    const res = await as('post', '/api/v1/memberships/invite')
+      .send({ email: 'new@glow.test', role: 'MEMBER' });
 
-      expect(res.status).toBe(404);
-      expect(res.body.error).toBe('USER_NOT_FOUND');
-    });
+    expect(res.status).toBe(404);
+    expect(res.body.error).toMatch(/crear su cuenta GlowApp/);
+  });
 
-    test('POST /api/v1/memberships/invite — Rechaza invitación si el usuario ya es miembro del negocio (400)', async () => {
-      jest.spyOn(User, 'findOne').mockResolvedValue({ id: 2, email: 'existente@glow.com' });
-      jest.spyOn(Membership, 'findOne').mockResolvedValue({ id: 'mem-2', user_id: 2, business_profile_id: 'bp-100' });
+  test('active duplicate invitation errors preserve conflict status', async () => {
+    membershipService.invite.mockRejectedValue(serviceError('El usuario ya es miembro activo', 409));
 
-      const jwt = require('jsonwebtoken');
-      const { getJwtSecret } = require('../config/jwt');
-      const token = jwt.sign({ id: 1, email: 'owner@glow.com' }, getJwtSecret());
+    const res = await as('post', '/api/v1/memberships/invite')
+      .send({ email: 'staff@glow.test', role: 'MEMBER' });
 
-      jest.spyOn(Membership, 'findAll').mockResolvedValue([{
-        id: 'mem-1',
-        user_id: 1,
-        business_profile_id: 'bp-100',
-        role: 'OWNER',
-        status: 'ACTIVE'
-      }]);
+    expect(res.status).toBe(409);
+    expect(res.body.error).toBe('El usuario ya es miembro activo');
+  });
 
-      const res = await request(app)
-        .post('/api/v1/memberships/invite')
-        .set('Authorization', `Bearer ${token}`)
-        .send({ email: 'existente@glow.com', role: 'MEMBER' });
+  test('MEMBER cannot invite or change roles even when the controller is reachable', async () => {
+    const invite = await as('post', '/api/v1/memberships/invite', 'MEMBER', 5)
+      .send({ email: 'new@glow.test', role: 'MEMBER' });
+    const role = await as('patch', '/api/v1/memberships/mem-2/role', 'MEMBER', 5)
+      .send({ role: 'MANAGER' });
 
-      expect(res.status).toBe(400);
-      expect(res.body.error).toBe('MEMBERSHIP_EXISTS');
-    });
+    expect(invite.status).toBe(403);
+    expect(role.status).toBe(403);
+    expect(invite.body.error).toBe('FORBIDDEN');
+    expect(role.body.error).toBe('FORBIDDEN');
+    expect(membershipService.invite).not.toHaveBeenCalled();
+    expect(membershipService.changeRole).not.toHaveBeenCalled();
+  });
 
-    test('PATCH /api/v1/memberships/:id/role — Impide degradar o modificar el rol del OWNER (400)', async () => {
-      jest.spyOn(Membership, 'findOne').mockResolvedValue({
-        id: 'mem-owner',
-        user_id: 1,
-        business_profile_id: 'bp-100',
-        role: 'OWNER',
-        status: 'ACTIVE'
-      });
+  test('OWNER cannot change or remove the OWNER membership', async () => {
+    membershipService.changeRole.mockRejectedValue(serviceError('No se puede cambiar el rol del propietario', 400));
+    membershipService.setStatus.mockRejectedValue(serviceError('No se puede suspender ni retirar al propietario', 400));
 
-      const jwt = require('jsonwebtoken');
-      const { getJwtSecret } = require('../config/jwt');
-      const token = jwt.sign({ id: 1, email: 'owner@glow.com' }, getJwtSecret());
+    const role = await as('patch', '/api/v1/memberships/mem-owner/role').send({ role: 'MEMBER' });
+    const remove = await as('delete', '/api/v1/memberships/mem-owner');
 
-      jest.spyOn(Membership, 'findAll').mockResolvedValue([{
-        id: 'mem-owner',
-        user_id: 1,
-        business_profile_id: 'bp-100',
-        role: 'OWNER',
-        status: 'ACTIVE'
-      }]);
-
-      const res = await request(app)
-        .patch('/api/v1/memberships/mem-owner/role')
-        .set('Authorization', `Bearer ${token}`)
-        .send({ role: 'MEMBER' });
-
-      expect(res.status).toBe(400);
-      expect(res.body.error).toBe('CANNOT_MODIFY_OWNER');
-    });
-
-    test('DELETE /api/v1/memberships/:id — Impide eliminar al OWNER del negocio (400)', async () => {
-      jest.spyOn(Membership, 'findOne').mockResolvedValue({
-        id: 'mem-owner',
-        user_id: 1,
-        business_profile_id: 'bp-100',
-        role: 'OWNER',
-        status: 'ACTIVE'
-      });
-
-      const jwt = require('jsonwebtoken');
-      const { getJwtSecret } = require('../config/jwt');
-      const token = jwt.sign({ id: 1, email: 'owner@glow.com' }, getJwtSecret());
-
-      jest.spyOn(Membership, 'findAll').mockResolvedValue([{
-        id: 'mem-owner',
-        user_id: 1,
-        business_profile_id: 'bp-100',
-        role: 'OWNER',
-        status: 'ACTIVE'
-      }]);
-
-      const res = await request(app)
-        .delete('/api/v1/memberships/mem-owner')
-        .set('Authorization', `Bearer ${token}`);
-
-      expect(res.status).toBe(400);
-      expect(res.body.error).toBe('CANNOT_REMOVE_OWNER');
-    });
-
-    test('2. RBAC Enforcement — Bloquea a rol MEMBER intentar invitar usuarios (403 Forbidden)', async () => {
-      const jwt = require('jsonwebtoken');
-      const { getJwtSecret } = require('../config/jwt');
-      const memberToken = jwt.sign({ id: 5, email: 'member@glow.com' }, getJwtSecret());
-
-      // Contexto activo con rol MEMBER
-      jest.spyOn(Membership, 'findAll').mockResolvedValue([{
-        id: 'mem-5',
-        user_id: 5,
-        business_profile_id: 'bp-100',
-        role: 'MEMBER',
-        status: 'ACTIVE'
-      }]);
-
-      const res = await request(app)
-        .post('/api/v1/memberships/invite')
-        .set('Authorization', `Bearer ${memberToken}`)
-        .send({ email: 'nuevo@glow.com', role: 'MEMBER' });
-
-      expect(res.status).toBe(403);
-      expect(res.body.error).toBe('FORBIDDEN');
-    });
+    expect(role.status).toBe(400);
+    expect(role.body.error).toMatch(/rol del propietario/);
+    expect(remove.status).toBe(400);
+    expect(remove.body.error).toMatch(/retirar al propietario/);
+    expect(membershipService.changeRole).toHaveBeenCalledWith(expect.objectContaining({
+      tenantId: 'bp-100', memberId: 'mem-owner', actorId: 1, role: 'MEMBER',
+    }));
+    expect(membershipService.setStatus).toHaveBeenCalledWith(expect.objectContaining({
+      tenantId: 'bp-100', memberId: 'mem-owner', actorId: 1, status: 'REMOVED',
+    }));
   });
 });

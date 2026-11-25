@@ -64,7 +64,7 @@ exports.getMySalon = async (req, res) => {
     // E-02b (D-GL-027): el equipo se lee de `memberships`, no de la tabla
     // heredada. Si el salón aún no tiene identidad provisionada (migración 113),
     // la lista sale vacía en vez de reventar el endpoint.
-    const membersRes = { rows: await listSalonMembers(pool, salon.id) };
+    const membersRes = { rows: await listSalonMembers(pool, salon.id, userId) };
 
     res.json({
       success: true,
@@ -108,15 +108,18 @@ exports.createSalon = async (req, res) => {
       )
       VALUES (
         $1, $2, $3, $4, $5, $6, 'FREE_TRIAL',
-        $7, $8, 
-        CASE WHEN $7::numeric IS NOT NULL AND $8::numeric IS NOT NULL 
-             THEN ST_SetSRID(ST_MakePoint($8, $7), 4326)::geography 
+        $7, $8,
+        CASE WHEN $7::numeric IS NOT NULL AND $8::numeric IS NOT NULL
+             THEN ST_SetSRID(ST_MakePoint($8, $7), 4326)::geography
              ELSE NULL END,
         $9, $10
       )
       RETURNING id, nombre_salon, nit, direccion, ciudad, telefono, plan_saas, latitude, longitude, location_enabled, location_public`;
 
     const provision = async (client) => {
+      // The owner-seed trigger still validates the authenticated actor while
+      // this narrowly scoped bootstrap temporarily uses app_system.
+      await client.query("SELECT set_config('app.user_id', $1, true)", [String(ownerId)]);
       // Serializa el alta por dueño. Si el cliente perdió la respuesta del
       // primer POST, la repetición ve la sede y no crea una segunda.
       await client.query('SELECT pg_advisory_xact_lock(73001, $1::integer)', [ownerId]);
@@ -256,10 +259,14 @@ exports.inviteMember = async (req, res) => {
       return res.status(403).json({ error: 'No tienes permisos de administración en este salón para invitar personal.' });
     }
 
-    const { rows: salonRows } = await pool.query(
-      `SELECT s.business_profile_id, bp.name, bp.saas_plan
-         FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id WHERE s.id = $1`, [salon_id]
-    );
+    const { withMembershipContext } = require('../services/salonMembership');
+    const salonRows = await withMembershipContext(pool, salon_id, inviterId, async (client) => {
+      const { rows } = await client.query(
+        `SELECT s.business_profile_id, bp.name, bp.saas_plan
+           FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id WHERE s.id = $1`, [salon_id]
+      );
+      return rows;
+    });
     if (!salonRows[0]) return res.status(409).json({ error: 'El salón no está vinculado a un perfil SaaS.' });
     if (!hasEntitlement(salonRows[0].saas_plan || 'FREE_TRIAL', SAAS_CAPABILITIES.TEAM_MANAGEMENT)) {
       return res.status(403).json({ error: 'El plan actual no incluye gestión de equipo.', currentPlan: salonRows[0].saas_plan || 'FREE_TRIAL' });
@@ -295,9 +302,13 @@ exports.acceptInvitation = async (req, res) => {
 
     try {
       const accepted = await saasMembershipService.accept({ token: cleanToken, user: req.user });
-      const { rows: salonRows } = await pool.query(
-        'SELECT id FROM salones WHERE business_profile_id = $1 ORDER BY id LIMIT 1', [accepted.business_profile_id]
-      );
+      const { withBusinessProfileContext } = require('../services/salonMembership');
+      const salonRows = await withBusinessProfileContext(pool, accepted.business_profile_id, userId, async (client) => {
+        const { rows } = await client.query(
+          'SELECT id FROM salones WHERE business_profile_id = $1 ORDER BY id LIMIT 1', [accepted.business_profile_id]
+        );
+        return rows;
+      });
       return res.json({ success: true, message: 'Invitación aceptada correctamente.',
         salon_id: salonRows[0]?.id ?? null, sub_rol: accepted.sub_rol || accepted.role });
     } catch (membershipError) {
@@ -306,6 +317,7 @@ exports.acceptInvitation = async (req, res) => {
     }
 
     const accepted = await saasMembershipService.acceptLegacySalonInvitation({ token: cleanToken, user: req.user });
+
     console.log(`🤝 Usuario ID ${userId} aceptó invitación como ${accepted.sub_rol} en Salón ID ${accepted.salon_id}`);
 
     res.json({
@@ -337,7 +349,7 @@ exports.getSalonMembers = async (req, res) => {
 
     res.json({
       success: true,
-      members: await listSalonMembers(pool, salonId)
+      members: await listSalonMembers(pool, salonId, userId)
     });
   } catch (error) {
     console.error('❌ ERROR GET SALON MEMBERS:', error.message);

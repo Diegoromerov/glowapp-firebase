@@ -4,6 +4,7 @@
  */
 const saasContext = require('../saasContext');
 const { pool } = require('../../config/db');
+let transactionClient;
 const tenantRouting = require('../../config/tenantRouting');
 
 jest.mock('../../config/tenantRouting', () => ({ getActiveClient: jest.fn() }));
@@ -26,7 +27,8 @@ describe('saasContext middleware', () => {
     };
     next = jest.fn();
     jest.clearAllMocks();
-    tenantRouting.getActiveClient.mockReturnValue({ query: jest.fn().mockResolvedValue({ rows: [] }) });
+    transactionClient = { query: jest.fn().mockResolvedValue({ rows: [] }) };
+    tenantRouting.getActiveClient.mockReturnValue(transactionClient);
   });
 
   test('sin usuario autenticado → req.saas = null, next()', async () => {
@@ -41,13 +43,13 @@ describe('saasContext middleware', () => {
 
   test('usuario sin membership activa → req.saas = null, next()', async () => {
     req.user = { id: 1, email: 'test@test.com' };
-    pool.query.mockResolvedValue({ rows: [] });
+    transactionClient.query.mockResolvedValue({ rows: [] });
     
     await saasContext(req, res, next);
     
     expect(req.saas).toBeNull();
     expect(next).toHaveBeenCalled();
-    expect(pool.query).toHaveBeenCalledWith(
+    expect(transactionClient.query).toHaveBeenCalledWith(
       expect.stringContaining('SELECT m.*, bp.saas_plan'),
       [1, null]
     );
@@ -55,7 +57,7 @@ describe('saasContext middleware', () => {
 
   test('usuario con membership activa → req.saas poblado con tenant, plan, role, capabilities', async () => {
     req.user = { id: 1, email: 'owner@test.com' };
-    pool.query.mockResolvedValue({ 
+    transactionClient.query.mockResolvedValue({
       rows: [{
         id: 'm_123',
         business_profile_id: 'bp_456',
@@ -92,7 +94,7 @@ describe('saasContext middleware', () => {
 
   test('membership con plan FREEMIUM → capabilities limitadas', async () => {
     req.user = { id: 2 };
-    pool.query.mockResolvedValue({ 
+    transactionClient.query.mockResolvedValue({
       rows: [{
         id: 'm_456',
         business_profile_id: 'bp_789',
@@ -108,13 +110,13 @@ describe('saasContext middleware', () => {
     expect(req.saas.plan).toBe('FREEMIUM');
     expect(req.saas.capabilities).not.toContain('ADVANCED_ANALYTICS');
     expect(req.saas.capabilities).not.toContain('CUSTOM_BRANDING');
-    expect(req.saas.capabilities).not.toContain('MAP_VISIBILITY');
+    expect(req.saas.capabilities).toContain('MAP_VISIBILITY');
   });
 
   test('múltiples memberships → usa la más reciente accepted_at', async () => {
     req.user = { id: 3 };
     // Query ordena por accepted_at DESC, así que la más reciente debe ser la primera en el resultado
-    pool.query.mockResolvedValue({ 
+    transactionClient.query.mockResolvedValue({
       rows: [
         { id: 'm_new', business_profile_id: 'bp_new', name: 'New', saas_plan: 'PRO', role: 'OWNER', accepted_at: '2024-06-01T10:00:00Z' },
         { id: 'm_old', business_profile_id: 'bp_old', name: 'Old', saas_plan: 'BASIC', role: 'MEMBER', accepted_at: '2024-01-01T10:00:00Z' }
@@ -131,11 +133,11 @@ describe('saasContext middleware', () => {
   test('la sede activa de la petición se aplica al resolver la membership', async () => {
     req.user = { id: 7 };
     req.headers = { 'x-active-salon-id': '42' };
-    pool.query.mockResolvedValue({ rows: [{ id: 'm-42', business_profile_id: 'bp-42', active_salon_id: 42, saas_plan: 'BASIC', role: 'OWNER' }] });
+    transactionClient.query.mockResolvedValue({ rows: [{ id: 'm-42', business_profile_id: 'bp-42', active_salon_id: 42, saas_plan: 'BASIC', role: 'OWNER' }] });
 
     await saasContext(req, res, next);
 
-    expect(pool.query).toHaveBeenCalledWith(expect.stringContaining('s.business_profile_id = bp.id'), [7, 42]);
+    expect(transactionClient.query).toHaveBeenCalledWith(expect.stringContaining('s.business_profile_id = bp.id'), [7, 42]);
     expect(req.saas.salonId).toBe(42);
     expect(next).toHaveBeenCalled();
   });

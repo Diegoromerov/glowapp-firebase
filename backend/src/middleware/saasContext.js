@@ -35,7 +35,12 @@ module.exports = async function saasContext(req, res, next) {
     }
 
     // En ausencia de selección se conserva el contexto histórico más reciente.
-    const { rows } = await pool.query(`
+    const transactionClient = getActiveClient();
+    const queryClient = transactionClient || pool;
+    if (transactionClient) {
+      await transactionClient.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
+    }
+    const { rows } = await queryClient.query(`
       SELECT m.*, bp.saas_plan, bp.id as business_profile_id, bp.name as business_name,
              s.id AS active_salon_id
       FROM memberships m
@@ -73,7 +78,6 @@ module.exports = async function saasContext(req, res, next) {
     // Si el scope se necesita en PostgreSQL, establecerlo en el cliente
     // transaccional de tenant evita que un set_config local en pool.query()
     // desaparezca inmediatamente al cerrar esa consulta.
-    const transactionClient = getActiveClient();
     if (transactionClient) {
       await transactionClient.query("SELECT set_config('app.business_profile_id', $1, true)", [m.business_profile_id]);
     }

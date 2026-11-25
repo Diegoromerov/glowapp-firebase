@@ -173,6 +173,7 @@ router.post('/', async (req, res) => {
     const tenantId = `tenant-${salon.id}`.slice(0, 64);
 
     await client.query('BEGIN');
+    await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
 
     const { rows: inserted } = await client.query(
       `INSERT INTO business_profiles
@@ -189,6 +190,10 @@ router.post('/', async (req, res) => {
     if (!inserted.length) {
       throw new Error(`No existe el perfil SaaS asociado a la sede ${salon.id}`);
     }
+
+    // The membership seed policy is intentionally limited to the profile's
+    // provider. Set the target scope on this dedicated connection explicitly.
+    await client.query("SELECT set_config('app.business_profile_id', $1, true)", [profileId]);
 
     await client.query(
       `INSERT INTO memberships

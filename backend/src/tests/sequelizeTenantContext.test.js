@@ -60,15 +60,23 @@ describe('cableado del contexto de inquilino en el pool de Sequelize', () => {
   });
 
   test('con contexto de inquilino la conexión recibe set_config para ESE tenant', async () => {
-    await tenantRouting.runWithClient(null, () => instancia.connectionManager.getConnection({ type: 'write' }), { tenantId: 7 });
+    await tenantRouting.runWithClient(null, () => instancia.connectionManager.getConnection({ type: 'write' }), { tenantId: 7, userId: 42 });
 
-    expect(llamadas).toHaveLength(1);
+    expect(llamadas).toHaveLength(2);
     expect(llamadas[0]).toContain('set_config');
     expect(llamadas[0]).toContain('app.tenant_id');
     expect(llamadas[0]).toContain('"7"');
     // is_local debe ser FALSE aquí: la adquisición ocurre ANTES del BEGIN de
     // Sequelize, así que un `true` se evaporaría antes de la primera consulta.
     expect(llamadas[0]).toContain('false');
+    expect(llamadas[1]).toContain('app.user_id');
+    expect(llamadas[1]).toContain('"42"');
+  });
+
+  test('con contexto de usuario sin tenant Sequelize fija app.user_id', async () => {
+    await tenantRouting.runWithClient(null, () => instancia.connectionManager.getConnection({ type: 'read' }), { userId: 9 });
+
+    expect(llamadas).toEqual([`SELECT set_config('app.user_id', $1, false) :: ["9"]`]);
   });
 
   test('con contexto de sistema la conexión escala a app_system (BYPASSRLS)', async () => {
@@ -85,16 +93,20 @@ describe('cableado del contexto de inquilino en el pool de Sequelize', () => {
     expect(llamadas).toEqual([]);
   });
 
-  test('al LIBERAR se limpia el inquilino: RESET ROLE + RESET app.tenant_id antes de devolverla', async () => {
+  test('al LIBERAR se limpian los GUC antes de devolver la conexión', async () => {
     await tenantRouting.runWithClient(null, async () => {
       const conexion = await instancia.connectionManager.getConnection({ type: 'write' });
       await instancia.connectionManager.releaseConnection(conexion);
-    }, { tenantId: 42 });
+    }, { tenantId: 42, userId: 11 });
 
     expect(llamadas).toEqual([
       `SELECT set_config('app.tenant_id', $1, false) :: ["42"]`,
+      `SELECT set_config('app.user_id', $1, false) :: ["11"]`,
       'RESET ROLE',
       'RESET app.tenant_id',
+      'RESET app.user_id',
+      'RESET app.business_profile_id',
+      'RESET app.membership_accepting_id',
       'RELEASE',
     ]);
   });

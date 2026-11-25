@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const { pool } = require('../config/db');
+const tenantRouting = require('../config/tenantRouting');
 const emailService = require('./emailService');
 const usageMeteringService = require('./usageMeteringService');
 const { roleForSubRol } = require('./salonMembership');
@@ -9,6 +10,17 @@ const TOKEN_TTL_DAYS = 7;
 
 function hashToken(token) {
   return crypto.createHash('sha256').update(token).digest('hex');
+}
+
+async function setMembershipContext(client, tenantId, actorId) {
+  await client.query("SELECT set_config('app.user_id', $1, true)", [String(actorId)]);
+  if (tenantId !== null && tenantId !== undefined && tenantId !== '') {
+    await client.query("SELECT set_config('app.business_profile_id', $1, true)", [String(tenantId)]);
+  }
+}
+
+async function lockTenant(client, tenantId) {
+  await client.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [String(tenantId)]);
 }
 
 function audit(client, { tenantId, membershipId, actorId, event, previousRole, newRole, previousStatus, newStatus, metadata = {} }) {
@@ -21,7 +33,7 @@ function audit(client, { tenantId, membershipId, actorId, event, previousRole, n
   );
 }
 
-async function expireInvitations(client, tenantId) {
+async function expireInvitations(client, tenantId, actorId) {
   await client.query(
     `WITH candidates AS MATERIALIZED (
        SELECT id, role, status FROM memberships
@@ -35,8 +47,8 @@ async function expireInvitations(client, tenantId) {
        RETURNING m.id, m.role, c.status AS previous_status
      )
      INSERT INTO membership_audit_logs
-       (business_profile_id, membership_id, event_type, previous_role, new_role, previous_status, new_status, metadata)
-     SELECT $1, id, 'INVITATION_EXPIRED', role, role, previous_status, 'EXPIRED', '{}'::jsonb FROM expired`, [tenantId]
+       (business_profile_id, membership_id, actor_user_id, event_type, previous_role, new_role, previous_status, new_status, metadata)
+     SELECT $1, id, $2, 'INVITATION_EXPIRED', role, role, previous_status, 'EXPIRED', '{}'::jsonb FROM expired`, [tenantId, actorId]
   );
 }
 
@@ -59,17 +71,23 @@ async function sendInvitation({ email, token, tenantName, role }) {
   });
 }
 
-async function list(tenantId) {
+async function list(tenantId, actorId) {
   const client = await pool.connect();
   let rows;
   try {
     await client.query('BEGIN');
-    await expireInvitations(client, tenantId);
+    await setMembershipContext(client, tenantId, actorId);
     const result = await client.query(
-    `SELECT m.id, m.user_id, m.role, m.status, m.invited_at, m.accepted_at, m.invite_expires_at,
+    `SELECT m.id, m.user_id, m.role,
+            CASE WHEN m.status IN ('PENDING','INVITED') AND m.invite_expires_at <= NOW() THEN 'EXPIRED' ELSE m.status END AS status,
+            m.invited_at, m.accepted_at, m.invite_expires_at,
             COALESCE(u.email, m.invite_email) AS email, u.nombre AS full_name, u.foto_url AS avatar_url
        FROM memberships m
-       LEFT JOIN usuarios u ON u.id = m.user_id
+       LEFT JOIN LATERAL (
+         SELECT info.email, info.nombre, info.foto_url
+           FROM app_saas_team_user_info($1) info
+          WHERE info.user_id = m.user_id
+       ) u ON TRUE
       WHERE m.business_profile_id = $1
       ORDER BY CASE m.role WHEN 'OWNER' THEN 1 WHEN 'ADMIN' THEN 2 WHEN 'MANAGER' THEN 3 WHEN 'MEMBER' THEN 4 WHEN 'VIEWER' THEN 5 ELSE 6 END,
                m.accepted_at DESC NULLS LAST, m.invited_at DESC`, [tenantId]
@@ -96,9 +114,10 @@ async function invite({ tenantId, tenantName, plan, actorId, email, role, subRol
   let event = 'INVITED';
   try {
     await client.query('BEGIN');
-    await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [tenantId]);
-    await expireInvitations(client, tenantId);
-    const { rows: userRows } = await client.query('SELECT id, email FROM usuarios WHERE lower(email) = $1 LIMIT 1', [normalizedEmail]);
+    await setMembershipContext(client, tenantId, actorId);
+    await lockTenant(client, tenantId);
+    await expireInvitations(client, tenantId, actorId);
+    const { rows: userRows } = await client.query('SELECT user_id AS id, email FROM app_saas_find_user_by_email($1)', [normalizedEmail]);
     const userId = userRows[0]?.id || null;
     if (!userId) {
       const error = new Error('La persona debe crear su cuenta GlowApp antes de recibir una invitación.');
@@ -173,17 +192,19 @@ async function accept({ token, user }) {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    await setMembershipContext(client, null, user.id);
     const { rows: lookupRows } = await client.query(
       `SELECT business_profile_id FROM memberships
-        WHERE (invite_token_hash = $1 OR invite_token = $2) AND status IN ('PENDING','INVITED') LIMIT 1`,
-      [hashToken(token), token]
+        WHERE (invite_token_hash = $1 OR invite_token = $2) AND status IN ('PENDING','INVITED')
+          AND user_id = $3 LIMIT 1`,
+      [hashToken(token), token, user.id]
     );
     const tenantId = lookupRows[0]?.business_profile_id;
     if (!tenantId) { const error = new Error('La invitación no existe o ya fue aceptada'); error.status = 404; throw error; }
-    await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [tenantId]);
+    await setMembershipContext(client, tenantId, user.id);
+    await lockTenant(client, tenantId);
     const { rows } = await client.query(
-      `SELECT m.*, bp.name AS business_name FROM memberships m
-         JOIN business_profiles bp ON bp.id = m.business_profile_id
+      `SELECT m.* FROM memberships m
         WHERE m.business_profile_id = $3 AND (m.invite_token_hash = $1 OR m.invite_token = $2) AND m.status IN ('PENDING','INVITED')
         FOR UPDATE OF m`, [hashToken(token), token, tenantId]
     );
@@ -206,6 +227,7 @@ async function accept({ token, user }) {
     if (duplicate.length) {
       const error = new Error('Ya tienes una membresía activa para este negocio'); error.status = 409; throw error;
     }
+    await client.query("SELECT set_config('app.membership_accepting_id', $1, true)", [String(membership.id)]);
     const updated = await client.query(
       `UPDATE memberships SET user_id = $1, invite_email = lower($2), status = 'ACTIVE', accepted_at = NOW(),
            invite_token = NULL, invite_token_hash = NULL, invite_expires_at = NULL, updated_at = NOW()
@@ -213,7 +235,7 @@ async function accept({ token, user }) {
     );
     await audit(client, { tenantId: membership.business_profile_id, membershipId: membership.id, actorId: user.id,
       event: 'INVITATION_ACCEPTED', previousRole: membership.role, newRole: membership.role,
-      previousStatus: membership.status, newStatus: 'ACTIVE', metadata: { businessName: membership.business_name } });
+      previousStatus: membership.status, newStatus: 'ACTIVE' });
     await client.query('COMMIT');
     return updated.rows[0];
   } catch (error) {
@@ -223,25 +245,20 @@ async function accept({ token, user }) {
   } finally { client.release(); }
 }
 
-/**
- * Accepts invitations created by the retired salon_invitaciones flow.
- * Compatibility must preserve the same tenant lock, seat limit and audit
- * guarantees as a canonical membership invitation; otherwise an old link can
- * bypass the current plan or reactivate a removed membership.
- */
 async function acceptLegacySalonInvitation({ token, user }) {
-  if (!/^[0-9a-f]{32}$/i.test(String(token || ''))) {
+  const cleanToken = String(token || '').trim().toLowerCase();
+  if (!/^[0-9a-f]{32}$/i.test(cleanToken)) {
     const error = new Error('Token de invitación inválido'); error.status = 400; throw error;
   }
-  const currentEmail = String(user?.email || '').trim().toLowerCase();
-  if (!Number.isSafeInteger(Number(user?.id)) || Number(user.id) <= 0 || !currentEmail) {
-    const error = new Error('La sesión no tiene un usuario y correo válidos'); error.status = 401; throw error;
+  if (!Number.isSafeInteger(Number(user?.id)) || Number(user.id) <= 0) {
+    const error = new Error('La sesión no tiene un usuario válido'); error.status = 401; throw error;
   }
+  const tokenHash = hashToken(cleanToken);
+  const currentEmail = String(user?.email || '').trim().toLowerCase();
+  if (!currentEmail) { const error = new Error('La sesión no tiene un correo válido'); error.status = 401; throw error; }
 
-  const client = await pool.connect();
-  try {
-    await client.query('BEGIN');
-    const tokenHash = hashToken(token);
+  return tenantRouting.runAsSystem({ pool }, async (client) => {
+    await client.query("SELECT set_config('app.user_id', $1, true)", [String(user.id)]);
     const { rows: inviteRows } = await client.query(
       `SELECT si.id, si.salon_id, si.email, si.sub_rol, si.creado_por, si.creado_at,
               s.business_profile_id, bp.saas_plan, bp.name AS business_name
@@ -251,22 +268,23 @@ async function acceptLegacySalonInvitation({ token, user }) {
         WHERE si.token_invitacion = $1 AND si.usado = false AND si.expires_at > NOW()
         LIMIT 1`, [tokenHash]
     );
-    const initialInvite = inviteRows[0];
-    if (!initialInvite) {
+    const invitationInicial = inviteRows[0];
+    if (!invitationInicial) {
       const error = new Error('La invitación es inválida, ya fue usada o ha expirado.'); error.status = 400; throw error;
     }
-
-    const invitedEmail = String(initialInvite.email || '').trim().toLowerCase();
+    const invitedEmail = String(invitationInicial.email || '').trim().toLowerCase();
     if (invitedEmail && invitedEmail !== currentEmail) {
-      const error = new Error(`Esta invitación es para ${initialInvite.email}. Entra con esa cuenta para aceptarla.`);
+      const error = new Error('Esta invitación pertenece a otra cuenta. Inicia sesión con el correo invitado.');
       error.status = 403; error.code = 'INVITATION_EMAIL_MISMATCH'; throw error;
     }
-    if (!initialInvite.business_profile_id) {
+    if (!invitationInicial.business_profile_id) {
       const error = new Error('El salón no está vinculado a un perfil SaaS.'); error.status = 409; throw error;
     }
 
-    // Serialize legacy acceptance with canonical invitations and reactivations.
-    await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [initialInvite.business_profile_id]);
+    // Canonical invitations, seat changes and legacy invitation acceptance
+    // serialize on the same advisory lock for this SaaS profile.
+    await lockTenant(client, invitationInicial.business_profile_id);
+    await setMembershipContext(client, invitationInicial.business_profile_id, user.id);
     const { rows: lockedInvites } = await client.query(
       `SELECT si.id, si.salon_id, si.email, si.sub_rol, si.creado_por, si.creado_at,
               s.business_profile_id, bp.saas_plan, bp.name AS business_name
@@ -274,11 +292,13 @@ async function acceptLegacySalonInvitation({ token, user }) {
          JOIN salones s ON s.id = si.salon_id
          JOIN business_profiles bp ON bp.id = s.business_profile_id
         WHERE si.id = $1 AND si.token_invitacion = $2 AND si.usado = false AND si.expires_at > NOW()
-        FOR UPDATE OF si`, [initialInvite.id, tokenHash]
+        FOR UPDATE OF si`, [invitationInicial.id, tokenHash]
     );
     const invitation = lockedInvites[0];
-    if (!invitation) {
-      const error = new Error('La invitación es inválida, ya fue usada o ha expirado.'); error.status = 400; throw error;
+    if (!invitation) { const error = new Error('La invitación es inválida, ya fue usada o ha expirado.'); error.status = 400; throw error; }
+    if (String(invitation.email || '').trim().toLowerCase() !== currentEmail) {
+      const error = new Error('Esta invitación pertenece a otra cuenta. Inicia sesión con el correo invitado.');
+      error.status = 403; error.code = 'INVITATION_EMAIL_MISMATCH'; throw error;
     }
 
     const normalizedSubRole = String(invitation.sub_rol || '').trim().toUpperCase();
@@ -292,7 +312,7 @@ async function acceptLegacySalonInvitation({ token, user }) {
       const error = new Error('El rol de la invitación ya no es válido. Solicita una nueva invitación.'); error.status = 409; throw error;
     }
 
-    await expireInvitations(client, invitation.business_profile_id);
+    await expireInvitations(client, invitation.business_profile_id, user.id);
     const { rows: existingRows } = await client.query(
       `SELECT id, status FROM memberships
         WHERE business_profile_id = $1 AND user_id = $2
@@ -333,15 +353,11 @@ async function acceptLegacySalonInvitation({ token, user }) {
       const error = new Error('La invitación ya fue aceptada por otra solicitud.'); error.status = 409; throw error;
     }
     await audit(client, { tenantId: invitation.business_profile_id, membershipId: membership.id, actorId: user.id,
-      event: 'INVITATION_ACCEPTED', newRole: role, previousStatus: 'PENDING', newStatus: 'ACTIVE',
-      metadata: { legacySalonInvitationId: invitation.id, businessName: invitation.business_name } });
-    await client.query('COMMIT');
+      event: 'INVITATION_ACCEPTED', previousRole: membership.role, newRole: membership.role,
+      previousStatus: 'PENDING', newStatus: 'ACTIVE',
+      metadata: { legacySalonInvitationId: String(invitation.id), businessName: invitation.business_name } });
     return { ...membership, salon_id: invitation.salon_id, sub_rol: normalizedSubRole };
-  } catch (error) {
-    await client.query('ROLLBACK');
-    if (error.code === '23505') { error.status = 409; error.message = 'Ya tienes una membresía en este salón'; }
-    throw error;
-  } finally { client.release(); }
+  });
 }
 
 async function changeRole({ tenantId, memberId, actorId, role, subRole }) {
@@ -350,6 +366,7 @@ async function changeRole({ tenantId, memberId, actorId, role, subRole }) {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    await setMembershipContext(client, tenantId, actorId);
     const { rows } = await client.query('SELECT * FROM memberships WHERE id = $1 AND business_profile_id = $2 FOR UPDATE', [memberId, tenantId]);
     const target = rows[0];
     if (!target) { const error = new Error('Miembro no encontrado'); error.status = 404; throw error; }
@@ -372,8 +389,9 @@ async function setStatus({ tenantId, memberId, actorId, status, plan }) {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [tenantId]);
-    await expireInvitations(client, tenantId);
+    await setMembershipContext(client, tenantId, actorId);
+    await lockTenant(client, tenantId);
+    await expireInvitations(client, tenantId, actorId);
     const { rows } = await client.query('SELECT * FROM memberships WHERE id = $1 AND business_profile_id = $2 FOR UPDATE', [memberId, tenantId]);
     const target = rows[0];
     if (!target) { const error = new Error('Miembro o invitación no encontrados'); error.status = 404; throw error; }
@@ -434,11 +452,14 @@ async function resend({ tenantId, memberId, actorId, tenantName, plan }) {
   let invite;
   try {
     await client.query('BEGIN');
-    await client.query('SELECT id FROM business_profiles WHERE id = $1 FOR UPDATE', [tenantId]);
-    await expireInvitations(client, tenantId);
+    await setMembershipContext(client, tenantId, actorId);
+    await lockTenant(client, tenantId);
+    await expireInvitations(client, tenantId, actorId);
     const { rows } = await client.query(
       `SELECT m.*, COALESCE(u.email, m.invite_email) AS email FROM memberships m
-        LEFT JOIN usuarios u ON u.id = m.user_id
+        LEFT JOIN LATERAL (
+          SELECT info.email FROM app_saas_team_user_info($2) info WHERE info.user_id = m.user_id
+        ) u ON TRUE
         WHERE m.id = $1 AND m.business_profile_id = $2 AND m.status IN ('PENDING','INVITED','EXPIRED') FOR UPDATE OF m`, [memberId, tenantId]
     );
     const target = rows[0];

@@ -27,13 +27,20 @@ const {
 
 function dbCon(filas) {
   const consultas = [];
-  return {
+  const db = {
     consultas,
     async query(sql, params) {
       consultas.push({ sql, params });
+      if (sql.includes('FROM salones')) return { rows: [{ business_profile_id: 'bp-test' }] };
+      if (sql.includes('set_config')) return { rows: [{ set_config: 'bp-test' }] };
       return { rows: typeof filas === 'function' ? filas(sql, params) : filas };
     },
   };
+  db.connect = async () => ({
+    query: db.query.bind(db),
+    release: jest.fn(),
+  });
+  return db;
 }
 
 describe('E-02b — mapeo de roles entre memberships y salon_miembros', () => {
@@ -64,10 +71,11 @@ describe('E-02b — lectura del equipo', () => {
       { id: 'm2', user_id: 8, nombre: 'Luis', email: 'l@x.co', phone: null, sub_rol: null, role: 'MEMBER', estatus: 'INACTIVO', creado_at: new Date() },
     ]);
 
-    const miembros = await listSalonMembers(db, 42);
+    const miembros = await listSalonMembers(db, 42, 7);
 
-    expect(db.consultas[0].params[0]).toBe(42);
-    expect(db.consultas[0].sql).toContain('FROM memberships');
+    expect(db.consultas.find(({ sql }) => sql.includes('FROM salones')).sql).toContain('FROM salones');
+    const membershipsQuery = db.consultas.find(({ sql }) => sql.includes('FROM memberships'));
+    expect(membershipsQuery.params[0]).toBe(42);
     expect(miembros).toHaveLength(2);
     expect(miembros[0].sub_rol).toBe('ADMINISTRADOR');
     // Sin etiqueta guardada, se deriva del rol en vez de devolver null.
@@ -76,12 +84,13 @@ describe('E-02b — lectura del equipo', () => {
   });
 
   test('getMemberRole devuelve null si no hay membership activa', async () => {
-    expect(await getMemberRole(dbCon([]), 1, 2)).toBeNull();
+    const emptyDb = dbCon((sql) => sql.includes('FROM salones') ? [{ business_profile_id: 'bp-1' }] : []);
+    expect(await getMemberRole(emptyDb, 1, 2)).toBeNull();
 
-    const db = dbCon([{ role: 'MANAGER', sub_rol: null }]);
+    const db = dbCon((sql) => sql.includes('FROM salones') ? [{ business_profile_id: 'bp-1' }] : [{ role: 'MANAGER', sub_rol: null }]);
     const rol = await getMemberRole(db, 1, 2);
     expect(rol).toEqual({ role: 'MANAGER', sub_rol: 'RECEPCIONISTA' });
-    expect(db.consultas[0].sql).toContain("status = 'ACTIVE'");
+    expect(db.consultas.find(({ sql }) => sql.includes('FROM memberships')).sql).toContain("status = 'ACTIVE'");
   });
 
   test('resuelve el id y tenant de la membership activa para la ruta heredada del salón', async () => {
@@ -95,13 +104,19 @@ describe('E-02b — lectura del equipo', () => {
 
   test('sólo OWNER y ADMIN administran el equipo', async () => {
     const respuesta = (role) => async (sql) =>
-      sql.includes('FROM memberships') ? { rows: [{ role, sub_rol: null }] } : { rows: [] };
+      sql.includes('FROM salones') ? { rows: [{ business_profile_id: 'bp-1' }] } :
+        sql.includes('FROM memberships') ? { rows: [{ role, sub_rol: null }] } : { rows: [] };
 
-    expect(await canAdminSalon({ query: respuesta('OWNER') }, 1, 1)).toBe(true);
-    expect(await canAdminSalon({ query: respuesta('ADMIN') }, 1, 1)).toBe(true);
-    expect(await canAdminSalon({ query: respuesta('MANAGER') }, 1, 1)).toBe(false);
-    expect(await canAdminSalon({ query: respuesta('MEMBER') }, 1, 1)).toBe(false);
-    expect(await canAdminSalon({ query: respuesta('VIEWER') }, 1, 1)).toBe(false);
+    const dbForRole = (role) => {
+      const db = { query: respuesta(role) };
+      db.connect = async () => ({ query: db.query.bind(db), release: jest.fn() });
+      return db;
+    };
+    expect(await canAdminSalon(dbForRole('OWNER'), 1, 1)).toBe(true);
+    expect(await canAdminSalon(dbForRole('ADMIN'), 1, 1)).toBe(true);
+    expect(await canAdminSalon(dbForRole('MANAGER'), 1, 1)).toBe(false);
+    expect(await canAdminSalon(dbForRole('MEMBER'), 1, 1)).toBe(false);
+    expect(await canAdminSalon(dbForRole('VIEWER'), 1, 1)).toBe(false);
   });
 });
 
@@ -116,11 +131,12 @@ describe('E-02b — escritura canónica', () => {
         return { rows: [{ id: 'm9', role: 'MANAGER', sub_rol: 'RECEPCIONISTA', status: 'ACTIVE' }] };
       },
     };
+    db.connect = async () => ({ query: db.query.bind(db), release: jest.fn() });
 
     const res = await ensureMembership(db, { salonId: 5, userId: 11, subRol: 'RECEPCIONISTA' });
 
     expect(res.role).toBe('MANAGER');
-    const { sql, params } = db.consultas[1];
+    const { sql, params } = db.consultas.find(({ sql }) => sql.includes('INSERT INTO memberships'));
     expect(sql).toContain('INSERT INTO memberships');
     expect(sql).toMatch(/ON CONFLICT \(user_id, business_profile_id\) DO UPDATE/);
     expect(params[1]).toBe(11);
@@ -139,10 +155,11 @@ describe('E-02b — escritura canónica', () => {
         return { rows: [{ id: 'm9', role: 'MEMBER', sub_rol: 'EMPLEADO', status: 'SUSPENDED' }] };
       },
     };
+    db.connect = async () => ({ query: db.query.bind(db), release: jest.fn() });
 
     await ensureMembership(db, { salonId: 5, userId: 11, subRol: 'EMPLEADO', status: 'SUSPENDED' });
 
-    expect(db.consultas[1].params[5]).toBe('SUSPENDED');
+    expect(db.consultas.find(({ sql }) => sql.includes('INSERT INTO memberships')).params[5]).toBe('SUSPENDED');
   });
 });
 
@@ -162,7 +179,8 @@ describe('E-02b — compuerta: los controladores no vuelven a leer salon_miembro
   test('el acceso a membresías resuelve el perfil desde la relación explícita de la sede', async () => {
     const db = dbCon([{ id: 'm1', role: 'OWNER', sub_rol: 'DUEÑO' }]);
     await getMemberRole(db, 10, 2);
-    expect(db.consultas[0].sql).toContain('JOIN salones s ON s.business_profile_id = m.business_profile_id');
-    expect(db.consultas[0].params[0]).toBe(10);
+    const membershipQuery = db.consultas.find(({ sql }) => sql.includes('FROM memberships'));
+    expect(membershipQuery.sql).toContain('JOIN salones s ON s.business_profile_id = m.business_profile_id');
+    expect(membershipQuery.params[0]).toBe(10);
   });
 });

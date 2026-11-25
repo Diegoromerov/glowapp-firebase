@@ -622,3 +622,13 @@ en 076).
 - Permite que un salón SaaS cree servicios aunque su propietario no sea un prestador individual con fila en `perfiles_prestador`.
 - Conserva las filas existentes: la FK se valida contra usuarios y cada perfil individual existente ya referencia a un usuario.
 - No cambia la pertenencia al negocio ni a la sede, que siguen protegidas por `business_profile_id` y `salon_id`.
+
+## 200: RLS de membresías SaaS y auditoría de equipo
+
+- Activa y fuerza RLS para `memberships` y `membership_audit_logs` bajo el rol de aplicación.
+- Un miembro puede leer su propia membresía; un miembro activo puede leer el equipo y la auditoría del perfil SaaS seleccionado.
+- OWNER/ADMIN pueden gestionar membresías dentro de ese perfil. El alta inicial de OWNER solo se admite para el proveedor del perfil cuando aún no hay membresías.
+- El invitado solo puede activar su propia invitación pendiente y no puede cambiar el rol, el correo, el perfil ni el usuario asociado.
+- La auditoría permite insertar eventos autorizados, pero no actualizar ni borrar registros.
+- Añade funciones `SECURITY DEFINER` de alcance limitado para resolver datos mínimos del equipo y buscar el correo de destino; no se exponen consultas libres sobre `usuarios`.
+- Es aditiva. Reversión: desplegar código compatible anterior y retirar las políticas/triggers únicamente después de confirmar que no hay escrituras que dependan del nuevo contrato; no se borran filas.
