@@ -219,12 +219,19 @@ class GlowProviderApp extends ConsumerWidget {
         '/auth/onboarding': (_) => const OnboardingScreen(),
         '/auth/forgot-password': (_) => const ForgotPasswordScreen(),
         '/auth/accept-invitation': (context) {
-          // El código llega como argumento al abrirlo desde la app y como
-          // ?token= cuando se sigue el enlace del correo.
-          final arg = ModalRoute.of(context)?.settings.arguments;
-          return AcceptInvitationScreen(
-            token: arg is String ? arg : Uri.base.queryParameters['token'],
-          );
+          // El enlace de correo usa hash routing: el query queda dentro del
+          // fragmento (#/ruta?token=...), no en Uri.base.queryParameters.
+          // También se admite el query de la ruta y el argumento interno.
+          final route = ModalRoute.of(context);
+          final arg = route?.settings.arguments;
+          final routeUri = Uri.tryParse(route?.settings.name ?? '');
+          final fragmentUri = Uri.tryParse(Uri.base.fragment);
+          final token = arg is String && arg.trim().isNotEmpty
+              ? arg
+              : routeUri?.queryParameters['token'] ??
+                  fragmentUri?.queryParameters['token'] ??
+                  Uri.base.queryParameters['token'];
+          return AcceptInvitationScreen(token: token);
         },
         '/auth/verification-pending': (_) => const VerificationPendingScreen(),
 
