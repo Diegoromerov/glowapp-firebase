@@ -224,8 +224,8 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
                 break;
               case 'resend':
                 if (member.id.isNotEmpty && businessProfileId != null) {
-                  await ref.read(teamProvider.notifier).resendInvitation(businessProfileId, member.id);
-                  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Invitación reenviada')));
+                  final emailSent = await ref.read(teamProvider.notifier).resendInvitation(businessProfileId, member.id);
+                  if (context.mounted) _showInvitationResult(context, emailSent, isResend: true);
                 }
                 break;
               case 'remove':
@@ -296,8 +296,8 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
               icon: const Icon(Icons.send_rounded, color: Color(0xFFC5A052), size: 20),
               onPressed: () async {
                 if (businessProfileId != null) {
-                  await ref.read(teamProvider.notifier).resendInvitation(businessProfileId, invitation.id);
-                  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Invitación reenviada')));
+                  final emailSent = await ref.read(teamProvider.notifier).resendInvitation(businessProfileId, invitation.id);
+                  if (context.mounted) _showInvitationResult(context, emailSent, isResend: true);
                 }
               },
               tooltip: 'Reenviar',
@@ -347,8 +347,8 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
               if (email.isNotEmpty && email.contains('@')) {
                 Navigator.pop(ctx);
                 try {
-                  await ref.read(teamProvider.notifier).invite(businessProfileId, InviteMemberRequest(email: email, role: selectedRole));
-                  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Invitación enviada')));
+                  final emailSent = await ref.read(teamProvider.notifier).invite(businessProfileId, InviteMemberRequest(email: email, role: selectedRole));
+                  if (context.mounted) _showInvitationResult(context, emailSent);
                 } catch (e) {
                   if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${mensajeHumano(e)}')));
                 }
@@ -359,6 +359,15 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
         ],
       ),
     );
+  }
+
+  void _showInvitationResult(BuildContext context, bool emailSent, {bool isResend = false}) {
+    final message = emailSent
+        ? (isResend ? 'Invitación reenviada por correo' : 'Invitación enviada por correo')
+        : (isResend
+            ? 'La invitación se renovó, pero no se confirmó el envío del correo.'
+            : 'La invitación se creó, pero no se confirmó el envío del correo.');
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> _showChangeRoleDialog(BuildContext context, WidgetRef ref, String? businessProfileId, TeamMember member) async {

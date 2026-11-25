@@ -328,11 +328,12 @@ class TeamNotifier extends StateNotifier<TeamState> {
     }
   }
 
-  Future<void> invite(String businessProfileId, InviteMemberRequest request) async {
+  Future<bool> invite(String businessProfileId, InviteMemberRequest request) async {
     state = state.copyWith(isLoading: true);
     try {
-      await SaasApiService.inviteMember(businessProfileId, request);
+      final emailSent = await SaasApiService.inviteMember(businessProfileId, request);
       await load(businessProfileId);
+      return emailSent;
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
       if (kDebugMode) debugPrint('TeamNotifier.invite error: $e\n$st');
@@ -379,11 +380,12 @@ class TeamNotifier extends StateNotifier<TeamState> {
     }
   }
 
-  Future<void> resendInvitation(String businessProfileId, String invitationId) async {
+  Future<bool> resendInvitation(String businessProfileId, String invitationId) async {
     state = state.copyWith(isLoading: true);
     try {
-      await SaasApiService.resendInvitation(businessProfileId, invitationId);
+      final emailSent = await SaasApiService.resendInvitation(businessProfileId, invitationId);
       await load(businessProfileId);
+      return emailSent;
     } catch (e, st) {
       state = state.copyWith(isLoading: false, error: e);
       if (kDebugMode) debugPrint('TeamNotifier.resendInvitation error: $e\n$st');

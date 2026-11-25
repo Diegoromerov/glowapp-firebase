@@ -293,9 +293,13 @@ class SaasApiService {
   }
 
   /// Invitar miembro. POST /api/saas/team/invite { email, role }
-  static Future<void> inviteMember(
+  static Future<bool> inviteMember(
       String businessProfileId, InviteMemberRequest request) async {
-    await ApiService.post('$_basePath/team/invite', request.toJson());
+    final response = await ApiService.post(
+      '$_basePath/team/invite',
+      request.toJson(),
+    );
+    return response is Map<String, dynamic> && response['emailSent'] == true;
   }
 
   /// Cambiar rol. PATCH /api/saas/team/:memberId/role
@@ -322,9 +326,13 @@ class SaasApiService {
   }
 
   /// Reenviar invitación. POST /api/saas/team/:memberId/resend-invite
-  static Future<void> resendInvitation(
+  static Future<bool> resendInvitation(
       String businessProfileId, String invitationId) async {
-    await ApiService.post('$_basePath/team/$invitationId/resend-invite', {});
+    final response = await ApiService.post(
+      '$_basePath/team/$invitationId/resend-invite',
+      {},
+    );
+    return response is Map<String, dynamic> && response['emailSent'] == true;
   }
 
   /// Invitaciones pendientes: el backend no expone un endpoint aparte,
