@@ -60,7 +60,7 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 
 ### Evidencia adicional de la revisión actual
 
-- Seis suites focalizadas: **43/43 pruebas aprobadas** en la última ejecución. La suite nueva `saas-team-rbac.test.js` usa el router real y sus guards; simula autenticación, contexto SaaS y servicio, por lo que acredita el comportamiento RBAC de las rutas, no una prueba de tenant completo.
+- Siete suites focalizadas: **45/45 pruebas aprobadas**. La suite nueva `saas-team-rbac.test.js` usa el router real y sus guards; simula autenticación, contexto SaaS y servicio, por lo que acredita el comportamiento RBAC de las rutas, no una prueba de tenant completo. Las dos pruebas de `services/__tests__/saasMembershipService.test.js` se ejecutaron por separado porque el comando anterior apuntaba a una ruta inexistente.
 - Se corrigió una expectativa obsoleta en `saasMembershipLegacyAcceptance.test.js`: la implementación serializa el cupo con `pg_advisory_xact_lock` por tenant y bloquea la fila de invitación con `FOR UPDATE OF si`, en vez de bloquear `business_profiles` directamente.
 - Corrección publicada en `main`: commit `179c12105b5afdd03f6d57e56eecba63fa61c9ce`. El workflow GitHub Actions `45696306835` completó análisis, pruebas y build con `success`, y el job `Deploy glow_provider` publicó el artefacto en Firebase Hosting live.
 - Las consultas HTTP directas a `/api/health`, `/api/saas/team` sin autenticación y `POST /api/saas/team/invite` sin autenticación no llegaron a recibir respuesta: el entorno de ejecución no pudo completar el handshake TLS con el dominio Railway, incluso con permiso de red. La invitación anónima no modificó datos ni envió correo; esas rutas siguen sin una comprobación HTTP nueva en producción.
