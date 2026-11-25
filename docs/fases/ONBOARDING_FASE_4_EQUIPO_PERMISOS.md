@@ -117,3 +117,9 @@ El avance de salida se mantiene en **75 %**: el fallo visual del reenvío ya est
 - En el checkout local `codex/fase4-membership-rls`, las suites focalizadas de servicio de membresías y permisos HTTP terminaron **2 suites, 10/10 pruebas aprobadas**. La ejecución usa PostgreSQL y servicios simulados; verifica el reenvío de invitación vencida con asiento disponible y el rechazo al alcanzar el límite de cinco asientos BASIC, además de los casos previos.
 - La suite del servicio existente en `main` recibió estos dos escenarios en PR #82 y se integró como commit `79104f633c76e9bd84e5619075f62ef5a0c53e56`. Backend CI run `45722376630` terminó `success`, incluidas sintaxis, pruebas focalizadas, contratos e integración PostgreSQL de CI.
 - El correo se simuló y no se enviaron mensajes. Estos resultados verifican reglas transaccionales mediante mocks y CI; no prueban carrera simultánea de cupos en PostgreSQL productivo, aislamiento entre identidades reales ni entrega/aceptación de correo E2E. Por eso el porcentaje permanece en **75 %**.
+
+### Verificación visual del rol desde el panel propietario (25 Nov 2026, 23:37 UTC)
+
+- En la sesión autenticada del propietario en `https://glowapp-provider.web.app/#/salon`, la lista de Equipo mostró a Sonia Herrera (`soniaherre2020@gmail.com`) como miembro activo de QA Salón Fase 2.
+- Se abrió «Cambiar rol». La opción `Personal` aparecía seleccionada. El código de `team_management_screen.dart` inicializa el diálogo con `selectedRole = member.role`, por lo que ese valor corresponde al rol que la app recibió para Sonia. Se cerró con «Cancelar»; no se guardó ningún cambio.
+- Esto confirma visualmente el rol desde la cuenta propietaria y enlaza la lectura de interfaz con el modelo que entrega la app. Sigue pendiente la comprobación de Sonia desde su propia sesión.
