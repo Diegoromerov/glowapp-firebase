@@ -330,6 +330,11 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(controller: emailCtrl, keyboardType: TextInputType.emailAddress, decoration: const InputDecoration(labelText: 'Email', hintText: 'colaborador@email.com', prefixIcon: Icon(Icons.email_outlined))),
+            const SizedBox(height: 8),
+            const Text(
+              'La persona debe tener una cuenta GlowApp registrada. Solo podrá aceptar con este correo y el enlace vence en 7 días.',
+              style: TextStyle(fontSize: 12, color: Color(0xFF8C7E74)),
+            ),
             const SizedBox(height: 16),
             DropdownButtonFormField<MembershipRole>(
                           value: selectedRole,
