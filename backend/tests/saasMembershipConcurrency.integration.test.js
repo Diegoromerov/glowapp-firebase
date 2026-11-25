@@ -63,8 +63,8 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       fixture.inviteeTwoId = await createUser('invitee-two');
 
       await client.query(
-        'INSERT INTO business_profiles (id, provider_id, vertical_id, name, tenant_id, saas_plan) VALUES ($1, $2, $3, $4, $5, $6)',
-        [fixture.profileId, fixture.ownerId, verticalId, 'SaaS seat concurrency test', 'test-' + fixture.profileId, 'FREE_TRIAL']
+        'INSERT INTO business_profiles (id, provider_id, vertical_id, name, tenant_id) VALUES ($1, $2, $3, $4, $5)',
+        [fixture.profileId, fixture.ownerId, verticalId, 'SaaS seat concurrency test', 'test-' + fixture.profileId]
       );
       await client.query("SELECT set_config('app.user_id', $1, true)", [String(fixture.ownerId)]);
 
