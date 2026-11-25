@@ -56,7 +56,7 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 
 1. Ejecutar una invitación por API con una cuenta QA y comprobar correo entregado, aceptación con correo correcto, rechazo con otro correo, vencimiento y reenvío.
 
-   Nota de auditoría: `backend/scripts/qaSaasE2E.js` no sirve como evidencia de esta fase en su versión actual: llama rutas antiguas (`/api/saas/team/:profileId/invite` y `/api/saas/team/:profileId`) y genera un correo `glowapp.test` no registrado; además, trata HTTP 409 como aprobación. No se ejecutará ni se contará como prueba hasta corregirlo.
+   Nota de auditoría: se corrigió `backend/scripts/qaSaasE2E.js` en `main` (`9c55f5383faf5157c792a928cf94bffe49d690c6`) para usar las rutas actuales, requerir correo registrado y solo aprobar el envío cuando `emailSent=true`; HTTP 409 ya no cuenta como éxito. Backend CI `45704648626` completó con `success`. El arnés aún no se ejecutó contra producción: hacerlo requiere la confirmación pendiente para enviar la invitación real a la cuenta especificada.
 2. La matriz HTTP local ahora cubre OWNER, ADMIN, MANAGER, MEMBER y VIEWER para lectura del equipo/auditoría, invitación, cambio de rol, suspensión, retiro y reenvío. Aún hay que ejecutarla con contexto SaaS y datos reales para comprobar el alcance por sede/tenant en producción.
 3. Probar en producción el límite de asientos, concurrencia y reactivación.
 
