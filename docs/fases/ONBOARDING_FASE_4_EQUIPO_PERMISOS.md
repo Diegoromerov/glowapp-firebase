@@ -112,3 +112,8 @@ No se persistieron invitaciones ni cambios de membresía de prueba, y no se envi
 
 El avance de salida se mantiene en **75 %**: el fallo visual del reenvío ya está corregido en producción, pero esto no completa los escenarios pendientes de correo equivocado, vencimiento y reenvío pendiente, la validación del rol por Sonia, ni las pruebas de aislamiento y cupos reales.
 
+### Cobertura adicional de reenvío y cupos (25 Nov 2026, 23:36 UTC)
+
+- En el checkout local `codex/fase4-membership-rls`, las suites focalizadas de servicio de membresías y permisos HTTP terminaron **2 suites, 10/10 pruebas aprobadas**. La ejecución usa PostgreSQL y servicios simulados; verifica el reenvío de invitación vencida con asiento disponible y el rechazo al alcanzar el límite de cinco asientos BASIC, además de los casos previos.
+- La suite del servicio existente en `main` recibió estos dos escenarios en PR #82 y se integró como commit `79104f633c76e9bd84e5619075f62ef5a0c53e56`. Backend CI run `45722376630` terminó `success`, incluidas sintaxis, pruebas focalizadas, contratos e integración PostgreSQL de CI.
+- El correo se simuló y no se enviaron mensajes. Estos resultados verifican reglas transaccionales mediante mocks y CI; no prueban carrera simultánea de cupos en PostgreSQL productivo, aislamiento entre identidades reales ni entrega/aceptación de correo E2E. Por eso el porcentaje permanece en **75 %**.
