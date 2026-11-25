@@ -79,6 +79,11 @@ jobs:
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
+      - name: Invitaciones SaaS generan el ID requerido por PostgreSQL
+        env:
+          JWT_SECRET: saas-membership-regression-test-secret
+        run: npx jest src/services/__tests__/saasMembershipService.test.js --runInBand --forceExit --verbose
+
       - name: Recuperación de tenant conserva el plan del salón
         env:
           JWT_SECRET: phase1-test-secret

@@ -38,6 +38,10 @@ describe('saasMembershipService invitation audit', () => {
       role: 'MEMBER',
     });
 
+    const inviteInsert = calls.find(({ sql }) => sql.includes('INSERT INTO memberships'));
+    expect(inviteInsert.sql).toMatch(/INSERT INTO memberships\s+\(id,/);
+    expect(inviteInsert.params[0]).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+
     const expiryAudit = calls.find(({ sql }) => sql.includes("'INVITATION_EXPIRED'"));
     expect(expiryAudit).toBeDefined();
     expect(expiryAudit.sql).toContain('actor_user_id');

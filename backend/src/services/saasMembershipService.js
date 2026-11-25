@@ -160,9 +160,10 @@ async function invite({ tenantId, tenantName, plan, actorId, email, role, subRol
     } else {
       const result = await client.query(
         `INSERT INTO memberships
-           (business_profile_id, user_id, invite_email, role, sub_rol, status, invited_by, invited_at, invite_token_hash, invite_expires_at)
-         VALUES ($1,$2,$3,$4,$8,'PENDING',$5,NOW(),$6,$7) RETURNING *`,
-        [tenantId, userId, normalizedEmail, normalizedRole, actorId, hashToken(token), expiresAt, subRole || null]
+           (id, business_profile_id, user_id, invite_email, role, sub_rol, status, invited_by, invited_at, invite_token_hash, invite_expires_at)
+         VALUES ($1,$2,$3,$4,$5,$9,'PENDING',$6,NOW(),$7,$8) RETURNING *`,
+        [crypto.randomUUID(), tenantId, userId, normalizedEmail, normalizedRole, actorId,
+          hashToken(token), expiresAt, subRole || null]
       );
       membership = result.rows[0];
     }
