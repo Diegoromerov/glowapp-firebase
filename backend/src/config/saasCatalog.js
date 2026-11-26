@@ -3,7 +3,7 @@
  * Los cobros externos (pasarela y proveedor tecnológico DIAN) deben tener
  * configuración propia antes de considerarse disponibles en producción.
  */
-const CATALOG_VERSION = 3;
+const CATALOG_VERSION = 4;
 
 const ADD_ONS = Object.freeze([
   { id: 'INVOICING_ADDON', name: 'Facturación electrónica para Básico', proposedPriceCop: 59000, interval: 'month', limit: 250, metric: 'INVOICING_DOCUMENTS', available: false },
@@ -113,7 +113,8 @@ const PLAN_CATALOG = Object.freeze({
     id: 'BASIC', name: 'Básico', priceCop: 99000, proposedAnnualPriceCop: 79200, priceUsd: null,
     interval: 'month', trialDays: 0,
     description: 'Agenda, caja, inventario y recursos para un salón de hasta 5 personas, con reservas ilimitadas.', popular: false,
-    capabilities: [...COMMON_PAID, 'INVOICING_ADDON'],
+    // El complemento de facturación aún no se puede contratar ni emitir.
+    capabilities: [...COMMON_PAID],
     quotas: {
       MAP_VISIBILITY: 1, ONLINE_BOOKING: null, DIRECT_BOOKINGS: null, TEAM_SEATS: 5,
       INVOICING_DOCUMENTS: 0, INVOICING_TAX_IDS: 0, RESOURCES: 5, AURA_QUERIES: 0,
