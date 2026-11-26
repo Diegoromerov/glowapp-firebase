@@ -56,6 +56,8 @@ const MIGRACIONES_BASE_NUEVA = [
 '068_force_rls_strict_isolation.sql',
 '107_rls_politicas_sin_contexto.sql',
 '012_business_engine.sql',
+  // SaaS team context reads business_profiles.saas_plan (109 is independent of billing tables).
+  '109_saas_tenant_plan.sql',
 '062_optimize_business_saas_postgres.sql',
 '082_memberships.sql',
 // The membership service writes invite_token and status PENDING.
@@ -180,6 +182,8 @@ const MIGRACIONES_ARRANQUE = [
   '107_rls_politicas_sin_contexto.sql',
 
   '012_business_engine.sql',
+  // SaaS team context reads business_profiles.saas_plan (109 is independent of billing tables).
+  '109_saas_tenant_plan.sql',
 
   '062_optimize_business_saas_postgres.sql',
 
