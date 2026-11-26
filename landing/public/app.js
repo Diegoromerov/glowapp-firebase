@@ -57,7 +57,7 @@
     introVideo.src = mediaUrl.toString();
     showLanding('video');
     introVideo.play().catch(() => {
-      document.querySelector('#intro-hint').textContent = 'Toca para reproducir';
+      document.querySelector('#intro-hint').textContent = 'Interactivo · toca para reproducir';
     });
   }
 
@@ -115,7 +115,7 @@
     intro.addEventListener('click', event => {
       if (event.target.closest('#skip-intro, .landing-brand')) return;
       if (introVideo.paused) {
-        introVideo.play().then(() => { document.querySelector('#intro-hint').textContent = 'Toca para entrar'; }).catch(() => {});
+        introVideo.play().then(() => { document.querySelector('#intro-hint').textContent = 'Interactivo'; }).catch(() => {});
       } else enterStaticLanding();
     });
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
