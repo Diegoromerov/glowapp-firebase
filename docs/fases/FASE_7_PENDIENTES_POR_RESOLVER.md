@@ -1,6 +1,6 @@
 # Fase 7 — Puntos por resolver
 
-**Estado:** Fase 7 en curso. Catálogo V3, conservación de derechos heredados y app de prestadores desplegados en producción el 26 de noviembre de 2026.
+**Estado:** Fase 7 en curso. Catálogo V4, conservación de derechos heredados y app de prestadores desplegados en producción el 26 de noviembre de 2026.
 **Fecha de elaboración:** 23 de noviembre de 2026. **Última conciliación técnica:** 26 de noviembre de 2026.
 **Contexto:** plan comercial SaaS de GlowApp para salones. El trabajo se publica directamente en producción, sin usar staging, conforme a la instrucción del usuario.
 
@@ -12,7 +12,7 @@ Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos 
 
 | N.º | Punto por resolver | Decisión o trabajo requerido | Resultado esperado |
 |---:|---|---|---|
-| 1 | Vencimiento de Prueba Gratis | Resuelto en código y desplegado. Bootstrap guarda fechas; facturación muestra la fecha de vencimiento; job aislado en Railway corre cada día y cambia a Freemium sin tocar suscripciones pagas. La ejecución manual de producción terminó con cero vencidos, cero cambios y cero eventos. | Falta una prueba controlada con un tenant QA cuya prueba esté vencida y demostrar que una suscripción paga queda intacta. |
+| 1 | Vencimiento de Prueba Gratis | Bootstrap guarda fechas; facturación muestra vencimiento; el job independiente de Railway corre a diario y cambia a Freemium. Solo un plan pago `active` protege el tenant; `incomplete`, `trialing` y `past_due` ya no extienden la prueba sin pago confirmado. El cambio está desplegado (`44a16dc`) y la API devuelve `OK`. | Falta una prueba controlada con un tenant QA vencido, verificando downgrade a Freemium y protección de un plan pago activo. No se fuerza la ejecución manual en producción sobre tenants reales. |
 | 2 | WhatsApp, Aura, marca y soporte prioritario | No ofrecer WhatsApp, Aura para negocio ni marca personalizada en altas nuevas hasta tener flujo SaaS, integración, métrica y soporte verificables. Posicionamiento de soporte/SLA empresarial sigue pendiente. | Capacidades implementadas y medibles antes de incorporarlas a una oferta contratada. |
 | 3 | Caja, inventario, recetas y recursos | Definir qué herramientas operativas corresponden a cada plan y establecer capacidades/cuotas donde hagan falta. | Matriz por plan y límites efectivos en backend. |
 | 4 | Fidelización propia del salón | Elegir entre incluirla en planes, venderla como complemento o ejecutarla como piloto. Definir costos, límites y reglas; mantenerla separada de los puntos globales GlowApp. | Oferta comercial y técnica clara para el programa de puntos del salón. |
