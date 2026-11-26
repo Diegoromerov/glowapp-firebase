@@ -73,13 +73,13 @@ El código de renovación COP, la fuente de pago por tenant, referencias únicas
 
 ## Pendientes prioritarios
 
-1. Obtener y verificar credenciales de **sandbox Wompi** en un canal seguro; nunca compartir contraseñas o secretos en el chat, commits o logs. Verificar que el host resuelva a sandbox y el script aborta ante configuración productiva.
+1. Obtener credenciales de **sandbox Wompi** y configurarlas solo en un entorno local de QA; nunca poner llaves de prueba en Railway producción ni compartir secretos en el chat, commits o logs. El código rechazará el uso del gateway sandbox en `NODE_ENV=production` y no aplicará eventos sandbox a suscripciones productivas.
 2. Ejecutar contra sandbox alta de fuente de pago, aceptación/consentimiento, pago aprobado/declinado, webhook duplicado y conciliación del intento.
 3. Confirmar con Wompi la habilitación comercial COF/RBM y la elegibilidad de Visa/Mastercard; probar renovación, reintentos, monto, cancelación y período de gracia en sandbox.
 4. Validar desde la app Prestador el flujo de consentimiento, el estado del intento después de volver a abrir Facturación, comprobante y descarga autenticada por tenant.
 5. Revisar destinatarios y política de mora antes de activar el job automático. Definir la comunicación de cobros fallidos y probarla con una cuenta de QA autorizada.
 6. Validar envío del comprobante y requisitos tributarios antes de presentarlo como factura fiscal; hoy es un comprobante informativo y el smoke de R2 no creó una fila de factura.
-7. Solo después de las verificaciones sandbox y confirmación comercial, configurar secretos productivos y activar checkout/COF/live mediante un cambio controlado. Mantener apagados todos los flags mientras cualquiera de esas condiciones falte.
+7. Solo después de las verificaciones sandbox y confirmación comercial, configurar las llaves live dedicadas y activar checkout/COF/live mediante un cambio controlado. Mantener apagados todos los flags mientras cualquiera de esas condiciones falte.
 
 ## Evidencia de publicación
 
@@ -102,6 +102,7 @@ El código desplegado incluye:
 - Se valida que la fuente de pago responda `AVAILABLE`. La renovación automática se conserva solo para Visa/Mastercard; si la transacción aprobada informa otra marca o no informa una marca elegible, se concede el período pagado y se programa cancelación al vencimiento, sin conservar una fuente para renovación.
 - El manejo de errores del checkout conserva los códigos HTTP de validación/configuración y devuelve la referencia durable cuando hay un intento ambiguo; la app muestra referencia/estado y advierte que no se debe volver a pagar mientras se concilia.
 - El resumen de Facturación lee el último intento del ledger con filtro por tenant. La app muestra estado, valor y referencia para intentos pendientes, ambiguos, rechazados o aprobados, incluso al volver a abrir la pantalla.
+- La configuración SaaS utiliza llaves y URL propias (`WOMPI_SAAS_*`), separadas de citas y GlowShop. El entorno sandbox exige llaves de prueba y está rechazado en `NODE_ENV=production`; los webhooks SaaS en producción solo se procesan contra el host live. El worker automático exige configuración live, COF y flags productivos explícitos.
 
 El commit integrado de PR #116 y los cambios posteriores de PR #117–#118 están en `main`. Railway confirmó despliegue `SUCCESS` y aplicación de `201_saas_wompi_recurring_billing.sql`; el worker quedó desactivado por configuración. La CI pasó. El workflow Firebase **45841726300** también concluyó exitosamente con el deploy de Prestador y el hosting respondió HTTP 200. No se ejecutaron pagos: el E2E con Wompi sigue en **0 %** porque no se ha podido validar el acceso sandbox, COF/RBM ni el ciclo real.
 

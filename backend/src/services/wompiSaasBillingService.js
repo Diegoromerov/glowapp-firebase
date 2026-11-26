@@ -1,17 +1,51 @@
 const crypto = require('crypto');
 const { PLAN_CATALOG } = require('../config/saasCatalog');
-const wompiClient = require('./wompiClient');
+const WompiClient = require('./wompiClient').WompiClient;
+// SaaS billing has a separate merchant configuration. Never inherit the
+// shared Wompi keys/host used by bookings and GlowShop.
+const wompiClient = new WompiClient({ envPrefix: 'WOMPI_SAAS_', defaultBaseUrl: '' });
 const invoiceService = require('./invoiceService');
 const { encryptPaymentSourceId, decryptPaymentSourceId } = require('./wompiBillingCrypto');
 
 const CONSENT_VERSION = 'saas-recurring-v1';
 const isEnabled = () => process.env.WOMPI_SAAS_BILLING_ENABLED === 'true';
 const isCofEnabled = () => process.env.WOMPI_SAAS_COF_ENABLED === 'true';
-const liveBase = () => /production\.wompi\.co/i.test(wompiClient.baseUrl);
+const getGatewayHost = () => {
+  try {
+    const url = new URL(wompiClient.baseUrl);
+    if (url.protocol !== 'https:' || url.pathname.replace(/\/$/, '') !== '/v1') return null;
+    return url.hostname.toLowerCase();
+  } catch (_) {
+    return null;
+  }
+};
+const isSandboxBase = () => getGatewayHost() === 'sandbox.wompi.co';
+const liveBase = () => getGatewayHost() === 'production.wompi.co';
+const usesTestCredentials = () => [
+  wompiClient.publicKey, wompiClient.privateKey, wompiClient.integritySecret, wompiClient.eventsSecret,
+].some((value) => /(?:^|_)test_/i.test(String(value || '')));
+const isGatewayConfigurationValid = () => {
+  if (!wompiClient.isConfigured()) return false;
+  if (isSandboxBase()) {
+    return process.env.NODE_ENV !== 'production'
+      && process.env.WOMPI_SAAS_SANDBOX_ENABLED === 'true'
+      && /^pub_test_/.test(wompiClient.publicKey || '')
+      && /^prv_test_/.test(wompiClient.privateKey || '')
+      && /^test_integrity_/.test(wompiClient.integritySecret || '')
+      && /^test_events_/.test(wompiClient.eventsSecret || '');
+  }
+  if (liveBase()) {
+    return process.env.NODE_ENV === 'production' && !usesTestCredentials();
+  }
+  return false;
+};
 const isCheckoutAvailable = () => isEnabled() && isCofEnabled()
-  && wompiClient.isConfigured() && Boolean(String(process.env.WOMPI_SAAS_ENCRYPTION_KEY || '').trim())
+  && isGatewayConfigurationValid()
+  && Boolean(String(process.env.WOMPI_SAAS_ENCRYPTION_KEY || '').trim())
   && (!liveBase() || (process.env.WOMPI_SAAS_LIVE_BILLING_ENABLED === 'true'
     && process.env.WOMPI_SAAS_LIVE_COF_CONFIRMED === 'true'));
+const isRenewalWorkerEnabled = () => process.env.NODE_ENV === 'production'
+  && liveBase() && isCheckoutAvailable();
 
 function assertBillingEnabled() {
   if (!isEnabled()) {
@@ -24,6 +58,11 @@ function assertBillingEnabled() {
     error.status = 503;
     throw error;
   }
+  if (!isGatewayConfigurationValid()) {
+    const error = new Error('La configuración Wompi SaaS no es válida para este entorno; las credenciales sandbox solo se permiten fuera de producción.');
+    error.status = 503;
+    throw error;
+  }
   if (liveBase() && process.env.WOMPI_SAAS_LIVE_BILLING_ENABLED !== 'true') {
     const error = new Error('La facturación Wompi en producción está desactivada.');
     error.status = 503;
@@ -31,11 +70,6 @@ function assertBillingEnabled() {
   }
   if (liveBase() && isCofEnabled() && process.env.WOMPI_SAAS_LIVE_COF_CONFIRMED !== 'true') {
     const error = new Error('La recurrencia COF no está confirmada para este comercio.');
-    error.status = 503;
-    throw error;
-  }
-  if (!wompiClient.isConfigured()) {
-    const error = new Error('Wompi no está configurado completamente.');
     error.status = 503;
     throw error;
   }
@@ -157,15 +191,22 @@ async function startCheckout(client, { tenantId, userId, userEmail, plan, paymen
 
 async function processWebhook(client, event, checksum) {
   if (event?.event !== 'transaction.updated') return { ignored: true };
+  const payload = event?.data?.transaction;
+  const reference = String(payload?.reference || '');
+  if (!reference.startsWith('wompi_saas_')) return { ignored: true };
+  // Sandbox events must never mutate production subscriptions, even if someone
+  // accidentally copied test secrets into the production environment. Also
+  // fail closed before making an API request to an unexpected gateway host.
+  if (process.env.NODE_ENV === 'production' && !liveBase()) {
+    return { ignored: true, nonLiveGatewayDisabledInProduction: true };
+  }
+  if (!isGatewayConfigurationValid()) return { ignored: true, gatewayNotConfigured: true };
   const verified = wompiClient.verifyEventChecksum(event, checksum);
   if (!verified.valid) {
     const error = new Error(`Checksum Wompi inválido: ${verified.reason}`);
     error.status = 401;
     throw error;
   }
-  const payload = event?.data?.transaction;
-  const reference = String(payload?.reference || '');
-  if (!reference.startsWith('wompi_saas_')) return { ignored: true };
   const { rows } = await client.query(
     `SELECT * FROM saas_billing_attempts WHERE reference=$1 FOR UPDATE`, [reference]);
   const attempt = rows[0];
@@ -326,6 +367,7 @@ async function renewDueSubscriptions(client) {
 }
 
 module.exports = {
-  CONSENT_VERSION, isEnabled, isCheckoutAvailable, isCofEnabled, getPlanPriceInCents,
+  CONSENT_VERSION, isEnabled, isCheckoutAvailable, isCofEnabled, isRenewalWorkerEnabled,
+  getAcceptanceTokens: () => wompiClient.getAcceptanceTokens(), getPlanPriceInCents,
   startCheckout, processWebhook, cancelSubscription, renewDueSubscriptions,
 };

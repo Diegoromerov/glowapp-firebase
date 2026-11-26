@@ -522,9 +522,9 @@ function inicializarJobs() {
 
   console.log('⚙️  Iniciando jobs de pagos...');
 
-  // SaaS Wompi: explícitamente apagado en producción hasta que se habiliten
-  // WOMPI_SAAS_BILLING_ENABLED y, para cargos recurrentes, WOMPI_SAAS_COF_ENABLED.
-  if (wompiSaasBilling.isEnabled()) {
+  // SaaS Wompi renewals require the dedicated live merchant config and all
+  // explicit production billing/COF gates. Sandbox never schedules renewals.
+  if (wompiSaasBilling.isRenewalWorkerEnabled()) {
     const runWompiSaasRenewals = async () => {
       try {
         const result = await runAsSystem({ pool, systemPool }, (client) =>
@@ -538,7 +538,7 @@ function inicializarJobs() {
     setInterval(runWompiSaasRenewals, 15 * 60 * 1000);
     console.log('🔄 Worker de renovaciones SaaS Wompi activo (cada 15 min).');
   } else {
-    console.log('ℹ️ Renovaciones SaaS Wompi desactivadas por configuración.');
+    console.log('ℹ️ Renovaciones SaaS Wompi desactivadas: requieren credenciales y checkout live válidos en producción.');
   }
 
   // Maduración de saldos: cada 15 minutos
