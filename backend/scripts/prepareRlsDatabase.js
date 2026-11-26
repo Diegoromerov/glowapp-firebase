@@ -58,6 +58,8 @@ const MIGRACIONES_BASE_NUEVA = [
 '012_business_engine.sql',
 '062_optimize_business_saas_postgres.sql',
 '082_memberships.sql',
+// The membership service writes invite_token and status PENDING.
+'112_memberships_invite_columns.sql',
 '114_memberships_sub_rol.sql',
 '118_drop_salon_miembros.sql',
 '119_force_rls_retention_policies.sql',
@@ -181,6 +183,9 @@ const MIGRACIONES_ARRANQUE = [
   '062_optimize_business_saas_postgres.sql',
 
   '082_memberships.sql',
+
+  // Keep existing test databases aligned with the membership service schema.
+  '112_memberships_invite_columns.sql',
 
   '114_memberships_sub_rol.sql',
 
