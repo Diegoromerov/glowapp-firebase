@@ -69,9 +69,9 @@ Los puntos sobre el proveedor tecnológico DIAN, facturación real, complementos
 
 Pendiente todavía: la comprobación cubre la paridad de disponibilidad/contratación, no la matriz completa de cuotas y descripciones. El resto de herramientas (inventario, POS, recursos, facturación, Aura, WhatsApp y multi-sede) requiere mapear cada ruta de escritura/lectura con sus entitlements antes de afirmar que todos sus límites están aplicados. No se ejecutó una reserva real en producción ni se configuró un proveedor DIAN o cobro recurrente, para no alterar datos ni activar condiciones comerciales sin configuración.
 
-## Faltantes prioritarios — aplazados
+## Faltantes prioritarios — fase reanudada
 
-**Estado de trabajo:** no ejecutar en esta etapa. El usuario cambia de tarea y retomará estos puntos más adelante. No se activan nuevos precios, cobros ni módulos hasta reanudar y resolver los bloqueos que correspondan.
+**Estado de trabajo:** fase reanudada. Resolver en paralelo las brechas técnicas seguras; mantener bloqueados precios propuestos, cobros reales y módulos no configurados hasta contar con decisiones y proveedores necesarios.
 
 | Prioridad | Faltante | Trabajo pendiente al retomarlo | Condición para cerrarlo |
 |---|---|---|---|
@@ -79,10 +79,10 @@ Pendiente todavía: la comprobación cubre la paridad de disponibilidad/contrata
 | P0 | Cobro de suscripciones | Integrar y validar cobro recurrente, renovaciones, cancelaciones, pagos rechazados, webhooks, reintentos y conciliación de suscripciones existentes. Los endpoints de checkout y cambio de plan fallan cerrados si falta configuración o confirmación por webhook. | Pruebas completas con credenciales y productos configurados en la pasarela, sin cobrar importes propuestos antes de su aprobación. |
 | P0 | Facturación electrónica | Elegir e integrar proveedor tecnológico habilitado; completar configuración del salón/NIT, ambiente de pruebas, emisión, notas y errores. Confirmar costos y obligaciones aplicables. | Emisión y consulta probadas con el proveedor; funciones fiscales reales no se presentan como disponibles antes de esa validación. |
 | P1 | Entitlements por plan | Completar la auditoría de cada ruta de lectura/escritura y pantalla para inventario, caja/POS, recursos, recetas, analítica, Aura, WhatsApp, equipo y multi-sede. Gates existentes se han localizado para varios módulos; no hay evidencia de cobertura integral ni de que todos los módulos anunciados estén operativos. | Matriz V3 reflejada en backend y UI, con pruebas de acceso permitido y denegado por nivel. |
-| P1 | Cuotas y medición | Definir los eventos que consumen API, documentos, recursos, sedes, Aura y WhatsApp; implementar contadores independientes, umbrales del 80/100% y respuesta al agotamiento. Completar paridad de cuotas, capacidades y descripciones; hoy solo se compara disponibilidad/contratación. | Contadores reconciliables y límites que coinciden entre API, Flutter y la oferta comercial. |
+| P1 | Cuotas y medición | Definir eventos de consumo para API, documentos, recursos, sedes, Aura y WhatsApp; implementar contadores independientes y respuesta al agotamiento. En la rama actual se corrige la presentación remota para no exponer contadores internos de NIT/mapa/equipo y se igualan descripciones y funciones visibles con el respaldo local. | CI, despliegue y verificación del onboarding; después, contadores reconciliables y políticas de agotamiento coherentes. |
 | P1 | Reservas directas | La política de origen y contador transaccional están implementados; falta recorrido controlado en producción que cubra reservas del salón frente al marketplace, reintentos, reservas agrupadas y concurrencia. | Evidencia de integración sin alterar reservas reales de clientes. |
 | P2 | Piloto y salida comercial | Definir salones piloto, instrumentación, soporte, comunicación, monitoreo, procedimiento de reversión y criterios de expansión. | Piloto medido y aprobado antes de ampliar disponibilidad de niveles o complementos. |
 
-### Punto de reanudación
+### Punto de trabajo actual
 
-Al retomar Fase 7, comenzar por las decisiones P0. Después, revisar entitlements/cuotas P1 y cerrar con pruebas y piloto. La oferta comercial V3 sirve como propuesta base; sus precios e hipótesis no se consideran aprobados por estar documentados aquí.
+La oferta V3 orienta el análisis, pero sus precios e hipótesis no se consideran aprobados por estar documentados. Se avanza primero en paridad y comportamiento técnico; checkout, política de excedentes y piloto requieren configuración/comercialización verificable.

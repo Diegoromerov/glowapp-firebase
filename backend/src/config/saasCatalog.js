@@ -67,7 +67,7 @@ const PLAN_CATALOG = Object.freeze({
   FREE_TRIAL: {
     id: 'FREE_TRIAL', name: 'Prueba Gratis', priceCop: 0, annualPriceCop: null, priceUsd: 0,
     interval: 'month', trialDays: 14,
-    description: 'Prueba GlowApp durante 14 días con hasta 3 personas y casi todas las herramientas del salón.', popular: false,
+    description: 'Prueba GlowApp durante 14 días con hasta 3 personas y 150 reservas al mes.', popular: false,
     capabilities: [
       'MAP_VISIBILITY', 'TEAM_MANAGEMENT', 'ONLINE_BOOKING', 'POS_INTEGRATION', 'INVENTORY',
       'BASIC_REPORTS', 'RESOURCES', 'COMPLIANCE', 'CUSTOM_BRANDING', 'LOYALTY', 'RECIPES',
@@ -83,7 +83,7 @@ const PLAN_CATALOG = Object.freeze({
   FREEMIUM: {
     id: 'FREEMIUM', name: 'Freemium', priceCop: 0, annualPriceCop: null, priceUsd: 0,
     interval: 'month', trialDays: 0,
-    description: 'Administra tu salón gratis de forma permanente con presencia en el mapa y agenda básica.', popular: false,
+    description: 'Administra tu salón gratis de forma permanente con 1 persona y 30 reservas al mes.', popular: false,
     capabilities: ['MAP_VISIBILITY', 'ONLINE_BOOKING', 'POS_RECEIPTS_ONLY', 'BASIC_REPORTS'],
     quotas: {
       MAP_VISIBILITY: 1, ONLINE_BOOKING: 30, DIRECT_BOOKINGS: 30, TEAM_SEATS: 1,
@@ -95,7 +95,7 @@ const PLAN_CATALOG = Object.freeze({
   BASIC: {
     id: 'BASIC', name: 'Básico', priceCop: 99000, proposedAnnualPriceCop: 79200, priceUsd: null,
     interval: 'month', trialDays: 0,
-    description: 'Agenda, caja, inventario y recursos para un salón de hasta 5 personas.', popular: false,
+    description: 'Agenda, caja, inventario y recursos para un salón de hasta 5 personas, con reservas ilimitadas.', popular: false,
     capabilities: [...COMMON_PAID, 'INVOICING_ADDON'],
     quotas: {
       MAP_VISIBILITY: 1, ONLINE_BOOKING: null, DIRECT_BOOKINGS: null, TEAM_SEATS: 5,

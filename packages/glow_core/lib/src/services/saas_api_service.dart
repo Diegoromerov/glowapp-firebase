@@ -140,34 +140,47 @@ class SaasApiService {
                 : null;
         final catalogCapabilities =
             data['capabilities'] as Map<String, dynamic>? ?? const {};
-        for (final capability
-            in (raw['capabilities'] as List<dynamic>? ?? const [])) {
-          final code = capability.toString();
-          final definition = catalogCapabilities[code];
+        final capabilityCodes =
+            (raw['capabilities'] as List<dynamic>? ?? const [])
+                .map((capability) => capability.toString())
+                .toSet();
+        for (final capability in capabilityCodes) {
+          final definition = catalogCapabilities[capability];
           if (definition is Map<String, dynamic> &&
-              definition['kind'] == 'boolean') {
-            features.add((definition['label'] ?? code).toString());
+              (definition['kind'] == 'boolean' ||
+                  capability == 'ONLINE_BOOKING')) {
+            features.add((definition['label'] ?? capability).toString());
           }
         }
+        final featureMetrics = <String, String>{
+          'RESOURCES': 'RESOURCES',
+          'AURA_BUSINESS': 'AURA_QUERIES',
+          'WHATSAPP_INTEGRATION': 'WHATSAPP_MESSAGES',
+          'INVOICING': 'INVOICING_DOCUMENTS',
+          'INVOICING_ADDON': 'INVOICING_DOCUMENTS',
+          'API_KEYS': 'API_CALLS',
+          'MULTI_SITE': 'SITES',
+        };
+        for (final entry in featureMetrics.entries) {
+          if (!capabilityCodes.contains(entry.key)) continue;
+          final quota = rawQuotas[entry.value];
+          if (quota is! Map<String, dynamic>) continue;
+          final value = quota['limit'];
+          if (value is! num && value != null) continue;
+          final label = _commercialQuotaLabel(entry.value);
+          if (value == null) {
+            features.add('$label ilimitados');
+          } else if (value > 0) {
+            features.add('$value $label');
+          }
+        }
+
         for (final entry in rawQuotas.entries) {
           final quota = entry.value;
           if (quota is! Map<String, dynamic>) continue;
           final value = quota['limit'];
           if (value is num) limits[entry.key] = value.toInt();
           if (value == null) unlimitedLimits.add(entry.key);
-          if (quota['kind'] == 'boolean') continue;
-          final label = quota['label']?.toString();
-          final unit = quota['unit']?.toString();
-          if (entry.key == 'API_CALLS') continue;
-          if (const {'TEAM_SEATS', 'DIRECT_BOOKINGS', 'ONLINE_BOOKING'}
-              .contains(entry.key)) continue;
-          if (label != null && label.isNotEmpty && value is num && value > 0) {
-            features.add(value == 1 && quota['kind'] == 'boolean'
-                ? '$label incluido'
-                : '$value $unit de $label');
-          } else if (label != null && label.isNotEmpty && value == null) {
-            features.add('$label ilimitadas');
-          }
         }
 
         return SaasPlan(
@@ -246,28 +259,62 @@ class SaasApiService {
     }
   }
 
+  static String _commercialQuotaLabel(String metric) {
+    switch (metric) {
+      case 'RESOURCES':
+        return 'recursos';
+      case 'AURA_QUERIES':
+        return 'consultas de Aura';
+      case 'WHATSAPP_MESSAGES':
+        return 'mensajes de WhatsApp';
+      case 'INVOICING_DOCUMENTS':
+        return 'documentos electrónicos al mes';
+      case 'API_CALLS':
+        return 'llamadas a la API al mes';
+      case 'SITES':
+        return 'sedes';
+      default:
+        return metric.toLowerCase().replaceAll('_', ' ');
+    }
+  }
+
   static List<String> _planFeatures(SaasPlanTier tier) {
     switch (tier) {
       case SaasPlanTier.freeTrial:
         return const [
-          'Presencia en el mapa', 'Gestión de equipo', 'Reservas en línea',
-          'Caja y ventas', 'Inventario', 'Reportes básicos',
-          'Recursos ilimitados', 'Checklists de cumplimiento',
-          'Marca personalizada', 'Fidelización y puntos del salón',
-          'Recetas y consumo de productos', 'Analítica avanzada',
+          'Presencia en el mapa',
+          'Gestión de equipo, roles y permisos',
+          'Reservas en línea',
+          'Caja y ventas',
+          'Inventario',
+          'Reportes básicos',
+          'Checklists de cumplimiento',
+          'Marca personalizada',
+          'Fidelización y puntos del salón',
+          'Recetas y consumo de productos',
+          'Analítica avanzada',
           'Facturación electrónica en modo de pruebas',
-          'Aura para el negocio', 'Mensajes de WhatsApp',
+          'Recursos ilimitados',
+          '10 consultas de Aura',
+          '20 mensajes de WhatsApp',
         ];
       case SaasPlanTier.freemium:
         return const [
-          'Presencia en el mapa', 'Reservas en línea', 'Recibos no fiscales',
+          'Presencia en el mapa',
+          'Reservas en línea',
+          'Recibos no fiscales',
           'Reportes básicos',
         ];
       case SaasPlanTier.basic:
         return const [
-          'Presencia en el mapa', 'Gestión de equipo', 'Reservas en línea',
-          'Caja y ventas', 'Inventario', 'Reportes básicos',
-          'Gestión de recursos', 'Checklists de cumplimiento',
+          'Presencia en el mapa',
+          'Gestión de equipo, roles y permisos',
+          'Reservas en línea',
+          'Caja y ventas',
+          'Inventario',
+          'Reportes básicos',
+          'Checklists de cumplimiento',
+          '5 recursos',
         ];
       case SaasPlanTier.growth:
       case SaasPlanTier.pro:
