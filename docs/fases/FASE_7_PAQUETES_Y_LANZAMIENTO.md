@@ -93,6 +93,13 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 - No se ejecutó ni se canceló ninguna suscripción remota en Stripe. El cambio evita crear nuevas suscripciones remotas para pruebas; no reconcilia ni cancela registros históricos existentes en Stripe.
 - La prueba real de expiración y downgrade con tenant QA todavía falta. Esto no cierra el checkout, conciliación de pagos, auditoría integral de cuotas, decisiones comerciales ni piloto; Fase 7 sigue en curso.
 
+## Paridad de medición de reservas — 26 de noviembre de 2026
+
+- Se corrigió el dashboard SaaS para usar el mismo período mensual de Bogotá que usa el contador de cuotas, incluidos historial y reporte de recordatorios.
+- La recuperación histórica de reservas directas ahora deduplica reservas agrupadas con `primary_booking_id` y filtra únicamente la reserva primaria, igual que el contador transaccional que permite o bloquea nuevas reservas.
+- PR #136 se integró a `main` en `36823f8`; Backend CI pasó. Railway production deployment `696816cc-811b-42f1-8cb2-d74419154520` terminó SUCCESS y `/api/health` confirmó `OK` con ese commit.
+- Este arreglo cierra la discrepancia de período y deduplicación para reservas directas; no certifica todavía las demás métricas, todos los canales de reserva ni el comportamiento de agotamiento por plan.
+
 ## Secuencia de implementación recomendada
 
 1. Resolver el vencimiento de Prueba Gratis con fecha de inicio y transición segura, sin alterar retroactivamente tenants existentes.
