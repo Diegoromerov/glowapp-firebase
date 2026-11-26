@@ -1,6 +1,6 @@
 # Fase 7 — Paquetes comerciales y lanzamiento gradual
 
-**Estado:** En curso. Línea base vigente en `main` (`be1f987a0d6cfcd033f3bb1cd71296a52df6092e`); el ciclo de Prueba Gratis está desplegado en producción. Checkout conciliado, definición final de oferta y piloto siguen abiertos.
+**Estado:** En curso. Línea base vigente en `main` (`2cb857bb48a3d794b904a113cbb645b8f569f5f2`); el ciclo de Prueba Gratis y la presentación alineada del catálogo están desplegados en producción. Checkout conciliado, definición final de oferta y piloto siguen abiertos.
 
 **Objetivo:** que la oferta presentada a salones coincida con el catálogo, las condiciones de contratación, las capacidades realmente protegidas y las cuotas medidas; preparar una salida gradual que pueda detenerse.
 
@@ -36,6 +36,13 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | Agotamiento de cuotas | `consumeUsage` aplica límite atómico en sus puntos de uso; disponibilidad y comportamiento varían por ruta. No hay una política comercial uniforme documentada para todos los límites. | Definir aviso, bloqueo, tolerancia y recuperación para cada métrica antes del lanzamiento. |
 | Producción | Migration 202 aplicada; salud de API informa PostgreSQL disponible. El job dedicado corre a diario a las 06:00 de Bogotá; su ejecución manual de control reportó 0 pruebas vencidas, 0 salones actualizados y 0 eventos, conforme a la ventana inicial de 14 días. Firebase Hosting del proveedor fue publicado y responde HTTP 200. | Evidencia de despliegue y ejecución del job, no de una expiración real ni de un cobro real. Las rutas de pagos siguen cerradas cuando falta configuración/conciliación segura. |
 
+## Presentación del catálogo sincronizada — 26 de noviembre de 2026
+
+- Se alinearon las descripciones de Prueba Gratis, Freemium y Básico entre el backend y el respaldo local Flutter. Ambas muestran los mismos períodos y cuotas principales.
+- El catálogo remoto del onboarding ahora muestra Reservas en línea y traduce cuotas de recursos, Aura, WhatsApp, documentos, API y sedes a etiquetas comerciales; omite contadores internos de NIT, mapa y equipo que ya aparecen en otras partes de la tarjeta.
+- Backend y proveedor se integraron en `main` (`2cb857b`). CI de backend y Flutter pasó; Railway reportó el API online y `GET /api/saas/catalog` devolvió catálogo V2 con FREE_TRIAL, FREEMIUM y BASIC disponibles. Firebase Hosting del proveedor respondió HTTP 200 tras el despliegue live.
+- Sigue faltando una prueba automatizada que compare integralmente descripción, capacidades y funciones visibles del catálogo remoto con el respaldo local. Por eso la paridad de catálogo se considera mejorada, pero todavía parcial.
+
 ## Hallazgos corregidos y cerrados
 
 - Se reemplazaron las cifras antiguas de la tabla y del checkout por los valores actuales del catálogo V2.
@@ -51,7 +58,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | P0 | Validar de extremo a extremo la expiración de una prueba nueva, el downgrade a Freemium y la protección de una suscripción pagada. | Job y despliegue activos; ejecución manual sin vencimientos confirmó que no degrada tenants prematuramente. Falta una prueba controlada con tenant de QA y fecha expirada, más evidencia de protección de suscripción pagada. |
 | P0 | Confirmar que checkout, consentimiento, renovación y cambio de plan funcionan con configuración productiva. Wompi checkout permanece cerrado si faltan sus credenciales/flags; Stripe requiere su configuración y webhook. | Una compra autorizada de QA se concilia una sola vez y activa el plan correcto; sin cobros reales a usuarios ajenos. |
 | P1 | Completar matriz por capacidad con catálogo → guard → rutas de lectura/escritura → métrica → agotamiento → UI, incluyendo todos los canales de reserva e invitación. | Cada beneficio vendido tiene gate y prueba de autorización; cada cuota tiene definición y efecto coherente. |
-| P1 | Conciliar fallback Flutter y catálogo backend para nombres, límites, capacidades, disponibilidad y texto. Mantener el backend como fuente de verdad; añadir comprobación de paridad al CI. | Cambios incompatibles rompen CI; modo sin conexión no inventa precios/ofertas. |
+| P1 | Completar paridad Flutter/backend para nombres, precios, límites, capacidades y funciones visibles. Las descripciones comerciales activas ya están alineadas y el render remoto oculta métricas internas; falta probar integralmente esos invariantes en CI. | Cambios divergentes de oferta activa fallan CI; el modo sin conexión conserva la misma oferta y no inventa beneficios. |
 | P1 | Acordar y mostrar qué pasa al alcanzar cada límite, qué datos se conservan al bajar de plan y cómo reactivar al mejorar de nivel. | Mensajes y comportamiento de API/UI coinciden y no destruyen datos al bajar de plan. |
 | P2 | Aclarar alcance operativo de WhatsApp, Aura, POS, multi-sede y soporte; comprobar proveedor, permisos, cuotas y capacidad de atención antes de activar oferta. | Beneficio se puede entregar y medir; soporte/SLA no se promete sin capacidad. |
 | P2 | Preparar piloto y rollout gradual: cohortes, métricas de fallo/uso/soporte, interruptores y reversión. | Piloto medido; criterios de ampliación y reversión escritos; no hay divergencias de tenant/plan/cuota. |
@@ -79,7 +86,7 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 
 ## Registro de esta ejecución
 
-- Base: `main` en `be1f987a0d6cfcd033f3bb1cd71296a52df6092e`.
+- Base: `main` en `2cb857bb48a3d794b904a113cbb645b8f569f5f2`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
 - La auditoría de código se complementó con verificación de salud productiva, ejecución del job y confirmación del hosting.
 - Resultado: se cerró la brecha técnica de inicio y vencimiento programado de Prueba Gratis. Fase 7 permanece abierta por la prueba controlada de downgrade, conciliación productiva de cobros, matriz integral de cuotas y rutas, decisiones comerciales pendientes y piloto medido.
