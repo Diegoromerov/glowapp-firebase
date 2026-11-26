@@ -18,7 +18,7 @@ Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos 
 | 4 | Fidelización propia del salón | Elegir entre incluirla en planes, venderla como complemento o ejecutarla como piloto. Definir costos, límites y reglas; mantenerla separada de los puntos globales GlowApp. | Oferta comercial y técnica clara para el programa de puntos del salón. |
 | 5 | Multi-sede | Definir el número de sedes, permisos y funciones de consolidación por plan, especialmente para Empresas. | Límites de sedes explícitos en catálogo, contratos y backend. |
 | 6 | Procesos de integración | La app ahora explicará que cuentan solicitudes externas autenticadas con llave API; falta acordar comercialmente el comportamiento ante agotamiento (bloqueo, aviso, compra de excedente u otra regla). | Métrica entendible y política de excedentes aplicada de forma consistente. |
-| 7 | Paridad integral de catálogo y respaldo | La presentación remota ya usa el precio y la periodicidad recibidos de API y las unidades de cuota publicadas en el catálogo. El fallback conserva precios locales. La comprobación automatizada sigue cubriendo disponibilidad y algunos límites, no todas las descripciones, precios, capacidades y etiquetas. | Extender CI para comparar toda la oferta activa entre el catálogo backend y Flutter y fallar ante divergencias; mantener el backend como fuente de verdad. |
+| 7 | Paridad integral de catálogo y respaldo | **Cerrado para los planes activos de contratación.** El catálogo remoto usa precio, periodicidad y unidades de API; el respaldo Flutter compara en CI disponibilidad, compra habilitada, nombre, descripción, precio, beneficios visibles y todas las cuotas declaradas para Prueba Gratis, Freemium y Básico. | CI debe seguir bloqueando divergencias de la oferta activa. Los planes propuestos/no contratables no se presentan como oferta activa ni se incluyen en esta validación de fallback. |
 | 8 | Facturación, cambios de plan y piloto | Definir excedentes, upgrade/downgrade, textos de facturación y alcance del piloto. Instrumentar métricas y preparar un mecanismo de rollback antes de ampliar el lanzamiento. | Flujo de contratación y cambio de plan comprensible, medible y reversible. |
 | 9 | Verificación integral de límites | Ejecutar pruebas de integración en producción controlada para verificar reservas, invitaciones/asientos, API y capacidades en todos los canales de creación, reintento y cambio de plan. | Evidencia por flujo de que el backend aplica correctamente cuotas y permisos. |
 
@@ -74,7 +74,7 @@ Los puntos sobre el proveedor tecnológico DIAN, facturación real, complementos
 - Se agregó una prueba de middleware: Básico recibe 403 para `LOYALTY` y Prueba Gratis pasa el gate. La prueba Jest correspondiente pasó (16 pruebas del archivo).
 - Publicado en producción en el commit `f93cfb90f44a029a04a8e8193b392925396ed45d`. Backend CI y pipeline de calidad/build Flutter pasaron; Firebase Hosting live del proveedor se desplegó correctamente. `/api/health` confirma PostgreSQL disponible y el portal proveedor responde HTTP 200.
 
-Pendiente todavía: la comprobación cubre la paridad de disponibilidad/contratación, no la matriz completa de cuotas y descripciones. El resto de herramientas (inventario, POS, recursos, facturación, Aura, WhatsApp y multi-sede) requiere mapear cada ruta de escritura/lectura con sus entitlements antes de afirmar que todos sus límites están aplicados. No se ejecutó una reserva real en producción ni se configuró un proveedor DIAN o cobro recurrente, para no alterar datos ni activar condiciones comerciales sin configuración.
+Pendiente todavía: la paridad de fallback ya está cubierta para los planes activos; sigue pendiente mapear cada ruta de escritura/lectura de inventario, POS, recursos, facturación, Aura, WhatsApp y multi-sede con sus entitlements antes de afirmar cobertura integral. No se ejecutó una reserva real en producción ni se configuró un proveedor DIAN o cobro recurrente, para no alterar datos ni activar condiciones comerciales sin configuración.
 
 ## Faltantes prioritarios — fase reanudada
 
@@ -84,7 +84,7 @@ También quedaron desplegados el catálogo V4, la migración 203, la compatibili
 
 **Estado de trabajo:** fase reanudada. Resolver en paralelo las brechas técnicas seguras; mantener bloqueados precios propuestos, cobros reales y módulos no configurados hasta contar con decisiones y proveedores necesarios.
 
-**Avance publicado el 26 de noviembre:** el commit `2cb857b` alinea las descripciones activas del catálogo y el respaldo Flutter; el formateador del catálogo remoto deja de mostrar las cuotas internas de NIT/mapa/equipo y representa Reservas en línea y las cuotas comerciales. CI del backend/Flutter pasó, Railway quedó online, el catálogo V2 se verificó por API y Firebase Hosting proveedor devolvió HTTP 200. La prueba de paridad completa queda pendiente.
+**Avance publicado el 26 de noviembre:** el commit `2cb857b` alinea las descripciones activas del catálogo y el respaldo Flutter; el formateador remoto presenta las cuotas comerciales. PR #144 agrega comprobación CI para nombre, descripción, precio, beneficios, cuotas y disponibilidad/compra de los planes activos. CI backend/Flutter y Hosting live pasaron. La paridad de catálogo activa queda cerrada; permanece la auditoría de rutas/entitlements y límites operativos.
 
 | Prioridad | Faltante | Trabajo pendiente al retomarlo | Condición para cerrarlo |
 |---|---|---|---|
@@ -99,3 +99,11 @@ También quedaron desplegados el catálogo V4, la migración 203, la compatibili
 ### Punto de trabajo actual
 
 La oferta V3 orienta el análisis, pero sus precios e hipótesis no se consideran aprobados por estar documentados. Se avanza primero en paridad y comportamiento técnico; checkout, política de excedentes y piloto requieren configuración/comercialización verificable.
+
+## Paridad de catálogo activo — 26 de noviembre de 2026
+
+- PR [#144](https://github.com/Diegoromerov/glowapp-firebase/pull/144), commit `9740d7f`, quedó integrado en `main`.
+- `saasCommercialCatalog.nodetest.js` compara Prueba Gratis, Freemium y Básico entre el catálogo backend y el respaldo Flutter: nombre, descripción, precio, beneficios visibles, todas las cuotas declaradas y banderas de disponibilidad/compra.
+- El texto local de Prueba Gratis quedó alineado a 150 reservas mensuales y se normalizaron unidades de cuota. El E2E de catálogo reintenta disponibilidad de API mientras inicia el esquema, evitando la carrera de arranque observada en CI.
+- Backend CI del PR y de `main` #45897948551 pasó; Flutter CI #45897948635 pasó. Firebase live #45898280790 terminó SUCCESS; el hosting proveedor responde HTTP 200.
+- Se cierra el punto 7 para la oferta activa de nueva contratación. Los niveles propuestos permanecen sin venta y los módulos/cuotas operativos siguen sujetos a la auditoría del punto 9.
