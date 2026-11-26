@@ -87,3 +87,26 @@ PR #113 agregó validaciones de planes y métodos de pago, y bloqueó el otorgam
 La prueba real de almacenamiento ejecutada después usó las variables de producción del servicio por CLI y el certificado raíz del sistema (validación TLS activa). El PDF sintético se generó con `invoiceService`, se guardó/cargó/descifró en R2 y el objeto QA se eliminó y verificó ausente. La prueba no creó una fila en `invoices` ni una transacción; sigue pendiente el flujo pago→factura→descarga autenticada.
 
 La corrección inicial de mapeo de facturas se publicó mediante PR #106 (commit `7f05ab84cd5ebb2c6cbabac8f03907898addf187`, Railway `SUCCESS`). Las protecciones de cobro, webhook y pantalla se integraron mediante PR #107 (commit `fd0ac71e0405b39e5d4a42a29cb4c3510d2d3785`, Railway `SUCCESS`; workflow Firebase live `45778750924`). La recuperación por correo y rol RLS se publicó mediante PR #109 (commit `8106235863e5f916a8462b6ffcad255056594f58`, Railway deployment `120645d8-a591-4500-84ba-a37b746557a3`, `SUCCESS`). La implementación de PDF cifrado en R2 y la descarga autenticada desde la app Prestador se integró mediante PR #110 (commit `e458f850f598375209cdf6ff7e6ff4488e397a98`); el workflow Firebase `45786316389` publicó la app Prestador. PR #112 corrigió el mapeo de consultas del job de recuperación al esquema migrado; CI `45788092490` pasó y Railway desplegó `8329dc4ed27bcefde5b53395ac621e8a10969964` en `0629473d-6621-4ea4-a727-ebe36c2ba095`, `SUCCESS`. PR #114 ajustó los controles de pago a las capacidades disponibles; CI `45792534477` pasó en el reintento y se integró como `3dac67ca9a6ba5879609c57d8c9c17acb6b2a497`. Railway API y panel están en `SUCCESS` con los ocho servicios en línea. No se inició checkout, cobro, renovación ni cancelación en producción. Checkout, pruebas E2E de pagos y el job automático siguen pendientes porque Stripe no está configurado; el job permanece sin cron.
+
+## Avance de implementación del ciclo Wompi (26 de noviembre de 2026)
+
+La rama `codex/phase6-wompi-recurring-cycle` añade al código local:
+
+- Checkout SaaS de tarjeta con tokenización en el cliente y aceptación explícita de términos, tratamiento de datos y cobro mensual. El monto se calcula exclusivamente desde el catálogo del servidor.
+- Creación de payment source Wompi; el ID se cifra con AES-256-GCM y clave SaaS dedicada, con clave anterior opcional para rotación. No se almacenan PAN ni CVC.
+- Ledger de intentos con referencia única, límite de un intento abierto por tenant, protección contra doble envío y estado `UNKNOWN` ante timeout para evitar repetir a ciegas un posible cobro.
+- Webhook `transaction.updated`: valida checksum, vuelve a consultar la transacción en Wompi y coteja referencia, monto y moneda antes de activar/sincronizar el plan o emitir comprobante idempotente. Un evento que llega antes del commit se responde con reintento.
+- Cancelación inmediata o al final del período; un worker cada 15 minutos procesa renovaciones, cancelaciones programadas y recuperación con máximo tres intentos y período de gracia de 14 días.
+- El checkout permanece cerrado por defecto. Los flags de cobro y COF están apagados; además, un cobro en live requiere dos activaciones adicionales. La recurrencia live queda condicionada a confirmar elegibilidad comercial COF/RBM de Wompi.
+- Se valida que la fuente de pago responda `AVAILABLE`. La renovación automática se conserva solo para Visa/Mastercard; si la transacción aprobada informa otra marca o no informa una marca elegible, se concede el período pagado y se programa cancelación al vencimiento, sin conservar una fuente para renovación.
+
+Este código aún no se considera desplegado ni verificado contra Wompi: en esta revisión solo se ejecutaron `node --check`, `git diff --check` y `flutter analyze` focalizado. El análisis Flutter encontró únicamente una recomendación `const`, una importación innecesaria preexistente y un `!` innecesario en código editado; no hay errores de compilación. No se ejecutaron pruebas de pago, no se usaron secretos, no se llamó a Wompi y no se generaron cobros. La Fase 6 se estima en **60 %** y sigue abierta; el E2E productivo permanece en **0 %**.
+
+### Pendientes para cerrar Fase 6
+
+1. Pasar revisión CI de migración, RLS, idempotencia del webhook, renovación y reintentos; desplegar el código con los flags apagados.
+2. Confirmar y probar el contrato Wompi de fuentes de pago en sandbox, incluido el webhook y una transacción de QA autorizada.
+3. Verificar COF/RBM con Wompi antes de habilitar cobros periódicos; probar el ciclo mensual y su monto constante en un entorno autorizado.
+4. Comprobar cancelación, cambio de plan, renovación aprobada/rechazada, reintentos, mora y período de gracia con eventos reales de sandbox.
+5. Probar en la app la autorización del precio mensual, estado pendiente, conciliación, comprobante y descarga por tenant.
+6. Revisar recepción de comprobantes, tratamiento fiscal y evidencia de consentimiento antes de abrir el checkout.

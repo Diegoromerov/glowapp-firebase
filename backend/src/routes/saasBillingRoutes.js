@@ -8,6 +8,7 @@ const subscriptionService = require('../services/subscriptionService');
 const invoiceService = require('../services/invoiceService');
 const stripeService = require('../services/stripeService');
 const { PLAN_CATALOG, PLAN_IDS } = require('../config/saasCatalog');
+const wompiSaasBilling = require('../services/wompiSaasBillingService');
 
 const router = express.Router();
 
@@ -27,9 +28,9 @@ router.get('/', async (req, res) => {
     // Suscripción actual
     const subscription = await subscriptionService.getActiveSubscription(tenantId);
     const stripeConfigured = stripeService.isConfigured();
-    const paymentProvider = subscription?.stripe_subscription_id
+    const paymentProvider = subscription?.billing_provider || (subscription?.stripe_subscription_id
       ? 'stripe'
-      : subscription?.wompi_subscription_id ? 'wompi' : null;
+      : subscription?.wompi_subscription_id ? 'wompi' : null);
 
     // Facturas recientes
     const invoices = await invoiceService.getInvoicesByTenant(tenantId, { limit: 10 });
@@ -51,6 +52,7 @@ router.get('/', async (req, res) => {
       tenantId,
       tenantName: req.saas.name,
       currentPlan: req.saas.plan,
+      checkoutAvailable: wompiSaasBilling.isCheckoutAvailable(),
       subscription: subscription ? {
         id: subscription.id,
         plan: subscription.plan,
@@ -61,7 +63,7 @@ router.get('/', async (req, res) => {
         currency: subscription.currency || 'COP',
         paymentProvider,
         canManagePayments: Boolean(stripeConfigured && subscription.stripe_customer_id),
-        canCancel: Boolean(stripeConfigured && subscription.stripe_subscription_id)
+        canCancel: Boolean((stripeConfigured && subscription.stripe_subscription_id) || subscription.billing_provider === 'wompi')
       } : null,
       nextPayment,
       recentInvoices: invoices.map(inv => ({
@@ -226,6 +228,24 @@ router.post('/checkout', requireOwner, async (req, res) => {
       return res.status(400).json({ error: 'Plan inválido', validPlans });
     }
 
+    if (currency === 'COP') {
+      if (!wompiSaasBilling.isCheckoutAvailable()) {
+        return res.status(503).json({ error: 'El checkout Wompi está deshabilitado para esta cuenta.' });
+      }
+      const result = await wompiSaasBilling.startCheckout(pool, {
+        tenantId: req.saas.tenantId,
+        userId: req.user.id,
+        userEmail: req.user.email,
+        plan,
+        paymentToken: req.body.paymentToken,
+        acceptRecurring: req.body.acceptRecurring === true,
+        acceptTerms: req.body.acceptTerms === true,
+        acceptPersonalData: req.body.acceptPersonalData === true,
+        ip: req.ip,
+      });
+      return res.status(202).json({ provider: 'wompi', ...result });
+    }
+
     // Wompi SaaS links are one-off payments and have no verified activation
     // handler yet. Do not create a charge that the subscription system cannot
     // reconcile. Stripe checkout is available only with its signed webhook.
@@ -294,6 +314,22 @@ router.post('/checkout', requireOwner, async (req, res) => {
   } catch (error) {
     console.error('[saasBillingRoutes] Error creating checkout:', error.message);
     res.status(500).json({ error: 'Error creando checkout', detail: error.message });
+  }
+});
+
+router.get('/wompi/acceptance', requireOwner, async (_req, res) => {
+  try {
+    if (!wompiSaasBilling.isEnabled()) return res.status(503).json({ error: 'El checkout Wompi no está habilitado.' });
+    const tokens = await require('../services/wompiClient').getAcceptanceTokens();
+    return res.json({
+      acceptanceToken: tokens.acceptanceToken,
+      personalDataAuthToken: tokens.personalDataAuthToken,
+      termsUrl: tokens.permalink,
+      personalDataUrl: tokens.personalDataAuthPermalink,
+      consentVersion: wompiSaasBilling.CONSENT_VERSION,
+    });
+  } catch (error) {
+    return res.status(error.status || 503).json({ error: error.message });
   }
 });
 
@@ -366,10 +402,13 @@ router.post('/cancel', requireOwner, async (req, res) => {
     const { atPeriodEnd = true } = req.body;
 
     const currentSub = await subscriptionService.getActiveSubscription(req.saas.tenantId);
-    if (currentSub?.wompi_subscription_id) {
-      return res.status(409).json({
-        error: 'La cancelación de suscripciones Wompi no está disponible hasta validar el flujo oficial de ciclo y cancelación.'
-      });
+    if (currentSub?.billing_provider === 'wompi') {
+      const subscription = await wompiSaasBilling.cancelSubscription(pool, req.saas.tenantId, atPeriodEnd === true);
+      if (!subscription) return res.status(404).json({ error: 'No hay una suscripción Wompi activa para cancelar.' });
+      if (!atPeriodEnd) {
+        await pool.query(`UPDATE business_profiles SET saas_plan='FREEMIUM',updated_at=NOW() WHERE id=$1`, [req.saas.tenantId]);
+      }
+      return res.json({ message: atPeriodEnd ? 'La suscripción finalizará al término del período pagado.' : 'La suscripción se canceló inmediatamente.', subscription });
     }
     if (!currentSub?.stripe_subscription_id) {
       return res.status(409).json({ error: 'No hay una suscripción con un proveedor de pago compatible para cancelar.' });
@@ -399,6 +438,11 @@ router.get('/payment-methods', async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const currentSub = await subscriptionService.getActiveSubscription(req.saas.tenantId);
+    if (currentSub?.billing_provider === 'wompi') {
+      return res.json({ paymentMethods: currentSub.wompi_payment_source_type ? [{
+        id: 'saved-card', type: 'CARD', card: { brand: currentSub.wompi_card_brand || null, last4: currentSub.wompi_card_last_four || null }, isDefault: true,
+      }] : [] });
+    }
     if (!currentSub?.stripe_customer_id || !stripeService.isConfigured()) {
       return res.json({ paymentMethods: [] });
     }
