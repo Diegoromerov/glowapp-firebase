@@ -121,7 +121,12 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-                  _currentPlanCard(subscription, tier, billing.nextPayment),
+                  _currentPlanCard(
+                    subscription,
+                    tier,
+                    billing.nextPayment,
+                    profileState.profile!.trialEndsAt,
+                  ),
                   if (billing.latestBillingAttempt != null) ...[
                     const SizedBox(height: 12),
                     _latestBillingAttemptCard(billing.latestBillingAttempt!),
@@ -210,10 +215,20 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     Subscription? subscription,
     SaasPlanTier tier,
     Map<String, dynamic>? nextPayment,
+    DateTime? profileTrialEndsAt,
   ) {
-    final statusLabel = subscription?.status.label ?? 'Sin suscripción';
-    final statusColor = subscription?.status.color ?? _muted;
+    final statusLabel = subscription?.status.label ??
+        (tier == SaasPlanTier.freeTrial ? 'Prueba activa' : 'Sin suscripción');
+    final statusColor = subscription?.status.color ??
+        (tier == SaasPlanTier.freeTrial ? Colors.amber.shade800 : _muted);
     final onTrial = subscription?.isOnTrial ?? false;
+    final freeTrialEndsAt = subscription == null &&
+            tier == SaasPlanTier.freeTrial
+        ? profileTrialEndsAt
+        : null;
+    final freeTrialDaysLeft = freeTrialEndsAt == null
+        ? null
+        : freeTrialEndsAt.difference(DateTime.now()).inDays.clamp(0, 999);
 
     return Card(
       elevation: 0,
@@ -278,6 +293,15 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
               _infoRow(
                 Icons.hourglass_top_rounded,
                 'Prueba gratis: ${subscription!.trialDaysLeft} días restantes',
+                Colors.amber.shade800,
+              ),
+            ],
+            if (freeTrialEndsAt != null) ...[
+              const SizedBox(height: 14),
+              _infoRow(
+                Icons.hourglass_top_rounded,
+                'Tu prueba gratis termina el ${_formatDate(freeTrialEndsAt)}. '
+                'Te quedan $freeTrialDaysLeft días; después pasarás a Freemium.',
                 Colors.amber.shade800,
               ),
             ],

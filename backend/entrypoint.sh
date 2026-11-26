@@ -6,6 +6,11 @@ set -e
 
 echo "🚀 Starting GlowApp Backend..."
 echo "📦 Environment: ${NODE_ENV}"
+# A cron service without a real DB must fail closed instead of starting the API.
+if [ "${RUN_SAAS_FREE_TRIAL_EXPIRATION_CRON:-false}" = "true" ] && [ -z "$DATABASE_URL" ]; then
+  echo "❌ DATABASE_URL is required for the SaaS trial cron"
+  exit 1
+fi
 # Solo host/puerto, sin credenciales
 echo "🔗 Database host: $(printf '%s' "$DATABASE_URL" | sed -E 's#^postgres(ql)?://[^@]*@##; s#/.*##')"
 
@@ -73,6 +78,13 @@ if [ -n "$DATABASE_URL" ]; then
       .finally(() => c.end().catch(() => {}));
   "; then
     exit 1
+  fi
+
+  # Dedicated Railway cron service: share the hardened runtime role setup, but
+  # do not run schema migrations or start the HTTP API on every scheduled run.
+  if [ "${RUN_SAAS_FREE_TRIAL_EXPIRATION_CRON:-false}" = "true" ]; then
+    echo "⏰ Running SaaS free-trial expiration job..."
+    exec node src/jobs/saasFreeTrialExpirationCron.js
   fi
 
   # 4. Run the migration script (prepareRlsDatabase.js applies schema + transfers ownership)

@@ -1,6 +1,6 @@
 # Fase 7 — Paquetes comerciales y lanzamiento gradual
 
-**Estado:** En curso. Esta revisión corrige la línea base del informe con el código de `main` (`f000c334fabb9a01d7200c30d9acd5dd1f84a1a9`). No se cambió ningún precio, plan, acceso de tenant ni configuración de cobro.
+**Estado:** En curso. Línea base auditada en `main` (`aa88a8d51b66be631c0e9ce67546401dbfde6c45`); la implementación del ciclo de prueba gratis está en desarrollo en una rama separada.
 
 **Objetivo:** que la oferta presentada a salones coincida con el catálogo, las condiciones de contratación, las capacidades realmente protegidas y las cuotas medidas; preparar una salida gradual que pueda detenerse.
 
@@ -48,7 +48,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 
 | Prioridad | Trabajo | Criterio de cierre |
 |---|---|---|
-| P0 | Implementar ciclo real de Prueba Gratis: persistir inicio/fin al provisionar, advertir vencimiento, pasar a Freemium de forma idempotente y conservar suscripciones pagas. Diseñar transición para los tenants existentes sin quitarles acceso por sorpresa. | Alta nueva tiene fecha consistente de 14 días; aviso y transición comprobados; upgrade cancela transición; rollback/documentación disponibles. |
+| P0 | Implementar ciclo real de Prueba Gratis: persistir inicio/fin al provisionar, advertir vencimiento, pasar a Freemium de forma idempotente y conservar suscripciones pagas. Diseñar transición para los tenants existentes sin quitarles acceso por sorpresa. | En código de rama: fechas, aviso en Facturación, job aislado y ventana de 14 días para los tenants FREE_TRIAL existentes. Falta CI, integración del job diario en Railway, despliegue y comprobar alta/vencimiento/cambio a plan pagado. |
 | P0 | Confirmar que checkout, consentimiento, renovación y cambio de plan funcionan con configuración productiva. Wompi checkout permanece cerrado si faltan sus credenciales/flags; Stripe requiere su configuración y webhook. | Una compra autorizada de QA se concilia una sola vez y activa el plan correcto; sin cobros reales a usuarios ajenos. |
 | P1 | Completar matriz por capacidad con catálogo → guard → rutas de lectura/escritura → métrica → agotamiento → UI, incluyendo todos los canales de reserva e invitación. | Cada beneficio vendido tiene gate y prueba de autorización; cada cuota tiene definición y efecto coherente. |
 | P1 | Conciliar fallback Flutter y catálogo backend para nombres, límites, capacidades, disponibilidad y texto. Mantener el backend como fuente de verdad; añadir comprobación de paridad al CI. | Cambios incompatibles rompen CI; modo sin conexión no inventa precios/ofertas. |
@@ -72,5 +72,6 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 
 - Base: `main` en `f000c334fabb9a01d7200c30d9acd5dd1f84a1a9`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
-- Cambios de aplicación/datos: ninguno. No se ejecutaron pruebas ni se hicieron llamadas autenticadas a producción.
-- Resultado: documento corregido; Fase 7 permanece abierta por el vencimiento real de la prueba, validación de cobros, cobertura integral de cuotas y piloto.
+- Este registro describe la ejecución documental anterior: no cambió aplicación/datos y no hizo llamadas autenticadas a producción.
+- Trabajo posterior en curso: migration 202, fechas en bootstrap, aviso de Facturación y cron aislado, aún sin merge ni despliegue.
+- Resultado: Fase 7 permanece abierta por integración operativa del vencimiento, validación de cobros, cobertura integral de cuotas y piloto.
