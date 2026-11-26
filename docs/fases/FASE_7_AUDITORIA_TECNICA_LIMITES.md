@@ -1,6 +1,6 @@
 # Fase 7 — Auditoría técnica de entitlements y cuotas
 
-**Estado:** auditoría estática parcial del código en `main` (`1621e3e`, 26 de noviembre de 2026). No equivale a pruebas de integración en producción ni a certificación de todas las variantes.
+**Estado:** auditoría técnica parcial. Backend CI `45902457105` aprobó las cuatro suites PostgreSQL (18/18 pruebas), incluida la integración aislada del vencimiento. La prueba crea fixtures desechables y no equivale a ejecutar el cron ni validar un tenant QA en producción; tampoco certifica todas las variantes.
 
 **Evidencia CI revisada:** Backend CI `45897948551` ejecutó la suite `tests/saasMembershipConcurrency.integration.test.js` contra un contenedor PostGIS/PostgreSQL efímero y reportó PASS; dentro de esa ejecución pasaron 17 pruebas de las tres suites PostgreSQL seleccionadas. Es evidencia de integración en PostgreSQL de CI, no de Railway producción.
 
@@ -20,11 +20,12 @@
 | `LOYALTY` | Rutas administrativas SaaS aplican `router.use(requireEntitlement('LOYALTY'))`; saldo, catálogo y canje del cliente exigen `requireSalonEntitlement('LOYALTY')`. Pruebas nodetest inspeccionan los gates. | Gate localizado en administración y cliente; prueba estática presente. Se mantiene separado de puntos globales GlowApp. Falta recorrido E2E multiparte y permisos por tenant. |
 | `API_CALLS` | Middleware de API key ejecuta `consumeUsage` antes de procesar la solicitud autenticada y responde límite excedido. Crear llaves requiere `API_KEYS`; las pruebas de `usageMeteringService` son unitarias/mocked. | Cuota localizada en el acceso autenticado por llave; no cuenta llamadas internas de la app. Falta E2E con llave y tenant QA para límite cero/alcanzado y no consumo en fallo. |
 | `ADVANCED_ANALYTICS` | Lectura analítica y alertas de uso exigen el entitlement correspondiente. | Gate localizado en las rutas SaaS revisadas; las métricas visibles deben permanecer alineadas al catálogo. |
+| Vencimiento de prueba | `saasFreeTrialExpirationCron.js` selecciona pruebas vencidas bajo `FOR UPDATE`, protege solo suscripciones pagas activas, actualiza el perfil y las sedes vinculadas y deja auditoría. `saasFreeTrialExpiration.integration.test.js` prueba Free Trial, legado, suscripción pagada, fecha futura, sincronización de sede, auditoría e idempotencia con PostgreSQL efímero. | CI `45902457105`: suite aprobada; 4 suites PostgreSQL y 18/18 pruebas aprobadas. No se ejecutó el cron sobre tenants productivos; sigue pendiente una validación controlada con tenant QA productivo. |
 | `AURA_QUERIES`, `WHATSAPP_MESSAGES`, `INVOICING_DOCUMENTS`, `SITES`, `CUSTOM_BRANDING` | Hay definiciones de capacidades/cuotas y add-ons en el catálogo, pero no se encontró en las rutas SaaS inspeccionadas un flujo de consumo por tenant para esas métricas. | No certificadas como funciones SaaS operativas. Los add-ons están `available: false` y los niveles con estas ofertas no son contratables; no deben activarse por su mera presencia en el catálogo. |
 
 ## Consecuencias y trabajo siguiente
 
-1. Ejecutar las suites existentes contra PostgreSQL efímero de CI y conservar el resultado por commit; no tratarlas como pruebas de producción.
+1. Validar con un tenant QA controlado la expiración real de prueba en producción; la integración de CI aprobada no se debe presentar como prueba de producción.
 2. Crear una matriz QA aislada para reservas y API que cubra cuota cero, cuota alcanzada, rollback/reintento y concurrencia. El servicio de reservas debe probar ambos orígenes sin crear citas de clientes reales.
 3. Añadir integración PostgreSQL para recursos concurrentes; la prueba actual solo usa DB simulada.
 4. Mantener deshabilitados los complementos e integraciones no disponibles, y no vender niveles propuestos.

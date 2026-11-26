@@ -3,8 +3,8 @@
 const { pool, systemPool } = require('../config/db');
 const { runAsSystem } = require('../config/tenantRouting');
 
-async function expireCompletedFreeTrials() {
-  return runAsSystem({ pool, systemPool }, async () => {
+async function expireCompletedFreeTrials(deps = { pool, systemPool }) {
+  return runAsSystem(deps, async () => {
     const { rows } = await pool.query(`
       WITH eligible AS (
         SELECT bp.id, bp.saas_plan AS previous_plan, bp.saas_trial_ends_at

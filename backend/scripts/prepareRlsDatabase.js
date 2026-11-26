@@ -58,6 +58,13 @@ const MIGRACIONES_BASE_NUEVA = [
 '012_business_engine.sql',
   // SaaS team context reads business_profiles.saas_plan (109 is independent of billing tables).
   '109_saas_tenant_plan.sql',
+  // Trial lifecycle integration tests need the production SaaS billing and audit schema.
+  '108_saas_usage_schema.sql',
+  '111_saas_billing_schema.sql',
+  '110_saas_schema_fix_and_complete.sql',
+  '202_saas_trial_lifecycle.sql',
+  // Fresh CI DBs need to recognize the legacy entitlement value in fixtures.
+  '203_saas_trial_legacy_entitlements.sql',
 '062_optimize_business_saas_postgres.sql',
 '082_memberships.sql',
 // The membership service writes invite_token and status PENDING.
@@ -69,7 +76,6 @@ const MIGRACIONES_BASE_NUEVA = [
 '122_catalogo_costo_sku.sql',
 '123_checkout_tenant_wompi.sql',
 '120_force_rls_all_tenant_tables.sql',
-// (110/111 — SaaS billing — se sacaron: arrastraban subscriptions/usage_metrics. Lo que hacía falta vive en la 130.)
 '124_auth_lookup_security_definer.sql',
 '008_social_integrations.sql',
 // 138: el CHECK de platform de social_shares_log no admitía SISTEMA (hoja del
@@ -184,6 +190,11 @@ const MIGRACIONES_ARRANQUE = [
   '012_business_engine.sql',
   // SaaS team context reads business_profiles.saas_plan (109 is independent of billing tables).
   '109_saas_tenant_plan.sql',
+  // Keep PostgreSQL CI aligned with the SaaS schema used by production cron jobs.
+  '108_saas_usage_schema.sql',
+  '111_saas_billing_schema.sql',
+  '110_saas_schema_fix_and_complete.sql',
+  '202_saas_trial_lifecycle.sql',
 
   '062_optimize_business_saas_postgres.sql',
 
