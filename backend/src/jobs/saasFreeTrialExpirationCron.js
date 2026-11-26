@@ -16,8 +16,10 @@ async function expireCompletedFreeTrials() {
             SELECT 1
             FROM subscriptions s
             WHERE s.tenant_id = bp.id
-              AND s.plan <> 'FREE_TRIAL'
-              AND s.status IN ('active', 'trialing', 'past_due', 'incomplete')
+              -- Solo un plan pago confirmado protege la cuenta del downgrade.
+              -- Checkout incompleto, trialing o en mora no equivale a pago.
+              AND s.plan IN ('BASIC', 'GROWTH', 'PRO', 'ENTERPRISE')
+              AND s.status = 'active'
           )
         FOR UPDATE OF bp
       ), expired AS (
