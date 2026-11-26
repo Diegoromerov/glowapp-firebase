@@ -1,83 +1,76 @@
 # Fase 7 — Paquetes comerciales y lanzamiento gradual
 
-**Estado:** En curso; primer ajuste de onboarding publicado en producción el 23 de noviembre de 2026.
+**Estado:** En curso. Esta revisión corrige la línea base del informe con el código de `main` (`f000c334fabb9a01d7200c30d9acd5dd1f84a1a9`). No se cambió ningún precio, plan, acceso de tenant ni configuración de cobro.
 
-**Entorno objetivo:** producción directa, por instrucción expresa del usuario; no se usa staging.
+**Objetivo:** que la oferta presentada a salones coincida con el catálogo, las condiciones de contratación, las capacidades realmente protegidas y las cuotas medidas; preparar una salida gradual que pueda detenerse.
 
-## Objetivo
+## Oferta actualmente declarada por el backend
 
-Hacer que la oferta para salones coincida con el catálogo, los cobros, los límites realmente medidos y los módulos autorizados. El despliegue comercial debe empezar de forma gradual y poder detenerse sin perder la operación.
+La fuente de catálogo es `backend/src/config/saasCatalog.js` (versión 2), publicada por `GET /api/saas/catalog`. El backend incluye todos los niveles en la respuesta; `commerciallyAvailable` distingue los niveles que pueden contratarse. Los precios propuestos no son precios habilitados.
 
-## Línea base verificada
-
-El catálogo backend `backend/src/config/saasCatalog.js` es la fuente declarativa pública consumida por el onboarding de proveedor mediante `GET /api/saas/catalog`. Los precios COP de los planes pagos coinciden con los valores mostrados en el onboarding de referencia y con los precios de `SaasPlanTier` en `glow_core`.
-
-| Plan actual | Precio mensual | Límites declarados | Capacidades anunciadas |
+| Nivel | Precio mensual vigente en catálogo | Disponibilidad para nuevas altas/compra | Capacidades/cuotas principales declaradas |
 |---|---:|---|---|
-| Prueba Gratis | $0 | 14 días, 3 asientos, 50 reservas/mes, 1.000 procesos de integración/mes | Mapa, equipo, reservas en línea, marca personalizada |
-| Freemium | $0 | Permanente, 1 asiento, 20 reservas/mes, 500 procesos de integración/mes | Reservas en línea |
-| Básico | $99.000 | 5 asientos, 200 reservas/mes, 10.000 procesos de integración/mes | Mapa, equipo y reservas |
-| Profesional | $249.000 | 20 asientos, reservas ilimitadas, 100.000 procesos/mes | Analítica avanzada, marca personalizada e integraciones |
-| Empresarial | $599.000 | Asientos, reservas y procesos ilimitados | Analítica, integraciones, WhatsApp, POS y soporte prioritario |
+| Prueba Gratis | $0 | Alta inicial | 14 días declarados; 3 personas; 150 reservas directas/mes; caja, inventario, reportes, recursos, marca, fidelización, recetas, analítica, modo de prueba de facturación, Aura y WhatsApp con cuotas limitadas. |
+| Freemium | $0 | Alta inicial | Permanente; 1 persona; 30 reservas directas/mes; mapa, reservas en línea, recibos no fiscales y reportes básicos. |
+| Básico | $99.000 COP | Disponible comercialmente en catálogo; checkout de producción no verificado y sujeto a configuración | 5 personas; reservas sin límite declarado; caja, inventario, reportes, recursos (5) y checklists; facturación no incluida. |
+| Crecimiento | Sin precio vigente; $169.000 es propuesto | No disponible | Oferta propuesta: hasta 10 personas y capacidades adicionales. |
+| Profesional | $249.000 COP conserva el precio de cuentas existentes | No disponible para nuevas condiciones/compra | Conserva derechos compatibles de API/analítica/marca para cuentas actuales; la oferta V3 con condiciones nuevas está propuesta. |
+| Empresarial | $599.000 COP conserva el precio de cuentas existentes | No disponible para nuevas condiciones/compra | Conserva derechos de cuentas actuales; la propuesta V3 de multi-sede, API y atención comercial no constituye oferta habilitada. |
 
-Los precios de pago se derivan también del catálogo en `invoiceService`. El proveedor carga desde el backend el catálogo, pero el selector de alta solo muestra Prueba Gratis y Freemium, de acuerdo con la regla actual del endpoint de bootstrap: los planes pagos se activan desde Facturación.
+Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofertas contratables. Los add-ons del catálogo declaran `available: false`. El onboarding Flutter consume el catálogo backend; si no puede cargarlo, su respaldo local permite solo Prueba Gratis, Freemium y Básico. En el selector, las nuevas altas pueden escoger Prueba Gratis o Freemium; el alta inicial rechaza planes pagos. Básico se contrata desde Facturación cuando el checkout está operativo.
 
-## Hallazgos y brechas
+## Evidencia técnica inspeccionada
 
-| Tema | Estado observado | Resolución requerida |
+| Área | Estado observado en `main` | Evaluación |
 |---|---|---|
-| Prueba de planes pagos | `subscriptionService.createSubscription` calcula 30 días de prueba para todo plan con precio mayor que cero, aunque el catálogo define `trialDays: 0` para Básico, Profesional y Empresarial. Las pruebas existentes también describen 30 días para Empresarial. | Alinear catálogo, checkout, pasarela y condiciones mostradas. No cambiar la política de cobro hasta confirmar si los 30 días fueron intencionales. |
-| WhatsApp, POS y soporte prioritario | Empresarial los anuncia; el catálogo declara capacidades, pero la revisión encontró solo cuotas booleanas y no encontró un SLA comercial definido. | Confirmar si se ofrecen hoy, definir alcance y soporte/SLA, y aplicar entitlement backend antes de venderlos como beneficios exclusivos. |
-| Operación del salón | Caja, inventario, recetas y recursos existen, pero no todos tienen capacidades/cuotas específicas en el catálogo de planes. | Decidir cuáles se incluyen por nivel y activar control común en backend. |
-| Fidelización | Se desplegó en `0388dea`, con reglas por salón y acreditación manual; no está incluida en el catálogo ni condicionada por plan. | Definir si es módulo incluido, complemento pago o piloto; determinar costos y límites antes de venderlo. |
-| Multi-sede | La oferta objetivo para empresas incluye varias sedes y consolidación, pero no aparece como cuota/capacidad explícita en el catálogo actual. | Definir número de sedes y permisos por plan; comprobar límites en backend y contratos. |
-| Procesos de integración | API_CALLS se expresa al usuario como procesos de integración, pero se consume al usar llaves API; la métrica no debe confundirse con reservas ni interacciones ordinarias del salón. | Mantener una explicación comprensible, confirmar qué operaciones cuentan y definir qué ocurre al agotar la cuota. |
-| Catálogo Flutter local | `saas_api_service.dart` usa el catálogo backend y conserva una tabla local como fallback sin conexión. | Mantener fallback para disponibilidad, con comprobación de paridad automatizada para prevenir divergencias. |
+| Catálogo y precios | Catálogo V2 centraliza nombres, disponibilidad, capacidades y cuotas. `invoiceService` y Wompi consultan el precio de catálogo. | Fuente común disponible; el informe previo describía cifras antiguas y se corrige aquí. |
+| Disponibilidad de compra | `subscriptionService`, checkout, Wompi y bootstrap rechazan niveles no disponibles. Los planes gratuitos se eligen en el alta. | Guard de disponibilidad presente. |
+| Prueba de pago | El checkout Stripe usa `trialDays: 0`; `subscriptionService` solo deriva `trialDays` de catálogo (14 para FREE_TRIAL, 0 para pagos). El checkout COP depende de Wompi SaaS habilitado. | La contradicción histórica de 30 días en planes pagos ya no está en el código inspeccionado. |
+| Prueba gratis del alta | El bootstrap guarda `saas_plan`, crea el perfil/membership y no crea una fila en `subscriptions` ni guarda fecha de inicio/fin de prueba en el perfil. El job de vencimiento solo procesa `subscriptions.trial_end`. | **Brecha P0:** el alta anuncia 14 días, pero el flujo normal de alta no inicia ni vence esa prueba; por tanto, no está demostrado que termine a los 14 días ni que luego pase a Freemium. |
+| Personas | Las invitaciones protegen `TEAM_MANAGEMENT`; el servicio de membresías limita activos y pendientes con `TEAM_SEATS`. | Gate y cuota aplicados en las rutas revisadas; falta prueba end-to-end de aceptación y cambio de plan en producción. |
+| Reservas | `bookingController` controla y consume `DIRECT_BOOKINGS` en transacción para reservas directas del salón; el marketplace tiene origen separado. | La cuota representa reservas directas, no todas las reservas recibidas. Falta evidencia de cobertura en todos los canales, reintentos y límites en producción. |
+| Analítica y API | `/api/saas/analytics` requiere `ADVANCED_ANALYTICS`; crear/usar llaves exige `API_KEYS`, y las llamadas de API se miden al autenticar una API key. | Aplicación localizada. “Procesos de integración” debe explicar que cuenta llamadas autenticadas por llave, no operaciones cotidianas de la app. |
+| Caja, inventario, recursos y recetas | Rutas de salón aplican los entitlements `POS_INTEGRATION`/`POS_RECEIPTS_ONLY`, `INVENTORY`, `RESOURCES` y `RECIPES`; LOYALTY tiene gates administrativos y de cliente. | Gates visibles en las rutas inspeccionadas; hace falta inventariar todas las rutas/variantes para certificar cobertura integral. |
+| WhatsApp, Aura, multi-sede y marca | Hay capacidades y cuotas en el catálogo, pero esta revisión no encontró un mapa completo de rutas de producto, proveedor activo, medición y guard para cada una. | No declararlos como diferenciales habilitados hasta cerrar ese mapa y validar cada flujo. |
+| Facturación electrónica | Capacidades y add-ons aparecen en catálogo, varios como propuesta/no disponibles. | No ofrecer cobro ni servicio fiscal a partir de la mera presencia de la capacidad en el catálogo. |
+| Agotamiento de cuotas | `consumeUsage` aplica límite atómico en sus puntos de uso; disponibilidad y comportamiento varían por ruta. No hay una política comercial uniforme documentada para todos los límites. | Definir aviso, bloqueo, tolerancia y recuperación para cada métrica antes del lanzamiento. |
+| Producción | La línea base aquí se obtuvo inspeccionando el repositorio; esta ejecución no llamó a APIs autenticadas ni consultó la base productiva. | No se afirma validación productiva de planes, cuotas, correo, piloto ni cobros. |
 
-## Comprobación inicial de aplicación de límites
+## Correcciones realizadas en este informe
 
-| Límite/capacidad | Evidencia de backend | Cobertura observada |
+- Se reemplazaron las cifras antiguas de la tabla y del checkout por los valores actuales del catálogo V2.
+- Se separaron los precios vigentes heredados de Pro/Empresarial de sus nuevas ofertas propuestas.
+- Se registró que el alta normal no persiste ni procesa el vencimiento de la prueba gratuita de 14 días. Es un defecto funcional, no una decisión comercial que deba ocultarse con copy.
+- Se retiró la afirmación de que los planes pagos obtienen 30 días de prueba: el código actual inspeccionado usa `trialDays: 0` para planes pagos.
+- Se distinguió el conteo de reserva directa de las reservas de marketplace y el uso de API keys de otras interacciones del producto.
+
+## Trabajo restante para cerrar Fase 7
+
+| Prioridad | Trabajo | Criterio de cierre |
 |---|---|---|
-| Asientos de equipo | Invitaciones pasan por `requireEntitlement('TEAM_MANAGEMENT')`; `saasMembershipService` limita miembros activos y pendientes con `TEAM_SEATS`. | Aplicado en invitación y conteo. |
-| Reservas mensuales | `bookingController` consulta el plan y el uso mensual antes de crear reservas y registra el consumo en transacción. | Aplicado en el flujo de reserva inspeccionado; requiere verificar todos los canales de creación/reintento en pruebas de integración antes del cierre. |
-| Analítica | `/api/saas/analytics` requiere `ADVANCED_ANALYTICS` y rol `MANAGER` o superior. | Aplicado. |
-| Llaves de integración | Crear una llave y usarla requieren `API_KEYS`; el consumo actual de `API_CALLS` se registra al autenticar solicitudes de llave. | Aplicado a la API key; no equivale a todo tráfico de la aplicación. |
-| Mapa público | Los controladores de proveedor/salón filtran la visibilidad por `MAP_VISIBILITY`. | Aplicado en los controladores inspeccionados. |
-| WhatsApp, POS y marca personalizada | Existen definiciones de capacidad en el catálogo; la búsqueda de rutas mostró usos reales para varias capacidades, pero no controles integrados para WhatsApp/POS ni un gate comercial claro para marca personalizada. | No considerar garantizado como diferencial de plan hasta encontrar e integrar los flujos y su control backend. |
+| P0 | Implementar ciclo real de Prueba Gratis: persistir inicio/fin al provisionar, advertir vencimiento, pasar a Freemium de forma idempotente y conservar suscripciones pagas. Diseñar transición para los tenants existentes sin quitarles acceso por sorpresa. | Alta nueva tiene fecha consistente de 14 días; aviso y transición comprobados; upgrade cancela transición; rollback/documentación disponibles. |
+| P0 | Confirmar que checkout, consentimiento, renovación y cambio de plan funcionan con configuración productiva. Wompi checkout permanece cerrado si faltan sus credenciales/flags; Stripe requiere su configuración y webhook. | Una compra autorizada de QA se concilia una sola vez y activa el plan correcto; sin cobros reales a usuarios ajenos. |
+| P1 | Completar matriz por capacidad con catálogo → guard → rutas de lectura/escritura → métrica → agotamiento → UI, incluyendo todos los canales de reserva e invitación. | Cada beneficio vendido tiene gate y prueba de autorización; cada cuota tiene definición y efecto coherente. |
+| P1 | Conciliar fallback Flutter y catálogo backend para nombres, límites, capacidades, disponibilidad y texto. Mantener el backend como fuente de verdad; añadir comprobación de paridad al CI. | Cambios incompatibles rompen CI; modo sin conexión no inventa precios/ofertas. |
+| P1 | Acordar y mostrar qué pasa al alcanzar cada límite, qué datos se conservan al bajar de plan y cómo reactivar al mejorar de nivel. | Mensajes y comportamiento de API/UI coinciden y no destruyen datos al bajar de plan. |
+| P2 | Aclarar alcance operativo de WhatsApp, Aura, POS, multi-sede y soporte; comprobar proveedor, permisos, cuotas y capacidad de atención antes de activar oferta. | Beneficio se puede entregar y medir; soporte/SLA no se promete sin capacidad. |
+| P2 | Preparar piloto y rollout gradual: cohortes, métricas de fallo/uso/soporte, interruptores y reversión. | Piloto medido; criterios de ampliación y reversión escritos; no hay divergencias de tenant/plan/cuota. |
 
-Esta es una inspección de código, no un resultado de prueba de producción ni una demostración de todos los casos de uso.
+## Secuencia de implementación recomendada
 
-## Decisiones de esta etapa
+1. Resolver el vencimiento de Prueba Gratis con fecha de inicio y transición segura, sin alterar retroactivamente tenants existentes.
+2. Cerrar tabla de entitlements, rutas, cuotas y comportamiento ante exceso; corregir gates faltantes comprobados.
+3. Sincronizar onboarding/facturación y respaldo local con el catálogo, con paridad exigida por CI.
+4. Confirmar configuración de pago en producción y realizar recorrido de QA controlado, evitando cobros a usuarios reales.
+5. Ejecutar piloto gradual, medirlo y documentar rollback antes de ampliar.
 
-- No cambiar precios ni añadir límites por mera inferencia: los precios actuales se conservan como línea base mientras se cotejan condiciones de checkout y pasarela.
-- No anunciar más beneficios exclusivos hasta que una ruta del backend aplique su permiso y exista una definición operativa verificable.
-- Mantener la selección inicial de opciones gratuitas. Para mostrar contratación paga en el onboarding se deberá diseñar y validar el paso de pago; el bootstrap rechaza actualmente planes pagos.
-- La fidelización propia del salón permanece conceptualmente separada de puntos globales GlowApp. Su nivel comercial sigue pendiente.
-- El selector de plan en onboarding incluye días de prueba, personas y reservas mensuales usando los límites del catálogo recibido; cambio publicado en Firebase Hosting de producción.
+## Riesgo comercial y de datos
 
-## Siguiente trabajo de Fase 7
+La modificación de precios, acceso o prueba puede afectar contratos y funciones de salones existentes. Esta revisión no cambió esos datos. La implementación del vencimiento debe dar una ventana explícita a los tenants actuales, mantener íntegra su información y permitir recuperar el nivel al contratar. Los planes propuestos, complementos y capacidades sin integración verificada no se deben activar por inferencia.
 
-1. Conciliar trialDays entre catálogo y checkout y resolver la política comercial antes de modificar cobros.
-2. Mapear cada capacidad de los cinco planes a middleware/rutas de backend y verificar el efecto de cambiar de plan, incluido el exceso de cuotas.
-3. Definir el paquete por escala para caja, inventario, fidelización, automatizaciones y multi-sede, separando lo ya productivo de pilotos y servicios externos.
-4. Actualizar el onboarding y facturación con límites, excedentes, downgrade y copy legible, derivado del catálogo backend.
-5. Ejecutar el piloto productivo con métricas y rollback, y publicar el informe de cierre solo cuando la oferta, el catálogo, el cobro y la UI coincidan.
+## Registro de esta ejecución
 
-## Verificación y despliegue
-
-- Inspección estática del catálogo, entitlements, checkout, facturación, onboarding Flutter y endpoints de uso; no se modificaron rutas de cobro ni precios en esta etapa.
-- Cambio local de onboarding: añade los términos visibles `días de prueba`, `personas` y `reservas al mes`, generados a partir de `SaasPlan.trialDays` y `SaasPlan.limits`.
-- El backend responde catálogo público y el onboarding Flutter lo consume; los sitios web cliente/proveedor responden HTTP 200 en producción desde el commit `0388dea`; se volvió a comprobar que el proveedor responde HTTP 200 tras el despliegue `66ad30f`.
-- `flutter build web --release --no-wasm-dry-run` en `apps/glow_provider`: compilación correcta (88,9 s).
-- `flutter analyze --no-pub lib/screens/auth/onboarding_screen.dart`: 42 hallazgos informativos existentes (imports redundantes, deprecaciones y estilo); no reporta errores en la lógica añadida. El comando devuelve código 1 por hallazgos del archivo.
-- `main` contiene el commit `66ad30f` (`Start Phase 7 commercial packaging`); workflow de producción `45310977489` completó CI, build y deploy Firebase Hosting para el proveedor. URL del run: https://github.com/Diegoromerov/glowapp-firebase/actions/runs/45310977489.
-- No se cambió el comportamiento comercial de cobro ni los precios.
-
-## Riesgos y rollback
-
-Cambiar precios, días de prueba o capacidades puede alterar cobros, renovaciones y accesos de tenants ya existentes. Toda futura modificación deberá conservar suscripciones y límites históricos, ser aditiva, probarse con pasarelas de forma controlada y contar con un interruptor/rollback antes de expandirse. No hay rollback automático de cambios de precio ya cobrados.
-
-## Pendientes y fase siguiente
-
-La Fase 7 continúa abierta. Las cifras actuales son la línea base observada, no una nueva aprobación comercial ni la afirmación de que todas las capacidades están disponibles. La Fase 6 también permanece abierta por validaciones autenticadas de fidelización y otros complementos indicados en su informe.
-
+- Base: `main` en `f000c334fabb9a01d7200c30d9acd5dd1f84a1a9`.
+- Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
+- Cambios de aplicación/datos: ninguno. No se ejecutaron pruebas ni se hicieron llamadas autenticadas a producción.
+- Resultado: documento corregido; Fase 7 permanece abierta por el vencimiento real de la prueba, validación de cobros, cobertura integral de cuotas y piloto.
