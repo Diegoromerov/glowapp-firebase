@@ -70,6 +70,8 @@ const MIGRACIONES_BASE_NUEVA = [
 // The membership service writes invite_token and status PENDING.
 '112_memberships_invite_columns.sql',
 '114_memberships_sub_rol.sql',
+  // The real PostgreSQL resource quota test needs the resource tables and locks.
+  '117_inventario_y_alquileres.sql',
 '118_drop_salon_miembros.sql',
 '119_force_rls_retention_policies.sql',
 '121_glowshop_precios_minimas.sql',
@@ -204,6 +206,9 @@ const MIGRACIONES_ARRANQUE = [
   '112_memberships_invite_columns.sql',
 
   '114_memberships_sub_rol.sql',
+
+  // Keep operational resource tables available for quota integration coverage.
+  '117_inventario_y_alquileres.sql',
 
   '118_drop_salon_miembros.sql',
 
