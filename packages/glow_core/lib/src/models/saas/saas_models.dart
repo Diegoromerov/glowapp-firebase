@@ -403,6 +403,7 @@ class SaasPlan {
   final String name;
   final String description;
   final int priceCents; // COP * 100
+  final String interval;
   final int? proposedPriceCents;
   final int trialDays;
   final Map<String, int> limits; // metric_code -> limit
@@ -417,6 +418,7 @@ class SaasPlan {
     required this.name,
     required this.description,
     required this.priceCents,
+    this.interval = 'month',
     this.proposedPriceCents,
     required this.trialDays,
     required this.limits,
@@ -434,6 +436,7 @@ class SaasPlan {
       name: json['name'] as String? ?? '',
       description: json['description'] as String? ?? '',
       priceCents: (json['price_cents'] as num? ?? 0).toInt(),
+      interval: json['interval'] as String? ?? 'month',
       proposedPriceCents: (json['proposed_price_cents'] as num?)?.toInt(),
       trialDays: (json['trial_days'] as num? ?? 0).toInt(),
       limits: {
@@ -459,6 +462,7 @@ class SaasPlan {
         'name': name,
         'description': description,
         'price_cents': priceCents,
+        'interval': interval,
         'trial_days': trialDays,
         'limits': limits,
         'features': features,
@@ -468,6 +472,17 @@ class SaasPlan {
 
   int getLimit(UsageMetricType type) => limits[type.code] ?? 0;
   bool hasFeature(String feature) => features.contains(feature);
+
+  String get formattedPrice {
+    if (priceCents <= 0) return 'Gratis';
+    final pesos = priceCents / 100;
+    final formatted = pesos.toStringAsFixed(0).replaceAllMapped(
+          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+          (match) => '${match[1]}.',
+        );
+    final cadence = interval == 'year' ? 'año' : 'mes';
+    return '\$$formatted COP/$cadence';
+  }
 }
 
 /// Perfil de negocio con campos SaaS
