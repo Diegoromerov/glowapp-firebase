@@ -463,9 +463,14 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       const adminInvite = await request(app)
         .post('/api/saas/team/invite')
         .set('Authorization', `Bearer ${adminToken}`)
-        .send({ email: `admin-invite-${crypto.randomUUID()}@test.local`, role: 'MEMBER' })
+        .send({ email: salonWithAdmin.emails['invitee-two'], role: 'MEMBER' })
         .expect(202);
       expect(adminInvite.body.membershipId).toBeTruthy();
+
+      await request(app)
+        .delete(`/api/saas/team/${adminInvite.body.membershipId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .expect(200);
 
       const reactivation = await request(app)
         .patch(`/api/saas/team/${salonWithAdmin.memberships.suspended}/status`)
