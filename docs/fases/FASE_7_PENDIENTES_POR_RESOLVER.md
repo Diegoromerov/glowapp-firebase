@@ -1,6 +1,6 @@
 # Fase 7 — Puntos por resolver
 
-**Estado:** Fase 7 en curso. Catálogo V4, conservación de derechos heredados y app de prestadores desplegados en producción el 26 de noviembre de 2026. Corrección de lectura de cuotas e informes administrativos preparada para publicación.
+**Estado:** Fase 7 en curso. Catálogo V4, conservación de derechos heredados, corrección de lectura de cuotas e informes administrativos desplegados en producción el 26 de noviembre de 2026.
 **Fecha de elaboración:** 23 de noviembre de 2026. **Última conciliación técnica:** 26 de noviembre de 2026.
 **Contexto:** plan comercial SaaS de GlowApp para salones. El trabajo se publica directamente en producción, sin usar staging, conforme a la instrucción del usuario.
 

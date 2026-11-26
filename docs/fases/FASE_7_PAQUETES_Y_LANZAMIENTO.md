@@ -134,7 +134,10 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - La app del proveedor separa `DIRECT_BOOKINGS` de solicitudes API y deja de presentar cuotas `0` como ilimitadas. Solo límites nulos o explícitamente ilimitados se muestran con ese estado.
 - La cuota `API_CALLS` se presenta como solicitudes de integración externas autenticadas mediante llave API; el uso normal dentro de GlowApp no las consume.
 - Los cortes de mes de SuperAdmin se alinean a `America/Bogota`, igual que el medidor SaaS. El documento de Fase 2 se corrigió para reflejar ese contrato.
-- Cambios preparados en rama para CI y publicación; los identificadores reales de CI y despliegue se agregarán al terminar.
+- PR [#140](https://github.com/Diegoromerov/glowapp-firebase/pull/140), commit `837d9b9`, integrado a `main`. PR CI #45893949292 y CI de Flutter #45894126815 pasaron.
+- Railway desplegó API y panel administrativo para el commit `837d9b9`; deployment de API `6fe2c085-649f-4103-9913-2934632a572b` terminó SUCCESS. `/api/health` devolvió `OK`, PostgreSQL disponible y sin fallback de datos.
+- Firebase workflow #45894457431 pasó análisis, pruebas Glow Core y análisis del proveedor; el build web y despliegue Hosting live terminaron SUCCESS. `https://glowapp-provider.web.app` devolvió HTTP 200.
+- La ejecución inicial de Backend CI en `main` tuvo un fallo aislado en el E2E del catálogo restringido, pese a que el mismo commit pasó ese E2E en PR CI. El reintento de la ejecución #45894126757 pasó el E2E y el flujo completo.
 
 - Base: `main` en `2cb857bb48a3d794b904a113cbb645b8f569f5f2`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
