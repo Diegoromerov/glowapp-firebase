@@ -52,7 +52,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 - Se alinearon las descripciones de Prueba Gratis, Freemium y Básico entre el backend y el respaldo local Flutter. Ambas muestran los mismos períodos y cuotas principales.
 - El catálogo remoto del onboarding ahora muestra Reservas en línea y traduce cuotas de recursos, Aura, WhatsApp, documentos, API y sedes a etiquetas comerciales; omite contadores internos de NIT, mapa y equipo que ya aparecen en otras partes de la tarjeta.
 - Backend y proveedor se integraron en `main` (`2cb857b`). CI de backend y Flutter pasó; Railway reportó el API online y `GET /api/saas/catalog` devolvió catálogo V2 con FREE_TRIAL, FREEMIUM y BASIC disponibles. Firebase Hosting del proveedor respondió HTTP 200 tras el despliegue live.
-- Sigue faltando una prueba automatizada que compare integralmente descripción, capacidades y funciones visibles del catálogo remoto con el respaldo local. Por eso la paridad de catálogo se considera mejorada, pero todavía parcial.
+- En PR #144 se agregó la comparación automatizada de la oferta activa del respaldo Flutter con el catálogo backend; los detalles y evidencia actualizados están abajo.
 
 ## Evidencia de producción del catálogo V3/V4 — 26 de noviembre de 2026
 
@@ -79,7 +79,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | P0 | Validar de extremo a extremo la expiración de una prueba nueva, el downgrade a Freemium y la protección de una suscripción pagada. | Job y despliegue activos; ejecución manual sin vencimientos confirmó que no degrada tenants prematuramente. Falta una prueba controlada con tenant de QA y fecha expirada, más evidencia de protección de suscripción pagada. |
 | P0 | Confirmar que checkout, consentimiento, renovación y cambio de plan funcionan con configuración productiva. Wompi checkout permanece cerrado si faltan sus credenciales/flags; Stripe requiere su configuración y webhook. | Una compra autorizada de QA se concilia una sola vez y activa el plan correcto; sin cobros reales a usuarios ajenos. |
 | P1 | Completar matriz por capacidad con catálogo → guard → rutas de lectura/escritura → métrica → agotamiento → UI, incluyendo todos los canales de reserva e invitación. | Cada beneficio vendido tiene gate y prueba de autorización; cada cuota tiene definición y efecto coherente. |
-| P1 | Completar paridad Flutter/backend para nombres, precios, límites, capacidades y funciones visibles. Las descripciones comerciales activas ya están alineadas y el render remoto oculta métricas internas; falta probar integralmente esos invariantes en CI. | Cambios divergentes de oferta activa fallan CI; el modo sin conexión conserva la misma oferta y no inventa beneficios. |
+| P1 | Paridad Flutter/backend del catálogo activo. | **Cerrado:** CI compara disponibilidad/compra, nombre, descripción, precio, beneficios y todas las cuotas declaradas para Prueba Gratis, Freemium y Básico. Los planes propuestos permanecen no contratables. |
 | P1 | Acordar y mostrar qué pasa al alcanzar cada límite, qué datos se conservan al bajar de plan y cómo reactivar al mejorar de nivel. | Mensajes y comportamiento de API/UI coinciden y no destruyen datos al bajar de plan. |
 | P2 | Aclarar alcance operativo de WhatsApp, Aura, POS, multi-sede y soporte; comprobar proveedor, permisos, cuotas y capacidad de atención antes de activar oferta. | Beneficio se puede entregar y medir; soporte/SLA no se promete sin capacidad. |
 | P2 | Preparar piloto y rollout gradual: cohortes, métricas de fallo/uso/soporte, interruptores y reversión. | Piloto medido; criterios de ampliación y reversión escritos; no hay divergencias de tenant/plan/cuota. |
@@ -145,7 +145,15 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - Las unidades de cuotas en beneficios ahora usan la unidad publicada por backend, con el texto local solo como fallback.
 - PR [#142](https://github.com/Diegoromerov/glowapp-firebase/pull/142), commit `623065c`, integrado a `main`. Flutter CI #45895878565 pasó análisis y pruebas.
 - El workflow Firebase #45896199703 publicó la app proveedor en Hosting live con éxito. La API productiva entrega Básico a `99.000 COP/mes`; los niveles propuestos permanecen con `commerciallyAvailable: false`. Hosting responde HTTP 200.
-- Este cambio corrige el valor presentado, pero no cierra el faltante de paridad automática: CI aún no compara todas las capacidades, precios, textos y cuotas de cada plan entre backend y Flutter.
+- En ese momento faltaba la comparación integral; PR #144 la agregó para todos los datos de fallback de los planes activos.
+
+## Paridad del catálogo activo en CI y onboarding — 26 de noviembre de 2026
+
+- PR [#144](https://github.com/Diegoromerov/glowapp-firebase/pull/144), commit `9740d7f`, quedó integrado en `main`.
+- `saasCommercialCatalog.nodetest.js` compara Prueba Gratis, Freemium y Básico entre el catálogo backend y el respaldo Flutter: nombre, descripción, precio, beneficios visibles, todas las cuotas declaradas y banderas de disponibilidad/compra.
+- El texto local de Prueba Gratis quedó alineado a 150 reservas mensuales y se normalizaron unidades de cuota. El E2E de catálogo reintenta disponibilidad de API mientras inicia el esquema, evitando la carrera de arranque observada en CI.
+- Backend CI del PR y de `main` #45897948551 pasó; Flutter CI #45897948635 pasó. Firebase live #45898280790 terminó SUCCESS; el hosting proveedor responde HTTP 200.
+- Se cierra el punto de paridad del catálogo activo. La auditoría de rutas, entitlements, cuotas operativas y agotamiento continúa abierta.
 
 - Base: `main` en `2cb857bb48a3d794b904a113cbb645b8f569f5f2`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
