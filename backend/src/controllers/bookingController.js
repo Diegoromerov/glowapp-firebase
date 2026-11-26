@@ -35,7 +35,7 @@ const { discriminarIva } = require('../utils/iva');
 const { dedupeServiceIds, missingServiceIds } = require('../utils/serviceSelection');
 const usageMeteringService = require('../services/usageMeteringService');
 const { getMonthPeriod } = require('../config/saasCatalog');
-const { getColombiaDayRange, getColombiaSchedule, isWithinColombiaSchedule } = require('../utils/bookingCalendar');
+const { getColombiaDayRange, getColombiaSchedule, intersectColombiaSchedules, isWithinColombiaSchedule } = require('../utils/bookingCalendar');
 const { getActiveBookingSalonId, canManageBooking } = require('../utils/bookingAccess');
 const { isSaasDirectBookingAudience, bookingOriginForAudience } = require('../utils/bookingOrigin');
 const { ACTIONS } = require('../services/authorizationService');
@@ -471,16 +471,20 @@ exports.createBooking = async (req, res) => {
       );
 
       const providerHours = await sequelize.query(
-        'SELECT active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = :providerId',
-        { replacements: { providerId: Number(provider_id) }, type: sequelize.QueryTypes.SELECT, transaction: t }
+        `SELECT p.active_start_hour, p.active_end_hour, p.weekly_schedule, s.horario_atencion
+           FROM perfiles_prestador p
+           LEFT JOIN salones s ON s.id = :salonId
+          WHERE p.id = :providerId`,
+        { replacements: { providerId: Number(provider_id), salonId: targetSalonId }, type: sequelize.QueryTypes.SELECT, transaction: t }
       );
       const hours = providerHours[0] || {};
-      const schedule = getColombiaSchedule({
+      const providerSchedule = getColombiaSchedule({
         date: bookingDay.localDate,
         weeklySchedule: hours.weekly_schedule,
         activeStartHour: hours.active_start_hour,
         activeEndHour: hours.active_end_hour,
       });
+      const schedule = intersectColombiaSchedules(providerSchedule, hours.horario_atencion, bookingDay.localDate);
       if (!isWithinColombiaSchedule({
         scheduledAt: newStart,
         durationMinutes: totalDurationMinutes,
@@ -1610,17 +1614,22 @@ exports.rescheduleBooking = async (req, res) => {
           { replacements: { providerId, localDate }, transaction }
         );
       }
+      const salonId = bookingGroup.find((row) => row.salon_id != null)?.salon_id ?? null;
       const providerHours = await sequelize.query(
-        'SELECT active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = :providerId',
-        { replacements: { providerId }, type: sequelize.QueryTypes.SELECT, transaction }
+        `SELECT p.active_start_hour, p.active_end_hour, p.weekly_schedule, s.horario_atencion
+           FROM perfiles_prestador p
+           LEFT JOIN salones s ON s.id = :salonId
+          WHERE p.id = :providerId`,
+        { replacements: { providerId, salonId }, type: sequelize.QueryTypes.SELECT, transaction }
       );
       const hours = providerHours[0] || {};
-      const schedule = getColombiaSchedule({
+      const providerSchedule = getColombiaSchedule({
         date: newBookingDay.localDate,
         weeklySchedule: hours.weekly_schedule,
         activeStartHour: hours.active_start_hour,
         activeEndHour: hours.active_end_hour,
       });
+      const schedule = intersectColombiaSchedules(providerSchedule, hours.horario_atencion, newBookingDay.localDate);
       if (!isWithinColombiaSchedule({
         scheduledAt: nuevaFecha,
         durationMinutes: totalDurationMinutes,
