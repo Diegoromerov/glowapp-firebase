@@ -52,13 +52,7 @@ describe('subscriptionService', () => {
   describe('createSubscription', () => {
     const baseParams = { tenantId: 'bp_test', plan: 'BASIC', currency: 'COP', customerEmail: 'test@test.com' };
 
-    test('crea suscripción FREE_TRIAL (Stripe USD) → trial 14 días, status trialing', async () => {
-      stripeService.createOrGetCustomer.mockResolvedValue({ id: 'cus_stripe' });
-      stripeService.createSubscription.mockResolvedValue({
-        id: 'sub_stripe',
-        status: 'trialing',
-        trial_end: Math.floor(Date.now() / 1000) + 14 * 86400
-      });
+    test('crea FREE_TRIAL local sin cliente ni suscripción en Stripe', async () => {
       
       mockClient.query
         .mockResolvedValueOnce({ rows: [] }) // BEGIN
@@ -73,10 +67,8 @@ describe('subscriptionService', () => {
       });
 
       expect(result.plan).toBe('FREE_TRIAL');
-      expect(stripeService.createOrGetCustomer).toHaveBeenCalled();
-      expect(stripeService.createSubscription).toHaveBeenCalledWith(expect.objectContaining({
-        trialDays: 14
-      }));
+      expect(stripeService.createOrGetCustomer).not.toHaveBeenCalled();
+      expect(stripeService.createSubscription).not.toHaveBeenCalled();
       expect(mockClient.query).toHaveBeenCalledWith('COMMIT');
     });
 
