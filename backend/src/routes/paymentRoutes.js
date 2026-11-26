@@ -528,10 +528,13 @@ router.post(
 
 // ─── CONFIRMAR OTP → DISPERSIÓN ──────────────────────────────────────────────
 
+// Esta acción la confirma el cliente, no el prestador. El handler comprueba
+// que req.user.id coincida con bookings.client_id antes de consumir el OTP.
+// La capacidad RECIBIR_RESERVAS se exige en la ruta del prestador que emite el
+// OTP; aquí bloquearía a clientes con rol CLIENTE y dejaría el pago sin cierre.
 router.post(
   '/bookings/:id/confirm-otp',
   authMiddleware,
-  exigirCapacidad(CAPACIDADES.RECIBIR_RESERVAS),
   async (req, res) => {
   const { id } = req.params;
   const { codigo } = req.body;
