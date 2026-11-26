@@ -34,6 +34,7 @@ const wompiClient = require('../services/wompiClient');
 const { discriminarIva } = require('../utils/iva');
 const { dedupeServiceIds, missingServiceIds } = require('../utils/serviceSelection');
 const usageMeteringService = require('../services/usageMeteringService');
+const { reserveDirectBookingQuota } = require('../services/saasDirectBookingQuota');
 const { getMonthPeriod } = require('../config/saasCatalog');
 const { getColombiaDayRange, getColombiaSchedule, intersectColombiaSchedules, isWithinColombiaSchedule } = require('../utils/bookingCalendar');
 const { getActiveBookingSalonId, canManageBooking } = require('../utils/bookingAccess');
@@ -630,83 +631,50 @@ exports.createBooking = async (req, res) => {
         if (providerTenants.length === 1) serviciosPorTenant.set(String(providerTenants[0].id), 1);
       }
       for (const [tenantId, delta] of serviciosPorTenant) {
-        const tenants = await sequelize.query(
-          'SELECT saas_plan, provider_id FROM business_profiles WHERE id = :tenantId FOR UPDATE',
-          { replacements: { tenantId }, type: sequelize.QueryTypes.SELECT, transaction: t }
-        );
-        if (tenants.length === 0) continue;
-        const plan = tenants[0].saas_plan || 'FREEMIUM';
-        const limit = usageMeteringService.getLimit(plan, 'DIRECT_BOOKINGS');
         const { start: periodStart, end: periodEnd } = getMonthPeriod();
-        const existingUsage = await sequelize.query(
-          `SELECT count FROM usage_metrics WHERE tenant_id = :tenantId AND feature = 'DIRECT_BOOKINGS' AND period_start = :periodStart`,
-          { replacements: { tenantId, periodStart }, type: sequelize.QueryTypes.SELECT, transaction: t }
-        );
-        let currentUsage = Number(existingUsage[0]?.count || 0);
-        if (existingUsage.length === 0) {
-          // Inicialización transparente para el mes en curso: toma el historial
-          // de reservas previo a activar la medición, sin resetear ni perder datos.
-          const historicalQuery = servicesHaveTenantColumn
-            ? `SELECT COUNT(DISTINCT COALESCE(b.productos_adicionales->>'primary_booking_id', b.id::text))::integer AS count
-               FROM bookings b
-               JOIN services s ON s.id = b.service_id
-               WHERE s.business_profile_id = :tenantId
-                 AND b.created_at >= CAST(:periodStart AS date)
-                 AND b.created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')
-                 AND b.productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
-                 AND COALESCE((b.productos_adicionales->>'is_primary')::boolean, true) = true`
-            : `SELECT COUNT(DISTINCT COALESCE(productos_adicionales->>'primary_booking_id', id::text))::integer AS count
-               FROM bookings
-               WHERE provider_id = :providerId
-                 AND created_at >= CAST(:periodStart AS date)
-                 AND created_at < (CAST(:periodStart AS date) + INTERVAL '1 month')
-                 AND productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
-                 AND COALESCE((productos_adicionales->>'is_primary')::boolean, true) = true`;
-          const historicalRows = await sequelize.query(historicalQuery, {
-            replacements: {
-              tenantId,
-              providerId: tenants[0].provider_id,
-              periodStart,
-            },
+        await reserveDirectBookingQuota({
+          query: (sql, bind) => sequelize.query(sql, {
+            bind,
             type: sequelize.QueryTypes.SELECT,
             transaction: t,
-          });
-          currentUsage = Number(historicalRows[0]?.count || 0);
-        }
-        if (limit === 0 || (limit !== null && currentUsage + delta > limit)) {
-          throw Object.assign(new Error('límite mensual de reservas alcanzado'), {
-            code: 'SAAS_QUOTA_EXCEEDED', feature: 'DIRECT_BOOKINGS', limit, current: currentUsage, plan,
-          });
-        }
-        const usageRows = await sequelize.query(`
-          INSERT INTO usage_metrics (tenant_id, feature, period_start, period_end, count, "limit")
-          VALUES (:tenantId, 'DIRECT_BOOKINGS', :periodStart, :periodEnd, :initialCount, :limit)
-          ON CONFLICT (tenant_id, feature, period_start)
-          DO UPDATE SET
-            count = usage_metrics.count + EXCLUDED.count,
-            "limit" = EXCLUDED."limit",
-            updated_at = NOW()
-          WHERE EXCLUDED."limit" IS NULL
-             OR usage_metrics.count + EXCLUDED.count <= EXCLUDED."limit"
-          RETURNING count;
-        `, {
-          replacements: {
-            tenantId, periodStart, periodEnd, limit,
-            initialCount: existingUsage.length === 0 ? currentUsage + delta : delta,
+          }),
+          tenantId,
+          delta,
+          periodStart,
+          periodEnd,
+          getLimit: (plan, feature) => usageMeteringService.getLimit(plan, feature),
+          legacyTenantId: req.user?.tenant_id ?? '',
+          setTenantContext: (tenantId) => sequelize.query(
+            "SELECT set_config('app.tenant_id', $1, true)",
+            { bind: [tenantId], type: sequelize.QueryTypes.SELECT, transaction: t }
+          ),
+          countHistorical: async ({ tenantId: profileId, providerId, periodStart: monthStart }) => {
+            // Primera medición del mes: conserva el histórico identificado como
+            // reserva directa y cuenta una sola vez cada reserva agrupada.
+            const historicalQuery = servicesHaveTenantColumn
+              ? `SELECT COUNT(DISTINCT COALESCE(b.productos_adicionales->>'primary_booking_id', b.id::text))::integer AS count
+                 FROM bookings b
+                 JOIN services s ON s.id = b.service_id
+                 WHERE s.business_profile_id = $1
+                   AND b.created_at >= CAST($2 AS date)
+                   AND b.created_at < (CAST($2 AS date) + INTERVAL '1 month')
+                   AND b.productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
+                   AND COALESCE((b.productos_adicionales->>'is_primary')::boolean, true) = true`
+              : `SELECT COUNT(DISTINCT COALESCE(productos_adicionales->>'primary_booking_id', id::text))::integer AS count
+                 FROM bookings
+                 WHERE provider_id = $1
+                   AND created_at >= CAST($2 AS date)
+                   AND created_at < (CAST($2 AS date) + INTERVAL '1 month')
+                   AND productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
+                   AND COALESCE((productos_adicionales->>'is_primary')::boolean, true) = true`;
+            const historicalRows = await sequelize.query(historicalQuery, {
+              bind: [servicesHaveTenantColumn ? profileId : providerId, monthStart],
+              type: sequelize.QueryTypes.SELECT,
+              transaction: t,
+            });
+            return historicalRows[0]?.count || 0;
           },
-          type: sequelize.QueryTypes.SELECT,
-          transaction: t,
         });
-        if (usageRows.length === 0) {
-          const currentRows = await sequelize.query(
-            `SELECT count FROM usage_metrics WHERE tenant_id = :tenantId AND feature = 'DIRECT_BOOKINGS' AND period_start = :periodStart`,
-            { replacements: { tenantId, periodStart }, type: sequelize.QueryTypes.SELECT, transaction: t }
-          );
-          throw Object.assign(new Error('límite mensual de reservas alcanzado'), {
-            code: 'SAAS_QUOTA_EXCEEDED', feature: 'DIRECT_BOOKINGS', limit,
-          current: Number(currentRows[0]?.count ?? currentUsage), plan,
-          });
-        }
       }
       }
 
@@ -805,6 +773,13 @@ exports.createBooking = async (req, res) => {
         limit: error.limit,
         currentPlan: error.plan,
         upgradeUrl: '/api/saas/billing/checkout',
+      });
+    }
+    if (error.code === 'SAAS_TENANT_CONTEXT_MISSING') {
+      return res.status(503).json({
+        success: false,
+        code: error.code,
+        error: 'No se pudo validar temporalmente el plan del salón. Intenta de nuevo más tarde.',
       });
     }
     if (error.code === 'BOOKING_SLOT_TAKEN') {
