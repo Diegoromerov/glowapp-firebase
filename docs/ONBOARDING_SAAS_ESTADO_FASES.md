@@ -54,3 +54,9 @@
 - Los dos escenarios nuevos de invitación pasaron y ahora forman parte de la cobertura persistente en `main`. No se envió correo ni se modificaron datos de producción.
 - El porcentaje sigue en **75 %** porque aún faltan las pruebas productivas controladas de aislamiento entre tenants, cupos y reactivación, además de la confirmación de Sonia desde su sesión. La etapa no está cerrada.
 - El checkout local conserva su estado previo y los cambios sin confirmar descritos arriba; el nuevo CI corrió sobre el merge de GitHub, no sobre ese checkout. No se mezclaron ni reemplazaron sus archivos locales.
+
+### Verificación visual adicional en producción — Sonia (26 de noviembre de 2026)
+
+- En la sesión autenticada ya abierta en `glowapp-provider.web.app`, la pantalla Mi Equipo mostró a Sonia Herrera en la lista del QA Salón Fase 2. Al abrir el diálogo Cambiar rol, el valor seleccionado fue **Personal**.
+- Se canceló el diálogo sin guardar. No se cambiaron permisos ni se generó una invitación o correo. La pantalla confirma lo que el OWNER ve; la confirmación desde la sesión propia de Sonia continúa pendiente.
+- Esto refuerza la evidencia de visualización del rol, pero no demuestra autorización de rutas ni aislamiento entre tenants. Por tanto, la Fase 4 permanece en **75 %**.
