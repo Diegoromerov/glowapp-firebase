@@ -311,7 +311,7 @@ class SaasApiService {
           'Caja y ventas',
           'Inventario',
           'Reportes básicos',
-          'Recursos ilimitados',
+          'recursos ilimitados',
           'Checklists de cumplimiento',
           'Fidelización y puntos del salón',
           'Recetas y consumo de productos',
