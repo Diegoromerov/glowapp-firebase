@@ -54,7 +54,8 @@ const BOOKING = {
 const BODY = {
   payment_method: 'NEQUI',
   phone_number: '3991111111',
-  acceptance_token: 'acc_token_abc'
+  acceptance_token: 'acc_token_abc',
+  personal_data_auth_token: 'pda_token_abc'
 };
 
 function req(over = {}) {
@@ -96,6 +97,15 @@ describe('POST /api/bookings/:id/pay — cobro real con Wompi', () => {
     await bookingController.payBooking(req({ body }), res);
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.body.error).toBe('MISSING_ACCEPTANCE_TOKEN');
+  });
+
+  test('exige autorización de tratamiento de datos de Wompi', async () => {
+    const body = { ...BODY };
+    delete body.personal_data_auth_token;
+    const res = mockRes();
+    await bookingController.payBooking(req({ body }), res);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.body.error).toBe('MISSING_PERSONAL_DATA_AUTH_TOKEN');
   });
 
   test('exige un instrumento real: ni PAN ni CVV llegan nunca al backend', async () => {
@@ -178,7 +188,7 @@ describe('POST /api/bookings/:id/pay — cobro real con Wompi', () => {
   test('una fuente de pago guardada se envía como paymentSourceId', async () => {
     const res = mockRes();
     await bookingController.payBooking(
-      req({ body: { payment_method: 'CARD', payment_source_id: 'src-99', acceptance_token: 'acc' } }),
+      req({ body: { payment_method: 'CARD', payment_source_id: 'src-99', acceptance_token: 'acc', personal_data_auth_token: 'pda' } }),
       res
     );
     const args = wompiClient.createTransaction.mock.calls[0][0];
@@ -189,7 +199,7 @@ describe('POST /api/bookings/:id/pay — cobro real con Wompi', () => {
   test('tarjeta con token envía installments (1 por defecto)', async () => {
     const res = mockRes();
     await bookingController.payBooking(
-      req({ body: { payment_method: 'CARD', payment_method_token: 'tok_card', acceptance_token: 'acc', installments: 3 } }),
+      req({ body: { payment_method: 'CARD', payment_method_token: 'tok_card', acceptance_token: 'acc', personal_data_auth_token: 'pda', installments: 3 } }),
       res
     );
     expect(wompiClient.createTransaction.mock.calls[0][0].paymentMethod).toEqual({
@@ -202,7 +212,7 @@ describe('POST /api/bookings/:id/pay — cobro real con Wompi', () => {
   test('RECHAZA un token en NEQUI: Wompi no lo admite y el error explica la vía correcta', async () => {
     const res = mockRes();
     await bookingController.payBooking(
-      req({ body: { payment_method: 'NEQUI', payment_method_token: 'tok_nequi_123', acceptance_token: 'acc' } }),
+      req({ body: { payment_method: 'NEQUI', payment_method_token: 'tok_nequi_123', acceptance_token: 'acc', personal_data_auth_token: 'pda' } }),
       res
     );
 
@@ -216,7 +226,7 @@ describe('POST /api/bookings/:id/pay — cobro real con Wompi', () => {
   test('Nequi tokenizado (fuente de pago) se cobra con payment_source_id', async () => {
     const res = mockRes();
     await bookingController.payBooking(
-      req({ body: { payment_method: 'NEQUI', payment_source_id: '12345', acceptance_token: 'acc' } }),
+      req({ body: { payment_method: 'NEQUI', payment_source_id: '12345', acceptance_token: 'acc', personal_data_auth_token: 'pda' } }),
       res
     );
 
@@ -271,6 +281,7 @@ describe('POST /api/bookings/:id/pay — cobro real con Wompi', () => {
   const BODY_PSE = {
     payment_method: 'PSE',
     acceptance_token: 'acc_token_abc',
+    personal_data_auth_token: 'pda_token_abc',
     redirect_url: 'https://glowapp.co/pago/resultado',
     customer_data: {
       email: 'ana@example.com',

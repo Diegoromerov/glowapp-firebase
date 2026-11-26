@@ -1922,7 +1922,7 @@ exports.payBooking = async (req, res) => {
       });
     }
 
-    const { payment_method, payment_source_id, payment_method_token, installments, acceptance_token, phone_number, redirect_url, customer_data } = req.body;
+    const { payment_method, payment_source_id, payment_method_token, installments, acceptance_token, personal_data_auth_token, phone_number, redirect_url, customer_data } = req.body;
 
     const method = (payment_method || '').toUpperCase();
     const validPaymentMethods = [
@@ -1938,6 +1938,12 @@ exports.payBooking = async (req, res) => {
       return res.status(400).json({
         error: 'MISSING_ACCEPTANCE_TOKEN',
         message: 'acceptance_token es obligatorio: el usuario debe aceptar los términos de Wompi antes de pagar.'
+      });
+    }
+    if (!personal_data_auth_token) {
+      return res.status(400).json({
+        error: 'MISSING_PERSONAL_DATA_AUTH_TOKEN',
+        message: 'personal_data_auth_token es obligatorio para autorizar el tratamiento de datos ante Wompi.'
       });
     }
 
@@ -2027,6 +2033,7 @@ exports.payBooking = async (req, res) => {
       reference,
       customerEmail: req.user.email,
       acceptanceToken: acceptance_token,
+      personalDataAuthToken: personal_data_auth_token,
       paymentSourceId,
       customerData: redirectMethods.includes(method) ? customer_data : null,
       redirectUrl: redirectMethods.includes(method) ? redirect_url : null,

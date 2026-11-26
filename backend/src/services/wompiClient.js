@@ -97,9 +97,9 @@ class WompiClient {
     }
   }
 
-  async _request(method, path, { body, auth = 'private', params } = {}) {
-    const key = auth === 'public' ? this.publicKey : this.privateKey;
-    if (!key) {
+  async _request(method, path, { body, auth = 'private', params, headers = {} } = {}) {
+    const key = auth === 'public' ? this.publicKey : auth === 'private' ? this.privateKey : null;
+    if (auth !== 'none' && !key) {
       throw new WompiError(`Falta la llave ${auth === 'public' ? 'pública' : 'privada'} de Wompi.`);
     }
 
@@ -111,9 +111,10 @@ class WompiClient {
         data: body,
         timeout: this.timeout,
         headers: {
-          Authorization: `Bearer ${key}`,
+          ...(key ? { Authorization: `Bearer ${key}` } : {}),
           'Content-Type': 'application/json',
-          Accept: 'application/json'
+          Accept: 'application/json',
+          ...headers
         }
       });
       return response.data;
@@ -140,7 +141,12 @@ class WompiClient {
     if (!this.publicKey) {
       throw new WompiError('Falta WOMPI_PUBLIC_KEY para obtener los tokens de aceptación.');
     }
-    const { data } = await this._request('GET', `/merchants/${this.publicKey}`, { auth: 'public' });
+    // Wompi depreca GET /merchants/:public_key el 31-10-2026. La API vigente
+    // autentica esta consulta con x-merchant-public-key en /merchants/info.
+    const { data } = await this._request('GET', '/merchants/info', {
+      auth: 'none',
+      headers: { 'x-merchant-public-key': this.publicKey }
+    });
 
     const acceptance = data?.presigned_acceptance?.acceptance_token;
     const personalAuth = data?.presigned_personal_data_auth?.acceptance_token;
@@ -148,11 +154,15 @@ class WompiClient {
     if (!acceptance) {
       throw new WompiError('La respuesta de Wompi no incluyó presigned_acceptance.acceptance_token.');
     }
+    if (!personalAuth) {
+      throw new WompiError('La respuesta de Wompi no incluyó presigned_personal_data_auth.acceptance_token.');
+    }
 
     return {
       acceptanceToken: acceptance,
-      personalDataAuthToken: personalAuth || null,
-      permalink: data?.presigned_acceptance?.permalink || null
+      personalDataAuthToken: personalAuth,
+      permalink: data?.presigned_acceptance?.permalink || null,
+      personalDataAuthPermalink: data?.presigned_personal_data_auth?.permalink || null
     };
   }
 
@@ -281,6 +291,7 @@ class WompiClient {
    */
   async createPaymentSource({ customerEmail, type, token, acceptanceToken, personalDataAuthToken }) {
     if (!acceptanceToken) throw new WompiError('acceptance_token es obligatorio para crear la fuente de pago.');
+    if (!personalDataAuthToken) throw new WompiError('accept_personal_auth es obligatorio para crear la fuente de pago.');
 
     const body = {
       customer_email: customerEmail,
@@ -288,7 +299,7 @@ class WompiClient {
       token,
       acceptance_token: acceptanceToken
     };
-    if (personalDataAuthToken) body.accept_personal_auth = personalDataAuthToken;
+    body.accept_personal_auth = personalDataAuthToken;
 
     const { data } = await this._request('POST', '/payment_sources', { auth: 'private', body });
     if (!data?.id) throw new WompiError('Wompi no devolvió el id de la fuente de pago.');
@@ -313,8 +324,10 @@ class WompiClient {
     reference,
     customerEmail,
     acceptanceToken,
+    personalDataAuthToken,
     paymentSourceId = null,
     paymentMethod = null,
+    recurrent = false,
     customerData = null,
     redirectUrl = null,
     ip = null,
@@ -323,6 +336,7 @@ class WompiClient {
     this._assertConfigured();
 
     if (!acceptanceToken) throw new WompiError('acceptance_token es obligatorio.');
+    if (!personalDataAuthToken) throw new WompiError('accept_personal_auth es obligatorio.');
     if (!reference) throw new WompiError('reference es obligatorio.');
     if (!customerEmail) throw new WompiError('customer_email es obligatorio.');
     if (!Number.isInteger(amountInCents) || amountInCents <= 0) {
@@ -338,10 +352,12 @@ class WompiClient {
       reference,
       customer_email: customerEmail,
       acceptance_token: acceptanceToken,
+      accept_personal_auth: personalDataAuthToken,
       signature: this.createIntegritySignature({ reference, amountInCents, currency })
     };
 
     if (paymentSourceId) body.payment_source_id = paymentSourceId;
+    if (recurrent) body.recurrent = true;
     if (paymentMethod) body.payment_method = paymentMethod;
     if (customerData) body.customer_data = customerData;
     if (redirectUrl) body.redirect_url = redirectUrl;

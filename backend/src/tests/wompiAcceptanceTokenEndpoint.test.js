@@ -76,7 +76,8 @@ describe('Wompi — endpoint del token de aceptación', () => {
     wompiClient.getAcceptanceTokens.mockResolvedValue({
       acceptanceToken: 'acc_test_123',
       personalDataAuthToken: 'pda_test_456',
-      permalink: 'https://wompi.com/es/colombia/aceptacion'
+      permalink: 'https://wompi.com/es/colombia/aceptacion',
+      personalDataAuthPermalink: 'https://wompi.com/es/colombia/datos'
     });
 
     const res = await request(app).get(RUTA).set(CON_AUTH);
@@ -86,7 +87,8 @@ describe('Wompi — endpoint del token de aceptación', () => {
       success: true,
       acceptance_token: 'acc_test_123',
       personal_data_auth_token: 'pda_test_456',
-      permalink: 'https://wompi.com/es/colombia/aceptacion'
+      permalink: 'https://wompi.com/es/colombia/aceptacion',
+      personal_data_auth_permalink: 'https://wompi.com/es/colombia/datos'
     });
   });
 
@@ -111,7 +113,8 @@ describe('Wompi — endpoint del token de aceptación', () => {
     wompiClient.getAcceptanceTokens.mockResolvedValue({
       acceptanceToken: 'acc_test_123',
       personalDataAuthToken: 'pda_test_456',
-      permalink: 'https://wompi.com/es/colombia/aceptacion'
+      permalink: 'https://wompi.com/es/colombia/aceptacion',
+      personalDataAuthPermalink: 'https://wompi.com/es/colombia/datos'
     });
 
     const res = await request(app).get(RUTA).set(CON_AUTH);
@@ -119,7 +122,7 @@ describe('Wompi — endpoint del token de aceptación', () => {
 
     expect(cuerpo).not.toMatch(/pub_(test|prod)_/);
     expect(Object.keys(res.body).sort()).toEqual(
-      ['acceptance_token', 'personal_data_auth_token', 'permalink', 'success'].sort()
+      ['acceptance_token', 'personal_data_auth_token', 'permalink', 'personal_data_auth_permalink', 'success'].sort()
     );
   });
 });

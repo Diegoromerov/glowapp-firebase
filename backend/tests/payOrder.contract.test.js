@@ -49,7 +49,7 @@ const ordenPendiente = {
 function reqPago(body, extra = {}) {
   return {
     params: { id: ORDER_ID },
-    body,
+    body: { personal_data_auth_token: 'pda-test', ...body },
     user: { id: 1, email: 'cliente@glowapp.co' },
     ip: '190.0.0.1',
     ...extra
@@ -98,6 +98,7 @@ describe('payOrder — contrato con Wompi', () => {
       reqPago({
         payment_method: 'DAVIPLATA',
         acceptance_token: 'acc-token',
+        personal_data_auth_token: 'pda-test',
         redirect_url: 'https://glowapp.co/pago/resultado',
         customer_data: { email: 'cliente@glowapp.co', full_name: 'Diego', phone_number: '3001234567' }
       }),
@@ -107,6 +108,7 @@ describe('payOrder — contrato con Wompi', () => {
     expect(wompiClient.createTransaction).toHaveBeenCalledTimes(1);
     const payload = wompiClient.createTransaction.mock.calls[0][0];
     expect(payload.paymentMethod).toBe('DAVIPLATA');
+    expect(payload.personalDataAuthToken).toBe('pda-test');
     expect(payload.paymentSourceId).toBeNull();
     expect(payload.redirectUrl).toBe('https://glowapp.co/pago/resultado');
     expect(payload.customerData).toMatchObject({ full_name: 'Diego', phone_number: '3001234567' });
