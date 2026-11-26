@@ -252,7 +252,13 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(express.json({ limit: '50mb' }));
+app.use(express.json({
+  limit: '50mb',
+  // Stripe requires the original bytes to validate its webhook signature.
+  verify: (req, res, buffer) => {
+    if (req.originalUrl === '/api/webhooks/stripe-saas') req.rawBody = Buffer.from(buffer);
+  }
+}));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(traceIdMiddleware); // Trace ID middleware for consistent tracking
 // Servir el build de Flutter Web desde el backend es una comodidad de desarrollo local: en el
@@ -489,6 +495,7 @@ const webhookLimiter = rateLimitByIP({
 
 // Nota: authLimiter ya se aplica dentro de authRoutes.js
 app.use('/api/payments/wompi-webhook', webhookLimiter);
+app.use('/api/webhooks/stripe-saas', webhookLimiter);
 
 // Webhook Envíame (tracking multi-carrier) — sin rate limiter estricto, validación por HMAC
 app.use('/api/webhooks/envia', require('./src/routes/enviaWebhook'));
@@ -586,6 +593,7 @@ app.use('/api/saas/analytics', saasAnalyticsRoutes);
 app.use('/api/saas/loyalty', saasLoyaltyRoutes);
 app.use('/api/salon-loyalty', salonLoyaltyCustomerRoutes);
 app.use('/api/saas/billing', saasBillingRoutes);
+app.use('/api/webhooks/stripe-saas', require('./src/routes/saasStripeWebhookRoutes'));
 app.use('/api/saas/api-keys', saasApiKeyRoutes);
 app.use('/api/superadmin', superAdminRoutes);
 

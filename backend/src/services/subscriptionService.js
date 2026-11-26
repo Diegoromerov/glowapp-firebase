@@ -318,6 +318,15 @@ class SubscriptionService {
     );
   }
 
+  async _syncPlanToTenantFromWebhook(tenantId, plan, status) {
+    const client = await pool.connect();
+    try {
+      await this._syncPlanToTenant(client, tenantId, plan, status);
+    } finally {
+      client.release();
+    }
+  }
+
   /**
    * Handler webhook Stripe (idempotencia por event_id)
    */
@@ -325,16 +334,20 @@ class SubscriptionService {
     // Verificar idempotencia
     const eventHash = crypto.createHash('sha256').update(JSON.stringify(event)).digest('hex');
     const { rows: existing } = await pool.query(
-      'SELECT 1 FROM webhook_events WHERE provider = $1 AND event_id = $2',
+      'SELECT error_message FROM webhook_events WHERE provider = $1 AND event_id = $2',
       ['stripe', event.id]
     );
-    if (existing.length > 0) {
+    if (existing.length > 0 && !existing[0].error_message) {
       console.log('[subscriptionService] Webhook Stripe ya procesado:', event.id);
       return { received: true, duplicate: true };
     }
 
     try {
       switch (event.type) {
+        case 'checkout.session.completed':
+        case 'checkout.session.async_payment_succeeded':
+          await this._handleCheckoutSessionCompleted(event.data.object);
+          break;
         case 'invoice.paid':
           await this._handleInvoicePaid(event.data.object, 'stripe');
           break;
@@ -355,7 +368,10 @@ class SubscriptionService {
       // Registrar evento procesado
       await pool.query(
         `INSERT INTO webhook_events (provider, event_id, event_type, payload_hash, result)
-         VALUES ($1, $2, $3, $4, $5)`,
+         VALUES ($1, $2, $3, $4, $5)
+         ON CONFLICT (provider, event_id) DO UPDATE
+           SET event_type = EXCLUDED.event_type, payload_hash = EXCLUDED.payload_hash,
+               result = EXCLUDED.result, error_message = NULL, processed_at = NOW()`,
         ['stripe', event.id, event.type, eventHash, JSON.stringify({ processed: true })]
       );
 
@@ -364,7 +380,10 @@ class SubscriptionService {
       console.error('[subscriptionService] Error procesando webhook Stripe:', error.message);
       await pool.query(
         `INSERT INTO webhook_events (provider, event_id, event_type, payload_hash, error_message)
-         VALUES ($1, $2, $3, $4, $5)`,
+         VALUES ($1, $2, $3, $4, $5)
+         ON CONFLICT (provider, event_id) DO UPDATE
+           SET event_type = EXCLUDED.event_type, payload_hash = EXCLUDED.payload_hash,
+               error_message = EXCLUDED.error_message`,
         ['stripe', event.id, event.type, eventHash, error.message]
       );
       throw error;
@@ -377,10 +396,10 @@ class SubscriptionService {
   async handleWompiWebhook(event) {
     const eventHash = crypto.createHash('sha256').update(JSON.stringify(event)).digest('hex');
     const { rows: existing } = await pool.query(
-      'SELECT 1 FROM webhook_events WHERE provider = $1 AND event_id = $2',
+      'SELECT error_message FROM webhook_events WHERE provider = $1 AND event_id = $2',
       ['wompi', event.id]
     );
-    if (existing.length > 0) {
+    if (existing.length > 0 && !existing[0].error_message) {
       return { received: true, duplicate: true };
     }
 
@@ -398,7 +417,10 @@ class SubscriptionService {
 
       await pool.query(
         `INSERT INTO webhook_events (provider, event_id, event_type, payload_hash, result)
-         VALUES ($1, $2, $3, $4, $5)`,
+         VALUES ($1, $2, $3, $4, $5)
+         ON CONFLICT (provider, event_id) DO UPDATE
+           SET event_type = EXCLUDED.event_type, payload_hash = EXCLUDED.payload_hash,
+               result = EXCLUDED.result, error_message = NULL, processed_at = NOW()`,
         ['wompi', event.id, event.type, eventHash, JSON.stringify({ processed: true })]
       );
 
@@ -407,7 +429,10 @@ class SubscriptionService {
       console.error('[subscriptionService] Error procesando webhook Wompi:', error.message);
       await pool.query(
         `INSERT INTO webhook_events (provider, event_id, event_type, payload_hash, error_message)
-         VALUES ($1, $2, $3, $4, $5)`,
+         VALUES ($1, $2, $3, $4, $5)
+         ON CONFLICT (provider, event_id) DO UPDATE
+           SET event_type = EXCLUDED.event_type, payload_hash = EXCLUDED.payload_hash,
+               error_message = EXCLUDED.error_message`,
         ['wompi', event.id, event.type, eventHash, error.message]
       );
       throw error;
@@ -416,12 +441,117 @@ class SubscriptionService {
 
   // --- Handlers internos ---
 
+  async _handleCheckoutSessionCompleted(session) {
+    if (session.mode !== 'subscription' || session.payment_status !== 'paid') return;
+
+    const tenantId = session.metadata?.tenantId;
+    const requestedPlan = session.metadata?.plan;
+    const stripeSubscriptionId = typeof session.subscription === 'string'
+      ? session.subscription
+      : session.subscription?.id;
+    if (!tenantId || !stripeSubscriptionId || !PLAN_CATALOG[requestedPlan]
+        || !PLAN_CATALOG[requestedPlan].priceCop) {
+      throw new Error('Stripe checkout completed without valid tenant, plan, or subscription metadata');
+    }
+
+    // Read the subscription from Stripe; never grant entitlements from the
+    // browser redirect or unverified checkout metadata alone.
+    const external = await stripeService.getStripe().subscriptions.retrieve(stripeSubscriptionId, {
+      expand: ['items.data.price']
+    });
+    if (!['active', 'trialing'].includes(external.status)) {
+      throw new Error(`Stripe subscription is not eligible for activation (${external.status})`);
+    }
+    const priceId = external.items?.data?.[0]?.price?.id;
+    const verifiedPlan = this._mapPriceIdToPlan(priceId, 'stripe');
+    if (!verifiedPlan || verifiedPlan !== requestedPlan) {
+      throw new Error('Stripe subscription price does not match the requested SaaS plan');
+    }
+    const periodStart = external.current_period_start;
+    const periodEnd = external.current_period_end;
+    if (!periodStart || !periodEnd) throw new Error('Stripe subscription has no billing period');
+
+    const client = await pool.connect();
+    try {
+      await client.query('BEGIN');
+      const existing = await client.query(
+        'SELECT id, tenant_id FROM subscriptions WHERE stripe_subscription_id = $1 FOR UPDATE',
+        [stripeSubscriptionId]
+      );
+      if (existing.rows.length && String(existing.rows[0].tenant_id) !== String(tenantId)) {
+        throw new Error('Stripe subscription is already linked to a different tenant');
+      }
+
+      let subscription;
+      if (existing.rows.length) {
+        const updated = await client.query(
+          `UPDATE subscriptions
+           SET plan = $1, status = $2, current_period_start = TO_TIMESTAMP($3),
+               current_period_end = TO_TIMESTAMP($4), stripe_customer_id = $6, currency = 'USD',
+               metadata = COALESCE(metadata, '{}'::jsonb) || $5::jsonb,
+               updated_at = NOW()
+           WHERE stripe_subscription_id = $7 RETURNING *`,
+          [verifiedPlan, external.status, periodStart, periodEnd,
+            JSON.stringify({ checkoutSessionId: session.id, stripeCustomerId: external.customer }),
+            external.customer, stripeSubscriptionId]
+        );
+        subscription = updated.rows[0];
+      } else {
+        const inserted = await client.query(
+          `INSERT INTO subscriptions (
+             tenant_id, stripe_subscription_id, plan, status, current_period_start,
+             current_period_end, metadata, stripe_customer_id, currency
+           ) VALUES ($1, $2, $3, $4, TO_TIMESTAMP($5), TO_TIMESTAMP($6), $7::jsonb, $8, 'USD')
+           RETURNING *`,
+          [tenantId, stripeSubscriptionId, verifiedPlan, external.status, periodStart, periodEnd,
+            JSON.stringify({ checkoutSessionId: session.id, stripeCustomerId: external.customer }),
+            external.customer]
+        );
+        subscription = inserted.rows[0];
+      }
+
+      await this._syncPlanToTenant(client, tenantId, verifiedPlan, external.status);
+      await client.query('COMMIT');
+      return subscription;
+    } catch (error) {
+      await client.query('ROLLBACK');
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
   async _handleInvoicePaid(invoice, provider) {
     const subscriptionId = invoice.subscription || invoice.subscription_id;
     if (!subscriptionId) return;
 
     const field = provider === 'stripe' ? 'stripe_subscription_id' : 'wompi_subscription_id';
-    const customerField = provider === 'stripe' ? 'stripe_customer_id' : 'wompi_customer_id';
+    let { rows } = await pool.query(
+      `SELECT * FROM subscriptions WHERE ${field} = $1`, [subscriptionId]
+    );
+
+    // Stripe does not guarantee event ordering. If invoice.paid arrives before
+    // checkout.session.completed, recover the tenant and plan from subscription
+    // metadata, then verify the subscription directly with Stripe.
+    if (provider === 'stripe' && rows.length === 0) {
+      const external = await stripeService.getStripe().subscriptions.retrieve(subscriptionId, {
+        expand: ['items.data.price']
+      });
+      const tenantId = external.metadata?.tenantId;
+      const plan = external.metadata?.plan;
+      if (tenantId && plan) {
+        await this._handleCheckoutSessionCompleted({
+          id: `recovered_${subscriptionId}`,
+          mode: 'subscription',
+          payment_status: 'paid',
+          metadata: { tenantId, plan },
+          subscription: subscriptionId
+        });
+        ({ rows } = await pool.query(
+          `SELECT * FROM subscriptions WHERE ${field} = $1`, [subscriptionId]
+        ));
+      }
+    }
 
     // Actualizar status a active
     await pool.query(
@@ -430,9 +560,6 @@ class SubscriptionService {
     );
 
     // Crear factura en BD
-    const { rows } = await pool.query(
-      `SELECT * FROM subscriptions WHERE ${field} = $1`, [subscriptionId]
-    );
     if (rows.length > 0) {
       await invoiceService.createInvoiceFromSubscription(null, rows[0], invoice, provider);
     }
@@ -472,7 +599,7 @@ class SubscriptionService {
         `SELECT tenant_id FROM subscriptions WHERE ${field} = $1`, [subscription.id]
       );
       if (rows.length > 0) {
-        await this._syncPlanToTenant(await pool.connect(), rows[0].tenant_id, plan, status);
+        await this._syncPlanToTenantFromWebhook(rows[0].tenant_id, plan, status);
       }
     }
   }
@@ -488,7 +615,7 @@ class SubscriptionService {
       `SELECT tenant_id FROM subscriptions WHERE ${field} = $1`, [subscription.id]
     );
     if (rows.length > 0) {
-      await this._syncPlanToTenant(await pool.connect(), rows[0].tenant_id, 'FREEMIUM', 'canceled');
+      await this._syncPlanToTenantFromWebhook(rows[0].tenant_id, 'FREEMIUM', 'canceled');
     }
   }
 

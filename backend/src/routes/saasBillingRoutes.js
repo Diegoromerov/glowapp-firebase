@@ -7,7 +7,6 @@ const { authMiddleware } = require('../middleware/auth');
 const subscriptionService = require('../services/subscriptionService');
 const invoiceService = require('../services/invoiceService');
 const stripeService = require('../services/stripeService');
-const wompiSubscriptionService = require('../services/wompiSubscriptionService');
 const { PLAN_CATALOG, PLAN_IDS } = require('../config/saasCatalog');
 
 const router = express.Router();
@@ -226,6 +225,25 @@ router.post('/checkout', requireOwner, async (req, res) => {
       return res.status(400).json({ error: 'Plan inválido', validPlans });
     }
 
+    // Wompi SaaS links are one-off payments and have no verified activation
+    // handler yet. Do not create a charge that the subscription system cannot
+    // reconcile. Stripe checkout is available only with its signed webhook.
+    if (currency !== 'USD') {
+      return res.status(503).json({
+        error: 'El checkout SaaS en COP está temporalmente deshabilitado hasta completar la conciliación segura de Wompi.'
+      });
+    }
+    if (!process.env.STRIPE_WEBHOOK_SECRET) {
+      return res.status(503).json({ error: 'La facturación Stripe aún no está configurada para confirmar pagos de forma segura.' });
+    }
+    if (!stripeService.isConfigured()) {
+      return res.status(503).json({ error: 'La pasarela Stripe no está configurada.' });
+    }
+    const configuredPriceId = subscriptionService._getStripePriceId(plan);
+    if (!configuredPriceId || !/^price_[A-Za-z0-9]+$/.test(configuredPriceId)) {
+      return res.status(503).json({ error: 'El precio del plan aún no está configurado en Stripe.' });
+    }
+
     // Verificar que es upgrade (no downgrade por checkout)
     const currentSub = await subscriptionService.getActiveSubscription(req.saas.tenantId);
     if (currentSub) {
@@ -249,7 +267,7 @@ router.post('/checkout', requireOwner, async (req, res) => {
 
     const ownerEmail = tenant.rows[0].email;
 
-    if (currency === 'USD' && stripeService.isConfigured()) {
+    if (currency === 'USD') {
       // Stripe Checkout
       const customer = await stripeService.createOrGetCustomer({
         email: ownerEmail,
@@ -270,25 +288,6 @@ router.post('/checkout', requireOwner, async (req, res) => {
         provider: 'stripe',
         checkoutUrl: session.url,
         sessionId: session.id
-      });
-    } else {
-      // Wompi Payment Link (pago único) - para suscripciones usar widget en frontend
-      const amount = invoiceService.getPlanPrice(plan, 'COP');
-      const reference = `sub_${req.saas.tenantId}_${plan}_${Date.now()}`;
-
-      const paymentLink = await wompiSubscriptionService.createPaymentLink({
-        amountInCents: amount * 100,
-        currency: 'COP',
-        reference,
-        customerEmail: ownerEmail,
-        redirectUrl: successUrl || `${process.env.FRONTEND_URL}/billing/success?ref=${reference}`
-      });
-
-      return res.json({
-        provider: 'wompi',
-        checkoutUrl: paymentLink.data?.checkout_url || paymentLink.checkout_url,
-        paymentLinkId: paymentLink.data?.id || paymentLink.id,
-        reference
       });
     }
   } catch (error) {
@@ -339,13 +338,12 @@ router.post('/change-plan', requireOwner, async (req, res) => {
       return res.status(400).json({ error: 'Plan inválido', validPlans });
     }
 
-    const subscription = await subscriptionService.changePlan({
-      tenantId: req.saas.tenantId,
-      newPlan: plan,
-      prorate
+    // Direct plan mutation can grant access before an invoice is paid; Wompi's
+    // legacy implementation also canceled the current subscription before
+    // failing. Until a paid plan-change workflow exists, fail closed.
+    return res.status(409).json({
+      error: 'Los cambios de plan deben completarse mediante checkout y confirmarse por webhook de pago. Esta operación no está habilitada todavía.'
     });
-
-    res.json({ message: 'Plan cambiado', subscription });
   } catch (error) {
     console.error('[saasBillingRoutes] Error changing plan:', error.message);
     res.status(500).json({ error: error.message || 'Error cambiando plan' });
@@ -362,6 +360,16 @@ router.post('/cancel', requireOwner, async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const { atPeriodEnd = true } = req.body;
+
+    const currentSub = await subscriptionService.getActiveSubscription(req.saas.tenantId);
+    if (currentSub?.wompi_subscription_id) {
+      return res.status(409).json({
+        error: 'La cancelación de suscripciones Wompi no está disponible hasta validar el flujo oficial de ciclo y cancelación.'
+      });
+    }
+    if (!currentSub?.stripe_subscription_id) {
+      return res.status(409).json({ error: 'No hay una suscripción con un proveedor de pago compatible para cancelar.' });
+    }
 
     const subscription = await subscriptionService.cancelSubscription({
       tenantId: req.saas.tenantId,
