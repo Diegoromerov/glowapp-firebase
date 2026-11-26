@@ -5,6 +5,9 @@
   let apiBase;
   let env;
   let turnstileSiteKey;
+  let configError = false;
+  let turnstileError = false;
+  let configReady = false;
   const dialog = document.querySelector('#lead-dialog');
   const form = document.querySelector('#lead-form');
   const status = document.querySelector('.form-status');
@@ -50,35 +53,64 @@
     console.debug('[analytics]', payload);
   }
 
-  async function init() {
-    const response = await fetch(configUrl, { cache: 'no-cache' });
-    config = await response.json();
-    const hostname = location.hostname;
-    env = config.domainEnvMap?.[hostname];
-    if (!env) {
-      document.querySelectorAll('[data-button]').forEach(button => { button.disabled = true; });
-      return;
-    }
-    apiBase = config.apiBaseUrl[env];
-    turnstileSiteKey = config.turnstileSiteKey?.[env] || '';
-    document.querySelector('#privacy-link').href = '/privacidad';
-
-    if (config.analytics?.autoInit) initAnalytics();
-
-    if (turnstileSiteKey) {
-      await new Promise((resolve, reject) => {
-        const script = document.createElement('script'); script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; script.async = true; script.defer = true; script.onload = resolve; script.onerror = reject; document.head.append(script);
-      });
-    }
+  function connectListeners() {
     document.querySelectorAll('[data-button]').forEach(button => button.addEventListener('click', () => activateButton(button.dataset.button)));
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     form.contactType.addEventListener('change', updateContact);
     form.addEventListener('submit', submitLead);
   }
 
+  async function loadTurnstile() {
+    if (!turnstileSiteKey) return;
+    try {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        script.async = true;
+        script.defer = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.append(script);
+      });
+    } catch (err) {
+      console.warn('[landing] Turnstile no cargó:', err.message);
+      turnstileSiteKey = '';
+      turnstileError = true;
+    }
+  }
+
+  async function init() {
+    connectListeners();
+    try {
+      const response = await fetch(configUrl, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      config = await response.json();
+    } catch (err) {
+      console.warn('[landing] Config no cargó:', err.message);
+      config = {};
+      configError = true;
+      return;
+    }
+    const hostname = location.hostname;
+    env = config.domainEnvMap?.[hostname];
+    if (!env) env = hostname.includes('staging') ? 'staging' : hostname.includes('production') ? 'production' : 'development';
+    configReady = true;
+    apiBase = config.apiBaseUrl?.[env];
+    turnstileSiteKey = config.turnstileSiteKey?.[env] || '';
+    document.querySelector('#privacy-link').href = config.privacyUrl?.[env] || `${apiBase}/privacy-policy.html`;
+
+    if (config.analytics?.autoInit) initAnalytics();
+
+    await loadTurnstile();
+  }
+
   function activateButton(id) {
+    if (!configReady) {
+      openForm(id === 'profesional' ? 'professional' : id === 'salon' ? 'salon' : 'client');
+      return;
+    }
     const item = config.buttons.find(button => button.id === id);
-    if (!item) return;
+    if (!item) { openForm(id === 'profesional' ? 'professional' : id === 'salon' ? 'salon' : 'client'); return; }
     trackEvent('button_click', { button_id: id, role: item.role });
     if (item.mode === 'redirect' && item.redirectUrl) { location.assign(item.redirectUrl); return; }
     openForm(item.role);
@@ -97,7 +129,15 @@
     form.neighborhood.required = role !== 'salon';
     const slot = document.querySelector('#turnstile-slot'); slot.replaceChildren();
     if (turnstileSiteKey && window.turnstile) {
-      window.turnstile.render(slot, { sitekey: turnstileSiteKey, callback: token => { let field = form.querySelector('[name="cf-turnstile-response"]'); if (!field) { field = document.createElement('input'); field.type = 'hidden'; field.name = 'cf-turnstile-response'; form.append(field); } field.value = token; }, 'expired-callback': () => { const field = form.querySelector('[name="cf-turnstile-response"]'); if (field) field.value = ''; } });
+      try {
+        window.turnstile.render(slot, { sitekey: turnstileSiteKey, callback: token => { let field = form.querySelector('[name="cf-turnstile-response"]'); if (!field) { field = document.createElement('input'); field.type = 'hidden'; field.name = 'cf-turnstile-response'; form.append(field); } field.value = token; }, 'expired-callback': () => { const field = form.querySelector('[name="cf-turnstile-response"]'); if (field) field.value = ''; } });
+      } catch (err) {
+        console.warn('[landing] Turnstile no se pudo renderizar:', err.message);
+        turnstileError = true;
+        turnstileSiteKey = '';
+      }
+    } else if (turnstileSiteKey) {
+      turnstileError = true;
     }
     updateContact();
     dialog.showModal();
@@ -125,8 +165,10 @@
       consent: data.get('consent') === 'on', consentTextVersion: config.consentTextVersion, turnstileToken,
       website: data.get('website') || '', utm: { source: new URLSearchParams(location.search).get('utm_source') || '', medium: new URLSearchParams(location.search).get('utm_medium') || '', campaign: new URLSearchParams(location.search).get('utm_campaign') || '' }
     };
+    if (configError) { status.textContent = 'No pudimos cargar la configuración. Recarga la página.'; return; }
+    if (turnstileError) { status.textContent = 'No pudimos cargar la verificación de seguridad. Recarga la página o desactiva el bloqueador.'; return; }
     if (!turnstileToken && turnstileSiteKey) { status.textContent = 'Completa la verificación de seguridad.'; return; }
-    if (!turnstileSiteKey) { status.textContent = 'El formulario a\u00fan no est\u00e1 habilitado. Vuelve pronto.'; return; }
+    if (!turnstileSiteKey) { status.textContent = 'El formulario aún no está habilitado.'; return; }
     status.textContent = '';
     const submit = form.querySelector('.submit'); submit.disabled = true; submit.textContent = 'Enviando...';
     const start = performance.now();
@@ -146,5 +188,8 @@
       status.textContent = 'No fue posible conectar. Revisa tu conexi\u00f3n e intenta de nuevo.';
     } finally { submit.disabled = false; submit.innerHTML = 'Enviar solicitud <span>\u2197</span>'; }
   }
-  init().catch(() => { document.querySelectorAll('[data-button]').forEach(button => { button.disabled = true; }); });
+  init().catch(err => {
+    console.error('[landing] Error de inicialización:', err.message);
+    configError = true;
+  });
 })();
