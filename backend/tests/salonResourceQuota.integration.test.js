@@ -31,7 +31,7 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
       `INSERT INTO business_profiles
          (id, provider_id, vertical_id, name, tenant_id, saas_plan)
        VALUES ($1, $2, $3, $4, $5, 'BASIC')`,
-      [profileId, userId, verticalId, 'Resource quota ' + profileId, 'resource-test-' + profileId]
+      [profileId, userId, verticalId, 'Resource quota ' + profileId, profileId]
     );
     const salon = await adminPool.query(
       `INSERT INTO salones (id_dueno, nombre_salon, business_profile_id, plan_saas)
@@ -43,7 +43,7 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
       await adminPool.query(
         `INSERT INTO recursos_alquilables (tenant_id, salon_id, nombre, tipo)
          VALUES ($1, $2, $3, 'PUESTO')`,
-        ['resource-test-' + profileId, salonId, 'Existing resource ' + i]
+        [profileId, salonId, 'Existing resource ' + i]
       );
     }
   });
