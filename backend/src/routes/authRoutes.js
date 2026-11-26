@@ -1,6 +1,7 @@
 const { wrapRouterAsync } = require('../utils/expressAsync');
 const express = require('express');
 const router = express.Router();
+const { pool } = require('../config/db');
 const { register, login, logout, forgotPassword, resetPassword, oauth, onboarding, acceptBiometricsConsent, saveFcmToken, getReferralInfo, deleteAccount, changePassword, selectRole, switchContext } = require('../controllers/authController');
 const { googleSignIn, facebookSignIn } = require('../controllers/oauthController');
 const { authMiddleware } = require('../middleware/auth');
