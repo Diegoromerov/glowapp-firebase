@@ -170,8 +170,10 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
         .set('Authorization', `Bearer ${ownerToken}`)
         .send({ nombre: 'HTTP concurrent B', tipo: 'PUESTO' }),
     ]);
-    expect(responses.map((res) => res.status).sort(), JSON.stringify(responses.map(({ status, body }) => ({ status, body }))))
-      .toEqual([201, 403]);
+    if (responses.some((res) => ![201, 403].includes(res.status))) {
+      console.error('Unexpected salon resource HTTP responses:', JSON.stringify(responses.map(({ status, body }) => ({ status, body }))));
+    }
+    expect(responses.map((res) => res.status).sort()).toEqual([201, 403]);
     expect(responses.find((res) => res.status === 403).body).toMatchObject({
       code: 'SAAS_QUOTA_EXCEEDED', feature: 'RESOURCES', current: 5, limit: 5,
     });
