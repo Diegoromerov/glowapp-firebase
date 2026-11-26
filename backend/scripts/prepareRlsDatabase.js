@@ -147,6 +147,7 @@ const MIGRACIONES_BASE_NUEVA = [
   // 183: suspend visibility without disabling account access.
   '183_user_public_visibility_suspension.sql',
   '189_explicit_salon_business_profile.sql',
+'191_booking_tenant_salon_scope.sql',
 // SaaS membership governance and row-level policies, exercised by the RLS test suite.
 '190_saas_membership_governance.sql',
 '197_business_profiles_membership_read.sql',
@@ -303,6 +304,7 @@ const MIGRACIONES_ARRANQUE = [
   // Keep existing databases aligned with the public visibility checks.
   '183_user_public_visibility_suspension.sql',
   '189_explicit_salon_business_profile.sql',
+  '191_booking_tenant_salon_scope.sql',
   '190_saas_membership_governance.sql',
   '197_business_profiles_membership_read.sql',
   '200_saas_memberships_rls.sql',
