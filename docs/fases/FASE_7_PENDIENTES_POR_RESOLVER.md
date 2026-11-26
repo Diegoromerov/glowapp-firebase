@@ -1,6 +1,6 @@
 # Fase 7 — Puntos por resolver
 
-**Estado:** Fase 7 en curso. Corrección del catálogo de prueba y preservación de derechos heredados implementadas en rama, pendientes de integración y verificación de producción.
+**Estado:** Fase 7 en curso. Catálogo V3, conservación de derechos heredados y app de prestadores desplegados en producción el 26 de noviembre de 2026.
 **Fecha de elaboración:** 23 de noviembre de 2026. **Última conciliación técnica:** 26 de noviembre de 2026.
 **Contexto:** plan comercial SaaS de GlowApp para salones. El trabajo se publica directamente en producción, sin usar staging, conforme a la instrucción del usuario.
 
@@ -71,9 +71,9 @@ Pendiente todavía: la comprobación cubre la paridad de disponibilidad/contrata
 
 ## Faltantes prioritarios — fase reanudada
 
-La corrección actual conserva en `FREE_TRIAL_LEGACY` las capacidades concedidas a los tenants existentes; los nuevos registros reciben una prueba con módulos que tienen flujos operativos en la aplicación. El ajuste aún debe integrarse y comprobarse en producción.
+La corrección desplegada conserva en `FREE_TRIAL_LEGACY` las capacidades concedidas a los tenants existentes; los nuevos registros reciben una prueba con módulos que tienen flujos operativos en la aplicación. Railway registra como exitosa la migración 203 y el catálogo V3 se verificó en la API productiva.
 
-También está lista la migración 203, el catálogo V3, la compatibilidad con fechas de vencimiento y la paridad del respaldo Flutter. La verificación local de sintaxis Node, `dart analyze` de los tres archivos cambiados y `git diff --check` terminó sin errores; el análisis completo del proveedor reporta avisos preexistentes en otras pantallas.
+También quedaron desplegados el catálogo V3, la migración 203, la compatibilidad con fechas de vencimiento y el respaldo Flutter. CI de backend y workflow live de Firebase pasaron. La API está saludable, responde V3 y el Hosting del proveedor devuelve HTTP 200. `dart analyze` enfocado no encontró errores; el análisis completo del proveedor reporta avisos preexistentes en otras pantallas.
 
 **Estado de trabajo:** fase reanudada. Resolver en paralelo las brechas técnicas seguras; mantener bloqueados precios propuestos, cobros reales y módulos no configurados hasta contar con decisiones y proveedores necesarios.
 
