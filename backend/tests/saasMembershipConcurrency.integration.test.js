@@ -115,8 +115,18 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
   async function assertExactlyOneSeatWinner(results, fixture) {
     const fulfilled = results.filter((result) => result.status === 'fulfilled');
     const rejected = results.filter((result) => result.status === 'rejected');
-    expect(fulfilled).toHaveLength(1);
-    expect(rejected).toHaveLength(1);
+    if (fulfilled.length !== 1 || rejected.length !== 1) {
+      const outcomes = results.map((result) => result.status === 'fulfilled'
+        ? { status: result.status, value: result.value }
+        : {
+            status: result.status,
+            error: result.reason?.message,
+            httpStatus: result.reason?.status,
+            code: result.reason?.code,
+            detail: result.reason?.details,
+          });
+      throw new Error(`Expected one seat winner; outcomes: ${JSON.stringify(outcomes)}`);
+    }
     expect(rejected[0].reason).toMatchObject({ status: 403 });
 
     const usage = await adminPool.query(
