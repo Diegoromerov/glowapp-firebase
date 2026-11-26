@@ -1,6 +1,6 @@
 # Fase 7 — Paquetes comerciales y lanzamiento gradual
 
-**Estado:** En curso. Catálogo V3, migración 203 y app del proveedor publicados en producción el 26 de noviembre de 2026. Checkout conciliado, definición final de oferta y piloto siguen abiertos.
+**Estado:** En curso. Catálogo V4, migración 203 y app del proveedor publicados en producción el 26 de noviembre de 2026. Checkout conciliado, definición final de oferta y piloto siguen abiertos.
 
 **Objetivo:** que la oferta presentada a salones coincida con el catálogo, las condiciones de contratación, las capacidades realmente protegidas y las cuotas medidas; preparar una salida gradual que pueda detenerse.
 
@@ -10,13 +10,14 @@
 - Marca personalizada, analítica avanzada, modo de prueba de facturación, Aura para negocio y WhatsApp se quitan de esta oferta hasta que sus rutas, integraciones y medición puedan verificarse.
 - Los tenants que ya tenían la oferta anterior pasan a `FREE_TRIAL_LEGACY`; mantienen las capacidades y cuotas concedidas, junto con su vencimiento actual. No se les degrada por este cambio. Al expirar, el job sigue pasándolos a Freemium.
 - `FREE_TRIAL_LEGACY` no aparece en el catálogo público, no se acepta como plan de alta/compra y sí conserva sus límites para el backend, el panel de consumo y la aplicación del proveedor.
-- El cambio se integró en `main` (`7d8fb33`). Railway aplicó la migración 203; los logs confirman su éxito. El API responde catálogo V3, PostgreSQL disponible y Firebase Hosting del proveedor devuelve HTTP 200.
+- El cambio se integró en `main` (`7d8fb33`). Railway aplicó la migración 203; los logs confirman su éxito. El API responde catálogo V4, PostgreSQL disponible y Firebase Hosting del proveedor devuelve HTTP 200.
+- En el commit `7f06dd3`, se retiró `INVOICING_ADDON` de las capacidades públicas de Básico porque el complemento sigue sin estar disponible. El add-on y la cuota de documentos permanecen desactivados; no se activaron cargos fiscales.
 - CI de Backend pasó; el workflow de Firebase completó Analyze & Tests, análisis Flutter, build web del proveedor y deploy live con éxito.
 - Se auditaron las rutas de catálogo: reservas directas y límites mensuales; membresías y asientos; caja; inventario del salón; recursos y límite por plan; recetas; cumplimiento; fidelización; mapa. No se encontró un bypass en los routers revisados. Esto es revisión de código/CI, no una prueba de compra ni una aceptación de usuarios en producción.
 
 ## Oferta actualmente declarada por el backend
 
-La fuente de catálogo es `backend/src/config/saasCatalog.js` (versión 3), publicada por `GET /api/saas/catalog`. El nivel interno `FREE_TRIAL_LEGACY` conserva las condiciones ya concedidas y se excluye del catálogo público y del alta nueva. Los precios propuestos no son precios habilitados.
+La fuente de catálogo es `backend/src/config/saasCatalog.js` (versión 4), publicada por `GET /api/saas/catalog`. El nivel interno `FREE_TRIAL_LEGACY` conserva las condiciones ya concedidas y se excluye del catálogo público y del alta nueva. Los precios propuestos no son precios habilitados.
 
 | Nivel | Precio mensual vigente en catálogo | Disponibilidad para nuevas altas/compra | Capacidades/cuotas principales declaradas |
 |---|---:|---|---|
@@ -53,13 +54,14 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 - Backend y proveedor se integraron en `main` (`2cb857b`). CI de backend y Flutter pasó; Railway reportó el API online y `GET /api/saas/catalog` devolvió catálogo V2 con FREE_TRIAL, FREEMIUM y BASIC disponibles. Firebase Hosting del proveedor respondió HTTP 200 tras el despliegue live.
 - Sigue faltando una prueba automatizada que compare integralmente descripción, capacidades y funciones visibles del catálogo remoto con el respaldo local. Por eso la paridad de catálogo se considera mejorada, pero todavía parcial.
 
-## Evidencia de producción del catálogo V3 — 26 de noviembre de 2026
+## Evidencia de producción del catálogo V3/V4 — 26 de noviembre de 2026
 
 - Commit de producción: `7d8fb33945050b2ab12208103a63c8ab666e44be`.
 - Railway API deployment `72bd847b-268b-45e7-a4eb-671642d01b1d`: SUCCESS. Sus logs registran `203_saas_trial_legacy_entitlements.sql` aplicada exitosamente.
 - `GET /api/health`: `status=OK`, entorno production, commit `7d8fb33`, PostgreSQL disponible y 75 migraciones registradas.
 - `GET /api/saas/catalog` con `X-App-Audience: provider`: versión 3; nuevos planes FREE_TRIAL, FREEMIUM y BASIC disponibles; `FREE_TRIAL_LEGACY` no se publica.
 - Firebase workflow run `45866544786`: Analyze & Tests, Build glow_provider y Deploy glow_provider finalizaron SUCCESS. `https://glowapp-provider.web.app` responde HTTP 200.
+- La revisión posterior del permiso de facturación se integró en `7f06dd3`; Railway deployment `db14df5e-4aee-411d-a12c-9e9f89d9ebd0` terminó SUCCESS. La API ahora devuelve catálogo V4, Básico ya no contiene `INVOICING_ADDON` y ese add-on sigue `available: false`.
 - La compra real, la renovación y el downgrade controlado siguen pendientes. Wompi recurrente permanece desactivado; tampoco está configurado un proveedor de facturación electrónica.
 
 ## Hallazgos corregidos y cerrados
