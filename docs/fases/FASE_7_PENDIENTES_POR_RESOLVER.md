@@ -1,6 +1,6 @@
 # Fase 7 — Puntos por resolver
 
-**Estado:** auditoría actualizada contra `main` el 26 de noviembre de 2026; faltantes priorizados.
+**Estado:** Fase 7 en curso. Corrección del catálogo de prueba y preservación de derechos heredados implementadas en rama, pendientes de integración y verificación de producción.
 **Fecha de elaboración:** 23 de noviembre de 2026. **Última conciliación técnica:** 26 de noviembre de 2026.
 **Contexto:** plan comercial SaaS de GlowApp para salones. El trabajo se publica directamente en producción, sin usar staging, conforme a la instrucción del usuario.
 
@@ -13,7 +13,7 @@ Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos 
 | N.º | Punto por resolver | Decisión o trabajo requerido | Resultado esperado |
 |---:|---|---|---|
 | 1 | Vencimiento de Prueba Gratis | Resuelto en código y desplegado. Bootstrap guarda fechas; facturación muestra la fecha de vencimiento; job aislado en Railway corre cada día y cambia a Freemium sin tocar suscripciones pagas. La ejecución manual de producción terminó con cero vencidos, cero cambios y cero eventos. | Falta una prueba controlada con un tenant QA cuya prueba esté vencida y demostrar que una suscripción paga queda intacta. |
-| 2 | WhatsApp, POS y soporte prioritario | Precisar si están disponibles hoy para Empresarial, definir alcance, responsables y SLA; integrar los controles de acceso backend que falten. | Beneficios que puedan entregarse, medirse y sostenerse de acuerdo con lo anunciado. |
+| 2 | WhatsApp, Aura, marca y soporte prioritario | No ofrecer WhatsApp, Aura para negocio ni marca personalizada en altas nuevas hasta tener flujo SaaS, integración, métrica y soporte verificables. Posicionamiento de soporte/SLA empresarial sigue pendiente. | Capacidades implementadas y medibles antes de incorporarlas a una oferta contratada. |
 | 3 | Caja, inventario, recetas y recursos | Definir qué herramientas operativas corresponden a cada plan y establecer capacidades/cuotas donde hagan falta. | Matriz por plan y límites efectivos en backend. |
 | 4 | Fidelización propia del salón | Elegir entre incluirla en planes, venderla como complemento o ejecutarla como piloto. Definir costos, límites y reglas; mantenerla separada de los puntos globales GlowApp. | Oferta comercial y técnica clara para el programa de puntos del salón. |
 | 5 | Multi-sede | Definir el número de sedes, permisos y funciones de consolidación por plan, especialmente para Empresas. | Límites de sedes explícitos en catálogo, contratos y backend. |
@@ -70,6 +70,10 @@ Los puntos sobre el proveedor tecnológico DIAN, facturación real, complementos
 Pendiente todavía: la comprobación cubre la paridad de disponibilidad/contratación, no la matriz completa de cuotas y descripciones. El resto de herramientas (inventario, POS, recursos, facturación, Aura, WhatsApp y multi-sede) requiere mapear cada ruta de escritura/lectura con sus entitlements antes de afirmar que todos sus límites están aplicados. No se ejecutó una reserva real en producción ni se configuró un proveedor DIAN o cobro recurrente, para no alterar datos ni activar condiciones comerciales sin configuración.
 
 ## Faltantes prioritarios — fase reanudada
+
+La corrección actual conserva en `FREE_TRIAL_LEGACY` las capacidades concedidas a los tenants existentes; los nuevos registros reciben una prueba con módulos que tienen flujos operativos en la aplicación. El ajuste aún debe integrarse y comprobarse en producción.
+
+También está lista la migración 203, el catálogo V3, la compatibilidad con fechas de vencimiento y la paridad del respaldo Flutter. La verificación local de sintaxis Node, `dart analyze` de los tres archivos cambiados y `git diff --check` terminó sin errores; el análisis completo del proveedor reporta avisos preexistentes en otras pantallas.
 
 **Estado de trabajo:** fase reanudada. Resolver en paralelo las brechas técnicas seguras; mantener bloqueados precios propuestos, cobros reales y módulos no configurados hasta contar con decisiones y proveedores necesarios.
 

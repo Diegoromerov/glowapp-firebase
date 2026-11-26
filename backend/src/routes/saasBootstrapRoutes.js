@@ -152,7 +152,8 @@ router.post('/', async (req, res) => {
     const plan = preserveStoredPlan
       ? storedPlan
       : requestedPlan;
-    const initialPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop === 0);
+    const initialPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id].priceCop === 0
+      && PLAN_CATALOG[id].commerciallyAvailable !== false);
     if (!initialPlans.includes(plan) && !(preserveStoredPlan && plan === storedPlan)) {
       return res.status(400).json({
         error: 'El alta inicial debe usar Prueba Gratis o Freemium. Los planes pagos se activan desde Facturación.',
@@ -186,20 +187,20 @@ router.post('/', async (req, res) => {
        VALUES (
          $1, $2, $3, $4, 'EXISTING_BUSINESS', 'OPERATION', 45.00,
          'Bogotá', 'Colombia', $5, $6,
-         CASE WHEN $6 = 'FREE_TRIAL' THEN CURRENT_TIMESTAMP ELSE NULL END,
-         CASE WHEN $6 = 'FREE_TRIAL'
+         CASE WHEN $6 IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY') THEN CURRENT_TIMESTAMP ELSE NULL END,
+         CASE WHEN $6 IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')
            THEN CURRENT_TIMESTAMP + ($7 * INTERVAL '1 day') ELSE NULL END
        )
        ON CONFLICT (id) DO UPDATE SET
          name = EXCLUDED.name,
          saas_plan = COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan),
          saas_trial_started_at = CASE
-           WHEN COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan) = 'FREE_TRIAL'
+           WHEN COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan) IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')
            THEN COALESCE(business_profiles.saas_trial_started_at, EXCLUDED.saas_trial_started_at)
            ELSE NULL
          END,
          saas_trial_ends_at = CASE
-           WHEN COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan) = 'FREE_TRIAL'
+           WHEN COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan) IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')
            THEN COALESCE(business_profiles.saas_trial_ends_at, EXCLUDED.saas_trial_ends_at)
            ELSE NULL
          END,

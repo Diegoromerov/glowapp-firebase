@@ -217,13 +217,14 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     Map<String, dynamic>? nextPayment,
     DateTime? profileTrialEndsAt,
   ) {
+    final isFreeTrial =
+        tier == SaasPlanTier.freeTrial || tier == SaasPlanTier.freeTrialLegacy;
     final statusLabel = subscription?.status.label ??
-        (tier == SaasPlanTier.freeTrial ? 'Prueba activa' : 'Sin suscripción');
+        (isFreeTrial ? 'Prueba activa' : 'Sin suscripción');
     final statusColor = subscription?.status.color ??
-        (tier == SaasPlanTier.freeTrial ? Colors.amber.shade800 : _muted);
+        (isFreeTrial ? Colors.amber.shade800 : _muted);
     final onTrial = subscription?.isOnTrial ?? false;
-    final freeTrialEndsAt = subscription == null &&
-            tier == SaasPlanTier.freeTrial
+    final freeTrialEndsAt = subscription?.isOnTrial == null && isFreeTrial
         ? profileTrialEndsAt
         : null;
     final freeTrialDaysLeft = freeTrialEndsAt == null
@@ -391,10 +392,12 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,
-                    style: TextStyle(color: color, fontWeight: FontWeight.w700)),
+                    style:
+                        TextStyle(color: color, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 4),
                 Text(detail,
-                    style: const TextStyle(color: _ink, fontSize: 12, height: 1.4)),
+                    style: const TextStyle(
+                        color: _ink, fontSize: 12, height: 1.4)),
                 const SizedBox(height: 5),
                 Text(
                   '${amount == null ? '' : '${_formatCop(amount, attempt['currency']?.toString())} · '}Ref. $reference',
@@ -423,7 +426,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
   // ───────────────────────── Cambio de plan ─────────────────────────
 
-  Widget _changePlanSection(List<SaasPlan> plans, SaasPlanTier current, bool checkoutAvailable) {
+  Widget _changePlanSection(
+      List<SaasPlan> plans, SaasPlanTier current, bool checkoutAvailable) {
     final candidates = plans
         .where((p) =>
             p.isActive && p.tier != current && p.tier != SaasPlanTier.freeTrial)
@@ -454,7 +458,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                   checkoutAvailable
                       ? 'El plan solo se activará después de confirmar el pago. El precio mensual se muestra antes de autorizar el cobro.'
                       : 'La facturación SaaS sigue desactivada en esta cuenta. No se iniciarán cobros desde esta pantalla.',
-                  style: const TextStyle(fontSize: 12, color: _ink, height: 1.4),
+                  style:
+                      const TextStyle(fontSize: 12, color: _ink, height: 1.4),
                 ),
               ),
               ...candidates.map((p) => _planRow(p, checkoutAvailable)),
@@ -556,7 +561,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       price: plan.priceCents / 100,
       itemType: 'saas',
       onSaasCardTokenized: (paymentToken,
-          {required acceptRecurring, required acceptTerms, required acceptPersonalData}) async {
+          {required acceptRecurring,
+          required acceptTerms,
+          required acceptPersonalData}) async {
         final response = await SaasApiService.createWompiSaasCheckout(
           plan: plan.id,
           paymentToken: paymentToken,
@@ -571,7 +578,8 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       final id = ref.read(currentBusinessProfileIdProvider) ?? '';
       await ref.read(billingProvider.notifier).load(id);
       if (mounted) {
-        _toast('Pago enviado. El plan se activará cuando Wompi lo confirme${paymentReference == null ? '.' : ' · Ref. $paymentReference'}');
+        _toast(
+            'Pago enviado. El plan se activará cuando Wompi lo confirme${paymentReference == null ? '.' : ' · Ref. $paymentReference'}');
       }
     }
   }

@@ -41,6 +41,7 @@ DateTime? _asDate(Map<String, dynamic> json, List<String> keys) {
 }
 
 enum SaasPlanTier {
+  freeTrialLegacy('FREE_TRIAL_LEGACY', 'Prueba Gratis', 0, Color(0xFF6B7280)),
   freeTrial('FREE_TRIAL', 'Prueba Gratis', 0, Color(0xFF6B7280)),
   freemium('FREEMIUM', 'Freemium', 0, Color(0xFF9CA3AF)),
   basic('BASIC', 'Básico', 9900000, Color(0xFF3B82F6)), // $99.000 COP
@@ -77,7 +78,7 @@ enum SaasPlanTier {
   /// `null` = ilimitado; los booleanos (ANALYTICS, BRANDING, WHATSAPP, POS) usan 1/0.
   Map<String, int?> get limits {
     switch (this) {
-      case SaasPlanTier.freeTrial:
+      case SaasPlanTier.freeTrialLegacy:
         return {
           'MAP_VISIBILITY': 1,
           'ONLINE_BOOKING': 150,
@@ -98,6 +99,28 @@ enum SaasPlanTier {
           'COMPLIANCE': 1,
           'RECIPES': 1,
           'AURA_QUERIES': 10,
+        };
+      case SaasPlanTier.freeTrial:
+        return {
+          'MAP_VISIBILITY': 1,
+          'ONLINE_BOOKING': 150,
+          'DIRECT_BOOKINGS': 150,
+          'TEAM_SEATS': 3,
+          'API_CALLS': 0,
+          'INVOICING_DOCUMENTS': 0,
+          'INVOICING_TAX_IDS': 0,
+          'ADVANCED_ANALYTICS': 0,
+          'CUSTOM_BRANDING': 0,
+          'WHATSAPP_INTEGRATION': 0,
+          'WHATSAPP_MESSAGES': 0,
+          'SITES': 1,
+          'POS_INTEGRATION': 1,
+          'INVENTORY': 1,
+          'BASIC_REPORTS': 1,
+          'RESOURCES': null,
+          'COMPLIANCE': 1,
+          'RECIPES': 1,
+          'AURA_QUERIES': 0,
         };
       case SaasPlanTier.freemium:
         return {
@@ -508,7 +531,9 @@ class SaasBusinessProfile {
       };
 
   bool get isOnTrial =>
-      currentPlan == SaasPlanTier.freeTrial && trialEndsAt != null;
+      (currentPlan == SaasPlanTier.freeTrial ||
+          currentPlan == SaasPlanTier.freeTrialLegacy) &&
+      trialEndsAt != null;
   bool get isTrialExpired => isOnTrial && DateTime.now().isAfter(trialEndsAt!);
   int get trialDaysRemaining {
     if (!isOnTrial) return 0;

@@ -14,7 +14,7 @@ El endpoint `GET /api/saas/catalog` de producción respondió HTTP 200 con el ca
 
 | Nivel | Precio mensual | Personas | Reservas directas al mes | Estado |
 | --- | ---: | ---: | ---: | --- |
-| Prueba Gratis | $0 | 3 | 150 | Disponible por 14 días |
+| Prueba Gratis | $0 | 3 | 150 | Disponible por 14 días; mapa, reservas, caja, inventario, reportes, recursos, cumplimiento, fidelización y recetas |
 | Freemium | $0 | 1 | 30 | Disponible permanentemente |
 | Básico | $99.000 COP | 5 | Ilimitadas | Disponible |
 

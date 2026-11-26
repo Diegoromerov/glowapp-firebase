@@ -1,29 +1,37 @@
 # Fase 7 — Paquetes comerciales y lanzamiento gradual
 
-**Estado:** En curso. Línea base vigente en `main` (`2cb857bb48a3d794b904a113cbb645b8f569f5f2`); el ciclo de Prueba Gratis y la presentación alineada del catálogo están desplegados en producción. Checkout conciliado, definición final de oferta y piloto siguen abiertos.
+**Estado:** En curso. Catálogo V3 y conservación de derechos heredados preparados para publicación; checkout conciliado, definición final de oferta y piloto siguen abiertos.
 
 **Objetivo:** que la oferta presentada a salones coincida con el catálogo, las condiciones de contratación, las capacidades realmente protegidas y las cuotas medidas; preparar una salida gradual que pueda detenerse.
 
+## Ajuste de la oferta de prueba — 26 de noviembre de 2026
+
+- La Prueba Gratis para nuevas altas se limita a módulos con flujo operativo en la aplicación: mapa, reservas, caja, inventario, reportes, recursos, cumplimiento, fidelización y recetas. Conserva el plazo de 14 días, hasta 3 personas y 150 reservas directas al mes.
+- Marca personalizada, analítica avanzada, modo de prueba de facturación, Aura para negocio y WhatsApp se quitan de esta oferta hasta que sus rutas, integraciones y medición puedan verificarse.
+- Los tenants que ya tenían la oferta anterior pasan a `FREE_TRIAL_LEGACY`; mantienen las capacidades y cuotas concedidas, junto con su vencimiento actual. No se les degrada por este cambio. Al expirar, el job sigue pasándolos a Freemium.
+- `FREE_TRIAL_LEGACY` no aparece en el catálogo público, no se acepta como plan de alta/compra y sí conserva sus límites para el backend, el panel de consumo y la aplicación del proveedor.
+- El cambio agrega la migración 203. El catálogo V3 y su migración aún deben integrarse y verificar su ejecución en producción para considerar este ajuste publicado.
+
 ## Oferta actualmente declarada por el backend
 
-La fuente de catálogo es `backend/src/config/saasCatalog.js` (versión 2), publicada por `GET /api/saas/catalog`. El backend incluye todos los niveles en la respuesta; `commerciallyAvailable` distingue los niveles que pueden contratarse. Los precios propuestos no son precios habilitados.
+La fuente de catálogo es `backend/src/config/saasCatalog.js` (versión 3), publicada por `GET /api/saas/catalog`. El nivel interno `FREE_TRIAL_LEGACY` conserva las condiciones ya concedidas y se excluye del catálogo público y del alta nueva. Los precios propuestos no son precios habilitados.
 
 | Nivel | Precio mensual vigente en catálogo | Disponibilidad para nuevas altas/compra | Capacidades/cuotas principales declaradas |
 |---|---:|---|---|
-| Prueba Gratis | $0 | Alta inicial | 14 días declarados; 3 personas; 150 reservas directas/mes; caja, inventario, reportes, recursos, marca, fidelización, recetas, analítica, modo de prueba de facturación, Aura y WhatsApp con cuotas limitadas. |
+| Prueba Gratis | $0 | Alta inicial | 14 días declarados; hasta 3 personas; 150 reservas directas/mes; mapa, reservas, caja, inventario, reportes, recursos, cumplimiento, fidelización y recetas. |
 | Freemium | $0 | Alta inicial | Permanente; 1 persona; 30 reservas directas/mes; mapa, reservas en línea, recibos no fiscales y reportes básicos. |
 | Básico | $99.000 COP | Disponible comercialmente en catálogo; checkout de producción no verificado y sujeto a configuración | 5 personas; reservas sin límite declarado; caja, inventario, reportes, recursos (5) y checklists; facturación no incluida. |
 | Crecimiento | Sin precio vigente; $169.000 es propuesto | No disponible | Oferta propuesta: hasta 10 personas y capacidades adicionales. |
 | Profesional | $249.000 COP conserva el precio de cuentas existentes | No disponible para nuevas condiciones/compra | Conserva derechos compatibles de API/analítica/marca para cuentas actuales; la oferta V3 con condiciones nuevas está propuesta. |
 | Empresarial | $599.000 COP conserva el precio de cuentas existentes | No disponible para nuevas condiciones/compra | Conserva derechos de cuentas actuales; la propuesta V3 de multi-sede, API y atención comercial no constituye oferta habilitada. |
 
-Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofertas contratables. Los add-ons del catálogo declaran `available: false`. El onboarding Flutter consume el catálogo backend; si no puede cargarlo, su respaldo local permite solo Prueba Gratis, Freemium y Básico. En el selector, las nuevas altas pueden escoger Prueba Gratis o Freemium; el alta inicial rechaza planes pagos. Básico se contrata desde Facturación cuando el checkout está operativo.
+Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofertas contratables. Los add-ons del catálogo declaran `available: false`. El onboarding Flutter consume el catálogo backend; si no puede cargarlo, su respaldo local ofrece solo Prueba Gratis, Freemium y Básico con la misma lista corregida de capacidades. En el selector, las nuevas altas pueden escoger Prueba Gratis o Freemium; el alta inicial rechaza planes pagos. Básico se contrata desde Facturación cuando el checkout está operativo.
 
 ## Evidencia técnica inspeccionada
 
 | Área | Estado observado en `main` | Evaluación |
 |---|---|---|
-| Catálogo y precios | Catálogo V2 centraliza nombres, disponibilidad, capacidades y cuotas. `invoiceService` y Wompi consultan el precio de catálogo. | Fuente común disponible; el informe previo describía cifras antiguas y se corrige aquí. |
+| Catálogo y precios | Catálogo V3 centraliza nombres, disponibilidad, capacidades y cuotas. `invoiceService` y Wompi consultan el precio de catálogo. | Fuente común disponible; oferta de prueba nueva corregida y derechos anteriores versionados. |
 | Disponibilidad de compra | `subscriptionService`, checkout, Wompi y bootstrap rechazan niveles no disponibles. Los planes gratuitos se eligen en el alta. | Guard de disponibilidad presente. |
 | Prueba de pago | El checkout Stripe usa `trialDays: 0`; `subscriptionService` solo deriva `trialDays` de catálogo (14 para FREE_TRIAL, 0 para pagos). El checkout COP depende de Wompi SaaS habilitado. | La contradicción histórica de 30 días en planes pagos ya no está en el código inspeccionado. |
 | Prueba gratis del alta | El bootstrap persiste `saas_trial_started_at` y `saas_trial_ends_at`; el job independiente procesa vencimientos de perfil y sincroniza el plan del salón. | Inicio, fecha visible y downgrade programado están en producción. La ejecución controlada sin datos vencidos no prueba todavía el caso de expiración real. |
@@ -31,7 +39,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | Reservas | `bookingController` controla y consume `DIRECT_BOOKINGS` en transacción para reservas directas del salón; el marketplace tiene origen separado. | La cuota representa reservas directas, no todas las reservas recibidas. Falta evidencia de cobertura en todos los canales, reintentos y límites en producción. |
 | Analítica y API | `/api/saas/analytics` requiere `ADVANCED_ANALYTICS`; crear/usar llaves exige `API_KEYS`, y las llamadas de API se miden al autenticar una API key. | Aplicación localizada. “Procesos de integración” debe explicar que cuenta llamadas autenticadas por llave, no operaciones cotidianas de la app. |
 | Caja, inventario, recursos y recetas | Rutas de salón aplican los entitlements `POS_INTEGRATION`/`POS_RECEIPTS_ONLY`, `INVENTORY`, `RESOURCES` y `RECIPES`; LOYALTY tiene gates administrativos y de cliente. | Gates visibles en las rutas inspeccionadas; hace falta inventariar todas las rutas/variantes para certificar cobertura integral. |
-| WhatsApp, Aura, multi-sede y marca | Hay capacidades y cuotas en el catálogo, pero esta revisión no encontró un mapa completo de rutas de producto, proveedor activo, medición y guard para cada una. | No declararlos como diferenciales habilitados hasta cerrar ese mapa y validar cada flujo. |
+| WhatsApp, Aura, multi-sede y marca | No se encontró un flujo SaaS entregable y medido para WhatsApp, Aura de negocio o marca personalizada. Multi-sede tampoco se ofrece en los niveles disponibles. | Se retiraron esas capacidades de la Prueba Gratis nueva; los tenants existentes mantienen los derechos heredados hasta el vencimiento. |
 | Facturación electrónica | Capacidades y add-ons aparecen en catálogo, varios como propuesta/no disponibles. | No ofrecer cobro ni servicio fiscal a partir de la mera presencia de la capacidad en el catálogo. |
 | Agotamiento de cuotas | `consumeUsage` aplica límite atómico en sus puntos de uso; disponibilidad y comportamiento varían por ruta. No hay una política comercial uniforme documentada para todos los límites. | Definir aviso, bloqueo, tolerancia y recuperación para cada métrica antes del lanzamiento. |
 | Producción | Migration 202 aplicada; salud de API informa PostgreSQL disponible. El job dedicado corre a diario a las 06:00 de Bogotá; su ejecución manual de control reportó 0 pruebas vencidas, 0 salones actualizados y 0 eventos, conforme a la ventana inicial de 14 días. Firebase Hosting del proveedor fue publicado y responde HTTP 200. | Evidencia de despliegue y ejecución del job, no de una expiración real ni de un cobro real. Las rutas de pagos siguen cerradas cuando falta configuración/conciliación segura. |

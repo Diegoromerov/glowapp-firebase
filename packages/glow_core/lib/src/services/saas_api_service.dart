@@ -244,8 +244,10 @@ class SaasApiService {
 
   static String _planDescription(SaasPlanTier tier) {
     switch (tier) {
+      case SaasPlanTier.freeTrialLegacy:
+        return 'Prueba Gratis heredada con las condiciones vigentes al momento del registro.';
       case SaasPlanTier.freeTrial:
-        return 'Prueba GlowApp durante 14 días con hasta 3 personas y 150 reservas al mes.';
+        return 'Prueba GlowApp durante 14 días con hasta 3 personas, agenda y herramientas de operación para tu salón.';
       case SaasPlanTier.freemium:
         return 'Administra tu salón gratis de forma permanente con 1 persona y 30 reservas al mes.';
       case SaasPlanTier.basic:
@@ -280,7 +282,7 @@ class SaasApiService {
 
   static List<String> _planFeatures(SaasPlanTier tier) {
     switch (tier) {
-      case SaasPlanTier.freeTrial:
+      case SaasPlanTier.freeTrialLegacy:
         return const [
           'Presencia en el mapa',
           'Gestión de equipo, roles y permisos',
@@ -297,6 +299,19 @@ class SaasApiService {
           'Recursos ilimitados',
           '10 consultas de Aura',
           '20 mensajes de WhatsApp',
+        ];
+      case SaasPlanTier.freeTrial:
+        return const [
+          'Presencia en el mapa',
+          'Gestión de equipo, roles y permisos',
+          'Reservas en línea',
+          'Caja y ventas',
+          'Inventario',
+          'Reportes básicos',
+          'Recursos ilimitados',
+          'Checklists de cumplimiento',
+          'Fidelización y puntos del salón',
+          'Recetas y consumo de productos',
         ];
       case SaasPlanTier.freemium:
         return const [

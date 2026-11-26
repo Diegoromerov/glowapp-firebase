@@ -3,7 +3,7 @@
  * Los cobros externos (pasarela y proveedor tecnológico DIAN) deben tener
  * configuración propia antes de considerarse disponibles en producción.
  */
-const CATALOG_VERSION = 2;
+const CATALOG_VERSION = 3;
 
 const ADD_ONS = Object.freeze([
   { id: 'INVOICING_ADDON', name: 'Facturación electrónica para Básico', proposedPriceCop: 59000, interval: 'month', limit: 250, metric: 'INVOICING_DOCUMENTS', available: false },
@@ -64,10 +64,12 @@ const COMMON_PAID = [
 ];
 
 const PLAN_CATALOG = Object.freeze({
-  FREE_TRIAL: {
-    id: 'FREE_TRIAL', name: 'Prueba Gratis', priceCop: 0, annualPriceCop: null, priceUsd: 0,
-    interval: 'month', trialDays: 14,
-    description: 'Prueba GlowApp durante 14 días con hasta 3 personas y 150 reservas al mes.', popular: false,
+  // Oferta heredada: solo para conservar derechos de tenants ya existentes.
+  // No se muestra en el catálogo ni se puede contratar para altas nuevas.
+  FREE_TRIAL_LEGACY: {
+    id: 'FREE_TRIAL_LEGACY', name: 'Prueba Gratis', priceCop: 0, annualPriceCop: null, priceUsd: 0,
+    interval: 'month', trialDays: 14, commerciallyAvailable: false, publiclyListed: false,
+    description: 'Oferta heredada de prueba gratis.', popular: false,
     capabilities: [
       'MAP_VISIBILITY', 'TEAM_MANAGEMENT', 'ONLINE_BOOKING', 'POS_INTEGRATION', 'INVENTORY',
       'BASIC_REPORTS', 'RESOURCES', 'COMPLIANCE', 'CUSTOM_BRANDING', 'LOYALTY', 'RECIPES',
@@ -78,6 +80,21 @@ const PLAN_CATALOG = Object.freeze({
       INVOICING_DOCUMENTS: 0, INVOICING_TAX_IDS: 1, RESOURCES: null, AURA_QUERIES: 10,
       WHATSAPP_MESSAGES: 20, SITES: 1, API_CALLS: 0, ADVANCED_ANALYTICS: 1,
       CUSTOM_BRANDING: 1, WHATSAPP_INTEGRATION: 1, POS_INTEGRATION: 1,
+    },
+  },
+  FREE_TRIAL: {
+    id: 'FREE_TRIAL', name: 'Prueba Gratis', priceCop: 0, annualPriceCop: null, priceUsd: 0,
+    interval: 'month', trialDays: 14,
+    description: 'Prueba GlowApp durante 14 días con hasta 3 personas y 150 reservas al mes.', popular: false,
+    capabilities: [
+      'MAP_VISIBILITY', 'TEAM_MANAGEMENT', 'ONLINE_BOOKING', 'POS_INTEGRATION', 'INVENTORY',
+      'BASIC_REPORTS', 'RESOURCES', 'COMPLIANCE', 'LOYALTY', 'RECIPES',
+    ],
+    quotas: {
+      MAP_VISIBILITY: 1, ONLINE_BOOKING: 150, DIRECT_BOOKINGS: 150, TEAM_SEATS: 3,
+      INVOICING_DOCUMENTS: 0, INVOICING_TAX_IDS: 0, RESOURCES: null, AURA_QUERIES: 0,
+      WHATSAPP_MESSAGES: 0, SITES: 1, API_CALLS: 0, ADVANCED_ANALYTICS: 0,
+      CUSTOM_BRANDING: 0, WHATSAPP_INTEGRATION: 0, POS_INTEGRATION: 1,
     },
   },
   FREEMIUM: {
@@ -138,7 +155,7 @@ const PLAN_CATALOG = Object.freeze({
 
 // El orden conserva el escalón comercial previo; Crecimiento se ubica entre
 // Básico y Profesional para que validaciones de upgrade no bajen de categoría.
-const PLAN_IDS = Object.freeze(['FREE_TRIAL', 'FREEMIUM', 'BASIC', 'GROWTH', 'PRO', 'ENTERPRISE']);
+const PLAN_IDS = Object.freeze(['FREE_TRIAL_LEGACY', 'FREE_TRIAL', 'FREEMIUM', 'BASIC', 'GROWTH', 'PRO', 'ENTERPRISE']);
 const getPlan = (id) => PLAN_CATALOG[String(id || '').toUpperCase().trim()] || PLAN_CATALOG.FREEMIUM;
 const getLimit = (plan, metric) => {
   const normalizedMetric = metric === 'ONLINE_BOOKING' ? 'DIRECT_BOOKINGS' : metric;
@@ -184,7 +201,9 @@ function serializePlan(planId) {
 }
 
 function publicCatalog() {
-  return { version: CATALOG_VERSION, currency: 'COP', plans: PLAN_IDS.map(serializePlan), capabilities: CAPABILITIES, metrics: METRICS, addOns: ADD_ONS };
+  return { version: CATALOG_VERSION, currency: 'COP', plans: PLAN_IDS
+    .filter((id) => PLAN_CATALOG[id].publiclyListed !== false)
+    .map(serializePlan), capabilities: CAPABILITIES, metrics: METRICS, addOns: ADD_ONS };
 }
 
 module.exports = { CATALOG_VERSION, ADD_ONS, CAPABILITIES, METRICS, PLAN_CATALOG, PLAN_IDS, getPlan, getLimit, hasCapability, getPlansWithCapability, getMonthPeriod, serializePlan, publicCatalog };

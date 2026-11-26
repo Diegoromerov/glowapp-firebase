@@ -6,7 +6,7 @@ const saasContext = require('../middleware/saasContext');
 const { requireEntitlement } = require('../middleware/featureGate');
 const { authMiddleware } = require('../middleware/auth');
 const usageMeteringService = require('../services/usageMeteringService');
-const { METRICS, PLAN_IDS, publicCatalog } = require('../config/saasCatalog');
+const { METRICS, PLAN_IDS, PLAN_CATALOG, publicCatalog } = require('../config/saasCatalog');
 
 const router = express.Router();
 
@@ -271,7 +271,7 @@ router.get('/limits', async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const plan = req.saas.plan;
-    const allPlans = PLAN_IDS;
+    const allPlans = PLAN_IDS.filter((id) => PLAN_CATALOG[id]?.publiclyListed !== false);
     const planLimits = usageMeteringService.getPlanLimits(plan);
 
     // Construir matriz de comparación

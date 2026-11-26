@@ -647,3 +647,11 @@ en 076).
 - El bootstrap nuevo guarda los 14 días declarados en el catálogo y devuelve la fecha a la app para mostrarla en Facturación.
 - Un job aislado pasa a Freemium únicamente las pruebas vencidas y sincroniza el plan en el perfil SaaS y sus sedes. No envía correos ni modifica suscripciones pagas.
 - Es aditiva; al revertir la lógica/job se conserva el nivel actual de cada tenant. No borrar columnas ni modificar planes automáticamente durante rollback.
+
+## 203: derechos heredados de la prueba gratis SaaS
+
+- Los salones que ya tenían `FREE_TRIAL` al desplegar la corrección pasan a `FREE_TRIAL_LEGACY`, que conserva sus capacidades y cuotas anteriores y no se ofrece a nuevas altas.
+- El catálogo nuevo elimina del plan de prueba las capacidades sin flujo SaaS entregable: marca personalizada, WhatsApp, Aura para negocio, analítica avanzada y facturación electrónica de prueba.
+- Se sincroniza el código del backend, la comparación de planes, el fallback de Flutter y la expiración de prueba. Al vencer, los planes de prueba nuevos y heredados pasan a Freemium; el registro de auditoría conserva el plan de origen.
+- La migración conserva el vencimiento ya asignado y solo crea 14 días cuando falta fecha; no modifica suscripciones ni cargos.
+- Es reversible volviendo al catálogo y al código anterior y restaurando `FREE_TRIAL` desde `FREE_TRIAL_LEGACY` únicamente para tenants que sigan en prueba. No eliminar la columna de vencimiento ni alterar datos de suscripción.
