@@ -428,12 +428,12 @@ async function setStatus({ tenantId, memberId, actorId, status, plan }) {
       }
     }
     const updated = await client.query(
-      `UPDATE memberships SET status = $1,
-           invite_token = CASE WHEN $1 = 'REMOVED' THEN NULL ELSE invite_token END,
-           invite_token_hash = CASE WHEN $1 = 'REMOVED' THEN NULL ELSE invite_token_hash END,
-           invite_expires_at = CASE WHEN $1 = 'REMOVED' THEN NULL ELSE invite_expires_at END,
-           removed_at = CASE WHEN $1 = 'REMOVED' THEN NOW() ELSE NULL END,
-           removed_by = CASE WHEN $1 = 'REMOVED' THEN $2 ELSE NULL END,
+      `UPDATE memberships SET status = $1::text,
+           invite_token = CASE WHEN $1::text = 'REMOVED' THEN NULL ELSE invite_token END,
+           invite_token_hash = CASE WHEN $1::text = 'REMOVED' THEN NULL ELSE invite_token_hash END,
+           invite_expires_at = CASE WHEN $1::text = 'REMOVED' THEN NULL ELSE invite_expires_at END,
+           removed_at = CASE WHEN $1::text = 'REMOVED' THEN NOW() ELSE NULL END,
+           removed_by = CASE WHEN $1::text = 'REMOVED' THEN $2 ELSE NULL END,
            updated_at = NOW() WHERE id = $3 RETURNING *`,
       [nextStatus, actorId, memberId]
     );

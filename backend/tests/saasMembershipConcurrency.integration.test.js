@@ -2,6 +2,11 @@
 // This suite is enabled only when CI provides both admin and app database URLs.
 const crypto = require('crypto');
 const { Pool } = require('pg');
+const express = require('express');
+const request = require('supertest');
+const jwt = require('jsonwebtoken');
+const { getJwtSecret } = require('../src/config/jwt');
+const saasTeamRoutes = require('../src/routes/saasTeamRoutes');
 
 jest.mock('../src/services/emailService', () => ({
   sendEmail: jest.fn().mockResolvedValue({ devMode: true }),
@@ -43,6 +48,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     const client = await adminPool.connect();
     const fixture = {
       profileId: crypto.randomUUID(),
+      salonId: null,
       userIds: [],
       memberships: {},
       emails: {},
@@ -70,6 +76,11 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
         'INSERT INTO business_profiles (id, provider_id, vertical_id, name, tenant_id) VALUES ($1, $2, $3, $4, $5)',
         [fixture.profileId, fixture.ownerId, verticalId, 'SaaS seat concurrency test', 'test-' + fixture.profileId]
       );
+      const salon = await client.query(
+        'INSERT INTO salones (id_dueno, nombre_salon, business_profile_id) VALUES ($1, $2, $3) RETURNING id',
+        [fixture.ownerId, 'SaaS seat concurrency test', fixture.profileId]
+      );
+      fixture.salonId = salon.rows[0].id;
       await client.query("SELECT set_config('app.user_id', $1, true)", [String(fixture.ownerId)]);
 
       fixture.memberships.owner = crypto.randomUUID();
@@ -107,6 +118,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       await client.query('ALTER TABLE memberships DISABLE TRIGGER trg_prevent_unsafe_membership_change');
       await client.query('DELETE FROM memberships WHERE business_profile_id = $1', [fixture.profileId]);
       await client.query('ALTER TABLE memberships ENABLE TRIGGER trg_prevent_unsafe_membership_change');
+      await client.query('DELETE FROM salones WHERE business_profile_id = $1', [fixture.profileId]);
       await client.query('DELETE FROM business_profiles WHERE id = $1', [fixture.profileId]);
       await client.query('DELETE FROM usuarios WHERE id = ANY($1::integer[])', [fixture.userIds]);
       await client.query('COMMIT');
@@ -372,6 +384,54 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
 
       const foreignTeamViaService = await saasMembershipService.list(salonB.profileId, salonA.ownerId);
       expect(foreignTeamViaService).toHaveLength(0);
+    } finally {
+      await cleanupFixture(salonA);
+      await cleanupFixture(salonB);
+    }
+  }, 20000);
+
+
+  test('authenticated HTTP team route binds each JWT to its own tenant despite a foreign tenant query', async () => {
+    const salonA = await createFixture();
+    const salonB = await createFixture();
+    try {
+      const app = express();
+      app.use('/api/saas/team', saasTeamRoutes);
+      app.use((error, _req, res, _next) => {
+        console.error('SaaS team integration request failed:', error.message);
+        res.status(500).json({ error: 'Internal test request failure' });
+      });
+
+      const tokenA = jwt.sign(
+        { id: salonA.ownerId, email: salonA.emails.owner },
+        getJwtSecret(),
+        { expiresIn: '5m' }
+      );
+      const tokenB = jwt.sign(
+        { id: salonB.ownerId, email: salonB.emails.owner },
+        getJwtSecret(),
+        { expiresIn: '5m' }
+      );
+
+      const responseA = await request(app)
+        .get('/api/saas/team')
+        .query({ tenantId: salonB.profileId })
+        .set('Authorization', `Bearer ${tokenA}`)
+        .expect(200);
+      expect(responseA.body.tenantId).toBe(salonA.profileId);
+      const userIdsA = responseA.body.members.map((member) => Number(member.user_id));
+      expect(userIdsA).toContain(Number(salonA.ownerId));
+      expect(userIdsA.some((id) => salonB.userIds.includes(id))).toBe(false);
+
+      const responseB = await request(app)
+        .get('/api/saas/team')
+        .query({ tenantId: salonA.profileId })
+        .set('Authorization', `Bearer ${tokenB}`)
+        .expect(200);
+      expect(responseB.body.tenantId).toBe(salonB.profileId);
+      const userIdsB = responseB.body.members.map((member) => Number(member.user_id));
+      expect(userIdsB).toContain(Number(salonB.ownerId));
+      expect(userIdsB.some((id) => salonA.userIds.includes(id))).toBe(false);
     } finally {
       await cleanupFixture(salonA);
       await cleanupFixture(salonB);

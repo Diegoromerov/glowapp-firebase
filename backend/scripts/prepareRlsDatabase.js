@@ -56,6 +56,8 @@ const MIGRACIONES_BASE_NUEVA = [
 '068_force_rls_strict_isolation.sql',
 '107_rls_politicas_sin_contexto.sql',
 '012_business_engine.sql',
+  // SaaS team context reads business_profiles.saas_plan (109 is independent of billing tables).
+  '109_saas_tenant_plan.sql',
 '062_optimize_business_saas_postgres.sql',
 '082_memberships.sql',
 // The membership service writes invite_token and status PENDING.
@@ -135,6 +137,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '182_fix_logistics_metrics_destination_schema.sql',
   // 183: suspend visibility without disabling account access.
   '183_user_public_visibility_suspension.sql',
+  '189_explicit_salon_business_profile.sql',
 // SaaS membership governance and row-level policies, exercised by the RLS test suite.
 '190_saas_membership_governance.sql',
 '197_business_profiles_membership_read.sql',
@@ -179,6 +182,8 @@ const MIGRACIONES_ARRANQUE = [
   '107_rls_politicas_sin_contexto.sql',
 
   '012_business_engine.sql',
+  // SaaS team context reads business_profiles.saas_plan (109 is independent of billing tables).
+  '109_saas_tenant_plan.sql',
 
   '062_optimize_business_saas_postgres.sql',
 
@@ -276,6 +281,7 @@ const MIGRACIONES_ARRANQUE = [
   '182_fix_logistics_metrics_destination_schema.sql',
   // Keep existing databases aligned with the public visibility checks.
   '183_user_public_visibility_suspension.sql',
+  '189_explicit_salon_business_profile.sql',
   '190_saas_membership_governance.sql',
   '197_business_profiles_membership_read.sql',
   '200_saas_memberships_rls.sql',

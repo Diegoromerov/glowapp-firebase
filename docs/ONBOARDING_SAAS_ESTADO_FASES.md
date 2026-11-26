@@ -68,3 +68,11 @@
 - Backend CI **45730062940**, job **139609566560**, terminó `success`: integración **15/15**. Se verificó lectura del propio equipo/auditoría; cero filas del otro tenant en memberships, auditoría y `app_saas_team_user_info`; y cero miembros al consultar el servicio con el actor del tenant distinto.
 - La prueba usa la migración/RLS real y la conexión de aplicación restringida, pero las filas son fixtures efímeros de CI. No es una sesión HTTP autenticada en producción ni una operación sobre los datos productivos; por eso la tabla permanece en **75 %**.
 - Railway desplegó automáticamente el merge de tests sin cambios de lógica de producto. Quedan la comprobación autenticada end-to-end en producción, los cupos/reactivación productivos y la confirmación de Sonia desde su sesión.
+## Actualización de evidencia Fase 4 — HTTP autenticado en PostgreSQL CI (26 de noviembre de 2026)
+
+- PR #88 añade una prueba de integración que atraviesa JWT, `authMiddleware`, transacción de tenant, `saasContext`, router SaaS, servicio y RLS con dos salones/propietarios efímeros.
+- Backend CI **45731660547**, job **139614897545**: **3 suites, 16/16 pruebas aprobadas**. Cada JWT recibió solo su propio equipo y tenant, incluso al enviar como parámetro el identificador del salón ajeno.
+- El primer intento reveló que el preparador RLS no aplicaba las migraciones 109 (`business_profiles.saas_plan`) y 189 (`salones.business_profile_id`), requeridas por el contexto SaaS real. Se incluyeron ambas migraciones y se enlazó cada salón fixture a su perfil.
+- El primer intento también reprodujo una incompatibilidad de tipos PostgreSQL en la consulta de reactivación de membresías; se fijó explícitamente el parámetro de estado como `text`. La prueba de concurrencia invitación/reactivación pasó en el CI final.
+- La verificación usa PostgreSQL de CI y datos desechables. No consultó ni modificó la base productiva, no envió correos y no representa el inicio de sesión de Sonia.
+- La Fase 4 permanece en **75 %**: quedan la confirmación de Sonia desde su sesión real y los recorridos productivos controlados para cupos/reactivación. La prueba HTTP de CI reduce el riesgo técnico y demuestra la ruta de autenticación, pero no reemplaza esas verificaciones de producción.
