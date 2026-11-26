@@ -8,6 +8,7 @@ jest.mock('../src/services/emailService', () => ({
 }));
 
 const saasMembershipService = require('../src/services/saasMembershipService');
+const emailService = require('../src/services/emailService');
 
 const ADMIN_URL = process.env.DATABASE_URL_ADMIN;
 const APP_URL = process.env.DATABASE_URL;
