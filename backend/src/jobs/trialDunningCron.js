@@ -1,61 +1,65 @@
 // backend/src/jobs/trialDunningCron.js
-const { pool } = require('../config/db');
+const { pool, systemPool } = require('../config/db');
+const { runAsSystem } = require('../config/tenantRouting');
 const { maskEmail } = require('../utils/piiSanitizer');
 const subscriptionService = require('../services/subscriptionService');
-const invoiceService = require('../services/invoiceService');
+const emailService = require('../services/emailService');
 
 /**
  * Job diario: trial ending + dunning (cobros fallidos)
- * Se ejecuta cada día a las 06:00 UTC (configurar en cron)
+ * Diseñado para ejecución diaria a las 06:00 UTC cuando se habilite un cron.
+ * No programar hasta revisar en producción los destinatarios y efectos de mora.
  */
 async function runTrialDunningCron() {
-  const startTime = Date.now();
-  console.log('[trialDunningCron] Iniciando...', new Date().toISOString());
+  return runAsSystem({ pool, systemPool }, async () => {
+    const startTime = Date.now();
+    console.log('[trialDunningCron] Iniciando...', new Date().toISOString());
 
-  try {
-    let results = {
-      trialsEnding: 0,
-      trialsEnded: 0,
-      dunningSent: 0,
-      subscriptionsCanceled: 0,
-      errors: []
-    };
+    try {
+      const results = {
+        trialsEnding: 0,
+        trialsEnded: 0,
+        dunningSent: 0,
+        subscriptionsCanceled: 0,
+        errors: []
+      };
 
-    // 1. TRIALS: Detectar trials que terminan en 3 días (enviar aviso)
-    results.trialsEnding = await notifyTrialsEndingSoon();
+      // 1. TRIALS: Detectar trials que terminan en 3 días (enviar aviso)
+      results.trialsEnding = await notifyTrialsEndingSoon();
 
-    // 2. TRIALS: Detectar trials que terminaron ayer (convertir a FREEMIUM si no pagaron)
-    results.trialsEnded = await processExpiredTrials();
+      // 2. TRIALS: Detectar trials que terminaron ayer (convertir a FREEMIUM si no pagaron)
+      results.trialsEnded = await processExpiredTrials();
 
-    // 3. DUNNING: Facturas pendientes vencidas (reintentar cobro / notificar)
-    results.dunningSent = await processDunning();
+      // 3. DUNNING: Notificar facturas pendientes vencidas.
+      results.dunningSent = await processDunning();
 
-    // 4. DUNNING: Suscripciones past_due > 14 días (cancelar)
-    results.subscriptionsCanceled = await cancelOverdueSubscriptions();
+      // 4. DUNNING: Suscripciones past_due > 14 días (cancelar)
+      results.subscriptionsCanceled = await cancelOverdueSubscriptions();
 
-    // Log auditoría
-    await pool.query(`
+      // Log auditoría
+      await pool.query(`
       INSERT INTO audit_logs (actor_id, action, target_type, metadata)
       VALUES (NULL, 'trial_dunning_cron', 'platform', $1)
-    `, [JSON.stringify({
-      executedAt: new Date().toISOString(),
-      durationMs: Date.now() - startTime,
-      ...results
-    })]);
+      `, [JSON.stringify({
+        executedAt: new Date().toISOString(),
+        durationMs: Date.now() - startTime,
+        ...results
+      })]);
 
-    console.log('[trialDunningCron] Completado:', results);
-    return { success: true, ...results };
+      console.log('[trialDunningCron] Completado:', results);
+      return { success: true, ...results };
 
-  } catch (error) {
-    console.error('[trialDunningCron] Error:', error.message);
-    
-    await pool.query(`
+    } catch (error) {
+      console.error('[trialDunningCron] Error:', error.message);
+
+      await pool.query(`
       INSERT INTO audit_logs (actor_id, action, target_type, metadata)
       VALUES (NULL, 'trial_dunning_cron_failed', 'platform', $1)
-    `, [JSON.stringify({ error: error.message, executedAt: new Date().toISOString() })]);
+      `, [JSON.stringify({ error: error.message, executedAt: new Date().toISOString() })]);
 
-    throw error;
-  }
+      throw error;
+    }
+  });
 }
 
 /**
@@ -63,7 +67,8 @@ async function runTrialDunningCron() {
  */
 async function notifyTrialsEndingSoon() {
   const { rows } = await pool.query(`
-    SELECT s.*, bp.name as tenant_name, bp.owner_id, u.email as owner_email
+    SELECT s.*, bp.name as tenant_name, bp.owner_id,
+           u.email as owner_email, u.full_name as owner_name
     FROM subscriptions s
     JOIN business_profiles bp ON bp.id = s.tenant_id
     LEFT JOIN users u ON u.id = bp.owner_id
@@ -79,8 +84,12 @@ async function notifyTrialsEndingSoon() {
 
   for (const sub of rows) {
     try {
-      // TODO: Enviar email real via email.service.js
-      console.log(`[trialDunningCron] Trial ending notice para ${sub.tenant_name} (${maskEmail(sub.owner_email)}) - termina ${sub.trial_end}`);
+      await emailService.sendTrialEndingNotice({
+        name: sub.tenant_name,
+        ownerName: sub.owner_name || '',
+        ownerEmail: sub.owner_email
+      }, sub);
+      console.log(`[trialDunningCron] Trial ending notice enviado para ${sub.tenant_name} (${maskEmail(sub.owner_email)}) - termina ${sub.trial_end}`);
       
       // Log para no duplicar
       await pool.query(`
@@ -100,7 +109,8 @@ async function notifyTrialsEndingSoon() {
  */
 async function processExpiredTrials() {
   const { rows } = await pool.query(`
-    SELECT s.*, bp.name as tenant_name, bp.owner_id, u.email as owner_email
+    SELECT s.*, bp.name as tenant_name, bp.owner_id,
+           u.email as owner_email, u.full_name as owner_name
     FROM subscriptions s
     JOIN business_profiles bp ON bp.id = s.tenant_id
     LEFT JOIN users u ON u.id = bp.owner_id
@@ -131,7 +141,13 @@ async function processExpiredTrials() {
         atPeriodEnd: false
       });
 
-      // Notificar
+      await emailService.sendTrialExpiredNotice({
+        name: sub.tenant_name,
+        ownerName: sub.owner_name || '',
+        ownerEmail: sub.owner_email
+      }, ['funciones de pago del plan']);
+
+      // Registrar la notificación y el cambio de plan.
       console.log(`[trialDunningCron] Trial expirado sin pago: ${sub.tenant_name} → FREEMIUM`);
       
       await pool.query(`
@@ -152,7 +168,8 @@ async function processExpiredTrials() {
  */
 async function processDunning() {
   const { rows: overdueInvoices } = await pool.query(`
-    SELECT i.*, bp.name as tenant_name, bp.owner_id, u.email as owner_email, bp.saas_plan
+    SELECT i.*, bp.name as tenant_name, bp.owner_id,
+           u.email as owner_email, u.full_name as owner_name, bp.saas_plan
     FROM invoices i
     JOIN business_profiles bp ON bp.id = i.tenant_id
     LEFT JOIN users u ON u.id = bp.owner_id
@@ -182,19 +199,26 @@ async function processDunning() {
       const totalDue = invoices.reduce((sum, i) => sum + parseFloat(i.total), 0);
       const oldestDue = invoices.reduce((min, i) => new Date(i.due_date) < new Date(min.due_date) ? i : min).due_date;
 
-      // TODO: Enviar email real con detalle de facturas
-      console.log(`[trialDunningCron] Dunning notice para ${tenant.tenant_name} (${maskEmail(tenant.owner_email)}): ${invoices.length} facturas, $${totalDue.toLocaleString()} COP, más antigua ${oldestDue}`);
+      await emailService.sendDunningNotice({
+        name: tenant.tenant_name,
+        ownerName: tenant.owner_name || '',
+        ownerEmail: tenant.owner_email
+      }, invoices);
+      console.log(`[trialDunningCron] Aviso de mora enviado a ${maskEmail(tenant.owner_email)}: ${invoices.length} factura(s), $${totalDue.toLocaleString()} ${invoices[0]?.currency || 'COP'}, vencimiento más antiguo ${oldestDue}`);
 
-      // Log para no duplicar (usar la factura más antigua como referencia)
-      await pool.query(`
-        INSERT INTO audit_logs (actor_id, action, target_type, target_id, metadata)
-        VALUES (NULL, 'dunning_notice', 'tenant', $1, $2)
-      `, [tenantId, JSON.stringify({ 
-        invoiceId: invoices[0].id, 
-        invoiceCount: invoices.length, 
-        totalDue,
-        oldestDueDate: oldestDue
-      })]);
+      // Registrar cada factura notificada para evitar volver a incluirla
+      // en el siguiente lote de avisos.
+      for (const invoice of invoices) {
+        await pool.query(`
+          INSERT INTO audit_logs (actor_id, action, target_type, target_id, metadata)
+          VALUES (NULL, 'dunning_notice', 'tenant', $1, $2)
+        `, [tenantId, JSON.stringify({
+          invoiceId: invoice.id,
+          invoiceCount: invoices.length,
+          totalDue,
+          oldestDueDate: oldestDue
+        })]);
+      }
 
       sent++;
     } catch (err) {
@@ -210,7 +234,8 @@ async function processDunning() {
  */
 async function cancelOverdueSubscriptions() {
   const { rows } = await pool.query(`
-    SELECT s.*, bp.name as tenant_name, bp.owner_id, u.email as owner_email
+    SELECT s.*, bp.name as tenant_name, bp.owner_id,
+           u.email as owner_email, u.full_name as owner_name
     FROM subscriptions s
     JOIN business_profiles bp ON bp.id = s.tenant_id
     LEFT JOIN users u ON u.id = bp.owner_id
@@ -225,6 +250,12 @@ async function cancelOverdueSubscriptions() {
         tenantId: sub.tenant_id,
         atPeriodEnd: false
       });
+
+      await emailService.sendSubscriptionCanceled({
+        name: sub.tenant_name,
+        ownerName: sub.owner_name || '',
+        ownerEmail: sub.owner_email
+      }, sub);
 
       console.log(`[trialDunningCron] Suscripción cancelada por mora >14d: ${sub.tenant_name}`);
       
