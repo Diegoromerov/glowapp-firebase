@@ -2,7 +2,9 @@
 
 **Estado:** auditoría estática parcial del código en `main` (`1621e3e`, 26 de noviembre de 2026). No equivale a pruebas de integración en producción ni a certificación de todas las variantes.
 
-**Evidencia CI revisada:** Backend CI `45897948551` ejecutó la suite `tests/saasMembershipConcurrency.integration.test.js` contra un contenedor PostGIS/PostgreSQL efímero y reportó PASS; dentro de esa ejecución pasaron 17 pruebas de las tres suites PostgreSQL seleccionadas. Es evidencia de integración en PostgreSQL de CI, no de Railway producción. Un intento de autenticación no mutante en el QA cliente compartido por el usuario respondió HTTP 400; no se obtuvo sesión ni se hizo ninguna operación posterior. Por tanto, la cuenta no permitió ejecutar la prueba productiva en esta sesión.
+**Evidencia CI revisada:** Backend CI `45897948551` ejecutó la suite `tests/saasMembershipConcurrency.integration.test.js` contra un contenedor PostGIS/PostgreSQL efímero y reportó PASS; dentro de esa ejecución pasaron 17 pruebas de las tres suites PostgreSQL seleccionadas. Es evidencia de integración en PostgreSQL de CI, no de Railway producción.
+
+**Verificación adicional de autenticación QA en producción:** el primer POST sin `X-App-Audience` recibió `400 BAD_REQUEST` («Header X-App-Audience requerido»). Con `X-App-Audience: provider`, el login QA y `GET /api/auth/session` respondieron correctamente tras desplegar `0b55181`. Railway confirma que la cuenta corresponde al rol `PRESTADOR`, no `CLIENTE`; no se creó reserva ni se intentó pagar. La cuenta no sirve para el recorrido del cliente, pero sí permitió corregir y verificar el endpoint de sesión.
 
 ## Hallazgos por capacidad
 
