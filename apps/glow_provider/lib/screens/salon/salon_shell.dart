@@ -26,6 +26,7 @@ import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/services/saas_api_service.dart';
 import 'package:glow_core/widgets/provider_services_screen.dart';
 import 'package:glow_core/widgets/locked_feature_card.dart';
+import '../provider/provider_dashboard_screen.dart';
 
 import 'caja_screen.dart';
 import 'inventario_screen.dart';
@@ -379,10 +380,9 @@ class _AgendaTabState extends State<_AgendaTab> {
       );
     }
     if (_citas.isEmpty) {
-      return const _Estado(
-        icono: Icons.event_available_outlined,
-        titulo: 'Sin citas por ahora',
-        detalle: 'Cuando un cliente reserve, la cita aparece aquí.',
+      return _GuiaPrimeraOperacion(
+        salonId: widget.salonId,
+        cargar: widget.cargar,
       );
     }
     return ListView.separated(
@@ -451,6 +451,116 @@ class _AgendaTabState extends State<_AgendaTab> {
           ),
         );
       },
+    );
+  }
+}
+
+class _GuiaPrimeraOperacion extends StatelessWidget {
+  final int? salonId;
+  final bool cargar;
+
+  const _GuiaPrimeraOperacion({required this.salonId, required this.cargar});
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Token.of(context);
+
+    Widget paso({
+      required String titulo,
+      required String detalle,
+      required String boton,
+      required VoidCallback? onTap,
+    }) =>
+        Padding(
+          padding: const EdgeInsets.only(bottom: Spacing.md),
+          child: Container(
+            padding: const EdgeInsets.all(Spacing.md),
+            decoration: BoxDecoration(
+              color: t.surfaceLevel1,
+              borderRadius: BorderRadius.circular(Radii.md),
+              border: Border.all(color: t.borderSubtle),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  titulo,
+                  style: TypographyTokens.body(t)
+                      .copyWith(fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: Spacing.xs),
+                Text(
+                  detalle,
+                  style: TypographyTokens.bodySmall(t)
+                      .copyWith(color: t.textSecondary),
+                ),
+                const SizedBox(height: Spacing.sm),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(onPressed: onTap, child: Text(boton)),
+                ),
+              ],
+            ),
+          ),
+        );
+
+    return ListView(
+      padding: const EdgeInsets.all(Spacing.lg),
+      children: [
+        Text(
+          'Prepara tu salón para recibir su primera reserva',
+          style: TypographyTokens.h3(t),
+        ),
+        const SizedBox(height: Spacing.sm),
+        Text(
+          'Completa estos pasos y luego gestiona la atención desde tu agenda.',
+          style: TypographyTokens.bodySmall(t).copyWith(color: t.textSecondary),
+        ),
+        const SizedBox(height: Spacing.lg),
+        paso(
+          titulo: '1. Completa la información del salón',
+          detalle: 'Revisa el nombre, la ubicación y el horario comercial.',
+          boton: 'Ver perfil del salón',
+          onTap: () => Navigator.pushNamed(context, '/salon/profile'),
+        ),
+        paso(
+          titulo: '2. Configura cuándo puedes atender',
+          detalle: 'Define tu disponibilidad semanal en el perfil del prestador.',
+          boton: 'Configurar disponibilidad',
+          onTap: () => Navigator.pushNamed(context, '/provider/profile'),
+        ),
+        paso(
+          titulo: '3. Publica al menos un servicio',
+          detalle:
+              'Agrega precio y duración, y asegúrate de que esté activo para reservas.',
+          boton: 'Ir a servicios',
+          onTap: () => Navigator.pushNamed(context, '/provider/services'),
+        ),
+        paso(
+          titulo: '4. Recibe una reserva desde GlowApp',
+          detalle:
+              'Cuando el servicio esté disponible, el cliente podrá elegirlo y solicitar una cita.',
+          boton: 'Ver cómo atender citas',
+          onTap: salonId == null || !cargar
+              ? null
+              : () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ProviderDashboardScreen(
+                        initialIndex: 1,
+                        salonId: salonId,
+                      ),
+                    ),
+                  ),
+        ),
+        if (salonId == null)
+          const Padding(
+            padding: EdgeInsets.only(top: Spacing.sm),
+            child: Text(
+              'No se identificó un salón activo. Reintenta la carga del espacio SaaS para continuar.',
+            ),
+          ),
+      ],
     );
   }
 }

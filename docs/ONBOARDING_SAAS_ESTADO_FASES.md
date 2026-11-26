@@ -9,15 +9,25 @@
 | 2. Configuración inicial del salón | Datos del salón, sede, horarios y servicios iniciales | **100 %** | Cerrada; evaluación visual confirmada por el usuario el 25 Nov 2026. | [Informe Fase 2](fases/ONBOARDING_FASE_2_CONFIGURACION_SALON.md) y [registro del salón QA](fases/QA_SALON_FASE_2.md): perfil, horario, servicio de prueba, persistencia y acceso. |
 | 3. Plan y límites claros | Catálogo, beneficios, cuotas y aplicación en API | **100 %** | Cerrada y verificada en producción. | [Informe Fase 3](fases/ONBOARDING_FASE_3_PLANES_Y_LIMITES.md): catálogo V2, límites, CI y despliegues. |
 | 4. Equipo y permisos | Invitaciones, roles, aislamiento y cupos | **90 %** | Abierta. Invitación/aceptación real de Sonia confirmadas; matriz de permisos, aislamiento entre tenants y concurrencia de cupos cubiertos por integración PostgreSQL en CI (**17/17** en run 45733109611). Resta el recorrido autenticado con dos cuentas reales en producción y la confirmación de Sonia desde su sesión. | [Informe Fase 4](fases/ONBOARDING_FASE_4_EQUIPO_PERMISOS.md): evidencia actualizada, pruebas CI y validaciones productivas pendientes. |
-| 5. Puesta en marcha operativa | Guía, agenda y primera reserva atendida | **0 % verificado** | Sin auditoría de criterios de salida en el repo. No significa que no existan módulos operativos; falta probar la primera operación de extremo a extremo. | Criterio de salida acordado: completar primera reserva y atenderla desde el sistema. Aún no hay informe de fase ni evidencia de recorrido. |
+| 5. Puesta en marcha operativa | Guía, agenda y primera reserva atendida | **65 %** | En desarrollo. La guía y el acceso a la agenda operativa están implementados en el checkout local; aún falta una reserva real desde Cliente y su atención completa. | [Informe Fase 5](fases/ONBOARDING_FASE_5_PUESTA_EN_MARCHA.md): revisión de pantallas existentes y cambios locales. Sin despliegue ni recorrido productivo E2E todavía. |
 | 6. Facturación y cambios de plan | Checkout, activación, renovación, cancelación y recuperación | **0 % verificado** | Sin auditoría de criterios de salida en el repo. Falta validar que suscripción y permisos coincidan tras los eventos de pago. | Criterio de salida acordado: verificar el estado de suscripción y permisos tras cada evento del ciclo de pago. Aún no hay informe de fase ni evidencia de recorrido. |
 | 7. Seguimiento y crecimiento | Métricas, uso frente a límites y recomendaciones | **0 % verificado** | Sin auditoría de criterios de salida en el repo. Falta comprobar métricas, avisos de capacidad y cambio de nivel. | Criterio de salida acordado: que el dueño consulte actividad y uso frente a límites y pueda decidir un cambio de nivel. Aún no hay informe de fase ni evidencia de recorrido. |
 
 ## Lectura del avance
 
 - Las fases 1–3 están cerradas según el historial del proyecto; la fase 4 permanece abierta en **90 %**, tras integrar y ejecutar en CI la matriz PostgreSQL de membresías.
-- Las fases 5–7 figuran como **0 % verificado** porque todavía no se han auditado sus criterios de salida dentro de este plan. No significa que todo su código o pantallas estén ausentes.
+- La Fase 5 está en **65 %** por evidencia local de guía, pasos enlazados y agenda operativa con filtro por salón; el criterio final de primera reserva atendida sigue pendiente. Las fases 6–7 continúan en **0 % verificado** porque todavía no se han auditado sus criterios de salida.
 - No se calcula un porcentaje global: las fases no tienen ponderaciones acordadas y tres aún no cuentan con evaluación sustentada.
+
+## Revisión inicial de Fase 5 (26 de noviembre de 2026)
+
+- La app del salón tenía una agenda que listaba reservas, pero el estado vacío solo decía que las citas aparecerían al reservar. La pantalla de Servicios ya ofrecía una instrucción básica para crear el primer servicio.
+- Se añadió a la agenda vacía una guía secuencial con enlaces al perfil del salón, disponibilidad semanal del prestador, catálogo de servicios y agenda operativa.
+- El acceso «Ver cómo atender citas» abre `ProviderDashboardScreen` en la pestaña Agenda. Esta pantalla existente contiene los controles de gestión de reservas y el flujo de atención.
+- Se añadió `salonId` opcional a `ProviderDashboardScreen` y se pasa al consultar reservas desde el recorrido SaaS, usando el encabezado `x-active-salon-id` que ya admite `ApiService.fetchProviderBookings`.
+- Cambios locales en `apps/glow_provider/lib/screens/salon/salon_shell.dart` y `apps/glow_provider/lib/screens/provider/provider_dashboard_screen.dart`. Aún no se han publicado en `main` ni desplegado. No se creó una cita en producción: la única cuenta QA disponible no tiene una cuenta cliente distinta para completar el flujo de forma segura.
+- El criterio de salida continúa pendiente hasta demostrar reserva creada desde Cliente, aparición en la agenda del salón y ciclo de atención completado. El **65 %** refleja alcance funcional implementado localmente, no porcentaje desplegado ni E2E validado.
+- Validación realizada: análisis estático Flutter de ambos archivos; no se ejecutaron pruebas automatizadas ni build en esta revisión.
 
 ## Evidencia de Fase 4
 
