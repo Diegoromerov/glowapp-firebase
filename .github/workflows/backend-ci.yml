@@ -208,9 +208,19 @@ jobs:
             exit 1
           fi
 
-          # Catálogo público: debe devolver datos, no una lista vacía.
-          code=$(curl -s -o /tmp/prov.json -w '%{http_code}' --max-time 20 \
-                 -H 'X-App-Audience: client' http://localhost:8081/api/providers)
+          # El endpoint de proveedores depende de que termine la preparación del
+          # esquema. /api/health solo confirma que Express responde; reintentar
+          # mientras se aplican migraciones evita carreras del arranque en CI.
+          code=000
+          for i in $(seq 1 25); do
+            code=$(curl -s -o /tmp/prov.json -w '%{http_code}' --max-time 3 \
+                   -H 'X-App-Audience: client' http://localhost:8081/api/providers || true)
+            if [ "$code" = "200" ]; then
+              break
+            fi
+            echo "GET /api/providers aún no está listo (HTTP $code; intento $i/25)"
+            sleep 1
+          done
           echo "HTTP $code"
           head -c 300 /tmp/prov.json; echo
           kill "$(cat /tmp/api.pid)" 2>/dev/null || true
