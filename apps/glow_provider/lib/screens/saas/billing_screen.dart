@@ -99,13 +99,15 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
         backgroundColor: _bg,
         foregroundColor: _ink,
         elevation: 0,
-        actions: [
-          IconButton(
-            tooltip: 'Portal de pagos',
-            icon: const Icon(Icons.credit_card_rounded, color: _gold),
-            onPressed: _busy ? null : _openPortal,
-          ),
-        ],
+        actions: subscription?.canManagePayments == true
+            ? [
+                IconButton(
+                  tooltip: 'Portal de pagos',
+                  icon: const Icon(Icons.credit_card_rounded, color: _gold),
+                  onPressed: _busy ? null : _openPortal,
+                ),
+              ]
+            : const [],
       ),
       body: billing.isLoading && subscription == null
           ? const Center(child: CircularProgressIndicator())
@@ -126,7 +128,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                   const SizedBox(height: 16),
                   _invoicesSection(billing.invoices),
                   const SizedBox(height: 16),
-                  _paymentMethodsSection(billing.paymentMethods),
+                  _paymentMethodsSection(
+                    billing.paymentMethods,
+                    canManage: subscription?.canManagePayments ?? false,
+                  ),
                   if (subscription != null && subscription.isActive) ...[
                     const SizedBox(height: 16),
                     _cancelSection(subscription),
@@ -515,59 +520,69 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
   // ───────────────────────── Métodos de pago ─────────────────────────
 
-  Widget _paymentMethodsSection(List<Map<String, dynamic>> methods) {
+  Widget _paymentMethodsSection(
+    List<Map<String, dynamic>> methods, {
+    required bool canManage,
+  }) {
     return _section(
       title: 'Métodos de Pago',
-      subtitle: methods.isEmpty
-          ? 'Sin tarjetas guardadas. Se gestionan en el portal de pagos.'
-          : '${methods.length} tarjeta(s) registrada(s)',
-      children: [
-        ...methods.map((pm) {
-          final card = pm['card'] as Map<String, dynamic>?;
-          final brand = (card?['brand'] ?? 'tarjeta').toString();
-          final last4 = (card?['last4'] ?? '••••').toString();
-          final exp =
-              card != null ? '${card['expMonth']}/${card['expYear']}' : '';
-          return Container(
-            margin: const EdgeInsets.only(bottom: 8),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: _bg,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: _line),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.credit_card_rounded, size: 20, color: _ink),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text('${brand.toUpperCase()} •••• $last4',
-                      style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          color: _ink)),
+      subtitle: !canManage
+          ? 'La gestión de pagos aún no está disponible.'
+          : methods.isEmpty
+              ? 'Sin tarjetas guardadas. Se gestionan en el portal de pagos.'
+              : '${methods.length} tarjeta(s) registrada(s)',
+      children: !canManage
+          ? const []
+          : [
+              ...methods.map((pm) {
+                final card = pm['card'] as Map<String, dynamic>?;
+                final brand = (card?['brand'] ?? 'tarjeta').toString();
+                final last4 = (card?['last4'] ?? '••••').toString();
+                final exp = card != null
+                    ? '${card['expMonth']}/${card['expYear']}'
+                    : '';
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: _bg,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: _line),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.credit_card_rounded,
+                          size: 20, color: _ink),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text('${brand.toUpperCase()} •••• $last4',
+                            style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: _ink)),
+                      ),
+                      if (exp.isNotEmpty)
+                        Text('Vence $exp',
+                            style:
+                                const TextStyle(fontSize: 11, color: _muted)),
+                    ],
+                  ),
+                );
+              }),
+              const SizedBox(height: 4),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: OutlinedButton.icon(
+                  onPressed: _busy ? null : _openPortal,
+                  icon: const Icon(Icons.settings_rounded, size: 18),
+                  label: const Text('Gestionar en el portal de pagos'),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: _ink,
+                    side: const BorderSide(color: _line),
+                  ),
                 ),
-                if (exp.isNotEmpty)
-                  Text('Vence $exp',
-                      style: const TextStyle(fontSize: 11, color: _muted)),
-              ],
-            ),
-          );
-        }),
-        const SizedBox(height: 4),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: OutlinedButton.icon(
-            onPressed: _busy ? null : _openPortal,
-            icon: const Icon(Icons.settings_rounded, size: 18),
-            label: const Text('Gestionar en el portal de pagos'),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: _ink,
-              side: const BorderSide(color: _line),
-            ),
-          ),
-        ),
-      ],
+              ),
+            ],
     );
   }
 
@@ -596,6 +611,16 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
         title: 'Suscripción',
         subtitle:
             'Cancelada: mantiene acceso hasta ${_formatDate(subscription.currentPeriodEnd)}.',
+        children: const [],
+      );
+    }
+    if (!subscription.canCancel) {
+      final providerLabel = subscription.paymentProvider == 'wompi'
+          ? 'Wompi'
+          : 'el proveedor de pagos';
+      return _section(
+        title: 'Suscripción',
+        subtitle: 'La cancelación aún no está habilitada para $providerLabel.',
         children: const [],
       );
     }

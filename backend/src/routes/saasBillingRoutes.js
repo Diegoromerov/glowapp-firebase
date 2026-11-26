@@ -26,6 +26,10 @@ router.get('/', async (req, res) => {
 
     // Suscripción actual
     const subscription = await subscriptionService.getActiveSubscription(tenantId);
+    const stripeConfigured = stripeService.isConfigured();
+    const paymentProvider = subscription?.stripe_subscription_id
+      ? 'stripe'
+      : subscription?.wompi_subscription_id ? 'wompi' : null;
 
     // Facturas recientes
     const invoices = await invoiceService.getInvoicesByTenant(tenantId, { limit: 10 });
@@ -54,7 +58,10 @@ router.get('/', async (req, res) => {
         periodStart: subscription.current_period_start,
         periodEnd: subscription.current_period_end,
         cancelAtPeriodEnd: subscription.cancel_at_period_end,
-        currency: subscription.currency || 'COP'
+        currency: subscription.currency || 'COP',
+        paymentProvider,
+        canManagePayments: Boolean(stripeConfigured && subscription.stripe_customer_id),
+        canCancel: Boolean(stripeConfigured && subscription.stripe_subscription_id)
       } : null,
       nextPayment,
       recentInvoices: invoices.map(inv => ({
@@ -303,6 +310,9 @@ router.post('/portal', requireOwner, async (req, res) => {
     if (!currentSub?.stripe_customer_id) {
       return res.status(400).json({ error: 'No hay customer Stripe configurado para este tenant' });
     }
+    if (!stripeService.isConfigured()) {
+      return res.status(503).json({ error: 'El portal de pagos no está disponible mientras Stripe no esté configurado.' });
+    }
 
     const session = await stripeService.createPortalSession({
       customerId: currentSub.stripe_customer_id,
@@ -364,6 +374,9 @@ router.post('/cancel', requireOwner, async (req, res) => {
     if (!currentSub?.stripe_subscription_id) {
       return res.status(409).json({ error: 'No hay una suscripción con un proveedor de pago compatible para cancelar.' });
     }
+    if (!stripeService.isConfigured()) {
+      return res.status(503).json({ error: 'La cancelación de Stripe no está disponible mientras la pasarela no esté configurada.' });
+    }
 
     const subscription = await subscriptionService.cancelSubscription({
       tenantId: req.saas.tenantId,
@@ -386,7 +399,7 @@ router.get('/payment-methods', async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const currentSub = await subscriptionService.getActiveSubscription(req.saas.tenantId);
-    if (!currentSub?.stripe_customer_id) {
+    if (!currentSub?.stripe_customer_id || !stripeService.isConfigured()) {
       return res.json({ paymentMethods: [] });
     }
 

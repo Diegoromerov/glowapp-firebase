@@ -729,6 +729,9 @@ class Subscription {
   final DateTime? canceledAt;
   final bool cancelAtPeriodEnd;
   final int quantity;
+  final String paymentProvider;
+  final bool canManagePayments;
+  final bool canCancel;
 
   const Subscription({
     required this.id,
@@ -743,6 +746,9 @@ class Subscription {
     this.canceledAt,
     required this.cancelAtPeriodEnd,
     required this.quantity,
+    this.paymentProvider = 'none',
+    this.canManagePayments = false,
+    this.canCancel = false,
   });
 
   factory Subscription.fromJson(Map<String, dynamic> json) {
@@ -772,6 +778,12 @@ class Subscription {
           _pick(json, ['cancel_at_period_end', 'cancelAtPeriodEnd']) as bool? ??
               false,
       quantity: _asInt(json, ['quantity'], 1),
+      paymentProvider:
+          _asString(json, ['paymentProvider', 'payment_provider'], 'none'),
+      canManagePayments:
+          _pick(json, ['canManagePayments', 'can_manage_payments']) as bool? ??
+              false,
+      canCancel: _pick(json, ['canCancel', 'can_cancel']) as bool? ?? false,
     );
   }
 
@@ -788,6 +800,9 @@ class Subscription {
         'canceled_at': canceledAt?.toIso8601String(),
         'cancel_at_period_end': cancelAtPeriodEnd,
         'quantity': quantity,
+        'payment_provider': paymentProvider,
+        'can_manage_payments': canManagePayments,
+        'can_cancel': canCancel,
       };
 
   bool get isOnTrial =>
