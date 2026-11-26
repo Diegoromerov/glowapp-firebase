@@ -43,26 +43,22 @@
     });
   }
 
-  async function startVideoLanding() {
+  function startVideoLanding() {
     const firebase = config?.firebase;
     const videoPath = config?.videoLanding?.introPath;
     if (!firebase?.apiKey || !firebase?.storageBucket || !videoPath) { showLanding('static'); return; }
     const mediaUrl = new URL(`https://firebasestorage.googleapis.com/v0/b/${encodeURIComponent(firebase.storageBucket)}/o/${encodeURIComponent(videoPath)}`);
     mediaUrl.searchParams.set('alt', 'media');
     mediaUrl.searchParams.set('key', firebase.apiKey);
-    try {
-      const response = await fetch(mediaUrl, { method: 'GET', headers: { Range: 'bytes=0-0' } });
-      if (!response.ok) throw new Error(`Storage respondió ${response.status}`);
-      const token = response.headers.get('x-goog-generation');
-      if (token) mediaUrl.searchParams.set('generation', token);
-      introVideo.src = mediaUrl.toString();
-      introVideo.addEventListener('error', () => showLanding('static'), { once: true });
-      await introVideo.play();
-      showLanding('video');
-    } catch (err) {
-      console.warn('[landing] Intro de video no disponible:', err.message);
+    introVideo.addEventListener('error', () => {
+      console.warn('[landing] El navegador no pudo cargar el intro de Storage.');
       showLanding('static');
-    }
+    }, { once: true });
+    introVideo.src = mediaUrl.toString();
+    showLanding('video');
+    introVideo.play().catch(() => {
+      document.querySelector('#intro-hint').textContent = 'Toca para reproducir';
+    });
   }
 
   function enterStaticLanding() {
@@ -116,7 +112,12 @@
       if (button) activateButton(button.dataset.button);
     });
     document.querySelector('#skip-intro').addEventListener('click', enterStaticLanding);
-    intro.addEventListener('click', event => { if (!event.target.closest('#skip-intro')) enterStaticLanding(); });
+    intro.addEventListener('click', event => {
+      if (event.target.closest('#skip-intro')) return;
+      if (introVideo.paused) {
+        introVideo.play().then(() => { document.querySelector('#intro-hint').textContent = 'Toca para entrar'; }).catch(() => {});
+      } else enterStaticLanding();
+    });
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     form.contactType.addEventListener('change', updateContact);
     form.addEventListener('submit', submitLead);
@@ -160,7 +161,7 @@
       return;
     }
     renderLandingButtons(config.buttons);
-    await startVideoLanding();
+    startVideoLanding();
     const hostname = location.hostname;
     env = config.domainEnvMap?.[hostname];
     if (!env) env = hostname.includes('staging') ? 'staging' : hostname.includes('production') ? 'production' : 'development';

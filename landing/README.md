@@ -29,7 +29,7 @@ Comandos: `npm start` inicia el servidor; `npm test` ejecuta el test automatizad
 
 ### Landing en video (trabajo local)
 
-La entrada de la landing ahora intenta cargar `intro.mp4` desde `gs://glow-web-b39a6.firebasestorage.app/intro.mp4`. `app.js` obtiene el media URL usando Firebase Storage REST y la API key runtime `LANDING_FIREBASE_API_KEY`; no se incluye una clave en los archivos versionados. Si falta la variable, el objeto no es público o falla la reproducción, aparece el fallback estático con los botones de cliente, profesional y salón. El botón “Saltar” y un toque/clic sobre el intro llevan al mismo fallback; desde ahí los botones conservan el flujo actual del formulario.
+La entrada de la landing carga `intro.mp4` desde Firebase Storage (`glow-web-b39a6.firebasestorage.app`). `app.js` construye la URL de medios con la API key runtime `LANDING_FIREBASE_API_KEY`; usa la carga nativa de `<video>` para evitar una petición `fetch` que chocaba con CORS del bucket. No se incluye una clave en los archivos versionados. Si falta la variable, el objeto no es público o falla la reproducción, aparece el fallback estático con los botones de cliente, profesional y salón. El botón “Saltar” y un toque/clic sobre el intro llevan al mismo fallback; si autoplay está bloqueado, un toque intenta reproducirlo.
 
 La CSP permite Firebase Storage en `connect-src` y `media-src`. Antes de desplegar, configurar `LANDING_FIREBASE_API_KEY` en el servicio Railway y verificar que las reglas de Storage permitan leer el video públicamente. No incluir secretos en la landing. Validar navegador, móvil y fallback antes de publicar.
 
