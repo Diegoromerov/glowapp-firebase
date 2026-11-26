@@ -104,6 +104,9 @@ describeWithPostgres('SaaS direct booking quota with PostgreSQL RLS', () => {
     };
 
     const outcomes = await Promise.all([attempt(), attempt()]);
+    if (outcomes.filter((item) => item.allowed).length !== 1) {
+      console.error('Unexpected direct-booking quota outcomes:', JSON.stringify(outcomes));
+    }
     expect(outcomes.filter((item) => item.allowed)).toHaveLength(1);
     expect(outcomes.filter((item) => item.code === 'SAAS_QUOTA_EXCEEDED')).toEqual([
       expect.objectContaining({ allowed: false, current: 30 }),
