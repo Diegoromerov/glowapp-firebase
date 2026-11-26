@@ -51,16 +51,23 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - Auditoría de elegibilidad: `GET /api/providers` marcaba salones como verificados y `POST /api/bookings` no comprobaba el estado operativo; tampoco `GET /api/providers/:id/slots` impedía obtener horarios mientras el prestador estaba en Exploración. La regla de D-GL-031 establece que Exploración permite preparar y consultar el producto, pero no transaccionar.
 - Corrección de elegibilidad integrada y desplegada mediante PR #98 y #99 (ver evidencia productiva actualizada al inicio del informe): catálogo/detalle exponen `can_receive_bookings` solo con cuenta activa, estado `HABILITADO`, verificación aprobada cuando hay perfil profesional y al menos un servicio activo. Los perfiles de Exploración siguen visibles para navegar; la app Cliente bloquea agenda y la API valida elegibilidad al consultar horarios y crear una reserva. La habilitación administrativa contempla `SALON` con revalidación y auditoría, sin relajar requisitos.
 - Pruebas locales focalizadas registradas para este bloque: elegibilidad/controller backend **11/11** y habilitación de salón **3/3**; modelo compartido **2/2**; test de reservas Cliente **4/4**; guía del prestador **3/3**. Total **23/23**; CI de GitHub y workflow Firebase **45766637628** finalizaron `success` para los despliegues web de Cliente y Proveedor.
-- El usuario aprobó COP 100.000 para la oferta QA y el servicio `Servicio de prueba Fase 5` quedó activo en sede 17. El correo propuesto para cliente QA es `soniaherre2020@gmail.com`, pero su cuenta figura en evidencia anterior como Personal del salón y no se comprobó que sea una cuenta CLIENTE separada. No se creó cuenta, cita ni movimiento de pago.
+- El usuario aprobó COP 100.000 para la oferta QA y el servicio `Servicio de prueba Fase 5` quedó activo en sede 17. El correo propuesto de Sonia se comprobó después en producción y tiene rol `PRESTADOR`, no `CLIENTE`. No se creó una cuenta cliente ni una cita o movimiento de pago.
+
+## Actualización de producción — horario del salón y cuenta cliente QA (26 de noviembre de 2026)
+
+- La consulta de solo lectura a PostgreSQL confirmó que la sede 17 guarda lunes–viernes 09:00–18:00, sábado 10:00–14:00 y domingo cerrado. El usuario 132, propietario `SALON`, no tiene fila en `perfiles_prestador`.
+- La consulta de disponibilidad partía de `perfiles_prestador`, así que no retornaba la sede ni su horario cuando el perfil individual no existía y aplicaba 06:00–20:00. PR #102 corrigió slots, creación y reprogramación al unir perfil y sede independientemente; merge `f59cc441197a94379c61e9b0cdb2cccb0cb55c26`.
+- Railway production deployment `4529ff56-1ae0-469f-b355-32a94bab3c19` finalizó `SUCCESS`. La verificación productiva posterior devuelve viernes **09:00–17:30** (18 slots), sábado **10:00–13:30** (8 slots) y domingo **0 slots**.
+- Pruebas focalizadas locales: backend Jest **3/3**, calendario Node **13/13**, sintaxis y `git diff --check` correctos.
+- La cuenta elegida de Sonia tiene rol `PRESTADOR`; la cuenta QA del salón es `SALON` y la cuenta de Diego es `ADMIN`. La búsqueda de cuentas `CLIENTE` QA no encontró ninguna. No se usó ninguna de esas identidades para crear una reserva.
 
 ## Pendientes para cerrar la fase
 
 - Ejecutar el recorrido autenticado Cliente → reserva → agenda del salón y comprobar que la cita pertenece al `salonId` correcto.
 - Completar el flujo de atención de la cita y registrar evidencia de los estados antes/después.
-- Resolver la discrepancia productiva de disponibilidad de horarios y repetir las comprobaciones para viernes, sábado y domingo.
 - Hacer visible la sede/oferta QA en la app Cliente con los requisitos de publicación y elegibilidad que correspondan, sin inventar ubicación.
-- Confirmar una identidad CLIENTE QA que no genere conflicto con la membresía Personal de Sonia; antes de confirmar OTP, mantener controlado que el recorrido no produzca un movimiento financiero real no deseado.
+- Obtener una identidad `CLIENTE` QA distinta de las cuentas `PRESTADOR`, `SALON` y `ADMIN`; antes de confirmar OTP, controlar que el recorrido no genere un movimiento financiero real no deseado.
 - Probar en producción que un prestador en Exploración sigue apareciendo para navegar, no recibe horarios ni puede crear una cita; comprobar que un prestador habilitado con oferta activa sí puede.
 - Limpiar o cancelar la cita de prueba con el mecanismo normal de la app, si el estado final lo permite.
 
-**Estado:** abierta, **85 % estimado**. Elegibilidad y oferta QA están desplegadas. No se crea reserva mientras la API entregue horarios que contradicen el horario comercial del salón. Después de corregirlo, faltan identidad de cliente apropiada y el recorrido cliente→reserva→agenda correcta→atención, con el control del pago y el cierre.
+**Estado:** abierta, **85 % estimado**. Elegibilidad, oferta QA y disponibilidad por horario están desplegadas y verificadas. Falta una identidad cliente adecuada y el recorrido cliente→reserva→agenda correcta→atención, con control de pago y cierre.
