@@ -16,6 +16,7 @@
     "ci:eval": "bash scripts/ciRagEvaluation.sh",
     "smoke:surfaces": "node scripts/smokeSurfaces.js",
     "verify:wompi": "node scripts/verifyWompiCredentials.js",
+    "saas:expire-trials": "node src/jobs/saasFreeTrialExpirationCron.js",
     "e2e:wompi:sandbox": "node scripts/sandboxWompiE2E.js",
     "openapi:generate": "node scripts/generateOpenApiSpec.js",
     "rag:migrate": "node scripts/runRagMigrations.js",

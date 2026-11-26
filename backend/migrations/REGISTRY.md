@@ -639,3 +639,11 @@ en 076).
 - Crea `saas_billing_attempts` como ledger por tenant, con referencias únicas, intentos abiertos únicos y RLS en `app.business_profile_id`.
 - La fuente reutilizable nunca almacena PAN ni CVC; su ID cifrado se conserva solo donde se necesita para la renovación.
 - Es aditiva. Despliegue confirmado en Railway producción el 26 de noviembre de 2026; el worker y checkout quedaron desactivados por configuración.
+
+## 202: ciclo de vida de prueba gratis SaaS
+
+- Añade inicio y vencimiento a la prueba gratuita de cada tenant.
+- Los tenants `FREE_TRIAL` existentes reciben una ventana de transición de 14 días desde la migración; no se degradan al desplegar.
+- El bootstrap nuevo guarda los 14 días declarados en el catálogo y devuelve la fecha a la app para mostrarla en Facturación.
+- Un job aislado pasa a Freemium únicamente las pruebas vencidas y sincroniza el plan en el perfil SaaS y sus sedes. No envía correos ni modifica suscripciones pagas.
+- Es aditiva; al revertir la lógica/job se conserva el nivel actual de cada tenant. No borrar columnas ni modificar planes automáticamente durante rollback.

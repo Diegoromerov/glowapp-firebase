@@ -37,7 +37,8 @@ async function resolveVerticalId() {
 async function findTenant(userId, salonId = null) {
   const { rows } = await pool.query(
     `SELECT m.id AS membership_id, m.role, m.status,
-            bp.id AS business_profile_id, bp.name, bp.saas_plan, bp.tenant_id
+            bp.id AS business_profile_id, bp.name, bp.saas_plan, bp.tenant_id,
+            bp.saas_trial_started_at, bp.saas_trial_ends_at
      FROM memberships m
      JOIN business_profiles bp ON bp.id = m.business_profile_id
      JOIN salones s ON s.business_profile_id = bp.id
@@ -64,6 +65,8 @@ function toPayload(row) {
     id: row.business_profile_id,
     name: row.name,
     plan: row.saas_plan || 'FREE_TRIAL',
+    trialStartedAt: row.saas_trial_started_at || null,
+    trialEndsAt: row.saas_trial_ends_at || null,
     role: row.role,
     membershipId: row.membership_id,
     tenantId: row.tenant_id,
@@ -178,14 +181,31 @@ router.post('/', async (req, res) => {
     const { rows: inserted } = await client.query(
       `INSERT INTO business_profiles
          (id, provider_id, vertical_id, name, onboarding_mode, lifecycle_stage,
-          compliance_score, city, country, tenant_id, saas_plan)
-       VALUES ($1, $2, $3, $4, 'EXISTING_BUSINESS', 'OPERATION', 45.00, 'Bogotá', 'Colombia', $5, $6)
+          compliance_score, city, country, tenant_id, saas_plan,
+          saas_trial_started_at, saas_trial_ends_at)
+       VALUES (
+         $1, $2, $3, $4, 'EXISTING_BUSINESS', 'OPERATION', 45.00,
+         'Bogotá', 'Colombia', $5, $6,
+         CASE WHEN $6 = 'FREE_TRIAL' THEN CURRENT_TIMESTAMP ELSE NULL END,
+         CASE WHEN $6 = 'FREE_TRIAL'
+           THEN CURRENT_TIMESTAMP + ($7 * INTERVAL '1 day') ELSE NULL END
+       )
        ON CONFLICT (id) DO UPDATE SET
          name = EXCLUDED.name,
          saas_plan = COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan),
+         saas_trial_started_at = CASE
+           WHEN COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan) = 'FREE_TRIAL'
+           THEN COALESCE(business_profiles.saas_trial_started_at, EXCLUDED.saas_trial_started_at)
+           ELSE NULL
+         END,
+         saas_trial_ends_at = CASE
+           WHEN COALESCE(business_profiles.saas_plan, EXCLUDED.saas_plan) = 'FREE_TRIAL'
+           THEN COALESCE(business_profiles.saas_trial_ends_at, EXCLUDED.saas_trial_ends_at)
+           ELSE NULL
+         END,
          updated_at = CURRENT_TIMESTAMP
-       RETURNING id, name, saas_plan, tenant_id`,
-      [profileId, req.user.id, verticalId, name, tenantId, plan]
+       RETURNING id, name, saas_plan, tenant_id, saas_trial_started_at, saas_trial_ends_at`,
+      [profileId, req.user.id, verticalId, name, tenantId, plan, PLAN_CATALOG.FREE_TRIAL.trialDays]
     );
     if (!inserted.length) {
       throw new Error(`No existe el perfil SaaS asociado a la sede ${salon.id}`);
