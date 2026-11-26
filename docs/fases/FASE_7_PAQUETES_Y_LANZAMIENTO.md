@@ -100,6 +100,12 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 - PR #136 se integró a `main` en `36823f8`; Backend CI pasó. Railway production deployment `696816cc-811b-42f1-8cb2-d74419154520` terminó SUCCESS y `/api/health` confirmó `OK` con ese commit.
 - Este arreglo cierra la discrepancia de período y deduplicación para reservas directas; no certifica todavía las demás métricas, todos los canales de reserva ni el comportamiento de agotamiento por plan.
 
+## Vencimiento con pago confirmado — 26 de noviembre de 2026
+
+- El job de expiración ahora conserva el acceso de prueba solo si encuentra una suscripción de plan pago en estado `active`. Los registros `incomplete`, `trialing` o `past_due` no extienden la prueba sin confirmación de pago; los estados locales `FREE_TRIAL`/`FREE_TRIAL_LEGACY` tampoco la bloquean.
+- El cambio se integró en `main` (`44a16dc`). Backend CI pasó; Railway desplegó con SUCCESS tanto `glowapp-api` (`3849d5ea-4e92-4692-a9e1-98b2110e17a6`) como `saas-trial-lifecycle` (`408ca727-bbd6-4751-966f-812e913e9750`). `/api/health` devolvió `OK` para el commit `44a16dc`.
+- No se invocó el cron manualmente en producción para no afectar tenants que pudieran haber vencido. La ejecución controlada que distingue plan activo pagado de intento sin pago requiere un tenant QA aislado; permanece pendiente.
+
 ## Secuencia de implementación recomendada
 
 1. Resolver el vencimiento de Prueba Gratis con fecha de inicio y transición segura, sin alterar retroactivamente tenants existentes.
