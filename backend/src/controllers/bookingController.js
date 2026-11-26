@@ -472,9 +472,9 @@ exports.createBooking = async (req, res) => {
 
       const providerHours = await sequelize.query(
         `SELECT p.active_start_hour, p.active_end_hour, p.weekly_schedule, s.horario_atencion
-           FROM perfiles_prestador p
-           LEFT JOIN salones s ON s.id = :salonId
-          WHERE p.id = :providerId`,
+           FROM (SELECT CAST(:providerId AS integer) AS provider_id, CAST(:salonId AS integer) AS salon_id) requested
+           LEFT JOIN perfiles_prestador p ON p.id = requested.provider_id
+           LEFT JOIN salones s ON s.id = requested.salon_id`,
         { replacements: { providerId: Number(provider_id), salonId: targetSalonId }, type: sequelize.QueryTypes.SELECT, transaction: t }
       );
       const hours = providerHours[0] || {};
@@ -1617,9 +1617,9 @@ exports.rescheduleBooking = async (req, res) => {
       const salonId = bookingGroup.find((row) => row.salon_id != null)?.salon_id ?? null;
       const providerHours = await sequelize.query(
         `SELECT p.active_start_hour, p.active_end_hour, p.weekly_schedule, s.horario_atencion
-           FROM perfiles_prestador p
-           LEFT JOIN salones s ON s.id = :salonId
-          WHERE p.id = :providerId`,
+           FROM (SELECT CAST(:providerId AS integer) AS provider_id, CAST(:salonId AS integer) AS salon_id) requested
+           LEFT JOIN perfiles_prestador p ON p.id = requested.provider_id
+           LEFT JOIN salones s ON s.id = requested.salon_id`,
         { replacements: { providerId, salonId }, type: sequelize.QueryTypes.SELECT, transaction }
       );
       const hours = providerHours[0] || {};

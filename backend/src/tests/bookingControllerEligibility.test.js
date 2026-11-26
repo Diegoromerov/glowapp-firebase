@@ -95,4 +95,60 @@ describe('POST /api/bookings: estado operativo del prestador', () => {
       code: 'PROVIDER_NOT_OPERATIONAL',
     }));
   });
+
+  test('usa el horario comercial del salón aunque el usuario no tenga perfil_prestador', async () => {
+    const salonHours = {
+      lunes: { open: true, start: '09:00', end: '18:00' },
+      martes: { open: true, start: '09:00', end: '18:00' },
+      miercoles: { open: true, start: '09:00', end: '18:00' },
+      jueves: { open: true, start: '09:00', end: '18:00' },
+      viernes: { open: true, start: '09:00', end: '18:00' },
+      sabado: { open: true, start: '10:00', end: '14:00' },
+      domingo: { open: false },
+    };
+    runAsSystem.mockImplementation((_context, callback) => callback({
+      query: jest.fn(async (sql) => {
+        if (sql.includes('SELECT u.is_active, u.estado_operativo')) return { rows: [{
+          is_active: true, estado_operativo: 'HABILITADO', estatus_verificacion: null,
+        }] };
+        if (sql.includes('SELECT SUM(duration_minutes)')) return { rows: [{
+          total_duration: '30', match_count: '1', unresolved_scope_count: '0',
+          service_salon_ids: [17], business_profile_ids: [],
+        }] };
+        if (sql.includes('SELECT id, business_profile_id FROM salones')) return { rows: [{
+          id: 17, business_profile_id: null,
+        }] };
+        if (sql.includes('SELECT b.scheduled_at')) return { rows: [] };
+        if (sql.includes('requested.provider_id')) return { rows: [{
+          active_start_hour: null, active_end_hour: null, weekly_schedule: null,
+          horario_atencion: salonHours,
+        }] };
+        throw new Error(`Unexpected query in slots test: ${sql}`);
+      }),
+    }));
+
+    const requestSlots = async (date) => {
+      const req = {
+        params: { id: '132' },
+        query: { date, service_id: '00000000-0000-4000-8000-000000000001', salon_id: '17' },
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn().mockReturnThis(),
+      };
+      await getProviderSlots(req, res);
+      return res.json.mock.calls[0][0];
+    };
+
+    const friday = await requestSlots('2026-11-27');
+    expect(friday.slots[0].time).toBe('09:00');
+    expect(friday.slots.at(-1).time).toBe('17:30');
+
+    const saturday = await requestSlots('2026-11-28');
+    expect(saturday.slots[0].time).toBe('10:00');
+    expect(saturday.slots.at(-1).time).toBe('13:30');
+
+    const sunday = await requestSlots('2026-11-29');
+    expect(sunday.slots).toEqual([]);
+  });
 });
