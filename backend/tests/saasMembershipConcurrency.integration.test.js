@@ -44,7 +44,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     }
   });
 
-  async function createFixture() {
+  async function createFixture(activeRole = 'MEMBER') {
     const client = await adminPool.connect();
     const fixture = {
       profileId: crypto.randomUUID(),
@@ -91,8 +91,8 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
         [fixture.memberships.owner, fixture.ownerId, fixture.profileId]
       );
       await client.query(
-        "INSERT INTO memberships (id, user_id, business_profile_id, role, status, created_by_user_id) VALUES ($1, $2, $3, 'MEMBER', 'ACTIVE', $4)",
-        [fixture.memberships.active, fixture.activeUserId, fixture.profileId, fixture.ownerId]
+        "INSERT INTO memberships (id, user_id, business_profile_id, role, status, created_by_user_id) VALUES ($1, $2, $3, $4, 'ACTIVE', $5)",
+        [fixture.memberships.active, fixture.activeUserId, fixture.profileId, activeRole, fixture.ownerId]
       );
       await client.query(
         "INSERT INTO memberships (id, user_id, business_profile_id, role, status, created_by_user_id) VALUES ($1, $2, $3, 'MEMBER', 'SUSPENDED', $4)",
@@ -435,6 +435,84 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     } finally {
       await cleanupFixture(salonA);
       await cleanupFixture(salonB);
+    }
+  }, 20000);
+
+
+  test('authenticated HTTP team routes enforce OWNER, ADMIN and MEMBER permissions against PostgreSQL', async () => {
+    const salonWithAdmin = await createFixture('ADMIN');
+    const salonWithMember = await createFixture('MEMBER');
+    try {
+      const app = express();
+      app.use('/api/saas/team', saasTeamRoutes);
+      app.use((error, _req, res, _next) => {
+        console.error('SaaS team RBAC integration request failed:', error.message);
+        res.status(500).json({ error: 'Internal test request failure' });
+      });
+
+      const tokenFor = (fixture, label) => jwt.sign(
+        { id: fixture[ label === 'owner' ? 'ownerId' : 'activeUserId' ], email: fixture.emails[label] },
+        getJwtSecret(),
+        { expiresIn: '5m' }
+      );
+      const ownerAdminToken = tokenFor(salonWithAdmin, 'owner');
+      const adminToken = tokenFor(salonWithAdmin, 'active');
+      const ownerMemberToken = tokenFor(salonWithMember, 'owner');
+      const memberToken = tokenFor(salonWithMember, 'active');
+
+      const adminInvite = await request(app)
+        .post('/api/saas/team/invite')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({ email: `admin-invite-${crypto.randomUUID()}@test.local`, role: 'MEMBER' })
+        .expect(202);
+      expect(adminInvite.body.membershipId).toBeTruthy();
+
+      const reactivation = await request(app)
+        .patch(`/api/saas/team/${salonWithAdmin.memberships.suspended}/status`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({ status: 'ACTIVE' })
+        .expect(200);
+      expect(reactivation.body.membership.status).toBe('ACTIVE');
+
+      await request(app)
+        .patch(`/api/saas/team/${salonWithAdmin.memberships.active}/role`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({ role: 'MANAGER' })
+        .expect(403);
+
+      const ownerRoleChange = await request(app)
+        .patch(`/api/saas/team/${salonWithAdmin.memberships.active}/role`)
+        .set('Authorization', `Bearer ${ownerAdminToken}`)
+        .send({ role: 'MANAGER' })
+        .expect(200);
+      expect(ownerRoleChange.body.membership.role).toBe('MANAGER');
+
+      await request(app)
+        .post('/api/saas/team/invite')
+        .set('Authorization', `Bearer ${memberToken}`)
+        .send({ email: `member-invite-${crypto.randomUUID()}@test.local`, role: 'MEMBER' })
+        .expect(403);
+
+      await request(app)
+        .patch(`/api/saas/team/${salonWithMember.memberships.suspended}/status`)
+        .set('Authorization', `Bearer ${memberToken}`)
+        .send({ status: 'ACTIVE' })
+        .expect(403);
+
+      await request(app)
+        .patch(`/api/saas/team/${salonWithMember.memberships.active}/role`)
+        .set('Authorization', `Bearer ${memberToken}`)
+        .send({ role: 'MANAGER' })
+        .expect(403);
+
+      const deniedInvite = await adminPool.query(
+        "SELECT COUNT(*)::int AS count FROM memberships WHERE business_profile_id = $1 AND invite_email LIKE 'member-invite-%@test.local'",
+        [salonWithMember.profileId]
+      );
+      expect(deniedInvite.rows[0].count).toBe(0);
+    } finally {
+      await cleanupFixture(salonWithAdmin);
+      await cleanupFixture(salonWithMember);
     }
   }, 20000);
 
