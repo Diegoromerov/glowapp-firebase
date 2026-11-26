@@ -2,6 +2,7 @@
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:printing/printing.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Facturación: plan actual, cambio de plan (checkout / change-plan),
@@ -429,14 +430,14 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     );
   }
 
-  // ───────────────────────── Facturas ─────────────────────────
+  // ───────────────────────── Comprobantes ─────────────────────────
 
   Widget _invoicesSection(List<Invoice> invoices) {
     return _section(
-      title: 'Historial de Facturas',
+      title: 'Historial de comprobantes',
       subtitle: invoices.isEmpty
-          ? 'Aún no hay facturas emitidas.'
-          : '${invoices.length} facturas',
+          ? 'Aún no hay comprobantes emitidos.'
+          : '${invoices.length} comprobantes',
       children: invoices.map(_invoiceTile).toList(),
     );
   }
@@ -460,7 +461,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Factura ${invoice.number.isEmpty ? invoice.id : invoice.number}',
+                  'Comprobante ${invoice.number.isEmpty ? invoice.id : invoice.number}',
                   style: const TextStyle(
                       fontSize: 13, fontWeight: FontWeight.w600, color: _ink),
                 ),
@@ -478,7 +479,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
             tooltip: 'Ver factura',
             icon: Icon(Icons.open_in_new_rounded,
                 size: 18,
-                color: invoice.hostedInvoiceUrl != null ? _gold : _muted),
+                color:
+                    invoice.hostedInvoiceUrl != null || invoice.pdfUrl != null
+                        ? _gold
+                        : _muted),
             onPressed: () => _openInvoice(invoice),
           ),
         ],
@@ -487,14 +491,26 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
   }
 
   Future<void> _openInvoice(Invoice invoice) async {
-    final url = invoice.hostedInvoiceUrl ?? invoice.pdfUrl;
-    if (url == null || url.isEmpty) {
-      _toast(
-          'Esta factura no tiene enlace público: el PDF se genera en el servidor '
-          'y requiere sesión autenticada.');
+    if (invoice.hostedInvoiceUrl != null &&
+        invoice.hostedInvoiceUrl!.isNotEmpty) {
+      await launchUrl(Uri.parse(invoice.hostedInvoiceUrl!),
+          mode: LaunchMode.externalApplication);
       return;
     }
-    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+
+    try {
+      final bytes = await SaasApiService.downloadInvoiceDocument(invoice.id);
+      if (!mounted) return;
+      await Printing.layoutPdf(
+        name: '${invoice.number.isEmpty ? invoice.id : invoice.number}.pdf',
+        onLayout: (_) async => bytes,
+      );
+    } catch (e) {
+      if (mounted) {
+        _toast('No se pudo abrir el comprobante: ${mensajeHumano(e)}',
+            error: true);
+      }
+    }
   }
 
   // ───────────────────────── Métodos de pago ─────────────────────────

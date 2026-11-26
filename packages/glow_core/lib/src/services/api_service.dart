@@ -364,6 +364,19 @@ class ApiService {
   }
 
   // ─── Métodos genéricos HTTP (para nuevas funcionalidades) ───────
+  /// GET autenticado para documentos binarios como comprobantes PDF.
+  static Future<Uint8List> getBytes(String path) {
+    return runWithRetry(() async {
+      await ensureBaseUrl();
+      final headers = await _getAuthHeaders();
+      final uri = Uri.parse('$_baseUrl$path');
+      final response = await http.get(uri, headers: headers).timeout(requestTimeout);
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return response.bodyBytes;
+      }
+      throw Exception('${response.statusCode} No se pudo descargar el documento');
+    });
+  }
   /// GET con reintentos (petición idempotente).
   static Future<dynamic> get(String path) {
     return runWithRetry(() async {

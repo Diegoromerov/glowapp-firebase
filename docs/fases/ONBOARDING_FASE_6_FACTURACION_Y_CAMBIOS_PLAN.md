@@ -2,7 +2,7 @@
 
 **Corte:** 26 de noviembre de 2026  
 **Estado:** implementación parcial; fase abierta.  
-**Avance de código:** 35 % estimado.  
+**Avance de código:** 40 % estimado.
 **Recorrido real de cobro en producción:** 0 % verificado.
 
 ## Objetivo y criterio de cierre
@@ -18,6 +18,9 @@ Gestionar checkout, activación, renovación, cancelación, comprobantes y recup
 - La cancelación Wompi queda protegida hasta implementar y verificar su contrato real. La pantalla del prestador informa que la facturación está pausada y no permite iniciar cambios que el backend no puede completar con seguridad.
 - Los webhooks liberan sus conexiones de base de datos tras sincronizar el plan.
 - El job de avisos de trial y mora ejecuta sus consultas bajo el rol de sistema, obtiene el nombre y correo del titular, envía los avisos por el servicio de correo configurado y registra cada factura avisada para reducir duplicados. Se mantiene sin programación automática mientras no se auditen los destinatarios y las suscripciones que podrían cancelarse.
+- Los comprobantes se generan como PDF, se cifran con AES-256-GCM con una clave derivada y separada para este uso, y se almacenan en R2 bajo una ruta por tenant. La descarga consulta la factura con tenant ID, descifra el objeto y responde con `private, no-store`; producción falla de forma cerrada si falta R2, en vez de perder el archivo en el disco efímero. El documento se identifica como comprobante informativo y declara que no reemplaza una factura electrónica.
+- Se corrigió la variable de impuesto indefinida del generador PDFkit, se escapó el HTML de respaldo y se evita aplicar el cálculo COP a eventos USD. La tasa fiscal comercial sigue pendiente de validación tributaria.
+- La app prestador lista el enlace autenticado del comprobante y lo descarga con los encabezados de sesión antes de abrir la vista de impresión; ya no intenta abrir en navegador externo una ruta que requiere bearer token. La sección y el PDF usan “comprobante” para no presentarlo como factura electrónica.
 
 ## Validación
 
@@ -25,6 +28,8 @@ Gestionar checkout, activación, renovación, cancelación, comprobantes y recup
 - `node --check` en las rutas, servicios y entrypoint modificados: aprobado.
 - `git diff --check`: aprobado.
 - Prueba unitaria del job de recuperación: **2/2 aprobadas**; cubre el contexto de sistema y el envío/auditoría de factura vencida. No ejecuta correos ni cambios de suscripción reales.
+- Pruebas locales focalizadas de facturación, almacenamiento, ruta de descarga y suscripciones: **12/12 aprobadas en el último bloque ejecutado**; incluye PDF válido, cifrado/descifrado R2 simulado, aislamiento por tenant, descarga sin caché y tratamiento USD. No se cargó un objeto real a R2 ni se creó una factura en producción.
+- `flutter analyze lib/screens/saas/billing_screen.dart`: sin problemas. El método de descarga binaria autenticada se agregó a `glow_core`; el análisis local se ejecutó sobre la pantalla y no representa una prueba E2E.
 - Railway Producción no tiene variables `STRIPE_*` configuradas. Una solicitud HTTP inocua al webhook respondió `503 Stripe SaaS webhook no configurado`, como debe ocurrir mientras falta esa configuración.
 - El workflow Firebase [45778750924](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/45778750924) terminó `success`: análisis y pruebas del prestador, build web y deploy live. El hosting del prestador devolvió HTTP 200 y el bundle público contiene el aviso “La facturación SaaS está temporalmente pausada”.
 - Railway confirmó deployment `88271019-efeb-496c-b20a-b89c25759724`, commit `fd0ac71e0405b39e5d4a42a29cb4c3510d2d3785`, estado `SUCCESS`. `/api/health` devuelve `OK`, `production` y el mismo commit.
@@ -38,18 +43,18 @@ Gestionar checkout, activación, renovación, cancelación, comprobantes y recup
 | Activación | Parcial | Ejecutar eventos firmados reales y comprobar que plan/permisos cambian sólo tras pago aprobado. |
 | Renovación | Parcial | Probar cobro de un período posterior, facturación idempotente y evento de fallo. |
 | Cancelación | Parcial | Verificar cancelación Stripe al fin de período y diseñar la operación compatible con Wompi. |
-| Facturas | Parcial | Probar generación, descarga durable, envío y documento fiscal aplicable. El PDF actual se guarda en el filesystem efímero del backend. |
+| Facturas | Parcial en código | PDF y almacenamiento cifrado R2 implementados; falta una generación/descarga end-to-end con una factura QA y envío del comprobante. El documento no es factura electrónica y la tasa tributaria debe validarse. |
 | Recuperación | Parcial en código; no activa en producción | El job tiene consultas con RLS, correos y auditoría; faltan auditoría de objetivos productivos, política de gracia y recuperación del método de pago. Mantenerlo sin cron hasta completar esa revisión. |
 
 ## Pendientes prioritarios
 
-1. Acordar y configurar proveedor, precios, moneda y llaves mediante variables secretas; nunca incluirlas en commits o logs.
+1. Configurar y verificar precios, moneda y llaves del proveedor mediante variables secretas; nunca incluirlas en commits o logs.
 2. Completar Wompi con el flujo documentado de fuente de pago y transacciones recurrentes, y verificar su checksum de eventos y la referencia persistida de cada intento.
 3. Configurar el webhook productivo y ejecutar pruebas de pago aprobado, pendiente, rechazado, duplicado, renovación, reintento y cancelación.
 4. Auditar en producción qué trials/facturas serían afectados; definir estado de permisos durante mora y período de gracia. Solo entonces programar el job y comprobar los correos en una cuenta QA autorizada.
-5. Guardar facturas en almacenamiento duradero, enviar comprobantes y validar los requisitos tributarios antes de ofrecerlas como factura fiscal.
+5. Validar el guardado/descarga con un comprobante QA real, conectar el envío del comprobante y validar los requisitos tributarios antes de ofrecerlo como factura fiscal.
 6. Completar en UI el historial de método de pago y las fechas/efectos de cancelación y cambio de nivel cuando esos flujos estén activos.
 
 ## Evidencia de publicación
 
-La corrección inicial de mapeo de facturas se publicó mediante PR #106 (commit `7f05ab84cd5ebb2c6cbabac8f03907898addf187`, Railway `SUCCESS`). Las protecciones de cobro, webhook y pantalla se integraron mediante PR #107 (commit `fd0ac71e0405b39e5d4a42a29cb4c3510d2d3785`, Railway `SUCCESS`; workflow Firebase live `45778750924`). El hosting productivo actual corresponde al prestador. No se publicó ni modificó la app cliente.
+La corrección inicial de mapeo de facturas se publicó mediante PR #106 (commit `7f05ab84cd5ebb2c6cbabac8f03907898addf187`, Railway `SUCCESS`). Las protecciones de cobro, webhook y pantalla se integraron mediante PR #107 (commit `fd0ac71e0405b39e5d4a42a29cb4c3510d2d3785`, Railway `SUCCESS`; workflow Firebase live `45778750924`). La recuperación por correo y rol RLS se publicó mediante PR #109 (commit `8106235863e5f916a8462b6ffcad255056594f58`, Railway deployment `120645d8-a591-4500-84ba-a37b746557a3`, `SUCCESS`); producción respondió `OK`, la búsqueda de prestadores respondió correctamente y el webhook Stripe sin configuración devolvió 503 de forma segura. La implementación de PDF cifrado en R2 y su descarga autenticada desde la app prestador está en esta rama; aún no se desplegó ni probó contra R2 productivo. No se publicó ni modificó la app cliente.

@@ -1,8 +1,7 @@
 // backend/src/services/invoiceService.js
 const { pool } = require('../config/db');
 const { PLAN_CATALOG } = require('../config/saasCatalog');
-const fs = require('fs');
-const path = require('path');
+const invoiceDocumentStorage = require('./invoiceDocumentStorage');
 
 // PDFKit import opcional - si no está instalado, usa fallback simple
 let PDFDocument;
@@ -106,7 +105,7 @@ async function createInvoiceFromSubscription(clientOrNull, subscription, payment
       amount = getPlanPrice(subscription.plan, currency);
     }
 
-    const taxRate = 0.19; // IVA Colombia 19%
+    const taxRate = currency === 'COP' ? 0.19 : 0;
     const subtotal = amount / (1 + taxRate);
     const tax = amount - subtotal;
 
@@ -263,31 +262,46 @@ async function createProrationInvoice(client, newSubscription, oldPlan, newPlan)
  * Genera PDF de factura (usa pdfkit si disponible, sino HTML)
  */
 async function generateInvoicePDF(invoice, tenant) {
-  const outputDir = path.join(__dirname, '../../invoices');
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
-  const outputPath = path.join(outputDir, `${invoice.invoice_number}.pdf`);
-
+  let buffer;
+  let contentType;
+  let extension;
   if (PDFDocument) {
-    return await generatePDFWithKit(invoice, tenant, outputPath);
+    buffer = await generatePDFWithKit(invoice, tenant);
+    contentType = 'application/pdf';
+    extension = 'pdf';
   } else {
-    return await generatePDFHtml(invoice, tenant, outputPath);
+    buffer = Buffer.from(generatePDFHtml(invoice, tenant), 'utf8');
+    contentType = 'text/html; charset=utf-8';
+    extension = 'html';
   }
+
+  return invoiceDocumentStorage.storeInvoiceDocument({
+    tenantId: invoice.tenant_id,
+    invoiceNumber: invoice.invoice_number,
+    buffer,
+    contentType,
+    extension
+  });
+}
+
+async function getInvoiceDocument(tenantId, invoiceNumber) {
+  return invoiceDocumentStorage.loadInvoiceDocument({ tenantId, invoiceNumber });
 }
 
 /**
  * PDF con pdfkit (calidad profesional)
  */
-function generatePDFWithKit(invoice, tenant, outputPath) {
+function generatePDFWithKit(invoice, tenant) {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument({ margin: 50, size: 'A4' });
-    const stream = fs.createWriteStream(outputPath);
-    doc.pipe(stream);
+    const chunks = [];
+    doc.on('data', chunk => chunks.push(chunk));
+    doc.on('error', reject);
+    doc.on('end', () => resolve(Buffer.concat(chunks)));
 
     // Header
     doc.fontSize(24).font('Helvetica-Bold').text('GLOWAPP', { align: 'left' });
-    doc.fontSize(10).font('Helvetica').text('Factura de Venta', { align: 'left' });
+    doc.fontSize(10).font('Helvetica').text('Comprobante de cobro SaaS', { align: 'left' });
     doc.moveDown();
 
     // Info factura
@@ -313,17 +327,17 @@ function generatePDFWithKit(invoice, tenant, outputPath) {
     doc.text('Descripción', colX[0], doc.y);
     doc.text('Cant.', colX[1], doc.y);
     doc.text('Precio Unit.', colX[2], doc.y);
-    doc.text('IVA', colX[3], doc.y);
+    doc.text('Impuesto', colX[3], doc.y);
     doc.text('Total', colX[4], doc.y);
     doc.moveDown(0.5);
 
     doc.font('Helvetica');
-    const items = typeof invoice.items === 'string' ? JSON.parse(invoice.items) : invoice.items;
+    const items = typeof invoice.items === 'string' ? JSON.parse(invoice.items) : (invoice.items || []);
     items.forEach(item => {
       doc.text(item.description.substring(0, 50), colX[0], doc.y);
       doc.text(item.quantity.toString(), colX[1], doc.y);
       doc.text(formatCurrency(item.unit_price, invoice.currency), colX[2], doc.y);
-      doc.text(`${(item.tax_rate * 100).toFixed(0)}%`, colX[3], doc.y);
+      doc.text(`${((Number(item.tax_rate) || 0) * 100).toFixed(0)}%`, colX[3], doc.y);
       doc.text(formatCurrency(item.total, invoice.currency), colX[4], doc.y);
       doc.moveDown(0.5);
     });
@@ -332,22 +346,32 @@ function generatePDFWithKit(invoice, tenant, outputPath) {
     // Totales
     doc.font('Helvetica-Bold');
     doc.text(`Subtotal: ${formatCurrency(invoice.subtotal, invoice.currency)}`, { align: 'right' });
-    doc.text(`IVA (${(taxRate * 100).toFixed(0)}%): ${formatCurrency(invoice.tax, invoice.currency)}`, { align: 'right' });
+    const taxRate = items.length > 0 && Number.isFinite(Number(items[0].tax_rate))
+      ? Number(items[0].tax_rate)
+      : 0;
+    doc.text(`Impuestos (${(taxRate * 100).toFixed(0)}%): ${formatCurrency(Number(invoice.tax) || 0, invoice.currency)}`, { align: 'right' });
     doc.fontSize(14).text(`TOTAL: ${formatCurrency(invoice.total, invoice.currency)}`, { align: 'right' });
+    doc.moveDown();
+    doc.fontSize(8).font('Helvetica').text('Documento informativo de cobro; no reemplaza una factura electrónica.', { align: 'center' });
 
     doc.end();
-
-    stream.on('finish', () => resolve(outputPath));
-    stream.on('error', reject);
   });
 }
 
 /**
- * Fallback: HTML simple convertido a PDF via puppeteer (si disponible) o guardado como .html
+ * Fallback legible en HTML cuando la dependencia PDF no está disponible.
  */
-async function generatePDFHtml(invoice, tenant, outputPath) {
-  const items = typeof invoice.items === 'string' ? JSON.parse(invoice.items) : invoice.items;
-  const taxRate = invoice.currency === 'COP' ? 0.19 : 0;
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[char]));
+}
+
+function generatePDFHtml(invoice, tenant) {
+  const items = typeof invoice.items === 'string' ? JSON.parse(invoice.items) : (invoice.items || []);
+  const taxRate = items.length > 0 && Number.isFinite(Number(items[0].tax_rate))
+    ? Number(items[0].tax_rate)
+    : 0;
 
   const html = `
 <!DOCTYPE html>
@@ -376,21 +400,21 @@ async function generatePDFHtml(invoice, tenant, outputPath) {
       <p>Plataforma de Gestión para Negocios de Belleza</p>
     </div>
     <div class="invoice-info">
-      <p class="label">FACTURA DE VENTA</p>
-      <p><span class="label">Número:</span> ${invoice.invoice_number}</p>
+      <p class="label">COMPROBANTE DE COBRO SAAS</p>
+      <p><span class="label">Número:</span> ${escapeHtml(invoice.invoice_number)}</p>
       <p><span class="label">Fecha:</span> ${formatDate(invoice.created_at)}</p>
       <p><span class="label">Período:</span> ${formatDate(invoice.period_start)} - ${formatDate(invoice.period_end)}</p>
       <p><span class="label">Vence:</span> ${formatDate(invoice.due_date)}</p>
-      <p><span class="label">Estado:</span> ${invoice.status.toUpperCase()}</p>
+      <p><span class="label">Estado:</span> ${escapeHtml(invoice.status).toUpperCase()}</p>
     </div>
   </div>
 
   <div class="section">
     <p class="label">Facturar a:</p>
-    <p>${tenant.name}</p>
-    <p>${tenant.owner_email}</p>
-    ${tenant.address ? `<p>${tenant.address}</p>` : ''}
-    ${tenant.tax_id ? `<p>NIT: ${tenant.tax_id}</p>` : ''}
+    <p>${escapeHtml(tenant.name)}</p>
+    <p>${escapeHtml(tenant.owner_email)}</p>
+    ${tenant.address ? `<p>${escapeHtml(tenant.address)}</p>` : ''}
+    ${tenant.tax_id ? `<p>NIT: ${escapeHtml(tenant.tax_id)}</p>` : ''}
   </div>
 
   <table>
@@ -399,17 +423,17 @@ async function generatePDFHtml(invoice, tenant, outputPath) {
         <th>Descripción</th>
         <th style="width:60px;">Cant.</th>
         <th style="width:100px;">Precio Unit.</th>
-        <th style="width:60px;">IVA</th>
+        <th style="width:60px;">Impuesto</th>
         <th style="width:100px;">Total</th>
       </tr>
     </thead>
     <tbody>
       ${items.map(item => `
         <tr>
-          <td>${item.description}</td>
+          <td>${escapeHtml(item.description)}</td>
           <td>${item.quantity}</td>
           <td>${formatCurrency(item.unit_price, invoice.currency)}</td>
-          <td>${(item.tax_rate * 100).toFixed(0)}%</td>
+          <td>${((Number(item.tax_rate) || 0) * 100).toFixed(0)}%</td>
           <td>${formatCurrency(item.total, invoice.currency)}</td>
         </tr>
       `).join('')}
@@ -418,17 +442,14 @@ async function generatePDFHtml(invoice, tenant, outputPath) {
 
   <table class="totals">
     <tr><td>Subtotal</td><td>${formatCurrency(invoice.subtotal, invoice.currency)}</td></tr>
-    <tr><td>IVA (${(taxRate * 100).toFixed(0)}%)</td><td>${formatCurrency(invoice.tax, invoice.currency)}</td></tr>
+    <tr><td>Impuestos (${(taxRate * 100).toFixed(0)}%)</td><td>${formatCurrency(Number(invoice.tax) || 0, invoice.currency)}</td></tr>
     <tr class="total-row"><td>TOTAL</td><td>${formatCurrency(invoice.total, invoice.currency)}</td></tr>
   </table>
+  <p class="notice">Documento informativo de cobro; no reemplaza una factura electrónica.</p>
 </body>
 </html>
   `;
-
-  const htmlPath = outputPath.replace('.pdf', '.html');
-  fs.writeFileSync(htmlPath, html);
-  console.log(`[invoiceService] Factura HTML guardada en ${htmlPath} (pdfkit no disponible)`);
-  return htmlPath;
+  return html;
 }
 
 /**
@@ -495,10 +516,11 @@ function formatDate(date) {
 }
 
 function formatCurrency(amount, currency) {
+  const numericAmount = Number(amount) || 0;
   if (currency === 'USD') {
-    return `$${amount.toFixed(2)} USD`;
+    return `$${numericAmount.toFixed(2)} USD`;
   }
-  return `$${Math.round(amount).toLocaleString('es-CO')} COP`;
+  return `$${Math.round(numericAmount).toLocaleString('es-CO')} COP`;
 }
 
 module.exports = {
@@ -507,6 +529,7 @@ module.exports = {
   getInvoicesByTenant,
   markInvoicePaid,
   generateInvoicePDF,
+  getInvoiceDocument,
   getPlanPrice,
   _mapPaymentEventToInvoice: mapPaymentEventToInvoice
 };
