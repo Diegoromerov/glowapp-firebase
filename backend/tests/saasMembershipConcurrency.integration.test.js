@@ -2,6 +2,11 @@
 // This suite is enabled only when CI provides both admin and app database URLs.
 const crypto = require('crypto');
 const { Pool } = require('pg');
+const express = require('express');
+const request = require('supertest');
+const jwt = require('jsonwebtoken');
+const { getJwtSecret } = require('../src/config/jwt');
+const saasTeamRoutes = require('../src/routes/saasTeamRoutes');
 
 jest.mock('../src/services/emailService', () => ({
   sendEmail: jest.fn().mockResolvedValue({ devMode: true }),
@@ -372,6 +377,54 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
 
       const foreignTeamViaService = await saasMembershipService.list(salonB.profileId, salonA.ownerId);
       expect(foreignTeamViaService).toHaveLength(0);
+    } finally {
+      await cleanupFixture(salonA);
+      await cleanupFixture(salonB);
+    }
+  }, 20000);
+
+
+  test('authenticated HTTP team route binds each JWT to its own tenant despite a foreign tenant query', async () => {
+    const salonA = await createFixture();
+    const salonB = await createFixture();
+    try {
+      const app = express();
+      app.use('/api/saas/team', saasTeamRoutes);
+      app.use((error, _req, res, _next) => {
+        console.error('SaaS team integration request failed:', error.message);
+        res.status(500).json({ error: 'Internal test request failure' });
+      });
+
+      const tokenA = jwt.sign(
+        { id: salonA.ownerId, email: salonA.emails.owner },
+        getJwtSecret(),
+        { expiresIn: '5m' }
+      );
+      const tokenB = jwt.sign(
+        { id: salonB.ownerId, email: salonB.emails.owner },
+        getJwtSecret(),
+        { expiresIn: '5m' }
+      );
+
+      const responseA = await request(app)
+        .get('/api/saas/team')
+        .query({ tenantId: salonB.profileId })
+        .set('Authorization', `Bearer ${tokenA}`)
+        .expect(200);
+      expect(responseA.body.tenantId).toBe(salonA.profileId);
+      const userIdsA = responseA.body.members.map((member) => Number(member.user_id));
+      expect(userIdsA).toContain(Number(salonA.ownerId));
+      expect(userIdsA.some((id) => salonB.userIds.includes(id))).toBe(false);
+
+      const responseB = await request(app)
+        .get('/api/saas/team')
+        .query({ tenantId: salonA.profileId })
+        .set('Authorization', `Bearer ${tokenB}`)
+        .expect(200);
+      expect(responseB.body.tenantId).toBe(salonB.profileId);
+      const userIdsB = responseB.body.members.map((member) => Number(member.user_id));
+      expect(userIdsB).toContain(Number(salonB.ownerId));
+      expect(userIdsB.some((id) => salonA.userIds.includes(id))).toBe(false);
     } finally {
       await cleanupFixture(salonA);
       await cleanupFixture(salonB);
