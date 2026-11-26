@@ -1595,11 +1595,11 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                           },
                           icon: const Icon(Icons.calendar_today_outlined,
                               size: 15, color: Color(0xFF14100C)),
-                          label: const Text(
+                          label: Text(
                             provider.canReceiveBookings
                                 ? 'Reservar Cita'
                                 : 'En preparación',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'CormorantGaramond',
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -2258,9 +2258,9 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                               : null,
                           icon: const Icon(Icons.bolt_rounded,
                               size: 15, color: Color(0xFF14100C)),
-                          label: const Text(
+                          label: Text(
                             p.canReceiveBookings ? 'Reservar Ya' : 'En preparación',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'CormorantGaramond',
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
