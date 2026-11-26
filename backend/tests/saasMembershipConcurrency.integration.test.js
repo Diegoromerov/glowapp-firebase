@@ -97,7 +97,9 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     const client = await adminPool.connect();
     try {
       await client.query('BEGIN');
+      await client.query('ALTER TABLE membership_audit_logs DISABLE TRIGGER USER');
       await client.query('DELETE FROM membership_audit_logs WHERE business_profile_id = $1', [fixture.profileId]);
+      await client.query('ALTER TABLE membership_audit_logs ENABLE TRIGGER USER');
       await client.query('ALTER TABLE memberships DISABLE TRIGGER trg_prevent_unsafe_membership_change');
       await client.query('DELETE FROM memberships WHERE business_profile_id = $1', [fixture.profileId]);
       await client.query('ALTER TABLE memberships ENABLE TRIGGER trg_prevent_unsafe_membership_change');
