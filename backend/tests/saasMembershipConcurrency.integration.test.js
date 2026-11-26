@@ -8,6 +8,7 @@ jest.mock('../src/services/emailService', () => ({
 }));
 
 const saasMembershipService = require('../src/services/saasMembershipService');
+const emailService = require('../src/services/emailService');
 
 const ADMIN_URL = process.env.DATABASE_URL_ADMIN;
 const APP_URL = process.env.DATABASE_URL;
@@ -201,6 +202,112 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       const active = state.rows.find((row) => row.status === 'ACTIVE');
       expect(Boolean(active)).toBe(Boolean(!suspended));
     } finally {
+      await cleanupFixture(fixture);
+    }
+  }, 20000);
+  test('rejects a mismatched email, then accepts the invitation only with the invited email', async () => {
+    const fixture = await createFixture();
+    const originalBrevoKey = process.env.BREVO_API_KEY;
+    process.env.BREVO_API_KEY = 'mocked-integration-test-key';
+    emailService.sendEmail.mockClear();
+    emailService.sendEmail.mockResolvedValue({ devMode: true });
+    try {
+      const invitation = await saasMembershipService.invite({
+        tenantId: fixture.profileId,
+        tenantName: 'SaaS invitation PostgreSQL test',
+        plan: 'FREE_TRIAL',
+        actorId: fixture.ownerId,
+        email: fixture.emails['invitee-one'],
+        role: 'MEMBER',
+      });
+      expect(invitation.emailSent).toBe(false);
+      expect(emailService.sendEmail).toHaveBeenCalledTimes(1);
+
+      const latestEmail = emailService.sendEmail.mock.calls[emailService.sendEmail.mock.calls.length - 1][0];
+      const tokenMatch = String(latestEmail.data.text).match(/token=([0-9a-f]{32})/i);
+      expect(tokenMatch).not.toBeNull();
+      const token = tokenMatch[1];
+
+      await expect(saasMembershipService.accept({
+        token,
+        user: { id: fixture.inviteeOneId, email: 'different-account@test.local' },
+      })).rejects.toMatchObject({ status: 403 });
+
+      const stillPending = await adminPool.query(
+        'SELECT status FROM memberships WHERE id = $1',
+        [invitation.membershipId]
+      );
+      expect(stillPending.rows[0].status).toBe('PENDING');
+
+      const accepted = await saasMembershipService.accept({
+        token,
+        user: { id: fixture.inviteeOneId, email: fixture.emails['invitee-one'] },
+      });
+      expect(accepted.status).toBe('ACTIVE');
+      expect(accepted.accepted_at).toBeTruthy();
+
+      const audit = await adminPool.query(
+        'SELECT event_type FROM membership_audit_logs WHERE membership_id = $1',
+        [invitation.membershipId]
+      );
+      expect(audit.rows.map((row) => row.event_type)).toEqual(
+        expect.arrayContaining(['INVITED', 'INVITATION_ACCEPTED'])
+      );
+    } finally {
+      if (originalBrevoKey === undefined) delete process.env.BREVO_API_KEY;
+      else process.env.BREVO_API_KEY = originalBrevoKey;
+      await cleanupFixture(fixture);
+    }
+  }, 20000);
+
+  test('expires and safely resends a pending invitation when a seat is available', async () => {
+    const fixture = await createFixture();
+    const originalBrevoKey = process.env.BREVO_API_KEY;
+    process.env.BREVO_API_KEY = 'mocked-integration-test-key';
+    emailService.sendEmail.mockClear();
+    emailService.sendEmail.mockResolvedValue({ devMode: true });
+    const membershipId = crypto.randomUUID();
+    const staleTokenHash = crypto.createHash('sha256').update(crypto.randomBytes(32)).digest('hex');
+    const seedClient = await adminPool.connect();
+    try {
+      await seedClient.query('BEGIN');
+      await seedClient.query("SELECT set_config('app.user_id', $1, true)", [String(fixture.ownerId)]);
+      await seedClient.query(
+        "INSERT INTO memberships (id, user_id, business_profile_id, invite_email, role, status, invited_by, invited_at, invite_token_hash, invite_expires_at, created_by_user_id) VALUES ($1, $2, $3, $4, 'MEMBER', 'PENDING', $5, NOW() - INTERVAL '8 days', $6, NOW() - INTERVAL '1 day', $5)",
+        [membershipId, fixture.inviteeOneId, fixture.profileId, fixture.emails['invitee-one'], fixture.ownerId, staleTokenHash]
+      );
+      await seedClient.query('COMMIT');
+
+      const resent = await saasMembershipService.resend({
+        tenantId: fixture.profileId,
+        memberId: membershipId,
+        actorId: fixture.ownerId,
+        tenantName: 'SaaS invitation PostgreSQL test',
+        plan: 'FREE_TRIAL',
+      });
+      expect(resent.emailSent).toBe(false);
+      expect(emailService.sendEmail).toHaveBeenCalledTimes(1);
+
+      const current = await adminPool.query(
+        'SELECT status, invite_token_hash, invite_expires_at FROM memberships WHERE id = $1',
+        [membershipId]
+      );
+      expect(current.rows[0].status).toBe('PENDING');
+      expect(current.rows[0].invite_token_hash).toMatch(/^[0-9a-f]{64}$/i);
+      expect(new Date(current.rows[0].invite_expires_at).getTime()).toBeGreaterThan(Date.now());
+
+      const audit = await adminPool.query(
+        'SELECT event_type FROM membership_audit_logs WHERE membership_id = $1',
+        [membershipId]
+      );
+      expect(audit.rows.map((row) => row.event_type)).toEqual(
+        expect.arrayContaining(['INVITATION_EXPIRED', 'INVITATION_RESENT'])
+      );
+    } finally {
+      await seedClient.query('ROLLBACK').catch(() => {});
+      seedClient.release();
+      if (originalBrevoKey === undefined) delete process.env.BREVO_API_KEY;
+      else process.env.BREVO_API_KEY = originalBrevoKey;
       await cleanupFixture(fixture);
     }
   }, 20000);
