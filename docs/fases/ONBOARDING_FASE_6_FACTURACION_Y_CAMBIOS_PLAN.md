@@ -23,7 +23,9 @@ Gestionar checkout, activación, renovación, cancelación, comprobantes y recup
 - Pruebas focalizadas de facturas y suscripciones: **42/42 aprobadas** (mocks locales; no son cargos ni pruebas contra el proveedor).
 - `node --check` en las rutas, servicios y entrypoint modificados: aprobado.
 - `git diff --check`: aprobado.
-- Railway Producción no tiene variables `STRIPE_*` configuradas. Por esto Stripe no puede procesar checkout real; el endpoint responde con estado de servicio no disponible hasta tener la configuración.
+- Railway Producción no tiene variables `STRIPE_*` configuradas. Una solicitud HTTP inocua al webhook respondió `503 Stripe SaaS webhook no configurado`, como debe ocurrir mientras falta esa configuración.
+- El workflow Firebase [45778750924](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/45778750924) terminó `success`: análisis y pruebas del prestador, build web y deploy live. El hosting del prestador devolvió HTTP 200 y el bundle público contiene el aviso “La facturación SaaS está temporalmente pausada”.
+- Railway confirmó deployment `88271019-efeb-496c-b20a-b89c25759724`, commit `fd0ac71e0405b39e5d4a42a29cb4c3510d2d3785`, estado `SUCCESS`. `/api/health` devuelve `OK`, `production` y el mismo commit.
 - No se inició checkout, cobro, renovación ni cancelación en producción.
 
 ## Estado por capacidad
@@ -48,4 +50,4 @@ Gestionar checkout, activación, renovación, cancelación, comprobantes y recup
 
 ## Evidencia de publicación
 
-La corrección de mapeo de facturas se publicó en `main` mediante PR #106 (commit `7f05ab84cd5ebb2c6cbabac8f03907898addf187`) y Railway confirmó deployment `a3d79965-b7a7-4902-95b2-bf3dd0808c67` en `SUCCESS`. Los cambios adicionales descritos aquí deben considerarse productivos sólo después de que su PR se integre y Railway confirme el commit desplegado.
+La corrección inicial de mapeo de facturas se publicó mediante PR #106 (commit `7f05ab84cd5ebb2c6cbabac8f03907898addf187`, Railway `SUCCESS`). Las protecciones de cobro, webhook y pantalla se integraron mediante PR #107 (commit `fd0ac71e0405b39e5d4a42a29cb4c3510d2d3785`, Railway `SUCCESS`; workflow Firebase live `45778750924`). El hosting productivo actual corresponde al prestador. No se publicó ni modificó la app cliente.
