@@ -25,6 +25,13 @@ router.get('/', async (req, res) => {
 
     const tenantId = req.saas.tenantId;
 
+    const { rows: billingAttemptRows } = await pool.query(
+      `SELECT reference, status, amount_in_cents, currency, period_start, period_end, created_at
+       FROM saas_billing_attempts WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 1`,
+      [tenantId]
+    );
+    const latestBillingAttempt = billingAttemptRows[0] || null;
+
     // Suscripción actual
     const subscription = await subscriptionService.getActiveSubscription(tenantId);
     const stripeConfigured = stripeService.isConfigured();
@@ -53,6 +60,15 @@ router.get('/', async (req, res) => {
       tenantName: req.saas.name,
       currentPlan: req.saas.plan,
       checkoutAvailable: wompiSaasBilling.isCheckoutAvailable(),
+      latestBillingAttempt: latestBillingAttempt ? {
+        reference: latestBillingAttempt.reference,
+        status: latestBillingAttempt.status,
+        amountInCents: latestBillingAttempt.amount_in_cents,
+        currency: latestBillingAttempt.currency,
+        periodStart: latestBillingAttempt.period_start,
+        periodEnd: latestBillingAttempt.period_end,
+        createdAt: latestBillingAttempt.created_at,
+      } : null,
       subscription: subscription ? {
         id: subscription.id,
         plan: subscription.plan,

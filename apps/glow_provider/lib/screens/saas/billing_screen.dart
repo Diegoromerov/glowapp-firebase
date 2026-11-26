@@ -122,6 +122,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                 padding: const EdgeInsets.all(16),
                 children: [
                   _currentPlanCard(subscription, tier, billing.nextPayment),
+                  if (billing.latestBillingAttempt != null) ...[
+                    const SizedBox(height: 12),
+                    _latestBillingAttemptCard(billing.latestBillingAttempt!),
+                  ],
                   const SizedBox(height: 16),
                   _errorBanner(billing.error),
                   _changePlanSection(plans, tier, billing.checkoutAvailable),
@@ -300,6 +304,84 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     final amount = nextPayment?['amount'];
     if (amount is! num || amount <= 0) return '';
     return ' · ${_formatCop(amount, nextPayment?['currency'] as String?)}';
+  }
+
+  Widget _latestBillingAttemptCard(Map<String, dynamic> attempt) {
+    final status = attempt['status']?.toString().toUpperCase() ?? 'UNKNOWN';
+    final reference = attempt['reference']?.toString() ?? '';
+    final amountCents = attempt['amountInCents'];
+    final amount = amountCents is num ? amountCents / 100 : null;
+    final (title, detail, color, icon) = switch (status) {
+      'CREATED' || 'PENDING' => (
+          'Pago pendiente de confirmación',
+          'Wompi aún no confirma el resultado. No repitas el pago mientras se verifica.',
+          const Color(0xFF9A6700),
+          Icons.hourglass_top_rounded,
+        ),
+      'UNKNOWN' => (
+          'Pago en conciliación',
+          'Estamos verificando el resultado con Wompi. No vuelvas a pagar mientras se concilia.',
+          const Color(0xFF9A6700),
+          Icons.sync_rounded,
+        ),
+      'DECLINED' => (
+          'Pago rechazado',
+          'Wompi informó que el pago no fue aprobado. Puedes intentarlo con otro medio.',
+          const Color(0xFFB42318),
+          Icons.error_outline_rounded,
+        ),
+      'ERROR' => (
+          'Pago no completado',
+          'No se confirmó el pago. Revisa el estado antes de iniciar otro intento.',
+          const Color(0xFFB54708),
+          Icons.warning_amber_rounded,
+        ),
+      'APPROVED' => (
+          'Pago aprobado',
+          'Wompi confirmó este pago.',
+          const Color(0xFF1A7F37),
+          Icons.check_circle_outline_rounded,
+        ),
+      _ => (
+          'Estado del pago',
+          'Consulta esta referencia con soporte si necesitas ayuda.',
+          _muted,
+          Icons.receipt_long_rounded,
+        ),
+    };
+
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.06),
+        border: Border.all(color: color.withValues(alpha: 0.25)),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: color, size: 21),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title,
+                    style: TextStyle(color: color, fontWeight: FontWeight.w700)),
+                const SizedBox(height: 4),
+                Text(detail,
+                    style: const TextStyle(color: _ink, fontSize: 12, height: 1.4)),
+                const SizedBox(height: 5),
+                Text(
+                  '${amount == null ? '' : '${_formatCop(amount, attempt['currency']?.toString())} · '}Ref. $reference',
+                  style: const TextStyle(color: _muted, fontSize: 11),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _infoRow(IconData icon, String text, Color color) {
