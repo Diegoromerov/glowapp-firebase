@@ -132,10 +132,20 @@ describeWithPostgres('SaaS external API with PostgreSQL RLS', () => {
       .set('Authorization', `Bearer ${noScopeKey}`);
     expect(noScope.status).toBe(403);
 
+    const expiredKey = `gsk_live_${crypto.randomBytes(24).toString('base64url')}`;
+    await adminPool.query(
+      `INSERT INTO api_keys (tenant_id, name, key_hash, key_prefix, scopes, expires_at)
+       VALUES ($1, 'Expired API key test', $2, $3, ARRAY['read'], NOW() - INTERVAL '1 second')`,
+      [profileId, crypto.createHash('sha256').update(expiredKey).digest('hex'), expiredKey.slice(0, 12)]
+    );
+    const expired = await request(app).get('/api/integrations/v1/services')
+      .set('Authorization', `Bearer ${expiredKey}`);
+    expect(expired.status).toBe(401);
+
     await adminPool.query('UPDATE api_keys SET revoked_at = NOW() WHERE id = $1', [apiKeyId]);
     const revoked = await request(app).get('/api/integrations/v1/services')
       .set('Authorization', `Bearer ${rawKey}`);
     expect(revoked.status).toBe(401);
-    await adminPool.query('DELETE FROM api_keys WHERE tenant_id = $1 AND name = $2', [profileId, 'No read scope test']);
+    await adminPool.query('DELETE FROM api_keys WHERE tenant_id = $1 AND name IN ($2, $3)', [profileId, 'No read scope test', 'Expired API key test']);
   }, 30000);
 });

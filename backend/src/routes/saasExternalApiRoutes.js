@@ -69,7 +69,17 @@ router.get('/services', async (req, res) => {
       });
     }
 
-    await client.query('UPDATE api_keys SET last_used_at = NOW() WHERE id = $1', [key.id]);
+    const stillActive = await client.query(`
+      UPDATE api_keys
+         SET last_used_at = NOW()
+       WHERE id = $1 AND revoked_at IS NULL
+         AND (expires_at IS NULL OR expires_at > NOW())
+       RETURNING id`, [key.id]);
+    if (!stillActive.rows.length) {
+      await client.query('ROLLBACK');
+      transactionOpen = false;
+      return res.status(401).json({ error: 'API key inválida, expirada o revocada' });
+    }
     // Legacy service rows use the salon owner's integer tenant_id. The query
     // also explicitly scopes by canonical profile or its owner to prevent leaks.
     await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(key.legacy_tenant_id)]);
