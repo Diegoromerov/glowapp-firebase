@@ -35,3 +35,11 @@
 2. Completar pruebas productivas seguras de permisos por tenant y cupos/concurrencia/reactivación.
 3. Solicitar a Sonia la verificación de su rol cuando esté disponible.
 4. Auditar las fases 5, 6 y 7 antes de asignarles un porcentaje de implementación.
+
+## Actualización de evidencia del repositorio y entorno local (25 de noviembre de 2026)
+
+- La tabla mantiene la Fase 4 en **75 %**. El valor no aumenta porque el cierre aún requiere validar aislamiento entre tenants autenticados y cupos bajo concurrencia/reactivación.
+- El PR #85 añade pruebas de integración contra PostgreSQL desechable de CI para dos invitaciones compitiendo por el último asiento y para una invitación concurrente con reactivación. Ejecución Backend CI **45725359850**, job **139593737007**: fallaron las dos nuevas pruebas en assertExactlyOneSeatWinner porque ninguna operación se cumplió; el test no alcanzó a demostrar el rechazo esperado por límite HTTP 403. Las suites existentes del mismo job pasaron; el resultado global fue **10 aprobadas, 2 fallidas**. El motivo de rechazo de las operaciones todavía no está diagnosticado, por lo que este PR no se considera evidencia aprobatoria ni está integrado.
+- No se probó ni modificó la base de datos de producción. Las pruebas apuntan al PostgreSQL efímero de CI y simulan el envío de correo.
+- **Verificación local de esta sesión:** el directorio de trabajo actual no contiene un repositorio Git (git rev-parse --show-toplevel falla); por tanto no fue posible contrastar archivos, rama o cambios locales. Esta tabla se actualiza con fuentes del repositorio remoto y sus logs de CI, no con evidencia del checkout local.
+- Pendiente para aceptar la evidencia: mostrar las causas reales de rechazo en el test, corregir lo necesario y conseguir un CI verde para ambas carreras. Hasta entonces, la fase sigue abierta en **75 %**.
