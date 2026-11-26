@@ -210,6 +210,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     const originalBrevoKey = process.env.BREVO_API_KEY;
     process.env.BREVO_API_KEY = 'mocked-integration-test-key';
     emailService.sendEmail.mockClear();
+    emailService.sendEmail.mockResolvedValue({ devMode: true });
     try {
       const invitation = await saasMembershipService.invite({
         tenantId: fixture.profileId,
@@ -264,6 +265,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     const originalBrevoKey = process.env.BREVO_API_KEY;
     process.env.BREVO_API_KEY = 'mocked-integration-test-key';
     emailService.sendEmail.mockClear();
+    emailService.sendEmail.mockResolvedValue({ devMode: true });
     const membershipId = crypto.randomUUID();
     const staleTokenHash = crypto.createHash('sha256').update(crypto.randomBytes(32)).digest('hex');
     const seedClient = await adminPool.connect();
