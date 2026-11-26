@@ -11,7 +11,6 @@ const describeWithPostgres = ADMIN_URL && APP_URL ? describe : describe.skip;
 describeWithPostgres('SaaS external API with PostgreSQL RLS', () => {
   let adminPool;
   let app;
-  let routerPool;
   let verticalId;
   let ownerId;
   let otherOwnerId;
@@ -24,7 +23,6 @@ describeWithPostgres('SaaS external API with PostgreSQL RLS', () => {
 
   beforeAll(async () => {
     adminPool = new Pool({ connectionString: ADMIN_URL });
-    routerPool = require('../src/config/db').pool;
     app = express();
     app.use('/api/integrations/v1', require('../src/routes/saasExternalApiRoutes'));
     verticalId = crypto.randomUUID();
@@ -91,7 +89,6 @@ describeWithPostgres('SaaS external API with PostgreSQL RLS', () => {
       if (ownerId) await adminPool.query('DELETE FROM usuarios WHERE id IN ($1, $2)', [ownerId, otherOwnerId]);
       if (verticalId) await adminPool.query('DELETE FROM business_verticals WHERE id = $1', [verticalId]);
       await adminPool.end();
-      await routerPool.end();
     }
   });
 
