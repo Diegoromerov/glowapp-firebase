@@ -33,7 +33,10 @@ import 'package:glow_core/glowguide/presenter/glowguide_presenter.dart';
 import 'package:glow_core/glow_core.dart';
 
 class ProviderDashboardScreen extends StatefulWidget {
-  const ProviderDashboardScreen({super.key});
+  final int initialIndex;
+  final int? salonId;
+
+  const ProviderDashboardScreen({super.key, this.initialIndex = 0, this.salonId});
   @override
   State<ProviderDashboardScreen> createState() =>
       _ProviderDashboardScreenState();
@@ -72,6 +75,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   @override
   void initState() {
     super.initState();
+    _currentIndex = widget.initialIndex.clamp(0, 7).toInt();
     _loadUserRole();
     _fetchBookings();
     _fetchProfile();
@@ -246,7 +250,9 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       _error = null;
     });
     try {
-      final data = await ApiService.fetchProviderBookings();
+      final data = await ApiService.fetchProviderBookings(
+        salonId: widget.salonId,
+      );
       if (mounted) {
         setState(() {
           _bookings = data;
