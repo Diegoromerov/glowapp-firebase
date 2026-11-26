@@ -5,6 +5,7 @@
 library saas_api_service;
 
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'api_service.dart';
 import '../models/saas/saas_models.dart';
@@ -462,6 +463,10 @@ class SaasApiService {
   /// descarga autenticada desde el cliente.
   static String getInvoicePdfPath(String invoiceId) =>
       '$_basePath/billing/invoices/$invoiceId/pdf';
+
+  /// Descarga el comprobante usando la sesión autenticada de la app.
+  static Future<Uint8List> downloadInvoiceDocument(String invoiceId) =>
+      ApiService.getBytes(getInvoicePdfPath(invoiceId));
 
   /// Obtener métodos de pago. GET /api/saas/billing/payment-methods → { paymentMethods: [...] }
   static Future<List<Map<String, dynamic>>> getPaymentMethods(

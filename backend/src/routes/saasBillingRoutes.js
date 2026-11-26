@@ -60,6 +60,7 @@ router.get('/', async (req, res) => {
       recentInvoices: invoices.map(inv => ({
         id: inv.id,
         number: inv.invoice_number,
+        pdfUrl: `/api/saas/billing/invoices/${encodeURIComponent(inv.id)}/pdf`,
         status: inv.status,
         total: inv.total,
         currency: inv.currency,
@@ -95,6 +96,7 @@ router.get('/invoices', async (req, res) => {
       invoices: invoices.map(inv => ({
         id: inv.id,
         number: inv.invoice_number,
+        pdfUrl: `/api/saas/billing/invoices/${encodeURIComponent(inv.id)}/pdf`,
         status: inv.status,
         currency: inv.currency,
         subtotal: inv.subtotal,
@@ -134,12 +136,12 @@ router.get('/invoices/:invoiceId', async (req, res) => {
     }
 
     const inv = rows[0];
-    const pdfPath = `invoices/${inv.invoice_number}.pdf`;
 
     res.json({
       invoice: {
         id: inv.id,
         number: inv.invoice_number,
+        pdfUrl: `/api/saas/billing/invoices/${encodeURIComponent(inv.id)}/pdf`,
         status: inv.status,
         currency: inv.currency,
         subtotal: inv.subtotal,
@@ -158,7 +160,7 @@ router.get('/invoices/:invoiceId', async (req, res) => {
         metadata: inv.metadata,
         createdAt: inv.created_at,
         updatedAt: inv.updated_at,
-        pdfUrl: `/api/saas/billing/invoices/${inv.id}/pdf`
+        pdfUrl: `/api/saas/billing/invoices/${encodeURIComponent(inv.id)}/pdf`
       }
     });
   } catch (error) {
@@ -185,24 +187,16 @@ router.get('/invoices/:invoiceId/pdf', async (req, res) => {
     }
 
     const invoiceNumber = rows[0].invoice_number;
-    const fs = require('fs');
-    const path = require('path');
-    const pdfPath = path.join(__dirname, '../../invoices', `${invoiceNumber}.pdf`);
-    const htmlPath = path.join(__dirname, '../../invoices', `${invoiceNumber}.html`);
+    const document = await invoiceService.getInvoiceDocument(req.saas.tenantId, invoiceNumber);
+    if (!document) return res.status(404).json({ error: 'Comprobante de cobro no encontrado' });
 
-    if (fs.existsSync(pdfPath)) {
-      res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', `inline; filename="${invoiceNumber}.pdf"`);
-      return res.sendFile(pdfPath);
-    }
-
-    if (fs.existsSync(htmlPath)) {
-      res.setHeader('Content-Type', 'text/html');
-      res.setHeader('Content-Disposition', `inline; filename="${invoiceNumber}.html"`);
-      return res.sendFile(htmlPath);
-    }
-
-    return res.status(404).json({ error: 'Archivo de factura no encontrado' });
+    res.setHeader('Content-Type', document.contentType);
+    res.setHeader(
+      'Content-Disposition',
+      `${document.contentType === 'application/pdf' ? 'inline' : 'attachment'}; filename="${invoiceNumber}.${document.extension}"`
+    );
+    res.setHeader('Cache-Control', 'private, no-store');
+    return res.send(document.buffer);
   } catch (error) {
     console.error('[saasBillingRoutes] Error downloading PDF:', error.message);
     res.status(500).json({ error: 'Error descargando factura' });
