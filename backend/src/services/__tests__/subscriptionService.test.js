@@ -50,7 +50,7 @@ describe('subscriptionService', () => {
     });
 
   describe('createSubscription', () => {
-    const baseParams = { tenantId: 'bp_test', plan: 'PRO', currency: 'COP', customerEmail: 'test@test.com' };
+    const baseParams = { tenantId: 'bp_test', plan: 'BASIC', currency: 'COP', customerEmail: 'test@test.com' };
 
     test('crea suscripción FREE_TRIAL (Stripe USD) → trial 14 días, status trialing', async () => {
       stripeService.createOrGetCustomer.mockResolvedValue({ id: 'cus_stripe' });
@@ -80,7 +80,7 @@ describe('subscriptionService', () => {
       expect(mockClient.query).toHaveBeenCalledWith('COMMIT');
     });
 
-    test('crea suscripción PRO pagada (Stripe USD) con paymentMethodId → attach + createSubscription', async () => {
+    test('crea suscripción BASIC pagada (Stripe USD) con paymentMethodId → attach + createSubscription', async () => {
       stripeService.createOrGetCustomer.mockResolvedValue({ id: 'cus_stripe' });
       stripeService.attachPaymentMethod.mockResolvedValue({});
       stripeService.createSubscription.mockResolvedValue({
@@ -91,18 +91,18 @@ describe('subscriptionService', () => {
       
       mockClient.query
         .mockResolvedValueOnce({ rows: [] }) // BEGIN
-        .mockResolvedValueOnce({ rows: [{ id: 'sub_2', tenant_id: 'bp_test', plan: 'PRO' }] }) // INSERT
+        .mockResolvedValueOnce({ rows: [{ id: 'sub_2', tenant_id: 'bp_test', plan: 'BASIC' }] }) // INSERT
         .mockResolvedValueOnce({ rows: [] }) // _syncPlanToTenant
         .mockResolvedValueOnce({ rows: [] }); // COMMIT
 
       const result = await subscriptionService.createSubscription({
         ...baseParams,
-        plan: 'PRO',
+        plan: 'BASIC',
         currency: 'USD',
         paymentMethodId: 'pm_123'
       });
 
-      expect(result.plan).toBe('PRO');
+      expect(result.plan).toBe('BASIC');
       expect(stripeService.attachPaymentMethod).toHaveBeenCalledWith('cus_stripe', 'pm_123');
       expect(invoiceService.createInvoiceFromSubscription).toHaveBeenCalled();
     });
@@ -124,7 +124,8 @@ describe('subscriptionService', () => {
       const result = await subscriptionService.createSubscription({
         ...baseParams,
         plan: 'BASIC',
-        currency: 'COP'
+        currency: 'COP',
+        paymentMethodId: 'wompi_token'
       });
 
       expect(result.plan).toBe('BASIC');
@@ -152,27 +153,15 @@ describe('subscriptionService', () => {
       expect(wompiSubscriptionService.createSubscription).not.toHaveBeenCalled();
     });
 
-    test('plan ENTERPRISE → sin prueba gratuita implícita', async () => {
-      stripeService.createOrGetCustomer.mockResolvedValue({ id: 'cus_stripe' });
-      stripeService.createSubscription.mockResolvedValue({
-        id: 'sub_ent',
-        status: 'trialing',
-        trial_end: Math.floor(Date.now() / 1000) + 30 * 86400
-      });
-      
-      mockClient.query
-        .mockResolvedValueOnce({ rows: [] })
-        .mockResolvedValueOnce({ rows: [{ id: 'sub_5', tenant_id: 'bp_test', plan: 'ENTERPRISE' }] })
-        .mockResolvedValueOnce({ rows: [] })
-        .mockResolvedValueOnce({ rows: [] });
-
-      await subscriptionService.createSubscription({
+    test('plan no publicado se rechaza en el servicio de suscripción', async () => {
+      await expect(subscriptionService.createSubscription({
         ...baseParams,
         plan: 'ENTERPRISE',
-        currency: 'USD'
-      });
+        currency: 'USD',
+        paymentMethodId: 'pm_enterprise'
+      })).rejects.toThrow('no está disponible');
 
-      expect(stripeService.createSubscription).not.toHaveBeenCalledWith(expect.objectContaining({ trialDays: 30 }));
+      expect(stripeService.createOrGetCustomer).not.toHaveBeenCalled();
     });
 
     test('error en Stripe → ROLLBACK y relanza error', async () => {
@@ -184,10 +173,49 @@ describe('subscriptionService', () => {
 
       await expect(subscriptionService.createSubscription({
         ...baseParams,
-        currency: 'USD'
+        currency: 'USD',
+        paymentMethodId: 'pm_test'
       })).rejects.toThrow('Stripe down');
 
       expect(mockClient.query).toHaveBeenCalledWith('ROLLBACK');
+    });
+
+    test('suscripción pagada incompleta no activa plan ni emite factura', async () => {
+      stripeService.createOrGetCustomer.mockResolvedValue({ id: 'cus_stripe' });
+      stripeService.attachPaymentMethod.mockResolvedValue({});
+      stripeService.createSubscription.mockResolvedValue({
+        id: 'sub_incomplete',
+        status: 'incomplete'
+      });
+      mockClient.query
+        .mockResolvedValueOnce({ rows: [] }) // BEGIN
+        .mockResolvedValueOnce({ rows: [{ id: 'sub_pending', tenant_id: 'bp_test', plan: 'BASIC', status: 'incomplete' }] }) // INSERT
+        .mockResolvedValueOnce({ rows: [] }); // COMMIT
+
+      const result = await subscriptionService.createSubscription({
+        ...baseParams,
+        plan: 'BASIC',
+        currency: 'USD',
+        paymentMethodId: 'pm_pending'
+      });
+
+      expect(result.status).toBe('incomplete');
+      expect(mockClient.query).not.toHaveBeenCalledWith(
+        expect.stringContaining('UPDATE business_profiles'),
+        expect.anything()
+      );
+      expect(invoiceService.createInvoiceFromSubscription).not.toHaveBeenCalled();
+      expect(mockClient.query).toHaveBeenCalledWith('COMMIT');
+    });
+
+    test('plan pagado sin método de pago se rechaza antes de abrir transacción', async () => {
+      await expect(subscriptionService.createSubscription({
+        ...baseParams,
+        currency: 'USD'
+      })).rejects.toThrow('Se requiere un método de pago');
+
+      expect(mockPool.connect).toHaveBeenCalledTimes(1); // only shared setup
+      expect(stripeService.createOrGetCustomer).not.toHaveBeenCalled();
     });
 
     test('error en BD INSERT → ROLLBACK', async () => {
@@ -205,7 +233,8 @@ describe('subscriptionService', () => {
 
       await expect(subscriptionService.createSubscription({
         ...baseParams,
-        currency: 'USD'
+        currency: 'USD',
+        paymentMethodId: 'pm_test'
       })).rejects.toThrow('Duplicate key');
 
       expect(mockClient.query).toHaveBeenCalledWith('ROLLBACK');

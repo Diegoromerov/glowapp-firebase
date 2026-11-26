@@ -18,6 +18,19 @@ class SubscriptionService {
    * @param {string} params.customerEmail - email para facturación
    */
   async createSubscription({ tenantId, plan, currency = 'COP', paymentMethodId, customerEmail }) {
+    const planDefinition = PLAN_CATALOG[plan];
+    if (!planDefinition) throw new Error('Plan SaaS inválido');
+    if (planDefinition.commerciallyAvailable === false) {
+      throw new Error('El plan SaaS no está disponible para nuevas suscripciones');
+    }
+    const isPaidPlan = planDefinition.priceCop > 0;
+    if (isPaidPlan && !paymentMethodId) {
+      throw new Error('Se requiere un método de pago para crear una suscripción de pago');
+    }
+    if (!['COP', 'USD'].includes(currency)) {
+      throw new Error('Moneda de suscripción inválida');
+    }
+
     const client = await pool.connect();
     try {
       await client.query('BEGIN');
@@ -25,12 +38,9 @@ class SubscriptionService {
       // 1. Verificar/crear customer en pasarela
       let gatewayCustomerId;
       let gatewaySubscriptionId;
-      let status = 'trialing';
+      let status = plan === 'FREEMIUM' ? 'active' : 'trialing';
       let trialEnd = null;
 
-      const planDefinition = PLAN_CATALOG[plan];
-      if (!planDefinition) throw new Error('Plan SaaS inválido');
-      const isPaidPlan = planDefinition.priceCop > 0;
       // Solo FREE_TRIAL ofrece período de prueba. Un plan pago nunca debe
       // activar 30 días gratuitos por una regla implícita.
       const trialDays = planDefinition.trialDays > 0 ? planDefinition.trialDays : null;
@@ -94,6 +104,10 @@ class SubscriptionService {
         }
       }
 
+      if (isPaidPlan && !gatewaySubscriptionId) {
+        throw new Error('La pasarela no creó una suscripción de pago');
+      }
+
       // 2. Calcular fechas de período
       const now = new Date();
       const periodStart = now;
@@ -148,11 +162,15 @@ class SubscriptionService {
 
       const subscription = result.rows[0];
 
-      // 4. Sincronizar plan en business_profiles
-      await this._syncPlanToTenant(client, tenantId, plan, status);
+      // A payment-required or trialing paid subscription must not grant paid
+      // entitlements before the provider confirms the first payment.
+      const paymentConfirmed = status === 'active';
+      if (!isPaidPlan || paymentConfirmed) {
+        await this._syncPlanToTenant(client, tenantId, plan, status);
+      }
 
       // 5. Crear factura inicial si es plan de pago
-      if (isPaidPlan) {
+      if (isPaidPlan && paymentConfirmed) {
         await invoiceService.createInvoiceFromSubscription(client, subscription);
       }
 
