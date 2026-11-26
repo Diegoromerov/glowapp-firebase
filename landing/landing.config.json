@@ -16,8 +16,14 @@
     "production": ""
   },
   "buttons": [
-    { "id": "cliente", "label": "Quiero reservar", "mode": "form", "role": "client", "redirectUrl": null },
-    { "id": "profesional", "label": "Soy profesional", "mode": "form", "role": "professional", "redirectUrl": null },
-    { "id": "salon", "label": "Tengo un salón", "mode": "form", "role": "salon", "redirectUrl": null }
-  ]
+      { "id": "cliente", "label": "Quiero reservar", "mode": "form", "role": "client", "redirectUrl": null },
+      { "id": "profesional", "label": "Soy profesional", "mode": "form", "role": "professional", "redirectUrl": null },
+      { "id": "salon", "label": "Tengo un salón", "mode": "form", "role": "salon", "redirectUrl": null }
+    ],
+    "analytics": {
+      "plausibleDomain": "",
+      "plausibleApiHost": "https://plausible.io",
+      "ga4MeasurementId": "",
+      "autoInit": false
+    }
 }
