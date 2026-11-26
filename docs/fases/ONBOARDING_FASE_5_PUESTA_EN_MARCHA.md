@@ -36,13 +36,18 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - En esa revisión se detectó que el encabezado contaba `_bookings.length` pero decía «servicios registrados». PR #93 corrigió el texto a «citas registradas» y se integró en `main` como `782bf0950205981518bfb0032e2fc41acf7da553`.
 - Validación local: `flutter test test/salon_shell_first_operation_test.dart` (**2/2**) y análisis focalizado del dashboard con exit code 0 (135 lints preexistentes informativos/advertencias, sin errores fatales). CI push `45756043645` terminó `success`; el workflow manual `45756346894` compiló y desplegó únicamente `glow_provider` a Firebase Hosting live con resultado `success`.
 - Verificación posterior al despliegue en la sesión autenticada QA: recargué la app y abrí «Ver cómo atender citas». «Mi Agenda Pro» mostró exactamente «0 citas registradas en total» y el estado vacío de citas. Quedó comprobada la etiqueta corregida en producción, además de la guía y su navegación.
-- La cuenta QA entregada es del propietario del salón y permite verificar la navegación del prestador, pero no representa una identidad cliente distinta para reservar desde la app Cliente. Por eso no se insertó una cita persistente.
+- Revisión de prerrequisitos de QA en producción, sin crear citas: el perfil del propietario indica **25 %** y **Verificación Pendiente**, con teléfono y bio vacíos. El horario se ve configurado de lunes a viernes 06:00–20:00, sábado 08:00–18:00 y domingo cerrado.
+- El único servicio encontrado era «Servicio QA Fase 2 - No publicar QA • Reservas sin dato», precio **$0**, 30 min. El formulario lo mostraba activo/visible en el catálogo público. Se desactivó desde el panel para que no quedara como oferta pública de prueba; la lista confirmó **Activos (0)** e **Inactivos (1)**. No se alteró precio ni se publicó otro servicio.
+- En la app Cliente, el catálogo público cercano mostró seis resultados y no mostró «QA Salón Fase 2». Esto es evidencia de esa búsqueda/localización, no prueba de ausencia global. El código de descubrimiento individual exige prestador activo y `estatus_verificacion = 'APROBADO'`; la inclusión como salón depende de `location_enabled`, `location_public` y del entitlement `MAP_VISIBILITY` del plan.
+- La cuenta entregada es del propietario: valida el lado prestador, pero no permite demostrar una reserva como cliente distinto. Además, no queda un servicio activo con precio apto para reservar. No se insertó ninguna cita ni se inició un flujo de pago.
 - La verificación de reservas se debe completar con una cuenta cliente de QA distinta y una cita de prueba controlada, incluyendo la confirmación/inicio y el cierre de la atención según los controles disponibles.
 
 ## Pendientes para cerrar la fase
 
 - Ejecutar el recorrido autenticado Cliente → reserva → agenda del salón y comprobar que la cita pertenece al `salonId` correcto.
 - Completar el flujo de atención de la cita y registrar evidencia de los estados antes/después.
+- Preparar con datos aprobados una oferta de prueba reservable (precio mayor que cero y servicio activo/visible) y validar los requisitos de visibilidad del salón, sin publicar valores inventados.
+- Obtener una identidad cliente QA distinta. Antes de confirmar el OTP final, definir que el recorrido usa instrumentos sandbox y controlar que no genere un asiento financiero real o irreversible en producción.
 - Limpiar o cancelar la cita de prueba con el mecanismo normal de la app, si el estado final lo permite.
 
-**Estado:** abierta. El 80 % estimado corresponde a guía, enlaces y agenda operativa publicados; no representa la validación del criterio E2E de cierre.
+**Estado:** abierta. El 80 % estimado corresponde a guía, enlaces, contexto de tenant y etiqueta de agenda implementados y publicados; no representa la preparación de los datos QA ni la validación del criterio E2E de cierre.
