@@ -2,6 +2,14 @@ const { pool } = require('../config/db');
 const membershipService = require('../services/saasMembershipService');
 const { hasEntitlement } = require('../config/saasEntitlements');
 
+function ensureTeamManagement(tenant) {
+  if (!hasEntitlement(tenant.saas_plan, 'TEAM_MANAGEMENT')) {
+    const error = new Error('La gestión del equipo no está incluida en el plan actual.');
+    error.status = 403;
+    throw error;
+  }
+}
+
 function context(req) {
   const tenantId = req.membership?.business_profile_id || req.user?.businessProfileId;
   if (!tenantId) { const error = new Error('Contexto de negocio requerido'); error.status = 401; throw error; }
@@ -48,7 +56,9 @@ const inviteMember = async (req, res) => {
 const updateRole = async (req, res) => {
   try {
     if (req.membership?.role !== 'OWNER') return res.status(403).json({ error: 'Solo el propietario puede cambiar roles.' });
-    const membership = await membershipService.changeRole({ tenantId: context(req), memberId: req.params.id,
+    const tenantId = context(req);
+    ensureTeamManagement(await tenantInfo(tenantId));
+    const membership = await membershipService.changeRole({ tenantId, memberId: req.params.id,
       actorId: req.user.id, role: req.body?.role });
     return res.json({ success: true, data: membership });
   } catch (error) { return respondError(res, error); }

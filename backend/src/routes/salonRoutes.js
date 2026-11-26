@@ -73,6 +73,7 @@ router.patch(
   authMiddleware,
   requireOwnerRole,
   protectOwnerMember,
+  requireSalonEntitlement('TEAM_MANAGEMENT'),
   updateMemberRole
 );
 
