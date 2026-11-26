@@ -118,12 +118,17 @@ async function createInvoiceFromSubscription(clientOrNull, subscription, payment
     // Insertar factura
     const insertQuery = `
       INSERT INTO invoices (
-        tenant_id, invoice_number, stripe_invoice_id, wompi_invoice_id,
+        tenant_id, subscription_id, invoice_number, stripe_invoice_id, wompi_invoice_id,
         status, currency, subtotal, tax, total, amount_paid,
         period_start, period_end, due_date, paid_at,
         billing_name, billing_email, billing_address, billing_tax_id,
         items, metadata
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)
+      ON CONFLICT (${payment?.provider === 'stripe' ? 'stripe_invoice_id' : 'wompi_invoice_id'})
+      DO UPDATE SET subscription_id = EXCLUDED.subscription_id,
+        status = EXCLUDED.status, currency = EXCLUDED.currency,
+        subtotal = EXCLUDED.subtotal, tax = EXCLUDED.tax, total = EXCLUDED.total,
+        amount_paid = EXCLUDED.amount_paid, paid_at = EXCLUDED.paid_at
       RETURNING *;
     `;
 
@@ -147,6 +152,7 @@ async function createInvoiceFromSubscription(clientOrNull, subscription, payment
 
     const result = await client.query(insertQuery, [
       tenantId,
+      subscription.id,
       invoiceNumber,
       stripeInvoiceId,
       wompiInvoiceId,

@@ -500,6 +500,53 @@ describe('subscriptionService', () => {
   });
 
   describe('handleStripeWebhook', () => {
+    test('checkout pagado activa el plan solo tras verificar la suscripción con Stripe', async () => {
+      const external = {
+        id: 'sub_paid',
+        status: 'active',
+        customer: 'cus_paid',
+        current_period_start: 1790000000,
+        current_period_end: 1792592000,
+        metadata: { tenantId: 'bp_test', plan: 'PRO' },
+        items: { data: [{ price: { id: 'price_pro_monthly' } }] }
+      };
+      const retrieve = jest.fn().mockResolvedValue(external);
+      stripeService.getStripe.mockReturnValue({ subscriptions: { retrieve } });
+
+      const client = {
+        query: jest.fn()
+          .mockResolvedValueOnce({ rows: [] }) // BEGIN
+          .mockResolvedValueOnce({ rows: [] }) // no existing subscription
+          .mockResolvedValueOnce({ rows: [{ id: 'sub_local', tenant_id: 'bp_test' }] }) // INSERT
+          .mockResolvedValueOnce({ rows: [] }) // sync tenant plan
+          .mockResolvedValueOnce({ rows: [] }), // COMMIT
+        release: jest.fn()
+      };
+      mockPool.connect.mockResolvedValueOnce(client);
+
+      const result = await subscriptionService._handleCheckoutSessionCompleted({
+        id: 'cs_paid',
+        mode: 'subscription',
+        payment_status: 'paid',
+        metadata: { tenantId: 'bp_test', plan: 'PRO' },
+        subscription: 'sub_paid'
+      });
+
+      expect(retrieve).toHaveBeenCalledWith('sub_paid', { expand: ['items.data.price'] });
+      expect(result).toEqual({ id: 'sub_local', tenant_id: 'bp_test' });
+      expect(client.query.mock.calls[2][0]).toContain('stripe_customer_id');
+      expect(client.query.mock.calls[3][1]).toEqual(['PRO', 'bp_test']);
+      expect(client.release).toHaveBeenCalled();
+    });
+
+    test('checkout no pagado no consulta Stripe ni activa plan', async () => {
+      await subscriptionService._handleCheckoutSessionCompleted({
+        mode: 'subscription', payment_status: 'unpaid'
+      });
+      expect(stripeService.getStripe).not.toHaveBeenCalled();
+      expect(mockPool.connect).toHaveBeenCalledTimes(1); // only the shared beforeEach setup
+    });
+
     test('evento duplicado → retorna duplicate: true sin procesar', async () => {
       mockPool.query.mockResolvedValueOnce({ rows: [{ '1': 1 }] }); // existing event
 
@@ -512,11 +559,26 @@ describe('subscriptionService', () => {
       expect(result).toEqual({ received: true, duplicate: true });
     });
 
+    test('un evento con error previo se reintenta en lugar de marcarse duplicado', async () => {
+      mockPool.query
+        .mockResolvedValueOnce({ rows: [{ error_message: 'previous failure' }] })
+        .mockResolvedValueOnce({ rows: [] });
+
+      const result = await subscriptionService.handleStripeWebhook({
+        id: 'evt_retry',
+        type: 'unhandled.event',
+        data: { object: {} }
+      });
+
+      expect(result).toEqual({ received: true });
+      expect(mockPool.query.mock.calls[1][0]).toContain('ON CONFLICT (provider, event_id) DO UPDATE');
+    });
+
     test('invoice.paid → _handleInvoicePaid', async () => {
       mockPool.query
         .mockResolvedValueOnce({ rows: [] }) // check duplicate
+        .mockResolvedValueOnce({ rows: [{ id: 'sub_12', tenant_id: 'bp_test', plan: 'PRO' }] }) // SELECT subscription
         .mockResolvedValueOnce({ rows: [] }) // UPDATE status
-        .mockResolvedValueOnce({ rows: [{ id: 'sub_12', tenant_id: 'bp_test' }] }) // SELECT subscription
         .mockResolvedValueOnce({ rows: [] }); // INSERT webhook_events
 
       const invoice = { subscription: 'sub_stripe', amount_paid: 10000 };
@@ -529,6 +591,12 @@ describe('subscriptionService', () => {
       expect(mockPool.query).toHaveBeenCalledWith(
         expect.stringContaining("UPDATE subscriptions SET status = 'active'"),
         ['sub_stripe']
+      );
+      expect(invoiceService.createInvoiceFromSubscription).toHaveBeenCalledWith(
+        null,
+        expect.objectContaining({ id: 'sub_12' }),
+        invoice,
+        'stripe'
       );
     });
 

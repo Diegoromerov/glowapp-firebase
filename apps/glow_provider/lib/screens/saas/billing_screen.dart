@@ -1,5 +1,4 @@
 // lib/screens/saas/billing_screen.dart
-import 'package:glow_core/models/saas/saas_models.dart';
 import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -60,9 +59,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       if (!mounted) return;
       _toast('Cuenta SaaS activada');
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         _toast('No se pudo activar la cuenta: ${mensajeHumano(e)}',
             error: true);
+      }
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -175,9 +175,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.06),
+        color: Colors.red.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.red.withOpacity(0.3)),
+        border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
@@ -207,10 +207,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
     return Card(
       elevation: 0,
-      color: tier.color.withOpacity(0.08),
+      color: tier.color.withValues(alpha: 0.08),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: tier.color.withOpacity(0.3)),
+        side: BorderSide(color: tier.color.withValues(alpha: 0.3)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -249,7 +249,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.12),
+                    color: statusColor.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: statusColor),
                   ),
@@ -321,25 +321,40 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
     return _section(
       title: 'Cambiar Plan',
       subtitle:
-          'Los upgrades se pagan en línea; los downgrades aplican de inmediato.',
+          'Los cambios de plan estarán disponibles cuando el pago y la activación se confirmen de forma segura.',
       children: candidates.isEmpty
           ? [
               const Text('No hay otros planes disponibles.',
                   style: TextStyle(color: _muted, fontSize: 13))
             ]
-          : candidates.map((p) => _planRow(p, current)).toList(),
+          : [
+              Container(
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(10),
+                  border:
+                      Border.all(color: Colors.amber.withValues(alpha: 0.35)),
+                ),
+                child: const Text(
+                  'La facturación SaaS está temporalmente pausada. No se iniciarán cobros ni se cambiará tu plan desde esta pantalla.',
+                  style: TextStyle(fontSize: 12, color: _ink, height: 1.4),
+                ),
+              ),
+              ...candidates.map((p) => _planRow(p)),
+            ],
     );
   }
 
-  Widget _planRow(SaasPlan plan, SaasPlanTier current) {
-    final isUpgrade = plan.tier.index > current.index;
+  Widget _planRow(SaasPlan plan) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: plan.tier.color.withOpacity(0.04),
+        color: plan.tier.color.withValues(alpha: 0.04),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: plan.tier.color.withOpacity(0.25)),
+        border: Border.all(color: plan.tier.color.withValues(alpha: 0.25)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -363,7 +378,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
-                              color: _gold.withOpacity(0.15),
+                              color: _gold.withValues(alpha: 0.15),
                               borderRadius: BorderRadius.circular(6),
                             ),
                             child: const Text('Recomendado',
@@ -385,14 +400,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                 ),
               ),
               const SizedBox(width: 12),
-              FilledButton(
-                style: FilledButton.styleFrom(
-                  backgroundColor: isUpgrade ? plan.tier.color : _line,
-                  foregroundColor: isUpgrade ? Colors.white : _ink,
-                ),
-                onPressed:
-                    _busy ? null : () => _onPlanSelected(plan, isUpgrade),
-                child: Text(isUpgrade ? 'Mejorar' : 'Cambiar'),
+              const FilledButton(
+                onPressed: null,
+                child: Text('Pausado'),
               ),
             ],
           ),
@@ -405,7 +415,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 3),
                       decoration: BoxDecoration(
-                        color: plan.tier.color.withOpacity(0.08),
+                        color: plan.tier.color.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(f,
@@ -417,51 +427,6 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
         ],
       ),
     );
-  }
-
-  Future<void> _onPlanSelected(SaasPlan plan, bool isUpgrade) async {
-    final id = ref.read(currentBusinessProfileIdProvider);
-    if (id == null) return;
-
-    if (!isUpgrade) {
-      final ok = await _confirm(
-        'Cambiar a ${plan.name}',
-        'El cambio a ${plan.name} aplica de inmediato y puede reducir los límites de tu cuenta.',
-        'Cambiar',
-      );
-      if (ok != true) return;
-      setState(() => _busy = true);
-      try {
-        await ref.read(billingProvider.notifier).changePlan(id, plan.tier);
-        if (!mounted) return;
-        _toast('Plan actualizado a ${plan.name}');
-      } catch (e) {
-        if (!mounted) return;
-        _toast('No se pudo cambiar el plan: ${mensajeHumano(e)}', error: true);
-      } finally {
-        if (mounted) setState(() => _busy = false);
-      }
-      return;
-    }
-
-    setState(() => _busy = true);
-    try {
-      final session = await ref.read(billingProvider.notifier).createCheckout(
-            id,
-            CreateCheckoutRequest(
-                planId: plan.tier.code, successUrl: '', cancelUrl: ''),
-          );
-      if (session.url.isEmpty) {
-        _toast('El servidor no devolvió una URL de pago', error: true);
-        return;
-      }
-      await launchUrl(Uri.parse(session.url),
-          mode: LaunchMode.externalApplication);
-    } catch (e) {
-      _toast('No se pudo iniciar el pago: ${mensajeHumano(e)}', error: true);
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
   }
 
   // ───────────────────────── Facturas ─────────────────────────
