@@ -156,7 +156,7 @@ async function processDunning() {
     FROM invoices i
     JOIN business_profiles bp ON bp.id = i.tenant_id
     LEFT JOIN users u ON u.id = bp.owner_id
-    WHERE i.status = 'pending' 
+    WHERE i.status IN ('open', 'pending')
       AND i.due_date < NOW()
       AND i.due_date > NOW() - INTERVAL '30 days'
       AND NOT EXISTS (

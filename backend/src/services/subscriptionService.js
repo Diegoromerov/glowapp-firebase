@@ -434,7 +434,7 @@ class SubscriptionService {
       `SELECT * FROM subscriptions WHERE ${field} = $1`, [subscriptionId]
     );
     if (rows.length > 0) {
-      await invoiceService.createInvoiceFromSubscription(null, rows[0], invoice);
+      await invoiceService.createInvoiceFromSubscription(null, rows[0], invoice, provider);
     }
   }
 

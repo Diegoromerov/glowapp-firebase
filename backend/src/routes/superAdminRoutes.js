@@ -433,7 +433,7 @@ router.get('/revenue', async (req, res) => {
     const pendingInvoices = await pool.query(`
       SELECT COUNT(*) as count, COALESCE(SUM(total), 0) as amount
       FROM invoices
-      WHERE status = 'pending' AND due_date < NOW();
+      WHERE status IN ('open', 'pending') AND due_date < NOW();
     `);
 
     res.json({
@@ -580,7 +580,7 @@ router.get('/health', async (req, res) => {
       pool.query('SELECT 1'), // DB
       pool.query(`SELECT COUNT(*) FROM business_profiles`),
       pool.query(`SELECT COUNT(*) FROM subscriptions WHERE status = 'active'`),
-      pool.query(`SELECT COUNT(*) FROM invoices WHERE status = 'pending' AND due_date < NOW()`)
+      pool.query(`SELECT COUNT(*) FROM invoices WHERE status IN ('open', 'pending') AND due_date < NOW()`)
     ]);
 
     const dbOk = checks[0].status === 'fulfilled';
