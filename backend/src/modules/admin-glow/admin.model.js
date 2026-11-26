@@ -136,7 +136,7 @@ async function getProvidersOperationalStatus() {
              (p.certificacion_url IS NOT NULL AND BTRIM(p.certificacion_url) <> '') AS tiene_acreditacion
         FROM usuarios u
         LEFT JOIN perfiles_prestador p ON p.id = u.id
-       WHERE u.rol::text = 'PRESTADOR'
+       WHERE u.rol::text IN ('PRESTADOR', 'SALON')
        ORDER BY CASE WHEN u.estado_operativo = 'HABILITADO' THEN 1 ELSE 0 END,
                 LOWER(u.nombre), u.id
     `);
@@ -168,7 +168,7 @@ async function enableProviderOperational(providerId, adminId) {
              p.estatus_verificacion, p.documento_id_url, p.certificacion_url
         FROM usuarios u
         LEFT JOIN perfiles_prestador p ON p.id = u.id
-       WHERE u.id = $1 AND u.rol::text = 'PRESTADOR'
+       WHERE u.id = $1 AND u.rol::text IN ('PRESTADOR', 'SALON')
        FOR UPDATE OF u
     `, [providerId]);
 

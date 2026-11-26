@@ -1147,6 +1147,16 @@ class _ProvidersScreenState extends State<ProvidersScreen>
   Future<void> _openBookingDirectly(
       BuildContext context, ProviderModel provider,
       [String? initialServiceId]) async {
+    if (!provider.canReceiveBookings) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Este prestador aún está preparando su perfil y todavía no recibe reservas.',
+          ),
+        ),
+      );
+      return;
+    }
     try {
       final details = await ApiService.fetchProviderDetails(provider.id);
       final services =
@@ -1581,12 +1591,14 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                           ),
                           onPressed: () {
                             Navigator.pop(context);
-                            _openBookingDirectly(context, provider);
+                            _openBookingDirectly(this.context, provider);
                           },
                           icon: const Icon(Icons.calendar_today_outlined,
                               size: 15, color: Color(0xFF14100C)),
                           label: const Text(
-                            'Reservar Cita',
+                            provider.canReceiveBookings
+                                ? 'Reservar Cita'
+                                : 'En preparación',
                             style: TextStyle(
                               fontFamily: 'CormorantGaramond',
                               fontSize: 14,
@@ -2241,11 +2253,13 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                       child: SizedBox(
                         height: 34,
                         child: ElevatedButton.icon(
-                          onPressed: () => _openBookingDirectly(context, p),
+                          onPressed: p.canReceiveBookings
+                              ? () => _openBookingDirectly(context, p)
+                              : null,
                           icon: const Icon(Icons.bolt_rounded,
                               size: 15, color: Color(0xFF14100C)),
                           label: const Text(
-                            'Reservar Ya',
+                            p.canReceiveBookings ? 'Reservar Ya' : 'En preparación',
                             style: TextStyle(
                               fontFamily: 'CormorantGaramond',
                               fontSize: 13,

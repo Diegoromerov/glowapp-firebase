@@ -63,7 +63,7 @@ export default function ProviderOperationalPage() {
       });
       const payload = await response.json();
       if (!response.ok || payload?.success !== true || !Array.isArray(payload.data)) {
-        throw new Error(payload?.error || 'No se pudo cargar la lista de prestadores.');
+        throw new Error(payload?.error || 'No se pudo cargar la lista de proveedores.');
       }
       setProviders(payload.data);
     } catch (err) {
@@ -84,7 +84,8 @@ export default function ProviderOperationalPage() {
   }, [providers, query]);
 
   const habilitar = async (provider: ProviderOperational) => {
-    if (!window.confirm(`¿Habilitar a ${provider.nombre} para recibir reservas y cobrar? Se registrará esta decisión en la auditoría administrativa.`)) return;
+    const tipo = provider.rol === 'SALON' ? 'al salón' : 'al prestador';
+    if (!window.confirm(`¿Habilitar ${tipo} ${provider.nombre} para recibir reservas y cobrar? Se registrará esta decisión en la auditoría administrativa.`)) return;
     setActionId(provider.id);
     setError(null);
     setNotice(null);
@@ -96,12 +97,12 @@ export default function ProviderOperationalPage() {
       const payload = await response.json();
       if (!response.ok || payload?.success !== true) {
         const pendientes = Array.isArray(payload?.requisitos_pendientes) ? ` ${payload.requisitos_pendientes.join(' ')}` : '';
-        throw new Error(`${payload?.error || 'No se pudo habilitar al prestador.'}${pendientes}`);
+        throw new Error(`${payload?.error || 'No se pudo habilitar al proveedor.'}${pendientes}`);
       }
       setNotice(`${provider.nombre}: ${payload.message}`);
       await loadProviders();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'No se pudo habilitar al prestador.');
+      setError(err instanceof Error ? err.message : 'No se pudo habilitar al proveedor.');
     } finally {
       setActionId(null);
     }
@@ -117,7 +118,7 @@ export default function ProviderOperationalPage() {
           <p className="text-sm font-semibold text-[#92702c]">GlowAdmin / Proveedores</p>
           <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">Estado operativo</h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[#6c655b]">
-            Consulta el estado de cada prestador y habilita reservas y cobros cuando identidad, acreditación y RUT estén aprobados.
+            Consulta el estado de prestadores y salones. Habilita reservas y cobros cuando identidad, acreditación y RUT estén aprobados.
           </p>
         </div>
         <button type="button" onClick={() => void loadProviders()} disabled={loading} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#d9cfbd] bg-white px-4 py-2 text-sm font-semibold text-[#514b42] hover:bg-[#f1eee7] disabled:opacity-60">
@@ -126,7 +127,7 @@ export default function ProviderOperationalPage() {
       </header>
 
       <section className="grid gap-4 sm:grid-cols-3" aria-label="Resumen de estados">
-        <div className="rounded-2xl border border-[#e5dfd3] bg-white p-5 shadow-sm"><p className="text-sm text-[#71685f]">Prestadores registrados</p><p className="mt-2 text-3xl font-bold">{loading ? '—' : providers.length}</p></div>
+        <div className="rounded-2xl border border-[#e5dfd3] bg-white p-5 shadow-sm"><p className="text-sm text-[#71685f]">Perfiles registrados</p><p className="mt-2 text-3xl font-bold">{loading ? '—' : providers.length}</p></div>
         <div className="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm"><p className="text-sm text-[#71685f]">Habilitados</p><p className="mt-2 text-3xl font-bold text-emerald-800">{loading ? '—' : habilitados}</p></div>
         <div className="rounded-2xl border border-amber-100 bg-white p-5 shadow-sm"><p className="text-sm text-[#71685f]">En exploración</p><p className="mt-2 text-3xl font-bold text-amber-800">{loading ? '—' : exploracion}</p></div>
       </section>
@@ -136,16 +137,16 @@ export default function ProviderOperationalPage() {
 
       <section className="overflow-hidden rounded-2xl border border-[#e5dfd3] bg-white shadow-sm">
         <div className="flex flex-col gap-3 border-b border-[#eee8de] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-          <div><h2 className="font-bold">Prestadores</h2><p className="mt-1 text-xs text-[#777064]">Fuente: GET /api/glow-admin/provider/operational</p></div>
+          <div><h2 className="font-bold">Prestadores y salones</h2><p className="mt-1 text-xs text-[#777064]">Fuente: GET /api/glow-admin/provider/operational</p></div>
           <label className="relative w-full sm:max-w-sm"><span className="sr-only">Buscar por nombre, correo o ID</span><Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#82796d]" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Nombre, correo o ID" className="min-h-11 w-full rounded-xl border border-[#ded7cb] py-2 pl-9 pr-3 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-100" /></label>
         </div>
 
-        {loading ? <div className="flex items-center justify-center gap-2 p-12 text-sm text-[#71685f]"><Loader2 className="h-5 w-5 animate-spin" />Cargando prestadores…</div>
-          : visibles.length === 0 ? <div className="p-12 text-center text-sm text-[#71685f]">{providers.length ? 'No hay resultados para esa búsqueda.' : 'No hay prestadores registrados.'}</div>
+        {loading ? <div className="flex items-center justify-center gap-2 p-12 text-sm text-[#71685f]"><Loader2 className="h-5 w-5 animate-spin" />Cargando proveedores…</div>
+          : visibles.length === 0 ? <div className="p-12 text-center text-sm text-[#71685f]">{providers.length ? 'No hay resultados para esa búsqueda.' : 'No hay proveedores registrados.'}</div>
             : <div className="overflow-x-auto"><table className="w-full min-w-[900px] text-left text-sm">
               <thead className="bg-[#faf8f4] text-xs uppercase tracking-wide text-[#71685f]"><tr><th className="px-5 py-3">Prestador</th><th className="px-4 py-3">Estado operativo</th><th className="px-4 py-3">Identidad / acreditación</th><th className="px-4 py-3">RUT</th><th className="px-4 py-3">Desde</th><th className="px-5 py-3">Acción</th></tr></thead>
               <tbody className="divide-y divide-[#eee8de]">{visibles.map((provider) => <tr key={provider.id} className="align-top hover:bg-[#fdfcf9]">
-                <td className="px-5 py-4"><div className="flex items-start gap-3"><span className="mt-0.5 rounded-full bg-[#f1eee7] p-2 text-[#776442]"><UserRound className="h-4 w-4" /></span><span><span className="block font-semibold">{provider.nombre}</span><span className="mt-1 block text-xs text-[#777064]">{provider.email} · ID {provider.id}</span></span></div></td>
+                <td className="px-5 py-4"><div className="flex items-start gap-3"><span className="mt-0.5 rounded-full bg-[#f1eee7] p-2 text-[#776442]"><UserRound className="h-4 w-4" /></span><span><span className="block font-semibold">{provider.nombre}</span><span className="mt-1 block text-xs text-[#777064]">{provider.rol === 'SALON' ? 'Salón' : 'Prestador'} · {provider.email} · ID {provider.id}</span></span></div></td>
                 <td className="px-4 py-4"><span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${estadoClass(provider.estado_operativo)}`}>{estadoLabel(provider.estado_operativo)}</span>{provider.estado_operativo_motivo && <p className="mt-2 max-w-56 text-xs text-[#777064]">{provider.estado_operativo_motivo}</p>}</td>
                 <td className="px-4 py-4"><p className={provider.estatus_verificacion === 'APROBADO' && provider.tiene_documento && provider.tiene_acreditacion ? 'font-medium text-emerald-800' : 'font-medium text-amber-800'}>{provider.estatus_verificacion || 'Pendiente'}</p><p className="mt-1 text-xs text-[#777064]">Identidad: {provider.tiene_documento ? 'cargada' : 'faltante'} · Acreditación: {provider.tiene_acreditacion ? 'cargada' : 'faltante'}</p></td>
                 <td className="px-4 py-4"><p className={provider.rut_revision_estado === 'APROBADA' && provider.rut_numero ? 'font-medium text-emerald-800' : 'font-medium text-amber-800'}>{provider.rut_revision_estado || 'SIN_ENVIAR'}</p><p className="mt-1 text-xs text-[#777064]">{provider.rut_numero ? `RUT ${provider.rut_numero}` : 'Sin número registrado'}</p></td>

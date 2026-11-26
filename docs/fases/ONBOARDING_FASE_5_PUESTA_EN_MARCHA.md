@@ -1,7 +1,7 @@
 # Onboarding SaaS — Fase 5: Puesta en marcha operativa
 
 **Corte:** 26 de noviembre de 2026  
-**Avance estimado:** 85 %; integrado en `main` y desplegado a producción. Falta validar el flujo de reserva y atención de extremo a extremo.
+**Avance estimado:** 85 %; backend integrado en `main` y desplegado a producción. Falta validar el flujo de reserva y atención de extremo a extremo.
 
 ## Objetivo y criterio de cierre
 
@@ -47,6 +47,11 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - La verificación de reservas se debe completar con una cuenta cliente de QA distinta y una cita de prueba controlada, incluyendo la confirmación/inicio y el cierre de la atención según los controles disponibles.
 - Auditoría del cierre detectó que `POST /api/payments/bookings/:id/confirm-otp` exigía `RECIBIR_RESERVAS` del prestador también al cliente autenticado. Como esa capacidad no aplica a `CLIENTE`, se bloqueaba la confirmación antes del chequeo de propiedad del OTP. PR #96 retiró solo esa compuerta de la ruta del cliente; se mantienen autenticación, propiedad `otp.client_id === req.user.id` y validación del código. La emisión del OTP continúa detrás de la capacidad del prestador.
 - La prueba de regresión aprobó **2/2** localmente y en CI. Backend CI run **45760868633** terminó `success`, incluyendo contratos, PostgreSQL real, aislamiento multi-tenant y E2E del catálogo. PR #96 se integró a `main` como **`890f5798d3c552e7f2597d15bd0def072d51b92a`**. Railway confirmó `glowapp-api` en estado `SUCCESS` con ese commit (deploy `74588120-d3d3-4946-8fcf-363c4a9898c3`). No se confirmó OTP ni se creó una reserva productiva.
+- PR #97 actualizó este informe y se integró en `main` como **`b3356a038b0514fcd680e5a084522e831733f62f`**; Railway desplegó ese commit y el smoke de salud confirmó PostgreSQL disponible y sin datos fabricados.
+- Auditoría de elegibilidad: `GET /api/providers` marcaba salones como verificados y `POST /api/bookings` no comprobaba el estado operativo; tampoco `GET /api/providers/:id/slots` impedía obtener horarios mientras el prestador estaba en Exploración. La regla de D-GL-031 establece que Exploración permite preparar y consultar el producto, pero no transaccionar.
+- Corrección local aún no publicada: catálogo/detalle exponen `can_receive_bookings` solo con cuenta activa, estado `HABILITADO`, verificación aprobada cuando hay perfil profesional y al menos un servicio activo. Los perfiles de Exploración siguen visibles para navegar, pero la app Cliente bloquea la acción de agenda; la API vuelve a validar elegibilidad al consultar horarios y crear una reserva. La guía del salón describe ubicación/plan como prerrequisitos parciales sin afirmar que la publicación ya ocurrió. El panel operativo incluye ahora a los usuarios `SALON`; la habilitación revalida actividad de cuenta, identidad, acreditación y RUT, y registra la decisión. No se relajaron los requisitos.
+- Pruebas locales: elegibilidad/controller backend **11/11** y habilitación de salón **3/3**; modelo compartido **2/2**; test de reservas Cliente **4/4**; guía del prestador **3/3**. Total focalizado **23/23**. `node --check` pasó en los controladores/helper modificados. `flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings` terminó para la app Cliente con **483 avisos/info** preexistentes del proyecto; no se reportaron errores fatales. Aún falta integrar y desplegar este bloque.
+- Se reiteró la petición de los datos de prueba. Hay autorización para crear una cuenta cliente QA, pero aún no se proporcionaron correo ni precio aprobado; el único servicio sigue inactivo y en $0. No se creó cuenta, servicio, cita ni movimiento de pago.
 
 ## Pendientes para cerrar la fase
 
@@ -54,6 +59,8 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - Completar el flujo de atención de la cita y registrar evidencia de los estados antes/después.
 - Preparar con datos aprobados una oferta de prueba reservable (precio mayor que cero y servicio activo/visible) y validar los requisitos de visibilidad del salón, sin publicar valores inventados.
 - Obtener una identidad cliente QA distinta. Antes de confirmar el OTP final, definir que el recorrido usa instrumentos sandbox y controlar que no genere un asiento financiero real o irreversible en producción.
+- Integrar y desplegar la regla de elegibilidad y los cambios de guía/app Cliente en los entornos de producción autorizados.
+- Probar en producción que un prestador en Exploración sigue apareciendo para navegar, no recibe horarios ni puede crear una cita; comprobar que un prestador habilitado con oferta activa sí puede.
 - Limpiar o cancelar la cita de prueba con el mecanismo normal de la app, si el estado final lo permite.
 
-**Estado:** abierta. El 85 % estimado incluye la corrección publicada de autorización del OTP del cliente y sus pruebas; aún no demuestra una reserva del cliente ni la atención completa. Continúa pendiente preparar datos QA aptos y recorrer el criterio E2E de cierre.
+**Estado:** abierta, **85 % estimado**. La regla de elegibilidad ya está implementada localmente y con pruebas, pero aún no desplegada ni comprobada en producción. El criterio de salida sigue pendiente: oferta QA con precio aprobado, identidad cliente distinta, recorrido cliente→reserva→agenda correcta→atención, y confirmar que el cierre no provoque una operación financiera real no deseada.

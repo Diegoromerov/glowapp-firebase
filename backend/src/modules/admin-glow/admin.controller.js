@@ -231,8 +231,8 @@ async function getProvidersOperationalStatus(req, res) {
     const list = await adminModel.getProvidersOperationalStatus();
     return res.status(200).json({ success: true, count: list.length, data: list });
   } catch (error) {
-    console.error('Error al consultar estados operativos de prestadores:', error);
-    return res.status(500).json({ success: false, error: 'No se pudo cargar el estado operativo de los prestadores.' });
+    console.error('Error al consultar estados operativos de proveedores:', error);
+    return res.status(500).json({ success: false, error: 'No se pudo cargar el estado operativo de los proveedores.' });
   }
 }
 
@@ -240,30 +240,30 @@ async function getProvidersOperationalStatus(req, res) {
 async function enableProviderOperational(req, res) {
   const providerId = Number.parseInt(req.params.providerId, 10);
   if (!Number.isSafeInteger(providerId) || providerId <= 0) {
-    return res.status(400).json({ success: false, error: 'El ID del prestador no es válido.' });
+    return res.status(400).json({ success: false, error: 'El ID del proveedor no es válido.' });
   }
 
   try {
     const result = await adminModel.enableProviderOperational(providerId, req.admin.id);
     if (!result.ok && result.reason === 'NOT_FOUND') {
-      return res.status(404).json({ success: false, error: 'No se encontró el prestador.' });
+      return res.status(404).json({ success: false, error: 'No se encontró el perfil de proveedor.' });
     }
     if (!result.ok && result.reason === 'SUSPENDED') {
       return res.status(409).json({ success: false, error: 'Una cuenta suspendida requiere una revisión administrativa antes de habilitarse.' });
     }
     if (!result.ok) {
-      return res.status(409).json({ success: false, error: 'El prestador todavía no cumple los requisitos de habilitación.', requisitos_pendientes: result.requisitos });
+      return res.status(409).json({ success: false, error: 'El proveedor todavía no cumple los requisitos de habilitación.', requisitos_pendientes: result.requisitos });
     }
 
     return res.status(200).json({
       success: true,
       ya_habilitado: result.alreadyEnabled,
-      message: result.alreadyEnabled ? 'El prestador ya estaba habilitado.' : 'Prestador habilitado para operar.',
+      message: result.alreadyEnabled ? 'El proveedor ya estaba habilitado.' : 'Proveedor habilitado para operar.',
       data: result.provider,
     });
   } catch (error) {
-    console.error('Error al habilitar estado operativo del prestador:', error);
-    return res.status(500).json({ success: false, error: 'No se pudo habilitar al prestador.' });
+    console.error('Error al habilitar estado operativo del proveedor:', error);
+    return res.status(500).json({ success: false, error: 'No se pudo habilitar al proveedor.' });
   }
 }
 

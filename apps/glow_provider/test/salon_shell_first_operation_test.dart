@@ -23,7 +23,7 @@ void main() {
     expect(find.text('1. Completa la información del salón'), findsOneWidget);
     expect(find.text('2. Configura cuándo puedes atender'), findsOneWidget);
     expect(
-      find.textContaining('aún no puede aparecer en el mapa de clientes'),
+      find.textContaining('aún no cumple los requisitos de mapa'),
       findsOneWidget,
     );
     await tester.tap(find.text('Ver perfil del salón'));
@@ -31,7 +31,7 @@ void main() {
     expect(find.text('/salon/profile'), findsOneWidget);
   });
 
-  testWidgets('la guía confirma cuando el salón sí puede aparecer en el mapa',
+  testWidgets('la guía comunica configuración de mapa sin afirmar publicación',
       (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
@@ -44,9 +44,10 @@ void main() {
     );
 
     expect(
-      find.textContaining('está habilitado para aparecer en el mapa'),
+      find.textContaining('La ubicación y el plan cumplen los requisitos de mapa'),
       findsOneWidget,
     );
+    expect(find.textContaining('servicios activos'), findsOneWidget);
   });
 
   testWidgets('sin salón activo la guía no abre agenda de otro tenant',
