@@ -54,6 +54,7 @@ const MIGRACIONES_BASE_NUEVA = [
 '065_multi_tenant_hardening.sql',
 '067_create_multi_salon_ddl.sql',
 '068_force_rls_strict_isolation.sql',
+'070_extend_tipo_rol_salon_admin.sql',
 '107_rls_politicas_sin_contexto.sql',
 '012_business_engine.sql',
   // SaaS team context reads business_profiles.saas_plan (109 is independent of billing tables).
@@ -186,6 +187,8 @@ const MIGRACIONES_ARRANQUE = [
   '067_create_multi_salon_ddl.sql',
 
   '068_force_rls_strict_isolation.sql',
+
+  '070_extend_tipo_rol_salon_admin.sql',
 
   '107_rls_politicas_sin_contexto.sql',
 
