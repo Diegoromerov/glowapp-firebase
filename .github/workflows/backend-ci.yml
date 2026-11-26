@@ -79,6 +79,11 @@ jobs:
       - name: Pruebas que no necesitan infraestructura
         run: node --test src/tests/*.nodetest.js
 
+      - name: Verificar lookup y alcance de tenant de API keys SaaS
+        env:
+          JWT_SECRET: fase7-api-key-verify-test-secret
+        run: npx jest tests/saasApiKeyVerifyRoutes.test.js --runInBand --forceExit --verbose
+
       - name: El cliente puede confirmar el OTP de su propia cita
         env:
           JWT_SECRET: phase5-client-otp-regression-test-secret

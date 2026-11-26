@@ -6,7 +6,6 @@ const { requireEntitlement, requireRole } = require('../middleware/featureGate')
 const { authMiddleware } = require('../middleware/auth');
 const crypto = require('crypto');
 const { hasEntitlement } = require('../config/saasEntitlements');
-const usageMeteringService = require('../services/usageMeteringService');
 
 const router = express.Router();
 
@@ -230,10 +229,11 @@ router.delete('/:keyId', requireRole('OWNER'), async (req, res) => {
 
 /**
  * POST /api/saas/api-keys/verify
- * Verifica una API key (endpoint público para validar keys en requests)
- * NO requiere authMiddleware - se usa como middleware en otras rutas
+ * Verifica una clave recién creada desde la sesión administrativa del tenant.
+ * No marca last_used_at ni consume API_CALLS: esto es una comprobación de
+ * configuración, no una llamada del sistema externo.
  */
-router.post('/verify', async (req, res) => {
+router.post('/verify', requireRole('ADMIN'), async (req, res) => {
   try {
     const { apiKey } = req.body;
 
@@ -243,25 +243,21 @@ router.post('/verify', async (req, res) => {
 
     const keyHash = crypto.createHash('sha256').update(apiKey).digest('hex');
 
-    const { rows } = await pool.query(`
-      SELECT ak.*, bp.id as tenant_id, bp.name as tenant_name, bp.saas_plan
-      FROM api_keys ak
-      JOIN business_profiles bp ON bp.id = ak.tenant_id
-      WHERE ak.key_hash = $1 AND ak.revoked_at IS NULL
-        AND (ak.expires_at IS NULL OR ak.expires_at > NOW());
-    `, [keyHash]);
+    const { rows } = await pool.query(
+      'SELECT * FROM saas_api_key_lookup($1)', [keyHash]
+    );
 
     if (rows.length === 0) {
       return res.status(401).json({ valid: false, error: 'API key inválida, expirada o revocada' });
     }
 
     const key = rows[0];
-
-    // Actualizar last_used_at (async, no bloquear)
-    pool.query(
-      `UPDATE api_keys SET last_used_at = NOW() WHERE id = $1`,
-      [key.id]
-    ).catch(() => {});
+    if (!req.saas || String(key.tenant_id) !== String(req.saas.tenantId)) {
+      return res.status(401).json({ valid: false, error: 'API key inválida, expirada o revocada' });
+    }
+    if (!hasEntitlement(key.saas_plan, 'API_KEYS')) {
+      return res.status(401).json({ valid: false, error: 'El plan actual no incluye integraciones con API' });
+    }
 
     res.json({
       valid: true,
@@ -270,92 +266,11 @@ router.post('/verify', async (req, res) => {
         name: key.tenant_name,
         plan: key.saas_plan
       },
-      scopes: key.scopes,
-      keyName: key.name
+      scopes: key.scopes
     });
   } catch (error) {
     console.error('[saasApiKeyRoutes] Error verifying API key:', error.message);
     res.status(500).json({ valid: false, error: 'Error verificando API key' });
   }
 });
-
-/**
- * Middleware Express para proteger rutas con API Key
- * Uso: router.get('/webhook', apiKeyAuth(['webhooks']), controller);
- */
-function apiKeyAuth(requiredScopes = []) {
-  return async (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    if (!authHeader?.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'Authorization header requerido: Bearer gsk_live_...' });
-    }
-
-    const apiKey = authHeader.substring(7);
-    const keyHash = crypto.createHash('sha256').update(apiKey).digest('hex');
-
-    try {
-      const { rows } = await pool.query(`
-        SELECT ak.*, bp.id as tenant_id, bp.name as tenant_name, bp.saas_plan
-        FROM api_keys ak
-        JOIN business_profiles bp ON bp.id = ak.tenant_id
-        WHERE ak.key_hash = $1 AND ak.revoked_at IS NULL
-          AND (ak.expires_at IS NULL OR ak.expires_at > NOW());
-      `, [keyHash]);
-
-      if (rows.length === 0) {
-        return res.status(401).json({ error: 'API key inválida, expirada o revocada' });
-      }
-
-      const key = rows[0];
-
-      // Las llaves dejan de funcionar si el plan que las autorizaba ya no está activo.
-      if (!hasEntitlement(key.saas_plan, 'API_KEYS')) {
-        return res.status(401).json({ error: 'El plan actual no incluye integraciones con API' });
-      }
-
-      // Verificar scopes
-      if (requiredScopes.length > 0) {
-        const hasScope = requiredScopes.some(s => key.scopes.includes(s));
-        if (!hasScope) {
-          return res.status(403).json({ 
-            error: 'Scope insuficiente', 
-            required: requiredScopes, 
-            current: key.scopes 
-          });
-        }
-      }
-
-      const usage = await usageMeteringService.consumeUsage(key.tenant_id, 'API_CALLS');
-      if (!usage.allowed) {
-        return res.status(429).json({
-          error: 'Se alcanzó el límite mensual de integraciones del plan',
-          current: usage.current,
-          limit: usage.limit,
-          currentPlan: usage.plan,
-          upgradeUrl: '/api/saas/billing/checkout',
-        });
-      }
-
-      // Poblar req para uso posterior
-      req.apiKey = {
-        id: key.id,
-        name: key.name,
-        scopes: key.scopes,
-        tenantId: key.tenant_id,
-        tenantName: key.tenant_name,
-        plan: key.saas_plan
-      };
-
-      // Actualizar last_used_at (fire-and-forget)
-      pool.query(`UPDATE api_keys SET last_used_at = NOW() WHERE id = $1`, [key.id]).catch(() => {});
-
-      next();
-    } catch (error) {
-      console.error('[apiKeyAuth] Error:', error.message);
-      res.status(500).json({ error: 'Error validando API key' });
-    }
-  };
-}
-
 module.exports = router;
-module.exports.apiKeyAuth = apiKeyAuth;
