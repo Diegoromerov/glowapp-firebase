@@ -126,6 +126,7 @@ class BillingState {
   final Map<String, dynamic>? nextPayment;
   final String? currentPlan;
   final bool checkoutAvailable;
+  final Map<String, dynamic>? latestBillingAttempt;
   final bool isLoading;
   final Object? error;
 
@@ -136,6 +137,7 @@ class BillingState {
     this.nextPayment,
     this.currentPlan,
     this.checkoutAvailable = false,
+    this.latestBillingAttempt,
     this.isLoading = false,
     this.error,
   });
@@ -147,6 +149,8 @@ class BillingState {
     Map<String, dynamic>? nextPayment,
     String? currentPlan,
     bool? checkoutAvailable,
+    Map<String, dynamic>? latestBillingAttempt,
+    bool clearLatestBillingAttempt = false,
     bool? isLoading,
     Object? error,
   }) {
@@ -157,6 +161,9 @@ class BillingState {
       nextPayment: nextPayment ?? this.nextPayment,
       currentPlan: currentPlan ?? this.currentPlan,
       checkoutAvailable: checkoutAvailable ?? this.checkoutAvailable,
+      latestBillingAttempt: clearLatestBillingAttempt
+          ? null
+          : latestBillingAttempt ?? this.latestBillingAttempt,
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
     );
@@ -439,6 +446,10 @@ class BillingNotifier extends StateNotifier<BillingState> {
         nextPayment: rawNext is Map<String, dynamic> ? rawNext : null,
         currentPlan: summary['currentPlan'] as String?,
         checkoutAvailable: summary['checkoutAvailable'] == true,
+        latestBillingAttempt: summary['latestBillingAttempt'] is Map<String, dynamic>
+            ? Map<String, dynamic>.from(summary['latestBillingAttempt'] as Map)
+            : null,
+        clearLatestBillingAttempt: summary['latestBillingAttempt'] == null,
         isLoading: false,
         error: null,
       );
