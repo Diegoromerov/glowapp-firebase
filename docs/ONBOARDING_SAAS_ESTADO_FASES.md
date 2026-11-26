@@ -85,3 +85,10 @@
 - La prueba encontró que el flujo de retiro asignaba texto a `memberships.removed_by` (INTEGER). Se corrigió el casteo del actor a entero. Sin correo real ni escrituras en producción.
 - Railway desplegó el backend en producción: **1181df47-416f-4426-a3ad-f7ecd2cd0408**, commit `fb996aa`. Los 8 servicios quedaron en línea, sin fallos recientes ni despliegues pendientes.
 - El avance de la Fase 4 se conserva en **75 %**: la matriz de permisos y el retiro/reactivación están cubiertos en CI con PostgreSQL, pero falta validarlos con el recorrido y cuentas reales de producción. Sonia aún debe confirmar desde su propia sesión.
+
+
+### Smoke de producción — disponibilidad y acceso anónimo (26 de noviembre de 2026, 01:09 UTC)
+
+- `GET /api/health` respondió `200` para el commit `5ef3e63e2416b0b0f5cfb4111edc82160c9f0211`; `env=production`, `dbMode=postgres`, `pgAvailable=true` y `servingFabricatedData=false`.
+- Sin credenciales y con `X-App-Audience: salon`, `GET /api/saas/team` y `GET /api/saas/team/audit` devolvieron `401`. La consulta no cambió datos ni creó eventos.
+- Confirma salud del backend y denegación anónima; no sustituye la prueba de dos usuarios autenticados en tenants distintos ni demuestra cupos/reactivación en cuentas productivas. La Fase 4 continúa en **75 %**.
