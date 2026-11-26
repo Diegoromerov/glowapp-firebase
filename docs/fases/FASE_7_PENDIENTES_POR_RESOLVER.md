@@ -18,7 +18,7 @@ Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos 
 | 4 | Fidelización propia del salón | Elegir entre incluirla en planes, venderla como complemento o ejecutarla como piloto. Definir costos, límites y reglas; mantenerla separada de los puntos globales GlowApp. | Oferta comercial y técnica clara para el programa de puntos del salón. |
 | 5 | Multi-sede | Definir el número de sedes, permisos y funciones de consolidación por plan, especialmente para Empresas. | Límites de sedes explícitos en catálogo, contratos y backend. |
 | 6 | Procesos de integración | Explicar qué operaciones consumen la cuota API mensual y qué ocurre al agotarla (bloqueo, aviso, compra de excedente u otra regla). | Métrica entendible y política de excedentes aplicada de forma consistente. |
-| 7 | Paridad integral de catálogo y respaldo | Ya hay comprobación automatizada de disponibilidad/contratación entre Node y Dart. Extenderla a precio vigente, límites, capacidades y texto del fallback; no duplicar como faltante el control de disponibilidad existente. | Cambios de precios, límites o capacidades divergentes fallan CI; sin catálogo API el cliente no inventa oferta. |
+| 7 | Paridad integral de catálogo y respaldo | La presentación remota del onboarding ya incluye reservas en línea, etiquetas comerciales para cuotas y las mismas descripciones que el fallback activo. Se ocultaron los contadores internos de NIT/mapa/equipo. La comprobación automatizada sigue cubriendo disponibilidad y algunos límites, no todas las descripciones, precios y capacidades. | Extender CI para comparar toda la oferta activa entre el catálogo backend y Flutter y fallar ante divergencias; mantener el backend como fuente de verdad. |
 | 8 | Facturación, cambios de plan y piloto | Definir excedentes, upgrade/downgrade, textos de facturación y alcance del piloto. Instrumentar métricas y preparar un mecanismo de rollback antes de ampliar el lanzamiento. | Flujo de contratación y cambio de plan comprensible, medible y reversible. |
 | 9 | Verificación integral de límites | Ejecutar pruebas de integración en producción controlada para verificar reservas, invitaciones/asientos, API y capacidades en todos los canales de creación, reintento y cambio de plan. | Evidencia por flujo de que el backend aplica correctamente cuotas y permisos. |
 
@@ -72,6 +72,8 @@ Pendiente todavía: la comprobación cubre la paridad de disponibilidad/contrata
 ## Faltantes prioritarios — fase reanudada
 
 **Estado de trabajo:** fase reanudada. Resolver en paralelo las brechas técnicas seguras; mantener bloqueados precios propuestos, cobros reales y módulos no configurados hasta contar con decisiones y proveedores necesarios.
+
+**Avance publicado el 26 de noviembre:** el commit `2cb857b` alinea las descripciones activas del catálogo y el respaldo Flutter; el formateador del catálogo remoto deja de mostrar las cuotas internas de NIT/mapa/equipo y representa Reservas en línea y las cuotas comerciales. CI del backend/Flutter pasó, Railway quedó online, el catálogo V2 se verificó por API y Firebase Hosting proveedor devolvió HTTP 200. La prueba de paridad completa queda pendiente.
 
 | Prioridad | Faltante | Trabajo pendiente al retomarlo | Condición para cerrarlo |
 |---|---|---|---|
