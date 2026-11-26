@@ -40,6 +40,7 @@
 - Cobertura focalizada: Jest **3/3**, calendario Node **13/13**, verificaciones de sintaxis y `git diff --check` aprobadas.
 - Railway producción confirmó API deployment **`4529ff56-1ae0-469f-b355-32a94bab3c19`**, commit `f59cc44`, `SUCCESS`. Smoke real a `/api/providers/132/slots` con servicio QA y sede 17: viernes 27/11 **18 slots, 09:00–17:30**; sábado 28/11 **8 slots, 10:00–13:30**; domingo 29/11 **0 slots**.
 - La identidad indicada para cliente QA corresponde a rol `PRESTADOR`; la cuenta propietaria del salón tiene rol `SALON` y la cuenta de Diego es `ADMIN`. No se encontró cuenta `CLIENTE` QA. No se creó reserva, OTP, pago ni movimiento financiero.
+- El 26 de noviembre se verificó la cuenta de QA adicional compartida por el usuario: también es `PRESTADOR` (no `CLIENTE`). El primer login sin `X-App-Audience` devolvió 400 por encabezado obligatorio; enviado `provider`, el login respondió y `GET /api/auth/session` inicialmente dio 500 por un `pool` no importado en `authRoutes.js`. La corrección quedó en PR #149 (`0b55181`), Backend CI pasó, Railway producción desplegó el commit y la verificación posterior confirmó login y sesión exitosos. No se creó reserva, OTP ni pago.
 - Fase 5 permanece en **85 %** hasta completar el flujo de cliente real autenticado y la atención correspondiente.
 
 ### Actualización Fase 5 — autorización OTP del cliente (26 de noviembre de 2026)
