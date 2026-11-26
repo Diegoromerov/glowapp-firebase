@@ -1,5 +1,7 @@
 'use strict';
 
+const { hasEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
+
 /**
  * Regla de servidor para iniciar una transacción de reserva.
  * La app cliente puede mostrar perfiles en preparación, pero solo una cuenta
@@ -46,4 +48,10 @@ function evaluarElegibilidadReserva(prestador) {
   return { permitido: true };
 }
 
-module.exports = { evaluarElegibilidadReserva };
+function salonVisibleEnMarketplace(salon) {
+  if (!salon || salon.location_enabled !== true || salon.location_public !== true) return false;
+  const plan = String(salon.plan_saas || 'FREE_TRIAL').trim().toUpperCase();
+  return hasEntitlement(plan, SAAS_CAPABILITIES.MAP_VISIBILITY);
+}
+
+module.exports = { evaluarElegibilidadReserva, salonVisibleEnMarketplace };
