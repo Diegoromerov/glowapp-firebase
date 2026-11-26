@@ -12,21 +12,48 @@
   <title>GlowApp · Belleza que conecta</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
-  <script src="/app.js" defer></script>
 </head>
 <body>
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-art" aria-hidden="true"><div class="halo"></div><div class="portrait"><span class="hair"></span><span class="face"><i class="eye eye-left"></i><i class="eye eye-right"></i><i class="nose"></i><i class="smile"></i><b class="freckle f1"></b><b class="freckle f2"></b></span><span class="earring"></span></div><span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span></div>
-      <header class="brand"><a href="/" aria-label="GlowApp, inicio"><span class="brand-mark">g<span>✦</span></span><span class="brand-name">glow<span>app</span></span></a><span class="brand-tagline">Belleza que conecta</span></header>
-      <div class="hero-copy"><p class="eyebrow"><span></span> Tu próximo glow comienza aquí</p><h1 id="hero-title">Reserva belleza con confianza.<br><em>Gestiona tu negocio sin complicaciones.</em></h1><p class="intro">GlowApp ayuda a las personas a encontrar y reservar servicios de belleza con más confianza, y ayuda a los profesionales y salones a gestionar su agenda y su operación desde un mismo lugar.</p>
-        <nav class="audiences" aria-label="Elige cómo quieres usar GlowApp"><button class="audience audience-primary" data-button="cliente"><span class="audience-icon">♡</span><span>Quiero reservar</span><span class="arrow">↗</span></button><button class="audience" data-button="profesional"><span class="audience-icon">✳</span><span>Soy profesional</span><span class="arrow">↗</span></button><button class="audience" data-button="salon"><span class="audience-icon">⌂</span><span>Tengo un salón</span><span class="arrow">↗</span></button></nav>
-        <div class="trust"><span class="avatar-stack" aria-hidden="true"><i>✿</i><i>✧</i><i>♡</i></span><span>Un espacio para cada forma de vivir la belleza</span></div>
+  <div id="app">
+    <section id="intro" class="video-state" aria-label="Introducción de GlowApp">
+      <video id="intro-video" class="video-full" muted playsinline loop preload="auto" poster="">
+        <source src="" type="video/mp4">
+      </video>
+      <div class="intro-overlay">
+        <header class="brand"><a href="/" aria-label="GlowApp, inicio"><span class="brand-mark">g<span>✦</span></span><span class="brand-name">glow<span>app</span></span></a><span class="brand-tagline">Belleza que conecta</span></header>
+        <p class="intro-hint" id="intro-hint">Toca para entrar</p>
+        <button class="skip-btn" id="skip-intro" aria-label="Saltar intro">Saltar</button>
       </div>
-      <div class="hero-note"><span class="note-star">✳</span><span>Más tiempo para<br><b>hacer lo que amas.</b></span></div>
     </section>
-    <section class="benefits" aria-label="Beneficios de GlowApp"><p>La belleza crece cuando estamos conectados</p><div><span>✦ Reservas simples</span><span>✦ Agenda organizada</span><span>✦ Negocios que florecen</span></div></section>
-  </main>
-  <dialog id="lead-dialog" aria-labelledby="form-title"><form id="lead-form" novalidate><button class="dialog-close" type="button" aria-label="Cerrar">×</button><p class="eyebrow">UN PASO MÁS CERCA</p><h2 id="form-title">Conecta con GlowApp</h2><p id="form-description" class="form-description"></p><input type="hidden" name="role"><label>Tu nombre<input name="name" autocomplete="name" required maxlength="120"></label><div class="salon-only" hidden><label>Nombre del salón<input name="businessName" autocomplete="organization" maxlength="160"></label></div><label>Correo o WhatsApp<div class="contact-row"><select name="contactType" aria-label="Tipo de contacto"><option value="email">Correo</option><option value="whatsapp">WhatsApp</option></select><input name="contact" autocomplete="email" required maxlength="200" placeholder="tu@correo.com"></div></label><label>Ciudad<input name="city" autocomplete="address-level2" required maxlength="100"></label><div class="client-only"><label>Barrio<input name="neighborhood" autocomplete="address-level3" maxlength="100"></label></div><div class="professional-only" hidden><label>Código de embajadora <span class="optional">opcional</span><input name="referralCode" maxlength="40"></label></div><label class="hp" aria-hidden="true">No llenar<input name="website" tabindex="-1" autocomplete="off"></label><label class="consent"><input type="checkbox" name="consent" required><span>Acepto el tratamiento de mis datos según la <a id="privacy-link" href="https://glowapp-api-production.up.railway.app/privacy-policy.html" target="_blank" rel="noopener">política de privacidad</a>. <small>Autorización v1</small></span></label><div id="turnstile-slot"></div><div class="form-status" aria-live="polite" role="status"></div><button class="submit" type="submit">Enviar solicitud <span>↗</span></button></form></dialog>
+    <section id="static" class="static-fallback" aria-labelledby="static-title" hidden>
+      <header class="brand"><a href="/" aria-label="GlowApp, inicio"><span class="brand-mark">g<span>✦</span></span><span class="brand-name">glow<span>app</span></span></a><span class="brand-tagline">Belleza que conecta</span></header>
+      <div class="static-copy">
+        <h1 id="static-title">Tu próximo glow comienza aquí</h1>
+        <p id="static-subtitle">GlowApp ayuda a las personas a encontrar y reservar servicios de belleza con más confianza, y ayuda a los profesionales y salones a gestionar su agenda y su operación desde un mismo lugar.</p>
+      </div>
+      <nav class="static-buttons audiences" id="static-buttons" aria-label="Elige cómo quieres usar GlowApp"></nav>
+    </section>
+    <dialog id="lead-dialog" aria-labelledby="form-title">
+      <form id="lead-form" novalidate>
+        <button class="dialog-close" type="button" aria-label="Cerrar">×</button>
+        <p class="eyebrow">UN PASO MÁS CERCA</p>
+        <h2 id="form-title">Conecta con GlowApp</h2>
+        <p id="form-description" class="form-description"></p>
+        <input type="hidden" name="role">
+        <label>Tu nombre<input name="name" autocomplete="name" required maxlength="120"></label>
+        <div class="salon-only" hidden><label>Nombre del salón<input name="businessName" autocomplete="organization" maxlength="160"></label></div>
+        <label>Correo o WhatsApp<div class="contact-row"><select name="contactType" aria-label="Tipo de contacto"><option value="email">Correo</option><option value="whatsapp">WhatsApp</option></select><input name="contact" autocomplete="email" required maxlength="200" placeholder="tu@correo.com"></div></label>
+        <label>Ciudad<input name="city" autocomplete="address-level2" required maxlength="100"></label>
+        <div class="client-only"><label>Barrio<input name="neighborhood" autocomplete="address-level3" maxlength="100"></label></div>
+        <div class="professional-only" hidden><label>Código de embajadora <span class="optional">opcional</span><input name="referralCode" maxlength="40"></label></div>
+        <label class="hp" aria-hidden="true">No llenar<input name="website" tabindex="-1" autocomplete="off"></label>
+        <label class="consent"><input type="checkbox" name="consent" required><span>Acepto el tratamiento de mis datos según la <a id="privacy-link" href="/privacidad" target="_blank" rel="noopener">política de privacidad</a>. <small>Autorización v1</small></span></label>
+        <div id="turnstile-slot"></div>
+        <div class="form-status" aria-live="polite" role="status"></div>
+        <button class="submit" type="submit">Enviar solicitud <span>↗</span></button>
+      </form>
+    </dialog>
+  </div>
+  <script src="/app.js" type="module" defer></script>
 </body>
 </html>

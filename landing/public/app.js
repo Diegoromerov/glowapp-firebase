@@ -11,7 +11,64 @@
   const dialog = document.querySelector('#lead-dialog');
   const form = document.querySelector('#lead-form');
   const status = document.querySelector('.form-status');
+  const intro = document.querySelector('#intro');
+  const introVideo = document.querySelector('#intro-video');
+  const staticPage = document.querySelector('#static');
   const roles = { client: ['Conoce las novedades y encuentra tu pr\u00f3ximo servicio.', 'client'], professional: ['Solicita ingreso a una comunidad de profesionales por nodos.', 'professional'], salon: ['Cu\u00e9ntanos de tu sal\u00f3n y conecta con nuevas oportunidades.', 'salon'] };
+
+  function showLanding(state) {
+    const showVideo = state === 'video';
+    intro.hidden = !showVideo;
+    intro.setAttribute('aria-hidden', String(!showVideo));
+    staticPage.hidden = showVideo;
+    document.body.classList.toggle('video-landing', showVideo);
+    document.body.classList.toggle('static-landing', !showVideo);
+  }
+
+  function renderLandingButtons(buttons = []) {
+    const nav = document.querySelector('#static-buttons');
+    nav.replaceChildren();
+    buttons.forEach((item, index) => {
+      if (!item || !['cliente', 'profesional', 'salon'].includes(item.id)) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `audience${index === 0 ? ' audience-primary' : ''}`;
+      button.dataset.button = item.id;
+      const icon = document.createElement('span');
+      icon.className = 'audience-icon'; icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = item.id === 'cliente' ? '♡' : item.id === 'profesional' ? '✳' : '✦';
+      const label = document.createElement('span'); label.textContent = item.label;
+      const arrow = document.createElement('span'); arrow.className = 'arrow'; arrow.setAttribute('aria-hidden', 'true'); arrow.textContent = '↗';
+      button.append(icon, label, arrow); nav.append(button);
+    });
+  }
+
+  async function startVideoLanding() {
+    const firebase = config?.firebase;
+    const videoPath = config?.videoLanding?.introPath;
+    if (!firebase?.apiKey || !firebase?.storageBucket || !videoPath) { showLanding('static'); return; }
+    const mediaUrl = new URL(`https://firebasestorage.googleapis.com/v0/b/${encodeURIComponent(firebase.storageBucket)}/o/${encodeURIComponent(videoPath)}`);
+    mediaUrl.searchParams.set('alt', 'media');
+    mediaUrl.searchParams.set('key', firebase.apiKey);
+    try {
+      const response = await fetch(mediaUrl, { method: 'GET', headers: { Range: 'bytes=0-0' } });
+      if (!response.ok) throw new Error(`Storage respondió ${response.status}`);
+      const token = response.headers.get('x-goog-generation');
+      if (token) mediaUrl.searchParams.set('generation', token);
+      introVideo.src = mediaUrl.toString();
+      introVideo.addEventListener('error', () => showLanding('static'), { once: true });
+      await introVideo.play();
+      showLanding('video');
+    } catch (err) {
+      console.warn('[landing] Intro de video no disponible:', err.message);
+      showLanding('static');
+    }
+  }
+
+  function enterStaticLanding() {
+    introVideo.pause();
+    showLanding('static');
+  }
 
   const analyticsEvents = [];
   let analyticsReady = false;
@@ -54,7 +111,12 @@
   }
 
   function connectListeners() {
-    document.querySelectorAll('[data-button]').forEach(button => button.addEventListener('click', () => activateButton(button.dataset.button)));
+    document.addEventListener('click', event => {
+      const button = event.target.closest('[data-button]');
+      if (button) activateButton(button.dataset.button);
+    });
+    document.querySelector('#skip-intro').addEventListener('click', enterStaticLanding);
+    intro.addEventListener('click', event => { if (!event.target.closest('#skip-intro')) enterStaticLanding(); });
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     form.contactType.addEventListener('change', updateContact);
     form.addEventListener('submit', submitLead);
@@ -89,8 +151,16 @@
       console.warn('[landing] Config no cargó:', err.message);
       config = {};
       configError = true;
+      renderLandingButtons([
+        { id: 'cliente', label: 'Quiero reservar' },
+        { id: 'profesional', label: 'Soy profesional' },
+        { id: 'salon', label: 'Tengo un salón' }
+      ]);
+      showLanding('static');
       return;
     }
+    renderLandingButtons(config.buttons);
+    await startVideoLanding();
     const hostname = location.hostname;
     env = config.domainEnvMap?.[hostname];
     if (!env) env = hostname.includes('staging') ? 'staging' : hostname.includes('production') ? 'production' : 'development';

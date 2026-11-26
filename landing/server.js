@@ -5,7 +5,7 @@ const path = require('node:path');
 
 const root = path.join(__dirname, 'public');
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.vtt': 'text/vtt; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.txt': 'text/plain; charset=utf-8' };
-const csp = "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://challenges.cloudflare.com; media-src 'self' https://firebasestorage.googleapis.com; connect-src 'self' https://glowapp-api-production.up.railway.app https://glowapp-api-staging-staging.up.railway.app http://localhost:3000 https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'";
+const csp = "default-src 'self'; img-src 'self' data: https://firebasestorage.googleapis.com; style-src 'self'; script-src 'self' https://challenges.cloudflare.com; media-src 'self' https://firebasestorage.googleapis.com; connect-src 'self' https://firebasestorage.googleapis.com https://glowapp-api-production.up.railway.app https://glowapp-api-staging-staging.up.railway.app http://localhost:3000 https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'";
 function siteUrl() {
   const host = process.env.LANDING_SITE_URL || (process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : '');
   return /^https:\/\/[a-z0-9.-]+(?::\d+)?$/i.test(host) ? host.replace(/\/$/, '') : '';
@@ -26,7 +26,9 @@ http.createServer((req, res) => {
   }
   if (req.url === '/landing.config.json') {
     res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'content-security-policy': csp, 'x-content-type-options': 'nosniff' });
-    return res.end(fs.readFileSync(path.join(__dirname, 'landing.config.json')));
+    const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'landing.config.json'), 'utf8'));
+    config.firebase = { ...config.firebase, apiKey: process.env.LANDING_FIREBASE_API_KEY || '' };
+    return res.end(JSON.stringify(config));
   }
   let pathname;
   try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); } catch { res.writeHead(400); return res.end(); }

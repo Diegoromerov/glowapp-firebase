@@ -8,6 +8,13 @@
     "localhost": "development",
     "127.0.0.1": "development"
   },
+  "firebase": {
+    "apiKey": "",
+    "storageBucket": "glow-web-b39a6.firebasestorage.app"
+  },
+  "videoLanding": {
+    "introPath": "intro.mp4"
+  },
   "flashAt": 5,
   "consentTextVersion": "v1",
   "turnstileSiteKey": {
