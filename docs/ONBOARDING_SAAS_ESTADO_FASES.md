@@ -9,25 +9,29 @@
 | 2. Configuración inicial del salón | Datos del salón, sede, horarios y servicios iniciales | **100 %** | Cerrada; evaluación visual confirmada por el usuario el 25 Nov 2026. | [Informe Fase 2](fases/ONBOARDING_FASE_2_CONFIGURACION_SALON.md) y [registro del salón QA](fases/QA_SALON_FASE_2.md): perfil, horario, servicio de prueba, persistencia y acceso. |
 | 3. Plan y límites claros | Catálogo, beneficios, cuotas y aplicación en API | **100 %** | Cerrada y verificada en producción. | [Informe Fase 3](fases/ONBOARDING_FASE_3_PLANES_Y_LIMITES.md): catálogo V2, límites, CI y despliegues. |
 | 4. Equipo y permisos | Invitaciones, roles, aislamiento y cupos | **90 %** | Abierta. Invitación/aceptación real de Sonia confirmadas; matriz de permisos, aislamiento entre tenants y concurrencia de cupos cubiertos por integración PostgreSQL en CI (**17/17** en run 45733109611). Resta el recorrido autenticado con dos cuentas reales en producción y la confirmación de Sonia desde su sesión. | [Informe Fase 4](fases/ONBOARDING_FASE_4_EQUIPO_PERMISOS.md): evidencia actualizada, pruebas CI y validaciones productivas pendientes. |
-| 5. Puesta en marcha operativa | Guía, agenda y primera reserva atendida | **65 %** | En desarrollo. La guía y el acceso a la agenda operativa están implementados en el checkout local; aún falta una reserva real desde Cliente y su atención completa. | [Informe Fase 5](fases/ONBOARDING_FASE_5_PUESTA_EN_MARCHA.md): revisión de pantallas existentes y cambios locales. Sin despliegue ni recorrido productivo E2E todavía. |
+| 5. Puesta en marcha operativa | Guía, agenda y primera reserva atendida | **80 % estimado** | Abierta. Guía de configuración y acceso a agenda implementados, integrados en `main` y publicados en producción. Falta probar la reserva del cliente y completar la atención de extremo a extremo. | [Informe Fase 5](fases/ONBOARDING_FASE_5_PUESTA_EN_MARCHA.md): PR #90, CI, despliegue Firebase y smoke del bundle publicados; recorrido de reserva pendiente. |
 | 6. Facturación y cambios de plan | Checkout, activación, renovación, cancelación y recuperación | **0 % verificado** | Sin auditoría de criterios de salida en el repo. Falta validar que suscripción y permisos coincidan tras los eventos de pago. | Criterio de salida acordado: verificar el estado de suscripción y permisos tras cada evento del ciclo de pago. Aún no hay informe de fase ni evidencia de recorrido. |
 | 7. Seguimiento y crecimiento | Métricas, uso frente a límites y recomendaciones | **0 % verificado** | Sin auditoría de criterios de salida en el repo. Falta comprobar métricas, avisos de capacidad y cambio de nivel. | Criterio de salida acordado: que el dueño consulte actividad y uso frente a límites y pueda decidir un cambio de nivel. Aún no hay informe de fase ni evidencia de recorrido. |
 
 ## Lectura del avance
 
 - Las fases 1–3 están cerradas según el historial del proyecto; la fase 4 permanece abierta en **90 %**, tras integrar y ejecutar en CI la matriz PostgreSQL de membresías.
-- La Fase 5 está en **65 %** por evidencia local de guía, pasos enlazados y agenda operativa con filtro por salón; el criterio final de primera reserva atendida sigue pendiente. Las fases 6–7 continúan en **0 % verificado** porque todavía no se han auditado sus criterios de salida.
+- La Fase 5 está en **80 % estimado**: guía y acceso a agenda publicados, build y CI aprobados; el criterio final de primera reserva atendida sigue pendiente. Las fases 6–7 continúan en **0 % verificado** porque todavía no se han auditado sus criterios de salida.
 - No se calcula un porcentaje global: las fases no tienen ponderaciones acordadas y tres aún no cuentan con evaluación sustentada.
 
-## Revisión inicial de Fase 5 (26 de noviembre de 2026)
+## Revisión y despliegue de Fase 5 (26 de noviembre de 2026)
 
 - La app del salón tenía una agenda que listaba reservas, pero el estado vacío solo decía que las citas aparecerían al reservar. La pantalla de Servicios ya ofrecía una instrucción básica para crear el primer servicio.
 - Se añadió a la agenda vacía una guía secuencial con enlaces al perfil del salón, disponibilidad semanal del prestador, catálogo de servicios y agenda operativa.
 - El acceso «Ver cómo atender citas» abre `ProviderDashboardScreen` en la pestaña Agenda. Esta pantalla existente contiene los controles de gestión de reservas y el flujo de atención.
 - Se añadió `salonId` opcional a `ProviderDashboardScreen` y se pasa al consultar reservas desde el recorrido SaaS, usando el encabezado `x-active-salon-id` que ya admite `ApiService.fetchProviderBookings`.
-- Cambios locales en `apps/glow_provider/lib/screens/salon/salon_shell.dart` y `apps/glow_provider/lib/screens/provider/provider_dashboard_screen.dart`. Aún no se han publicado en `main` ni desplegado. No se creó una cita en producción: la única cuenta QA disponible no tiene una cuenta cliente distinta para completar el flujo de forma segura.
-- El criterio de salida continúa pendiente hasta demostrar reserva creada desde Cliente, aparición en la agenda del salón y ciclo de atención completado. El **65 %** refleja alcance funcional implementado localmente, no porcentaje desplegado ni E2E validado.
-- Validación realizada: análisis estático Flutter de ambos archivos; no se ejecutaron pruebas automatizadas ni build en esta revisión.
+- Los cambios en `apps/glow_provider/lib/screens/salon/salon_shell.dart` y `apps/glow_provider/lib/screens/provider/provider_dashboard_screen.dart` se integraron mediante PR #90 en `main`, commit **`0676e3d5817902b8a6b2c9016ba4920da2b2a728`**.
+- CI de push **45751393943** terminó `success` con análisis y pruebas de las apps según el workflow. La suite Flutter existente del prestador pasó **15/15** localmente.
+- Workflow manual **45751654219** terminó `success`: análisis/pruebas, build web de `glow_provider` y despliegue Firebase Hosting a `live` completados. La app cliente no se compiló ni desplegó en ese workflow.
+- Smoke productivo: `https://glowapp-provider.web.app/` respondió HTTP 200; `main.dart.js` HTTP 200 (5.721.699 bytes) y contiene el texto de la guía (`Prepara tu`, `primera reserva`, `Completa estos pasos`) y `x-active-salon-id`. `Last-Modified: Thu, 26 Nov 2026 03:56:46 GMT`.
+- No se creó ni modificó una cita en producción. La única cuenta QA disponible no tiene una cuenta cliente separada para completar el recorrido de forma segura.
+- El criterio de salida sigue pendiente hasta demostrar reserva creada desde Cliente, aparición en la agenda del salón correcto y ciclo de atención completado. **80 % estimado** representa la guía y los enlaces operativos desplegados; no equivale a E2E completo.
+- El workflow advirtió que algunas acciones usan Node.js 20 y serán ejecutadas con Node.js 24; no afectó el éxito del build ni el despliegue.
 
 ## Evidencia de Fase 4
 

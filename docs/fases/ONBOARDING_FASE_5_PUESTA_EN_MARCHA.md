@@ -1,7 +1,7 @@
 # Onboarding SaaS — Fase 5: Puesta en marcha operativa
 
 **Corte:** 26 de noviembre de 2026  
-**Avance estimado:** 65 % implementado localmente; aún no desplegado ni validado de extremo a extremo.
+**Avance estimado:** 80 %; integrado en `main` y desplegado a producción. Falta validar el flujo de reserva y atención de extremo a extremo.
 
 ## Objetivo y criterio de cierre
 
@@ -26,16 +26,17 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - Archivos modificados: `apps/glow_provider/lib/screens/salon/salon_shell.dart` y `apps/glow_provider/lib/screens/provider/provider_dashboard_screen.dart`.
 - Validación estática: `flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings` terminó correctamente conforme a la configuración del proyecto. El análisis reportó numerosos avisos e informaciones de lint en la app (1.345 en total), incluidos avisos preexistentes; no se reportaron errores fatales.
 - Suite existente: `flutter test` terminó correctamente con **15/15 pruebas**. No hay aún una prueba widget focalizada para la nueva guía.
-- El build release web está pendiente de la integración y del workflow de publicación.
-- No se desplegó a producción. El usuario indicó que no hay una segunda cuenta disponible; además, el salón QA existente conserva un servicio de prueba y no está destinado a operaciones reales. Por eso no se insertó una cita persistente.
+- PR #90, merge commit `0676e3d5817902b8a6b2c9016ba4920da2b2a728`.
+- CI de push `45751393943`: `success`.
+- Workflow de despliegue `45751654219`: build web de `glow_provider` y publicación Firebase live finalizaron `success`.
+- Smoke productivo: el hosting y `main.dart.js` devolvieron HTTP 200. El bundle contiene el texto de la guía y `x-active-salon-id`.
+- El usuario indicó que no hay una segunda cuenta disponible; además, el salón QA existente conserva un servicio de prueba y no está destinado a operaciones reales. Por eso no se insertó una cita persistente.
 - La verificación de reservas se debe completar con una cuenta cliente de QA distinta y una cita de prueba controlada, incluyendo la confirmación/inicio y el cierre de la atención según los controles disponibles.
 
 ## Pendientes para cerrar la fase
 
-- Dar formato y revisar estáticamente los cambios.
-- Desplegar a producción después de integrar la versión revisada.
 - Ejecutar el recorrido autenticado Cliente → reserva → agenda del salón y comprobar que la cita pertenece al `salonId` correcto.
 - Completar el flujo de atención de la cita y registrar evidencia de los estados antes/después.
 - Limpiar o cancelar la cita de prueba con el mecanismo normal de la app, si el estado final lo permite.
 
-**Estado:** abierta. El 65 % corresponde al trabajo de interfaz y conexión local demostrado; no representa despliegue ni validación del criterio de cierre.
+**Estado:** abierta. El 80 % estimado corresponde a guía, enlaces y agenda operativa publicados; no representa la validación del criterio E2E de cierre.
