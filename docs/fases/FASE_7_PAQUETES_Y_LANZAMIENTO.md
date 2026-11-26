@@ -139,6 +139,14 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - Firebase workflow #45894457431 pasó análisis, pruebas Glow Core y análisis del proveedor; el build web y despliegue Hosting live terminaron SUCCESS. `https://glowapp-provider.web.app` devolvió HTTP 200.
 - La ejecución inicial de Backend CI en `main` tuvo un fallo aislado en el E2E del catálogo restringido, pese a que el mismo commit pasó ese E2E en PR CI. El reintento de la ejecución #45894126757 pasó el E2E y el flujo completo.
 
+## Precio visible desde el catálogo SaaS — 26 de noviembre de 2026
+
+- La pantalla de cambio de plan ya no utiliza el precio fijo del enum Flutter: muestra el `priceCop` y el `interval` convertidos desde el catálogo backend. El fallback local mantiene su precio cuando la API no responde.
+- Las unidades de cuotas en beneficios ahora usan la unidad publicada por backend, con el texto local solo como fallback.
+- PR [#142](https://github.com/Diegoromerov/glowapp-firebase/pull/142), commit `623065c`, integrado a `main`. Flutter CI #45895878565 pasó análisis y pruebas.
+- El workflow Firebase #45896199703 publicó la app proveedor en Hosting live con éxito. La API productiva entrega Básico a `99.000 COP/mes`; los niveles propuestos permanecen con `commerciallyAvailable: false`. Hosting responde HTTP 200.
+- Este cambio corrige el valor presentado, pero no cierra el faltante de paridad automática: CI aún no compara todas las capacidades, precios, textos y cuotas de cada plan entre backend y Flutter.
+
 - Base: `main` en `2cb857bb48a3d794b904a113cbb645b8f569f5f2`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
 - La auditoría de código se complementó con verificación de salud productiva, ejecución del job y confirmación del hosting.
