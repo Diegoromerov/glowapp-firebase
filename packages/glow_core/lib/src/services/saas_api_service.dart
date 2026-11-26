@@ -272,7 +272,7 @@ class SaasApiService {
       case 'INVOICING_DOCUMENTS':
         return 'documentos electrónicos al mes';
       case 'API_CALLS':
-        return 'llamadas a la API al mes';
+        return 'solicitudes de integración al mes';
       case 'SITES':
         return 'sedes';
       default:

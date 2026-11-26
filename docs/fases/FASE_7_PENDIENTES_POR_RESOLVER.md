@@ -1,6 +1,6 @@
 # Fase 7 — Puntos por resolver
 
-**Estado:** Fase 7 en curso. Catálogo V4, conservación de derechos heredados y app de prestadores desplegados en producción el 26 de noviembre de 2026.
+**Estado:** Fase 7 en curso. Catálogo V4, conservación de derechos heredados y app de prestadores desplegados en producción el 26 de noviembre de 2026. Corrección de lectura de cuotas e informes administrativos preparada para publicación.
 **Fecha de elaboración:** 23 de noviembre de 2026. **Última conciliación técnica:** 26 de noviembre de 2026.
 **Contexto:** plan comercial SaaS de GlowApp para salones. El trabajo se publica directamente en producción, sin usar staging, conforme a la instrucción del usuario.
 
@@ -17,10 +17,17 @@ Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos 
 | 3 | Caja, inventario, recetas y recursos | Definir qué herramientas operativas corresponden a cada plan y establecer capacidades/cuotas donde hagan falta. | Matriz por plan y límites efectivos en backend. |
 | 4 | Fidelización propia del salón | Elegir entre incluirla en planes, venderla como complemento o ejecutarla como piloto. Definir costos, límites y reglas; mantenerla separada de los puntos globales GlowApp. | Oferta comercial y técnica clara para el programa de puntos del salón. |
 | 5 | Multi-sede | Definir el número de sedes, permisos y funciones de consolidación por plan, especialmente para Empresas. | Límites de sedes explícitos en catálogo, contratos y backend. |
-| 6 | Procesos de integración | Explicar qué operaciones consumen la cuota API mensual y qué ocurre al agotarla (bloqueo, aviso, compra de excedente u otra regla). | Métrica entendible y política de excedentes aplicada de forma consistente. |
+| 6 | Procesos de integración | La app ahora explicará que cuentan solicitudes externas autenticadas con llave API; falta acordar comercialmente el comportamiento ante agotamiento (bloqueo, aviso, compra de excedente u otra regla). | Métrica entendible y política de excedentes aplicada de forma consistente. |
 | 7 | Paridad integral de catálogo y respaldo | La presentación remota del onboarding ya incluye reservas en línea, etiquetas comerciales para cuotas y las mismas descripciones que el fallback activo. Se ocultaron los contadores internos de NIT/mapa/equipo. La comprobación automatizada sigue cubriendo disponibilidad y algunos límites, no todas las descripciones, precios y capacidades. | Extender CI para comparar toda la oferta activa entre el catálogo backend y Flutter y fallar ante divergencias; mantener el backend como fuente de verdad. |
 | 8 | Facturación, cambios de plan y piloto | Definir excedentes, upgrade/downgrade, textos de facturación y alcance del piloto. Instrumentar métricas y preparar un mecanismo de rollback antes de ampliar el lanzamiento. | Flujo de contratación y cambio de plan comprensible, medible y reversible. |
 | 9 | Verificación integral de límites | Ejecutar pruebas de integración en producción controlada para verificar reservas, invitaciones/asientos, API y capacidades en todos los canales de creación, reintento y cambio de plan. | Evidencia por flujo de que el backend aplica correctamente cuotas y permisos. |
+
+## Corrección de reporte de cuotas — 26 de noviembre de 2026
+
+- El panel del proveedor ahora interpreta `DIRECT_BOOKINGS` como reservas directas y ya no clasifica métricas desconocidas como llamadas API.
+- El valor `0` se muestra como «No incluido»; «Ilimitado» solo aparece cuando la API entrega explícitamente esa condición o el catálogo declara límite nulo.
+- La cuota API se presenta como «Procesos de integración», con explicación de que cuenta solicitudes externas autenticadas con llave API. Los actos normales dentro de GlowApp no cuentan.
+- El reporte SuperAdmin queda alineado al período calendario `America/Bogota`, igual al medidor de cuotas. Esta corrección no verifica todas las rutas ni la política de excedentes; el punto 9 sigue abierto.
 
 ## Orden sugerido de resolución
 

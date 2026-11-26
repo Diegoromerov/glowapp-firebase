@@ -50,7 +50,7 @@ const METRICS = Object.freeze({
   AURA_QUERIES: { label: 'Consultas de Aura', unit: 'consultas', period: 'month', kind: 'quota' },
   WHATSAPP_MESSAGES: { label: 'Mensajes de WhatsApp', unit: 'mensajes', period: 'month', kind: 'quota' },
   SITES: { label: 'Sedes', unit: 'sedes', period: 'concurrent', kind: 'quota' },
-  API_CALLS: { label: 'Llamadas a la API', unit: 'llamadas', period: 'month', kind: 'quota' },
+  API_CALLS: { label: 'Procesos de integración', unit: 'solicitudes', period: 'month', kind: 'quota' },
   // Alias temporal para conservar consumidores previos mientras se migra su UI.
   ADVANCED_ANALYTICS: { label: 'Analítica avanzada', unit: null, period: 'account', kind: 'boolean' },
   CUSTOM_BRANDING: { label: 'Marca personalizada', unit: null, period: 'account', kind: 'boolean' },

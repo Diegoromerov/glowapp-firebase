@@ -87,7 +87,8 @@ router.get('/dashboard', async (req, res) => {
       SELECT bp.id, bp.name, bp.saas_plan, um.count as api_calls
       FROM usage_metrics um
       JOIN business_profiles bp ON bp.id = um.tenant_id
-      WHERE um.feature = 'API_CALLS' AND um.period_start = date_trunc('month', CURRENT_DATE)::date
+      WHERE um.feature = 'API_CALLS'
+        AND um.period_start = date_trunc('month', CURRENT_TIMESTAMP AT TIME ZONE 'America/Bogota')::date
       ORDER BY um.count DESC
       LIMIT 10;
     `);
@@ -162,7 +163,10 @@ router.get('/tenants', async (req, res) => {
         u.email as owner_email,
         s.status as sub_status, s.plan as sub_plan, s.current_period_end,
         (SELECT COUNT(*) FROM memberships m WHERE m.business_profile_id = bp.id AND m.status = 'ACTIVE') as team_size,
-        (SELECT COUNT(*) FROM usage_metrics um WHERE um.tenant_id = bp.id AND um.feature = 'API_CALLS' AND um.period_start = date_trunc('month', CURRENT_DATE)::date) as api_calls_this_month
+        (SELECT COUNT(*) FROM usage_metrics um
+          WHERE um.tenant_id = bp.id AND um.feature = 'API_CALLS'
+            AND um.period_start = date_trunc('month', CURRENT_TIMESTAMP AT TIME ZONE 'America/Bogota')::date
+        ) as api_calls_this_month
       FROM business_profiles bp
       LEFT JOIN usuarios u ON u.id = bp.provider_id
       LEFT JOIN subscriptions s ON s.tenant_id = bp.id AND s.status IN ('active', 'trialing', 'past_due')
@@ -238,7 +242,8 @@ router.get('/tenants/:tenantId', async (req, res) => {
       pool.query(`
         SELECT feature, count, limit, period_start, period_end
         FROM usage_metrics
-        WHERE tenant_id = $1 AND period_start >= date_trunc('month', CURRENT_DATE)::date - INTERVAL '6 months'
+        WHERE tenant_id = $1
+          AND period_start >= date_trunc('month', CURRENT_TIMESTAMP AT TIME ZONE 'America/Bogota')::date - INTERVAL '6 months'
         ORDER BY period_start DESC, feature
       `, [tenantId]),
       pool.query(`
@@ -484,7 +489,7 @@ router.get('/usage', async (req, res) => {
         AVG(um.count)::numeric(10,2) as avg_per_tenant,
         MAX(um.count) as max_count
       FROM usage_metrics um
-      WHERE um.period_start >= date_trunc('month', CURRENT_DATE) - INTERVAL '${m} months'
+      WHERE um.period_start >= date_trunc('month', CURRENT_TIMESTAMP AT TIME ZONE 'America/Bogota')::date - INTERVAL '${m} months'
       ${whereFeature}
       GROUP BY um.feature, date_trunc('month', um.period_start)
       ORDER BY month DESC, um.feature;
@@ -495,7 +500,7 @@ router.get('/usage', async (req, res) => {
       SELECT um.tenant_id, bp.name, um.feature, um.count, um.limit, bp.saas_plan
       FROM usage_metrics um
       JOIN business_profiles bp ON bp.id = um.tenant_id
-      WHERE um.period_start = date_trunc('month', CURRENT_DATE)::date
+      WHERE um.period_start = date_trunc('month', CURRENT_TIMESTAMP AT TIME ZONE 'America/Bogota')::date
         AND um.limit IS NOT NULL
         AND um.count > um.limit
       ORDER BY (um.count::numeric / um.limit) DESC;
