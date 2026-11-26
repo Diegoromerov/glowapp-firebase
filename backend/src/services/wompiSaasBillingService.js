@@ -8,12 +8,19 @@ const CONSENT_VERSION = 'saas-recurring-v1';
 const isEnabled = () => process.env.WOMPI_SAAS_BILLING_ENABLED === 'true';
 const isCofEnabled = () => process.env.WOMPI_SAAS_COF_ENABLED === 'true';
 const liveBase = () => /production\.wompi\.co/i.test(wompiClient.baseUrl);
-const isCheckoutAvailable = () => isEnabled() && wompiClient.isConfigured()
-  && (!liveBase() || process.env.WOMPI_SAAS_LIVE_BILLING_ENABLED === 'true');
+const isCheckoutAvailable = () => isEnabled() && isCofEnabled()
+  && wompiClient.isConfigured() && Boolean(String(process.env.WOMPI_SAAS_ENCRYPTION_KEY || '').trim())
+  && (!liveBase() || (process.env.WOMPI_SAAS_LIVE_BILLING_ENABLED === 'true'
+    && process.env.WOMPI_SAAS_LIVE_COF_CONFIRMED === 'true'));
 
 function assertBillingEnabled() {
   if (!isEnabled()) {
     const error = new Error('El checkout SaaS con Wompi está desactivado.');
+    error.status = 503;
+    throw error;
+  }
+  if (!isCofEnabled()) {
+    const error = new Error('El cobro mensual recurrente COF aún no está habilitado para Wompi SaaS.');
     error.status = 503;
     throw error;
   }
@@ -171,6 +178,10 @@ async function processWebhook(client, event, checksum) {
     throw error;
   }
   const status = String(authoritative.status || '').toUpperCase();
+  const cardBrand = String(authoritative.paymentMethodExtra?.brand || '').toUpperCase();
+  const cardLastFour = /^\d{4}$/.test(String(authoritative.paymentMethodExtra?.last_four || ''))
+    ? String(authoritative.paymentMethodExtra.last_four) : null;
+  const cardSupportsCof = ['VISA', 'MASTERCARD'].includes(cardBrand);
   if (status === 'PENDING') {
     await client.query(`UPDATE saas_billing_attempts SET status='PENDING', wompi_transaction_id=$2 WHERE id=$1`, [attempt.id, authoritative.id]);
     return { pending: true };
@@ -190,27 +201,30 @@ async function processWebhook(client, event, checksum) {
 
   await client.query(
     `UPDATE saas_billing_attempts SET status='APPROVED', wompi_transaction_id=$2,
-       payment_source_ciphertext=NULL,resolved_at=NOW() WHERE id=$1`,
-    [attempt.id, authoritative.id]);
-  const sourceCiphertext = attempt.payment_source_ciphertext;
+       card_brand=$3,card_last_four=$4,payment_source_ciphertext=NULL,resolved_at=NOW() WHERE id=$1`,
+    [attempt.id, authoritative.id, cardBrand || null, cardLastFour]);
+  const sourceCiphertext = isCofEnabled() && cardSupportsCof ? attempt.payment_source_ciphertext : null;
+  const cancelAtPeriodEnd = !sourceCiphertext;
   const existingSub = (await client.query(
     `SELECT id FROM subscriptions WHERE tenant_id=$1 ORDER BY created_at DESC LIMIT 1 FOR UPDATE`, [attempt.tenant_id])).rows[0];
   const { rows: subRows } = existingSub ? await client.query(
     `UPDATE subscriptions SET plan=$2,status='active',current_period_start=$3,current_period_end=$4,
-       cancel_at_period_end=FALSE,billing_provider='wompi',billing_email=$5,billing_consent_at=$6,
-       billing_consent_user_id=$7,billing_consent_ip=$8,billing_consent_version=$9,
-       wompi_payment_source_ciphertext=$10,wompi_payment_source_type='CARD',billing_retry_count=0,
+       cancel_at_period_end=$5,billing_provider='wompi',billing_email=$6,billing_consent_at=$7,
+       billing_consent_user_id=$8,billing_consent_ip=$9,billing_consent_version=$10,
+       wompi_payment_source_ciphertext=$11,wompi_payment_source_type=CASE WHEN $11 IS NULL THEN NULL ELSE 'CARD' END,
+       wompi_card_brand=$12,wompi_card_last_four=$13,billing_retry_count=0,
        billing_next_retry_at=NULL,updated_at=NOW() WHERE id=$1 RETURNING *`,
-    [existingSub.id, attempt.plan, attempt.period_start, attempt.period_end, attempt.billing_email,
-      attempt.consent_at, attempt.consent_user_id, attempt.consent_ip, attempt.consent_version, sourceCiphertext]
+    [existingSub.id, attempt.plan, attempt.period_start, attempt.period_end, cancelAtPeriodEnd, attempt.billing_email,
+      attempt.consent_at, attempt.consent_user_id, attempt.consent_ip, attempt.consent_version, sourceCiphertext, cardBrand || null, cardLastFour]
   ) : await client.query(
     `INSERT INTO subscriptions (tenant_id, plan, status, current_period_start, current_period_end,
        cancel_at_period_end, metadata, billing_provider, billing_email, billing_consent_at,
        billing_consent_user_id, billing_consent_ip, billing_consent_version,
-       wompi_payment_source_ciphertext, wompi_payment_source_type, billing_retry_count)
-     VALUES ($1,$2,'active',$3,$4,FALSE,'{}'::jsonb,'wompi',$5,$6,$7,$8,$9,$10,'CARD',0) RETURNING *`,
-    [attempt.tenant_id, attempt.plan, attempt.period_start, attempt.period_end, attempt.billing_email || null,
-      attempt.consent_at, attempt.consent_user_id, attempt.consent_ip, attempt.consent_version, sourceCiphertext]);
+       wompi_payment_source_ciphertext, wompi_payment_source_type, billing_retry_count,wompi_card_brand,wompi_card_last_four)
+     VALUES ($1,$2,'active',$3,$4,$5,'{}'::jsonb,'wompi',$6,$7,$8,$9,$10,$11,$12,0,$13,$14) RETURNING *`,
+    [attempt.tenant_id, attempt.plan, attempt.period_start, attempt.period_end, cancelAtPeriodEnd,
+      attempt.billing_email || null, attempt.consent_at, attempt.consent_user_id, attempt.consent_ip,
+      attempt.consent_version, sourceCiphertext, sourceCiphertext ? 'CARD' : null, cardBrand || null, cardLastFour]);
   const subscription = subRows[0];
   await client.query(`UPDATE business_profiles SET saas_plan=$1,updated_at=NOW() WHERE id=$2`, [attempt.plan, attempt.tenant_id]);
   await invoiceService.createInvoiceFromSubscription(client, subscription, {
@@ -262,6 +276,7 @@ async function renewDueSubscriptions(client) {
        AND cancel_at_period_end=FALSE AND current_period_end <= NOW()
        AND billing_email IS NOT NULL
        AND wompi_payment_source_ciphertext IS NOT NULL
+       AND wompi_card_brand IN ('VISA','MASTERCARD')
        AND (billing_next_retry_at IS NULL OR billing_next_retry_at <= NOW())
        AND billing_retry_count < 3 ORDER BY current_period_end LIMIT 1 FOR UPDATE SKIP LOCKED`);
   let processed = 0;

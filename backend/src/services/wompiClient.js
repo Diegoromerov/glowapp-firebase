@@ -303,6 +303,11 @@ class WompiClient {
 
     const { data } = await this._request('POST', '/payment_sources', { auth: 'private', body });
     if (!data?.id) throw new WompiError('Wompi no devolvió el id de la fuente de pago.');
+    if (String(data.status || '').toUpperCase() !== 'AVAILABLE') {
+      const error = new WompiError('Wompi no devolvió una fuente de pago disponible.');
+      error.status = 422;
+      throw error;
+    }
 
     return { id: data.id, status: data.status, type: data.type };
   }
@@ -404,6 +409,7 @@ class WompiClient {
       amountInCents: data?.amount_in_cents,
       currency: data?.currency,
       paymentMethodType: data?.payment_method_type || null,
+      paymentMethodExtra: data?.payment_method?.extra || {},
       statusMessage: data?.status_message || null,
       asyncPaymentUrl: this._extraerAsyncPaymentUrl(data)
     };
