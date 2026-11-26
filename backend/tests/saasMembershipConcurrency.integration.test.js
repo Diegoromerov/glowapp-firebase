@@ -457,7 +457,6 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       );
       const ownerAdminToken = tokenFor(salonWithAdmin, 'owner');
       const adminToken = tokenFor(salonWithAdmin, 'active');
-      const ownerMemberToken = tokenFor(salonWithMember, 'owner');
       const memberToken = tokenFor(salonWithMember, 'active');
 
       const adminInvite = await request(app)
