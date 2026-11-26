@@ -1,0 +1,17 @@
+# Keep Railway snapshots focused on deployable application sources.
+**/node_modules/
+**/pubspec.yaml
+**/pubspec.lock
+**/*.dart
+**/melos.yaml
+**/melos.lock
+**/android/
+**/ios/
+**/web/
+**/lib/
+apps/
+backend/
+admin/
+packages/
+scripts/
+tools/
