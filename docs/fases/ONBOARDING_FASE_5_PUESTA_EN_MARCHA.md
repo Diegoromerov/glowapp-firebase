@@ -25,7 +25,7 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 
 - Archivos modificados: `apps/glow_provider/lib/screens/salon/salon_shell.dart` y `apps/glow_provider/lib/screens/provider/provider_dashboard_screen.dart`.
 - Validación estática: `flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings` terminó correctamente conforme a la configuración del proyecto. El análisis reportó numerosos avisos e informaciones de lint en la app (1.345 en total), incluidos avisos preexistentes; no se reportaron errores fatales.
-- Suite existente: `flutter test` terminó correctamente con **15/15 pruebas**. No hay aún una prueba widget focalizada para la nueva guía.
+- Suite existente previa: `flutter test` terminó correctamente con **15/15 pruebas**. Prueba focalizada nueva `salon_shell_first_operation_test.dart`: **2/2**; comprueba los pasos visibles/navegación y que no se abra una agenda si falta el salón.
 - PR #90, merge commit `0676e3d5817902b8a6b2c9016ba4920da2b2a728`.
 - CI de push `45751393943`: `success`.
 - Workflow de despliegue `45751654219`: build web de `glow_provider` y publicación Firebase live finalizaron `success`.
