@@ -50,12 +50,16 @@ class SalonShell extends StatefulWidget {
   /// Plan vigente, sólo para el texto de la tarjeta de bloqueo.
   final String plan;
 
+  /// Elegibilidad de mapa del salón; inyectable para previews y pruebas.
+  final bool? canShowOnMap;
+
   const SalonShell({
     super.key,
     this.initialIndex = 0,
     this.cargarDatos = true,
     this.entitlements,
     this.plan = 'FREE_TRIAL',
+    this.canShowOnMap,
   });
 
   @override
@@ -68,6 +72,7 @@ class _SalonShellState extends State<SalonShell> {
   late List<String> _entitlements;
   late String _plan;
   int? _salonId;
+  bool? _canShowOnMap;
   bool _tenantReady = false;
   bool _tenantLoading = true;
   String? _tenantError;
@@ -92,6 +97,7 @@ class _SalonShellState extends State<SalonShell> {
     _cargarDatos = widget.cargarDatos;
     _entitlements = widget.entitlements ?? const <String>[];
     _plan = widget.plan;
+    _canShowOnMap = widget.canShowOnMap;
     _tenantReady = widget.entitlements != null || !widget.cargarDatos;
     if (widget.entitlements == null && widget.cargarDatos) {
       _cargarPlan();
@@ -133,6 +139,7 @@ class _SalonShellState extends State<SalonShell> {
         _entitlements = caps.map((c) => c.toString()).toList();
         _plan = (salon['plan_saas'] ?? 'FREE_TRIAL').toString();
         _salonId = salonId;
+        _canShowOnMap = salon['can_show_on_map'] as bool?;
         _tenantReady = true;
         _tenantLoading = false;
         // La agenda necesita volver a pedir citas con la sede ya resuelta.
@@ -261,7 +268,11 @@ class _SalonShellState extends State<SalonShell> {
   Widget _buildTab(int i) {
     switch (i) {
       case 0:
-        return _AgendaTab(cargar: _cargarDatos, salonId: _salonId);
+        return _AgendaTab(
+          cargar: _cargarDatos,
+          salonId: _salonId,
+          canShowOnMap: _canShowOnMap,
+        );
       case 1:
         if (_salonId == null) return const _CajaTab();
         return CajaScreen(salonId: _salonId!, cargarDatos: _cargarDatos);
@@ -330,7 +341,12 @@ class _Destino {
 class _AgendaTab extends StatefulWidget {
   final bool cargar;
   final int? salonId;
-  const _AgendaTab({required this.cargar, required this.salonId});
+  final bool? canShowOnMap;
+  const _AgendaTab({
+    required this.cargar,
+    required this.salonId,
+    required this.canShowOnMap,
+  });
 
   @override
   State<_AgendaTab> createState() => _AgendaTabState();
@@ -392,6 +408,7 @@ class _AgendaTabState extends State<_AgendaTab> {
       return _GuiaPrimeraOperacion(
         salonId: widget.salonId,
         cargar: widget.cargar,
+        canShowOnMap: widget.canShowOnMap,
       );
     }
     return ListView.separated(
@@ -467,8 +484,13 @@ class _AgendaTabState extends State<_AgendaTab> {
 class _GuiaPrimeraOperacion extends StatelessWidget {
   final int? salonId;
   final bool cargar;
+  final bool? canShowOnMap;
 
-  const _GuiaPrimeraOperacion({required this.salonId, required this.cargar});
+  const _GuiaPrimeraOperacion({
+    required this.salonId,
+    required this.cargar,
+    required this.canShowOnMap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -532,6 +554,40 @@ class _GuiaPrimeraOperacion extends StatelessWidget {
           boton: 'Ver perfil del salón',
           onTap: () => Navigator.pushNamed(context, '/salon/profile'),
         ),
+        if (canShowOnMap != null)
+          Container(
+            margin: const EdgeInsets.only(bottom: Spacing.md),
+            padding: const EdgeInsets.all(Spacing.md),
+            decoration: BoxDecoration(
+              color: canShowOnMap! ? t.successBg : t.warningBg,
+              borderRadius: BorderRadius.circular(Radii.md),
+              border: Border.all(
+                color: canShowOnMap! ? t.success : t.warning,
+              ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  canShowOnMap!
+                      ? Icons.location_on_outlined
+                      : Icons.info_outline,
+                  color: canShowOnMap! ? t.successOn : t.warningOn,
+                ),
+                const SizedBox(width: Spacing.sm),
+                Expanded(
+                  child: Text(
+                    canShowOnMap!
+                        ? 'Tu salón está habilitado para aparecer en el mapa de clientes.'
+                        : 'Tu salón aún no puede aparecer en el mapa de clientes. Revisa que la ubicación esté habilitada y pública y que tu plan incluya visibilidad en el mapa.',
+                    style: TypographyTokens.bodySmall(t).copyWith(
+                      color: canShowOnMap! ? t.successOn : t.warningOn,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         paso(
           titulo: '2. Configura cuándo puedes atender',
           detalle: 'Define tu disponibilidad semanal en el perfil del prestador.',
@@ -842,4 +898,3 @@ class _Estado extends StatelessWidget {
     );
   }
 }
-
