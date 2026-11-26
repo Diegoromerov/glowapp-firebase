@@ -84,6 +84,15 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | P2 | Aclarar alcance operativo de WhatsApp, Aura, POS, multi-sede y soporte; comprobar proveedor, permisos, cuotas y capacidad de atención antes de activar oferta. | Beneficio se puede entregar y medir; soporte/SLA no se promete sin capacidad. |
 | P2 | Preparar piloto y rollout gradual: cohortes, métricas de fallo/uso/soporte, interruptores y reversión. | Piloto medido; criterios de ampliación y reversión escritos; no hay divergencias de tenant/plan/cuota. |
 
+## Seguridad del ciclo de prueba — 26 de noviembre de 2026
+
+- Se verificó que `FREE_TRIAL` no necesita ni debe crear objetos de facturación en Stripe: su plazo lo gestiona `business_profiles.saas_trial_ends_at` y el job SaaS independiente la degrada a Freemium.
+- `subscriptionService` ahora limita la creación de customer/suscripción Stripe a planes pagos. El alta gratuita conserva el registro local para estado y presentación, sin medio de pago ni renovación externa.
+- El cambio se integró en `main` (`7a9474b`) y Railway lo desplegó en producción (deployment `0d9c984a-3a7e-4e37-8ad2-117e91ae78e5`, SUCCESS). La CI de backend pasó tras un reintento; el primer fallo fue el E2E de catálogo/RLS, que pasó en el reintento.
+- Verificación productiva posterior: `/api/health` devuelve `OK`; `GET /api/saas/catalog` devuelve versión 4, Prueba Gratis de 14 días y Básico sin `INVOICING_ADDON`.
+- No se ejecutó ni se canceló ninguna suscripción remota en Stripe. El cambio evita crear nuevas suscripciones remotas para pruebas; no reconcilia ni cancela registros históricos existentes en Stripe.
+- La prueba real de expiración y downgrade con tenant QA todavía falta. Esto no cierra el checkout, conciliación de pagos, auditoría integral de cuotas, decisiones comerciales ni piloto; Fase 7 sigue en curso.
+
 ## Secuencia de implementación recomendada
 
 1. Resolver el vencimiento de Prueba Gratis con fecha de inicio y transición segura, sin alterar retroactivamente tenants existentes.
