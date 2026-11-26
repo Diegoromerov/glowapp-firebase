@@ -88,6 +88,10 @@ describeWithPostgres('SaaS direct booking quota with PostgreSQL RLS', () => {
           periodStart: period.start,
           periodEnd: period.end,
           getLimit,
+          legacyTenantId: '1',
+          setTenantContext: (tenantId) => client.query(
+            "SELECT set_config('app.tenant_id', $1, true)", [tenantId]
+          ),
           countHistorical: async () => {
             historicalReads += 1;
             return 29;
@@ -97,7 +101,7 @@ describeWithPostgres('SaaS direct booking quota with PostgreSQL RLS', () => {
         return { allowed: true, result };
       } catch (error) {
         await client.query('ROLLBACK');
-        return { allowed: false, code: error.code, current: error.current };
+        return { allowed: false, code: error.code, current: error.current, message: error.message };
       } finally {
         client.release();
       }

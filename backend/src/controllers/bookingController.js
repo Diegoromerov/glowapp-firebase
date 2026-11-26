@@ -643,6 +643,11 @@ exports.createBooking = async (req, res) => {
           periodStart,
           periodEnd,
           getLimit: (plan, feature) => usageMeteringService.getLimit(plan, feature),
+          legacyTenantId: req.user?.tenant_id ?? '',
+          setTenantContext: (tenantId) => sequelize.query(
+            "SELECT set_config('app.tenant_id', $1, true)",
+            { bind: [tenantId], type: sequelize.QueryTypes.SELECT, transaction: t }
+          ),
           countHistorical: async ({ tenantId: profileId, providerId, periodStart: monthStart }) => {
             // Primera medición del mes: conserva el histórico identificado como
             // reserva directa y cuenta una sola vez cada reserva agrupada.
