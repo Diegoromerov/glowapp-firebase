@@ -166,7 +166,8 @@ async function startCheckout(client, { tenantId, userId, userEmail, plan, paymen
       amountInCents: amount, currency: 'COP', reference, customerEmail: userEmail,
       acceptanceToken: acceptance.acceptanceToken,
       personalDataAuthToken: acceptance.personalDataAuthToken,
-      paymentSourceId: source.id, recurrent: isCofEnabled(), ip: consentIp,
+      paymentSourceId: source.id, paymentMethod: { installments: 1 },
+      recurrent: isCofEnabled(), ip: consentIp,
     });
     await client.query(
       `UPDATE saas_billing_attempts SET status='PENDING', wompi_transaction_id=$2,
@@ -346,7 +347,7 @@ async function renewDueSubscriptions(client) {
       const transaction = await wompiClient.createTransaction({
         amountInCents: amount, currency: 'COP', reference, customerEmail: sub.billing_email,
         acceptanceToken: acceptance.acceptanceToken, personalDataAuthToken: acceptance.personalDataAuthToken,
-        paymentSourceId: sourceId, recurrent: true,
+        paymentSourceId: sourceId, paymentMethod: { installments: 1 }, recurrent: true,
       });
       await client.query(`UPDATE saas_billing_attempts SET status='PENDING',wompi_transaction_id=$2 WHERE id=$1`, [attempt.id, transaction.id]);
       processed++;
