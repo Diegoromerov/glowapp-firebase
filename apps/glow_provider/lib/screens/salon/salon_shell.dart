@@ -22,6 +22,7 @@ import 'package:flutter/material.dart';
 import 'package:glow_core/core/theme/tokens.dart';
 import 'package:glow_core/design/icons/glow_icon.dart';
 import 'package:glow_core/services/api_service.dart';
+import 'package:glow_core/services/active_salon_service.dart';
 import 'package:glow_core/services/auth_service.dart';
 import 'package:glow_core/services/saas_api_service.dart';
 import 'package:glow_core/widgets/provider_services_screen.dart';
@@ -117,13 +118,21 @@ class _SalonShellState extends State<SalonShell> {
       if (salon is! Map) {
         throw StateError('No encontramos una sede vinculada a tu cuenta.');
       }
+      final salonId = (salon['id'] as num?)?.toInt();
+      if (salonId == null || salonId <= 0) {
+        throw StateError('No encontramos una sede válida para tu espacio SaaS.');
+      }
+      // Las acciones de la agenda (iniciar/completar) construyen sus headers
+      // desde ActiveSalonService. Fijamos la misma sede que cargó este shell
+      // para que la consulta y las mutaciones operen sobre idéntico contexto.
+      await ActiveSalonService.instance.setActiveSalon(salonId);
       final caps =
           (salon['entitlements'] as List<dynamic>?) ?? const <dynamic>[];
       if (!mounted) return;
       setState(() {
         _entitlements = caps.map((c) => c.toString()).toList();
         _plan = (salon['plan_saas'] ?? 'FREE_TRIAL').toString();
-        _salonId = (salon['id'] as num?)?.toInt() ?? _salonId;
+        _salonId = salonId;
         _tenantReady = true;
         _tenantLoading = false;
         // La agenda necesita volver a pedir citas con la sede ya resuelta.
