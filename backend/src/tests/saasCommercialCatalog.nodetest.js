@@ -112,3 +112,72 @@ test('Flutter fallback availability and purchase flags stay in parity with backe
   assert.deepEqual(tiersFromGetter('isCommerciallyAvailable'), backendAvailable);
   assert.deepEqual(tiersFromGetter('isPurchasable'), backendPurchasable);
 });
+
+test('Flutter fallback descriptions, prices and benefits match the public catalog', () => {
+  const catalog = publicCatalog();
+  const servicePath = path.resolve(
+    __dirname,
+    '../../../packages/glow_core/lib/src/services/saas_api_service.dart'
+  );
+  const modelPath = path.resolve(
+    __dirname,
+    '../../../packages/glow_core/lib/src/models/saas/saas_models.dart'
+  );
+  const service = fs.readFileSync(servicePath, 'utf8');
+  const model = fs.readFileSync(modelPath, 'utf8');
+  const tierNames = {
+    FREE_TRIAL: 'freeTrial',
+    FREEMIUM: 'freemium',
+    BASIC: 'basic',
+  };
+  const featureMetrics = [
+    ['RESOURCES', 'RESOURCES'],
+    ['AURA_BUSINESS', 'AURA_QUERIES'],
+    ['WHATSAPP_INTEGRATION', 'WHATSAPP_MESSAGES'],
+    ['INVOICING', 'INVOICING_DOCUMENTS'],
+    ['INVOICING_ADDON', 'INVOICING_DOCUMENTS'],
+    ['API_KEYS', 'API_CALLS'],
+    ['MULTI_SITE', 'SITES'],
+  ];
+
+  for (const plan of catalog.plans.filter((entry) => entry.commerciallyAvailable)) {
+    const tierName = tierNames[plan.id];
+    assert.ok(tierName, `missing Flutter fallback tier mapping for ${plan.id}`);
+
+    const description = service.match(new RegExp(
+      `case SaasPlanTier\\.${tierName}:\\s*return '([^']*)';`
+    ))?.[1];
+    assert.equal(description, plan.description, `${plan.id}.description`);
+
+    const tierDeclaration = model.match(new RegExp(
+      `${tierName}\\('${plan.id}',\\s*'([^']*)',\\s*(\\d+),`
+    ));
+    assert.ok(tierDeclaration, `missing local enum price for ${plan.id}`);
+    assert.equal(tierDeclaration[1], plan.name, `${plan.id}.name`);
+    assert.equal(Number(tierDeclaration[2]), plan.priceCop * 100, `${plan.id}.price`);
+
+    const featureBlock = service.match(new RegExp(
+      `case SaasPlanTier\\.${tierName}:\\s*return const \\[([\\s\\S]*?)\\];`
+    ))?.[1];
+    assert.ok(featureBlock, `missing local benefits for ${plan.id}`);
+    const localFeatures = [...featureBlock.matchAll(/'([^']*)'/g)]
+      .map((match) => match[1])
+      .sort();
+
+    const remoteFeatures = [];
+    for (const capability of plan.capabilities) {
+      const definition = catalog.capabilities[capability];
+      if (definition && (definition.kind === 'boolean' || capability === 'ONLINE_BOOKING')) {
+        remoteFeatures.push(definition.label || capability);
+      }
+    }
+    for (const [capability, metric] of featureMetrics) {
+      if (!plan.capabilities.includes(capability)) continue;
+      const quota = plan.quotas[metric];
+      if (!quota) continue;
+      if (quota.limit === null) remoteFeatures.push(`${quota.unit} ilimitados`);
+      else if (quota.limit > 0) remoteFeatures.push(`${quota.limit} ${quota.unit}`);
+    }
+    assert.deepEqual(localFeatures, remoteFeatures.sort(), `${plan.id}.features`);
+  }
+});

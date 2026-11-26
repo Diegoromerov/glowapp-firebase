@@ -250,7 +250,7 @@ class SaasApiService {
       case SaasPlanTier.freeTrialLegacy:
         return 'Prueba Gratis heredada con las condiciones vigentes al momento del registro.';
       case SaasPlanTier.freeTrial:
-        return 'Prueba GlowApp durante 14 días con hasta 3 personas, agenda y herramientas de operación para tu salón.';
+        return 'Prueba GlowApp durante 14 días con hasta 3 personas y 150 reservas al mes.';
       case SaasPlanTier.freemium:
         return 'Administra tu salón gratis de forma permanente con 1 persona y 30 reservas al mes.';
       case SaasPlanTier.basic:
@@ -311,7 +311,7 @@ class SaasApiService {
           'Caja y ventas',
           'Inventario',
           'Reportes básicos',
-          'Recursos ilimitados',
+          'recursos ilimitados',
           'Checklists de cumplimiento',
           'Fidelización y puntos del salón',
           'Recetas y consumo de productos',
