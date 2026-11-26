@@ -48,6 +48,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     const client = await adminPool.connect();
     const fixture = {
       profileId: crypto.randomUUID(),
+      salonId: null,
       userIds: [],
       memberships: {},
       emails: {},
@@ -75,6 +76,11 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
         'INSERT INTO business_profiles (id, provider_id, vertical_id, name, tenant_id) VALUES ($1, $2, $3, $4, $5)',
         [fixture.profileId, fixture.ownerId, verticalId, 'SaaS seat concurrency test', 'test-' + fixture.profileId]
       );
+      const salon = await client.query(
+        'INSERT INTO salones (id_dueno, nombre_salon, business_profile_id) VALUES ($1, $2, $3) RETURNING id',
+        [fixture.ownerId, 'SaaS seat concurrency test', fixture.profileId]
+      );
+      fixture.salonId = salon.rows[0].id;
       await client.query("SELECT set_config('app.user_id', $1, true)", [String(fixture.ownerId)]);
 
       fixture.memberships.owner = crypto.randomUUID();
@@ -112,6 +118,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       await client.query('ALTER TABLE memberships DISABLE TRIGGER trg_prevent_unsafe_membership_change');
       await client.query('DELETE FROM memberships WHERE business_profile_id = $1', [fixture.profileId]);
       await client.query('ALTER TABLE memberships ENABLE TRIGGER trg_prevent_unsafe_membership_change');
+      await client.query('DELETE FROM salones WHERE business_profile_id = $1', [fixture.profileId]);
       await client.query('DELETE FROM business_profiles WHERE id = $1', [fixture.profileId]);
       await client.query('DELETE FROM usuarios WHERE id = ANY($1::integer[])', [fixture.userIds]);
       await client.query('COMMIT');
