@@ -139,3 +139,13 @@ El avance de salida se mantiene en **75 %**: el fallo visual del reenvío ya est
 - `GET /api/health` respondió `200` para el commit `5ef3e63e2416b0b0f5cfb4111edc82160c9f0211`; `env=production`, `dbMode=postgres`, `pgAvailable=true` y `servingFabricatedData=false`.
 - Sin credenciales y con `X-App-Audience: salon`, `GET /api/saas/team` y `GET /api/saas/team/audit` devolvieron `401`. La consulta no cambió datos ni creó eventos.
 - Confirma salud del backend y denegación anónima; no sustituye la prueba de dos usuarios autenticados en tenants distintos ni demuestra cupos/reactivación en cuentas productivas. La Fase 4 continúa en **75 %**.
+
+## Revisión de cierre y avance (26 de noviembre de 2026)
+
+**Avance revisado: 90 % estimado. Fase abierta.** El 75 % previo se calculó antes de integrar la matriz completa de integración PostgreSQL de PR #88/#89.
+
+- Backend CI run **45733109611**, job **139619717500**, terminó `success`; el paso de integración contra PostgreSQL real ejecutó tres suites y aprobó **17/17** pruebas. En particular, `backend/tests/saasMembershipConcurrency.integration.test.js` crea perfiles/salones/usuarios efímeros, autentica solicitudes HTTP con JWT, utiliza el rol PostgreSQL restringido y limpia los fixtures.
+- Casos cubiertos: competencia por el último cupo, carrera invitación/reactivación, aceptación solo con correo invitado, expiración/reenvío, aislamiento de membresías/auditoría/consulta de usuarios entre dos salones, JWT atado al tenant propio y permisos OWNER/ADMIN/MEMBER. El email está simulado; estas pruebas no generan correo ni escriben en los datos productivos.
+- En producción, el commit `883ad735a79baa7f925c849e75d80dbe2e690aa4` está desplegado; Railway reporta los ocho servicios en línea y sin trabajo pendiente. `/api/health` indica PostgreSQL disponible y las rutas de equipo/auditoría rechazan acceso anónimo con HTTP 401.
+- Se consideran acreditadas por integración automatizada las reglas de roles, aislamiento y cupos; el porcentaje no se eleva a 100 % porque falta el recorrido con dos identidades reales de QA en producción y Sonia debe validar desde su propia sesión. Actualmente no hay una segunda cuenta de QA disponible.
+- Para cerrar: proporcionar/autenticar una segunda cuenta de QA perteneciente a otro salón, ejecutar el recorrido productivo controlado y obtener la confirmación de Sonia. No se cambiaron membresías ni se enviaron correos en esta revisión.

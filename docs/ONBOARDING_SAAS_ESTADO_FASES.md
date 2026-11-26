@@ -8,14 +8,14 @@
 | 1. Entrada confiable | Alta, tenant válido, reintentos y acceso protegido | **100 %** | Cerrada por el usuario el 25 Nov 2026. | [Informe Fase 1](fases/ONBOARDING_FASE_1_PUERTA_SAAS.md): despliegue, bootstrap idempotente y pruebas de acceso. El informe separa los escenarios adicionales que no bloquearon el cierre. |
 | 2. Configuración inicial del salón | Datos del salón, sede, horarios y servicios iniciales | **100 %** | Cerrada; evaluación visual confirmada por el usuario el 25 Nov 2026. | [Informe Fase 2](fases/ONBOARDING_FASE_2_CONFIGURACION_SALON.md) y [registro del salón QA](fases/QA_SALON_FASE_2.md): perfil, horario, servicio de prueba, persistencia y acceso. |
 | 3. Plan y límites claros | Catálogo, beneficios, cuotas y aplicación en API | **100 %** | Cerrada y verificada en producción. | [Informe Fase 3](fases/ONBOARDING_FASE_3_PLANES_Y_LIMITES.md): catálogo V2, límites, CI y despliegues. |
-| 4. Equipo y permisos | Invitaciones, roles, aislamiento y cupos | **75 %** | Abierta. Invitación y aceptación de Sonia están confirmadas en producción; el diálogo del propietario muestra Personal. PR #86 cubre aceptación por correo y reenvío vencido en PostgreSQL CI (**14/14**). PR #87 añade aislamiento entre dos tenants usando el rol restringido (**15/15**): miembros, auditoría, datos de usuarios y servicio. PR #85 verifica serialización de cupos en CI. Se mantiene 75 % porque falta validar el flujo HTTP con dos sesiones reales en producción, cupos/reactivación productivos y la confirmación de Sonia desde su cuenta. | [Informe Fase 4](fases/ONBOARDING_FASE_4_EQUIPO_PERMISOS.md): evidencia de producción, pruebas locales/CI y pendientes. |
+| 4. Equipo y permisos | Invitaciones, roles, aislamiento y cupos | **90 %** | Abierta. Invitación/aceptación real de Sonia confirmadas; matriz de permisos, aislamiento entre tenants y concurrencia de cupos cubiertos por integración PostgreSQL en CI (**17/17** en run 45733109611). Resta el recorrido autenticado con dos cuentas reales en producción y la confirmación de Sonia desde su sesión. | [Informe Fase 4](fases/ONBOARDING_FASE_4_EQUIPO_PERMISOS.md): evidencia actualizada, pruebas CI y validaciones productivas pendientes. |
 | 5. Puesta en marcha operativa | Guía, agenda y primera reserva atendida | **0 % verificado** | Sin auditoría de criterios de salida en el repo. No significa que no existan módulos operativos; falta probar la primera operación de extremo a extremo. | Criterio de salida acordado: completar primera reserva y atenderla desde el sistema. Aún no hay informe de fase ni evidencia de recorrido. |
 | 6. Facturación y cambios de plan | Checkout, activación, renovación, cancelación y recuperación | **0 % verificado** | Sin auditoría de criterios de salida en el repo. Falta validar que suscripción y permisos coincidan tras los eventos de pago. | Criterio de salida acordado: verificar el estado de suscripción y permisos tras cada evento del ciclo de pago. Aún no hay informe de fase ni evidencia de recorrido. |
 | 7. Seguimiento y crecimiento | Métricas, uso frente a límites y recomendaciones | **0 % verificado** | Sin auditoría de criterios de salida en el repo. Falta comprobar métricas, avisos de capacidad y cambio de nivel. | Criterio de salida acordado: que el dueño consulte actividad y uso frente a límites y pueda decidir un cambio de nivel. Aún no hay informe de fase ni evidencia de recorrido. |
 
 ## Lectura del avance
 
-- Las fases 1–3 están cerradas según el historial del proyecto; la fase 4 permanece abierta en 75 %.
+- Las fases 1–3 están cerradas según el historial del proyecto; la fase 4 permanece abierta en **90 %**, tras integrar y ejecutar en CI la matriz PostgreSQL de membresías.
 - Las fases 5–7 figuran como **0 % verificado** porque todavía no se han auditado sus criterios de salida dentro de este plan. No significa que todo su código o pantallas estén ausentes.
 - No se calcula un porcentaje global: las fases no tienen ponderaciones acordadas y tres aún no cuentan con evaluación sustentada.
 
@@ -31,10 +31,9 @@
 
 ## Próxima labor
 
-1. Validar en producción, con datos de QA y sin generar correos a terceros, el aislamiento autenticado por tenant y los cupos/reactivación.
-2. Completar pruebas productivas seguras de permisos por tenant y cupos/concurrencia/reactivación.
-3. Solicitar a Sonia la verificación de su rol cuando esté disponible.
-4. Auditar las fases 5, 6 y 7 antes de asignarles un porcentaje de implementación.
+1. Completar el recorrido autenticado en producción entre dos cuentas y tenants de QA, incluyendo cupos/reactivación; requiere una segunda cuenta de QA.
+2. Pedir a Sonia que confirme su rol desde su propia sesión cuando esté disponible.
+3. Auditar las fases 5, 6 y 7 antes de asignarles un porcentaje de implementación.
 
 ## Actualización de evidencia del repositorio y entorno local (26 de noviembre de 2026)
 
@@ -92,3 +91,11 @@
 - `GET /api/health` respondió `200` para el commit `5ef3e63e2416b0b0f5cfb4111edc82160c9f0211`; `env=production`, `dbMode=postgres`, `pgAvailable=true` y `servingFabricatedData=false`.
 - Sin credenciales y con `X-App-Audience: salon`, `GET /api/saas/team` y `GET /api/saas/team/audit` devolvieron `401`. La consulta no cambió datos ni creó eventos.
 - Confirma salud del backend y denegación anónima; no sustituye la prueba de dos usuarios autenticados en tenants distintos ni demuestra cupos/reactivación en cuentas productivas. La Fase 4 continúa en **75 %**.
+
+## Revisión de avance Fase 4 — integración completa en CI (26 de noviembre de 2026)
+
+- El porcentaje anterior de **75 %** quedó superado por la cobertura añadida en PR #88 y #89; la tabla se actualiza a **90 % estimado**, manteniendo la fase abierta por las comprobaciones productivas con cuentas separadas.
+- Backend CI run **45733109611**, job **139619717500**, concluyó `success`. El job ejecutó el paso «Tests de integración contra Postgres real»: **3 suites, 17/17 pruebas aprobadas**, incluida `tests/saasMembershipConcurrency.integration.test.js`.
+- La suite usa PostgreSQL efímero y fixtures limpiados. Cubre dos invitaciones compitiendo por el último cupo; invitación contra reactivación; correo incorrecto/correcto; expiración y reenvío; aislamiento RLS entre salones; vinculación JWT→tenant por HTTP; y permisos OWNER/ADMIN/MEMBER. La entrega de email se simula.
+- Producción está en `main` commit `883ad735a79baa7f925c849e75d80dbe2e690aa4`: `/api/health` informa PostgreSQL disponible y commit actual; `/api/saas/team` y `/api/saas/team/audit` devuelven 401 sin credenciales. Railway: ocho servicios en línea y cero despliegues pendientes.
+- El **10 % restante** corresponde a validar en producción el recorrido con dos identidades/tenants de QA y a la confirmación de Sonia desde su propia sesión. No se deben crear invitaciones ni alterar membresías reales sin preparar esas cuentas y controlar los correos.
