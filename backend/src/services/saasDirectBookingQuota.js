@@ -95,7 +95,11 @@ async function reserveDirectBookingQuota({
 
     return { plan, limit, current: Number(usageRows[0].count) };
   } finally {
-    if (setTenantContext) await setTenantContext(String(legacyTenantId ?? ''));
+    if (setTenantContext) {
+      // Preserve the original failure if PostgreSQL already marked the booking
+      // transaction aborted; the caller will roll it back immediately.
+      await setTenantContext(String(legacyTenantId ?? '')).catch(() => {});
+    }
   }
 }
 

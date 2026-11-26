@@ -655,3 +655,9 @@ en 076).
 - Se sincroniza el código del backend, la comparación de planes, el fallback de Flutter y la expiración de prueba. Al vencer, los planes de prueba nuevos y heredados pasan a Freemium; el registro de auditoría conserva el plan de origen.
 - La migración conserva el vencimiento ya asignado y solo crea 14 días cuando falta fecha; no modifica suscripciones ni cargos.
 - Es reversible volviendo al catálogo y al código anterior y restaurando `FREE_TRIAL` desde `FREE_TRIAL_LEGACY` únicamente para tenants que sigan en prueba. No eliminar la columna de vencimiento ni alterar datos de suscripción.
+
+## 204: métrica de reservas directas SaaS
+
+- Añade `DIRECT_BOOKINGS` a la restricción de `usage_metrics.feature`, junto con las métricas ya admitidas.
+- Corrige el error de integridad que rechazaba todas las escrituras del contador aunque catálogo y código ya usaban esta métrica.
+- Es aditiva para datos: reemplaza la CHECK constraint sin cambiar filas existentes. Rollback: retirar el código que escribe `DIRECT_BOOKINGS` y recrear la restricción anterior solo si no quedan filas con esa métrica.
