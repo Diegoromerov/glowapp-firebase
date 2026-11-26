@@ -6,6 +6,9 @@ const {
   isValidColombiaDate,
   getWeekdayInColombia,
   getColombiaTime,
+  getColombiaSchedule,
+  intersectColombiaSchedules,
+  isWithinColombiaSchedule,
   buildAvailabilitySlots,
 } = require('../utils/bookingCalendar');
 
@@ -97,5 +100,41 @@ test('booking calendar uses the Colombia wall clock and day boundaries', async (
       endHour: 17,
       durationMinutes: 30,
     }), []);
+  });
+
+  await t.test('intersects provider hours with salon business hours for each weekday', () => {
+    const provider = getColombiaSchedule({ date: '2026-11-23', activeStartHour: 6, activeEndHour: 20 });
+    const salon = {
+      lunes: { open: true, start: '09:00', end: '18:00' },
+      martes: { open: false },
+    };
+    assert.deepEqual(intersectColombiaSchedules(provider, salon, '2026-11-23'), {
+      isActive: true, startHour: 9, endHour: 18,
+    });
+    assert.deepEqual(intersectColombiaSchedules(provider, salon, '2026-11-24'), { isActive: false });
+  });
+
+  await t.test('blocks booking validation outside salon hours while preserving no-schedule legacy behavior', () => {
+    const provider = getColombiaSchedule({ date: '2026-11-23', activeStartHour: 6, activeEndHour: 20 });
+    const salonHours = { lunes: { open: true, start: '09:00', end: '18:00' } };
+    const schedule = intersectColombiaSchedules(provider, salonHours, '2026-11-23');
+    assert.equal(isWithinColombiaSchedule({ scheduledAt: '2026-11-23T13:00:00-05:00', durationMinutes: 30, schedule, now: '2026-11-22T00:00:00Z' }), true);
+    assert.equal(isWithinColombiaSchedule({ scheduledAt: '2026-11-23T07:00:00-05:00', durationMinutes: 30, schedule, now: '2026-11-22T00:00:00Z' }), false);
+    assert.equal(isWithinColombiaSchedule({ scheduledAt: '2026-11-23T17:30:00-05:00', durationMinutes: 60, schedule, now: '2026-11-22T00:00:00Z' }), false);
+    assert.equal(intersectColombiaSchedules(provider, null, '2026-11-23'), provider);
+  });
+
+  await t.test('rounds partial-hour salon boundaries inward to safe half-hour slots', () => {
+    const provider = getColombiaSchedule({ date: '2026-11-23', activeStartHour: 6, activeEndHour: 20 });
+    const schedule = intersectColombiaSchedules(provider, {
+      lunes: { open: true, start: '09:15', end: '17:45' },
+    }, '2026-11-23');
+    assert.deepEqual(schedule, { isActive: true, startHour: 9.5, endHour: 17.5 });
+    const slots = buildAvailabilitySlots({
+      date: '2026-11-23', startHour: schedule.startHour, endHour: schedule.endHour,
+      durationMinutes: 30, now: '2026-11-22T00:00:00Z',
+    });
+    assert.equal(slots[0].time, '09:30');
+    assert.equal(slots.at(-1).time, '17:00');
   });
 });

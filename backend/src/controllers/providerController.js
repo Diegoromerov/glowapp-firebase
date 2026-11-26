@@ -2,7 +2,7 @@ const db = require('../config/db');
 const pool = db.pool;
 const { getPlansWithEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { runAsSystem } = require('../config/tenantRouting');
-const { getColombiaDayRange, getColombiaDateParts, isValidColombiaDate, getColombiaSchedule, buildAvailabilitySlots } = require('../utils/bookingCalendar');
+const { getColombiaDayRange, getColombiaDateParts, isValidColombiaDate, getColombiaSchedule, intersectColombiaSchedules, buildAvailabilitySlots } = require('../utils/bookingCalendar');
 const { evaluarElegibilidadReserva } = require('../utils/bookingEligibility');
 
 // GET /api/providers → LISTA DE PRESTADORES Y SALONES (Geolocalización con PostGIS y Entitlements)
@@ -695,15 +695,21 @@ exports.getProviderSlots = async (req, res) => {
     });
 
     // 3. Obtener el horario configurado del prestador
-    const hoursRes = await runAsSystem({ pool }, (client) => client.query('SELECT active_start_hour, active_end_hour, weekly_schedule FROM perfiles_prestador WHERE id = $1', [providerId]));
+    const hoursRes = await runAsSystem({ pool }, (client) => client.query(
+      `SELECT p.active_start_hour, p.active_end_hour, p.weekly_schedule, s.horario_atencion
+         FROM perfiles_prestador p
+         LEFT JOIN salones s ON s.id = $2
+        WHERE p.id = $1`, [providerId, targetSalonId]
+    ));
     
     const providerHours = hoursRes.rows[0] || {};
-    const schedule = getColombiaSchedule({
+    const providerSchedule = getColombiaSchedule({
       date,
       weeklySchedule: providerHours.weekly_schedule,
       activeStartHour: providerHours.active_start_hour,
       activeEndHour: providerHours.active_end_hour,
     });
+    const schedule = intersectColombiaSchedules(providerSchedule, providerHours.horario_atencion, date);
 
     if (!schedule?.isActive) {
       return res.json({ success: true, slots: [] });

@@ -73,6 +73,32 @@ function getColombiaSchedule({ date, weeklySchedule, activeStartHour, activeEndH
   };
 }
 
+function intersectColombiaSchedules(providerSchedule, salonHours, date) {
+  if (!providerSchedule?.isActive) return { isActive: false };
+  if (typeof salonHours === 'string') {
+    try { salonHours = JSON.parse(salonHours); } catch (_) { return { isActive: false }; }
+  }
+  if (!salonHours) return providerSchedule;
+  if (!salonHours || typeof salonHours !== 'object' || Array.isArray(salonHours)) return { isActive: false };
+  const dayNames = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
+  const dayName = dayNames[getWeekdayInColombia(`${date}T12:00:00.000Z`)];
+  const salonDay = salonHours[dayName];
+  if (!salonDay) return { isActive: false };
+  if (salonDay.open !== true || !/^([01]\d|2[0-3]):[0-5]\d$/.test(salonDay.start) ||
+      !/^([01]\d|2[0-3]):[0-5]\d$/.test(salonDay.end) || salonDay.start >= salonDay.end) {
+    return { isActive: false };
+  }
+  // Availability is emitted at 30-minute increments. Round opening upward and
+  // closing downward so a slot can never begin before opening or end after close.
+  const salonStartMinutes = Number(salonDay.start.slice(0, 2)) * 60 + Number(salonDay.start.slice(3));
+  const salonEndMinutes = Number(salonDay.end.slice(0, 2)) * 60 + Number(salonDay.end.slice(3));
+  const providerStartMinutes = Number(providerSchedule.startHour) * 60;
+  const providerEndMinutes = Number(providerSchedule.endHour) * 60;
+  const startHour = Math.max(providerStartMinutes, Math.ceil(salonStartMinutes / 30) * 30) / 60;
+  const endHour = Math.min(providerEndMinutes, Math.floor(salonEndMinutes / 30) * 30) / 60;
+  return { isActive: endHour > startHour, startHour, endHour };
+}
+
 function isWithinColombiaSchedule({ scheduledAt, durationMinutes, schedule, now = new Date(), intervalMinutes = 30 }) {
   const start = scheduledAt instanceof Date ? scheduledAt : new Date(scheduledAt);
   const currentTime = now instanceof Date ? now : new Date(now);
@@ -99,13 +125,17 @@ function isWithinColombiaSchedule({ scheduledAt, durationMinutes, schedule, now 
 
 function buildAvailabilitySlots({ date, startHour, endHour, durationMinutes, activeBookings = [], now = new Date(), intervalMinutes = 30 }) {
   if (!isValidColombiaDate(date) ||
-      !Number.isInteger(Number(startHour)) || Number(startHour) < 0 || Number(startHour) > 23 ||
-      !Number.isInteger(Number(endHour)) || Number(endHour) < 1 || Number(endHour) > 24 ||
+      !Number.isFinite(Number(startHour)) || Number(startHour) < 0 || Number(startHour) > 23 ||
+      !Number.isFinite(Number(endHour)) || Number(endHour) < 0 || Number(endHour) > 24 ||
       Number(endHour) <= Number(startHour) || !Number.isFinite(Number(durationMinutes)) || Number(durationMinutes) <= 0 ||
       !Number.isFinite(Number(intervalMinutes)) || Number(intervalMinutes) <= 0) return [];
 
-  const startTime = new Date(`${date}T${String(startHour).padStart(2, '0')}:00:00-05:00`);
-  const endTime = new Date(`${date}T${String(endHour).padStart(2, '0')}:00:00-05:00`);
+  const toLocalClock = (hourValue) => {
+    const totalMinutes = Math.round(Number(hourValue) * 60);
+    return `${String(Math.floor(totalMinutes / 60)).padStart(2, '0')}:${String(totalMinutes % 60).padStart(2, '0')}`;
+  };
+  const startTime = new Date(`${date}T${toLocalClock(startHour)}:00-05:00`);
+  const endTime = new Date(`${date}T${toLocalClock(endHour)}:00-05:00`);
   const nowDate = now instanceof Date ? now : new Date(now);
   if ([startTime, endTime, nowDate].some((value) => Number.isNaN(value.getTime()))) return [];
 
@@ -120,4 +150,4 @@ function buildAvailabilitySlots({ date, startHour, endHour, durationMinutes, act
   return slots;
 }
 
-module.exports = { TIME_ZONE, getColombiaDateParts, getColombiaDayRange, isValidColombiaDate, getWeekdayInColombia, getColombiaTime, getColombiaSchedule, isWithinColombiaSchedule, buildAvailabilitySlots };
+module.exports = { TIME_ZONE, getColombiaDateParts, getColombiaDayRange, isValidColombiaDate, getWeekdayInColombia, getColombiaTime, getColombiaSchedule, intersectColombiaSchedules, isWithinColombiaSchedule, buildAvailabilitySlots };
