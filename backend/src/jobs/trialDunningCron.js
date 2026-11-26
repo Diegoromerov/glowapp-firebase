@@ -67,11 +67,12 @@ async function runTrialDunningCron() {
  */
 async function notifyTrialsEndingSoon() {
   const { rows } = await pool.query(`
-    SELECT s.*, bp.name as tenant_name, bp.owner_id,
-           u.email as owner_email, u.full_name as owner_name
+    SELECT s.*, bp.name as tenant_name, bp.provider_id AS owner_id,
+           COALESCE(NULLIF(BTRIM(bp.billing_email), ''), NULLIF(BTRIM(u.email), '')) AS owner_email,
+           COALESCE(NULLIF(BTRIM(bp.billing_name), ''), NULLIF(BTRIM(u.nombre), ''), bp.name) AS owner_name
     FROM subscriptions s
     JOIN business_profiles bp ON bp.id = s.tenant_id
-    LEFT JOIN users u ON u.id = bp.owner_id
+    LEFT JOIN usuarios u ON u.id = bp.provider_id
     WHERE s.status = 'trialing'
       AND s.trial_end BETWEEN NOW() AND NOW() + INTERVAL '3 days'
       AND NOT EXISTS (
@@ -109,11 +110,12 @@ async function notifyTrialsEndingSoon() {
  */
 async function processExpiredTrials() {
   const { rows } = await pool.query(`
-    SELECT s.*, bp.name as tenant_name, bp.owner_id,
-           u.email as owner_email, u.full_name as owner_name
+    SELECT s.*, bp.name as tenant_name, bp.provider_id AS owner_id,
+           COALESCE(NULLIF(BTRIM(bp.billing_email), ''), NULLIF(BTRIM(u.email), '')) AS owner_email,
+           COALESCE(NULLIF(BTRIM(bp.billing_name), ''), NULLIF(BTRIM(u.nombre), ''), bp.name) AS owner_name
     FROM subscriptions s
     JOIN business_profiles bp ON bp.id = s.tenant_id
-    LEFT JOIN users u ON u.id = bp.owner_id
+    LEFT JOIN usuarios u ON u.id = bp.provider_id
     WHERE s.status = 'trialing'
       AND s.trial_end < NOW()
       AND s.trial_end > NOW() - INTERVAL '7 days'  -- solo últimos 7 días
@@ -168,11 +170,13 @@ async function processExpiredTrials() {
  */
 async function processDunning() {
   const { rows: overdueInvoices } = await pool.query(`
-    SELECT i.*, bp.name as tenant_name, bp.owner_id,
-           u.email as owner_email, u.full_name as owner_name, bp.saas_plan
+    SELECT i.*, bp.name as tenant_name, bp.provider_id AS owner_id,
+           COALESCE(NULLIF(BTRIM(bp.billing_email), ''), NULLIF(BTRIM(u.email), '')) AS owner_email,
+           COALESCE(NULLIF(BTRIM(bp.billing_name), ''), NULLIF(BTRIM(u.nombre), ''), bp.name) AS owner_name,
+           bp.saas_plan
     FROM invoices i
     JOIN business_profiles bp ON bp.id = i.tenant_id
-    LEFT JOIN users u ON u.id = bp.owner_id
+    LEFT JOIN usuarios u ON u.id = bp.provider_id
     WHERE i.status IN ('open', 'pending')
       AND i.due_date < NOW()
       AND i.due_date > NOW() - INTERVAL '30 days'
@@ -234,11 +238,12 @@ async function processDunning() {
  */
 async function cancelOverdueSubscriptions() {
   const { rows } = await pool.query(`
-    SELECT s.*, bp.name as tenant_name, bp.owner_id,
-           u.email as owner_email, u.full_name as owner_name
+    SELECT s.*, bp.name as tenant_name, bp.provider_id AS owner_id,
+           COALESCE(NULLIF(BTRIM(bp.billing_email), ''), NULLIF(BTRIM(u.email), '')) AS owner_email,
+           COALESCE(NULLIF(BTRIM(bp.billing_name), ''), NULLIF(BTRIM(u.nombre), ''), bp.name) AS owner_name
     FROM subscriptions s
     JOIN business_profiles bp ON bp.id = s.tenant_id
-    LEFT JOIN users u ON u.id = bp.owner_id
+    LEFT JOIN usuarios u ON u.id = bp.provider_id
     WHERE s.status = 'past_due'
       AND s.updated_at < NOW() - INTERVAL '14 days'
   `);
