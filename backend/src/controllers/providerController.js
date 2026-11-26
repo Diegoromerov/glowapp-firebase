@@ -3,6 +3,7 @@ const pool = db.pool;
 const { getPlansWithEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { runAsSystem } = require('../config/tenantRouting');
 const { getColombiaDayRange, getColombiaDateParts, isValidColombiaDate, getColombiaSchedule, buildAvailabilitySlots } = require('../utils/bookingCalendar');
+const { evaluarElegibilidadReserva } = require('../utils/bookingEligibility');
 
 // GET /api/providers → LISTA DE PRESTADORES Y SALONES (Geolocalización con PostGIS y Entitlements)
 exports.getProviders = async (req, res) => {
@@ -69,6 +70,16 @@ exports.getProviders = async (req, res) => {
             p.rating_avg, 
             p.rating_count, 
             (p.estatus_verificacion = 'APROBADO') as is_verified,
+            (p.is_active = true AND u.is_active = true AND u.estado_operativo = 'HABILITADO'
+              AND p.estatus_verificacion = 'APROBADO'
+              AND EXISTS (
+                SELECT 1 FROM services ready_service
+                 WHERE ready_service.is_active = true
+                   AND (ready_service.provider_id = p.id OR ready_service.business_profile_id IN (
+                     SELECT ready_profile.id FROM business_profiles ready_profile
+                      WHERE ready_profile.provider_id = p.id
+                   ))
+              )) as can_receive_bookings,
             false as is_salon,
             ST_X(p.ubicacion::geometry) AS longitude,
             ST_Y(p.ubicacion::geometry) AS latitude,
@@ -80,7 +91,8 @@ exports.getProviders = async (req, res) => {
           FROM perfiles_prestador p
           INNER JOIN usuarios u ON p.id = u.id
           LEFT JOIN provider_loyalty pl ON p.id = pl.provider_id
-          WHERE p.is_active = true AND p.estatus_verificacion = 'APROBADO'
+          WHERE p.is_active = true AND u.is_active = true
+            AND p.estatus_verificacion = 'APROBADO'
             AND COALESCE(u.visibilidad_suspendida, false) = false
             AND p.ubicacion IS NOT NULL
             AND ST_DWithin(
@@ -103,7 +115,18 @@ exports.getProviders = async (req, res) => {
             COALESCE(s.direccion || CASE WHEN s.ciudad IS NOT NULL THEN ', ' || s.ciudad ELSE '' END, 'Salón de belleza profesional') as description,
             CAST(NULL AS numeric) as rating_avg,
             0 as rating_count,
-            true as is_verified,
+            (salon_owner.is_active = true AND salon_owner.estado_operativo = 'HABILITADO'
+              AND (salon_profile.id IS NULL OR salon_profile.estatus_verificacion = 'APROBADO')) as is_verified,
+            (salon_owner.is_active = true AND salon_owner.estado_operativo = 'HABILITADO'
+              AND (salon_profile.id IS NULL OR (salon_profile.is_active = true
+                AND salon_profile.estatus_verificacion = 'APROBADO'))
+              AND EXISTS (
+                SELECT 1 FROM services ready_service
+                 WHERE ready_service.is_active = true
+                   AND (ready_service.salon_id = s.id
+                     OR (ready_service.salon_id IS NULL
+                       AND ready_service.business_profile_id = s.business_profile_id))
+              )) as can_receive_bookings,
             true as is_salon,
             COALESCE(s.longitude, ST_X(s.ubicacion::geometry)) AS longitude,
             COALESCE(s.latitude, ST_Y(s.ubicacion::geometry)) AS latitude,
@@ -114,7 +137,9 @@ exports.getProviders = async (req, res) => {
             ST_Distance(s.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
           FROM salones s
           JOIN usuarios salon_owner ON salon_owner.id = s.id_dueno
-          WHERE COALESCE(salon_owner.visibilidad_suspendida, false) = false
+          LEFT JOIN perfiles_prestador salon_profile ON salon_profile.id = salon_owner.id
+          WHERE salon_owner.is_active = true
+            AND COALESCE(salon_owner.visibilidad_suspendida, false) = false
             AND s.ubicacion IS NOT NULL
             AND s.location_enabled = true
             AND s.location_public = true
@@ -148,6 +173,16 @@ exports.getProviders = async (req, res) => {
           p.rating_avg, 
           p.rating_count, 
           (p.estatus_verificacion = 'APROBADO') as is_verified,
+          (p.is_active = true AND u.is_active = true AND u.estado_operativo = 'HABILITADO'
+            AND p.estatus_verificacion = 'APROBADO'
+            AND EXISTS (
+              SELECT 1 FROM services ready_service
+               WHERE ready_service.is_active = true
+                 AND (ready_service.provider_id = p.id OR ready_service.business_profile_id IN (
+                   SELECT ready_profile.id FROM business_profiles ready_profile
+                    WHERE ready_profile.provider_id = p.id
+                 ))
+            )) as can_receive_bookings,
           false as is_salon,
           4.6735 as latitude,
           -74.1422 as longitude,
@@ -159,6 +194,7 @@ exports.getProviders = async (req, res) => {
         FROM perfiles_prestador p
         INNER JOIN usuarios u ON p.id = u.id
         WHERE p.is_active = true
+          AND u.is_active = true
           AND COALESCE(u.visibilidad_suspendida, false) = false
         LIMIT 50
       `);
@@ -179,6 +215,7 @@ exports.getProviders = async (req, res) => {
         ? null
         : parseFloat(row.rating_avg),
       rating_count: parseInt(row.rating_count) || 0,
+      can_receive_bookings: !!row.can_receive_bookings,
       // Puntuacion ponderada para ordenar: arranca en la media del sitio y se
       // acerca a la nota real a medida que llegan resenas.
       rating_score: (() => {
@@ -320,10 +357,23 @@ exports.getProviderById = async (req, res) => {
       const salonRes = await pool.query(`
         SELECT s.id AS salon_id, s.id_dueno AS provider_id, s.nombre_salon AS business_name,
                s.nombre_salon AS full_name, s.direccion, s.ciudad, s.business_profile_id,
-               u.foto_url AS avatar_url, u.phone
+               u.foto_url AS avatar_url, u.phone,
+               (u.is_active = true AND u.estado_operativo = 'HABILITADO'
+                 AND (salon_profile.id IS NULL OR salon_profile.estatus_verificacion = 'APROBADO')) AS is_verified,
+               (u.is_active = true AND u.estado_operativo = 'HABILITADO'
+                 AND (salon_profile.id IS NULL OR (salon_profile.is_active = true
+                   AND salon_profile.estatus_verificacion = 'APROBADO'))
+                 AND EXISTS (
+                   SELECT 1 FROM services ready_service
+                    WHERE ready_service.is_active = true
+                      AND (ready_service.salon_id = s.id
+                        OR (ready_service.salon_id IS NULL
+                          AND ready_service.business_profile_id = s.business_profile_id))
+                 )) AS can_receive_bookings
           FROM salones s
           JOIN usuarios u ON u.id = s.id_dueno
           LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
+          LEFT JOIN perfiles_prestador salon_profile ON salon_profile.id = u.id
          WHERE s.id = $1
            AND s.location_enabled = true
            AND s.location_public = true
@@ -351,7 +401,8 @@ exports.getProviderById = async (req, res) => {
             ...salon,
             id: String(salon.provider_id),
             is_salon: true,
-            is_verified: true,
+            is_verified: !!salon.is_verified,
+            can_receive_bookings: !!salon.can_receive_bookings && servicesRes.rows.length > 0,
             rating_avg: null,
             rating_count: 0,
             completed_bookings_count: 0,
@@ -371,7 +422,8 @@ exports.getProviderById = async (req, res) => {
     
     // 1. Datos del proveedor (JOIN con usuarios para foto_url)
     const providerQ = `
-      SELECT p.id, u.nombre as full_name, u.foto_url as avatar_url, u.phone, 
+      SELECT p.id, p.is_active AS profile_is_active, u.is_active AS user_is_active,
+             u.estado_operativo, u.nombre as full_name, u.foto_url as avatar_url, u.phone,
              p.business_name, p.description, p.rating_avg, 
              p.rating_count, (p.estatus_verificacion = 'APROBADO') as is_verified 
       FROM perfiles_prestador p 
@@ -459,6 +511,11 @@ exports.getProviderById = async (req, res) => {
         provider: {
           ...providerRes.rows[0],
           id: providerRes.rows[0].id.toString(),
+          can_receive_bookings: providerRes.rows[0].profile_is_active === true
+            && providerRes.rows[0].user_is_active === true
+            && providerRes.rows[0].estado_operativo === 'HABILITADO'
+            && providerRes.rows[0].is_verified === true
+            && servicesRes.rows.length > 0,
           completed_bookings_count: completedBookingsCount,
           punctuality_sample_count: punctualitySampleCount,
           punctual_bookings_count: punctualBookingsCount,
@@ -502,6 +559,21 @@ exports.getProviderSlots = async (req, res) => {
     }
     if (!isValidColombiaDate(date)) {
       return res.status(400).json({ success: false, code: 'BOOKING_DATE_INVALID', error: 'date debe tener formato YYYY-MM-DD.' });
+    }
+    const providerRows = await runAsSystem({ pool }, (client) => client.query(
+      `SELECT u.is_active, u.estado_operativo, p.estatus_verificacion
+         FROM usuarios u
+         LEFT JOIN perfiles_prestador p ON p.id = u.id
+        WHERE u.id = $1`,
+      [providerId]
+    ));
+    const elegibilidad = evaluarElegibilidadReserva(providerRows.rows[0] || null);
+    if (!elegibilidad.permitido) {
+      return res.status(elegibilidad.status).json({
+        success: false,
+        code: elegibilidad.code,
+        error: elegibilidad.error,
+      });
     }
     const bookingDay = getColombiaDayRange(`${date}T12:00:00.000Z`);
 

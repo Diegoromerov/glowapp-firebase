@@ -3,6 +3,8 @@ class ProviderModel {
   final double ratingAvg, latitude, longitude;
   final int ratingCount, distanceMeters;
   final bool isVerified, isSalon;
+  /// El backend solo lo activa cuando la cuenta está operativa y tiene oferta reservable.
+  final bool canReceiveBookings;
   /// Primer hueco libre HOY ('HH:MM'), o null si no le queda agenda.
   /// Lo calcula el backend con el horario del prestador y sus reservas.
   final String? nextSlotToday;
@@ -23,6 +25,7 @@ class ProviderModel {
     required this.latitude,
     required this.longitude,
     this.isSalon = false,
+    this.canReceiveBookings = false,
     this.nextSlotToday,
     this.availableToday = false,
   });
@@ -40,6 +43,7 @@ class ProviderModel {
         latitude: _toSafeDouble(json['latitude']),
         longitude: _toSafeDouble(json['longitude']),
         isSalon: json['is_salon'] as bool? ?? false,
+        canReceiveBookings: json['can_receive_bookings'] as bool? ?? false,
         nextSlotToday: json['next_slot_today'] as String?,
         availableToday: json['available_today'] as bool? ?? false,
       );
@@ -57,6 +61,7 @@ class ProviderModel {
         'latitude': latitude,
         'longitude': longitude,
         'is_salon': isSalon,
+        'can_receive_bookings': canReceiveBookings,
       };
 
   static double _toSafeDouble(v) => v == null

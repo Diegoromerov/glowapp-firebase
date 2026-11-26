@@ -517,6 +517,20 @@ class _ProviderDetailScreenState extends State<ProviderDetailScreen> {
     BuildContext context,
     Map<String, dynamic> argumentos,
   ) async {
+    final provider = details?['provider'];
+    final puedeReservar = provider is Map &&
+        (provider['can_receive_bookings'] == true ||
+            provider['can_receive_bookings']?.toString().toLowerCase() == 'true');
+    if (!puedeReservar) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Este prestador aún está preparando su perfil y todavía no recibe reservas.',
+          ),
+        ),
+      );
+      return;
+    }
     if (!await AuthGate.requerir(context, accion: 'reservar una cita')) return;
     if (!context.mounted) return;
     Navigator.pushNamed(context, '/booking', arguments: argumentos);

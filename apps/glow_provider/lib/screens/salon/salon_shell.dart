@@ -578,8 +578,8 @@ class _GuiaPrimeraOperacion extends StatelessWidget {
                 Expanded(
                   child: Text(
                     canShowOnMap!
-                        ? 'Tu salón está habilitado para aparecer en el mapa de clientes.'
-                        : 'Tu salón aún no puede aparecer en el mapa de clientes. Revisa que la ubicación esté habilitada y pública y que tu plan incluya visibilidad en el mapa.',
+                        ? 'La ubicación y el plan cumplen los requisitos de mapa. La publicación también depende de los requisitos de operación y de tener servicios activos.'
+                        : 'La ubicación aún no cumple los requisitos de mapa. Revisa que esté habilitada y pública y que tu plan incluya visibilidad. La publicación también depende de los requisitos de operación y de tener servicios activos.',
                     style: TypographyTokens.bodySmall(t).copyWith(
                       color: canShowOnMap! ? t.successOn : t.warningOn,
                     ),

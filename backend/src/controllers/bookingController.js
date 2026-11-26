@@ -39,6 +39,7 @@ const { getColombiaDayRange, getColombiaSchedule, isWithinColombiaSchedule } = r
 const { getActiveBookingSalonId, canManageBooking } = require('../utils/bookingAccess');
 const { isSaasDirectBookingAudience, bookingOriginForAudience } = require('../utils/bookingOrigin');
 const { ACTIONS } = require('../services/authorizationService');
+const { evaluarElegibilidadReserva } = require('../utils/bookingEligibility');
 
 /** URL http(s) utilizable como redirect_url (no vacia, no de otro esquema). */
 function esUrlHttpValida(valor) {
@@ -130,8 +131,20 @@ exports.createBooking = async (req, res) => {
     // fueron encontrados» con un servicio válido. La lectura se hace con el rol
     // de sistema (app_system, BYPASSRLS) en su propia transacción; el
     // aislamiento del resto de la API no cambia.
-    const { services, prestadorFiscal, providerBusinessProfileCount } = await sequelize.transaction(async (t) => {
+    const { provider, services, prestadorFiscal, providerBusinessProfileCount } = await sequelize.transaction(async (t) => {
       await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+      const providers = await sequelize.query(
+        `SELECT u.is_active, u.estado_operativo, p.estatus_verificacion
+           FROM usuarios u
+           LEFT JOIN perfiles_prestador p ON p.id = u.id
+          WHERE u.id = :providerId`,
+        {
+          replacements: { providerId: Number(provider_id) },
+          type: sequelize.QueryTypes.SELECT,
+          transaction: t,
+        }
+      );
+      const provider = providers[0] || null;
       // Un servicio puede pertenecer al prestador O a uno de sus perfiles de
       // negocio (así los lista serviceController.getProviderServices). Filtrar
       // sólo por provider_id hacía que un servicio elegible diera 404 SIEMPRE.
@@ -172,11 +185,21 @@ exports.createBooking = async (req, res) => {
         }
       );
       return {
+        provider,
         services: filas,
         prestadorFiscal: fiscal,
         providerBusinessProfileCount: negocios.length,
       };
     });
+
+    const elegibilidad = evaluarElegibilidadReserva(provider);
+    if (!elegibilidad.permitido) {
+      return res.status(elegibilidad.status).json({
+        success: false,
+        code: elegibilidad.code,
+        error: elegibilidad.error,
+      });
+    }
 
     // 404 estructurado: además del mensaje, se dice QUÉ ids no existen para
     // que la app pueda limpiar la selección y reintentar en vez de mostrar
