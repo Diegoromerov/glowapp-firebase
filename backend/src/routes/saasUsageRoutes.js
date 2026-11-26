@@ -6,7 +6,7 @@ const saasContext = require('../middleware/saasContext');
 const { requireEntitlement } = require('../middleware/featureGate');
 const { authMiddleware } = require('../middleware/auth');
 const usageMeteringService = require('../services/usageMeteringService');
-const { METRICS, PLAN_IDS, PLAN_CATALOG, publicCatalog } = require('../config/saasCatalog');
+const { METRICS, PLAN_IDS, PLAN_CATALOG, publicCatalog, getMonthPeriod } = require('../config/saasCatalog');
 
 const router = express.Router();
 
@@ -28,16 +28,17 @@ router.get('/', async (req, res) => {
     const plan = req.saas.plan;
 
     // Obtener métricas del período actual
-    const now = new Date();
-    const periodStart = new Date(now.getFullYear(), now.getMonth(), 1);
-    const periodEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+    // Las cuotas usan meses calendario de Bogotá. Reutilizar la misma función
+    // evita que el dashboard cambie de período antes/después del contador, según
+    // la zona horaria del proceso donde corra la API.
+    const { start: periodStart, end: periodEnd } = getMonthPeriod();
 
     const { rows: metrics } = await pool.query(`
       SELECT feature, count, "limit", period_start, period_end
       FROM usage_metrics
       WHERE tenant_id = $1 AND period_start = $2
       ORDER BY feature;
-    `, [tenantId, periodStart.toISOString().split('T')[0]]);
+    `, [tenantId, periodStart]);
 
     const metricMap = new Map(metrics.map((metric) => [metric.feature, metric]));
     let teamSeatsInUse = null;
@@ -68,12 +69,13 @@ router.get('/', async (req, res) => {
       `);
       if (profileColumn.length > 0) {
         const { rows } = await pool.query(`
-          SELECT COUNT(DISTINCT (b.client_id, b.provider_id, b.scheduled_at))::integer AS count
+          SELECT COUNT(DISTINCT COALESCE(b.productos_adicionales->>'primary_booking_id', b.id::text))::integer AS count
           FROM bookings b
           JOIN services s ON s.id = b.service_id
           WHERE s.business_profile_id = $1 AND b.created_at >= $2
             AND b.productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
-        `, [tenantId, periodStart.toISOString().split('T')[0]]);
+            AND COALESCE((b.productos_adicionales->>'is_primary')::boolean, true) = true
+        `, [tenantId, periodStart]);
         existingBookings = Number(rows[0]?.count || 0);
       } else if (providerId) {
         const { rows: owners } = await pool.query(
@@ -81,10 +83,11 @@ router.get('/', async (req, res) => {
         );
         if (Number(owners[0]?.count) === 1) {
           const { rows } = await pool.query(`
-            SELECT COUNT(DISTINCT (client_id, provider_id, scheduled_at))::integer AS count
+            SELECT COUNT(DISTINCT COALESCE(productos_adicionales->>'primary_booking_id', id::text))::integer AS count
             FROM bookings WHERE provider_id = $1 AND created_at >= $2
               AND productos_adicionales->>'booking_origin' = 'SALON_DIRECT'
-          `, [providerId, periodStart.toISOString().split('T')[0]]);
+              AND COALESCE((productos_adicionales->>'is_primary')::boolean, true) = true
+          `, [providerId, periodStart]);
           existingBookings = Number(rows[0]?.count || 0);
         }
       }
@@ -123,8 +126,8 @@ router.get('/', async (req, res) => {
         remaining,
         percentage,
         status,
-        periodStart: periodStart.toISOString().split('T')[0],
-        periodEnd: periodEnd.toISOString().split('T')[0]
+        periodStart,
+        periodEnd
       };
     });
 
@@ -135,7 +138,7 @@ router.get('/', async (req, res) => {
     res.json({
       tenantId,
       plan,
-      period: { start: periodStart.toISOString().split('T')[0], end: periodEnd.toISOString().split('T')[0] },
+      period: { start: periodStart, end: periodEnd },
       usage,
       summary: {
         totalFeatures: usage.length,
@@ -165,7 +168,10 @@ router.get('/history', async (req, res) => {
       SELECT feature, period_start, period_end, count, "limit"
       FROM usage_metrics
       WHERE tenant_id = $1
-        AND period_start >= (date_trunc('month', CURRENT_DATE) - interval '${months} months')
+        AND period_start >= (
+          date_trunc('month', CURRENT_TIMESTAMP AT TIME ZONE 'America/Bogota')::date
+          - interval '${months} months'
+        )
       ORDER BY period_start DESC, feature;
     `, [tenantId]);
 
@@ -198,9 +204,7 @@ router.get('/reminders', async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const tenantId = req.saas.tenantId;
-    const now = new Date();
-    const periodStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString().slice(0, 10);
-    const periodEnd = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0)).toISOString().slice(0, 10);
+    const { start: periodStart, end: periodEnd } = getMonthPeriod();
     const { rows } = await runAsSystem({ pool, systemPool }, (client) => client.query(`
       SELECT channel, provider,
              COUNT(*) FILTER (WHERE status = 'SENT')::integer AS sent_messages,
@@ -212,11 +216,11 @@ router.get('/reminders', async (req, res) => {
              cost_currency
         FROM booking_reminder_deliveries
        WHERE business_profile_id = $1
-         AND attempted_at >= date_trunc('month', CURRENT_TIMESTAMP)
-         AND attempted_at < date_trunc('month', CURRENT_TIMESTAMP) + INTERVAL '1 month'
+         AND attempted_at >= ($2::date::timestamp AT TIME ZONE 'America/Bogota')
+         AND attempted_at < (($2::date + INTERVAL '1 month')::timestamp AT TIME ZONE 'America/Bogota')
        GROUP BY channel, provider, cost_currency
        ORDER BY channel, provider, cost_currency NULLS LAST
-    `, [tenantId]));
+    `, [tenantId, periodStart]));
 
     const totals = rows.reduce((acc, row) => {
       acc.sentMessages += Number(row.sent_messages || 0);
