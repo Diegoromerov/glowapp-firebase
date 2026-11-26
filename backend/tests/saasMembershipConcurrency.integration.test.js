@@ -444,6 +444,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     const salonWithMember = await createFixture('MEMBER');
     try {
       const app = express();
+      app.use(express.json());
       app.use('/api/saas/team', saasTeamRoutes);
       app.use((error, _req, res, _next) => {
         console.error('SaaS team RBAC integration request failed:', error.message);
