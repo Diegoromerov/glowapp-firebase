@@ -23,6 +23,7 @@ function createDb({ plan, current }) {
       const normalized = sql.replace(/\s+/g, ' ').trim();
       calls.push(normalized);
       if (normalized === 'BEGIN' || normalized === 'COMMIT' || normalized === 'ROLLBACK') return { rows: [] };
+      if (normalized.includes('pg_advisory_xact_lock')) return { rows: [] };
       if (normalized.includes('SELECT bp.tenant_id, bp.saas_plan')) {
         return { rows: [{ tenant_id: 'tenant-1', saas_plan: plan }] };
       }

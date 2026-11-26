@@ -361,6 +361,23 @@ function crearControladorOps(db = pool) {
     const inTransaction = client !== db;
     try {
       if (inTransaction) await client.query('BEGIN');
+      // This controller owns a separate connection/transaction. The request's
+      // AsyncLocalStorage tenant context belongs to another client, so copy the
+      // authenticated subject and legacy salon tenant onto this transaction
+      // before touching RLS-protected salons/business_profiles.
+      if (req.user?.id !== undefined && req.user?.id !== null) {
+        await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
+        if (req.user.tenant_id !== undefined && req.user.tenant_id !== null) {
+          await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(req.user.tenant_id)]);
+        }
+      }
+      // Serialize quota check + insert per salon without SELECT FOR UPDATE on
+      // business_profiles: RLS grants the app role profile reads, not row updates.
+      // A transaction-scoped advisory lock avoids bypassing that policy and is
+      // automatically released on COMMIT/ROLLBACK.
+      if (inTransaction) {
+        await client.query('SELECT pg_advisory_xact_lock($1, $2)', [73107, Number(req.salonId)]);
+      }
       // Inquilino desde el perfil de negocio (fuente única, D-GL-027).
       // `salones.tenant_id` es legado y puede ser NULL: usarlo producía un
       // INSERT con NULL en una columna NOT NULL.
@@ -369,7 +386,7 @@ function crearControladorOps(db = pool) {
            FROM salones s
            JOIN business_profiles bp ON bp.id = s.business_profile_id
           WHERE s.id = $1
-          FOR UPDATE OF bp`,
+          `,
         [req.salonId]
       );
       if (perfilRows.length === 0) {
@@ -381,6 +398,13 @@ function crearControladorOps(db = pool) {
       }
 
       const plan = perfilRows[0].saas_plan || 'FREEMIUM';
+      // Operational resource rows use the canonical business_profile tenant
+      // (VARCHAR), while auth's tenant_id is the legacy integer tenant. After
+      // validating the salon/profile using the auth tenant, scope the remaining
+      // resource count/insert to the canonical tenant for this transaction.
+      if (req.user?.id !== undefined && req.user?.id !== null && perfilRows[0].tenant_id) {
+        await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(perfilRows[0].tenant_id)]);
+      }
       const limit = usageMeteringService.getLimit(plan, 'RESOURCES');
       const { rows: countRows } = await client.query(
         `SELECT COUNT(*)::int AS count FROM recursos_alquilables WHERE salon_id = $1`,
