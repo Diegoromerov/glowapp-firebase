@@ -21,5 +21,8 @@ body.video-landing{min-height:100vh;overflow:hidden;background:#171018;color:#ff
 .static-fallback[hidden],.video-state[hidden]{display:none}
 .landing-brand{position:absolute;top:clamp(18px,3vh,30px);left:clamp(18px,4vw,48px);z-index:2;width:clamp(120px,14vw,200px);padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
 .landing-logo{display:block;width:100%;height:auto}
+.intro-slogan{position:absolute;z-index:2;left:calc(50vw + max(17.5vw,31.1111vh));top:max(31.4844vw,55.972vh);width:max(32.03125vw,56.9444vh);color:#383838;pointer-events:none}
+.slogan-title{display:block;font-family:'Bodoni MT',Didot,Georgia,serif;font-size:max(10.546875vw,18.75vh);font-weight:400;line-height:.88;letter-spacing:-.035em;white-space:nowrap}
+.slogan-subtitle{display:block;margin-top:.1em;font-family:Arial,Helvetica,sans-serif;font-size:max(3.515625vw,6.25vh);font-weight:300;line-height:1;letter-spacing:.055em;white-space:nowrap}
 .static-fallback>.landing-brand{position:relative;top:auto;left:auto;width:clamp(140px,16vw,220px);margin:0}
-@media(max-width:650px){.landing-brand{top:14px;left:14px;width:clamp(110px,34vw,150px)}.static-fallback>.landing-brand{width:clamp(130px,40vw,180px)}}
+@media(max-width:650px){.landing-brand{top:14px;left:14px;width:clamp(110px,34vw,150px)}.intro-slogan{left:auto;right:7vw;top:auto;bottom:clamp(110px,18vh,180px);width:86vw;text-align:right}.slogan-title{font-size:clamp(42px,10vw,68px)}.slogan-subtitle{font-size:clamp(18px,4.5vw,26px)}.static-fallback>.landing-brand{width:clamp(130px,40vw,180px)}}
