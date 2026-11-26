@@ -44,7 +44,7 @@ class SubscriptionService {
       // activar 30 días gratuitos por una regla implícita.
       const trialDays = planDefinition.trialDays > 0 ? planDefinition.trialDays : null;
 
-      if (currency === 'USD') {
+      if (currency === 'USD' && isPaidPlan) {
         // Stripe para pagos internacionales
         const customer = await stripeService.createOrGetCustomer({
           email: customerEmail,
@@ -58,15 +58,6 @@ class SubscriptionService {
             customerId: customer.id,
             priceId: this._getStripePriceId(plan),
             paymentMethodId,
-            trialDays
-          });
-          gatewaySubscriptionId = sub.id;
-          status = sub.status;
-          trialEnd = sub.trial_end ? new Date(sub.trial_end * 1000) : null;
-        } else if (trialDays) {
-          const sub = await stripeService.createSubscription({
-            customerId: customer.id,
-            priceId: this._getStripePriceId(plan),
             trialDays
           });
           gatewaySubscriptionId = sub.id;
