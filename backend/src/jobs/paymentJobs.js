@@ -11,6 +11,7 @@ const { enviarNotificacionesRetencion } = require('./retentionNotification');
 const { runAsSystem } = require('../config/tenantRouting');
 const { systemPool } = require('../config/db');
 const pointsService = require('../services/pointsService');
+const wompiSaasBilling = require('../services/wompiSaasBillingService');
 const { avisarVencimientoPuntos } = require('./puntosVencimiento');
 const { avisarNivelesPendientes } = require('./nivelJob');
 
@@ -520,6 +521,25 @@ function inicializarJobs() {
   }
 
   console.log('⚙️  Iniciando jobs de pagos...');
+
+  // SaaS Wompi: explícitamente apagado en producción hasta que se habiliten
+  // WOMPI_SAAS_BILLING_ENABLED y, para cargos recurrentes, WOMPI_SAAS_COF_ENABLED.
+  if (wompiSaasBilling.isEnabled()) {
+    const runWompiSaasRenewals = async () => {
+      try {
+        const result = await runAsSystem({ pool, systemPool }, (client) =>
+          wompiSaasBilling.renewDueSubscriptions(client));
+        if (result?.processed) console.log('[WOMPI SAAS] renovaciones iniciadas:', result.processed);
+      } catch (error) {
+        console.error('[WOMPI SAAS] error en renovaciones:', error.message);
+      }
+    };
+    setTimeout(runWompiSaasRenewals, 15000);
+    setInterval(runWompiSaasRenewals, 15 * 60 * 1000);
+    console.log('🔄 Worker de renovaciones SaaS Wompi activo (cada 15 min).');
+  } else {
+    console.log('ℹ️ Renovaciones SaaS Wompi desactivadas por configuración.');
+  }
 
   // Maduración de saldos: cada 15 minutos
   setInterval(comoSistema(madurarSaldosPendientes), 15 * 60 * 1000);

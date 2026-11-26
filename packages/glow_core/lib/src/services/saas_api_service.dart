@@ -5,7 +5,6 @@
 library saas_api_service;
 
 import 'dart:async';
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'api_service.dart';
 import '../models/saas/saas_models.dart';
@@ -417,6 +416,28 @@ class SaasApiService {
       },
     );
     return CheckoutSessionResponse.fromJson(response as Map<String, dynamic>);
+  }
+
+  /// Inicia checkout recurrente SaaS Wompi con token de tarjeta (nunca PAN/CVV).
+  static Future<Map<String, dynamic>> createWompiSaasCheckout({
+    required String plan,
+    required String paymentToken,
+    required bool acceptRecurring,
+    required bool acceptTerms,
+    required bool acceptPersonalData,
+  }) async {
+    final response = await ApiService.post(
+      '$_basePath/billing/checkout',
+      {
+        'plan': plan,
+        'currency': 'COP',
+        'paymentToken': paymentToken,
+        'acceptRecurring': acceptRecurring,
+        'acceptTerms': acceptTerms,
+        'acceptPersonalData': acceptPersonalData,
+      },
+    );
+    return Map<String, dynamic>.from(response as Map);
   }
 
   /// Cambiar de plan (upgrade o downgrade sin pasar por checkout).

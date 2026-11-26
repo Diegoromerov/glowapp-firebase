@@ -402,6 +402,7 @@ class WompiClient {
       status: data?.status,
       reference: data?.reference,
       amountInCents: data?.amount_in_cents,
+      currency: data?.currency,
       paymentMethodType: data?.payment_method_type || null,
       statusMessage: data?.status_message || null,
       asyncPaymentUrl: this._extraerAsyncPaymentUrl(data)

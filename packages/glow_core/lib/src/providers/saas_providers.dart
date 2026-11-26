@@ -125,6 +125,7 @@ class BillingState {
   final List<Map<String, dynamic>> paymentMethods;
   final Map<String, dynamic>? nextPayment;
   final String? currentPlan;
+  final bool checkoutAvailable;
   final bool isLoading;
   final Object? error;
 
@@ -134,6 +135,7 @@ class BillingState {
     this.paymentMethods = const [],
     this.nextPayment,
     this.currentPlan,
+    this.checkoutAvailable = false,
     this.isLoading = false,
     this.error,
   });
@@ -144,6 +146,7 @@ class BillingState {
     List<Map<String, dynamic>>? paymentMethods,
     Map<String, dynamic>? nextPayment,
     String? currentPlan,
+    bool? checkoutAvailable,
     bool? isLoading,
     Object? error,
   }) {
@@ -153,6 +156,7 @@ class BillingState {
       paymentMethods: paymentMethods ?? this.paymentMethods,
       nextPayment: nextPayment ?? this.nextPayment,
       currentPlan: currentPlan ?? this.currentPlan,
+      checkoutAvailable: checkoutAvailable ?? this.checkoutAvailable,
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
     );
@@ -434,6 +438,7 @@ class BillingNotifier extends StateNotifier<BillingState> {
         paymentMethods: methods,
         nextPayment: rawNext is Map<String, dynamic> ? rawNext : null,
         currentPlan: summary['currentPlan'] as String?,
+        checkoutAvailable: summary['checkoutAvailable'] == true,
         isLoading: false,
         error: null,
       );

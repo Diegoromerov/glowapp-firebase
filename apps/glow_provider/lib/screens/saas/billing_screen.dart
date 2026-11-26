@@ -124,7 +124,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                   _currentPlanCard(subscription, tier, billing.nextPayment),
                   const SizedBox(height: 16),
                   _errorBanner(billing.error),
-                  _changePlanSection(plans, tier),
+                  _changePlanSection(plans, tier, billing.checkoutAvailable),
                   const SizedBox(height: 16),
                   _invoicesSection(billing.invoices),
                   const SizedBox(height: 16),
@@ -317,7 +317,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
   // ───────────────────────── Cambio de plan ─────────────────────────
 
-  Widget _changePlanSection(List<SaasPlan> plans, SaasPlanTier current) {
+  Widget _changePlanSection(List<SaasPlan> plans, SaasPlanTier current, bool checkoutAvailable) {
     final candidates = plans
         .where((p) =>
             p.isActive && p.tier != current && p.tier != SaasPlanTier.freeTrial)
@@ -326,8 +326,9 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
     return _section(
       title: 'Cambiar Plan',
-      subtitle:
-          'Los cambios de plan estarán disponibles cuando el pago y la activación se confirmen de forma segura.',
+      subtitle: checkoutAvailable
+          ? 'El cambio se aplicará cuando Wompi confirme el pago.'
+          : 'El checkout se habilitará cuando la cuenta de pagos esté lista.',
       children: candidates.isEmpty
           ? [
               const Text('No hay otros planes disponibles.',
@@ -343,17 +344,19 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                   border:
                       Border.all(color: Colors.amber.withValues(alpha: 0.35)),
                 ),
-                child: const Text(
-                  'La facturación SaaS está temporalmente pausada. No se iniciarán cobros ni se cambiará tu plan desde esta pantalla.',
-                  style: TextStyle(fontSize: 12, color: _ink, height: 1.4),
+                child: Text(
+                  checkoutAvailable
+                      ? 'El plan solo se activará después de confirmar el pago. El precio mensual se muestra antes de autorizar el cobro.'
+                      : 'La facturación SaaS sigue desactivada en esta cuenta. No se iniciarán cobros desde esta pantalla.',
+                  style: const TextStyle(fontSize: 12, color: _ink, height: 1.4),
                 ),
               ),
-              ...candidates.map((p) => _planRow(p)),
+              ...candidates.map((p) => _planRow(p, checkoutAvailable)),
             ],
     );
   }
 
-  Widget _planRow(SaasPlan plan) {
+  Widget _planRow(SaasPlan plan, bool checkoutAvailable) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
@@ -406,9 +409,11 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                 ),
               ),
               const SizedBox(width: 12),
-              const FilledButton(
-                onPressed: null,
-                child: Text('Pausado'),
+              FilledButton(
+                onPressed: checkoutAvailable && !_busy
+                    ? () => _startWompiCheckout(plan)
+                    : null,
+                child: Text(checkoutAvailable ? 'Elegir' : 'Pausado'),
               ),
             ],
           ),
@@ -433,6 +438,36 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _startWompiCheckout(SaasPlan plan) async {
+    String? paymentReference;
+    final confirmed = await showWompiCheckoutSheet(
+      context: context,
+      bookingId: '',
+      serviceName: 'Suscripción ${plan.name}',
+      providerName: 'GlowApp',
+      price: plan.priceCents / 100,
+      itemType: 'saas',
+      onSaasCardTokenized: (paymentToken,
+          {required acceptRecurring, required acceptTerms, required acceptPersonalData}) async {
+        final response = await SaasApiService.createWompiSaasCheckout(
+          plan: plan.id,
+          paymentToken: paymentToken,
+          acceptRecurring: acceptRecurring,
+          acceptTerms: acceptTerms,
+          acceptPersonalData: acceptPersonalData,
+        );
+        paymentReference = response['reference']?.toString();
+      },
+    );
+    if (confirmed == true && mounted) {
+      final id = ref.read(currentBusinessProfileIdProvider) ?? '';
+      await ref.read(billingProvider.notifier).load(id);
+      if (mounted) {
+        _toast('Pago enviado. El plan se activará cuando Wompi lo confirme${paymentReference == null ? '.' : ' · Ref. $paymentReference'}');
+      }
+    }
   }
 
   // ───────────────────────── Comprobantes ─────────────────────────

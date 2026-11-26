@@ -1,5 +1,5 @@
 // backend/src/controllers/bookingController.js
-const { pool } = require('../config/db');
+const { pool, systemPool } = require('../config/db');
 const { runAsSystem, runAsSystemContext } = require('../config/tenantRouting');
 const { Booking, Service, User, Transaction } = require('../models');
 const { sequelize } = require('../config/database');
@@ -2337,6 +2337,21 @@ exports.wompiWebhook = (req, res) => {
   );
   if (referencia.startsWith('wompi_order_')) {
     return require('./orderController').storeWebhook(req, res);
+  }
+  if (referencia.startsWith('wompi_saas_')) {
+    return runAsSystem({ pool, systemPool }, async (client) => {
+      const result = await require('../services/wompiSaasBillingService').processWebhook(
+        client, req.body, req.get?.('X-Event-Checksum') || req.headers?.['x-event-checksum']
+      );
+      // A source/transaction can emit an event before the checkout request's
+      // tenant transaction commits. Ask Wompi to retry instead of acknowledging
+      // an event whose attempt row is not visible yet.
+      if (result?.missing) return res.status(503).json({ error: 'Intento de pago aún no visible; reintentar evento.' });
+      return res.json({ success: true, ...result });
+    }).catch((error) => {
+      console.error('[WOMPI SAAS WEBHOOK] Error:', error.message);
+      return res.status(error.status || 500).json({ error: 'No fue posible conciliar el pago SaaS.' });
+    });
   }
   return runAsSystemContext(() => procesarWebhookWompi(req, res));
 };

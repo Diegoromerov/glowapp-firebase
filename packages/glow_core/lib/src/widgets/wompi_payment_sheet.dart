@@ -26,6 +26,7 @@ Future<bool?> showWompiCheckoutSheet({
   required double price,
   required String providerName,
   VoidCallback? onSuccess,
+  Future<void> Function(String paymentToken, {required bool acceptRecurring, required bool acceptTerms, required bool acceptPersonalData})? onSaasCardTokenized,
   String itemType = 'service',
   // Desglose del IVA tal como lo calculó el servidor. Llegan en 0 cuando el
   // prestador no es responsable de IVA, y entonces no se muestra desglose.
@@ -42,6 +43,7 @@ Future<bool?> showWompiCheckoutSheet({
       price: price,
       providerName: providerName,
       onSuccess: onSuccess,
+      onSaasCardTokenized: onSaasCardTokenized,
       itemType: itemType,
       subtotalBase: subtotalBase,
       ivaValor: ivaValor,
@@ -55,6 +57,7 @@ class WompiCheckoutWidget extends StatefulWidget {
   final double price;
   final String providerName;
   final VoidCallback? onSuccess;
+  final Future<void> Function(String paymentToken, {required bool acceptRecurring, required bool acceptTerms, required bool acceptPersonalData})? onSaasCardTokenized;
 
   /// Base gravable y IVA discriminados por el servidor a partir del `valor_bruto`.
   /// Sólo se usan para DESGLOSAR el precio en pantalla: el monto que se cobra
@@ -73,6 +76,7 @@ class WompiCheckoutWidget extends StatefulWidget {
     required this.price,
     required this.providerName,
     this.onSuccess,
+    this.onSaasCardTokenized,
     this.itemType = 'service',
     this.subtotalBase = 0,
     this.ivaValor = 0,
@@ -143,6 +147,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
   bool _acceptanceLoading = true;
   bool _acceptTerms = false;
   bool _acceptPersonalData = false;
+  bool _acceptRecurring = false;
   Map<String, dynamic>? _acceptanceInfo;
   Map<String, dynamic>? _successData;
   String? _errorMsg;
@@ -165,6 +170,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
   @override
   void initState() {
     super.initState();
+    if (widget.itemType == 'saas') _metodo = 'CARD';
     WidgetsBinding.instance.addPostFrameCallback((_) => _loadAcceptanceInfo());
     // A360-2026-09-22/C-03: no se emite el evento de checkout si no hay un
     // identificador real de compra (antes se enviaba un id fabricado 'STORE_…').
@@ -183,7 +189,9 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
 
   Future<void> _loadAcceptanceInfo() async {
     try {
-      final info = await ApiService.fetchWompiAcceptanceToken();
+      final info = widget.itemType == 'saas'
+          ? await _loadSaasAcceptanceInfo()
+          : await ApiService.fetchWompiAcceptanceToken();
       if (!mounted) return;
       setState(() {
         _acceptanceInfo = info;
@@ -195,11 +203,24 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
     }
   }
 
+  Future<Map<String, dynamic>> _loadSaasAcceptanceInfo() async {
+    final response = await ApiService.get('/api/saas/billing/wompi/acceptance');
+    if (response is! Map<String, dynamic>) throw Exception('No se pudieron cargar los términos de facturación.');
+    return {
+      'acceptance_token': response['acceptanceToken'],
+      'personal_data_auth_token': response['personalDataAuthToken'],
+      'permalink': response['termsUrl'],
+      'personal_data_auth_permalink': response['personalDataUrl'],
+    };
+  }
+
   Future<void> _handlePayment() async {
     if (!_formKey.currentState!.validate()) return;
 
-    if (!_acceptTerms || !_acceptPersonalData) {
-      setState(() => _errorMsg = 'Debes aceptar los términos de Wompi y autorizar el tratamiento de datos para continuar.');
+    if (!_acceptTerms || !_acceptPersonalData || (widget.itemType == 'saas' && !_acceptRecurring)) {
+      setState(() => _errorMsg = widget.itemType == 'saas'
+          ? 'Debes aceptar los términos, el tratamiento de datos y el cobro mensual para continuar.'
+          : 'Debes aceptar los términos de Wompi y autorizar el tratamiento de datos para continuar.');
       return;
     }
 
@@ -207,7 +228,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
     // real (p. ej. GlowShop). Antes se devolvía aquí un pago 'APPROVED' fabricado
     // tras un Future.delayed, con una referencia inventada y sin ninguna llamada
     // HTTP. Ese camino se elimina: sin pasarela => fallo explícito, nunca éxito.
-    if (widget.bookingId.trim().isEmpty) {
+    if (widget.bookingId.trim().isEmpty && widget.itemType != 'saas') {
       await HapticFeedback.vibrate();
       if (!mounted) return;
       setState(() {
@@ -227,7 +248,9 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
       final method = _metodo;
 
       // Token de aceptación (Habeas Data) - obligatorio
-      final consentimiento = _acceptanceInfo ?? await ApiService.fetchWompiAcceptanceToken();
+      final consentimiento = _acceptanceInfo ?? (widget.itemType == 'saas'
+          ? await _loadSaasAcceptanceInfo()
+          : await ApiService.fetchWompiAcceptanceToken());
       if (_acceptanceInfo == null && mounted) {
         setState(() => _acceptanceInfo = consentimiento);
       }
@@ -241,7 +264,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
       if (method == 'CARD') {
         String? paymentMethodToken;
         
-        if (widget.itemType == 'service') {
+    if (widget.itemType == 'service' || widget.itemType == 'saas') {
           // Para servicios: modal de tokenización
           final publicKey = await ApiService.fetchWompiPublicKey();
           
@@ -314,6 +337,21 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
           paymentMethodToken = tokenData['id'] as String;
         }
         
+        if (widget.itemType == 'saas') {
+          final callback = widget.onSaasCardTokenized;
+          if (callback == null) {
+            throw Exception('El checkout SaaS no está disponible.');
+          }
+          await callback(
+            paymentMethodToken,
+            acceptRecurring: _acceptRecurring,
+            acceptTerms: _acceptTerms,
+            acceptPersonalData: _acceptPersonalData,
+          );
+          if (mounted) Navigator.pop(context, true);
+          return;
+        }
+
         // Crear transacción con el token
         final res = await _crearTransaccion(
           method: method,
@@ -811,7 +849,9 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: _metodosOfrecidos.map((m) {
+            children: (widget.itemType == 'saas'
+                    ? _metodosOfrecidos.where((m) => m['id'] == 'CARD').toList()
+                    : _metodosOfrecidos).map((m) {
               final id = m['id']!;
               final seleccionado = _metodo == id;
               return GestureDetector(
@@ -927,6 +967,17 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
             title: const Text('Acepto los términos y la política de privacidad de Wompi.', style: TextStyle(fontSize: 11)),
             subtitle: termsUrl == null ? null : _consentLink('Leer términos de Wompi', termsUrl),
           ),
+          if (widget.itemType == 'saas')
+            CheckboxListTile(
+              value: _acceptRecurring,
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              controlAffinity: ListTileControlAffinity.leading,
+              onChanged: _isProcessing || info == null
+                  ? null
+                  : (value) => setState(() => _acceptRecurring = value ?? false),
+              title: Text('Autorizo el cobro mensual de \$${_safeParseDouble(widget.price).toStringAsFixed(0)} COP hasta cancelar la suscripción.', style: const TextStyle(fontSize: 11)),
+            ),
           CheckboxListTile(
             value: _acceptPersonalData,
             dense: true,
@@ -977,7 +1028,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
   Widget _buildCardForm() {
     // Para servicios: ya no se piden datos aquí, se tokeniza en un modal aparte
     // cuando el usuario toca "Pagar" (ver _handlePayment).
-    if (widget.itemType == 'service') {
+    if (widget.itemType == 'service' || widget.itemType == 'saas') {
       return Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
