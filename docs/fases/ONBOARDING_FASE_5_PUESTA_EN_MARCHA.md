@@ -3,6 +3,15 @@
 **Corte:** 26 de noviembre de 2026  
 **Avance estimado:** 85 %; backend integrado en `main` y desplegado a producción. Falta validar el flujo de reserva y atención de extremo a extremo.
 
+### Actualización — privacidad de sedes y reservas (26 de noviembre de 2026)
+
+- Se detectó que el endpoint de horarios respondía con espacios disponibles para la sede QA 17 aunque estaba sin ubicación pública; la API de detalle ya la ocultaba. También se encontró en el alta de reserva una referencia a `targetSalonId` no declarada, que causaba un error al validar el horario de la sede.
+- PR #104 se integró en `main` como commit `3248030a173eb911553eb03811ba12c6e1320f21` y Railway desplegó el servicio `glowapp-api` en producción: deployment `9c63c94e-37c7-44ea-9534-4fdbf92526f8`, estado `SUCCESS`.
+- La API valida ahora la publicación y el entitlement `MAP_VISIBILITY` tanto al consultar horarios desde Cliente como al crear una reserva desde el marketplace. El flujo directo de la app Prestador conserva su ruta operativa. Se corrigió el uso del `salonId` al consultar las horas comerciales.
+- Pruebas focalizadas: elegibilidad de reserva **6/6** y mismatch de servicio **5/5**. `node --check` y `git diff --check` finalizaron correctamente. La suite `cancelBooking-stock-reversion` mantiene 6 fallos por su fixture pg-mem sin columna `salon_id`; no corresponde a este cambio.
+- Smoke HTTP productivo posterior al despliegue: `GET /api/providers/132/slots?date=2026-11-27&service_id=53a36c9a-7048-4806-922d-c36a497abb88&salon_id=17`, con audiencia Cliente y sin credenciales, respondió **404 `SALON_NOT_PUBLIC`**; ya no revela horarios.
+- La Fase 5 sigue en **85 %**: la corrección de privacidad y de validación quedó desplegada, pero la sede QA usa dirección ficticia y no tiene ubicación pública aprobada. No se creó reserva ni se inició pago; el criterio final requiere un salón QA con ubicación legítima y el recorrido cliente → agenda del salón → atención completada.
+
 ## Objetivo y criterio de cierre
 
 Guiar al salón desde su configuración hasta su primera operación. La fase se cierra cuando un cliente crea una reserva, esta aparece en la agenda correcta y el prestador completa la atención dentro del sistema.
