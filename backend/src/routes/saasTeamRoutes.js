@@ -50,7 +50,8 @@ router.post('/accept/:token', async (req, res) => {
   } catch (error) { return handleError(res, error, 'Error aceptando invitación'); }
 });
 
-router.patch('/:memberId/role', requireOwner, requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.CHANGE_ROLE), async (req, res) => {
+router.patch('/:memberId/role', requireOwner, requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.CHANGE_ROLE),
+  requireEntitlement('TEAM_MANAGEMENT'), async (req, res) => {
   try {
     const membership = await membershipService.changeRole({ tenantId: req.saas.tenantId, memberId: req.params.memberId,
       actorId: req.user.id, role: req.body?.role });
@@ -74,7 +75,8 @@ router.delete('/:memberId', requireRole('ADMIN'), requirePermission(RESOURCES.ME
   } catch (error) { return handleError(res, error, 'Error eliminando miembro'); }
 });
 
-router.post('/:memberId/resend-invite', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.MANAGE_MEMBERS), async (req, res) => {
+router.post('/:memberId/resend-invite', requireRole('ADMIN'), requirePermission(RESOURCES.MEMBERSHIP, ACTIONS.MANAGE_MEMBERS),
+  requireEntitlement('TEAM_MANAGEMENT'), async (req, res) => {
   try {
     const result = await membershipService.resend({ tenantId: req.saas.tenantId, memberId: req.params.memberId,
       actorId: req.user.id, tenantName: req.saas.name, plan: req.saas.plan });
