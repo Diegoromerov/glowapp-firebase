@@ -26,7 +26,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | Catálogo y precios | Catálogo V2 centraliza nombres, disponibilidad, capacidades y cuotas. `invoiceService` y Wompi consultan el precio de catálogo. | Fuente común disponible; el informe previo describía cifras antiguas y se corrige aquí. |
 | Disponibilidad de compra | `subscriptionService`, checkout, Wompi y bootstrap rechazan niveles no disponibles. Los planes gratuitos se eligen en el alta. | Guard de disponibilidad presente. |
 | Prueba de pago | El checkout Stripe usa `trialDays: 0`; `subscriptionService` solo deriva `trialDays` de catálogo (14 para FREE_TRIAL, 0 para pagos). El checkout COP depende de Wompi SaaS habilitado. | La contradicción histórica de 30 días en planes pagos ya no está en el código inspeccionado. |
-| Prueba gratis del alta | El bootstrap guarda `saas_plan`, crea el perfil/membership y no crea una fila en `subscriptions` ni guarda fecha de inicio/fin de prueba en el perfil. El job de vencimiento solo procesa `subscriptions.trial_end`. | **Brecha P0:** el alta anuncia 14 días, pero el flujo normal de alta no inicia ni vence esa prueba; por tanto, no está demostrado que termine a los 14 días ni que luego pase a Freemium. |
+| Prueba gratis del alta | El bootstrap persiste `saas_trial_started_at` y `saas_trial_ends_at`; el job independiente procesa vencimientos de perfil y sincroniza el plan del salón. | Inicio, fecha visible y downgrade programado están en producción. La ejecución controlada sin datos vencidos no prueba todavía el caso de expiración real. |
 | Personas | Las invitaciones protegen `TEAM_MANAGEMENT`; el servicio de membresías limita activos y pendientes con `TEAM_SEATS`. | Gate y cuota aplicados en las rutas revisadas; falta prueba end-to-end de aceptación y cambio de plan en producción. |
 | Reservas | `bookingController` controla y consume `DIRECT_BOOKINGS` en transacción para reservas directas del salón; el marketplace tiene origen separado. | La cuota representa reservas directas, no todas las reservas recibidas. Falta evidencia de cobertura en todos los canales, reintentos y límites en producción. |
 | Analítica y API | `/api/saas/analytics` requiere `ADVANCED_ANALYTICS`; crear/usar llaves exige `API_KEYS`, y las llamadas de API se miden al autenticar una API key. | Aplicación localizada. “Procesos de integración” debe explicar que cuenta llamadas autenticadas por llave, no operaciones cotidianas de la app. |
@@ -36,11 +36,11 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | Agotamiento de cuotas | `consumeUsage` aplica límite atómico en sus puntos de uso; disponibilidad y comportamiento varían por ruta. No hay una política comercial uniforme documentada para todos los límites. | Definir aviso, bloqueo, tolerancia y recuperación para cada métrica antes del lanzamiento. |
 | Producción | Migration 202 aplicada; salud de API informa PostgreSQL disponible. El job dedicado corre a diario a las 06:00 de Bogotá; su ejecución manual de control reportó 0 pruebas vencidas, 0 salones actualizados y 0 eventos, conforme a la ventana inicial de 14 días. Firebase Hosting del proveedor fue publicado y responde HTTP 200. | Evidencia de despliegue y ejecución del job, no de una expiración real ni de un cobro real. Las rutas de pagos siguen cerradas cuando falta configuración/conciliación segura. |
 
-## Correcciones realizadas en este informe
+## Hallazgos corregidos y cerrados
 
 - Se reemplazaron las cifras antiguas de la tabla y del checkout por los valores actuales del catálogo V2.
 - Se separaron los precios vigentes heredados de Pro/Empresarial de sus nuevas ofertas propuestas.
-- Se registró que el alta normal no persiste ni procesa el vencimiento de la prueba gratuita de 14 días. Es un defecto funcional, no una decisión comercial que deba ocultarse con copy.
+- Se resolvió el hallazgo de que el alta no persistía ni procesaba el vencimiento de la Prueba Gratis: fechas, aviso y job de transición ya están publicados.
 - Se retiró la afirmación de que los planes pagos obtienen 30 días de prueba: el código actual inspeccionado usa `trialDays: 0` para planes pagos.
 - Se distinguió el conteo de reserva directa de las reservas de marketplace y el uso de API keys de otras interacciones del producto.
 
@@ -81,5 +81,5 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 
 - Base: `main` en `be1f987a0d6cfcd033f3bb1cd71296a52df6092e`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
-- Este registro describe la ejecución documental anterior: no cambió aplicación/datos y no hizo llamadas autenticadas a producción.
+- La auditoría de código se complementó con verificación de salud productiva, ejecución del job y confirmación del hosting.
 - Resultado: se cerró la brecha técnica de inicio y vencimiento programado de Prueba Gratis. Fase 7 permanece abierta por la prueba controlada de downgrade, conciliación productiva de cobros, matriz integral de cuotas y rutas, decisiones comerciales pendientes y piloto medido.
