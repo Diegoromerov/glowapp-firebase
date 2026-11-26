@@ -10,6 +10,7 @@ void main() {
         home: const SalonShell(
           cargarDatos: false,
           entitlements: <String>[],
+          canShowOnMap: false,
         ),
         onGenerateRoute: (settings) => MaterialPageRoute<void>(
           builder: (_) => Scaffold(body: Text(settings.name ?? 'sin ruta')),
@@ -21,9 +22,31 @@ void main() {
         findsOneWidget);
     expect(find.text('1. Completa la información del salón'), findsOneWidget);
     expect(find.text('2. Configura cuándo puedes atender'), findsOneWidget);
+    expect(
+      find.textContaining('aún no puede aparecer en el mapa de clientes'),
+      findsOneWidget,
+    );
     await tester.tap(find.text('Ver perfil del salón'));
     await tester.pumpAndSettle();
     expect(find.text('/salon/profile'), findsOneWidget);
+  });
+
+  testWidgets('la guía confirma cuando el salón sí puede aparecer en el mapa',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: SalonShell(
+          cargarDatos: false,
+          entitlements: <String>[],
+          canShowOnMap: true,
+        ),
+      ),
+    );
+
+    expect(
+      find.textContaining('está habilitado para aparecer en el mapa'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('sin salón activo la guía no abre agenda de otro tenant',
