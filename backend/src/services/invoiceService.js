@@ -13,6 +13,18 @@ try {
   console.warn('[invoiceService] pdfkit no instalado, usando fallback HTML');
 }
 
+function mapPaymentEventToInvoice(provider, event) {
+  const amountInCents = event?.amount_paid ?? event?.amount_in_cents;
+  const rawStatus = String(event?.status || '').toUpperCase();
+  return {
+    externalInvoiceId: event?.id || null,
+    amount: amountInCents == null ? null : Number(amountInCents) / 100,
+    currency: event?.currency ? String(event.currency).toUpperCase() : null,
+    status: rawStatus === 'PAID' || rawStatus === 'APPROVED' ? 'paid' : 'open',
+    provider
+  };
+}
+
 /**
  * Genera número de factura secuencial por tenant
  */
@@ -59,7 +71,7 @@ async function getTenantInvoiceData(client, tenantId) {
 /**
  * Crea factura desde suscripción (mensual/prorrateo)
  */
-async function createInvoiceFromSubscription(clientOrNull, subscription, stripeInvoice = null) {
+async function createInvoiceFromSubscription(clientOrNull, subscription, paymentEvent = null, provider = null) {
   const client = clientOrNull || await pool.connect();
   const shouldRelease = !clientOrNull;
   
@@ -77,10 +89,18 @@ async function createInvoiceFromSubscription(clientOrNull, subscription, stripeI
     let currency = 'COP';
     let description = `Suscripción ${subscription.plan} - Período ${formatDate(subscription.current_period_start)} a ${formatDate(subscription.current_period_end)}`;
 
-    if (stripeInvoice) {
-      // Desde webhook Stripe
-      amount = stripeInvoice.amount_paid / 100; // centavos a COP/USD
-      currency = stripeInvoice.currency.toUpperCase();
+    const payment = paymentEvent
+      ? mapPaymentEventToInvoice(
+          provider || (subscription.stripe_subscription_id ? 'stripe' : 'wompi'),
+          paymentEvent
+        )
+      : null;
+
+    if (payment) {
+      // Desde un evento de pago: Stripe invoice.amount_paid o Wompi
+      // transaction.amount_in_cents. Ambos llegan expresados en centavos.
+      if (payment.amount != null && Number.isFinite(payment.amount)) amount = payment.amount;
+      if (payment.currency) currency = payment.currency;
     } else {
       // Desde plan en BD
       amount = getPlanPrice(subscription.plan, currency);
@@ -107,9 +127,15 @@ async function createInvoiceFromSubscription(clientOrNull, subscription, stripeI
       RETURNING *;
     `;
 
-    const stripeInvoiceId = subscription.stripe_subscription_id ? `stripe_${subscription.stripe_subscription_id}` : null;
-    const wompiInvoiceId = subscription.wompi_subscription_id ? `wompi_${subscription.wompi_subscription_id}` : null;
-    const status = stripeInvoice?.status === 'paid' ? 'paid' : 'pending';
+    // El ID externo debe identificar este cobro/factura, no la suscripción:
+    // una suscripción produce varias facturas y esas columnas son UNIQUE.
+    const stripeInvoiceId = payment?.provider === 'stripe' && payment.externalInvoiceId
+      ? payment.externalInvoiceId
+      : null;
+    const wompiInvoiceId = payment?.provider === 'wompi' && payment.externalInvoiceId
+      ? payment.externalInvoiceId
+      : null;
+    const status = payment?.status || 'open';
 
     const items = [{
       description,
@@ -205,7 +231,7 @@ async function createProrationInvoice(client, newSubscription, oldPlan, newPlan)
     tenantId,
     invoiceNumber,
     null, null,
-    'pending',
+    'open',
     currency,
     Math.round(subtotal * 100) / 100,
     Math.round(tax * 100) / 100,
@@ -475,5 +501,6 @@ module.exports = {
   getInvoicesByTenant,
   markInvoicePaid,
   generateInvoicePDF,
-  getPlanPrice
+  getPlanPrice,
+  _mapPaymentEventToInvoice: mapPaymentEventToInvoice
 };
