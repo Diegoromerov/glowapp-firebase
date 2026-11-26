@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 import '../services/api_service.dart';
 import '../services/analytics_service.dart';
@@ -139,6 +140,10 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
 
   final _formKey = GlobalKey<FormState>();
   bool _isProcessing = false;
+  bool _acceptanceLoading = true;
+  bool _acceptTerms = false;
+  bool _acceptPersonalData = false;
+  Map<String, dynamic>? _acceptanceInfo;
   Map<String, dynamic>? _successData;
   String? _errorMsg;
 
@@ -160,6 +165,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loadAcceptanceInfo());
     // A360-2026-09-22/C-03: no se emite el evento de checkout si no hay un
     // identificador real de compra (antes se enviaba un id fabricado 'STORE_…').
     final itemId = widget.bookingId.trim();
@@ -175,8 +181,27 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
     );
   }
 
+  Future<void> _loadAcceptanceInfo() async {
+    try {
+      final info = await ApiService.fetchWompiAcceptanceToken();
+      if (!mounted) return;
+      setState(() {
+        _acceptanceInfo = info;
+        _acceptanceLoading = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _acceptanceLoading = false);
+    }
+  }
+
   Future<void> _handlePayment() async {
     if (!_formKey.currentState!.validate()) return;
+
+    if (!_acceptTerms || !_acceptPersonalData) {
+      setState(() => _errorMsg = 'Debes aceptar los términos de Wompi y autorizar el tratamiento de datos para continuar.');
+      return;
+    }
 
     // A360-2026-09-22/C-01: no hay pasarela integrada para compras sin reserva
     // real (p. ej. GlowShop). Antes se devolvía aquí un pago 'APPROVED' fabricado
@@ -202,10 +227,15 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
       final method = _metodo;
 
       // Token de aceptación (Habeas Data) - obligatorio
-      final consentimiento = await ApiService.fetchWompiAcceptanceToken();
+      final consentimiento = _acceptanceInfo ?? await ApiService.fetchWompiAcceptanceToken();
+      if (_acceptanceInfo == null && mounted) {
+        setState(() => _acceptanceInfo = consentimiento);
+      }
       final acceptanceToken = consentimiento['acceptance_token'] as String?;
-      if (acceptanceToken == null || acceptanceToken.isEmpty) {
-        throw Exception('No se pudo obtener el consentimiento de pagos de Wompi.');
+      final personalDataAuthToken = consentimiento['personal_data_auth_token'] as String?;
+      if (acceptanceToken == null || acceptanceToken.isEmpty ||
+          personalDataAuthToken == null || personalDataAuthToken.isEmpty) {
+        throw Exception('Wompi no entregó ambos consentimientos requeridos. Intenta nuevamente.');
       }
 
       if (method == 'CARD') {
@@ -289,6 +319,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
           method: method,
           paymentMethodToken: paymentMethodToken,
           acceptanceToken: acceptanceToken,
+          personalDataAuthToken: personalDataAuthToken,
         );
         
         if (res['success'] != true) {
@@ -328,6 +359,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
         final res = await _crearTransaccion(
           method: method,
           acceptanceToken: acceptanceToken,
+          personalDataAuthToken: personalDataAuthToken,
           redirectUrl: _redirectUrlPago,
           customerData: {
             'email': _emailCtrl.text.trim(),
@@ -380,6 +412,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
         method: method,
         phoneNumber: telefono,
         acceptanceToken: acceptanceToken,
+        personalDataAuthToken: personalDataAuthToken,
       );
       
       if (res['success'] != true) {
@@ -816,6 +849,8 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
               style: const TextStyle(color: Colors.redAccent, fontSize: 13, fontWeight: FontWeight.w500),
             ),
           ],
+          const SizedBox(height: 12),
+          _buildWompiConsent(),
           const SizedBox(height: 24),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -858,6 +893,63 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
       ),
     );
   }
+
+  Widget _buildWompiConsent() {
+    final info = _acceptanceInfo;
+    final termsUrl = info?['permalink'] as String?;
+    final personalUrl = info?['personal_data_auth_permalink'] as String?;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF8F6FA),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFE6DDED)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (_acceptanceLoading)
+            const LinearProgressIndicator(minHeight: 2)
+          else if (info == null)
+            TextButton.icon(
+              onPressed: _isProcessing ? null : _loadAcceptanceInfo,
+              icon: const Icon(Icons.refresh, size: 16),
+              label: const Text('Cargar términos de pago'),
+            ),
+          CheckboxListTile(
+            value: _acceptTerms,
+            dense: true,
+            contentPadding: EdgeInsets.zero,
+            controlAffinity: ListTileControlAffinity.leading,
+            onChanged: _isProcessing || info == null
+                ? null
+                : (value) => setState(() => _acceptTerms = value ?? false),
+            title: const Text('Acepto los términos y la política de privacidad de Wompi.', style: TextStyle(fontSize: 11)),
+            subtitle: termsUrl == null ? null : _consentLink('Leer términos de Wompi', termsUrl),
+          ),
+          CheckboxListTile(
+            value: _acceptPersonalData,
+            dense: true,
+            contentPadding: EdgeInsets.zero,
+            controlAffinity: ListTileControlAffinity.leading,
+            onChanged: _isProcessing || info == null
+                ? null
+                : (value) => setState(() => _acceptPersonalData = value ?? false),
+            title: const Text('Autorizo el tratamiento de mis datos personales por Wompi.', style: TextStyle(fontSize: 11)),
+            subtitle: personalUrl == null ? null : _consentLink('Leer autorización de datos', personalUrl),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _consentLink(String label, String url) => Align(
+        alignment: Alignment.centerLeft,
+        child: InkWell(
+          onTap: () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
+          child: Text(label, style: const TextStyle(fontSize: 11, color: Color(0xFF5C288D), decoration: TextDecoration.underline)),
+        ),
+      );
 
   Widget _buildNequiForm() {
     // D-GL-023 (regla 18): el anticipo es del 100% al reservar, también para
@@ -1316,6 +1408,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
     String? phoneNumber,
     String? paymentMethodToken,
     required String acceptanceToken,
+    required String personalDataAuthToken,
     String? redirectUrl,
     Map<String, dynamic>? customerData,
   }) {
@@ -1326,6 +1419,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
         phoneNumber: phoneNumber,
         paymentMethodToken: paymentMethodToken,
         acceptanceToken: acceptanceToken,
+        personalDataAuthToken: personalDataAuthToken,
         redirectUrl: redirectUrl,
         customerData: customerData,
       );
@@ -1336,6 +1430,7 @@ class _WompiCheckoutWidgetState extends State<WompiCheckoutWidget> {
       phoneNumber: phoneNumber,
       paymentMethodToken: paymentMethodToken,
       acceptanceToken: acceptanceToken,
+      personalDataAuthToken: personalDataAuthToken,
       redirectUrl: redirectUrl,
       customerData: customerData,
     );

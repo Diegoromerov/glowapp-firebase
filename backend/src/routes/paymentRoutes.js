@@ -163,14 +163,15 @@ router.get(
     }
 
     try {
-      const { acceptanceToken, personalDataAuthToken, permalink } =
+      const { acceptanceToken, personalDataAuthToken, permalink, personalDataAuthPermalink } =
         await wompiClient.getAcceptanceTokens();
 
       return res.json({
         success: true,
         acceptance_token: acceptanceToken,
         personal_data_auth_token: personalDataAuthToken,
-        permalink
+        permalink,
+        personal_data_auth_permalink: personalDataAuthPermalink
       });
     } catch (err) {
       console.error(

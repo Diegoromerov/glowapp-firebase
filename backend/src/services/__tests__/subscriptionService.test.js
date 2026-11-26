@@ -107,30 +107,18 @@ describe('subscriptionService', () => {
       expect(invoiceService.createInvoiceFromSubscription).toHaveBeenCalled();
     });
 
-    test('crea suscripción BASIC (Wompi COP) → usa wompiSubscriptionService', async () => {
-      wompiSubscriptionService.createOrGetCustomer.mockResolvedValue({ id: 'cus_wompi' });
-      wompiSubscriptionService.createSubscription.mockResolvedValue({
-        id: 'sub_wompi',
-        status: 'active',
-        trial_end: Date.now() + 30 * 86400 * 1000
-      });
-      
-      mockClient.query
-        .mockResolvedValueOnce({ rows: [] })
-        .mockResolvedValueOnce({ rows: [{ id: 'sub_3', tenant_id: 'bp_test', plan: 'BASIC' }] })
-        .mockResolvedValueOnce({ rows: [] })
-        .mockResolvedValueOnce({ rows: [] });
-
-      const result = await subscriptionService.createSubscription({
+    test('rechaza el plan pagado COP mientras Wompi no tenga checkout SaaS recurrente implementado', async () => {
+      await expect(subscriptionService.createSubscription({
         ...baseParams,
         plan: 'BASIC',
         currency: 'COP',
         paymentMethodId: 'wompi_token'
-      });
+      })).rejects.toThrow('checkout recurrente Wompi');
 
-      expect(result.plan).toBe('BASIC');
-      expect(wompiSubscriptionService.createOrGetCustomer).toHaveBeenCalled();
+      expect(wompiSubscriptionService.createOrGetCustomer).not.toHaveBeenCalled();
+      expect(wompiSubscriptionService.createSubscription).not.toHaveBeenCalled();
       expect(stripeService.createOrGetCustomer).not.toHaveBeenCalled();
+      expect(mockClient.query).toHaveBeenCalledWith('ROLLBACK');
     });
 
     test('crea suscripción FREEMIUM (Wompi COP) sin trial → no llama createSubscription (trialDays = null)', async () => {
@@ -289,30 +277,16 @@ describe('subscriptionService', () => {
       expect(invoiceService.createProrationInvoice).toHaveBeenCalled();
     });
 
-    test('downgrade PRO → BASIC (Wompi) → sin prorrateo, sin factura ajuste', async () => {
+    test('no cambia un plan Wompi por una ruta heredada sin confirmar un nuevo cobro', async () => {
       subscriptionService.getActiveSubscription.mockResolvedValue({
         tenant_id: tenantId,
         plan: 'PRO',
         stripe_subscription_id: null,
         wompi_subscription_id: 'sub_wompi'
       });
-      wompiSubscriptionService.changeSubscriptionPlan.mockResolvedValue({
-        id: 'sub_wompi',
-        status: 'active',
-        current_period_start: Math.floor(Date.now() / 1000),
-        current_period_end: Math.floor(Date.now() / 1000) + 30 * 86400
-      });
-      
-      mockClient.query
-        .mockResolvedValueOnce({ rows: [] })
-        .mockResolvedValueOnce({ rows: [{ id: 'sub_7', tenant_id: tenantId, plan: 'BASIC' }] })
-        .mockResolvedValueOnce({ rows: [] })
-        .mockResolvedValueOnce({ rows: [] }); // COMMIT (sin proration invoice)
-
-      const result = await subscriptionService.changePlan({ tenantId, newPlan: 'BASIC', prorate: false });
-
-      expect(result.plan).toBe('BASIC');
-      expect(wompiSubscriptionService.changeSubscriptionPlan).toHaveBeenCalled();
+      await expect(subscriptionService.changePlan({ tenantId, newPlan: 'BASIC', prorate: false }))
+        .rejects.toThrow('Wompi no ofrece cambio directo');
+      expect(wompiSubscriptionService.changeSubscriptionPlan).not.toHaveBeenCalled();
       expect(invoiceService.createProrationInvoice).not.toHaveBeenCalled();
     });
 
@@ -405,30 +379,17 @@ describe('subscriptionService', () => {
       expect(mockClient.query).not.toHaveBeenCalledWith(expect.stringContaining('FREEMIUM'));
     });
 
-    test('cancel atPeriodEnd=false (Wompi) → status canceled, baja a FREEMIUM', async () => {
+    test('rechaza cancelar Wompi por una ruta heredada sin detener la renovación local', async () => {
       subscriptionService.getActiveSubscription.mockResolvedValue({
         tenant_id: tenantId,
         plan: 'BASIC',
         stripe_subscription_id: null,
         wompi_subscription_id: 'sub_wompi'
       });
-      wompiSubscriptionService.cancelSubscription.mockResolvedValue({});
-      
-      mockClient.query
-        .mockResolvedValueOnce({ rows: [] }) // BEGIN
-        .mockResolvedValueOnce({ rows: [{ id: 'sub_10', tenant_id: tenantId, status: 'canceled' }] }) // UPDATE
-        .mockResolvedValueOnce({ rows: [] }) // _syncPlanToTenant con FREEMIUM
-        .mockResolvedValueOnce({ rows: [] }); // COMMIT
-
-      const result = await subscriptionService.cancelSubscription({ tenantId, atPeriodEnd: false });
-
-      expect(result.status).toBe('canceled');
-      expect(wompiSubscriptionService.cancelSubscription).toHaveBeenCalledWith('sub_wompi', false);
-      // Verificar que _syncPlanToTenant se llamó con FREEMIUM
-      const syncCall = mockClient.query.mock.calls.find(c => 
-        c[0]?.includes?.('UPDATE business_profiles') && c[1]?.[0] === 'FREEMIUM'
-      );
-      expect(syncCall).toBeDefined();
+      await expect(subscriptionService.cancelSubscription({ tenantId, atPeriodEnd: false }))
+        .rejects.toThrow('cancelación de renovación Wompi');
+      expect(wompiSubscriptionService.cancelSubscription).not.toHaveBeenCalled();
+      expect(mockClient.query).toHaveBeenCalledWith('ROLLBACK');
     });
 
     test('sin suscripción activa → lanza error', async () => {

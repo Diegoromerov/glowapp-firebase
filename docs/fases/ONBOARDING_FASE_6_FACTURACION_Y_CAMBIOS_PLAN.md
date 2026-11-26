@@ -55,6 +55,20 @@ Gestionar checkout, activación, renovación, cancelación, comprobantes y recup
 | Facturas | Parcial en código | Generación PDF y round-trip cifrado R2 comprobados en producción con objeto sintético y limpieza verificada. Falta el recorrido con registro de factura QA, autorización por tenant y endpoint autenticado, además del envío del comprobante. El documento no es factura electrónica y la tasa tributaria debe validarse. |
 | Recuperación | Parcial en código; no activa en producción | El job tiene consultas con RLS, correos y auditoría; el mapeo de contactos coincide con el esquema migrado y pasó CI. Faltan auditoría de objetivos productivos, política de gracia y recuperación del método de pago. Mantenerlo sin cron hasta completar esa revisión. |
 
+## Avance siguiente: contrato Wompi y consentimiento (26 de noviembre de 2026)
+
+En la rama de trabajo se está corrigiendo el contrato actual de Wompi para evitar que la aceptación de pagos falle por el endpoint legado o por omitir autorización de datos:
+
+- Consulta los dos tokens de aceptación desde `GET /merchants/info`, con la llave pública en `x-merchant-public-key`.
+- Pide y muestra por separado el consentimiento de términos y la autorización de tratamiento de datos antes de enviar el pago. Si no llegan ambos tokens o el usuario no marca ambas casillas, no continúa.
+- Envía `accept_personal_auth` al crear transacciones y fuentes de pago; backend rechaza solicitudes que no traigan el token.
+- Retira las llamadas del adaptador legado que suponían recursos REST tipo Stripe para clientes/suscripciones/cancelación. Un plan COP de pago ahora falla de forma explícita mientras el ciclo real no esté integrado, evitando guardar una suscripción ficticia o activar capacidades sin pago confirmado.
+- Añade compatibilidad de `recurrent` en el cliente HTTP para la futura transacción con fuente de pago; esta opción por sí sola no constituye el ciclo SaaS.
+
+Este cambio está **en desarrollo y aún no está desplegado**. No se han usado las credenciales de QA ni se ha enviado una transacción. La prueba queda pendiente en el entorno sandbox; no se iniciará un cobro real en producción.
+
+La implementación integral de renovación COP aún debe añadir la creación/almacenamiento de payment source por tenant, referencias únicas por período, registro de intentos, conciliación e idempotencia de `transaction.updated`, factura ligada al pago aprobado, política de mora/gracia, cancelación local de futuras renovaciones y worker con bloqueo estricto de entorno. La recurrencia de Wompi queda condicionada a que el comercio tenga habilitado el producto/contrato aplicable; no se activa ningún cobro real mientras Wompi siga en sandbox.
+
 ## Pendientes prioritarios
 
 1. Configurar y verificar precios, moneda y llaves del proveedor mediante variables secretas; nunca incluirlas en commits o logs.

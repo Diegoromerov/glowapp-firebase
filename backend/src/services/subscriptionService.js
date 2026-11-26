@@ -1,7 +1,6 @@
 // backend/src/services/subscriptionService.js
 const { pool } = require('../config/db');
 const stripeService = require('./stripeService');
-const wompiSubscriptionService = require('./wompiSubscriptionService');
 const invoiceService = require('./invoiceService');
 const { hasEntitlement } = require('../config/saasEntitlements');
 const crypto = require('crypto');
@@ -74,34 +73,11 @@ class SubscriptionService {
           status = sub.status;
           trialEnd = sub.trial_end ? new Date(sub.trial_end * 1000) : null;
         }
-      } else {
-        // Wompi para pagos Colombia (COP)
-        const customer = await wompiSubscriptionService.createOrGetCustomer({
-          email: customerEmail,
-          metadata: { tenantId, plan }
-        });
-        gatewayCustomerId = customer.id;
-
-        if (isPaidPlan && paymentMethodId) {
-          const sub = await wompiSubscriptionService.createSubscription({
-            customerId: customer.id,
-            planId: this._getWompiPlanId(plan),
-            paymentMethodId,
-            trialDays
-          });
-          gatewaySubscriptionId = sub.id;
-          status = sub.status;
-          trialEnd = sub.trial_end ? new Date(sub.trial_end) : null;
-        } else if (trialDays) {
-          const sub = await wompiSubscriptionService.createSubscription({
-            customerId: customer.id,
-            planId: this._getWompiPlanId(plan),
-            trialDays
-          });
-          gatewaySubscriptionId = sub.id;
-          status = sub.status;
-          trialEnd = sub.trial_end ? new Date(sub.trial_end) : null;
-        }
+      } else if (isPaidPlan) {
+        // Wompi no ofrece el recurso REST /subscriptions. La recurrencia se
+        // integra mediante payment_sources + transactions y requiere webhook
+        // y ledger local; no generar clientes ni suscripciones ficticias.
+        throw new Error('El checkout recurrente Wompi para planes SaaS aún no está habilitado.');
       }
 
       if (isPaidPlan && !gatewaySubscriptionId) {
@@ -212,11 +188,7 @@ class SubscriptionService {
           prorate
         });
       } else {
-        gatewaySubscription = await wompiSubscriptionService.changeSubscriptionPlan({
-          subscriptionId: currentSub.wompi_subscription_id,
-          newPlanId: this._getWompiPlanId(newPlan),
-          prorate
-        });
+        throw new Error('Wompi no ofrece cambio directo de suscripción; se requiere un nuevo cobro recurrente confirmado.');
       }
 
       // 2. Actualizar en BD
@@ -279,7 +251,7 @@ class SubscriptionService {
       if (currency === 'USD') {
         await stripeService.cancelSubscription(currentSub.stripe_subscription_id, atPeriodEnd);
       } else {
-        await wompiSubscriptionService.cancelSubscription(currentSub.wompi_subscription_id, atPeriodEnd);
+        throw new Error('La cancelación de renovación Wompi requiere el flujo local de pagos recurrentes.');
       }
 
       // 2. Actualizar en BD

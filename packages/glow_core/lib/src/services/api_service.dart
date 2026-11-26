@@ -775,6 +775,7 @@ class ApiService {
       int? installments,
       String? paymentSourceId,
       String? acceptanceToken,
+      String? personalDataAuthToken,
       String? redirectUrl,
       Map<String, dynamic>? customerData,
     }) async {
@@ -786,6 +787,7 @@ class ApiService {
         if (installments != null) 'installments': installments,
         if (paymentSourceId != null) 'payment_source_id': paymentSourceId,
         if (acceptanceToken != null) 'acceptance_token': acceptanceToken,
+        if (personalDataAuthToken != null) 'personal_data_auth_token': personalDataAuthToken,
         // PSE / Daviplata / Bancolombia: sin estos dos el backend responde 400.
         if (redirectUrl != null) 'redirect_url': redirectUrl,
         if (customerData != null) 'customer_data': customerData,
@@ -874,6 +876,7 @@ class ApiService {
     int? installments,
     String? paymentSourceId,
     String? acceptanceToken,
+    String? personalDataAuthToken,
     String? redirectUrl,
     Map<String, dynamic>? customerData,
   }) async {
@@ -885,6 +888,7 @@ class ApiService {
       if (installments != null) 'installments': installments,
       if (paymentSourceId != null) 'payment_source_id': paymentSourceId,
       if (acceptanceToken != null) 'acceptance_token': acceptanceToken,
+      if (personalDataAuthToken != null) 'personal_data_auth_token': personalDataAuthToken,
       // PSE / Bancolombia / Daviplata: Wompi exige a dónde volver y quién paga.
       // El backend los rechaza con 400 si faltan, así que no se envían vacíos.
       if (redirectUrl != null && redirectUrl.isNotEmpty) 'redirect_url': redirectUrl,

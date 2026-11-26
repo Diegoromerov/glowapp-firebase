@@ -161,7 +161,7 @@ describe('getAcceptanceTokens', () => {
       data: {
         data: {
           presigned_acceptance: { acceptance_token: 'acc_tok_1', permalink: 'https://wompi.co/terms' },
-          presigned_personal_data_auth: { acceptance_token: 'personal_tok_1' }
+          presigned_personal_data_auth: { acceptance_token: 'personal_tok_1', permalink: 'https://wompi.co/data' }
         }
       }
     });
@@ -171,8 +171,9 @@ describe('getAcceptanceTokens', () => {
     expect(tokens.personalDataAuthToken).toBe('personal_tok_1');
 
     const [config] = axios.mock.calls[0];
-    expect(config.url).toBe('https://sandbox.wompi.co/v1/merchants/pub_test_public_456');
-    expect(config.headers.Authorization).toBe('Bearer pub_test_public_456');
+    expect(config.url).toBe('https://sandbox.wompi.co/v1/merchants/info');
+    expect(config.headers['x-merchant-public-key']).toBe('pub_test_public_456');
+    expect(config.headers.Authorization).toBeUndefined();
   });
 });
 
@@ -187,6 +188,7 @@ describe('createTransaction', () => {
       reference: 'ORDER-1',
       customerEmail: 'juan@example.com',
       acceptanceToken: 'acc_tok_1',
+      personalDataAuthToken: 'personal_tok_1',
       paymentMethod: { type: 'CARD', token: 'tok_1', installments: 1 }
     });
 
@@ -197,6 +199,7 @@ describe('createTransaction', () => {
     expect(config.data.amount_in_cents).toBe(50000);
     expect(config.data.currency).toBe('COP');
     expect(config.data.acceptance_token).toBe('acc_tok_1');
+    expect(config.data.accept_personal_auth).toBe('personal_tok_1');
     expect(config.data.reference).toBe('ORDER-1');
     expect(config.data.payment_method).toEqual({ type: 'CARD', token: 'tok_1', installments: 1 });
     expect(config.data.payment_source_id).toBeUndefined();
@@ -219,6 +222,7 @@ describe('createTransaction', () => {
       reference: 'ORDER-2',
       customerEmail: 'ana@example.com',
       acceptanceToken: 'acc_tok_1',
+      personalDataAuthToken: 'personal_tok_1',
       paymentMethod: { type: 'NEQUI', phone_number: '3991111111' }
     });
 
@@ -235,6 +239,7 @@ describe('createTransaction', () => {
       reference: 'R',
       customerEmail: 'a@b.co',
       acceptanceToken: 't',
+      personalDataAuthToken: 'pda',
       paymentMethod: { type: 'NEQUI', phone_number: '3991111111' }
     };
 
@@ -254,6 +259,7 @@ describe('createTransaction', () => {
         reference: 'r',
         customerEmail: 'a@b.co',
         acceptanceToken: 't',
+        personalDataAuthToken: 'pda',
         paymentSourceId: 12,
         paymentMethod: { type: 'CARD', token: 'x', installments: 1 }
       })
@@ -263,14 +269,14 @@ describe('createTransaction', () => {
 
   test('rechaza si no se envía ninguno de los dos', async () => {
     await expect(
-      wompiClient.createTransaction({ amountInCents: 1000, reference: 'r', customerEmail: 'a@b.co', acceptanceToken: 't' })
+      wompiClient.createTransaction({ amountInCents: 1000, reference: 'r', customerEmail: 'a@b.co', acceptanceToken: 't', personalDataAuthToken: 'pda' })
     ).rejects.toThrow(/exactamente uno/i);
   });
 
   test('rechaza monto no entero o <= 0', async () => {
     await expect(
       wompiClient.createTransaction({
-        amountInCents: 0, reference: 'r', customerEmail: 'a@b.co', acceptanceToken: 't',
+        amountInCents: 0, reference: 'r', customerEmail: 'a@b.co', acceptanceToken: 't', personalDataAuthToken: 'pda',
         paymentMethod: { type: 'NEQUI' }
       })
     ).rejects.toThrow(/entero positivo/i);
@@ -280,7 +286,7 @@ describe('createTransaction', () => {
     delete process.env.WOMPI_PRIVATE_KEY;
     await expect(
       wompiClient.createTransaction({
-        amountInCents: 1000, reference: 'r', customerEmail: 'a@b.co', acceptanceToken: 't',
+        amountInCents: 1000, reference: 'r', customerEmail: 'a@b.co', acceptanceToken: 't', personalDataAuthToken: 'pda',
         paymentMethod: { type: 'NEQUI' }
       })
     ).rejects.toThrow(/WOMPI_PRIVATE_KEY/);
@@ -294,7 +300,7 @@ describe('createTransaction', () => {
 
     await expect(
       wompiClient.createTransaction({
-        amountInCents: 1000, reference: 'dup', customerEmail: 'a@b.co', acceptanceToken: 't',
+        amountInCents: 1000, reference: 'dup', customerEmail: 'a@b.co', acceptanceToken: 't', personalDataAuthToken: 'pda',
         paymentMethod: { type: 'NEQUI' }
       })
     ).rejects.toMatchObject({ name: 'WompiError', status: 422 });
@@ -350,6 +356,7 @@ describe('W10 — surface de la URL de redirección (async_payment_url)', () => 
       reference: 'ref-1',
       customerEmail: 'ana@example.com',
       acceptanceToken: 'acc',
+      personalDataAuthToken: 'pda',
       paymentMethod: 'PSE',
       redirectUrl: 'https://glowapp.co/pago/resultado',
       customerData: { email: 'ana@example.com', full_name: 'Ana', phone_number: '3001234567' }

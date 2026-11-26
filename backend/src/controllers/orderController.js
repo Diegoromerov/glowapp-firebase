@@ -736,7 +736,7 @@ exports.payOrder = async (req, res) => {
     const orderId = req.params.id;
     const {
       payment_method, phone_number, payment_source_id, payment_method_token,
-      installments, acceptance_token, redirect_url, customer_data
+      installments, acceptance_token, personal_data_auth_token, redirect_url, customer_data
     } = req.body;
 
     // Validar pedido
@@ -788,6 +788,9 @@ exports.payOrder = async (req, res) => {
     }
     if (!acceptance_token || String(acceptance_token).trim().length === 0) {
       return res.status(400).json({ error: 'acceptance_token es obligatorio (Habeas Data).' });
+    }
+    if (!personal_data_auth_token || String(personal_data_auth_token).trim().length === 0) {
+      return res.status(400).json({ error: 'personal_data_auth_token es obligatorio para autorizar el tratamiento de datos ante Wompi.' });
     }
     
     const method = payment_method.toUpperCase();
@@ -865,6 +868,7 @@ exports.payOrder = async (req, res) => {
       reference: externalId,
       customerEmail: req.user.email || 'cliente@glowapp.co',
       acceptanceToken: acceptance_token,
+      personalDataAuthToken: personal_data_auth_token,
       paymentSourceId,
       customerData: redirectMethods.includes(method) ? customer_data : null,
       redirectUrl: redirectMethods.includes(method) ? redirect_url : null,
