@@ -157,7 +157,7 @@ jobs:
           JWT_SECRET: test-secret-min-32-chars-long-enough-for-testing-only
           USE_PG_MEM: 'false'
         run: |
-          npx jest tests/pointsLedger.integration.test.js tests/auth.integration.test.js tests/saasMembershipConcurrency.integration.test.js --runInBand --forceExit --verbose
+          npx jest tests/pointsLedger.integration.test.js tests/auth.integration.test.js tests/saasMembershipConcurrency.integration.test.js tests/saasFreeTrialExpiration.integration.test.js --runInBand --forceExit --verbose
 
       - name: Sembrar catalogo de prueba (rol admin)
         working-directory: backend
