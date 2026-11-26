@@ -3,7 +3,7 @@ const pool = db.pool;
 const { getPlansWithEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { runAsSystem } = require('../config/tenantRouting');
 const { getColombiaDayRange, getColombiaDateParts, isValidColombiaDate, getColombiaSchedule, intersectColombiaSchedules, buildAvailabilitySlots } = require('../utils/bookingCalendar');
-const { evaluarElegibilidadReserva } = require('../utils/bookingEligibility');
+const { evaluarElegibilidadReserva, salonVisibleEnMarketplace } = require('../utils/bookingEligibility');
 
 // GET /api/providers → LISTA DE PRESTADORES Y SALONES (Geolocalización con PostGIS y Entitlements)
 exports.getProviders = async (req, res) => {
@@ -625,26 +625,29 @@ exports.getProviderSlots = async (req, res) => {
     let targetSalonId = salonId || serviceSalonIds[0] || null;
     if (targetSalonId) {
       const salonRes = await runAsSystem({ pool }, (client) => client.query(
-        `SELECT id, business_profile_id FROM salones
-          WHERE id = $1
+        `SELECT s.id, s.business_profile_id, s.location_enabled, s.location_public,
+                UPPER(COALESCE(s.plan_saas, bp.saas_plan, 'FREE_TRIAL')) AS plan_saas
+           FROM salones s
+           LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
+          WHERE s.id = $1
             AND (
-              (cardinality($2::varchar[]) > 0 AND business_profile_id = ANY($2::varchar[])
+              (cardinality($2::varchar[]) > 0 AND s.business_profile_id = ANY($2::varchar[])
                 AND EXISTS (
-                  SELECT 1 FROM business_profiles bp
-                   WHERE bp.id = salones.business_profile_id
-                     AND (bp.provider_id = $3 OR EXISTS (
+                  SELECT 1 FROM business_profiles scope_bp
+                   WHERE scope_bp.id = s.business_profile_id
+                     AND (scope_bp.provider_id = $3 OR EXISTS (
                        SELECT 1 FROM memberships m
-                        WHERE m.business_profile_id = bp.id AND m.user_id = $3 AND m.status = 'ACTIVE'
+                        WHERE m.business_profile_id = scope_bp.id AND m.user_id = $3 AND m.status = 'ACTIVE'
                      ))
                 ))
               OR (cardinality($2::varchar[]) = 0 AND (
-                (business_profile_id IS NULL AND id_dueno = $3)
+                (s.business_profile_id IS NULL AND s.id_dueno = $3)
                 OR EXISTS (
-                  SELECT 1 FROM business_profiles bp
-                   WHERE bp.id = salones.business_profile_id
-                     AND (bp.provider_id = $3 OR EXISTS (
+                  SELECT 1 FROM business_profiles scope_bp
+                   WHERE scope_bp.id = s.business_profile_id
+                     AND (scope_bp.provider_id = $3 OR EXISTS (
                        SELECT 1 FROM memberships m
-                        WHERE m.business_profile_id = bp.id AND m.user_id = $3 AND m.status = 'ACTIVE'
+                        WHERE m.business_profile_id = scope_bp.id AND m.user_id = $3 AND m.status = 'ACTIVE'
                      ))
                 )
               ))
@@ -653,6 +656,13 @@ exports.getProviderSlots = async (req, res) => {
       ));
       if (!salonRes.rows.length) {
         return res.status(404).json({ success: false, code: 'BOOKING_SALON_NOT_FOUND', error: 'La sede no existe o no corresponde a los servicios.' });
+      }
+      if (req.appAudience === 'client' && !salonVisibleEnMarketplace(salonRes.rows[0])) {
+        return res.status(404).json({
+          success: false,
+          code: 'SALON_NOT_PUBLIC',
+          error: 'No encontramos el prestador seleccionado.',
+        });
       }
       const salonBusinessProfileId = salonRes.rows[0].business_profile_id;
       if (salonBusinessProfileId && Number(serviceRes.rows[0].unresolved_scope_count) > 0) {

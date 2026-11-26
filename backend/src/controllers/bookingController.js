@@ -39,7 +39,7 @@ const { getColombiaDayRange, getColombiaSchedule, intersectColombiaSchedules, is
 const { getActiveBookingSalonId, canManageBooking } = require('../utils/bookingAccess');
 const { isSaasDirectBookingAudience, bookingOriginForAudience } = require('../utils/bookingOrigin');
 const { ACTIONS } = require('../services/authorizationService');
-const { evaluarElegibilidadReserva } = require('../utils/bookingEligibility');
+const { evaluarElegibilidadReserva, salonVisibleEnMarketplace } = require('../utils/bookingEligibility');
 
 /** URL http(s) utilizable como redirect_url (no vacia, no de otro esquema). */
 function esUrlHttpValida(valor) {
@@ -338,6 +338,34 @@ exports.createBooking = async (req, res) => {
       if (salonRows.length === 1) salonId = Number(salonRows[0].id);
     }
 
+    // Las reservas del marketplace deben respetar la misma compuerta de
+    // publicación que el catálogo y la ficha pública. La app del salón conserva
+    // su flujo directo aunque la sede no se publique en el mapa.
+    if (req.appAudience === 'client' && salonId !== null) {
+      const marketplaceSalon = await sequelize.transaction(async (t) => {
+        await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
+        return sequelize.query(
+          `SELECT s.location_enabled, s.location_public,
+                  UPPER(COALESCE(s.plan_saas, bp.saas_plan, 'FREE_TRIAL')) AS plan_saas
+             FROM salones s
+             LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
+            WHERE s.id = :salonId`,
+          {
+            replacements: { salonId },
+            type: sequelize.QueryTypes.SELECT,
+            transaction: t,
+          }
+        );
+      });
+      if (!salonVisibleEnMarketplace(marketplaceSalon[0])) {
+        return res.status(404).json({
+          success: false,
+          code: 'SALON_NOT_PUBLIC',
+          error: 'No encontramos el prestador seleccionado.',
+        });
+      }
+    }
+
     const totalServicesPrice = orderedServices.reduce((sum, s) => sum + parseFloat(s.price), 0);
     const totalDurationMinutes = orderedServices.reduce((sum, s) => sum + parseInt(s.duration_minutes), 0);
 
@@ -475,7 +503,7 @@ exports.createBooking = async (req, res) => {
            FROM (SELECT CAST(:providerId AS integer) AS provider_id, CAST(:salonId AS integer) AS salon_id) requested
            LEFT JOIN perfiles_prestador p ON p.id = requested.provider_id
            LEFT JOIN salones s ON s.id = requested.salon_id`,
-        { replacements: { providerId: Number(provider_id), salonId: targetSalonId }, type: sequelize.QueryTypes.SELECT, transaction: t }
+        { replacements: { providerId: Number(provider_id), salonId }, type: sequelize.QueryTypes.SELECT, transaction: t }
       );
       const hours = providerHours[0] || {};
       const providerSchedule = getColombiaSchedule({
