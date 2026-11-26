@@ -135,6 +135,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '182_fix_logistics_metrics_destination_schema.sql',
   // 183: suspend visibility without disabling account access.
   '183_user_public_visibility_suspension.sql',
+  '189_explicit_salon_business_profile.sql',
 // SaaS membership governance and row-level policies, exercised by the RLS test suite.
 '190_saas_membership_governance.sql',
 '197_business_profiles_membership_read.sql',
@@ -276,6 +277,7 @@ const MIGRACIONES_ARRANQUE = [
   '182_fix_logistics_metrics_destination_schema.sql',
   // Keep existing databases aligned with the public visibility checks.
   '183_user_public_visibility_suspension.sql',
+  '189_explicit_salon_business_profile.sql',
   '190_saas_membership_governance.sql',
   '197_business_profiles_membership_read.sql',
   '200_saas_memberships_rls.sql',
