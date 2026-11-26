@@ -69,13 +69,13 @@ describeWithPostgres('SaaS external API with PostgreSQL RLS', () => {
 
     const ownService = await adminPool.query(
       `INSERT INTO services (provider_id, tenant_id, business_profile_id, name, price, duration_minutes, is_active)
-       VALUES ($1, $1, $2, 'Own service', 25000, 45, TRUE) RETURNING id`,
+       VALUES ($1, 1, $2, 'Own service', 25000, 45, TRUE) RETURNING id`,
       [ownerId, profileId]
     );
     ownServiceId = ownService.rows[0].id;
     await adminPool.query(
       `INSERT INTO services (provider_id, tenant_id, business_profile_id, name, price, duration_minutes, is_active)
-       VALUES ($1, $1, $2, 'Other tenant private service', 99000, 90, TRUE)`,
+       VALUES ($1, 1, $2, 'Other tenant private service', 99000, 90, TRUE)`,
       [otherOwnerId, otherProfileId]
     );
   });

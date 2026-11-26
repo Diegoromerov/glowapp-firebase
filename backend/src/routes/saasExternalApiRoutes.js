@@ -72,7 +72,7 @@ router.get('/services', async (req, res) => {
     await client.query('UPDATE api_keys SET last_used_at = NOW() WHERE id = $1', [key.id]);
     // Legacy service rows use the salon owner's integer tenant_id. The query
     // also explicitly scopes by canonical profile or its owner to prevent leaks.
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(key.provider_id)]);
+    await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(key.legacy_tenant_id)]);
     const services = await client.query(`
       SELECT id, name, description, price, duration_minutes, category,
              is_active, business_profile_id, salon_id
