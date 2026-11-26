@@ -51,7 +51,10 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
     if (profileState.profile == null) {
       return Scaffold(
         backgroundColor: _bg,
-        appBar: AppBar(title: const Text('Uso y Métricas'), backgroundColor: _bg, foregroundColor: _ink),
+        appBar: AppBar(
+            title: const Text('Uso y Métricas'),
+            backgroundColor: _bg,
+            foregroundColor: _ink),
         body: profileState.isLoading
             ? const Center(child: CircularProgressIndicator())
             : const Center(
@@ -82,7 +85,8 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
           IconButton(
             tooltip: 'Actualizar',
             icon: const Icon(Icons.refresh_rounded, color: Color(0xFFC5A052)),
-            onPressed: () => ref.read(usageProvider.notifier).load(businessProfileId),
+            onPressed: () =>
+                ref.read(usageProvider.notifier).load(businessProfileId),
           ),
         ],
       ),
@@ -91,7 +95,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
           : RefreshIndicator(
               onRefresh: () async {
                 await ref.read(usageProvider.notifier).load(businessProfileId);
-                await ref.read(billingProvider.notifier).load(businessProfileId);
+                await ref
+                    .read(billingProvider.notifier)
+                    .load(businessProfileId);
               },
               child: ListView(
                 padding: const EdgeInsets.all(16),
@@ -100,6 +106,13 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
                   const SizedBox(height: 16),
                   if (usage.error != null) _errorBanner(usage.error),
                   _kpiGrid(summary, tier),
+                  if (summary?.metrics.any((m) =>
+                          m.type == UsageMetricType.apiCalls &&
+                          (m.isUnlimited || m.limit > 0)) ??
+                      false) ...[
+                    const SizedBox(height: 8),
+                    _integrationQuotaNote(),
+                  ],
                   const SizedBox(height: 16),
                   if (alerts.isNotEmpty) ...[
                     _alertsSection(alerts),
@@ -112,8 +125,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
                     const SizedBox(height: 16),
                     const Text(
                       'El período aún no registra consumo. Las métricas aparecen en cuanto '
-                      'la plataforma registre reservas o llamadas a la API.',
-                      style: TextStyle(fontSize: 12, color: _muted, height: 1.5),
+                      'la plataforma registre reservas o solicitudes de integración.',
+                      style:
+                          TextStyle(fontSize: 12, color: _muted, height: 1.5),
                     ),
                   ],
                 ],
@@ -152,7 +166,10 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
             border: Border.all(color: tier.color.withOpacity(0.4)),
           ),
           child: Text('Plan ${tier.label}',
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: tier.color)),
+              style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: tier.color)),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -191,24 +208,32 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
       mainAxisSpacing: 12,
       childAspectRatio: 1.45,
       children: [
-        _kpiCard('Llamadas API', api, _blue, Icons.api_rounded),
-        _kpiCard('Reservas online', bookings, _green, Icons.event_available_rounded),
-        _kpiCard('Asientos de equipo', seats, const Color(0xFF8B5CF6), Icons.people_rounded),
+        _kpiCard('Procesos de integración', api, _blue, Icons.api_rounded),
+        _kpiCard(
+            'Reservas directas', bookings, _green, Icons.event_available_rounded),
+        _kpiCard('Asientos de equipo', seats, const Color(0xFF8B5CF6),
+            Icons.people_rounded),
         _alertsKpi(summary),
       ],
     );
   }
 
-  Widget _kpiCard(String title, UsageMetric? metric, Color color, IconData icon) {
+  Widget _kpiCard(
+      String title, UsageMetric? metric, Color color, IconData icon) {
     final used = metric?.current ?? 0;
     final limit = metric?.limit ?? 0;
-    final unlimited = limit <= 0;
-    final progress = unlimited ? 0.0 : (used / limit).clamp(0.0, 1.0);
+    final unlimited = metric?.isUnlimited ?? false;
+    final notIncluded = metric != null && !unlimited && limit == 0;
+    final progress = unlimited || notIncluded || metric == null
+        ? 0.0
+        : (used / limit).clamp(0.0, 1.0);
     final capColor = progress >= 0.9
         ? Colors.red
         : progress >= 0.75
             ? Colors.amber.shade800
-            : color;
+            : notIncluded
+                ? _muted
+                : color;
 
     return Card(
       elevation: 0,
@@ -227,16 +252,32 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
                 Icon(icon, size: 18, color: color),
                 const Spacer(),
                 Text(
-                  unlimited ? '∞' : '${(progress * 100).round()}%',
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: capColor),
+                  notIncluded
+                      ? 'No incluido'
+                      : unlimited
+                          ? '∞'
+                          : metric == null
+                              ? '—'
+                              : '${(progress * 100).round()}%',
+                  style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                      color: capColor),
                 ),
               ],
             ),
             const Spacer(),
             Text(_formatNumber(used),
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: _ink)),
+                style: const TextStyle(
+                    fontSize: 22, fontWeight: FontWeight.bold, color: _ink)),
             Text(
-              unlimited ? 'Ilimitado' : 'de ${_formatNumber(limit)}',
+              notIncluded
+                  ? 'No incluido en este plan'
+                  : unlimited
+                      ? 'Ilimitado'
+                      : metric == null
+                          ? 'Sin datos'
+                          : 'de ${_formatNumber(limit)}',
               style: const TextStyle(fontSize: 11, color: _muted),
             ),
             const SizedBox(height: 8),
@@ -257,10 +298,26 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
     );
   }
 
+  Widget _integrationQuotaNote() => Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: _line),
+        ),
+        child: const Text(
+          'Cuenta cada solicitud externa autenticada con una llave API de GlowApp. '
+          'Las acciones realizadas normalmente dentro de la aplicación no consumen esta cuota.',
+          style: TextStyle(fontSize: 11, color: _muted, height: 1.4),
+        ),
+      );
+
   Widget _alertsKpi(UsageSummary? summary) {
     final alerts = summary?.alerts ?? const <UsageAlert>[];
     final critical = alerts.where((a) => a.severity == 'critical').length;
-    final color = alerts.isEmpty ? _green : (critical > 0 ? Colors.red : Colors.amber.shade800);
+    final color = alerts.isEmpty
+        ? _green
+        : (critical > 0 ? Colors.red : Colors.amber.shade800);
 
     return Card(
       elevation: 0,
@@ -276,22 +333,32 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
           children: [
             Row(
               children: [
-                Icon(alerts.isEmpty ? Icons.check_circle_rounded : Icons.warning_amber_rounded,
-                    size: 18, color: color),
+                Icon(
+                    alerts.isEmpty
+                        ? Icons.check_circle_rounded
+                        : Icons.warning_amber_rounded,
+                    size: 18,
+                    color: color),
                 const Spacer(),
                 if (critical > 0)
                   Text('$critical críticas',
-                      style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.red)),
+                      style: const TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red)),
               ],
             ),
             const Spacer(),
             Text('${alerts.length}',
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: _ink)),
+                style: const TextStyle(
+                    fontSize: 22, fontWeight: FontWeight.bold, color: _ink)),
             Text(alerts.isEmpty ? 'Sin alertas' : 'alertas de uso',
                 style: const TextStyle(fontSize: 11, color: _muted)),
             const SizedBox(height: 6),
             Text(
-              alerts.isEmpty ? 'Todo dentro de los límites' : 'Revisa el detalle abajo',
+              alerts.isEmpty
+                  ? 'Todo dentro de los límites'
+                  : 'Revisa el detalle abajo',
               style: TextStyle(fontSize: 10, color: color),
             ),
           ],
@@ -306,49 +373,55 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
     return _card(
       title: 'Alertas de Uso',
       subtitle: '${alerts.length} alerta(s) del período',
-      children: alerts
-          .map((a) {
-            final isCritical = a.severity == 'critical';
-            final color = isCritical ? Colors.red : Colors.amber.shade800;
-            return Container(
-              margin: const EdgeInsets.only(bottom: 8),
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.06),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: color.withOpacity(0.3)),
-              ),
-              child: Row(
-                children: [
-                  Icon(isCritical ? Icons.error_rounded : Icons.warning_amber_rounded,
-                      size: 18, color: color),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(a.metricType.label,
-                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: color)),
-                        Text(
-                          a.limitValue > 0
-                              ? '${_formatNumber(a.currentValue)} de ${_formatNumber(a.limitValue)} '
-                                  '(${a.percentageUsed.toStringAsFixed(0)}%)'
-                              : '${_formatNumber(a.currentValue)} consumidos',
-                          style: const TextStyle(fontSize: 11, color: _muted),
-                        ),
-                      ],
+      children: alerts.map((a) {
+        final isCritical = a.severity == 'critical';
+        final color = isCritical ? Colors.red : Colors.amber.shade800;
+        return Container(
+          margin: const EdgeInsets.only(bottom: 8),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.06),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: color.withOpacity(0.3)),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                  isCritical
+                      ? Icons.error_rounded
+                      : Icons.warning_amber_rounded,
+                  size: 18,
+                  color: color),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(a.metricType.label,
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: color)),
+                    Text(
+                      a.limitValue > 0
+                          ? '${_formatNumber(a.currentValue)} de ${_formatNumber(a.limitValue)} '
+                              '(${a.percentageUsed.toStringAsFixed(0)}%)'
+                          : '${_formatNumber(a.currentValue)} consumidos',
+                      style: const TextStyle(fontSize: 11, color: _muted),
                     ),
-                  ),
-                  IconButton(
-                    tooltip: 'Descartar',
-                    icon: const Icon(Icons.close_rounded, size: 16, color: _muted),
-                    onPressed: () => ref.read(usageProvider.notifier).dismissAlert(a.id),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            );
-          })
-          .toList(),
+              IconButton(
+                tooltip: 'Descartar',
+                icon: const Icon(Icons.close_rounded, size: 16, color: _muted),
+                onPressed: () =>
+                    ref.read(usageProvider.notifier).dismissAlert(a.id),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
     );
   }
 
@@ -381,7 +454,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
               toY: m.current.toDouble(),
               width: 14,
               borderRadius: BorderRadius.circular(4),
-              color: over ? Colors.red : (_progressColor(m.progress) ?? tier.color),
+              color: over
+                  ? Colors.red
+                  : (_progressColor(m.progress) ?? tier.color),
             ),
             BarChartRodData(
               toY: m.limit.toDouble(),
@@ -411,12 +486,15 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
               gridData: FlGridData(
                 show: true,
                 drawVerticalLine: false,
-                getDrawingHorizontalLine: (_) => const FlLine(color: _line, strokeWidth: 1),
+                getDrawingHorizontalLine: (_) =>
+                    const FlLine(color: _line, strokeWidth: 1),
               ),
               borderData: FlBorderData(show: false),
               titlesData: FlTitlesData(
-                topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                topTitles:
+                    const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                rightTitles:
+                    const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                 leftTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,
@@ -433,12 +511,15 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
                     reservedSize: 34,
                     getTitlesWidget: (value, meta) {
                       final idx = value.toInt();
-                      if (idx < 0 || idx >= rows.length) return const SizedBox.shrink();
+                      if (idx < 0 || idx >= rows.length)
+                        return const SizedBox.shrink();
                       final label = rows[idx].type.label;
                       return Padding(
                         padding: const EdgeInsets.only(top: 6),
                         child: Text(
-                          label.length > 12 ? '${label.substring(0, 11)}…' : label,
+                          label.length > 12
+                              ? '${label.substring(0, 11)}…'
+                              : label,
                           style: const TextStyle(fontSize: 9, color: _muted),
                           textAlign: TextAlign.center,
                         ),
@@ -491,7 +572,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
       final isBool = type.isBoolean;
 
       if (isBool) {
-        final included = (effectiveLimit ?? 0) > 0;
+        final included = serverMetric?.isUnlimited == true ||
+            (tier.limits.containsKey(code) && tier.limits[code] == null) ||
+            (effectiveLimit ?? 0) > 0;
         rows.add(_limitRow(
           label: serverMetric?.label ?? type.label,
           value: included ? 'Incluido' : 'No incluido',
@@ -501,12 +584,28 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
         continue;
       }
 
-      if (effectiveLimit == null || effectiveLimit == 0) {
-        rows.add(_limitRow(label: serverMetric?.label ?? type.label, value: 'Ilimitado', progress: null, color: _green));
+      final unlimited = serverMetric?.isUnlimited == true ||
+          (tier.limits.containsKey(code) && tier.limits[code] == null);
+      if (unlimited) {
+        rows.add(_limitRow(
+            label: serverMetric?.label ?? type.label,
+            value: 'Ilimitado',
+            progress: null,
+            color: _green));
         continue;
       }
 
-      final progress = effectiveLimit > 0 ? (used / effectiveLimit).clamp(0.0, 1.0) : 0.0;
+      if (effectiveLimit == null || effectiveLimit == 0) {
+        rows.add(_limitRow(
+            label: serverMetric?.label ?? type.label,
+            value: 'No incluido',
+            progress: null,
+            color: _muted));
+        continue;
+      }
+
+      final progress =
+          effectiveLimit > 0 ? (used / effectiveLimit).clamp(0.0, 1.0) : 0.0;
       final color = _progressColor(progress) ?? tier.color;
       rows.add(_limitRow(
         label: serverMetric?.label ?? type.label,
@@ -537,10 +636,12 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
           Row(
             children: [
               Expanded(
-                child: Text(label, style: const TextStyle(fontSize: 12, color: _ink)),
+                child: Text(label,
+                    style: const TextStyle(fontSize: 12, color: _ink)),
               ),
               Text(value,
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: color)),
+                  style: TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w600, color: color)),
             ],
           ),
           if (progress != null) ...[
@@ -579,9 +680,13 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: _ink)),
+            Text(title,
+                style: const TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.bold, color: _ink)),
             const SizedBox(height: 4),
-            Text(subtitle, style: const TextStyle(fontSize: 11, color: _muted, height: 1.4)),
+            Text(subtitle,
+                style:
+                    const TextStyle(fontSize: 11, color: _muted, height: 1.4)),
             if (children.isNotEmpty) const SizedBox(height: 14),
             ...children,
           ],
@@ -595,7 +700,8 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
 
   String _formatNumber(int n) {
     if (n >= 1000000) return '${(n / 1000000).toStringAsFixed(1)}M';
-    if (n >= 1000) return '${(n / 1000).toStringAsFixed(n % 1000 == 0 ? 0 : 1)}K';
+    if (n >= 1000)
+      return '${(n / 1000).toStringAsFixed(n % 1000 == 0 ? 0 : 1)}K';
     return n.toString();
   }
 }

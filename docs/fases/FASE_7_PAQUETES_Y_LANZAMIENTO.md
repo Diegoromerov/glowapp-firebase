@@ -129,6 +129,13 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 
 ## Registro de esta ejecución
 
+## Paridad de la pantalla de uso y reportes — 26 de noviembre de 2026
+
+- La app del proveedor separa `DIRECT_BOOKINGS` de solicitudes API y deja de presentar cuotas `0` como ilimitadas. Solo límites nulos o explícitamente ilimitados se muestran con ese estado.
+- La cuota `API_CALLS` se presenta como solicitudes de integración externas autenticadas mediante llave API; el uso normal dentro de GlowApp no las consume.
+- Los cortes de mes de SuperAdmin se alinean a `America/Bogota`, igual que el medidor SaaS. El documento de Fase 2 se corrigió para reflejar ese contrato.
+- Cambios preparados en rama para CI y publicación; los identificadores reales de CI y despliegue se agregarán al terminar.
+
 - Base: `main` en `2cb857bb48a3d794b904a113cbb645b8f569f5f2`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
 - La auditoría de código se complementó con verificación de salud productiva, ejecución del job y confirmación del hosting.

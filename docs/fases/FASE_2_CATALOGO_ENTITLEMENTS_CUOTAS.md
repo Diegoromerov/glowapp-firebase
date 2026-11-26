@@ -46,7 +46,8 @@ La medición de reservas se aplica al crear una reserva y es parte de esa transa
 - Se conservaron los límites existentes para evitar cambiar silenciosamente contratos comerciales.
 - Se alinearon capacidades visibles con la propuesta actual: analítica avanzada y llaves de integración son Profesional o Empresarial; WhatsApp y POS son Empresarial. La llave API ya no se habilita por tener marca personalizada.
 - El onboarding solo provisiona planes gratuitos. Una selección pagada debe pasar por el flujo de Facturación y su confirmación; el cliente no puede elevarse de plan alterando el payload.
-- Se usan períodos mensuales UTC para evitar que el cambio de zona horaria del servidor mueva los límites.
+- Se usan períodos mensuales de calendario en `America/Bogota`, tanto para consumir cuotas como para presentar el uso en SaaS y en los reportes administrativos.
+- La cuota `API_CALLS` cuenta solicitudes externas autenticadas mediante una llave API GlowApp; las acciones normales dentro de las aplicaciones no consumen esa cuota.
 - Las reservas se cuentan por cita/solicitud, no por cada servicio de una cita con varios servicios.
 - No se creó migración de base de datos: el contador usa `usage_metrics` existente y reconstruye el punto de partida desde reservas históricas cuando falta el registro del mes.
 

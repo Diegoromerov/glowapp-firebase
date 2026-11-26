@@ -346,14 +346,24 @@ enum ApiKeyScope {
 
 enum UsageMetricType {
   apiCalls('API_CALLS', 'Procesos de integración', Icons.cloud_outlined),
-  bookings('ONLINE_BOOKING', 'Reservas online', Icons.calendar_today),
+  bookings('DIRECT_BOOKINGS', 'Reservas directas', Icons.calendar_today),
   staff('TEAM_SEATS', 'Asientos de equipo', Icons.people_outline),
   mapVisibility('MAP_VISIBILITY', 'Visibilidad en mapa', Icons.map_outlined),
   analytics(
       'ADVANCED_ANALYTICS', 'Analítica avanzada', Icons.insights_outlined),
   branding('CUSTOM_BRANDING', 'Marca personalizada', Icons.palette_outlined),
   whatsapp('WHATSAPP_INTEGRATION', 'WhatsApp', Icons.chat_outlined),
-  pos('POS_INTEGRATION', 'Integración POS', Icons.point_of_sale_outlined);
+  pos('POS_INTEGRATION', 'Integración POS', Icons.point_of_sale_outlined),
+  resources('RESOURCES', 'Recursos del salón', Icons.meeting_room_outlined),
+  invoicingDocuments('INVOICING_DOCUMENTS', 'Documentos electrónicos',
+      Icons.receipt_long_outlined),
+  invoicingTaxIds(
+      'INVOICING_TAX_IDS', 'NIT con facturación', Icons.badge_outlined),
+  auraQueries('AURA_QUERIES', 'Consultas de Aura', Icons.auto_awesome_outlined),
+  whatsappMessages(
+      'WHATSAPP_MESSAGES', 'Mensajes de WhatsApp', Icons.sms_outlined),
+  sites('SITES', 'Sedes', Icons.store_mall_directory_outlined),
+  other('OTHER', 'Otra cuota', Icons.data_usage_outlined);
 
   final String code;
   final String label;
@@ -371,9 +381,12 @@ enum UsageMetricType {
 
   static UsageMetricType fromCode(String code) {
     final clean = code.toUpperCase().trim();
+    // El backend conserva ONLINE_BOOKING como alias de catálogo, pero el
+    // contador mensual enviado al panel se llama DIRECT_BOOKINGS.
+    if (clean == 'ONLINE_BOOKING') return UsageMetricType.bookings;
     return UsageMetricType.values.firstWhere(
       (e) => e.code == clean,
-      orElse: () => UsageMetricType.apiCalls,
+      orElse: () => UsageMetricType.other,
     );
   }
 }
@@ -947,6 +960,7 @@ class UsageMetric {
   final String? label;
   final int current;
   final int limit;
+  final bool isUnlimited;
   final int? projected;
   final DateTime periodStart;
   final DateTime periodEnd;
@@ -956,6 +970,7 @@ class UsageMetric {
     this.label,
     required this.current,
     required this.limit,
+    this.isUnlimited = false,
     this.projected,
     required this.periodStart,
     required this.periodEnd,
@@ -963,8 +978,13 @@ class UsageMetric {
 
   factory UsageMetric.fromJson(Map<String, dynamic> json) {
     // Backend: { feature, used, limit ('unlimited'|null|int), remaining, percentage, status }
+    final hasLimit = json.containsKey('limit') ||
+        json.containsKey('limitValue') ||
+        json.containsKey('limit_value');
     final rawLimit = _pick(json, ['limit', 'limitValue', 'limit_value']);
-    final limit = rawLimit is num ? rawLimit.toInt() : 0; // 0 = ilimitado
+    final isUnlimited =
+        rawLimit == 'unlimited' || (hasLimit && rawLimit == null);
+    final limit = rawLimit is num ? rawLimit.toInt() : 0;
     final used =
         _asInt(json, ['current', 'used', 'currentValue', 'current_value']);
     return UsageMetric(
@@ -972,6 +992,7 @@ class UsageMetric {
       label: _pick(json, ['label'])?.toString(),
       current: used,
       limit: limit,
+      isUnlimited: isUnlimited,
       projected: _pick(json, ['projected']) is num
           ? (_pick(json, ['projected']) as num).toInt()
           : null,
@@ -985,13 +1006,14 @@ class UsageMetric {
         'type': type.code,
         'label': label,
         'current': current,
-        'limit': limit,
+        'limit': isUnlimited ? 'unlimited' : limit,
         'projected': projected,
         'period_start': periodStart.toIso8601String(),
         'period_end': periodEnd.toIso8601String(),
       };
 
-  double get progress => limit > 0 ? (current / limit).clamp(0.0, 1.0) : 0.0;
+  double get progress =>
+      !isUnlimited && limit > 0 ? (current / limit).clamp(0.0, 1.0) : 0.0;
   int get remaining => (limit - current).clamp(0, limit);
   bool get isNearLimit => progress >= 0.8;
   bool get isOverLimit => current > limit;
