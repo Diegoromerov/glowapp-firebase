@@ -76,3 +76,12 @@
 - El primer intento también reprodujo una incompatibilidad de tipos PostgreSQL en la consulta de reactivación de membresías; se fijó explícitamente el parámetro de estado como `text`. La prueba de concurrencia invitación/reactivación pasó en el CI final.
 - La verificación usa PostgreSQL de CI y datos desechables. No consultó ni modificó la base productiva, no envió correos y no representa el inicio de sesión de Sonia.
 - La Fase 4 permanece en **75 %**: quedan la confirmación de Sonia desde su sesión real y los recorridos productivos controlados para cupos/reactivación. La prueba HTTP de CI reduce el riesgo técnico y demuestra la ruta de autenticación, pero no reemplaza esas verificaciones de producción.
+
+### Evidencia Fase 4 — matriz RBAC HTTP y retiro de miembros (26 de noviembre de 2026)
+
+- PR #89 se integró en `main` como `fb996aa129b839a15b7f910f409650ae87f65fed`.
+- Backend CI run **45733109611**, job **139619717500**: **3 suites, 17/17 pruebas aprobadas**. La nueva prueba atraviesa JWT, auth, tenant transaction, `saasContext`, router, guards, servicio y RLS sobre dos salones desechables.
+- En CI, ADMIN pudo invitar y reactivar dentro del cupo; no pudo cambiar roles. OWNER sí cambió el rol. MEMBER recibió 403 al intentar invitar, reactivar y cambiar roles. La eliminación lógica de la invitación liberó el asiento para la reactivación.
+- La prueba encontró que el flujo de retiro asignaba texto a `memberships.removed_by` (INTEGER). Se corrigió el casteo del actor a entero. Sin correo real ni escrituras en producción.
+- Railway desplegó el backend en producción: **1181df47-416f-4426-a3ad-f7ecd2cd0408**, commit `fb996aa`. Los 8 servicios quedaron en línea, sin fallos recientes ni despliegues pendientes.
+- El avance de la Fase 4 se conserva en **75 %**: la matriz de permisos y el retiro/reactivación están cubiertos en CI con PostgreSQL, pero falta validarlos con el recorrido y cuentas reales de producción. Sonia aún debe confirmar desde su propia sesión.
