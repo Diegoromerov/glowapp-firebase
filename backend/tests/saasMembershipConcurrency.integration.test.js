@@ -16,10 +16,12 @@ const describeWithPostgres = ADMIN_URL && APP_URL ? describe : describe.skip;
 
 describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
   let adminPool;
+  let appPool;
   let verticalId;
 
   beforeAll(async () => {
     adminPool = new Pool({ connectionString: ADMIN_URL });
+    appPool = new Pool({ connectionString: APP_URL });
     verticalId = crypto.randomUUID();
     await adminPool.query(
       'INSERT INTO business_verticals (id, code, name, description) VALUES ($1, $2, $3, $4)',
@@ -33,6 +35,7 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
         await adminPool.query('DELETE FROM business_verticals WHERE id = $1', [verticalId]);
       }
       await adminPool.end();
+      if (appPool) await appPool.end();
     }
   });
 
@@ -311,4 +314,68 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
       await cleanupFixture(fixture);
     }
   }, 20000);
+
+  test('RLS and membership service isolate team data between two salons', async () => {
+    const salonA = await createFixture();
+    const salonB = await createFixture();
+    try {
+      const invitation = await saasMembershipService.invite({
+        tenantId: salonB.profileId,
+        tenantName: 'Tenant isolation fixture B',
+        plan: 'FREE_TRIAL',
+        actorId: salonB.ownerId,
+        email: salonB.emails['invitee-one'],
+        role: 'MEMBER',
+      });
+      expect(invitation.membershipId).toBeTruthy();
+
+      const client = await appPool.connect();
+      try {
+        await client.query('BEGIN');
+        await client.query("SELECT set_config('app.user_id', $1, true)", [String(salonB.ownerId)]);
+        await client.query("SELECT set_config('app.business_profile_id', $1, true)", [salonB.profileId]);
+        const ownMemberships = await client.query(
+          'SELECT id FROM memberships WHERE business_profile_id = $1',
+          [salonB.profileId]
+        );
+        expect(ownMemberships.rows.length).toBeGreaterThanOrEqual(3);
+        const ownAudit = await client.query(
+          'SELECT id FROM membership_audit_logs WHERE business_profile_id = $1',
+          [salonB.profileId]
+        );
+        expect(ownAudit.rows.length).toBeGreaterThan(0);
+
+        await client.query("SELECT set_config('app.user_id', $1, true)", [String(salonA.ownerId)]);
+        await client.query("SELECT set_config('app.business_profile_id', $1, true)", [salonA.profileId]);
+        const foreignMemberships = await client.query(
+          'SELECT id FROM memberships WHERE business_profile_id = $1',
+          [salonB.profileId]
+        );
+        expect(foreignMemberships.rows).toHaveLength(0);
+        const foreignAudit = await client.query(
+          'SELECT id FROM membership_audit_logs WHERE business_profile_id = $1',
+          [salonB.profileId]
+        );
+        expect(foreignAudit.rows).toHaveLength(0);
+        const foreignUserInfo = await client.query(
+          'SELECT user_id FROM app_saas_team_user_info($1)',
+          [salonB.profileId]
+        );
+        expect(foreignUserInfo.rows).toHaveLength(0);
+        await client.query('COMMIT');
+      } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+      } finally {
+        client.release();
+      }
+
+      const foreignTeamViaService = await saasMembershipService.list(salonB.profileId, salonA.ownerId);
+      expect(foreignTeamViaService).toHaveLength(0);
+    } finally {
+      await cleanupFixture(salonA);
+      await cleanupFixture(salonB);
+    }
+  }, 20000);
+
 });
