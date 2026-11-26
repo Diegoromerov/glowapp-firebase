@@ -511,7 +511,7 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
                       ],
                     ),
                     const SizedBox(height: 2),
-                    Text(plan.tier.formattedPrice,
+                    Text(plan.formattedPrice,
                         style: const TextStyle(fontSize: 12, color: _muted)),
                     const SizedBox(height: 4),
                     Text(plan.description,

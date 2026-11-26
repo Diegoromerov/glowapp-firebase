@@ -167,7 +167,8 @@ class SaasApiService {
           if (quota is! Map<String, dynamic>) continue;
           final value = quota['limit'];
           if (value is! num && value != null) continue;
-          final label = _commercialQuotaLabel(entry.value);
+          final label =
+              (quota['unit'] as String?) ?? _commercialQuotaLabel(entry.value);
           if (value == null) {
             features.add('$label ilimitados');
           } else if (value > 0) {
@@ -189,6 +190,7 @@ class SaasApiService {
           name: (raw['name'] ?? tier.label).toString(),
           description: (raw['description'] ?? '').toString(),
           priceCents: ((raw['priceCop'] as num? ?? 0) * 100).round(),
+          interval: (raw['interval'] ?? 'month').toString(),
           proposedPriceCents: proposedPriceCop == null
               ? null
               : (proposedPriceCop * 100).round(),
@@ -221,6 +223,7 @@ class SaasApiService {
         name: tier.label,
         description: _planDescription(tier),
         priceCents: tier.priceCents,
+        interval: 'month',
         proposedPriceCents: null,
         trialDays: tier == SaasPlanTier.freeTrial ? 14 : 0,
         limits: {
