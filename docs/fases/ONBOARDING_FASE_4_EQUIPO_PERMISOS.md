@@ -123,3 +123,12 @@ El avance de salida se mantiene en **75 %**: el fallo visual del reenvío ya est
 - En la sesión autenticada del propietario en `https://glowapp-provider.web.app/#/salon`, la lista de Equipo mostró a Sonia Herrera (`soniaherre2020@gmail.com`) como miembro activo de QA Salón Fase 2.
 - Se abrió «Cambiar rol». La opción `Personal` aparecía seleccionada. El código de `team_management_screen.dart` inicializa el diálogo con `selectedRole = member.role`, por lo que ese valor corresponde al rol que la app recibió para Sonia. Se cerró con «Cancelar»; no se guardó ningún cambio.
 - Esto confirma visualmente el rol desde la cuenta propietaria y enlaza la lectura de interfaz con el modelo que entrega la app. Sigue pendiente la comprobación de Sonia desde su propia sesión.
+
+### Evidencia Fase 4 — matriz RBAC HTTP y retiro de miembros (26 de noviembre de 2026)
+
+- PR #89 se integró en `main` como `fb996aa129b839a15b7f910f409650ae87f65fed`.
+- Backend CI run **45733109611**, job **139619717500**: **3 suites, 17/17 pruebas aprobadas**. La nueva prueba atraviesa JWT, auth, tenant transaction, `saasContext`, router, guards, servicio y RLS sobre dos salones desechables.
+- En CI, ADMIN pudo invitar y reactivar dentro del cupo; no pudo cambiar roles. OWNER sí cambió el rol. MEMBER recibió 403 al intentar invitar, reactivar y cambiar roles. La eliminación lógica de la invitación liberó el asiento para la reactivación.
+- La prueba encontró que el flujo de retiro asignaba texto a `memberships.removed_by` (INTEGER). Se corrigió el casteo del actor a entero. Sin correo real ni escrituras en producción.
+- Railway desplegó el backend en producción: **1181df47-416f-4426-a3ad-f7ecd2cd0408**, commit `fb996aa`. Los 8 servicios quedaron en línea, sin fallos recientes ni despliegues pendientes.
+- El avance de la Fase 4 se conserva en **75 %**: la matriz de permisos y el retiro/reactivación están cubiertos en CI con PostgreSQL, pero falta validarlos con el recorrido y cuentas reales de producción. Sonia aún debe confirmar desde su propia sesión.
