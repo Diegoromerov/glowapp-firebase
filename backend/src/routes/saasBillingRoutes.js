@@ -347,8 +347,8 @@ router.post('/checkout', requireOwner, async (req, res) => {
 
 router.get('/wompi/acceptance', requireOwner, async (_req, res) => {
   try {
-    if (!wompiSaasBilling.isEnabled()) return res.status(503).json({ error: 'El checkout Wompi no está habilitado.' });
-    const tokens = await require('../services/wompiClient').getAcceptanceTokens();
+    if (!wompiSaasBilling.isCheckoutAvailable()) return res.status(503).json({ error: 'El checkout Wompi no está habilitado.' });
+    const tokens = await wompiSaasBilling.getAcceptanceTokens();
     return res.json({
       acceptanceToken: tokens.acceptanceToken,
       personalDataAuthToken: tokens.personalDataAuthToken,

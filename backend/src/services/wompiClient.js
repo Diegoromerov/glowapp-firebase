@@ -48,30 +48,38 @@ const timingSafeEqualHex = (a, b) => {
 };
 
 class WompiClient {
-  constructor() {
-    this.timeout = parseInt(process.env.WOMPI_TIMEOUT_MS, 10) || 20000;
+  constructor({ envPrefix = 'WOMPI_', defaultBaseUrl } = {}) {
+    this.envPrefix = envPrefix;
+    this.defaultBaseUrl = defaultBaseUrl;
+    this.timeout = parseInt(process.env[`${envPrefix}TIMEOUT_MS`] || process.env.WOMPI_TIMEOUT_MS, 10) || 20000;
+  }
+
+  _env(name) {
+    return process.env[`${this.envPrefix}${name}`];
   }
 
   // ── Configuración (leída en cada llamada para no capturar el entorno al importar) ──
 
   get privateKey() {
-    return process.env.WOMPI_PRIVATE_KEY;
+    return this._env('PRIVATE_KEY');
   }
 
   get publicKey() {
-    return process.env.WOMPI_PUBLIC_KEY;
+    return this._env('PUBLIC_KEY');
   }
 
   get integritySecret() {
-    return process.env.WOMPI_INTEGRITY_SECRET;
+    return this._env('INTEGRITY_SECRET');
   }
 
   get eventsSecret() {
-    return process.env.WOMPI_EVENTS_SECRET;
+    return this._env('EVENTS_SECRET');
   }
 
   get baseUrl() {
-    if (process.env.WOMPI_BASE_URL) return process.env.WOMPI_BASE_URL.replace(/\/$/, '');
+    const configuredBaseUrl = this._env('BASE_URL');
+    if (configuredBaseUrl) return configuredBaseUrl.replace(/\/$/, '');
+    if (this.defaultBaseUrl !== undefined) return this.defaultBaseUrl;
     return process.env.NODE_ENV === 'production' ? PRODUCTION_BASE_URL : SANDBOX_BASE_URL;
   }
 
@@ -80,15 +88,16 @@ class WompiClient {
    * sin llaves no se intenta cobrar (y jamás se simula en su lugar).
    */
   isConfigured() {
-    return Boolean(this.privateKey && this.publicKey && this.integritySecret && this.eventsSecret);
+    return Boolean(this.baseUrl && this.privateKey && this.publicKey && this.integritySecret && this.eventsSecret);
   }
 
   _assertConfigured() {
     const faltantes = [];
-    if (!this.privateKey) faltantes.push('WOMPI_PRIVATE_KEY');
-    if (!this.publicKey) faltantes.push('WOMPI_PUBLIC_KEY');
-    if (!this.integritySecret) faltantes.push('WOMPI_INTEGRITY_SECRET');
-    if (!this.eventsSecret) faltantes.push('WOMPI_EVENTS_SECRET');
+    if (!this.privateKey) faltantes.push(`${this.envPrefix}PRIVATE_KEY`);
+    if (!this.publicKey) faltantes.push(`${this.envPrefix}PUBLIC_KEY`);
+    if (!this.integritySecret) faltantes.push(`${this.envPrefix}INTEGRITY_SECRET`);
+    if (!this.eventsSecret) faltantes.push(`${this.envPrefix}EVENTS_SECRET`);
+    if (!this.baseUrl) faltantes.push(`${this.envPrefix}BASE_URL`);
     if (faltantes.length) {
       throw new WompiError(
         `Integración Wompi incompleta: faltan ${faltantes.join(', ')}. ` +
@@ -139,7 +148,7 @@ class WompiClient {
    */
   async getAcceptanceTokens() {
     if (!this.publicKey) {
-      throw new WompiError('Falta WOMPI_PUBLIC_KEY para obtener los tokens de aceptación.');
+      throw new WompiError(`Falta ${this.envPrefix}PUBLIC_KEY para obtener los tokens de aceptación.`);
     }
     // Wompi depreca GET /merchants/:public_key el 31-10-2026. La API vigente
     // autentica esta consulta con x-merchant-public-key en /merchants/info.
@@ -440,5 +449,6 @@ class WompiClient {
 const client = new WompiClient();
 client.WompiError = WompiError;
 client.timingSafeEqualHex = timingSafeEqualHex;
+client.WompiClient = WompiClient;
 
 module.exports = client;
