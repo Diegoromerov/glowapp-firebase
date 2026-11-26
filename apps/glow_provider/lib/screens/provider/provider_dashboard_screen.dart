@@ -3094,7 +3094,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
                   ),
                 ),
                 Text(
-                  '${_bookings.length} servicios registrados en total',
+                  '${_bookings.length} citas registradas en total',
                   style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xFF8C7E74),
