@@ -595,6 +595,8 @@ app.use('/api/salon-loyalty', salonLoyaltyCustomerRoutes);
 app.use('/api/saas/billing', saasBillingRoutes);
 app.use('/api/webhooks/stripe-saas', require('./src/routes/saasStripeWebhookRoutes'));
 app.use('/api/saas/api-keys', saasApiKeyRoutes);
+// External integrations authenticate with tenant API keys, not user sessions.
+app.use('/api/integrations/v1', require('./src/routes/saasExternalApiRoutes'));
 app.use('/api/superadmin', superAdminRoutes);
 
 // Health check — NO escribe en la base de datos. Antes ejecutaba un `setval` sobre

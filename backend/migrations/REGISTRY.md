@@ -661,3 +661,9 @@ en 076).
 - Añade `DIRECT_BOOKINGS` a la restricción de `usage_metrics.feature`, junto con las métricas ya admitidas.
 - Corrige el error de integridad que rechazaba todas las escrituras del contador aunque catálogo y código ya usaban esta métrica.
 - Es aditiva para datos: reemplaza la CHECK constraint sin cambiar filas existentes. Rollback: retirar el código que escribe `DIRECT_BOOKINGS` y recrear la restricción anterior solo si no quedan filas con esa métrica.
+
+## 205: resolución segura de claves API SaaS
+
+- Añade una función `SECURITY DEFINER` de alcance estrecho que resuelve una clave activa únicamente por su hash y devuelve el tenant, plan y scopes necesarios para iniciar RLS.
+- La función no expone el hash ni información de claves revocadas o expiradas y solo se concede al rol de runtime.
+- Es aditiva. Rollback: retirar el endpoint de integraciones y luego eliminar la función.
