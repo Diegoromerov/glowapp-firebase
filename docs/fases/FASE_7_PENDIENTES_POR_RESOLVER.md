@@ -8,6 +8,8 @@
 
 Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos y oferta comercial describan el mismo producto. Este documento registra trabajo por resolver; no implica que los puntos ya estén aprobados o implementados.
 
+La auditoría estática de cobertura actual está en [FASE_7_AUDITORIA_TECNICA_LIMITES.md](FASE_7_AUDITORIA_TECNICA_LIMITES.md); distingue compuertas/cuotas encontradas de funciones que aún no tienen flujo de consumo verificable.
+
 ## Lista de pendientes
 
 | N.º | Punto por resolver | Decisión o trabajo requerido | Resultado esperado |
@@ -20,7 +22,7 @@ Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos 
 | 6 | Procesos de integración | La app ahora explicará que cuentan solicitudes externas autenticadas con llave API; falta acordar comercialmente el comportamiento ante agotamiento (bloqueo, aviso, compra de excedente u otra regla). | Métrica entendible y política de excedentes aplicada de forma consistente. |
 | 7 | Paridad integral de catálogo y respaldo | **Cerrado para los planes activos de contratación.** El catálogo remoto usa precio, periodicidad y unidades de API; el respaldo Flutter compara en CI disponibilidad, compra habilitada, nombre, descripción, precio, beneficios visibles y todas las cuotas declaradas para Prueba Gratis, Freemium y Básico. | CI debe seguir bloqueando divergencias de la oferta activa. Los planes propuestos/no contratables no se presentan como oferta activa ni se incluyen en esta validación de fallback. |
 | 8 | Facturación, cambios de plan y piloto | Definir excedentes, upgrade/downgrade, textos de facturación y alcance del piloto. Instrumentar métricas y preparar un mecanismo de rollback antes de ampliar el lanzamiento. | Flujo de contratación y cambio de plan comprensible, medible y reversible. |
-| 9 | Verificación integral de límites | Ejecutar pruebas de integración en producción controlada para verificar reservas, invitaciones/asientos, API y capacidades en todos los canales de creación, reintento y cambio de plan. | Evidencia por flujo de que el backend aplica correctamente cuotas y permisos. |
+| 9 | Verificación integral de límites | Auditoría estática parcial registrada en [la matriz técnica](FASE_7_AUDITORIA_TECNICA_LIMITES.md): gates y cuotas localizados para equipo/asientos, reservas directas, recursos, inventario, caja, recetas, cumplimiento, fidelización y API. Faltan E2E controladas y completar la revisión de rutas alternas/heredadas. Aura, WhatsApp, facturación electrónica y sedes no tienen consumo SaaS verificado. | Evidencia por flujo de que el backend aplica cuotas y permisos; funciones sin flujo verificable siguen fuera de la oferta contratable. |
 
 ## Corrección de reporte de cuotas — 26 de noviembre de 2026
 
