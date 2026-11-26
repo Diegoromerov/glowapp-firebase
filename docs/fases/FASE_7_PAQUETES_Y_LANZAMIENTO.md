@@ -1,6 +1,6 @@
 # Fase 7 — Paquetes comerciales y lanzamiento gradual
 
-**Estado:** En curso. Línea base auditada en `main` (`aa88a8d51b66be631c0e9ce67546401dbfde6c45`); la implementación del ciclo de prueba gratis está en desarrollo en una rama separada.
+**Estado:** En curso. Línea base vigente en `main` (`be1f987a0d6cfcd033f3bb1cd71296a52df6092e`); el ciclo de Prueba Gratis está desplegado en producción. Checkout conciliado, definición final de oferta y piloto siguen abiertos.
 
 **Objetivo:** que la oferta presentada a salones coincida con el catálogo, las condiciones de contratación, las capacidades realmente protegidas y las cuotas medidas; preparar una salida gradual que pueda detenerse.
 
@@ -34,7 +34,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 | WhatsApp, Aura, multi-sede y marca | Hay capacidades y cuotas en el catálogo, pero esta revisión no encontró un mapa completo de rutas de producto, proveedor activo, medición y guard para cada una. | No declararlos como diferenciales habilitados hasta cerrar ese mapa y validar cada flujo. |
 | Facturación electrónica | Capacidades y add-ons aparecen en catálogo, varios como propuesta/no disponibles. | No ofrecer cobro ni servicio fiscal a partir de la mera presencia de la capacidad en el catálogo. |
 | Agotamiento de cuotas | `consumeUsage` aplica límite atómico en sus puntos de uso; disponibilidad y comportamiento varían por ruta. No hay una política comercial uniforme documentada para todos los límites. | Definir aviso, bloqueo, tolerancia y recuperación para cada métrica antes del lanzamiento. |
-| Producción | La línea base aquí se obtuvo inspeccionando el repositorio; esta ejecución no llamó a APIs autenticadas ni consultó la base productiva. | No se afirma validación productiva de planes, cuotas, correo, piloto ni cobros. |
+| Producción | Migration 202 aplicada; salud de API informa PostgreSQL disponible. El job dedicado corre a diario a las 06:00 de Bogotá; su ejecución manual de control reportó 0 pruebas vencidas, 0 salones actualizados y 0 eventos, conforme a la ventana inicial de 14 días. Firebase Hosting del proveedor fue publicado y responde HTTP 200. | Evidencia de despliegue y ejecución del job, no de una expiración real ni de un cobro real. Las rutas de pagos siguen cerradas cuando falta configuración/conciliación segura. |
 
 ## Correcciones realizadas en este informe
 
@@ -48,7 +48,7 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 
 | Prioridad | Trabajo | Criterio de cierre |
 |---|---|---|
-| P0 | Implementar ciclo real de Prueba Gratis: persistir inicio/fin al provisionar, advertir vencimiento, pasar a Freemium de forma idempotente y conservar suscripciones pagas. Diseñar transición para los tenants existentes sin quitarles acceso por sorpresa. | En código de rama: fechas, aviso en Facturación, job aislado y ventana de 14 días para los tenants FREE_TRIAL existentes. Falta CI, integración del job diario en Railway, despliegue y comprobar alta/vencimiento/cambio a plan pagado. |
+| P0 | Validar de extremo a extremo la expiración de una prueba nueva, el downgrade a Freemium y la protección de una suscripción pagada. | Job y despliegue activos; ejecución manual sin vencimientos confirmó que no degrada tenants prematuramente. Falta una prueba controlada con tenant de QA y fecha expirada, más evidencia de protección de suscripción pagada. |
 | P0 | Confirmar que checkout, consentimiento, renovación y cambio de plan funcionan con configuración productiva. Wompi checkout permanece cerrado si faltan sus credenciales/flags; Stripe requiere su configuración y webhook. | Una compra autorizada de QA se concilia una sola vez y activa el plan correcto; sin cobros reales a usuarios ajenos. |
 | P1 | Completar matriz por capacidad con catálogo → guard → rutas de lectura/escritura → métrica → agotamiento → UI, incluyendo todos los canales de reserva e invitación. | Cada beneficio vendido tiene gate y prueba de autorización; cada cuota tiene definición y efecto coherente. |
 | P1 | Conciliar fallback Flutter y catálogo backend para nombres, límites, capacidades, disponibilidad y texto. Mantener el backend como fuente de verdad; añadir comprobación de paridad al CI. | Cambios incompatibles rompen CI; modo sin conexión no inventa precios/ofertas. |
@@ -68,10 +68,18 @@ Los valores propuestos de Growth, Pro y Enterprise no deben mostrarse como ofert
 
 La modificación de precios, acceso o prueba puede afectar contratos y funciones de salones existentes. Esta revisión no cambió esos datos. La implementación del vencimiento debe dar una ventana explícita a los tenants actuales, mantener íntegra su información y permitir recuperar el nivel al contratar. Los planes propuestos, complementos y capacidades sin integración verificada no se deben activar por inferencia.
 
+## Avance de producción — 26 de noviembre de 2026
+
+- El cambio `be1f987` está integrado en `main`. CI del backend, análisis y pruebas de Flutter, build web del proveedor y job de despliegue Firebase live finalizaron correctamente.
+- La migration `202_saas_trial_lifecycle.sql` se aplicó en Railway producción. En altas nuevas se guardan `saas_trial_started_at` y `saas_trial_ends_at`; las pruebas existentes recibieron una ventana explícita de 14 días desde la migración.
+- La pantalla Facturación muestra estado y fecha de finalización de la prueba. El job `saas-trial-lifecycle` está separado del servidor web y programado diariamente a las 06:00 de Bogotá. Procesa downgrade idempotente a Freemium, sincroniza el plan del salón y escribe auditoría; excluye suscripciones pagas activas.
+- La invocación manual de control terminó correctamente con 0 tenants vencidos, 0 salones modificados y 0 eventos. En ese instante no había una prueba dentro de la ventana vencida; por tanto, no se afirma haber probado el downgrade real con tenant vencido.
+- API de producción reportó HTTP 200, PostgreSQL disponible y sin datos fabricados. La app proveedor en Firebase Hosting live reportó HTTP 200.
+- No se activó ni se probó un cobro real. El catálogo y el código mantienen los niveles de nueva contratación limitados a los disponibles; checkout y cambio de plan dependen de credenciales/configuración y conciliación segura del proveedor.
+
 ## Registro de esta ejecución
 
-- Base: `main` en `f000c334fabb9a01d7200c30d9acd5dd1f84a1a9`.
+- Base: `main` en `be1f987a0d6cfcd033f3bb1cd71296a52df6092e`.
 - Evidencia: inspección estática del catálogo, bootstrap, facturación, servicio de suscripción, cron de vencimiento, gates, rutas de operación, medidor, selector Flutter y respaldo local.
 - Este registro describe la ejecución documental anterior: no cambió aplicación/datos y no hizo llamadas autenticadas a producción.
-- Trabajo posterior en curso: migration 202, fechas en bootstrap, aviso de Facturación y cron aislado, aún sin merge ni despliegue.
-- Resultado: Fase 7 permanece abierta por integración operativa del vencimiento, validación de cobros, cobertura integral de cuotas y piloto.
+- Resultado: se cerró la brecha técnica de inicio y vencimiento programado de Prueba Gratis. Fase 7 permanece abierta por la prueba controlada de downgrade, conciliación productiva de cobros, matriz integral de cuotas y rutas, decisiones comerciales pendientes y piloto medido.
