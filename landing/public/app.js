@@ -113,7 +113,7 @@
     });
     document.querySelector('#skip-intro').addEventListener('click', enterStaticLanding);
     intro.addEventListener('click', event => {
-      if (event.target.closest('#skip-intro')) return;
+      if (event.target.closest('#skip-intro, .landing-brand')) return;
       if (introVideo.paused) {
         introVideo.play().then(() => { document.querySelector('#intro-hint').textContent = 'Toca para entrar'; }).catch(() => {});
       } else enterStaticLanding();
