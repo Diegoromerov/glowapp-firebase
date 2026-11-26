@@ -1,7 +1,7 @@
 # Onboarding SaaS — Fase 5: Puesta en marcha operativa
 
 **Corte:** 26 de noviembre de 2026  
-**Avance estimado:** 80 %; integrado en `main` y desplegado a producción. Falta validar el flujo de reserva y atención de extremo a extremo.
+**Avance estimado:** 85 %; integrado en `main` y desplegado a producción. Falta validar el flujo de reserva y atención de extremo a extremo.
 
 ## Objetivo y criterio de cierre
 
@@ -45,6 +45,8 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - Validación local previa: prueba widget focalizada **3/3** aprobada; `flutter analyze --no-pub` terminó con código 0 y un aviso informativo preexistente por `withOpacity` en la línea 465 de `salon_shell.dart`.
 - La cuenta entregada es del propietario: valida el lado prestador, pero no permite demostrar una reserva como cliente distinto. Además, no queda un servicio activo con precio apto para reservar. No se insertó ninguna cita ni se inició un flujo de pago.
 - La verificación de reservas se debe completar con una cuenta cliente de QA distinta y una cita de prueba controlada, incluyendo la confirmación/inicio y el cierre de la atención según los controles disponibles.
+- Auditoría del cierre detectó que `POST /api/payments/bookings/:id/confirm-otp` exigía `RECIBIR_RESERVAS` del prestador también al cliente autenticado. Como esa capacidad no aplica a `CLIENTE`, se bloqueaba la confirmación antes del chequeo de propiedad del OTP. PR #96 retiró solo esa compuerta de la ruta del cliente; se mantienen autenticación, propiedad `otp.client_id === req.user.id` y validación del código. La emisión del OTP continúa detrás de la capacidad del prestador.
+- La prueba de regresión aprobó **2/2** localmente y en CI. Backend CI run **45760868633** terminó `success`, incluyendo contratos, PostgreSQL real, aislamiento multi-tenant y E2E del catálogo. PR #96 se integró a `main` como **`890f5798d3c552e7f2597d15bd0def072d51b92a`**. Railway confirmó `glowapp-api` en estado `SUCCESS` con ese commit (deploy `74588120-d3d3-4946-8fcf-363c4a9898c3`). No se confirmó OTP ni se creó una reserva productiva.
 
 ## Pendientes para cerrar la fase
 
@@ -54,4 +56,4 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - Obtener una identidad cliente QA distinta. Antes de confirmar el OTP final, definir que el recorrido usa instrumentos sandbox y controlar que no genere un asiento financiero real o irreversible en producción.
 - Limpiar o cancelar la cita de prueba con el mecanismo normal de la app, si el estado final lo permite.
 
-**Estado:** abierta. El 80 % estimado corresponde a guía, enlaces, elegibilidad de mapa, contexto de tenant y etiqueta de agenda implementados y publicados; no representa la preparación de los datos QA ni la validación del criterio E2E de cierre.
+**Estado:** abierta. El 85 % estimado incluye la corrección publicada de autorización del OTP del cliente y sus pruebas; aún no demuestra una reserva del cliente ni la atención completa. Continúa pendiente preparar datos QA aptos y recorrer el criterio E2E de cierre.
