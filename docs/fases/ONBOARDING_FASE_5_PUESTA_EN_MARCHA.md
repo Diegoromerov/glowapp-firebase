@@ -30,6 +30,8 @@ Guiar al salón desde su configuración hasta su primera operación. La fase se 
 - CI de push `45751393943`: `success`.
 - Workflow de despliegue `45751654219`: build web de `glow_provider` y publicación Firebase live finalizaron `success`.
 - Smoke productivo: el hosting y `main.dart.js` devolvieron HTTP 200. El bundle contiene el texto de la guía y `x-active-salon-id`.
+- Durante la revisión de las mutaciones de agenda se detectó que el listado recibía `salonId`, pero iniciar/completar dependía del store global de sede activa. PR #92 fijó ese contexto en el shell y rechazó IDs ausentes o inválidos; commit `ab003eae203740921f28d2ee1ea99459ea75e522`. CI push `45753120632` y despliegue live `45753408944` terminaron `success`.
+- Smoke de la versión corregida: portada y `main.dart.js` HTTP 200, bundle con guía, validación del ID y encabezado de sede; `Last-Modified: Thu, 26 Nov 2026 04:13:37 GMT`.
 - El usuario indicó que no hay una segunda cuenta disponible; además, el salón QA existente conserva un servicio de prueba y no está destinado a operaciones reales. Por eso no se insertó una cita persistente.
 - La verificación de reservas se debe completar con una cuenta cliente de QA distinta y una cita de prueba controlada, incluyendo la confirmación/inicio y el cierre de la atención según los controles disponibles.
 
