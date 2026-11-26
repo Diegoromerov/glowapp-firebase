@@ -371,6 +371,13 @@ function crearControladorOps(db = pool) {
           await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(req.user.tenant_id)]);
         }
       }
+      // Serialize quota check + insert per salon without SELECT FOR UPDATE on
+      // business_profiles: RLS grants the app role profile reads, not row updates.
+      // A transaction-scoped advisory lock avoids bypassing that policy and is
+      // automatically released on COMMIT/ROLLBACK.
+      if (inTransaction) {
+        await client.query('SELECT pg_advisory_xact_lock($1, $2)', [73107, Number(req.salonId)]);
+      }
       // Inquilino desde el perfil de negocio (fuente única, D-GL-027).
       // `salones.tenant_id` es legado y puede ser NULL: usarlo producía un
       // INSERT con NULL en una columna NOT NULL.
@@ -379,7 +386,7 @@ function crearControladorOps(db = pool) {
            FROM salones s
            JOIN business_profiles bp ON bp.id = s.business_profile_id
           WHERE s.id = $1
-          FOR UPDATE OF bp`,
+          `,
         [req.salonId]
       );
       if (perfilRows.length === 0) {
