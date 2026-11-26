@@ -697,9 +697,9 @@ exports.getProviderSlots = async (req, res) => {
     // 3. Obtener el horario configurado del prestador
     const hoursRes = await runAsSystem({ pool }, (client) => client.query(
       `SELECT p.active_start_hour, p.active_end_hour, p.weekly_schedule, s.horario_atencion
-         FROM perfiles_prestador p
-         LEFT JOIN salones s ON s.id = $2
-        WHERE p.id = $1`, [providerId, targetSalonId]
+         FROM (SELECT $1::integer AS provider_id, $2::integer AS salon_id) requested
+         LEFT JOIN perfiles_prestador p ON p.id = requested.provider_id
+         LEFT JOIN salones s ON s.id = requested.salon_id`, [providerId, targetSalonId]
     ));
     
     const providerHours = hoursRes.rows[0] || {};
