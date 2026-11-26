@@ -75,9 +75,9 @@ exports.getProviders = async (req, res) => {
               AND EXISTS (
                 SELECT 1 FROM services ready_service
                  WHERE ready_service.is_active = true
-                   AND (ready_service.provider_id = p.id OR ready_service.business_profile_id IN (
-                     SELECT ready_profile.id FROM business_profiles ready_profile
-                      WHERE ready_profile.provider_id = p.id
+                   AND (ready_service.provider_id::text = p.id::text OR ready_service.business_profile_id::text IN (
+                     SELECT ready_profile.id::text FROM business_profiles ready_profile
+                      WHERE ready_profile.provider_id::text = p.id::text
                    ))
               )) as can_receive_bookings,
             false as is_salon,
@@ -123,9 +123,9 @@ exports.getProviders = async (req, res) => {
               AND EXISTS (
                 SELECT 1 FROM services ready_service
                  WHERE ready_service.is_active = true
-                   AND (ready_service.salon_id = s.id
+                   AND (ready_service.salon_id::text = s.id::text
                      OR (ready_service.salon_id IS NULL
-                       AND ready_service.business_profile_id = s.business_profile_id))
+                       AND ready_service.business_profile_id::text = s.business_profile_id::text))
               )) as can_receive_bookings,
             true as is_salon,
             COALESCE(s.longitude, ST_X(s.ubicacion::geometry)) AS longitude,
@@ -178,9 +178,9 @@ exports.getProviders = async (req, res) => {
             AND EXISTS (
               SELECT 1 FROM services ready_service
                WHERE ready_service.is_active = true
-                 AND (ready_service.provider_id = p.id OR ready_service.business_profile_id IN (
-                   SELECT ready_profile.id FROM business_profiles ready_profile
-                    WHERE ready_profile.provider_id = p.id
+                 AND (ready_service.provider_id::text = p.id::text OR ready_service.business_profile_id::text IN (
+                   SELECT ready_profile.id::text FROM business_profiles ready_profile
+                    WHERE ready_profile.provider_id::text = p.id::text
                  ))
             )) as can_receive_bookings,
           false as is_salon,
