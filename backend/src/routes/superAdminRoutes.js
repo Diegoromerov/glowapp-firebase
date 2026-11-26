@@ -145,7 +145,7 @@ router.get('/tenants', async (req, res) => {
     if (status === 'active') {
       whereClause += ` AND bp.saas_plan != 'FREEMIUM'`;
     } else if (status === 'trial') {
-      whereClause += ` AND bp.saas_plan = 'FREE_TRIAL'`;
+      whereClause += ` AND bp.saas_plan IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')`;
     } else if (status === 'freemium') {
       whereClause += ` AND bp.saas_plan = 'FREEMIUM'`;
     }
