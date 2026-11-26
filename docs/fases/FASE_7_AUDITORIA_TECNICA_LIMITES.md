@@ -1,6 +1,6 @@
 # Fase 7 — Auditoría técnica de entitlements y cuotas
 
-**Estado:** auditoría técnica parcial. La verificación del vencimiento de prueba se añadió como integración PostgreSQL aislada para CI; queda pendiente su resultado en CI. No equivale a pruebas de integración en producción ni a certificación de todas las variantes.
+**Estado:** auditoría técnica parcial. Se añadió al preparador de PostgreSQL de CI el esquema SaaS usado por el cron (uso, facturación, auditoría y ciclo de prueba) y una integración aislada para el vencimiento; queda pendiente un CI aprobado. No equivale a pruebas de integración en producción ni a certificación de todas las variantes.
 
 **Evidencia CI revisada:** Backend CI `45897948551` ejecutó la suite `tests/saasMembershipConcurrency.integration.test.js` contra un contenedor PostGIS/PostgreSQL efímero y reportó PASS; dentro de esa ejecución pasaron 17 pruebas de las tres suites PostgreSQL seleccionadas. Es evidencia de integración en PostgreSQL de CI, no de Railway producción.
 
