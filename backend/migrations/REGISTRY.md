@@ -632,3 +632,10 @@ en 076).
 - La auditoría permite insertar eventos autorizados, pero no actualizar ni borrar registros.
 - Añade funciones `SECURITY DEFINER` de alcance limitado para resolver datos mínimos del equipo y buscar el correo de destino; no se exponen consultas libres sobre `usuarios`.
 - Es aditiva. Reversión: desplegar código compatible anterior y retirar las políticas/triggers únicamente después de confirmar que no hay escrituras que dependan del nuevo contrato; no se borran filas.
+
+## 201: facturación recurrente SaaS con Wompi
+
+- Añade a `subscriptions` datos de facturación, consentimiento y fuente de pago cifrada, junto con el número de reintentos y la marca/últimos cuatro dígitos de tarjeta.
+- Crea `saas_billing_attempts` como ledger por tenant, con referencias únicas, intentos abiertos únicos y RLS en `app.business_profile_id`.
+- La fuente reutilizable nunca almacena PAN ni CVC; su ID cifrado se conserva solo donde se necesita para la renovación.
+- Es aditiva. Despliegue confirmado en Railway producción el 26 de noviembre de 2026; el worker y checkout quedaron desactivados por configuración.

@@ -313,7 +313,19 @@ router.post('/checkout', requireOwner, async (req, res) => {
     }
   } catch (error) {
     console.error('[saasBillingRoutes] Error creating checkout:', error.message);
-    res.status(500).json({ error: 'Error creando checkout', detail: error.message });
+    const status = Number.isInteger(error.status) && error.status >= 400 && error.status <= 599
+      ? error.status : 500;
+    const body = {
+      error: status === 500 ? 'Error creando checkout' : error.message,
+    };
+    // A timeout can mean Wompi accepted the request but its response was lost.
+    // Return the durable reference/status so the UI can guide reconciliation
+    // instead of encouraging a blind second charge.
+    if (error.attempt) {
+      body.attempt = error.attempt;
+      body.error = `${body.error} Referencia ${error.attempt.reference} · estado ${error.attempt.status}. No vuelvas a pagar hasta que se concilie.`;
+    }
+    return res.status(status).json(body);
   }
 });
 

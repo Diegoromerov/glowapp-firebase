@@ -148,6 +148,9 @@ async function startCheckout(client, { tenantId, userId, userEmail, plan, paymen
          payment_source_ciphertext=CASE WHEN $2='ERROR' THEN NULL ELSE payment_source_ciphertext END,
          resolved_at=CASE WHEN $2='ERROR' THEN NOW() ELSE NULL END WHERE id=$1`,
       [attemptId, uncertain ? 'UNKNOWN' : 'ERROR', error.status ? `WOMPI_${error.status}` : 'WOMPI_UNCERTAIN', String(error.message).slice(0, 500)]);
+    if (uncertain) {
+      error.attempt = { id: attemptId, reference, status: 'UNKNOWN' };
+    }
     throw error;
   }
 }
