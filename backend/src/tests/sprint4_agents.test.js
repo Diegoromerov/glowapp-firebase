@@ -63,6 +63,16 @@ describe('Pruebas unitarias de Sprint 4 (Agente VALKYRIE - Co-Piloto B2B y Preci
       const result = await executeAuraTool('get_provider_b2b_insights', { providerId: 10 }, 1);
       expect(result.status).toBe('no_data');
       expect(result.insights.dynamicPromotion.authorized).toBe(false);
+      expect(pool.query).toHaveBeenCalledWith(expect.any(String), [1]);
+    });
+
+    test('ignora el providerId solicitado por el modelo y bloquea cuentas cliente', async () => {
+      const result = await executeAuraTool('get_provider_b2b_insights', { providerId: 10 }, 1, 'CLIENTE');
+
+      const definition = AURA_TOOLS_DEFINITIONS.find((tool) => tool.function.name === 'get_provider_b2b_insights');
+      expect(definition.function.parameters.properties).not.toHaveProperty('providerId');
+      expect(result.error).toBe('provider_role_required');
+      expect(pool.query).not.toHaveBeenCalled();
     });
   });
 });
