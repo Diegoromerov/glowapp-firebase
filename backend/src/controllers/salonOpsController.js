@@ -148,10 +148,12 @@ function crearControladorOps(db = pool) {
 
     let paso = 'resolver tenant del salón';
     try {
+      paso = 'inicializar contexto RLS del salón';
       const queryDb = await getSalonOperationalDb(req, db);
       // Inquilino desde el perfil de negocio (fuente única, D-GL-027).
       // `salones.tenant_id` es legado y puede ser NULL: usarlo producía un
       // INSERT con NULL en una columna NOT NULL.
+      paso = 'leer tenant del perfil empresarial';
       const { rows: perfilRows } = await queryDb.query(
         `SELECT bp.tenant_id
            FROM salones s
@@ -205,7 +207,10 @@ function crearControladorOps(db = pool) {
         return res.status(409).json({ error: 'Ya existe un insumo con ese nombre en el salón.' });
       }
       req.tenantTransactionError = error;
-      console.error(`❌ ERROR crearItemInventario (${paso}):`, error.message);
+      console.error(`❌ ERROR crearItemInventario (${paso}):`, error.message, {
+        salonId: req.salonId,
+        userId: req.user?.id,
+      });
       return res.status(500).json({ error: 'No se pudo crear el insumo.' });
     }
   }
