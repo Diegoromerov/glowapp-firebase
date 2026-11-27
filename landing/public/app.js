@@ -59,6 +59,7 @@
     introVideo.defaultMuted = true;
     introVideo.loop = true;
     introVideo.src = storageMediaUrl(videoPath);
+    document.querySelector('#start-interactive').disabled = false;
     showLanding('video');
     introVideo.play().catch(() => {
       document.querySelector('#start-interactive').textContent = 'Interactivo · toca para reproducir';

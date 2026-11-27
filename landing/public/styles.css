@@ -7,6 +7,7 @@ body.video-landing{min-height:100vh;overflow:hidden;background:#171018;color:#ff
 .intro-overlay{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding:28px clamp(22px,6vw,88px)}
 .intro-hint{position:absolute;left:clamp(22px,6vw,88px);bottom:clamp(22px,4vh,48px);margin:0;padding:12px 19px;border:1px solid #ffffffaa;border-radius:999px;background:#251a285c;color:#fff;font-size:14px;backdrop-filter:blur(10px);animation:hint-pulse 2s ease-in-out infinite}
 .intro-hint{cursor:pointer}
+.intro-hint:disabled{cursor:wait;opacity:.75}
 .intro-hint:hover,.intro-hint:focus-visible{background:#ffffff32;outline:2px solid #fff;outline-offset:3px}
 .skip-btn{position:absolute;right:clamp(22px,6vw,88px);bottom:clamp(22px,4vh,48px);border:1px solid #ffffff99;border-radius:999px;padding:10px 17px;background:#251a285c;color:#fff;cursor:pointer;backdrop-filter:blur(10px)}
 .skip-btn:hover,.skip-btn:focus-visible{background:#ffffff32;outline:2px solid #fff;outline-offset:3px}
