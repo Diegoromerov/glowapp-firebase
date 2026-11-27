@@ -196,3 +196,12 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - El workflow manual de Firebase [#46037851403](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/46037851403) publicó `glow_provider` en canal live con Analyze & Tests, build y Deploy SUCCESS. Tras el despliegue, Hosting y `main.dart.js` respondieron HTTP 200 con `Last-Modified: 2026-11-27 17:01:13 UTC`; el bundle incluye los textos de cupo de equipo y agotamiento de integraciones. La publicación quedó verificada aunque las credenciales CLI locales expiraron; se utilizó la credencial de producción guardada en GitHub Actions.
 - No se intentó QA autenticado: Firebase había rechazado las credenciales QA suministradas y no se creó reserva ni cobro.
 - Este trabajo mejora la comunicación de cuotas de equipo y recursos, pero no completa el inventario de módulos/canales, conciliación de métricas ni prueba de aceptación por tenant. Fase 7 continúa en curso.
+
+## Estado de contratación comunicado en el onboarding — 27 de noviembre de 2026
+
+- Se encontró que la tarjeta de Básico decía «Puedes activarlo después desde Facturación» aunque el checkout recurrente Wompi SaaS seguía deshabilitado en producción.
+- PR [#232](https://github.com/Diegoromerov/glowapp-firebase/pull/232), integrado en `main` como `a631c508`, agrega `checkoutAvailable` al catálogo público con `Cache-Control: no-store`. La disponibilidad se deriva de la misma validación que protege el endpoint de checkout.
+- Glow Core conserva ese estado y el onboarding ahora diferencia la disponibilidad comercial del plan de la posibilidad real de contratarlo. Mientras el pago esté pausado, muestra «Contratación pausada hasta que se habilite el pago»; si el checkout se habilita, presenta la ruta a Facturación.
+- Backend CI `46046353917` pasó, incluida la integración PostgreSQL/RLS y el E2E del catálogo. Firebase workflow `46046713443` pasó Analyze & Tests, build web y Deploy `glow_provider` a Hosting live.
+- Railway API, panel y job de ciclo de prueba desplegaron `a631c508` con SUCCESS; `/api/health` respondió `OK`. El catálogo productivo devuelve `checkoutAvailable=false`, Básico mantiene `commerciallyAvailable=true` y `Cache-Control: no-store`. Hosting `https://glowapp-provider.web.app` devuelve HTTP 200 y su `main.dart.js` contiene el nuevo mensaje.
+- No se configuró Wompi ni se habilitaron cobros. El checkout y el piloto comercial siguen pendientes; este cambio cierra la discrepancia de comunicación del onboarding, no la habilitación de pagos ni la Fase 7 completa.
