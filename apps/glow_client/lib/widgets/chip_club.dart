@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:glow_core/glow_core.dart';
 
-
 /// El nivel, a la vista, en el inicio.
 ///
 /// El Club estaba a dos toques de profundidad (Perfil → tile) y quien no entraba
@@ -14,7 +13,12 @@ import 'package:glow_core/glow_core.dart';
 /// Se esconde cuando no hay sesión —un botón que lleva a un login es peor que no
 /// tenerlo— y mientras hay una invitación pendiente, que ocupa el mismo sitio.
 class ChipClub extends StatefulWidget {
-  const ChipClub({super.key, this.recargarCada, this.cargarNivel, this.consultarSesion});
+  const ChipClub({
+    super.key,
+    this.recargarCada,
+    this.cargarNivel,
+    this.consultarSesion,
+  });
 
   /// Para pruebas: permite refrescar sin remontar el widget.
   final Duration? recargarCada;
@@ -80,31 +84,26 @@ class _ChipClubState extends State<ChipClub> {
 
     final nivel = _nivel!;
     final paleta = _paletaDe(nivel.nivel);
-
+    final fondo = paleta.fondo.colors.first.withValues(alpha: 0.72);
     return Material(
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(99),
         onTap: () => Navigator.of(context).pushNamed('/niveles'),
         child: Ink(
-          height: 42,
-          padding: const EdgeInsets.symmetric(horizontal: 18),
+          height: 44,
+          padding: const EdgeInsets.symmetric(horizontal: 14),
           decoration: BoxDecoration(
+            color: fondo,
             gradient: paleta.fondo,
-            borderRadius: BorderRadius.circular(99),
-            boxShadow: [
-              BoxShadow(
-                color: paleta.sombra.withValues(alpha: 0.55),
-                blurRadius: 18,
-                offset: const Offset(0, 7),
-              ),
-            ],
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: const Color(0xFFE7E0D6)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text('❋', style: TextStyle(fontSize: 16, color: paleta.texto)),
-              const SizedBox(width: 8),
+              const SizedBox(width: 7),
               Text(
                 nivel.nivel,
                 style: TextStyle(
@@ -122,7 +121,7 @@ class _ChipClubState extends State<ChipClub> {
                   fontFamily: 'Manrope',
                   fontSize: 12.5,
                   fontWeight: FontWeight.w600,
-                  color: paleta.texto.withValues(alpha: 0.88),
+                  color: paleta.texto.withValues(alpha: 0.78),
                 ),
               ),
             ],
@@ -135,30 +134,26 @@ class _ChipClubState extends State<ChipClub> {
   /// El acceso al Club cuando el backend no responde: sin cifras, pero abierto.
   Widget _chipSinDatos() {
     final paleta = _paletaDe('');
+    final fondo = paleta.fondo.colors.first.withValues(alpha: 0.72);
     return Material(
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(99),
         onTap: () => Navigator.of(context).pushNamed('/niveles'),
         child: Ink(
-          height: 42,
-          padding: const EdgeInsets.symmetric(horizontal: 18),
+          height: 44,
+          padding: const EdgeInsets.symmetric(horizontal: 14),
           decoration: BoxDecoration(
+            color: fondo,
             gradient: paleta.fondo,
-            borderRadius: BorderRadius.circular(99),
-            boxShadow: [
-              BoxShadow(
-                color: paleta.sombra.withValues(alpha: 0.55),
-                blurRadius: 18,
-                offset: const Offset(0, 7),
-              ),
-            ],
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: const Color(0xFFE7E0D6)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text('❋', style: TextStyle(fontSize: 16, color: paleta.texto)),
-              const SizedBox(width: 8),
+              const SizedBox(width: 7),
               Text(
                 'Mi Club',
                 style: TextStyle(
@@ -175,42 +170,40 @@ class _ChipClubState extends State<ChipClub> {
     );
   }
 
-  /// El nivel se nota desde fuera del Club: Pétalo claro, Oro dorado, Élite
-  /// oscuro. Un chip siempre igual no comunica que se subió.
   _PaletaChip _paletaDe(String nivel) {
     switch (nivel.toLowerCase()) {
       case 'oro':
       case 'gold':
-        return _PaletaChip(
-          fondo: const LinearGradient(
+        return const _PaletaChip(
+          fondo: LinearGradient(
             colors: [Color(0xFFC5A052), Color(0xFF8A6626)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          texto: const Color(0xFF221A0E),
-          sombra: const Color(0xFF8A6626),
+          texto: Color(0xFF221A0E),
+          sombra: Color(0xFF8A6626),
         );
       case 'diamante':
       case 'élite':
       case 'elite':
-        return _PaletaChip(
-          fondo: const LinearGradient(
+        return const _PaletaChip(
+          fondo: LinearGradient(
             colors: [Color(0xFF2A2622), Color(0xFF141210)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          texto: const Color(0xFFE8D49E),
-          sombra: const Color(0xFF000000),
+          texto: Color(0xFFE8D49E),
+          sombra: Color(0xFF000000),
         );
       default:
-        return _PaletaChip(
-          fondo: const LinearGradient(
+        return const _PaletaChip(
+          fondo: LinearGradient(
             colors: [Color(0xFFFAF6EE), Color(0xFFEADFC8)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          texto: const Color(0xFF6B5A48),
-          sombra: const Color(0xFFB8A894),
+          texto: Color(0xFF6B5A48),
+          sombra: Color(0xFFB8A894),
         );
     }
   }

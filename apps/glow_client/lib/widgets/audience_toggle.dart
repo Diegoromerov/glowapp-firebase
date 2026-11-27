@@ -1,12 +1,10 @@
-import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
+import 'package:glow_core/glow_core.dart';
+
 class AudienceToggleWidget extends StatelessWidget {
   final bool compact;
 
-  const AudienceToggleWidget({
-    super.key,
-    this.compact = false,
-  });
+  const AudienceToggleWidget({super.key, this.compact = false});
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +12,25 @@ class AudienceToggleWidget extends StatelessWidget {
       valueListenable: AudienceService.currentAudience,
       builder: (context, currentMode, child) {
         final isMen = currentMode == AudienceMode.men;
+        final surface = isMen ? const Color(0xFF171614) : Colors.white;
+        final border = isMen
+            ? const Color(0xFF39352F)
+            : const Color(0xFFE8E2DC);
+        final accent = isMen
+            ? const Color(0xFFD5B76A)
+            : const Color(0xFF76584A);
+        final muted = isMen ? const Color(0xFFB7B1A8) : const Color(0xFF706963);
 
         return Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-            color: isMen ? MensTheme.obsidianCard : const Color(0xFFEFE8E6),
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(
-              color: isMen
-                  ? MensTheme.champagneGold
-                  : AppTheme.primary.withValues(alpha: 0.5),
-              width: 1.5,
-            ),
+            color: surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: border),
             boxShadow: [
               BoxShadow(
-                color: isMen
-                    ? MensTheme.champagneGold.withValues(alpha: 0.3)
-                    : Colors.black.withValues(alpha: 0.08),
-                blurRadius: 10,
+                color: Colors.black.withValues(alpha: isMen ? 0.18 : 0.07),
+                blurRadius: 12,
                 offset: const Offset(0, 3),
               ),
             ],
@@ -40,28 +39,34 @@ class AudienceToggleWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildItem(
-                context: context,
-                mode: AudienceMode.all,
-                label: 'Todos',
-                icon: Icons.grid_view_rounded,
-                isSelected: currentMode == AudienceMode.all,
-                isMenMode: isMen,
+                context,
+                AudienceMode.all,
+                'Todos',
+                Icons.grid_view_rounded,
+                currentMode == AudienceMode.all,
+                accent,
+                muted,
+                isMen,
               ),
               _buildItem(
-                context: context,
-                mode: AudienceMode.women,
-                label: 'Mujeres',
-                icon: Icons.woman_rounded,
-                isSelected: currentMode == AudienceMode.women,
-                isMenMode: isMen,
+                context,
+                AudienceMode.women,
+                'Mujeres',
+                Icons.woman_rounded,
+                currentMode == AudienceMode.women,
+                accent,
+                muted,
+                isMen,
               ),
               _buildItem(
-                context: context,
-                mode: AudienceMode.men,
-                label: 'Hombres',
-                icon: Icons.man_rounded,
-                isSelected: currentMode == AudienceMode.men,
-                isMenMode: isMen,
+                context,
+                AudienceMode.men,
+                'Hombres',
+                Icons.man_rounded,
+                currentMode == AudienceMode.men,
+                accent,
+                muted,
+                isMen,
               ),
             ],
           ),
@@ -70,82 +75,50 @@ class AudienceToggleWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildItem({
-    required BuildContext context,
-    required AudienceMode mode,
-    required String label,
-    required IconData icon,
-    required bool isSelected,
-    required bool isMenMode,
-  }) {
-    Color selectedText = isMenMode ? const Color(0xFF2C1E18) : Colors.white;
-    Color unselectedText = isMenMode ? MensTheme.textPrimary : const Color(0xFF4A4442);
-
-    return GestureDetector(
-      onTap: () {
-        AudienceService.setAudience(mode);
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(
-          horizontal: compact ? 10 : 14,
-          vertical: compact ? 6 : 8,
-        ),
-        decoration: BoxDecoration(
-          gradient: isSelected
-              ? LinearGradient(
-                  colors: isMenMode
-                      ? [
-                          const Color(0xFFF3D59B), // Champán oro suave luminoso
-                          const Color(0xFFD4AF37), // Oro 871 canon
-                        ]
-                      : [
-                          const Color(0xFFB07D62),
-                          const Color(0xFF8C6F65),
-                        ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                )
-              : null,
-          color: isSelected ? null : Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
-          border: isSelected
-              ? Border.all(
-                  color: isMenMode
-                      ? const Color(0xFFFFF9E6).withValues(alpha: 0.8)
-                      : const Color(0xFFD4AF37).withValues(alpha: 0.4),
-                  width: 1.0,
-                )
-              : null,
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: isMenMode
-                        ? const Color(0xFFD4AF37).withValues(alpha: 0.35)
-                        : AppTheme.primary.withValues(alpha: 0.3),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
+  Widget _buildItem(
+    BuildContext context,
+    AudienceMode mode,
+    String label,
+    IconData icon,
+    bool isSelected,
+    Color accent,
+    Color muted,
+    bool isMen,
+  ) {
+    final foreground = isSelected
+        ? (isMen ? const Color(0xFF171614) : Colors.white)
+        : muted;
+    return Semantics(
+      button: true,
+      selected: isSelected,
+      label: label,
+      child: Material(
+        color: isSelected ? accent : Colors.transparent,
+        borderRadius: BorderRadius.circular(12),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () => AudienceService.setAudience(mode),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 160),
+            constraints: const BoxConstraints(minHeight: 44),
+            padding: EdgeInsets.symmetric(horizontal: compact ? 10 : 13),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: compact ? 14 : 15, color: foreground),
+                const SizedBox(width: 5),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: compact ? 11 : 12,
+                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                    color: foreground,
                   ),
-                ]
-              : [],
-        ),
-        child: Row(
-          children: [
-            Icon(
-              icon,
-              size: compact ? 14 : 16,
-              color: isSelected ? selectedText : unselectedText,
+                ),
+              ],
             ),
-            const SizedBox(width: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: compact ? 11 : 12,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
-                color: isSelected ? selectedText : unselectedText,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

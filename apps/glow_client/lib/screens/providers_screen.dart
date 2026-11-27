@@ -2110,19 +2110,13 @@ class _ProvidersScreenState extends State<ProvidersScreen>
             : const Color(0xFFFAF8F5).withValues(alpha: 0.95),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.6 : 0.45),
-          width: 1.2,
+          color: isMen ? const Color(0xFF39352F) : const Color(0xFFE8E2DC),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: isMen ? 0.45 : 0.15),
-            blurRadius: 20,
-            offset: const Offset(0, 6),
-          ),
-          BoxShadow(
-            color: const Color(0xFFD4AF37).withValues(alpha: isMen ? 0.2 : 0.1),
-            blurRadius: 12,
-            offset: const Offset(0, 2),
+            color: Colors.black.withValues(alpha: isMen ? 0.3 : 0.1),
+            blurRadius: 16,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -2268,7 +2262,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                     Expanded(
                       flex: 1,
                       child: SizedBox(
-                        height: 34,
+                        height: 48,
                         child: OutlinedButton(
                           onPressed: () {
                             Navigator.pushNamed(
@@ -2304,7 +2298,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                     Expanded(
                       flex: 1,
                       child: SizedBox(
-                        height: 34,
+                        height: 48,
                         child: ElevatedButton.icon(
                           onPressed: p.canReceiveBookings
                               ? () => _openBookingDirectly(context, p)
@@ -2340,8 +2334,9 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                         });
                       },
                       borderRadius: BorderRadius.circular(18),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
+                      child: SizedBox(
+                        width: 48,
+                        height: 48,
                         child: Icon(Icons.close_rounded,
                             size: 18,
                             color: isMen ? Colors.white54 : Colors.black45),
@@ -2418,31 +2413,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                           child: tileWidget,
                         );
                       }
-                      return ColorFiltered(
-                        colorFilter: const ColorFilter.matrix(<double>[
-                          0.65,
-                          0.25,
-                          0.10,
-                          0,
-                          15,
-                          0.20,
-                          0.65,
-                          0.15,
-                          0,
-                          10,
-                          0.15,
-                          0.20,
-                          0.50,
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                          1,
-                          0,
-                        ]),
-                        child: tileWidget,
-                      );
+                      return tileWidget;
                     },
                   ),
                   // Marcadores Joya de prestadores en el mapa + marcador de ubicación del usuario
@@ -2666,17 +2637,17 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                       child: AudienceToggleWidget(compact: false),
                     ),
                     Container(
-                      height: 54,
+                      height: 52,
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
                         color: isMen
                             ? const Color(0xFF141210).withValues(alpha: 0.94)
                             : const Color(0xFFFAF8F5).withValues(alpha: 0.95),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                          color: const Color(0xFFD4AF37)
-                              .withValues(alpha: isMen ? 0.6 : 0.45),
-                          width: 1.5,
+                          color: isMen
+                              ? const Color(0xFF39352F)
+                              : const Color(0xFFE8E2DC),
                         ),
                         boxShadow: [
                           BoxShadow(
@@ -2715,8 +2686,8 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                               ),
                               decoration: InputDecoration(
                                 hintText: isMen
-                                    ? 'Buscar estilista o servicio... ✨'
-                                    : '¿Qué ritual deseas hoy? Pregunta a Aura ✨',
+                                    ? 'Buscar profesional o servicio'
+                                    : 'Buscar servicios y profesionales',
                                 hintStyle: TextStyle(
                                   fontSize: 12.0,
                                   color: isMen
@@ -2814,35 +2785,23 @@ class _ProvidersScreenState extends State<ProvidersScreen>
               // Capa 3: Luxury Navigation Dock (Haute Horlogerie & Quiet Luxury)
               if (!_soloLista)
                 Positioned(
-                  bottom: MediaQuery.of(context).padding.bottom + 16,
-                  left: 16,
-                  right: 16,
+                  bottom: MediaQuery.of(context).padding.bottom,
+                  left: 0,
+                  right: 0,
                   child: Container(
-                    height: 72,
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    height: 68,
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
                       color: isMen
                           ? const Color(0xFF141210).withValues(alpha: 0.95)
-                          : const Color(0xFFFDFBF7),
-                      borderRadius: BorderRadius.circular(36),
-                      border: Border.all(
-                          color: const Color(0xFFD4AF37)
-                              .withValues(alpha: isMen ? 0.6 : 0.5),
-                          width: 1.5),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black
-                              .withValues(alpha: isMen ? 0.45 : 0.08),
-                          blurRadius: 20,
-                          offset: const Offset(0, 8),
+                          : Colors.white,
+                      border: Border(
+                        top: BorderSide(
+                          color: isMen
+                              ? const Color(0xFF39352F)
+                              : const Color(0xFFE8E2DC),
                         ),
-                        BoxShadow(
-                          color: const Color(0xFFD4AF37)
-                              .withValues(alpha: isMen ? 0.25 : 0.15),
-                          blurRadius: 10,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
+                      ),
                     ),
                     child: Row(
                       children: [
@@ -3113,9 +3072,13 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                           _isMapMenuOpen = !_isMapMenuOpen;
                         });
                       },
-                      backgroundColor: AppTheme.primary,
-                      foregroundColor: Colors.white,
-                      elevation: 4,
+                    backgroundColor: isMen
+                        ? const Color(0xFF29251F)
+                        : Colors.white,
+                    foregroundColor: isMen
+                        ? const Color(0xFFD5B76A)
+                        : const Color(0xFF76584A),
+                    elevation: 2,
                       shape: const CircleBorder(),
                       child: Icon(
                         _isMapMenuOpen ? Icons.close : Icons.layers_outlined,
