@@ -240,6 +240,39 @@ async function consumeAuraBusinessQuery({ tenantId, userId, dbPool = pool }) {
   });
 }
 
+/** Autoriza lectura de cumplimiento con las mismas reglas SaaS que /api/v1/business. */
+async function withBusinessComplianceRead({ tenantId, userId, read, dbPool = pool }) {
+  if (!tenantId || !Number.isSafeInteger(Number(userId)) || Number(userId) < 1) {
+    return { allowed: false, reason: 'SaaS context required' };
+  }
+
+  return runInTenantTransaction({ pool: dbPool }, String(tenantId), Number(userId), async (client) => {
+    await client.query("SELECT set_config('app.business_profile_id', $1, true)", [String(tenantId)]);
+    const { rows } = await client.query(`
+      SELECT bp.saas_plan, m.role
+        FROM memberships m
+        JOIN business_profiles bp ON bp.id = m.business_profile_id
+       WHERE m.business_profile_id = $1
+         AND m.user_id = $2
+         AND m.status = 'ACTIVE'
+       LIMIT 1
+    `, [String(tenantId), Number(userId)]);
+    if (!rows.length) return { allowed: false, reason: 'Active membership required' };
+
+    const plan = String(rows[0].saas_plan || 'FREEMIUM').toUpperCase();
+    if (!hasEntitlement(plan, 'COMPLIANCE')) {
+      return { allowed: false, reason: 'Feature not included in plan', plan };
+    }
+
+    const { AuthorizationService, RESOURCES, ACTIONS } = require('./authorizationService');
+    if (!AuthorizationService.can(rows[0].role, RESOURCES.BUSINESS_PROFILE, ACTIONS.READ)) {
+      return { allowed: false, reason: 'Role cannot read business profile', plan };
+    }
+    const data = typeof read === 'function' ? await read() : undefined;
+    return { allowed: true, plan, role: rows[0].role, data };
+  });
+}
+
 /**
  * Obtiene plan actual del tenant
  */
@@ -372,6 +405,7 @@ module.exports = {
   incrementUsage,
   consumeUsage,
   consumeAuraBusinessQuery,
+  withBusinessComplianceRead,
   getCurrentUsage,
   getTenantPlan,
   resetMonthlyCounters,

@@ -134,6 +134,19 @@ class BusinessRepository {
     return null;
   }
 
+  async getProfileById(profileId) {
+    try {
+      const res = await pool.query(
+        'SELECT * FROM business_profiles WHERE id = $1 LIMIT 1',
+        [String(profileId)]
+      );
+      if (res.rows.length > 0) return res.rows[0];
+    } catch (err) {
+      if (!enMemoria(err, 'getProfileById')) throw err;
+    }
+    return memoryProfiles.get(String(profileId)) || null;
+  }
+
   async updateProfileStage(profileId, stage, complianceScore) {
     try {
       const res = await pool.query(

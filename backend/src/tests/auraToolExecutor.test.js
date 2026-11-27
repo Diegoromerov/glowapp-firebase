@@ -8,6 +8,12 @@ jest.mock('../services/ragService');
 jest.mock('../config/db');
 jest.mock('../config/redis');
 jest.mock('../services/consentService');
+jest.mock('../services/usageMeteringService', () => ({
+  consumeAuraBusinessQuery: jest.fn(),
+  withBusinessComplianceRead: jest.fn(),
+}));
+jest.mock('../services/businessDiagnosticService', () => ({ getProfileSummary: jest.fn() }));
+jest.mock('../services/businessWorkflowService', () => ({ getTasksForProvider: jest.fn() }));
 
 let executeAuraTool;
 let AURA_TOOLS_DEFINITIONS;
@@ -20,6 +26,9 @@ let ragService;
 let dbPool;
 let redisMock;
 let consentService;
+let usageMeteringService;
+let businessDiagnosticService;
+let businessWorkflowService;
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -40,9 +49,44 @@ beforeEach(() => {
   dbPool = require('../config/db');
   redisMock = require('../config/redis');
   consentService = require('../services/consentService');
+  usageMeteringService = require('../services/usageMeteringService');
+  businessDiagnosticService = require('../services/businessDiagnosticService');
+  businessWorkflowService = require('../services/businessWorkflowService');
 });
 
 describe('Pruebas unitarias de AURA Tool Executor (auraToolExecutor.js)', () => {
+  test.each(['get_business_profile_summary', 'get_business_tasks'])(
+    '%s deniega el acceso cuando el plan no incluye COMPLIANCE', async (toolName) => {
+      usageMeteringService.withBusinessComplianceRead.mockResolvedValue({
+        allowed: false, reason: 'Feature not included in plan', plan: 'FREEMIUM',
+      });
+
+      const result = await executeAuraTool(toolName, {}, 103, 'provider', 'salon-active');
+
+      expect(result.error).toBe('business_compliance_entitlement_required');
+      expect(result.required).toBe('COMPLIANCE');
+      expect(usageMeteringService.withBusinessComplianceRead).toHaveBeenCalledWith(expect.objectContaining({
+        tenantId: 'salon-active', userId: 103, read: expect.any(Function),
+      }));
+      expect(businessDiagnosticService.getProfileSummary).not.toHaveBeenCalled();
+      expect(businessWorkflowService.getTasksForProvider).not.toHaveBeenCalled();
+    }
+  );
+
+  test('limita la consulta del expediente y tareas al salón activo autorizado', async () => {
+    usageMeteringService.withBusinessComplianceRead.mockImplementation(async ({ read }) => ({ allowed: true, plan: 'BASIC', data: await read() }));
+    businessDiagnosticService.getProfileSummary.mockResolvedValue({ profile: { id: 'salon-active' } });
+    businessWorkflowService.getTasksForProvider.mockResolvedValue([]);
+
+    const summary = await executeAuraTool('get_business_profile_summary', {}, 103, 'provider', 'salon-active');
+    const tasks = await executeAuraTool('get_business_tasks', {}, 103, 'provider', 'salon-active');
+
+    expect(summary.status).toBe('success');
+    expect(tasks.status).toBe('success');
+    expect(businessDiagnosticService.getProfileSummary).toHaveBeenCalledWith('103', 'salon-active');
+    expect(businessWorkflowService.getTasksForProvider).toHaveBeenCalledWith('103', 'salon-active');
+  });
+
   test('Debería tener definidas las 8 herramientas principales para el ecosistema de AURA', () => {
     // La fuente única (AURA_TOOLS_DEFINITIONS) declara 14 herramientas tras añadir las
     // operativas de proveedor y salón; la aserción seguía en 11.

@@ -9,7 +9,9 @@ const STAGE_ORDER = ['ENTENDER', 'EXPLICAR', 'RECOMENDAR', 'EJECUTAR', 'VERIFICA
 
 class BusinessWorkflowService {
   async getTasksForProvider(providerId, tenantId) {
-    const profile = await businessRepository.getProfileByProviderId(providerId);
+    const profile = tenantId
+      ? await businessRepository.getProfileById(tenantId)
+      : await businessRepository.getProfileByProviderId(providerId);
     if (!profile) return [];
     const tasks = await businessRepository.getTasksByProfileId(profile.id);
     return tasks.map(t => ({

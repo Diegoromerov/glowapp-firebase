@@ -95,7 +95,9 @@ class BusinessDiagnosticService {
   }
 
   async getProfileSummary(provider_id, tenant_id) {
-    const profile = await businessRepository.getProfileByProviderId(provider_id);
+    const profile = tenant_id
+      ? await businessRepository.getProfileById(tenant_id)
+      : await businessRepository.getProfileByProviderId(provider_id);
     if (!profile) return null;
 
     const tasks = await businessRepository.getTasksByProfileId(profile.id);
