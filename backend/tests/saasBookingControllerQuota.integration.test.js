@@ -63,17 +63,13 @@ describeWithPostgres('SaaS booking quota through the controller on PostgreSQL/RL
       [profileId, providerId, verticalId]
     );
 
-    const hours = Object.fromEntries(
-      ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
-        .map((day) => [day, { open: true, start: '06:00', end: '20:00' }])
-    );
     const salon = await adminPool.query(
       `INSERT INTO salones
          (id_dueno, nombre_salon, business_profile_id, plan_saas, tenant_id,
-          location_enabled, location_public, horario_atencion)
-       VALUES ($1, 'Quota provider', $2, 'FREEMIUM', 1, true, true, $3::jsonb)
+          location_enabled, location_public)
+       VALUES ($1, 'Quota provider', $2, 'FREEMIUM', 1, true, true)
        RETURNING id`,
-      [providerId, profileId, JSON.stringify(hours)]
+      [providerId, profileId]
     );
     salonId = salon.rows[0].id;
 
