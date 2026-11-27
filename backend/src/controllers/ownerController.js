@@ -190,12 +190,13 @@ exports.getDashboardMetrics = async (req, res) => {
 
     // SEMÁNTICA DE RANGO DE FECHAS: `scheduled_at` corresponde a la fecha programada de la cita (TIMESTAMPTZ)
     let queryText = `
-      SELECT id, provider_id, valor_bruto, comision_plataforma, impuestos_estado, pago_neto_prestador, scheduled_at
+      SELECT id, provider_id, salon_id, valor_bruto, comision_plataforma, impuestos_estado, pago_neto_prestador, scheduled_at
         FROM bookings
-       WHERE provider_id = ANY($1::int[])
+       WHERE salon_id = ANY($1::int[])
+         AND provider_id = ANY($2::int[])
          AND estado IN ('COMPLETADA', 'FINALIZADA_PRESTADOR')
     `;
-    const queryParams = [providerIds];
+    const queryParams = [targetSalonIds, providerIds];
 
     if (startDate) {
       queryParams.push(startDate);
@@ -207,12 +208,20 @@ exports.getDashboardMetrics = async (req, res) => {
     }
 
     const bookingsRes = await pool.query(queryText, queryParams);
+    const ownedSalonIdSet = new Set(targetSalonIds.map(Number));
+    const ownedProviderIdSet = new Set(providerIds.map(Number));
+    // Defense in depth: never expose or aggregate a row outside this owner's
+    // selected salons, even if a future query change drops the SQL predicate.
+    const ownedBookings = bookingsRes.rows.filter((row) =>
+      row.salon_id != null && ownedSalonIdSet.has(Number(row.salon_id)) &&
+      ownedProviderIdSet.has(Number(row.provider_id))
+    );
 
     let totalBruto = 0;
     let totalComision = 0;
     let totalImpuestos = 0;
     let totalNetoPrestadores = 0;
-    let totalCitas = bookingsRes.rows.length;
+    let totalCitas = ownedBookings.length;
 
     // Estructuras para desglose
     const salonMetricsMap = new Map();
@@ -230,7 +239,7 @@ exports.getDashboardMetrics = async (req, res) => {
 
     const providerMetricsMap = new Map();
 
-    for (const row of bookingsRes.rows) {
+    for (const row of ownedBookings) {
       const pId = Number(row.provider_id);
       const bruto = Number(row.valor_bruto || 0);
       const comision = Number(row.comision_plataforma || 0);
@@ -256,20 +265,18 @@ exports.getDashboardMetrics = async (req, res) => {
       pStats.ingresos_generados += bruto;
       pStats.total_citas += 1;
 
-      // Desglose por sedes vinculadas al prestador (intra-propietario)
+      // Atribuir cada reserva únicamente a la sede que figura en la reserva.
       const salonsForProvider = allProviderSalonMap.get(pId) || new Set();
       const isShared = salonsForProvider.size > 1;
-
-      for (const sId of salonsForProvider) {
-        if (salonMetricsMap.has(sId)) {
-          const sStats = salonMetricsMap.get(sId);
-          sStats.ingresos_brutos += bruto;
-          sStats.comision_plataforma += comision;
-          sStats.ingresos_netos_negocio += netoNegocio;
-          sStats.pago_neto_prestadores += netoPrestador;
-          sStats.total_citas += 1;
-          if (isShared) sStats.sedes_compartidas = true;
-        }
+      const bookingSalonId = Number(row.salon_id);
+      const salonStats = salonMetricsMap.get(bookingSalonId);
+      if (salonStats) {
+        salonStats.ingresos_brutos += bruto;
+        salonStats.comision_plataforma += comision;
+        salonStats.ingresos_netos_negocio += netoNegocio;
+        salonStats.pago_neto_prestadores += netoPrestador;
+        salonStats.total_citas += 1;
+        if (isShared) salonStats.sedes_compartidas = true;
       }
     }
 
@@ -299,7 +306,7 @@ exports.getDashboardMetrics = async (req, res) => {
 
     if (hasCrossTenantProviders) {
       metricsData.advertencia =
-        'Los totales pueden incluir reservas de salones ajenos cuando un prestador trabaja para varios negocios de distintos propietarios.';
+        'Uno o más prestadores también pertenecen a otros salones. Las métricas financieras incluyen únicamente las citas de las sedes propias seleccionadas.';
     }
 
     res.json({

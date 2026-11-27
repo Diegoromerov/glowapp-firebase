@@ -94,6 +94,9 @@ jobs:
           JWT_SECRET: saas-membership-regression-test-secret
         run: npx jest src/services/__tests__/saasMembershipService.test.js --runInBand --forceExit --verbose
 
+      - name: El dashboard del propietario limita métricas a sus sedes
+        run: npx jest src/controllers/__tests__/ownerDashboardTenantScope.test.js --runInBand --forceExit --verbose
+
       - name: Recuperación de tenant conserva el plan del salón
         env:
           JWT_SECRET: phase1-test-secret
