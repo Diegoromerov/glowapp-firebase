@@ -109,6 +109,11 @@ jobs:
           JWT_SECRET: fase7-usage-alert-test-secret
         run: npx jest tests/saasUsageAlertDelivery.test.js --runInBand --forceExit --verbose
 
+      - name: Checkout SaaS no activa planes sin configuración y pago confirmado
+        env:
+          JWT_SECRET: fase7-billing-fail-closed-test-secret
+        run: npx jest tests/saasBillingFailClosed.test.js --runInBand --forceExit --verbose
+
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
           # trust auth: sin password en la URL
