@@ -226,3 +226,10 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - La consulta autenticada de solo lectura del tenant `salon-17` confirmó `SITES=1/1`. PR [#239](https://github.com/Diegoromerov/glowapp-firebase/pull/239), commit `6601d05`, diferencia cuota concurrente completa de exceso: `SITES=1/1` y asientos en su máximo son `warning`; solo pasan a `exceeded` cuando rebasan el límite. Las cuotas mensuales, como reservas, se agotan al alcanzar 100 %.
 - Backend CI `46050757763` pasó; las pruebas del medidor cubren 1/1 concurrente, rebase y agotamiento mensual. Workflow Firebase `46057891147` pasó Analyze & Tests, build web y despliegue live del proveedor. Firebase Hosting y `main.dart.js` respondieron HTTP 200.
 - El endpoint productivo para QA devolvió resumen consistente: 9 métricas, 7 `ok`, 1 `caution`, 1 `warning`, 0 `exceeded`. No se escribieron datos. La cuota reflejada no habilita crear sedes adicionales: sigue pendiente el flujo multi-sede y aprobación comercial.
+
+## Estado productivo de contratación y pagos — 27 de noviembre de 2026
+
+- La lista de variables del servicio Railway `glowapp-api` en producción no contiene variables `WOMPI_SAAS_*`; sí existen nombres de variables de otra integración `WOMPI_*`. No se consultaron ni registraron valores secretos.
+- `GET /api/saas/catalog` con audiencia `provider` devuelve `checkoutAvailable=false`. Prueba Gratis, Freemium y Básico están listados como disponibles; Crecimiento, Profesional y Empresarial siguen no disponibles.
+- La app mantiene el botón/flujo de contratación pausado según este estado. No se inició pago, renovación ni cambio de plan.
+- Próximo requisito externo: configurar y verificar credenciales y contrato Wompi específicos de SaaS, además de validar consentimiento/tokenización y conciliación antes de habilitar el checkout. Fase 7 sigue abierta.
