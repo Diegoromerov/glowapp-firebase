@@ -64,8 +64,8 @@ describeWithPostgres('public salon entitlement lookup with PostgreSQL RLS', () =
   test('authenticated customer without a salon tenant can reach a different tenant salon with LOYALTY', async () => {
     const response = await request(app).get(`/api/salon-loyalty/salons/${salonId}/rewards`);
     expect(response.status).toBe(200);
-    expect(response.body.salon_id).toBe(salonId);
-    expect(customerRewards).toHaveBeenCalledWith({ salonId });
+    expect(response.body).toMatchObject({ enabled: true, rewards: [] });
+    expect(customerRewards).toHaveBeenCalledWith({ salonId: Number(salonId) });
   }, 30000);
 
   test('the RLS-scoped system lookup still blocks a salon whose plan lacks LOYALTY', async () => {
