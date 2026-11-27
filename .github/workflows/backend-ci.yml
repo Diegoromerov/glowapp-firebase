@@ -195,6 +195,12 @@ jobs:
           DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
         run: node scripts/seedCatalogoCI.js
 
+      - name: Verificar aislamiento RLS de ubicación móvil
+        working-directory: backend
+        env:
+          DATABASE_URL_ADMIN: postgres://postgres@localhost:5432/glowtest
+        run: node scripts/verifyProviderLiveLocationRls.js
+
       - name: La API sirve catalogo con el rol restringido (E2E)
         env:
           DATABASE_URL: postgres://app_rls_user@localhost:5432/glowtest
