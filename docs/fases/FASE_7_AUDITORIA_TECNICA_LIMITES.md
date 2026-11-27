@@ -120,3 +120,11 @@ La evidencia combina inspección estática, CI PostgreSQL y comprobación de sal
 - CI `45941216010` pasó PostgreSQL/RLS para alquileres: miembro aislado a sus registros; OWNER ve los del salón y finaliza; MEMBER no finaliza.
 - PR #188 y PR #189 están integradas. Railway API, dashboard y cron figuran `SUCCESS`; el endpoint `/api/health` reportó commit `2ae222ae4847bd21e00ec1806c93f2d79d3ed894`, PostgreSQL disponible, 77 migraciones y sin datos simulados.
 - Es evidencia de integración con PostgreSQL/RLS y fixtures temporales; no es un recorrido manual de todos los módulos con tenants QA reales.
+
+## Aura B2B: aislamiento del prestador autenticado — 27 de noviembre de 2026
+
+- La herramienta `get_provider_b2b_insights` recibía `providerId` desde los argumentos generados por el modelo y lo pasaba a la consulta de VALKYRIE. Un prompt manipulado podía solicitar agregados de citas de otro prestador.
+- La herramienta ya no expone ese parámetro. El ejecutor exige rol de prestador/administración permitido, valida el ID autenticado de la sesión y consulta VALKYRIE solo con esa identidad; usuarios cliente se rechazan antes de consultar.
+- La regresión verifica que se ignora un ID arbitrario suministrado por el modelo y que el rol cliente no alcanza el repositorio. Suites focalizadas: 19/19 pruebas aprobadas; CI del PR #205 SUCCESS.
+- PR [#205](https://github.com/Diegoromerov/glowapp-firebase/pull/205), integrado a `main` como `0420198ce548ee215a6acee75a620a34aa991ec6`. Railway API, dashboard y cron terminaron `SUCCESS`; `/api/health` devolvió `OK`, commit `0420198`, PostgreSQL disponible, sin datos ficticios y 78 migraciones.
+- Alcance pendiente: esto corrige aislamiento, pero no hace que Aura consuma `AURA_QUERIES`. Falta definir qué solicitudes de Aura se facturan, ligar el consumo atómico al tenant y al plan, devolver el límite restante, y probar denegación al agotarse. Los límites propuestos de los planes no disponibles no deben activarse por esta corrección.
