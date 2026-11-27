@@ -53,6 +53,7 @@
 
 ## Auditoría multi-sede — 26 de noviembre de 2026
 
+- PR [#174](https://github.com/Diegoromerov/glowapp-firebase/pull/174) hizo explícita la cuota propuesta de multi-sede; la revisión de entitlements encontró que no debía concederse a contratos heredados. PR [#175](https://github.com/Diegoromerov/glowapp-firebase/pull/175), CI `45919515848` SUCCESS, corrigió ese riesgo y quedó desplegado en producción como `cd4fdea4`. `/api/health` confirma PostgreSQL disponible y el catálogo público con Empresarial no disponible, cuota actual de una sede, sin `MULTI_SITE`, y propuesta V3 de tres sedes.
 - La propuesta V3 especifica una sede para Profesional y tres para Empresarial. El catálogo declara `SITES: 1` como derecho actual/legacy de PRO y ENTERPRISE y conserva los valores propuestos dentro de `proposedOffer` (`sites: 1` y `sites: 3`, respectivamente); `MULTI_SITE` no se añade a los entitlements activos de Empresarial.
 - `FREE_TRIAL`, `FREEMIUM` y `BASIC` siguen en una sede; los planes `GROWTH`, `PRO` y `ENTERPRISE` continúan comercialmente no disponibles. Los metadatos de la propuesta no conceden acceso multi-sede.
 - La única ruta de creación localizada es `POST /api/salon/create`. Es deliberadamente idempotente por dueño: devuelve la sede existente en reintentos, no crea una segunda sede. No se encontró una ruta SaaS para crear sedes adicionales, consumir `SITES`, administrar permisos específicos por sede ni consolidar operaciones.
