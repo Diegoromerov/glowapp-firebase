@@ -192,5 +192,6 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - La auditoría encontró que `get_business_profile_summary` y `get_business_tasks` consultaban servicios directamente, omitiendo las verificaciones `COMPLIANCE`, membresía activa y permiso `BUSINESS_PROFILE:READ` de las rutas `/api/v1/business`.
 - Ambas herramientas ahora validan el perfil SaaS activo, la membresía, el entitlement y el permiso RBAC dentro de una transacción con RLS. Freemium y cuentas sin membresía reciben denegación segura.
 - Las lecturas de expediente y tareas se limitan al `businessProfileId` autorizado junto al usuario; así una cuenta con varios salones no puede consultar otro expediente desde Aura.
-- Verificación local: `auraToolExecutor.test.js` (18 casos) y `businessComplianceEntitlement.test.js` (4 casos) pasan; `node --check` y `git diff --check` pasan.
-- Aún no publicado: el cambio requiere CI, integración a `main` y despliegue antes de considerar cerrada esta brecha en producción.
+- Verificación local: `auraToolExecutor.test.js` (18 casos), `businessComplianceEntitlement.test.js` (5 casos) y `businessRAG.integration.test.js` (14 casos) pasan; `node --check` y `git diff --check` pasan.
+- PR [#249](https://github.com/Diegoromerov/glowapp-firebase/pull/249) pasó Backend CI (`46065525067`) y quedó integrado en `main` como `921ab275b135ef7c79d04c5fea1eed2a882cff88`.
+- Railway API, dashboard y cron finalizaron SUCCESS. La API productiva `/api/health` devuelve HTTP 200 con el mismo commit, PostgreSQL disponible y sin datos fabricados. La brecha de autorización de Aura Cumplimiento queda corregida en código, CI y producción; la aceptación funcional de cada rol/salón en la app continúa dentro de la matriz pendiente del punto 9.
