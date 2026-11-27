@@ -297,8 +297,8 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
       }).expect(201);
 
       const service = await adminPool.query(
-        `INSERT INTO services (id, provider_id, name, price, tenant_id, business_profile_id, salon_id)
-         VALUES ($1, $2, $3, 10000, 1, $4, $5) RETURNING id`,
+        `INSERT INTO services (id, provider_id, name, price, duration_minutes, tenant_id, business_profile_id, salon_id)
+         VALUES ($1, $2, $3, 10000, 30, 1, $4, $5) RETURNING id`,
         [crypto.randomUUID(), userId, `QA service ${crypto.randomUUID()}`, profileId, salonId]
       );
       serviceId = service.rows[0].id;
