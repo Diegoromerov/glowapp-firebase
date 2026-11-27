@@ -177,3 +177,11 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - **Vencimiento QA seguro:** PR #213 (`b963def`) permite limitar la operación a un UUID de tenant, con regresión PostgreSQL/RLS CI `45960610493`; el cron diario sigue global. No se cambió el plan del salón QA productivo.
 - **Feedback de reservas:** PR #215 (`ff54de9`) conserva la métrica de cuota en Glow Core y muestra al prestador el uso mensual, el límite y el acceso a Facturación. CI de `main` `45962602718` pasó pruebas de Glow Core y ambas apps. Firebase Hosting live `45963726287` compiló y publicó el bundle; portada y JavaScript principal respondieron HTTP 200.
 - La revisión no activa precios propuestos, complementos, facturación electrónica ni renovaciones reales. Fase 7 sigue abierta por aceptación QA productiva, conciliación de cobros, matriz completa de agotamiento/roles, decisiones comerciales pendientes y piloto.
+
+## Feedback de cuotas del equipo y recursos — 27 de noviembre de 2026
+
+- PR [#218](https://github.com/Diegoromerov/glowapp-firebase/pull/218) implementa una respuesta estructurada `SAAS_QUOTA_EXCEEDED` con métrica, uso, límite y plan en invitaciones, aceptación heredada, reactivación y reenvío de invitaciones. La API de equipo serializa dichos detalles en las respuestas HTTP.
+- Glow Core convierte el error estructurado en una excepción tipada. La app del proveedor comparte un diálogo con unidades y contexto de la capacidad agotada, y conduce a Facturación. Equipo y recursos manejan el caso; la pantalla de reservas ya usa el mismo diálogo.
+- CI Backend `46034907049` terminó SUCCESS. Las pruebas focalizadas registradas en el PR pasaron: servicio de membresías 8/8, parsing API 9/9, diálogo Flutter 3/3; el analizador no reportó errores en archivos cambiados. El arreglo de una prueba de agenda con fecha pasada también pasó su CI de Backend.
+- La rama y PR permanecen pendientes de integración; por tanto, este cambio todavía no se considera desplegado. No se pudo confirmar el resto de checks de GitHub en esta sesión. No se intentó QA autenticado: Firebase rechazó las credenciales QA suministradas y no se creó reserva ni cobro.
+- Este trabajo mejora la comunicación de cuotas de equipo y recursos, pero no completa el inventario de módulos/canales, conciliación de métricas ni prueba de aceptación por tenant. Fase 7 continúa en curso.
