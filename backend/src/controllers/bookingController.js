@@ -2481,8 +2481,11 @@ exports.startService = async (req, res) => {
  * Se ejecuta dentro de la transacción del webhook (no bloquea confirmación).
  */
 async function generarFacturaDian(bookingId, transaction) {
-  if (!dianInvoiceClient.isConfigured()) {
-    console.info(`[DIAN INVOICE] Cliente no configurado (falta certificado/NIT). Saltando factura para cita ${bookingId}.`);
+  const emissionReady = typeof dianInvoiceClient.isEmissionReady === 'function'
+    ? dianInvoiceClient.isEmissionReady()
+    : dianInvoiceClient.isConfigured();
+  if (!emissionReady) {
+    console.info(`[DIAN INVOICE] Proveedor Tecnológico no configurado; factura de cita ${bookingId} no emitida.`);
     return;
   }
 
