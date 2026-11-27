@@ -13,6 +13,7 @@
   const status = document.querySelector('.form-status');
   const intro = document.querySelector('#intro');
   const introVideo = document.querySelector('#intro-video');
+  const transitionVideo = document.querySelector('#transition-video');
   const staticPage = document.querySelector('#static');
   const roles = { client: ['Conoce las novedades y encuentra tu pr\u00f3ximo servicio.', 'client'], professional: ['Solicita ingreso a una comunidad de profesionales por nodos.', 'professional'], salon: ['Cu\u00e9ntanos de tu sal\u00f3n y conecta con nuevas oportunidades.', 'salon'] };
 
@@ -30,6 +31,40 @@
     url.searchParams.set('alt', 'media');
     url.searchParams.set('key', config.firebase.apiKey);
     return url.toString();
+  }
+
+  function bufferedTo(video) {
+    if (!video.buffered.length) return 0;
+    return video.buffered.end(video.buffered.length - 1);
+  }
+
+  function updateIntroProgress() {
+    const duration = introVideo.duration;
+    const targetSeconds = Number.isFinite(duration) ? Math.min(duration, 1.5) : 1.5;
+    const percent = Math.max(0, Math.min(100, Math.round(bufferedTo(introVideo) / targetSeconds * 100)));
+    document.querySelector('#preload-progress').style.width = `${percent}%`;
+    document.querySelector('.preload-track').setAttribute('aria-valuenow', String(percent));
+  }
+
+  function updateTransitionPreload() {
+    if (Number.isFinite(transitionVideo.duration) && bufferedTo(transitionVideo) >= transitionVideo.duration - 0.2) {
+      const button = document.querySelector('#start-interactive');
+      button.disabled = false;
+      button.textContent = 'Interactivo';
+    }
+  }
+
+  function preloadTransitionVideo() {
+    const button = document.querySelector('#start-interactive');
+    const videoPath = config?.videoLanding?.transitionPath;
+    if (!config?.firebase?.apiKey || !config.firebase.storageBucket || !videoPath) {
+      button.textContent = 'Interactivo no disponible';
+      return;
+    }
+    transitionVideo.muted = true;
+    transitionVideo.preload = 'auto';
+    transitionVideo.src = storageMediaUrl(videoPath);
+    transitionVideo.load();
   }
 
   function renderLandingButtons(buttons = []) {
@@ -58,46 +93,37 @@
     introVideo.muted = true;
     introVideo.defaultMuted = true;
     introVideo.loop = true;
+    intro.classList.add('is-loading');
     introVideo.src = storageMediaUrl(videoPath);
-    document.querySelector('#start-interactive').disabled = false;
     showLanding('video');
-    introVideo.play().catch(() => {
-      document.querySelector('#start-interactive').textContent = 'Interactivo · toca para reproducir';
-    });
+    introVideo.play().catch(() => {});
   }
 
   function startInteractiveVideo() {
-    const firebase = config?.firebase;
-    const videoPath = config?.videoLanding?.transitionPath;
-    if (!firebase?.apiKey || !firebase?.storageBucket || !videoPath) {
-      document.querySelector('#start-interactive').textContent = 'Video interactivo no disponible';
-      return;
-    }
+    if (document.querySelector('#start-interactive').disabled) return;
     intro.dataset.videoMode = 'transition';
     intro.classList.add('is-transition');
     intro.setAttribute('aria-label', 'Video interactivo de GlowApp');
     introVideo.pause();
-    introVideo.muted = false;
-    introVideo.defaultMuted = false;
-    introVideo.loop = false;
-    introVideo.src = storageMediaUrl(videoPath);
-    introVideo.load();
-    introVideo.play().catch(() => {
+    transitionVideo.muted = false;
+    transitionVideo.defaultMuted = false;
+    transitionVideo.loop = false;
+    transitionVideo.currentTime = 0;
+    transitionVideo.play().catch(() => {
       if (intro.dataset.videoMode !== 'transition') return;
       intro.dataset.videoMode = 'intro';
       intro.classList.remove('is-transition');
       intro.setAttribute('aria-label', 'Introducción de GlowApp');
-      introVideo.muted = true;
-      introVideo.defaultMuted = true;
-      introVideo.loop = true;
-      introVideo.src = storageMediaUrl(config.videoLanding.introPath);
+      transitionVideo.pause();
+      transitionVideo.muted = true;
       introVideo.play().catch(() => {});
-      document.querySelector('#start-interactive').textContent = 'Interactivo · toca para reproducir con sonido';
     });
   }
 
   function enterStaticLanding() {
     introVideo.pause();
+    transitionVideo.pause();
+    transitionVideo.muted = true;
     intro.classList.remove('is-transition');
     intro.dataset.videoMode = 'static';
     showLanding('static');
@@ -150,12 +176,31 @@
     });
     document.querySelector('#start-interactive').addEventListener('click', startInteractiveVideo);
     document.querySelector('#skip-intro').addEventListener('click', enterStaticLanding);
-    introVideo.addEventListener('ended', () => {
-      if (intro.dataset.videoMode === 'transition') enterStaticLanding();
+    introVideo.addEventListener('progress', updateIntroProgress);
+    introVideo.addEventListener('loadedmetadata', updateIntroProgress);
+    introVideo.addEventListener('canplay', () => {
+      if (intro.dataset.videoMode !== 'intro') return;
+      intro.classList.remove('is-loading');
+      updateIntroProgress();
+      window.setTimeout(preloadTransitionVideo, 300);
     });
     introVideo.addEventListener('error', () => {
-      console.warn(`[landing] No se pudo cargar el video ${intro.dataset.videoMode === 'transition' ? 'interactivo' : 'intro'}.`);
+      console.warn('[landing] No se pudo cargar el video intro.');
       enterStaticLanding();
+    });
+    transitionVideo.addEventListener('progress', updateTransitionPreload);
+    transitionVideo.addEventListener('loadedmetadata', updateTransitionPreload);
+    transitionVideo.addEventListener('canplaythrough', updateTransitionPreload);
+    transitionVideo.addEventListener('ended', () => {
+      if (intro.dataset.videoMode === 'transition') enterStaticLanding();
+    });
+    transitionVideo.addEventListener('error', () => {
+      if (intro.dataset.videoMode === 'transition') {
+        console.warn('[landing] No se pudo reproducir el video interactivo.');
+        enterStaticLanding();
+      } else {
+        document.querySelector('#start-interactive').textContent = 'Video interactivo no disponible';
+      }
     });
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     form.contactType.addEventListener('change', updateContact);

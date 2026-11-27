@@ -15,16 +15,24 @@
 </head>
 <body>
   <div id="app">
-    <section id="intro" class="video-state" aria-label="Introducción de GlowApp">
+    <section id="intro" class="video-state is-loading" aria-label="Introducción de GlowApp">
       <video id="intro-video" class="video-full" muted playsinline loop preload="auto" poster="">
       </video>
+      <video id="transition-video" class="video-full video-transition" muted playsinline preload="none" aria-hidden="true"></video>
+      <div class="video-preloader" id="video-preloader" role="status" aria-live="polite">
+        <img src="/images/glowapp-logo-horizontal-thin.png" alt="" class="preloader-logo">
+        <span>Preparando tu experiencia</span>
+        <div class="preload-track" role="progressbar" aria-label="Carga del video" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span id="preload-progress"></span>
+        </div>
+      </div>
       <div class="intro-overlay">
         <div class="landing-brand"><img class="landing-logo" src="/images/glowapp-logo-horizontal-thin.png" alt="GlowApp"></div>
         <div class="intro-slogan" aria-label="Belleza que conecta">
           <span class="slogan-title" role="heading" aria-level="1">Belleza</span>
           <span class="slogan-subtitle">que conecta</span>
         </div>
-        <button class="intro-hint" id="start-interactive" type="button" disabled>Interactivo</button>
+        <button class="intro-hint" id="start-interactive" type="button" disabled>Preparando interactivo…</button>
         <button class="skip-btn" id="skip-intro" aria-label="Estático">Estático</button>
       </div>
     </section>
