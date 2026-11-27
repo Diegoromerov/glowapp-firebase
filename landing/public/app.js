@@ -15,6 +15,7 @@
   const introVideo = document.querySelector('#intro-video');
   const transitionVideo = document.querySelector('#transition-video');
   const staticPage = document.querySelector('#static');
+  let transitionStartRequested = false;
   const roles = { client: ['Conoce las novedades y encuentra tu pr\u00f3ximo servicio.', 'client'], professional: ['Solicita ingreso a una comunidad de profesionales por nodos.', 'professional'], salon: ['Cu\u00e9ntanos de tu sal\u00f3n y conecta con nuevas oportunidades.', 'salon'] };
 
   function showLanding(state) {
@@ -48,9 +49,7 @@
 
   function updateTransitionPreload() {
     if (Number.isFinite(transitionVideo.duration) && bufferedTo(transitionVideo) >= transitionVideo.duration - 0.2) {
-      const button = document.querySelector('#start-interactive');
-      button.disabled = false;
-      button.textContent = 'Interactivo';
+      intro.dataset.transitionReady = 'true';
     }
   }
 
@@ -100,27 +99,39 @@
   }
 
   function startInteractiveVideo() {
-    if (document.querySelector('#start-interactive').disabled) return;
-    intro.dataset.videoMode = 'transition';
-    intro.classList.add('is-transition');
-    intro.setAttribute('aria-label', 'Video interactivo de GlowApp');
-    introVideo.pause();
+    const button = document.querySelector('#start-interactive');
+    if (button.disabled || transitionStartRequested) return;
+    transitionStartRequested = true;
+    intro.dataset.videoMode = 'loading-transition';
+    button.disabled = true;
+    button.textContent = 'Preparando interactivo…';
     transitionVideo.muted = false;
     transitionVideo.defaultMuted = false;
     transitionVideo.loop = false;
-    transitionVideo.currentTime = 0;
-    transitionVideo.play().catch(() => {
-      if (intro.dataset.videoMode !== 'transition') return;
+    if (transitionVideo.readyState > 0) transitionVideo.currentTime = 0;
+    transitionVideo.play().then(() => {
+      if (!transitionStartRequested) {
+        transitionVideo.pause();
+        return;
+      }
+      intro.dataset.videoMode = 'transition';
+      intro.classList.add('is-transition');
+      intro.setAttribute('aria-label', 'Video interactivo de GlowApp');
+      introVideo.pause();
+    }).catch(() => {
+      if (!transitionStartRequested) return;
+      transitionStartRequested = false;
       intro.dataset.videoMode = 'intro';
-      intro.classList.remove('is-transition');
-      intro.setAttribute('aria-label', 'Introducción de GlowApp');
       transitionVideo.pause();
       transitionVideo.muted = true;
       introVideo.play().catch(() => {});
+      button.disabled = false;
+      button.textContent = 'Interactivo';
     });
   }
 
   function enterStaticLanding() {
+    transitionStartRequested = false;
     introVideo.pause();
     transitionVideo.pause();
     transitionVideo.muted = true;
@@ -182,7 +193,10 @@
       if (intro.dataset.videoMode !== 'intro') return;
       intro.classList.remove('is-loading');
       updateIntroProgress();
-      window.setTimeout(preloadTransitionVideo, 300);
+      preloadTransitionVideo();
+      const button = document.querySelector('#start-interactive');
+      button.disabled = false;
+      button.textContent = 'Interactivo';
     });
     introVideo.addEventListener('error', () => {
       console.warn('[landing] No se pudo cargar el video intro.');
@@ -199,7 +213,9 @@
         console.warn('[landing] No se pudo reproducir el video interactivo.');
         enterStaticLanding();
       } else {
-        document.querySelector('#start-interactive').textContent = 'Video interactivo no disponible';
+        const button = document.querySelector('#start-interactive');
+        button.disabled = false;
+        button.textContent = 'Interactivo';
       }
     });
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
