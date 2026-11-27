@@ -71,6 +71,8 @@ const MIGRACIONES_BASE_NUEVA = [
 // The membership service writes invite_token and status PENDING.
 '112_memberships_invite_columns.sql',
 '114_memberships_sub_rol.sql',
+  // The commercial operations migration extends the cash ledger and inventory.
+  '116_caja_movimientos.sql',
   // The real PostgreSQL resource quota test needs the resource tables and locks.
   '117_inventario_y_alquileres.sql',
   // SaaS inventory reads join reservation consumption; include the production
