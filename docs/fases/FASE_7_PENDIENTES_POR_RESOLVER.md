@@ -221,3 +221,9 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - Ahora la consulta limita las citas a sedes autorizadas, descarta en el controlador cualquier fila externa y atribuye cada cita a su sede registrada. La regresión está en Backend CI.
 - PR [#256](https://github.com/Diegoromerov/glowapp-firebase/pull/256), CI `46069833582`, integrado como `c4a1aee2a5e350b68f6804c6760a8c040f6176b3`. API, panel y cron Railway SUCCESS; health HTTP 200 con PostgreSQL disponible.
 - Se cierra este hallazgo de agregación. La aceptación QA autenticada y la cobertura integral de rutas, roles y entitlements siguen pendientes en el punto 9; Fase 7 continúa abierta.
+
+## Entitlement uniforme para invitaciones antiguas — 27 de noviembre de 2026
+
+- La ruta heredada podía aceptar invitaciones en un plan sin `TEAM_MANAGEMENT` cuando hubiera cupo. Ahora comprueba el entitlement vigente antes de usar la invitación o activar una membresía.
+- La regresión local y la prueba PostgreSQL/RLS confirman 403 para Freemium, invitación sin consumir y ausencia de membresía creada. PR [#258](https://github.com/Diegoromerov/glowapp-firebase/pull/258), Backend CI `46070614783`, integrado como `a8bbb1dce99fdcf1463c81f9837865ed8ee1e07d`.
+- Railway API, panel y job diario SUCCESS; health HTTP 200 con PostgreSQL disponible. Ambas rutas de aceptación ahora comprueban plan y cupos; siguen pendientes la aceptación QA de extremo a extremo y demás rutas/roles del punto 9.

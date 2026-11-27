@@ -36,6 +36,14 @@
 - PR [#256](https://github.com/Diegoromerov/glowapp-firebase/pull/256) quedó integrada en `main` como `c4a1aee2a5e350b68f6804c6760a8c040f6176b3`. Railway API, dashboard y cron finalizaron SUCCESS. `/api/health` devolvió HTTP 200 con el mismo commit y PostgreSQL disponible.
 - Queda corregida la agregación financiera externa en código y producción. El tablero todavía requiere aceptación QA autenticada y el análisis multi-sede continúa sujeto a la oferta no disponible; no se usaron datos reales para validar esta regresión.
 
+## Entitlement en aceptación de invitación heredada — 27 de noviembre de 2026
+
+- La ruta de aceptación heredada de `salon_invitaciones` volvía a comprobar el cupo, pero no verificaba `TEAM_MANAGEMENT`. En Freemium, una invitación pendiente podía convertirse en miembro si el cupo pareciera disponible.
+- Ahora, tras bloquear el tenant y volver a leer la invitación/plan vigente, se valida `TEAM_MANAGEMENT` antes de contar asientos, insertar una membresía o marcar la invitación como usada. El error coincide con la ruta canónica (`TEAM_MANAGEMENT_NOT_INCLUDED`).
+- Las pruebas focalizadas verifican que Freemium recibe 403 y conserva la invitación sin consumir. Backend CI `46070614783` ejecutó además la regresión PostgreSQL/RLS: no se crea membresía y `usado` continúa falso. Las pruebas de equipo existentes permanecen en la suite.
+- PR [#258](https://github.com/Diegoromerov/glowapp-firebase/pull/258) integrada como `a8bbb1dce99fdcf1463c81f9837865ed8ee1e07d`. Railway API, panel y cron finalizaron SUCCESS; `/api/health` HTTP 200 confirmó ese commit y PostgreSQL disponible.
+- Se cierra la brecha del entitlement para ambas rutas de aceptación. El ciclo operativo QA de invitación y el resto de la matriz de roles/permisos continúan pendientes.
+
 ## Actualización publicada — 26 de noviembre de 2026
 
 - PR [#153](https://github.com/Diegoromerov/glowapp-firebase/pull/153), commit de producción `0c43b72265dccf68d2d3b9a90f91ae7cd8c8c753`, corrigió el contexto RLS independiente de `crearRecurso` y el intento de bloquear con `FOR UPDATE` un perfil que la app solo puede leer. La serialización del cupo usa ahora `pg_advisory_xact_lock` por salón dentro de la misma transacción.
