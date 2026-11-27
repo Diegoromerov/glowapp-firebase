@@ -49,7 +49,14 @@
 4. Mantener deshabilitados los complementos e integraciones no disponibles, y no vender niveles propuestos.
 5. Antes de implementar cuotas restantes, decidir evento, momento de consumo, reversión ante fallo/reintento y respuesta al agotamiento; ampliar la inspección de rutas heredadas antes de afirmar cobertura global.
 6. Alinear el texto comercial de Caja/POS: describir la función actual como libro manual de caja con constancia interna; reservar “integración POS” y “solo recibos” para capacidades cuyo comportamiento esté separado e implementado. No alterar entitlements ni precios hasta aprobar esa matriz.
-7. Incorporar PR #172 solo tras CI verde; después mantener pendiente el E2E de checkout/webhook con credenciales sandbox controladas y el de producción con importes y productos comerciales aprobados.
+7. PR #172 ya está integrado con CI verde; permanece pendiente el E2E de checkout/webhook con credenciales sandbox controladas y el de producción con importes y productos comerciales aprobados.
+
+## Auditoría multi-sede — 26 de noviembre de 2026
+
+- La propuesta V3 especifica una sede para Profesional y tres para Empresarial; el catálogo dejaba ausente `SITES` en Profesional y tanto `SITES` como `MULTI_SITE` en Empresarial. Se corrigió la declaración para que esos límites propuestos sean explícitos.
+- `FREE_TRIAL`, `FREEMIUM` y `BASIC` siguen en una sede; los planes `GROWTH`, `PRO` y `ENTERPRISE` continúan comercialmente no disponibles. Esta corrección de metadatos no crea acceso multi-sede.
+- La única ruta de creación localizada es `POST /api/salon/create`. Es deliberadamente idempotente por dueño: devuelve la sede existente en reintentos, no crea una segunda sede. No se encontró una ruta SaaS para crear sedes adicionales, consumir `SITES`, administrar permisos específicos por sede ni consolidar operaciones.
+- Por ello la capacidad multi-sede sigue sin implementarse operativamente. No activar `MULTI_SITE` en clientes ni presentar la cuota de catálogo como funcional hasta construir esos flujos y sus controles tenant/RLS.
 
 ## Límites de esta revisión
 
