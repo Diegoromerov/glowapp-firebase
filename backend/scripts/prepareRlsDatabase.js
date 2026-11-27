@@ -47,12 +47,17 @@ const MIGRACIONES_BASE_NUEVA = [
 '037_create_biometric_consents.sql',
 '079_definitive_fix_biometric_consents.sql',
 '054_create_core_tables.sql',
+'097_reglas_servicio_propina_y_creditos.sql',
+'098_independencia_prestador.sql',
+'099_add_productos_adicionales_to_bookings.sql',
+'206_booking_reservation_fee.sql',
 '055_create_tenants_table.sql',
 '056_add_tenant_id_to_core_tables.sql',
 '057_backfill_tenant_id.sql',
 '058_enable_rls_policies.sql',
 '065_multi_tenant_hardening.sql',
 '067_create_multi_salon_ddl.sql',
+'198_salon_business_hours.sql',
 '068_force_rls_strict_isolation.sql',
 '070_extend_tipo_rol_salon_admin.sql',
 '107_rls_politicas_sin_contexto.sql',
@@ -183,6 +188,15 @@ const MIGRACIONES_ARRANQUE = [
 
   '054_create_core_tables.sql',
 
+  // These idempotent lifecycle migrations supply fields written by Booking.
+  '097_reglas_servicio_propina_y_creditos.sql',
+  '098_independencia_prestador.sql',
+
+  // BookingController reads/writes this JSONB column in real booking flows.
+  '099_add_productos_adicionales_to_bookings.sql',
+
+  '206_booking_reservation_fee.sql',
+
   '055_create_tenants_table.sql',
 
   '056_add_tenant_id_to_core_tables.sql',
@@ -194,6 +208,9 @@ const MIGRACIONES_ARRANQUE = [
   '065_multi_tenant_hardening.sql',
 
   '067_create_multi_salon_ddl.sql',
+
+  // The booking controller selects salon hours even when a salon has none set.
+  '198_salon_business_hours.sql',
 
   '068_force_rls_strict_isolation.sql',
 
