@@ -14,6 +14,8 @@ La auditoría estática de cobertura actual está en [FASE_7_AUDITORIA_TECNICA_L
 
 **Actualización multi-sede:** PR [#175](https://github.com/Diegoromerov/glowapp-firebase/pull/175), CI `45919515848` SUCCESS, quedó integrado y desplegado como `cd4fdea4`. Empresarial no hereda `MULTI_SITE`; su oferta propuesta conserva tres sedes como dato comercial separado. Railway y el endpoint del catálogo confirmaron producción saludable, plan no disponible y límite operativo actual de una sede.
 
+**Actualización de Caja:** PR [#177](https://github.com/Diegoromerov/glowapp-firebase/pull/177) quedó integrada como `90cc6b8`; CI de backend y Flutter pasó. El workflow `45932800849` compiló y publicó el portal del prestador en Firebase Hosting live. La API Railway y los archivos del portal fueron verificados en producción. La distinción funcional entre caja Freemium y planes pagos queda pendiente de definición, por lo que no se cambiaron permisos.
+
 ## Lista de pendientes
 
 | N.º | Punto por resolver | Decisión o trabajo requerido | Resultado esperado |
