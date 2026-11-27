@@ -180,3 +180,8 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - La única métrica en cautela es `TEAM_SEATS`: 2 de 3 personas, 67 %. Esto confirma en el tenant QA el estado que la app proveedor ahora colorea desde el 60 %.
 - El login respondió correctamente para la identidad QA; la consulta fue de lectura. La contraseña no se registra aquí.
 - Con esta observación queda cerrada la aceptación de lectura del resumen de uso y de su conteo por estado. No cierra expiración/downgrade QA, cobro, integridad de todas las cuotas restantes ni piloto comercial.
+
+## Métricas de consumo frente a capacidades del plan — 27 de noviembre de 2026
+
+- **Código y producción: corregido.** PR [#234](https://github.com/Diegoromerov/glowapp-firebase/pull/234), commit `ab60bbc`, elimina capacidades booleanas del conteo cuantitativo de `GET /api/saas/usage`; siguen mostrándose como incluidas o no incluidas según el plan.
+- **Pendiente:** repetir consulta autenticada, de solo lectura, sobre el tenant QA para verificar que el endpoint y el resumen no incluyen `MAP_VISIBILITY` ni otras capacidades booleanas como consumo. Se requiere sesión QA vigente.
