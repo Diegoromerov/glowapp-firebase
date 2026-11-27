@@ -350,6 +350,14 @@ async function acceptLegacySalonInvitation({ token, user }) {
       const error = new Error('El rol de la invitación ya no es válido. Solicita una nueva invitación.'); error.status = 409; throw error;
     }
 
+    const plan = invitation.saas_plan || 'FREE_TRIAL';
+    if (!hasEntitlement(plan, 'TEAM_MANAGEMENT')) {
+      const error = new Error('El plan actual no permite activar nuevos miembros del equipo.');
+      error.status = 403;
+      error.details = { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: String(plan).toUpperCase() };
+      throw error;
+    }
+
     await expireInvitations(client, invitation.business_profile_id, user.id);
     const { rows: existingRows } = await client.query(
       `SELECT id, status FROM memberships
@@ -366,7 +374,6 @@ async function acceptLegacySalonInvitation({ token, user }) {
         WHERE business_profile_id = $1 AND status IN ('ACTIVE','PENDING','INVITED')`, [invitation.business_profile_id]
     );
     const current = Number(countRows[0]?.count || 0);
-    const plan = invitation.saas_plan || 'FREE_TRIAL';
     const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
     if (maxSeats !== null && current >= maxSeats) {
       throw seatLimitError(current, maxSeats, plan);
