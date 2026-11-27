@@ -674,8 +674,3 @@ en 076).
 - No reaplica la migración 011, que también reemplazaba el trigger de comisiones.
 - Aditiva e idempotente; rollback: eliminar la columna solo tras retirar sus usos y verificar los datos existentes.
 
-## 207: contador de reprogramaciones de citas
-
-- Garantiza `bookings.reschedule_count`, que el modelo Sequelize escribe al crear reservas.
-- Se mantiene separado de la migración 097, que incluye tablas y reglas adicionales de reembolsos y créditos.
-- Aditiva e idempotente; rollback: retirar el uso de reprogramaciones antes de eliminar la columna.
