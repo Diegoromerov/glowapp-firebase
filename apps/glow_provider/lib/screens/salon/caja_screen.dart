@@ -56,11 +56,14 @@ class _CajaScreenState extends State<CajaScreen> {
   List<Map<String, dynamic>> _movimientos = const [];
   bool _cargando = false;
   String? _error;
+  bool _soloConstancias = false;
 
   @override
   void initState() {
     super.initState();
     _resumen = widget.resumenInicial;
+    _soloConstancias =
+        widget.resumenInicial?['modo_registro'] == 'CONSTANCIAS_INGRESO';
     _movimientos = widget.movimientosIniciales ?? const [];
     if (widget.cargarDatos && widget.resumenInicial == null) {
       _cargar();
@@ -84,6 +87,7 @@ class _CajaScreenState extends State<CajaScreen> {
       if (resumen is Map && resumen['success'] == true) {
         setState(() {
           _resumen = Map<String, dynamic>.from(resumen);
+          _soloConstancias = resumen['modo_registro'] == 'CONSTANCIAS_INGRESO';
           _movimientos = (lista is Map && lista['items'] is List)
               ? (lista['items'] as List)
                   .whereType<Map>()
@@ -113,7 +117,10 @@ class _CajaScreenState extends State<CajaScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _FormularioMovimiento(salonId: widget.salonId),
+      builder: (_) => _FormularioMovimiento(
+        salonId: widget.salonId,
+        soloConstancias: _soloConstancias,
+      ),
     );
     if (creado == true) _cargar();
   }
@@ -155,6 +162,7 @@ class _CajaScreenState extends State<CajaScreen> {
     final neto = (r['neto'] as num?) ?? 0;
     final alcance = (r['alcance'] ?? 'SALON').toString();
     final puedeRegistrar = r['puede_registrar'] == true;
+    final soloConstancias = r['modo_registro'] == 'CONSTANCIAS_INGRESO';
 
     return Stack(
       children: [
@@ -219,6 +227,21 @@ class _CajaScreenState extends State<CajaScreen> {
                   ),
                 ],
               ),
+              if (soloConstancias) ...[
+                const SizedBox(height: Spacing.md),
+                Container(
+                  padding: const EdgeInsets.all(Spacing.md),
+                  decoration: BoxDecoration(
+                    color: t.surfaceLevel2,
+                    borderRadius: BorderRadius.circular(Radii.sm),
+                  ),
+                  child: Text(
+                    'Freemium permite registrar ingresos y emitir constancias internas no fiscales. Para registrar gastos se requiere Caja completa.',
+                    style: TypographyTokens.bodySmall(t)
+                        .copyWith(color: t.textSecondary),
+                  ),
+                ),
+              ],
               const SizedBox(height: Spacing.lg),
               if (alcance != 'SALON')
                 Container(
@@ -451,7 +474,11 @@ class _MovimientoTile extends StatelessWidget {
 /// Formulario de registro. Sólo se abre si la API dijo `puede_registrar`.
 class _FormularioMovimiento extends StatefulWidget {
   final int salonId;
-  const _FormularioMovimiento({required this.salonId});
+  final bool soloConstancias;
+  const _FormularioMovimiento({
+    required this.salonId,
+    required this.soloConstancias,
+  });
 
   @override
   State<_FormularioMovimiento> createState() => _FormularioMovimientoState();
@@ -557,14 +584,21 @@ class _FormularioMovimientoState extends State<_FormularioMovimiento> {
               style: TypographyTokens.h3(t).copyWith(fontSize: 16),
             ),
             const SizedBox(height: Spacing.md),
-            SegmentedButton<String>(
-              segments: const [
-                ButtonSegment(value: 'INGRESO', label: Text('Ingreso')),
-                ButtonSegment(value: 'GASTO', label: Text('Gasto')),
-              ],
-              selected: {_tipo},
-              onSelectionChanged: (s) => setState(() => _tipo = s.first),
-            ),
+            if (widget.soloConstancias)
+              Text(
+                'Registrar ingreso para emitir una constancia interna no fiscal.',
+                style: TypographyTokens.bodySmall(t)
+                    .copyWith(color: t.textSecondary),
+              )
+            else
+              SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(value: 'INGRESO', label: Text('Ingreso')),
+                  ButtonSegment(value: 'GASTO', label: Text('Gasto')),
+                ],
+                selected: {_tipo},
+                onSelectionChanged: (s) => setState(() => _tipo = s.first),
+              ),
             const SizedBox(height: Spacing.md),
             TextField(
               controller: _monto,
