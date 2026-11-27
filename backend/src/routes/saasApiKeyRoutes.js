@@ -6,6 +6,11 @@ const { requireEntitlement, requireRole } = require('../middleware/featureGate')
 const { authMiddleware } = require('../middleware/auth');
 const crypto = require('crypto');
 const { hasEntitlement } = require('../config/saasEntitlements');
+const {
+  validateApiKeyExpiryDays,
+  validateApiKeyName,
+  validateApiKeyScopes,
+} = require('../utils/saasApiKeyValidation');
 
 const router = express.Router();
 
@@ -59,17 +64,14 @@ router.post('/', requireRole('ADMIN'), requireEntitlement('API_KEYS'), async (re
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
-    const { name, scopes = ['read'], expiresInDays = 365 } = req.body;
-
-    if (!name || name.trim().length < 3) {
-      return res.status(400).json({ error: 'Nombre requerido (mín. 3 caracteres)' });
-    }
-
-    const validScopes = ['read', 'write', 'webhooks', 'admin'];
-    const invalidScopes = scopes.filter(s => !validScopes.includes(s));
-    if (invalidScopes.length > 0) {
-      return res.status(400).json({ error: 'Scopes inválidos', invalidScopes, validScopes });
-    }
+    const body = req.body && typeof req.body === 'object' ? req.body : {};
+    const { name, scopes = ['read'], expiresInDays = 365 } = body;
+    const validatedName = validateApiKeyName(name);
+    if (validatedName.error) return res.status(400).json({ error: validatedName.error });
+    const validatedScopes = validateApiKeyScopes(scopes);
+    if (validatedScopes.error) return res.status(400).json(validatedScopes);
+    const validatedExpiry = validateApiKeyExpiryDays(expiresInDays);
+    if (validatedExpiry.error) return res.status(400).json({ error: validatedExpiry.error });
 
     // Generar key: gsk_live_<random> (GlowApp Secret Key)
     const rawKey = `gsk_live_${crypto.randomBytes(24).toString('base64url')}`;
@@ -77,13 +79,13 @@ router.post('/', requireRole('ADMIN'), requireEntitlement('API_KEYS'), async (re
     const keyHash = crypto.createHash('sha256').update(rawKey).digest('hex');
 
     const expiresAt = new Date();
-    expiresAt.setDate(expiresAt.getDate() + expiresInDays);
+    expiresAt.setDate(expiresAt.getDate() + validatedExpiry.value);
 
     const { rows } = await pool.query(`
       INSERT INTO api_keys (tenant_id, name, key_hash, key_prefix, scopes, expires_at, created_by)
       VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING id, name, key_prefix, scopes, expires_at, created_at;
-    `, [req.saas.tenantId, name.trim(), keyHash, keyPrefix, scopes, expiresAt, req.user.id]);
+    `, [req.saas.tenantId, validatedName.value, keyHash, keyPrefix, validatedScopes.value, expiresAt, req.user.id]);
 
     // DEVOLVER LA KEY COMPLETA UNA SOLA VEZ
     res.status(201).json({
@@ -114,33 +116,32 @@ router.patch('/:keyId', requireRole('ADMIN'), async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const { keyId } = req.params;
-    const { name, scopes, expiresInDays } = req.body;
+    const body = req.body && typeof req.body === 'object' ? req.body : {};
+    const { name, scopes, expiresInDays } = body;
 
     const updates = [];
     const values = [];
     let paramIdx = 1;
 
     if (name !== undefined) {
-      if (name.trim().length < 3) {
-        return res.status(400).json({ error: 'Nombre muy corto' });
-      }
+      const validatedName = validateApiKeyName(name);
+      if (validatedName.error) return res.status(400).json({ error: validatedName.error });
       updates.push(`name = $${paramIdx++}`);
-      values.push(name.trim());
+      values.push(validatedName.value);
     }
 
     if (scopes !== undefined) {
-      const validScopes = ['read', 'write', 'webhooks', 'admin'];
-      const invalidScopes = scopes.filter(s => !validScopes.includes(s));
-      if (invalidScopes.length > 0) {
-        return res.status(400).json({ error: 'Scopes inválidos', invalidScopes, validScopes });
-      }
+      const validatedScopes = validateApiKeyScopes(scopes);
+      if (validatedScopes.error) return res.status(400).json(validatedScopes);
       updates.push(`scopes = $${paramIdx++}`);
-      values.push(scopes);
+      values.push(validatedScopes.value);
     }
 
     if (expiresInDays !== undefined) {
+      const validatedExpiry = validateApiKeyExpiryDays(expiresInDays);
+      if (validatedExpiry.error) return res.status(400).json({ error: validatedExpiry.error });
       const expiresAt = new Date();
-      expiresAt.setDate(expiresAt.getDate() + expiresInDays);
+      expiresAt.setDate(expiresAt.getDate() + validatedExpiry.value);
       updates.push(`expires_at = $${paramIdx++}`);
       values.push(expiresAt);
     }
