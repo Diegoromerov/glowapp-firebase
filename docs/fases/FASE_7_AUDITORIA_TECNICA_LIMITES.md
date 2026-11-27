@@ -106,11 +106,12 @@ La evidencia combina inspección estática, CI PostgreSQL y comprobación de sal
 - PR #212 y Backend CI `45959229138` pasaron; quedó integrado como `52630da969204c6b6a1b625b36147d7675da4d16` y desplegado a Railway (API, dashboard y cron SUCCESS). Health confirmó `OK` y PostgreSQL disponible.
 - La prueba focalizada de rutas y servicio pasó 11/11. No se realizó un cobro real ni una cancelación de una suscripción de cliente en producción.
 
-## Ejecución de vencimiento con tenant dirigido — en validación
+## Ejecución de vencimiento con tenant dirigido — desplegada
 
 - El servicio de expiración admite opcionalmente un UUID de tenant y lo limita en la misma consulta transaccional. El cron diario no entrega ese parámetro y conserva su selección global programada.
-- Esta capacidad permite probar un único tenant QA sin degradar otros tenants vencidos. La integración PostgreSQL/RLS añadirá una regresión donde otro tenant vencido debe permanecer intacto, además de rechazar un identificador malformado.
-- Hasta que CI pase y se realice la aceptación QA autorizada, no se afirma una prueba de vencimiento real en producción.
+- CI Backend `45960610493` pasó la integración PostgreSQL/RLS: solo degrada el tenant solicitado, conserva otro vencido y rechaza un UUID malformado.
+- PR #213 quedó integrada como `b963def11976b42b406d938abab7cf78b0305cf8` y se desplegó a API, dashboard y cron. Health de producción confirmó `OK`, PostgreSQL disponible y 79 migraciones.
+- No se cambió el plan de un tenant QA productivo. La prueba verifica el comportamiento con PostgreSQL aislado; no se reporta como ejecución de downgrade real en producción.
 
 ## Revisión de rutas alternativas — 27 de noviembre de 2026
 
