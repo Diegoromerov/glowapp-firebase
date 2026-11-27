@@ -181,3 +181,10 @@ La evidencia combina inspección estática, CI PostgreSQL y comprobación de sal
 ## Pruebas de aceptación todavía pendientes
 
 La lectura del resumen del tenant QA está cerrada. Continúan pendientes una reserva controlada sin alterar datos reales, el downgrade de prueba limitado a tenant QA (el job en producción corre globalmente y no se invocó), y la llamada API autenticada con llave válida de un tenant QA. Estas verificaciones requieren un flujo aislado y no se deben inferir a partir de CI o de la salud del servicio.
+
+## Lecturas del cumplimiento SaaS y aislamiento de tareas — 27 de noviembre de 2026
+
+- La comprobación autenticada de producción detectó HTTP 500 en `GET /api/v1/business/summary` y `GET /api/v1/business/tasks`; PostgreSQL rechazó una inserción en `business_tasks` por RLS. `GET /business/templates` respondió 200.
+- Causa en código: al leer un perfil sin tareas, `getTasksByProfileId` generaba automáticamente dos tareas; el `INSERT` omitía `tenant_id` y dependía del valor heredado `default`. Además, el resumen persistía su puntaje durante el GET.
+- Corrección en revisión: las lecturas ya no crean tareas ni actualizan el perfil. Las tareas iniciales se crean desde el flujo explícito de diagnóstico. Prueba focalizada `businessRatingDebugging.test.js`: 4/4 aprobadas, incluida la verificación de que la lectura vacía no llama `createTasks` ni persiste el puntaje.
+- La suite local `businessSystem.integration.test.js` no pasó por errores del arnés `pg-mem` en `saasContext` (consulta de membresías no soportada), devolviendo 503 antes de ejercitar las rutas. No se cuenta como evidencia de aprobación; el despliegue queda pendiente de CI y de verificación autenticada posterior.

@@ -106,8 +106,6 @@ class BusinessDiagnosticService {
     const rawScore = Math.round((completedTasks / totalTasks) * 100);
     const updatedScore = Math.min(100, Math.max(0, Number.isNaN(rawScore) ? 0 : rawScore));
 
-    await businessRepository.updateProfileStage(profile.id, profile.lifecycle_stage, updatedScore);
-
     return {
       profile: { ...profile, compliance_score: updatedScore },
       tasksCount: tasks.length,

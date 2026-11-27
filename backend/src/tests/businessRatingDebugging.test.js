@@ -8,6 +8,19 @@ const businessDiagnosticService = require('../services/businessDiagnosticService
 const businessRepository = require('../repositories/businessRepository');
 
 describe('Systematic Debugging — Business Rating & Compliance Score Suite', () => {
+  test('Una lectura de tareas vacías no intenta crear filas por debajo', async () => {
+    const profileId = 'biz-debug-read-only';
+    const createTasks = jest.spyOn(businessRepository, 'createTasks');
+
+    try {
+      const tasks = await businessRepository.getTasksByProfileId(profileId);
+      expect(tasks).toEqual([]);
+      expect(createTasks).not.toHaveBeenCalled();
+    } finally {
+      createTasks.mockRestore();
+    }
+  });
+
   test('1. Handles empty tasks array cleanly without Division by Zero (Score = 0%)', async () => {
     // provider_id es INTEGER en business_profiles (migracion 012 + pgMemory.js).
     // Con un string, pg-mem corta con "invalid input syntax for integer" y el
@@ -20,11 +33,17 @@ describe('Systematic Debugging — Business Rating & Compliance Score Suite', ()
       onboarding_mode: 'NEW_BUSINESS'
     });
 
-    const summary = await businessDiagnosticService.getProfileSummary(mockProviderId, 'tenant-debug');
-    expect(summary).not.toBeNull();
-    expect(typeof summary.profile.compliance_score).toBe('number');
-    expect(summary.profile.compliance_score).toBeGreaterThanOrEqual(0);
-    expect(summary.profile.compliance_score).toBeLessThanOrEqual(100);
+    const updateProfileStage = jest.spyOn(businessRepository, 'updateProfileStage');
+    try {
+      const summary = await businessDiagnosticService.getProfileSummary(mockProviderId, 'tenant-debug');
+      expect(summary).not.toBeNull();
+      expect(typeof summary.profile.compliance_score).toBe('number');
+      expect(summary.profile.compliance_score).toBeGreaterThanOrEqual(0);
+      expect(summary.profile.compliance_score).toBeLessThanOrEqual(100);
+      expect(updateProfileStage).not.toHaveBeenCalled();
+    } finally {
+      updateProfileStage.mockRestore();
+    }
   });
 
   test('2. Clamps out-of-bounds score within 0 to 100 range', async () => {

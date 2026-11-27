@@ -239,31 +239,10 @@ class BusinessRepository {
         list.push(t);
       }
     }
-    if (list.length === 0) {
-      const defaultTasks = [
-        {
-          id: `task-1-${profileId}`,
-          business_profile_id: profileId,
-          requirement_id: requirements[0].id,
-          title: 'Obtener Concepto Sanitario Municipal',
-          description: 'Revisar condiciones del local y presentar solicitud a la Secretaría de Salud.',
-          stage: 'ENTENDER',
-          status: 'IN_PROGRESS',
-          due_date: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString()
-        },
-        {
-          id: `task-2-${profileId}`,
-          business_profile_id: profileId,
-          requirement_id: requirements[1].id,
-          title: 'Elaborar Manual de Bioseguridad y RH1',
-          description: 'Personalizar el protocolo de desinfección y manejo de residuos con advertencias de ley.',
-          stage: 'EXPLICAR',
-          status: 'PENDING',
-          due_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-        }
-      ];
-      return this.createTasks(defaultTasks);
-    }
+    // A read must not create rows. The previous fallback seeded tasks here,
+    // which made GET /business/tasks and /business/summary write using the
+    // legacy tenant_id default and fail under production RLS. Initial tasks
+    // are provisioned by runDiagnostic/createTasks with the owning profile.
     return list;
   }
 
