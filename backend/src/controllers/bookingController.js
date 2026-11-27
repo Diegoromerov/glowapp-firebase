@@ -347,7 +347,10 @@ exports.createBooking = async (req, res) => {
         await sequelize.query('SET LOCAL ROLE app_system', { transaction: t });
         return sequelize.query(
           `SELECT s.location_enabled, s.location_public,
-                  UPPER(COALESCE(bp.saas_plan, s.plan_saas, 'FREEMIUM')) AS plan_saas
+                  UPPER(CASE
+                    WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')
+                    ELSE COALESCE(s.plan_saas, 'FREEMIUM')
+                  END) AS plan_saas
              FROM salones s
              LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
             WHERE s.id = :salonId`,

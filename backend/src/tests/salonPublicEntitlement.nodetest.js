@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const Module = require('node:module');
+const fs = require('node:fs');
 const path = require('node:path');
 const express = require('express');
 const request = require('supertest');
@@ -15,7 +16,7 @@ const service = {
 };
 const runAsSystem = async (_deps, callback) => callback({
   query: async (sql, params) => {
-    assert.match(sql, /WHEN bp\.id IS NULL THEN s\.plan_saas/i);
+    assert.match(sql, /WHEN bp\.id IS NULL THEN s\.plan_saas\s+ELSE bp\.saas_plan/i);
     assert.match(sql, /LEFT JOIN business_profiles bp ON bp\.id = s\.business_profile_id/i);
     assert.deepEqual(params, [81]);
     return { rows: salonExists ? [{ saas_plan: canonicalPlan, plan_saas: legacySalonPlan }] : [] };
@@ -59,6 +60,28 @@ test('customer loyalty route blocks plans without LOYALTY before reading custome
   assert.equal(response.status, 403);
   assert.equal(response.body.currentPlan, undefined);
   assert.equal(response.body.required, 'LOYALTY');
+});
+
+test('null canonical plan cannot inherit a more privileged legacy salon plan', async () => {
+  salonExists = true;
+  canonicalPlan = null;
+  legacySalonPlan = 'GROWTH';
+
+  const response = await request(app).get('/api/salon-loyalty/salons/81/rewards');
+
+  assert.equal(response.status, 403);
+  assert.equal(response.body.required, 'LOYALTY');
+});
+
+test('marketplace and booking plan lookups prefer canonical plan and fail closed when it is null', () => {
+  const providerController = fs.readFileSync(path.resolve(__dirname, '../controllers/providerController.js'), 'utf8');
+  const bookingController = fs.readFileSync(path.resolve(__dirname, '../controllers/bookingController.js'), 'utf8');
+  const lookups = [...providerController.matchAll(/(?:UPPER\()?\s*CASE\s+WHEN bp\.id IS NOT NULL THEN COALESCE\(bp\.saas_plan, 'FREEMIUM'\)\s+ELSE COALESCE\(s\.plan_saas, 'FREEMIUM'\)\s+END\)?/gi)];
+
+  assert.equal(lookups.length, 3, 'expected all provider marketplace lookups to use canonical-first fallback');
+  assert.match(bookingController, /CASE\s+WHEN bp\.id IS NOT NULL THEN COALESCE\(bp\.saas_plan, 'FREEMIUM'\)\s+ELSE COALESCE\(s\.plan_saas, 'FREEMIUM'\)\s+END\) AS plan_saas/i);
+  assert.doesNotMatch(providerController, /COALESCE\(bp\.saas_plan,\s*s\.plan_saas/i);
+  assert.doesNotMatch(bookingController, /COALESCE\(bp\.saas_plan,\s*s\.plan_saas/i);
 });
 
 test('customer loyalty route does not expose plans for nonexistent salons', async () => {
