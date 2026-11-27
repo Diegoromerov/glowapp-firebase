@@ -1,5 +1,14 @@
 # Reglas y registro de numeración de migraciones
 
+## 208: ubicación actual del prestador con consentimiento
+
+Separa la última ubicación móvil del campo de ubicación del perfil. Guarda solo
+una posición vigente por prestador, con precisión y marcas de captura/recepción;
+la revocación elimina esa fila. La actualización se acepta únicamente en línea,
+con consentimiento vigente, una captura reciente y precisión de hasta 100 m.
+La migración es aditiva y el cliente no consulta estas coordenadas todavía (fase
+de integración del mapa pendiente).
+
 **Un prefijo numérico = una migración.** El prefijo es el único contrato de orden
 entre migraciones independientes, y por eso está custodiado por el guard
 `backend/tests/migrationsNoDuplicateNumbers.test.js` (bloqueante dentro del gate

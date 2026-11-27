@@ -100,6 +100,142 @@ router.get('/providers', providerController.getProviders);
 router.get('/providers/:id', providerController.getProviderById);
 router.get('/providers/:id/slots', providerController.getProviderSlots);
 
+/**
+ * @swagger
+ * /api/provider/me/location-consent:
+ *   put:
+ *     summary: Cambia el consentimiento del prestador para compartir su ubicación en vivo
+ *     tags: [provider]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [enabled]
+ *             properties:
+ *               enabled:
+ *                 type: boolean
+ *     responses:
+ *       '200':
+ *         description: Consentimiento actualizado; al revocarlo se elimina la ubicación actual.
+ *       '403':
+ *         description: Solo prestadores autenticados pueden cambiar el consentimiento.
+ *       '404':
+ *         description: Perfil de prestador no encontrado.
+ */
+router.put('/provider/me/location-consent', authMiddleware, async (req, res) => {
+  const providerId = Number(req.user.id);
+  const enabled = req.body?.enabled;
+  if (!Number.isSafeInteger(providerId) || providerId <= 0 ||
+      !['provider', 'prestador'].includes(String(req.user.role || req.user.rol || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Solo un prestador autenticado puede cambiar este consentimiento.' });
+  }
+  if (typeof enabled !== 'boolean') return res.status(400).json({ error: 'enabled debe ser boolean.' });
+  try {
+    const { rows } = await pool.query(
+      `UPDATE perfiles_prestador SET
+         live_location_consent = $2,
+         live_location_consent_at = CASE WHEN $2 THEN NOW() ELSE NULL END,
+         live_location_consent_version = CASE WHEN $2 THEN '2026-11' ELSE NULL END
+       WHERE id = $1 RETURNING live_location_consent`,
+      [providerId, enabled]
+    );
+    if (!rows.length) return res.status(404).json({ error: 'Perfil de prestador no encontrado.' });
+    if (!enabled) await pool.query('DELETE FROM provider_live_locations WHERE provider_id = $1', [providerId]);
+    return res.json({ enabled: rows[0].live_location_consent });
+  } catch (error) {
+    console.error('Error al actualizar consentimiento de ubicación:', error);
+    return res.status(500).json({ error: 'No se pudo actualizar el consentimiento de ubicación.' });
+  }
+});
+
+/**
+ * @swagger
+ * /api/provider/me/live-location:
+ *   put:
+ *     summary: Actualiza la ubicación vigente del prestador en primer plano
+ *     tags: [provider]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [latitude, longitude, accuracy_meters, captured_at]
+ *             properties:
+ *               latitude:
+ *                 type: number
+ *                 minimum: -90
+ *                 maximum: 90
+ *               longitude:
+ *                 type: number
+ *                 minimum: -180
+ *                 maximum: 180
+ *               accuracy_meters:
+ *                 type: number
+ *                 minimum: 0
+ *                 maximum: 100
+ *               captured_at:
+ *                 type: string
+ *                 format: date-time
+ *     responses:
+ *       '200':
+ *         description: Ubicación vigente actualizada.
+ *       '400':
+ *         description: Coordenadas inválidas, imprecisas o vencidas.
+ *       '403':
+ *         description: Solo prestadores autenticados pueden compartir su ubicación.
+ *       '409':
+ *         description: El prestador no está en línea o no otorgó consentimiento.
+ */
+router.put('/provider/me/live-location', authMiddleware, async (req, res) => {
+  const providerId = Number(req.user.id);
+  if (!Number.isSafeInteger(providerId) || providerId <= 0 ||
+      !['provider', 'prestador'].includes(String(req.user.role || req.user.rol || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Solo un prestador autenticado puede compartir su ubicación.' });
+  }
+  const { latitude, longitude, accuracy_meters: accuracyMeters, captured_at: capturedAt } = req.body || {};
+  const lat = Number(latitude);
+  const lon = Number(longitude);
+  const accuracy = Number(accuracyMeters);
+  const timestamp = new Date(capturedAt);
+  const ageMs = Date.now() - timestamp.getTime();
+  if (typeof latitude !== 'number' || !Number.isFinite(lat) || lat < -90 || lat > 90 ||
+      typeof longitude !== 'number' || !Number.isFinite(lon) || lon < -180 || lon > 180 ||
+      typeof accuracyMeters !== 'number' || !Number.isFinite(accuracy) || accuracy < 0 || accuracy > 100 ||
+      typeof capturedAt !== 'string' ||
+      !Number.isFinite(timestamp.getTime()) || ageMs < -30000 || ageMs > 90000) {
+    return res.status(400).json({ error: 'La posición debe ser válida, reciente y tener precisión de hasta 100 metros.' });
+  }
+  try {
+    const { rows } = await pool.query(
+      `INSERT INTO provider_live_locations
+         (provider_id, location, accuracy_meters, captured_at, received_at)
+       SELECT p.id, ST_SetSRID(ST_MakePoint($2, $3), 4326)::geography, $4, $5, NOW()
+         FROM perfiles_prestador p
+        WHERE p.id = $1 AND p.is_active = TRUE AND p.live_location_consent = TRUE
+       ON CONFLICT (provider_id) DO UPDATE
+         SET location = EXCLUDED.location,
+             accuracy_meters = EXCLUDED.accuracy_meters,
+             captured_at = EXCLUDED.captured_at,
+             received_at = NOW()
+       WHERE provider_live_locations.captured_at <= EXCLUDED.captured_at
+       RETURNING provider_id`,
+      [providerId, lon, lat, accuracy, timestamp.toISOString()]
+    );
+    if (!rows.length) return res.status(409).json({ error: 'Activa estado en línea y consentimiento para compartir ubicación.' });
+    return res.json({ ok: true, received_at: new Date().toISOString() });
+  } catch (error) {
+    console.error('Error al guardar ubicación en vivo:', error);
+    return res.status(500).json({ error: 'No se pudo guardar la ubicación en vivo.' });
+  }
+});
+
 // ─── HORARIOS DEL PRESTADOR ──────────────────────────────────────────────────
 
 // GET /api/provider/schedule

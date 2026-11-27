@@ -1298,7 +1298,8 @@ app.get('/api/users/profile', authMiddleware, async (req, res) => {
         SELECT p.is_active, p.business_name, p.description, p.rating_avg, p.rating_count,
                (p.estatus_verificacion = 'APROBADO') AS is_verified,
                p.estatus_verificacion, p.active_start_hour, p.active_end_hour,
-               p.weekly_schedule, u.revision_estado AS rut_revision_estado,
+               p.weekly_schedule, p.live_location_consent,
+               u.revision_estado AS rut_revision_estado,
                u.revision_nota AS rut_revision_nota
           FROM perfiles_prestador p
           LEFT JOIN usuarios u ON u.id = p.id
@@ -1360,6 +1361,9 @@ app.patch('/api/providers/status', authMiddleware, async (req, res) => {
     const result = await pool.query(query, params);
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Proveedor no encontrado' });
+    }
+    if (!is_active) {
+      await pool.query('DELETE FROM provider_live_locations WHERE provider_id = $1', [req.user.id]);
     }
     res.json({ success: true, is_active: result.rows[0].is_active });
   } catch (error) {
@@ -1989,6 +1993,14 @@ if (process.env.NODE_ENV !== 'test') {
     console.log(`📦 Entorno: ${process.env.NODE_ENV || 'development'}`);
     await testConnection();
     await initDatabase();
+    const liveLocationCleanup = setInterval(() => {
+      pool.query(
+        "DELETE FROM provider_live_locations WHERE received_at < NOW() - INTERVAL '5 minutes'"
+      ).catch((error) => {
+        console.warn('No se pudo purgar ubicación móvil vencida:', error.message);
+      });
+    }, 60 * 1000);
+    liveLocationCleanup.unref();
     // Iniciar jobs de pagos (maduración, retiros automáticos, conciliación)
         inicializarJobs();
         // T-111: purga diaria de escaneos que cumplieron el plazo del aviso

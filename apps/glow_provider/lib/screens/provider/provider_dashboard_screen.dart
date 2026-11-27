@@ -1,6 +1,6 @@
 // frontend/lib/screens/provider_dashboard_screen.dart
 import 'dart:async';
-import 'package:glow_core/services/web_geolocation.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
@@ -42,12 +42,17 @@ class ProviderDashboardScreen extends StatefulWidget {
       _ProviderDashboardScreenState();
 }
 
-class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
+class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
+    with WidgetsBindingObserver {
   List<Map<String, dynamic>> _bookings = [];
   bool _loading = true;
   bool _loadingProfile = true;
   String? _error;
   bool _isActive = true;
+  bool _liveLocationConsent = false;
+  StreamSubscription<Position>? _liveLocationSubscription;
+  Timer? _liveLocationHeartbeat;
+  bool _locationTrackingStarting = false;
   double? _ratingAvg;
   int _ratingCount = 0;
 
@@ -75,6 +80,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _currentIndex = widget.initialIndex.clamp(0, 7).toInt();
     _loadUserRole();
     _fetchBookings();
@@ -138,11 +144,24 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _stopLiveLocationTracking();
     _wsReconnectTimer?.cancel();
     _webSocketChannel?.sink.close();
     _providerGuideEngine.removeListener(_onProviderGuideStateChanged);
     // El engine es compartido: lo dispone la app, no esta pantalla.
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      if (_isActive && _liveLocationConsent) _startLiveLocationTracking();
+    } else if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      _stopLiveLocationTracking();
+    }
   }
 
 
@@ -294,6 +313,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       if (mounted) {
         setState(() {
           _isActive = data['is_active'] ?? true;
+          _liveLocationConsent = data['live_location_consent'] == true;
           _ratingAvg = data['rating_avg'] != null
               ? double.tryParse(data['rating_avg'].toString())
               : null;
@@ -302,28 +322,14 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
           _loadingProfile = false;
         });
 
-        // Si el proveedor está en línea, refrescamos su ubicación en background
-        if (_isActive) {
-          _refreshActiveLocation();
+        if (_isActive && _liveLocationConsent) {
+          _startLiveLocationTracking();
         }
       }
     } catch (e) {
       if (mounted) {
         setState(() => _loadingProfile = false);
       }
-    }
-  }
-
-  Future<void> _refreshActiveLocation() async {
-    try {
-      final pos = await ubicacionDisponible();
-      if (!pos.ok) return;
-      await ApiService.updateProviderStatus(true,
-          latitude: pos.lat, longitude: pos.lon);
-      debugPrint(
-          '🟢 Ubicación actualizada automáticamente al cargar perfil: ${pos.lat}, ${pos.lon}');
-    } catch (e) {
-      debugPrint('❌ Error al actualizar ubicación automáticamente: $e');
     }
   }
 
@@ -363,6 +369,167 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
     } finally {
       if (mounted) {
         setState(() => _loadingBookings.remove(bookingId));
+      }
+    }
+  }
+
+  Future<void> _startLiveLocationTracking() async {
+    if (!mounted ||
+        !_isActive ||
+        !_liveLocationConsent ||
+        _locationTrackingStarting ||
+        _liveLocationSubscription != null ||
+        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
+      return;
+    }
+    _locationTrackingStarting = true;
+    try {
+      var permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+      }
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever ||
+          permission == LocationPermission.unableToDetermine) {
+        return;
+      }
+      _liveLocationSubscription = Geolocator.getPositionStream(
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.high,
+          distanceFilter: 50,
+        ),
+      ).listen(
+        _publishLiveLocation,
+        onError: (Object error) {
+          debugPrint('Error en stream de ubicación en vivo: $error');
+        },
+      );
+      _liveLocationHeartbeat = Timer.periodic(
+        const Duration(seconds: 30),
+        (_) => _refreshLiveLocationFix(),
+      );
+      await _refreshLiveLocationFix();
+    } catch (error) {
+      debugPrint('No se pudo iniciar el seguimiento en primer plano: $error');
+    } finally {
+      _locationTrackingStarting = false;
+    }
+  }
+
+  Future<void> _refreshLiveLocationFix() async {
+    if (!mounted ||
+        !_isActive ||
+        !_liveLocationConsent ||
+        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
+      return;
+    }
+    try {
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+        timeLimit: const Duration(seconds: 12),
+      );
+      await _publishLiveLocation(position);
+    } catch (error) {
+      debugPrint('No se obtuvo una posición GPS reciente: $error');
+    }
+  }
+
+  Future<void> _publishLiveLocation(Position position) async {
+    final capturedAt = position.timestamp.toUtc();
+    final age = DateTime.now().toUtc().difference(capturedAt);
+    if (!mounted ||
+        !_isActive ||
+        !_liveLocationConsent ||
+        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed ||
+        position.accuracy > 100 ||
+        age > const Duration(seconds: 90) ||
+        age < const Duration(seconds: -30)) {
+      return;
+    }
+    try {
+      await ApiService.updateProviderLiveLocation(
+        latitude: position.latitude,
+        longitude: position.longitude,
+        accuracyMeters: position.accuracy,
+        capturedAt: capturedAt,
+      );
+    } catch (error) {
+      debugPrint('No se pudo enviar la ubicación vigente: $error');
+    }
+  }
+
+  void _stopLiveLocationTracking() {
+    _liveLocationHeartbeat?.cancel();
+    _liveLocationHeartbeat = null;
+    _liveLocationSubscription?.cancel();
+    _liveLocationSubscription = null;
+  }
+
+  Future<void> _toggleLiveLocationConsent() async {
+    if (_liveLocationConsent) {
+      try {
+        await ApiService.setProviderLiveLocationConsent(false);
+        _stopLiveLocationTracking();
+        if (mounted) {
+          setState(() => _liveLocationConsent = false);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Dejaste de compartir tu ubicación.')),
+          );
+        }
+      } catch (error) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('No se pudo detener la ubicación: $error')),
+          );
+        }
+      }
+      return;
+    }
+
+    final accepted = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Compartir ubicación en vivo'),
+        content: const Text(
+          'Mientras estés en línea y uses la app, tu ubicación actual se '
+          'compartirá para que clientes cercanos puedan encontrarte. Se guarda '
+          'solo la posición vigente, no un historial. Puedes detenerlo cuando '
+          'quieras desde este botón.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: const Text('Ahora no'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(dialogContext, true),
+            child: const Text('Aceptar'),
+          ),
+        ],
+      ),
+    );
+    if (accepted != true || !mounted) return;
+    try {
+      final location = await solicitarUbicacion();
+      if (!location.ok) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Permite la ubicación para compartirla en vivo.'),
+            ),
+          );
+        }
+        return;
+      }
+      await ApiService.setProviderLiveLocationConsent(true);
+      if (!mounted) return;
+      setState(() => _liveLocationConsent = true);
+      if (_isActive) _startLiveLocationTracking();
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('No se pudo activar la ubicación: $error')),
+        );
       }
     }
   }
@@ -1772,31 +1939,12 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
       _isActive = value;
     });
     try {
-      double? lat;
-      double? lon;
-      if (value) {
-        final pos = await solicitarUbicacion();
-        if (!pos.ok) {
-          if (mounted) {
-            setState(() {
-              _isActive = false;
-              _isTogglingStatus = false;
-            });
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text(
-                  'Necesitas permitir una ubicación real para ponerte En Línea.',
-                ),
-              ),
-            );
-          }
-          return;
-        }
-        lat = pos.lat;
-        lon = pos.lon;
+      await ApiService.updateProviderStatus(value);
+      if (value && _liveLocationConsent) {
+        _startLiveLocationTracking();
+      } else if (!value) {
+        _stopLiveLocationTracking();
       }
-      await ApiService.updateProviderStatus(value,
-          latitude: lat, longitude: lon);
       HapticFeedback.lightImpact();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -3961,6 +4109,22 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen> {
               centerTitle: false,
               actions: [
                 if (_currentIndex == 0) ...[
+                  if ((_userRole ?? '').toLowerCase() != 'salon')
+                    IconButton(
+                      tooltip: _liveLocationConsent
+                          ? 'Dejar de compartir ubicación'
+                          : 'Compartir ubicación en vivo',
+                      onPressed:
+                          _isTogglingStatus ? null : _toggleLiveLocationConsent,
+                      icon: Icon(
+                        _liveLocationConsent
+                            ? Icons.location_on_rounded
+                            : Icons.location_off_rounded,
+                        color: _liveLocationConsent
+                            ? AppTheme.primary
+                            : Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                    ),
                   PulsingStatusChip(
                     isActive: _isActive,
                     isToggling: _isTogglingStatus,
