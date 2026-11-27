@@ -20,6 +20,7 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
   let ownerEmail;
   let outsiderEmail;
   let ownerMembershipId;
+  const staffIds = [];
   let profileId;
   let salonId;
 
@@ -95,7 +96,9 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
     }
     if (salonId) await adminPool.query('DELETE FROM salones WHERE id = $1', [salonId]);
     if (profileId) await adminPool.query('DELETE FROM business_profiles WHERE id = $1', [profileId]);
-    if (userId || outsiderId) await adminPool.query('DELETE FROM usuarios WHERE id = ANY($1::integer[])', [[userId, outsiderId].filter(Boolean)]);
+    if (userId || outsiderId || staffIds.length) {
+      await adminPool.query('DELETE FROM usuarios WHERE id = ANY($1::integer[])', [[userId, outsiderId, ...staffIds].filter(Boolean)]);
+    }
     if (verticalId) await adminPool.query('DELETE FROM business_verticals WHERE id = $1', [verticalId]);
     await adminPool.end();
   });
@@ -221,6 +224,87 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
     } finally {
       await adminPool.query("UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1", [profileId]);
       await adminPool.query("UPDATE salones SET plan_saas = 'BASIC' WHERE id = $1", [salonId]);
+    }
+  }, 30000);
+
+  test('inventory reads and writes follow OWNER, ADMIN, MANAGER and MEMBER permissions under RLS', async () => {
+    const staff = {};
+    for (const [key, role, subRole] of [
+      ['admin', 'ADMIN', 'ADMINISTRADOR'],
+      ['manager', 'MANAGER', 'RECEPCIONISTA'],
+      ['member', 'MEMBER', 'EMPLEADO'],
+    ]) {
+      const email = `resource-${key}-${crypto.randomUUID()}@test.local`;
+      const created = await adminPool.query(
+        "INSERT INTO usuarios (email, password_hash, nombre, auth_provider, provider_id, rol, tenant_id) VALUES ($1, $2, $3, 'LOCAL', $1, 'SALON', 1) RETURNING id",
+        [email, 'integration-test-only', `Resource ${key}`]
+      );
+      const memberId = created.rows[0].id;
+      staffIds.push(memberId);
+      const client = await adminPool.connect();
+      try {
+        await client.query('BEGIN');
+        await client.query("SELECT set_config('app.user_id', $1, true)", [String(userId)]);
+        await client.query(
+          `INSERT INTO memberships
+             (id, user_id, business_profile_id, role, status, created_by_user_id, sub_rol)
+           VALUES ($1, $2, $3, $4, 'ACTIVE', $5, $6)`,
+          [crypto.randomUUID(), memberId, profileId, role, userId, subRole]
+        );
+        await client.query('COMMIT');
+      } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+      } finally {
+        client.release();
+      }
+      staff[key] = { id: memberId, email };
+    }
+
+    const app = express();
+    app.use(express.json());
+    app.use('/api/salon', salonRoutes);
+    app.use((error, _req, res, _next) => {
+      console.error('Salon inventory role integration failed:', error.message);
+      res.status(500).json({ error: 'Internal test request failure' });
+    });
+    const tokenFor = (id, email) => jwt.sign({ id, email }, getJwtSecret(), { expiresIn: '5m' });
+    const callAs = (identity, method, path, body) => {
+      const call = request(app)[method](path).set('Authorization', `Bearer ${tokenFor(identity.id, identity.email)}`);
+      return body === undefined ? call : call.send(body);
+    };
+    const itemName = `QA inventory ${crypto.randomUUID()}`;
+    let createdItemId;
+
+    try {
+      for (const identity of [{ id: userId, email: ownerEmail }, staff.admin, staff.manager, staff.member]) {
+        await callAs(identity, 'get', `/api/salon/${salonId}/inventario`).expect(200);
+      }
+
+      const item = await callAs(staff.admin, 'post', `/api/salon/${salonId}/inventario`, {
+        nombre: itemName, categoria: 'INSUMO', unidad: 'UNIDAD', stock_inicial: 3,
+      }).expect(201);
+      createdItemId = item.body.item.id;
+      expect(Number(item.body.item.stock_actual)).toBe(3);
+
+      await callAs(staff.manager, 'post', `/api/salon/${salonId}/inventario/${createdItemId}/movimientos`, {
+        tipo: 'SALIDA', cantidad: 1, motivo: 'integration role test', idempotency_key: `role-${crypto.randomUUID()}`,
+      }).expect(201);
+
+      await callAs(staff.member, 'post', `/api/salon/${salonId}/inventario`, {
+        nombre: `Denied inventory ${crypto.randomUUID()}`,
+      }).expect(403);
+      await callAs(staff.member, 'post', `/api/salon/${salonId}/inventario/${createdItemId}/movimientos`, {
+        tipo: 'ENTRADA', cantidad: 1, idempotency_key: `denied-${crypto.randomUUID()}`,
+      }).expect(403);
+
+      const history = await callAs(staff.member, 'get', `/api/salon/${salonId}/inventario/${createdItemId}/movimientos`).expect(200);
+      expect(history.body.total).toBeGreaterThanOrEqual(2);
+    } finally {
+      if (createdItemId) {
+        await adminPool.query('DELETE FROM inventario_movimientos WHERE item_id = $1', [createdItemId]);
+        await adminPool.query('DELETE FROM inventario_salon WHERE id = $1', [createdItemId]);
+      }
     }
   }, 30000);
 });
