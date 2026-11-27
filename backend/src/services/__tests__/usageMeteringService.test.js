@@ -78,6 +78,20 @@ describe('usageMeteringService', () => {
     });
   });
 
+  describe('getMeteredFeatures', () => {
+    test('excluye capacidades booleanas y alias del consumo cuantitativo', () => {
+      const features = usageMeteringService.getMeteredFeatures(
+        usageMeteringService.getPlanLimits('FREEMIUM'),
+      );
+
+      expect(features).toContain('DIRECT_BOOKINGS');
+      expect(features).toContain('TEAM_SEATS');
+      expect(features).not.toContain('MAP_VISIBILITY');
+      expect(features).not.toContain('POS_INTEGRATION');
+      expect(features).not.toContain('ONLINE_BOOKING');
+    });
+  });
+
   describe('hasFeature', () => {
     test('feature habilitada (1) → true', () => {
       expect(usageMeteringService.hasFeature('PRO', 'ADVANCED_ANALYTICS')).toBe(true);

@@ -21,6 +21,13 @@ function getPlanLimits(plan) {
   return PLAN_LIMITS[String(plan || '').toUpperCase().trim()] || PLAN_LIMITS.FREEMIUM;
 }
 
+/** Devuelve solo cuotas contables, excluyendo capacidades booleanas y alias. */
+function getMeteredFeatures(planLimits) {
+  return Object.keys(planLimits || {}).filter((feature) =>
+    feature !== 'ONLINE_BOOKING' && METRICS[feature]?.kind !== 'boolean'
+  );
+}
+
 /**
  * Verifica si un plan tiene una feature (boolean)
  */
@@ -333,6 +340,7 @@ module.exports = {
   METRICS,
   PLAN_LIMITS,
   getPlanLimits,
+  getMeteredFeatures,
   hasFeature,
   getLimit,
   canConsume,
