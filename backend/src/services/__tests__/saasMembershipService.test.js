@@ -136,7 +136,7 @@ describe('saasMembershipService invitation audit', () => {
         if (sql.includes('SELECT business_profile_id FROM memberships')) {
           return { rows: [{ business_profile_id: 'salon-1' }] };
         }
-        if (sql.includes('SELECT m.*, bp.saas_plan FROM memberships m')) {
+        if (sql.includes('SELECT m.*, bp.saas_plan, bp.provider_id AS tenant_owner_id FROM memberships m')) {
           return { rows: [{
             id: 'invite-1', business_profile_id: 'salon-1', user_id: 42,
             invite_email: 'sonia@example.com', role: 'MEMBER', status: 'PENDING',
@@ -168,7 +168,7 @@ describe('saasMembershipService invitation audit', () => {
         if (sql.includes('SELECT business_profile_id FROM memberships')) {
           return { rows: [{ business_profile_id: 'salon-1' }] };
         }
-        if (sql.includes('SELECT m.*, bp.saas_plan FROM memberships m')) {
+        if (sql.includes('SELECT m.*, bp.saas_plan, bp.provider_id AS tenant_owner_id FROM memberships m')) {
           return { rows: [{
             id: 'invite-1', business_profile_id: 'salon-1', user_id: 42,
             invite_email: 'staff@example.com', role: 'MEMBER', status: 'PENDING',

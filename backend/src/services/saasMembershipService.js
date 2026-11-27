@@ -219,7 +219,7 @@ async function accept({ token, user }) {
     await setMembershipContext(client, tenantId, user.id);
     await lockTenant(client, tenantId);
     const { rows } = await client.query(
-      `SELECT m.*, bp.saas_plan FROM memberships m
+      `SELECT m.*, bp.saas_plan, bp.provider_id AS tenant_owner_id FROM memberships m
          JOIN business_profiles bp ON bp.id = m.business_profile_id
         WHERE m.business_profile_id = $3 AND (m.invite_token_hash = $1 OR m.invite_token = $2) AND m.status IN ('PENDING','INVITED')
         FOR UPDATE OF m, bp`, [hashToken(token), token, tenantId]
@@ -252,12 +252,16 @@ async function accept({ token, user }) {
     }
     const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
     if (maxSeats !== null) {
+      // RLS intentionally hides the rest of the team from a pending invitee.
+      // Count under the tenant owner's context, then restore the invitee before self-accept.
+      await client.query("SELECT set_config('app.user_id', $1, true)", [String(membership.tenant_owner_id)]);
       const { rows: countRows } = await client.query(
         `SELECT COUNT(*)::int AS count FROM memberships
           WHERE business_profile_id = $1
             AND status IN ('ACTIVE','PENDING','INVITED')
             AND id <> $2`, [membership.business_profile_id, membership.id]
       );
+      await client.query("SELECT set_config('app.user_id', $1, true)", [String(user.id)]);
       const current = Number(countRows[0]?.count || 0);
       if (current >= maxSeats) throw seatLimitError(current, maxSeats, plan);
     }
