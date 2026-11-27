@@ -107,6 +107,21 @@ describe('usageMeteringService', () => {
     });
   });
 
+  describe('getUsageStatus', () => {
+    test('sede en el máximo permitido es aviso, no exceso', () => {
+      expect(usageMeteringService.getUsageStatus('SITES', 1, 1)).toBe('warning');
+    });
+
+    test('capacidad concurrente solo excede cuando rebasa el límite', () => {
+      expect(usageMeteringService.getUsageStatus('TEAM_SEATS', 3, 3)).toBe('warning');
+      expect(usageMeteringService.getUsageStatus('TEAM_SEATS', 4, 3)).toBe('exceeded');
+    });
+
+    test('cuota mensual se marca excedida al alcanzar el límite', () => {
+      expect(usageMeteringService.getUsageStatus('DIRECT_BOOKINGS', 30, 30)).toBe('exceeded');
+    });
+  });
+
   describe('hasFeature', () => {
     test('feature habilitada (1) → true', () => {
       expect(usageMeteringService.hasFeature('PRO', 'ADVANCED_ANALYTICS')).toBe(true);

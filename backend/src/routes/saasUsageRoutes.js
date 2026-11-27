@@ -118,12 +118,7 @@ router.get('/', async (req, res) => {
       const percentage = limit && limit > 0 ? Math.round((used / limit) * 100) : 0;
       const remaining = limit && limit > 0 ? Math.max(0, limit - used) : null;
       
-      let status = 'ok';
-      if (limit && limit > 0) {
-        if (percentage >= 100) status = 'exceeded';
-        else if (percentage >= 80) status = 'warning';
-        else if (percentage >= 60) status = 'caution';
-      }
+      const status = usageMeteringService.getUsageStatus(feature, used, limit);
 
       return {
         feature,

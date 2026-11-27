@@ -209,8 +209,8 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
       childAspectRatio: 1.45,
       children: [
         _kpiCard('Procesos de integración', api, _blue, Icons.api_rounded),
-        _kpiCard(
-            'Reservas directas', bookings, _green, Icons.event_available_rounded),
+        _kpiCard('Reservas directas', bookings, _green,
+            Icons.event_available_rounded),
         _kpiCard('Asientos de equipo', seats, const Color(0xFF8B5CF6),
             Icons.people_rounded),
         _alertsKpi(summary),
@@ -227,7 +227,14 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
     final progress = unlimited || notIncluded || metric == null
         ? 0.0
         : (used / limit).clamp(0.0, 1.0);
-    final capColor = notIncluded ? _muted : (_progressColor(progress) ?? color);
+    final rawProgress = unlimited || notIncluded || metric == null || limit <= 0
+        ? 0.0
+        : used / limit;
+    final capColor = notIncluded
+        ? _muted
+        : (_progressColor(rawProgress,
+                concurrentQuota: metric?.type.isConcurrentQuota ?? false) ??
+            color);
 
     return Card(
       elevation: 0,
@@ -450,7 +457,9 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
               borderRadius: BorderRadius.circular(4),
               color: over
                   ? Colors.red
-                  : (_progressColor(m.progress) ?? tier.color),
+                  : (_progressColor(m.progress,
+                          concurrentQuota: m.type.isConcurrentQuota) ??
+                      tier.color),
             ),
             BarChartRodData(
               toY: m.limit.toDouble(),
@@ -530,10 +539,13 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
     );
   }
 
-  Color? _progressColor(double progress) {
-    // Mantener los mismos estados que GET /api/saas/usage:
-    // caution desde 60 %, warning desde 80 % y exceeded al llegar al 100 %.
-    if (progress >= 1) return Colors.red;
+  Color? _progressColor(double progress, {bool concurrentQuota = false}) {
+    // Una cuota concurrente completa queda en aviso; solo se excede al rebasarla.
+    // El consumo acumulado mensual sí se agota al alcanzar el 100 %.
+    if (progress > 1 || (progress >= 1 && !concurrentQuota)) {
+      return Colors.red;
+    }
+    if (progress >= 1) return Colors.amber.shade800;
     if (progress >= 0.8) return Colors.amber.shade800;
     if (progress >= 0.6) return Colors.orange.shade800;
     return null;
@@ -601,9 +613,11 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
         continue;
       }
 
-      final progress =
-          effectiveLimit > 0 ? (used / effectiveLimit).clamp(0.0, 1.0) : 0.0;
-      final color = _progressColor(progress) ?? tier.color;
+      final rawProgress = effectiveLimit > 0 ? used / effectiveLimit : 0.0;
+      final progress = rawProgress.clamp(0.0, 1.0);
+      final color = _progressColor(rawProgress,
+              concurrentQuota: type.isConcurrentQuota) ??
+          tier.color;
       rows.add(_limitRow(
         label: serverMetric?.label ?? type.label,
         value: '${_formatNumber(used)} / ${_formatNumber(effectiveLimit)}',
