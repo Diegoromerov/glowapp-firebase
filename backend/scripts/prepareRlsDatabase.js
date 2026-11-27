@@ -49,6 +49,7 @@ const MIGRACIONES_BASE_NUEVA = [
 '054_create_core_tables.sql',
 '099_add_productos_adicionales_to_bookings.sql',
 '206_booking_reservation_fee.sql',
+'207_booking_reschedule_counter.sql',
 '055_create_tenants_table.sql',
 '056_add_tenant_id_to_core_tables.sql',
 '057_backfill_tenant_id.sql',
@@ -190,6 +191,8 @@ const MIGRACIONES_ARRANQUE = [
   '099_add_productos_adicionales_to_bookings.sql',
 
   '206_booking_reservation_fee.sql',
+
+  '207_booking_reschedule_counter.sql',
 
   '055_create_tenants_table.sql',
 
