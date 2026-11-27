@@ -282,7 +282,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                         color: _gold.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Text(s.code,
+                      child: Text(
+                          s.code == 'read'
+                              ? 'read · habilitado'
+                              : '${s.code} · no habilitado',
                           style: const TextStyle(
                               fontSize: 10,
                               color: _gold,
@@ -371,9 +374,10 @@ class _ApiKeysScreenState extends ConsumerState<ApiKeysScreen> {
                           fontWeight: FontWeight.bold,
                           color: _ink)),
                   const SizedBox(height: 4),
-                  const Text('Empieza con lectura y agrega solo lo necesario.',
+                  const Text(
+                      'Por ahora solo está habilitada la consulta de servicios del salón. Los permisos de escritura, webhooks y administración aún no están disponibles.',
                       style: TextStyle(fontSize: 10, color: _muted)),
-                  ...ApiKeyScope.values.map(
+                  ...[ApiKeyScope.read].map(
                     (scope) => CheckboxListTile(
                       dense: true,
                       contentPadding: EdgeInsets.zero,
