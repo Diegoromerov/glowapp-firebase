@@ -667,3 +667,9 @@ en 076).
 - Añade una función `SECURITY DEFINER` de alcance estrecho que resuelve una clave activa únicamente por su hash y devuelve el tenant, plan y scopes necesarios para iniciar RLS.
 - La función no expone el hash ni información de claves revocadas o expiradas y solo se concede al rol de runtime.
 - Es aditiva. Rollback: retirar el endpoint de integraciones y luego eliminar la función.
+
+## 206: tarifa de reserva en citas
+
+- Garantiza que `bookings.tarifa_reserva`, usado por el controlador al crear citas, exista en instalaciones reconstruidas.
+- No reaplica la migración 011, que también reemplazaba el trigger de comisiones.
+- Aditiva e idempotente; rollback: eliminar la columna solo tras retirar sus usos y verificar los datos existentes.
