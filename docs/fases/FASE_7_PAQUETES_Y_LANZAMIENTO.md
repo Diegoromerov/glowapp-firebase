@@ -219,3 +219,10 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - El plan devuelto fue `FREE_TRIAL_LEGACY`. La API envió 9 métricas, todas `kind=quota`; no incluyó `MAP_VISIBILITY`, `POS_INTEGRATION`, ni otras capacidades booleanas. El alias `ONLINE_BOOKING` tampoco aparece como contador duplicado.
 - El resumen fue `totalFeatures=9`, `ok=8`, `caution=1`, `warning=0`, `exceeded=0`; las categorías suman 9. La única cautela es `TEAM_SEATS`, 2 de 3 (67 %), consistente con la verificación previa del tenant.
 - Esto cierra la aceptación productiva del contrato de métricas cuantitativas para este tenant QA. No prueba el agotamiento de cada cuota ni cierra vencimiento controlado, cobros o piloto comercial.
+
+## Uso de sedes y semántica de capacidad concurrente — 27 de noviembre de 2026
+
+- La API reportaba `SITES=0` aunque el QA posee una sede. PR [#238](https://github.com/Diegoromerov/glowapp-firebase/pull/238), desplegada como `40e6a72`, hace que la API cuente las filas de `salones` vinculadas al perfil SaaS dentro del contexto RLS de la petición.
+- La consulta autenticada de solo lectura del tenant `salon-17` confirmó `SITES=1/1`. PR [#239](https://github.com/Diegoromerov/glowapp-firebase/pull/239), commit `6601d05`, diferencia cuota concurrente completa de exceso: `SITES=1/1` y asientos en su máximo son `warning`; solo pasan a `exceeded` cuando rebasan el límite. Las cuotas mensuales, como reservas, se agotan al alcanzar 100 %.
+- Backend CI `46050757763` pasó; las pruebas del medidor cubren 1/1 concurrente, rebase y agotamiento mensual. Workflow Firebase `46057891147` pasó Analyze & Tests, build web y despliegue live del proveedor. Firebase Hosting y `main.dart.js` respondieron HTTP 200.
+- El endpoint productivo para QA devolvió resumen consistente: 9 métricas, 7 `ok`, 1 `caution`, 1 `warning`, 0 `exceeded`. No se escribieron datos. La cuota reflejada no habilita crear sedes adicionales: sigue pendiente el flujo multi-sede y aprobación comercial.

@@ -62,6 +62,14 @@
 - La única ruta de creación localizada es `POST /api/salon/create`. Es deliberadamente idempotente por dueño: devuelve la sede existente en reintentos, no crea una segunda sede. No se encontró una ruta SaaS para crear sedes adicionales, consumir `SITES`, administrar permisos específicos por sede ni consolidar operaciones.
 - Por ello la capacidad multi-sede sigue sin implementarse operativamente. No activar `MULTI_SITE` en clientes ni presentar la cuota de catálogo como funcional hasta construir esos flujos y sus controles tenant/RLS.
 
+## Conteo de sedes y límite concurrente — 27 de noviembre de 2026
+
+- El informe de uso devolvía `SITES=0` porque no había un contador de consumo para el recurso concurrente. PR [#238](https://github.com/Diegoromerov/glowapp-firebase/pull/238), producción `40e6a72`, cuenta los salones asociados al `business_profile_id` dentro de la transacción autenticada/RLS.
+- PR [#239](https://github.com/Diegoromerov/glowapp-firebase/pull/239), producción `6601d05`, clasifica una cuota concurrente en su máximo permitido como `warning`; `exceeded` se reserva para uso mayor al máximo. La cuota acumulativa mensual conserva el agotamiento al 100 %. La app proveedor usa ámbar para capacidad completa y rojo solo para rebase/agotamiento.
+- El tenant QA `salon-17` respondió `SITES=1/1`, `status=warning`; resumen `totalFeatures=9`, `ok=7`, `caution=1`, `warning=1`, `exceeded=0`. Se validó con GET autenticado; no hubo escrituras.
+- Backend CI `46050757763` pasó pruebas de 1/1, rebase concurrente y cuota mensual agotada. Firebase workflow `46057891147` pasó Analyze & Tests, build de proveedor y despliegue Hosting live; portada y bundle dieron HTTP 200.
+- La cifra es correcta para el uso actual, pero no demuestra que el módulo multi-sede esté implementado. No hay creación SaaS de sedes adicionales ni permisos/consolidación por sede; la propuesta de 3 sedes empresariales permanece sin contratar.
+
 ## Alineación de Caja — 26 de noviembre de 2026
 
 - La inspección de `cajaController.js` confirma que el flujo registra ingresos y gastos manuales y emite una constancia interna, sin integración de punto de venta ni facturación electrónica.
