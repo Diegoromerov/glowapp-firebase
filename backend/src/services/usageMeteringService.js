@@ -28,6 +28,16 @@ function getMeteredFeatures(planLimits) {
   );
 }
 
+/** Cuenta las sedes reales asociadas al tenant para la cuota concurrente SITES. */
+async function getSiteCount(tenantId) {
+  const { rows } = await pool.query(`
+    SELECT COUNT(DISTINCT id)::integer AS count
+    FROM salones
+    WHERE business_profile_id = $1
+  `, [tenantId]);
+  return Number(rows[0]?.count || 0);
+}
+
 /**
  * Verifica si un plan tiene una feature (boolean)
  */
@@ -341,6 +351,7 @@ module.exports = {
   PLAN_LIMITS,
   getPlanLimits,
   getMeteredFeatures,
+  getSiteCount,
   hasFeature,
   getLimit,
   canConsume,

@@ -52,6 +52,10 @@ router.get('/', async (req, res) => {
       `, [tenantId]);
       teamSeatsInUse = Number(members[0]?.count || 0);
     }
+    let sitesInUse = null;
+    if (Object.prototype.hasOwnProperty.call(usageMeteringService.getPlanLimits(plan), 'SITES')) {
+      sitesInUse = await usageMeteringService.getSiteCount(tenantId);
+    }
 
     // Si aún no existe contador este mes, mostrar las reservas ya hechas antes
     // de activar el nuevo medidor. Por negocio compartido se usa la relación
@@ -106,6 +110,8 @@ router.get('/', async (req, res) => {
       const limit = planLimits[feature];
       const used = feature === 'TEAM_SEATS' && teamSeatsInUse !== null
         ? teamSeatsInUse
+        : feature === 'SITES' && sitesInUse !== null
+          ? sitesInUse
         : feature === 'DIRECT_BOOKINGS' && existingBookings !== null
           ? existingBookings
           : metric?.count || 0;
