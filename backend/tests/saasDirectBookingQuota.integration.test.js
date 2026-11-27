@@ -56,6 +56,42 @@ describeWithPostgres('SaaS direct booking quota with PostgreSQL RLS', () => {
     }
   });
 
+  test('si falla la creación de una reserva, el rollback revierte también la cuota', async () => {
+    const client = await appPool.connect();
+    try {
+      await client.query('BEGIN');
+      await client.query("SELECT set_config('app.user_id', $1, true)", [String(userId)]);
+      await client.query("SELECT set_config('app.tenant_id', $1, true)", ['1']);
+
+      await reserveDirectBookingQuota({
+        query: (sql, params) => client.query(sql, params),
+        tenantId: profileId,
+        delta: 1,
+        periodStart: period.start,
+        periodEnd: period.end,
+        getLimit,
+        legacyTenantId: '1',
+        setTenantContext: (tenantId) => client.query(
+          "SELECT set_config('app.tenant_id', $1, true)", [tenantId]
+        ),
+        countHistorical: async () => 0,
+      });
+
+      // Representa una falla posterior del INSERT de la reserva dentro de la
+      // misma transacción que reservó el cupo.
+      await client.query('ROLLBACK');
+    } finally {
+      client.release();
+    }
+
+    const persisted = await adminPool.query(
+      `SELECT count FROM usage_metrics
+        WHERE tenant_id = $1 AND feature = 'DIRECT_BOOKINGS' AND period_start = $2`,
+      [profileId, period.start]
+    );
+    expect(persisted.rows).toHaveLength(0);
+  }, 30000);
+
   test('RLS-visible profile and concurrent requests cannot exceed the final Freemium booking slot', async () => {
     const contextFor = async (client) => {
       await client.query('BEGIN');
