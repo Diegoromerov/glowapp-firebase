@@ -58,7 +58,7 @@ class SalonShell extends StatefulWidget {
     this.initialIndex = 0,
     this.cargarDatos = true,
     this.entitlements,
-    this.plan = 'FREE_TRIAL',
+    this.plan = 'FREEMIUM',
     this.canShowOnMap,
   });
 
@@ -137,7 +137,7 @@ class _SalonShellState extends State<SalonShell> {
       if (!mounted) return;
       setState(() {
         _entitlements = caps.map((c) => c.toString()).toList();
-        _plan = (salon['plan_saas'] ?? 'FREE_TRIAL').toString();
+        _plan = (salon['plan_saas'] ?? 'FREEMIUM').toString();
         _salonId = salonId;
         _canShowOnMap = salon['can_show_on_map'] as bool?;
         _tenantReady = true;
