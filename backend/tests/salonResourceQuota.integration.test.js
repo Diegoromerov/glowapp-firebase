@@ -280,6 +280,8 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
     };
     const itemName = `QA inventory ${crypto.randomUUID()}`;
     let createdItemId;
+    const resourceIds = [];
+    const rentalIds = [];
 
     try {
       for (const identity of [{ id: userId, email: ownerEmail }, staff.admin, staff.manager, staff.member]) {
@@ -316,6 +318,30 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
         items: [{ item_id: createdItemId, cantidad: 2 }],
       }).expect(403);
 
+      const resourceForMember = await callAs(staff.admin, 'post', `/api/salon/${salonId}/recursos`, {
+        nombre: `QA chair member ${crypto.randomUUID()}`, tipo: 'SILLA', canon_mensual: 25000,
+      }).expect(201);
+      const resourceForManager = await callAs(staff.admin, 'post', `/api/salon/${salonId}/recursos`, {
+        nombre: `QA chair manager ${crypto.randomUUID()}`, tipo: 'SILLA', canon_mensual: 25000,
+      }).expect(201);
+      resourceIds.push(resourceForMember.body.recurso.id, resourceForManager.body.recurso.id);
+
+      const rentalForMember = await callAs(staff.admin, 'post', `/api/salon/${salonId}/alquileres`, {
+        recurso_id: resourceIds[0], persona_id: staff.member.id,
+      }).expect(201);
+      const rentalForManager = await callAs(staff.admin, 'post', `/api/salon/${salonId}/alquileres`, {
+        recurso_id: resourceIds[1], persona_id: staff.manager.id,
+      }).expect(201);
+      rentalIds.push(rentalForMember.body.alquiler.id, rentalForManager.body.alquiler.id);
+
+      const ownRentals = await callAs(staff.member, 'get', `/api/salon/${salonId}/alquileres`).expect(200);
+      expect(ownRentals.body).toMatchObject({ alcance: 'PROPIO', total: 1 });
+      expect(ownRentals.body.items[0].persona_id).toBe(staff.member.id);
+      const salonRentals = await callAs({ id: userId, email: ownerEmail }, 'get', `/api/salon/${salonId}/alquileres`).expect(200);
+      expect(salonRentals.body).toMatchObject({ alcance: 'SALON', total: 2 });
+      await callAs(staff.member, 'patch', `/api/salon/${salonId}/alquileres/${rentalIds[0]}/finalizar`, {}).expect(403);
+      await callAs({ id: userId, email: ownerEmail }, 'patch', `/api/salon/${salonId}/alquileres/${rentalIds[0]}/finalizar`, {}).expect(200);
+
       await callAs(staff.member, 'post', `/api/salon/${salonId}/inventario`, {
         nombre: `Denied inventory ${crypto.randomUUID()}`,
       }).expect(403);
@@ -328,6 +354,8 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
     } finally {
       await adminPool.query("UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1", [profileId]);
       await adminPool.query("UPDATE salones SET plan_saas = 'BASIC' WHERE id = $1", [salonId]);
+      if (rentalIds.length) await adminPool.query('DELETE FROM alquileres WHERE id = ANY($1::uuid[])', [rentalIds]);
+      if (resourceIds.length) await adminPool.query('DELETE FROM recursos_alquilables WHERE id = ANY($1::uuid[])', [resourceIds]);
       if (createdItemId) {
         if (serviceId) await adminPool.query('DELETE FROM salon_servicio_insumos WHERE service_id = $1', [serviceId]);
         await adminPool.query('DELETE FROM inventario_movimientos WHERE item_id = $1', [createdItemId]);
