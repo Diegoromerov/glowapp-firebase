@@ -55,10 +55,12 @@ describe('createSalon — reintento idempotente', () => {
     };
     let salonExiste = false;
     let inserciones = 0;
+    let existingSalonQuery = '';
     const client = {
       query: jest.fn(async (sql) => {
-        const query = sql.replace(/\\s+/g, ' ').trim();
+        const query = sql.replace(/\s+/g, ' ').trim();
         if (/FROM salones s JOIN memberships m/i.test(query)) {
+          existingSalonQuery = query;
           return { rows: salonExiste ? [salon] : [] };
         }
         if (/INSERT INTO salones/i.test(query)) {
@@ -87,6 +89,8 @@ describe('createSalon — reintento idempotente', () => {
     expect(retryResponse.body.created).toBe(false);
     expect(retryResponse.body.salon.id).toBe(salon.id);
     expect(inserciones).toBe(1);
+    expect(existingSalonQuery).toMatch(/bp\.saas_plan AS plan_saas/i);
+    expect(existingSalonQuery).toMatch(/JOIN business_profiles bp ON bp\.id = s\.business_profile_id/i);
     expect(client.query).toHaveBeenCalledWith(
       'SELECT pg_advisory_xact_lock(73001, $1::integer)',
       [42],

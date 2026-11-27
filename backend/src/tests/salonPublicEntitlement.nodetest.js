@@ -5,7 +5,8 @@ const path = require('node:path');
 const express = require('express');
 const request = require('supertest');
 
-let salonPlan = 'GROWTH';
+let canonicalPlan = 'GROWTH';
+let legacySalonPlan = 'FREEMIUM';
 let salonExists = true;
 const service = {
   customerSummary: async () => ({ salon_id: 81, balance: 25, movements: [] }),
@@ -14,9 +15,10 @@ const service = {
 };
 const runAsSystem = async (_deps, callback) => callback({
   query: async (sql, params) => {
-    assert.match(sql, /SELECT plan_saas FROM salones WHERE id = \$1/i);
+    assert.match(sql, /WHEN bp\.id IS NULL THEN s\.plan_saas/i);
+    assert.match(sql, /LEFT JOIN business_profiles bp ON bp\.id = s\.business_profile_id/i);
     assert.deepEqual(params, [81]);
-    return { rows: salonExists ? [{ plan_saas: salonPlan }] : [] };
+    return { rows: salonExists ? [{ saas_plan: canonicalPlan, plan_saas: legacySalonPlan }] : [] };
   },
 });
 
@@ -43,14 +45,16 @@ app.use('/api/salon-loyalty', loyaltyRoutes);
 
 test('customer loyalty entitlement resolves a salon outside the customer tenant through system RLS scope', async () => {
   salonExists = true;
-  salonPlan = 'GROWTH';
+  canonicalPlan = 'GROWTH';
+  legacySalonPlan = 'FREEMIUM';
   const response = await request(app).get('/api/salon-loyalty/salons/81/rewards');
   assert.equal(response.status, 200);
   assert.deepEqual(response.body.rewards, [{ id: 'reward-1' }]);
 });
 
 test('customer loyalty route blocks plans without LOYALTY before reading customer data', async () => {
-  salonPlan = 'FREEMIUM';
+  canonicalPlan = 'FREEMIUM';
+  legacySalonPlan = 'GROWTH';
   const response = await request(app).get('/api/salon-loyalty/salons/81/rewards');
   assert.equal(response.status, 403);
   assert.equal(response.body.currentPlan, undefined);
