@@ -11,7 +11,7 @@
   <meta property="og:image" content="/og-glowapp.svg">
   <title>GlowApp · Belleza que conecta</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css?v=f3a2bcd">
+  <link rel="stylesheet" href="/styles.css?v=video3-flow">
 </head>
 <body>
   <div id="app">
@@ -19,6 +19,8 @@
       <video id="intro-video" class="video-full" muted playsinline loop preload="auto" poster="">
       </video>
       <video id="transition-video" class="video-full video-transition" muted playsinline preload="none" aria-hidden="true"></video>
+      <video id="video3-video" class="video-full video-final" muted playsinline preload="none" aria-hidden="true"></video>
+      <button id="video3-audio-fallback" class="video3-audio-fallback" type="button">Toca para continuar con sonido</button>
       <div class="video-preloader" id="video-preloader" role="status" aria-live="polite">
         <img src="/images/glowapp-logo-horizontal-thin.png" alt="" class="preloader-logo">
         <span>Preparando tu experiencia</span>
@@ -65,6 +67,6 @@
       </form>
     </dialog>
   </div>
-  <script src="/app.js?v=f3a2bcd" type="module" defer></script>
+  <script src="/app.js?v=video3-flow" type="module" defer></script>
 </body>
 </html>

@@ -14,8 +14,10 @@
   const intro = document.querySelector('#intro');
   const introVideo = document.querySelector('#intro-video');
   const transitionVideo = document.querySelector('#transition-video');
+  const video3Video = document.querySelector('#video3-video');
   const staticPage = document.querySelector('#static');
   let transitionStartRequested = false;
+  let video3PreloadStarted = false;
   const roles = { client: ['Conoce las novedades y encuentra tu pr\u00f3ximo servicio.', 'client'], professional: ['Solicita ingreso a una comunidad de profesionales por nodos.', 'professional'], salon: ['Cu\u00e9ntanos de tu sal\u00f3n y conecta con nuevas oportunidades.', 'salon'] };
 
   function showLanding(state) {
@@ -50,6 +52,7 @@
   function updateTransitionPreload() {
     if (Number.isFinite(transitionVideo.duration) && bufferedTo(transitionVideo) >= transitionVideo.duration - 0.2) {
       intro.dataset.transitionReady = 'true';
+      preloadVideo3();
     }
   }
 
@@ -64,6 +67,50 @@
     transitionVideo.preload = 'auto';
     transitionVideo.src = storageMediaUrl(videoPath);
     transitionVideo.load();
+  }
+
+  function preloadVideo3() {
+    const videoPath = config?.videoLanding?.video3Path;
+    if (video3PreloadStarted || !config?.firebase?.apiKey || !config.firebase.storageBucket || !videoPath) return;
+    video3PreloadStarted = true;
+    video3Video.muted = true;
+    video3Video.preload = 'auto';
+    video3Video.src = storageMediaUrl(videoPath);
+    video3Video.load();
+  }
+
+  function revealVideo3() {
+    intro.dataset.videoMode = 'video3';
+    intro.classList.remove('is-transition', 'is-audio-gated');
+    intro.classList.add('is-final');
+    intro.setAttribute('aria-label', 'Video 3 de GlowApp');
+    transitionVideo.pause();
+  }
+
+  function startVideo3() {
+    if (!config?.videoLanding?.video3Path || video3Video.error) {
+      enterStaticLanding();
+      return;
+    }
+    video3Video.muted = false;
+    video3Video.defaultMuted = false;
+    video3Video.loop = false;
+    if (video3Video.readyState > 0) video3Video.currentTime = 0;
+    video3Video.play().then(revealVideo3).catch(() => {
+      if (video3Video.error) {
+        enterStaticLanding();
+        return;
+      }
+      video3Video.muted = true;
+      intro.dataset.videoMode = 'video3-audio-required';
+      intro.classList.add('is-audio-gated');
+    });
+  }
+
+  function resumeVideo3WithSound() {
+    video3Video.muted = false;
+    video3Video.defaultMuted = false;
+    video3Video.play().then(revealVideo3).catch(() => {});
   }
 
   function renderLandingButtons(buttons = []) {
@@ -118,6 +165,7 @@
       intro.classList.add('is-transition');
       intro.setAttribute('aria-label', 'Video interactivo de GlowApp');
       introVideo.pause();
+      preloadVideo3();
     }).catch(() => {
       if (!transitionStartRequested) return;
       transitionStartRequested = false;
@@ -135,7 +183,9 @@
     introVideo.pause();
     transitionVideo.pause();
     transitionVideo.muted = true;
-    intro.classList.remove('is-transition');
+    video3Video.pause();
+    video3Video.muted = true;
+    intro.classList.remove('is-transition', 'is-final', 'is-audio-gated');
     intro.dataset.videoMode = 'static';
     showLanding('static');
   }
@@ -187,6 +237,7 @@
     });
     document.querySelector('#start-interactive').addEventListener('click', startInteractiveVideo);
     document.querySelector('#skip-intro').addEventListener('click', enterStaticLanding);
+    document.querySelector('#video3-audio-fallback').addEventListener('click', resumeVideo3WithSound);
     introVideo.addEventListener('progress', updateIntroProgress);
     introVideo.addEventListener('loadedmetadata', updateIntroProgress);
     introVideo.addEventListener('canplay', () => {
@@ -206,7 +257,7 @@
     transitionVideo.addEventListener('loadedmetadata', updateTransitionPreload);
     transitionVideo.addEventListener('canplaythrough', updateTransitionPreload);
     transitionVideo.addEventListener('ended', () => {
-      if (intro.dataset.videoMode === 'transition') enterStaticLanding();
+      if (intro.dataset.videoMode === 'transition') startVideo3();
     });
     transitionVideo.addEventListener('error', () => {
       if (intro.dataset.videoMode === 'transition') {
@@ -217,6 +268,9 @@
         button.disabled = false;
         button.textContent = 'Interactivo';
       }
+    });
+    video3Video.addEventListener('ended', () => {
+      if (intro.dataset.videoMode === 'video3') video3Video.pause();
     });
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     form.contactType.addEventListener('change', updateContact);
