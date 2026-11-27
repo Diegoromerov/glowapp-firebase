@@ -293,4 +293,58 @@ describe('saasMembershipService invitation audit', () => {
     expect(client.release).toHaveBeenCalled();
   });
 
+  test('does not reactivate a suspended member after the canonical plan loses team management', async () => {
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql) => {
+        calls.push(sql);
+        if (sql.includes('SELECT * FROM memberships WHERE id = $1 AND business_profile_id = $2')) {
+          return { rows: [{ id: 'member-1', role: 'MEMBER', user_id: 42, status: 'SUSPENDED' }] };
+        }
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'FREEMIUM' }] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.setStatus({
+      tenantId: 'salon-1', memberId: 'member-1', actorId: 7, status: 'ACTIVE', plan: 'BASIC',
+    })).rejects.toMatchObject({
+      status: 403,
+      message: 'El plan actual no permite reactivar miembros del equipo.',
+      details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+    });
+
+    expect(calls.some((sql) => sql.includes('COUNT(*)::int AS count'))).toBe(false);
+    expect(calls.some((sql) => sql.includes('UPDATE memberships SET status'))).toBe(false);
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
+    expect(client.release).toHaveBeenCalled();
+  });
+
+  test('reactivates a suspended member when the current plan includes team management and has a seat', async () => {
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql) => {
+        calls.push(sql);
+        if (sql.includes('SELECT * FROM memberships WHERE id = $1 AND business_profile_id = $2')) {
+          return { rows: [{ id: 'member-1', role: 'MEMBER', user_id: 42, status: 'SUSPENDED' }] };
+        }
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'BASIC' }] };
+        if (sql.includes('COUNT(*)::int AS count')) return { rows: [{ count: 2 }] };
+        if (sql.includes('UPDATE memberships SET status')) return { rows: [{ id: 'member-1', status: 'ACTIVE' }] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.setStatus({
+      tenantId: 'salon-1', memberId: 'member-1', actorId: 7, status: 'ACTIVE', plan: 'FREEMIUM',
+    })).resolves.toMatchObject({ id: 'member-1', status: 'ACTIVE' });
+
+    expect(client.query).toHaveBeenCalledWith('COMMIT');
+    expect(client.release).toHaveBeenCalled();
+  });
+
 });
