@@ -138,9 +138,21 @@ describeWithPostgres('SaaS external API with PostgreSQL RLS', () => {
        VALUES ($1, 'Expired API key test', $2, $3, ARRAY['read'], NOW() - INTERVAL '1 second')`,
       [profileId, crypto.createHash('sha256').update(expiredKey).digest('hex'), expiredKey.slice(0, 12)]
     );
+    const usageBeforeExpiredAttempt = await adminPool.query(
+      `SELECT count FROM usage_metrics
+        WHERE tenant_id = $1 AND feature = 'API_CALLS' AND period_start = $2`,
+      [profileId, period.start]
+    );
     const expired = await request(app).get('/api/integrations/v1/services')
       .set('Authorization', `Bearer ${expiredKey}`);
     expect(expired.status).toBe(401);
+    const usageAfterExpiredAttempt = await adminPool.query(
+      `SELECT count FROM usage_metrics
+        WHERE tenant_id = $1 AND feature = 'API_CALLS' AND period_start = $2`,
+      [profileId, period.start]
+    );
+    expect(Number(usageAfterExpiredAttempt.rows[0].count))
+      .toBe(Number(usageBeforeExpiredAttempt.rows[0].count));
 
     await adminPool.query('UPDATE api_keys SET revoked_at = NOW() WHERE id = $1', [apiKeyId]);
     const revoked = await request(app).get('/api/integrations/v1/services')
