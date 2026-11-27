@@ -47,6 +47,7 @@ const MIGRACIONES_BASE_NUEVA = [
 '037_create_biometric_consents.sql',
 '079_definitive_fix_biometric_consents.sql',
 '054_create_core_tables.sql',
+'099_add_productos_adicionales_to_bookings.sql',
 '055_create_tenants_table.sql',
 '056_add_tenant_id_to_core_tables.sql',
 '057_backfill_tenant_id.sql',
@@ -182,6 +183,9 @@ const MIGRACIONES_ARRANQUE = [
   'init.sql',
 
   '054_create_core_tables.sql',
+
+  // BookingController reads/writes this JSONB column in real booking flows.
+  '099_add_productos_adicionales_to_bookings.sql',
 
   '055_create_tenants_table.sql',
 
