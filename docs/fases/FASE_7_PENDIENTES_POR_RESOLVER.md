@@ -10,6 +10,8 @@ Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos 
 
 La auditoría estática de cobertura actual está en [FASE_7_AUDITORIA_TECNICA_LIMITES.md](FASE_7_AUDITORIA_TECNICA_LIMITES.md); distingue compuertas/cuotas encontradas de funciones que aún no tienen flujo de consumo verificable.
 
+**Actualización posterior:** PR [#172](https://github.com/Diegoromerov/glowapp-firebase/pull/172) quedó integrada en `main` como `89b8afdc`. Backend CI `45918524098` pasó. Añade tres pruebas HTTP que verifican que el checkout COP/USD falla cerrado ante configuración incompleta y que el cambio directo de plan no evita la confirmación de pago. No cambia el backend desplegable; producción sigue saludable en `7a2a62cb`. Las pruebas de cobro sandbox/producción y la activación comercial siguen pendientes.
+
 ## Lista de pendientes
 
 | N.º | Punto por resolver | Decisión o trabajo requerido | Resultado esperado |
