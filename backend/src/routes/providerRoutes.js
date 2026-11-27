@@ -98,7 +98,39 @@ router.post('/provider/contract/accept', authMiddleware, async (req, res) => {
   }
 });
 
-router.get('/providers', providerController.getProviders);
+const optionalProviderSearchAuth = (req, res, next) => {
+  const authorization = req.header('Authorization') || '';
+  if (!authorization.startsWith('Bearer ')) return next();
+  return authMiddleware(req, res, next);
+};
+
+/**
+ * @swagger
+ * /api/providers:
+ *   get:
+ *     summary: Busca prestadores dentro del radio solicitado
+ *     description: Las ubicaciones móviles recientes solo se incluyen cuando la petición corresponde a un cliente autenticado; invitados reciben la ubicación registrada.
+ *     tags: [providers]
+ *     security:
+ *       - {}
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: lat
+ *         schema: { type: number, minimum: -90, maximum: 90 }
+ *       - in: query
+ *         name: lon
+ *         schema: { type: number, minimum: -180, maximum: 180 }
+ *       - in: query
+ *         name: radius
+ *         schema: { type: integer, minimum: 1 }
+ *     responses:
+ *       '200':
+ *         description: Prestadores del radio con coordenadas registradas o, para clientes autenticados, ubicación móvil consentida y vigente.
+ *       '503':
+ *         description: No se pudo calcular la búsqueda geográfica.
+ */
+router.get('/providers', optionalProviderSearchAuth, providerController.getProviders);
 router.get('/providers/:id', providerController.getProviderById);
 router.get('/providers/:id/slots', providerController.getProviderSlots);
 

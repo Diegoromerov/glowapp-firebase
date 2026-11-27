@@ -8,6 +8,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:ui';
+import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -29,7 +30,7 @@ class ProvidersScreen extends StatefulWidget {
 }
 
 class _ProvidersScreenState extends State<ProvidersScreen>
-    with TickerProviderStateMixin
+    with TickerProviderStateMixin, WidgetsBindingObserver
     implements NavigationDelegate {
   late final MapController _mapController;
   List<ProviderModel> _allProviders = [];
@@ -39,6 +40,8 @@ class _ProvidersScreenState extends State<ProvidersScreen>
   String _selectedCategory = 'all';
   bool _isLoading = true;
   String? _errorMessage;
+  Timer? _providerLocationRefreshTimer;
+  bool _isRefreshingProviderLocations = false;
 
   // ignore: unused_field
   bool _hasToken = false;
@@ -84,8 +87,10 @@ class _ProvidersScreenState extends State<ProvidersScreen>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _mapController = MapController();
     _loadProviders();
+    _startProviderLocationRefresh();
     _loadUserRole();
     // Arranque SIN diálogo de permisos: solo usa la ubicación si el usuario ya
     // la concedió. El permiso se pide cuando toca «Mi ubicación» (ítem 11).
@@ -105,6 +110,64 @@ class _ProvidersScreenState extends State<ProvidersScreen>
     }
     _glowGuideEngine = GlowGuideService.instance.engine!;
     _glowGuideEngine.addListener(_onGlowGuideStateChanged);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _providerLocationRefreshTimer?.cancel();
+    _searchController.dispose();
+    AudienceService.currentAudience.removeListener(_onAudienceChanged);
+    _glowGuideEngine.removeListener(_onGlowGuideStateChanged);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _startProviderLocationRefresh();
+      _refreshProviderLocations();
+    } else if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      _providerLocationRefreshTimer?.cancel();
+      _providerLocationRefreshTimer = null;
+    }
+  }
+
+  void _startProviderLocationRefresh() {
+    _providerLocationRefreshTimer?.cancel();
+    _providerLocationRefreshTimer = Timer.periodic(
+      const Duration(seconds: 30),
+      (_) {
+        if (mounted) setState(() {});
+        _refreshProviderLocations();
+      },
+    );
+  }
+
+  Future<void> _refreshProviderLocations() async {
+    if (!mounted ||
+        _isLoading ||
+        _isRefreshingProviderLocations ||
+        ModalRoute.of(context)?.isCurrent == false) {
+      return;
+    }
+    _isRefreshingProviderLocations = true;
+    try {
+      final providers = await ApiService.fetchProvidersSecured(
+        latitude: _userLocation?.latitude,
+        longitude: _userLocation?.longitude,
+        radiusMetros: _radioMetros,
+      );
+      if (!mounted) return;
+      setState(() => _allProviders = providers);
+      _filterProviders();
+    } catch (error) {
+      debugPrint('No se pudo refrescar la ubicación de prestadores: $error');
+    } finally {
+      _isRefreshingProviderLocations = false;
+    }
   }
 
 
@@ -327,7 +390,8 @@ class _ProvidersScreenState extends State<ProvidersScreen>
 
     if (_tutorialStep == 1 && _filteredProviders.isNotEmpty) {
       final firstProv = _filteredProviders.first;
-      _animatedMapMove(LatLng(firstProv.latitude, firstProv.longitude), 15.0);
+      _animatedMapMove(
+          LatLng(firstProv.mapLatitude, firstProv.mapLongitude), 15.0);
     } else {
       _animatedMapMove(_userLocation ?? _bogotaCenter, 13.5);
     }
@@ -655,7 +719,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
   /// Pines agrupados con el zoom actual.
   List<GrupoPines> _gruposPines() {
     final clave =
-        '$_zoomRender|${_filteredProviders.map((p) => '${p.id}:${p.latitude},${p.longitude}').join(";")}';
+        '$_zoomRender|${_filteredProviders.map((p) => '${p.id}:${p.mapLatitude},${p.mapLongitude}').join(";")}';
     if (_cacheClave == clave && _cacheGrupos != null) return _cacheGrupos!;
 
     final puntos = _zoomRender >= _zoomMaximoMapa
@@ -663,7 +727,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
         : _filteredProviders
             .map((p) => PinPunto(
                   id: p.id,
-                  posicion: LatLng(p.latitude, p.longitude),
+                  posicion: LatLng(p.mapLatitude, p.mapLongitude),
                 ))
             .toList();
     _cacheGrupos = agruparPines(puntos, zoom: _zoomRender);
@@ -673,14 +737,14 @@ class _ProvidersScreenState extends State<ProvidersScreen>
 
   List<PinPunto> _pinesSeparados() {
     final clave = _filteredProviders
-        .map((p) => '${p.id}:${p.latitude},${p.longitude}')
+        .map((p) => '${p.id}:${p.mapLatitude},${p.mapLongitude}')
         .join(';');
     if (_cacheClavePines != clave) {
       _pinesCoincidentesSeparados = separarPinesCoincidentes(
         _filteredProviders
             .map((p) => PinPunto(
                   id: p.id,
-                  posicion: LatLng(p.latitude, p.longitude),
+                  posicion: LatLng(p.mapLatitude, p.mapLongitude),
                 ))
             .toList(),
       );
@@ -786,6 +850,17 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                     Text('$km km',
                         style: const TextStyle(
                             fontSize: 12, color: Color(0xFF8A7F72))),
+                    if (p.isLiveLocation) ...[
+                      const SizedBox(width: 8),
+                      const Icon(Icons.my_location_rounded,
+                          size: 12, color: Color(0xFF2F8F5B)),
+                      const SizedBox(width: 3),
+                      const Text('En vivo',
+                          style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF2F8F5B))),
+                    ],
                   ],
                 ),
                 const SizedBox(height: 6),
@@ -830,7 +905,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
               !biz.contains('barberia masculina');
         }
 
-        return matchesCat && matchesAudience;
+        return p.hasMapCoordinate && matchesCat && matchesAudience;
       }).toList();
     });
 
@@ -930,8 +1005,8 @@ class _ProvidersScreenState extends State<ProvidersScreen>
         // Auto scroll or zoom to filtered providers if needed
         if (_filteredProviders.isNotEmpty) {
           _mapController.move(
-            LatLng(_filteredProviders.first.latitude,
-                _filteredProviders.first.longitude),
+            LatLng(_filteredProviders.first.mapLatitude,
+                _filteredProviders.first.mapLongitude),
             14.5,
           );
         }
@@ -2477,7 +2552,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                             ? _pinesSeparados()
                                 .firstWhere((pin) => pin.id == p.id)
                                 .posicion
-                            : LatLng(p.latitude, p.longitude);
+                            : LatLng(p.mapLatitude, p.mapLongitude);
                         return Marker(
                           width: 70,
                           height: 78,

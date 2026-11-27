@@ -6709,18 +6709,55 @@
     },
     "/api/providers": {
       "get": {
-        "operationId": "getapi_providers",
-        "parameters": [],
+        "description": "Las ubicaciones móviles recientes solo se incluyen cuando la petición corresponde a un cliente autenticado; invitados reciben la ubicación registrada.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "lat",
+            "schema": {
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "lon",
+            "schema": {
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "radius",
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          "200": {
+            "description": "Prestadores del radio con coordenadas registradas o, para clientes autenticados, ubicación móvil consentida y vigente."
+          },
+          "503": {
+            "description": "No se pudo calcular la búsqueda geográfica."
           }
         },
-        "summary": "GET /api/providers (autodescubierto, sin contrato declarado)",
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Busca prestadores dentro del radio solicitado",
         "tags": [
           "providers"
         ],
-        "x-glowapp-documented": false
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
       }
     },
     "/api/providers/status": {
@@ -10704,8 +10741,8 @@
   ],
   "x-glowapp-contract": {
     "generator": "backend/src/openapi/buildOpenApi.js",
-    "operationsDiscovered": 446,
-    "operationsDocumented": 37,
+    "operationsDiscovered": 445,
+    "operationsDocumented": 38,
     "routesMounted": 483
   }
 }

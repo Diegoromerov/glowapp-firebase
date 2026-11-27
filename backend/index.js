@@ -1995,9 +1995,9 @@ if (process.env.NODE_ENV !== 'test') {
     await testConnection();
     await initDatabase();
     const liveLocationCleanup = setInterval(() => {
-      pool.query(
+      runAsSystem({ pool, systemPool }, (client) => client.query(
         "DELETE FROM provider_live_locations WHERE received_at < NOW() - INTERVAL '5 minutes'"
-      ).catch((error) => {
+      )).catch((error) => {
         console.warn('No se pudo purgar ubicación móvil vencida:', error.message);
       });
     }, 60 * 1000);
