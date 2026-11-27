@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:glow_core/core/theme/tokens.dart';
-import 'package:glow_core/services/api_service.dart';
+import 'package:glow_core/glow_core.dart';
+
+import '../saas/saas_quota_exceeded_dialog.dart';
 
 class RecursosScreen extends StatefulWidget {
   final int salonId;
@@ -105,25 +106,40 @@ class _RecursosScreenState extends State<RecursosScreen> {
       ),
     );
     if (ok != true) return;
-    final response = await ApiService.post('$_base/recursos', {
-      'nombre': name.text.trim(),
-      'tipo': type,
-      'canon_mensual': num.tryParse(rent.text) ?? 0,
-    });
-    if (!mounted) return;
-    if (response is Map && response['success'] == true) {
-      await _load();
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            response is Map
-                ? (response['error']?.toString() ?? 'No se pudo guardar.')
-                : 'No se pudo guardar.',
+    try {
+      final response = await ApiService.post('$_base/recursos', {
+        'nombre': name.text.trim(),
+        'tipo': type,
+        'canon_mensual': num.tryParse(rent.text) ?? 0,
+      });
+      if (!mounted) return;
+      if (response is Map && response['success'] == true) {
+        await _load();
+      } else {
+        _showSaveError(response is Map
+            ? response['error']?.toString() ?? 'No se pudo guardar.'
+            : 'No se pudo guardar.');
+      }
+    } catch (error) {
+      if (!mounted) return;
+      if (error is SaasQuotaExceededException) {
+        await showDialog<void>(
+          context: context,
+          builder: (_) => SaasQuotaExceededDialog(
+            error: error,
+            onViewBilling: () => Navigator.pushNamed(context, '/saas/billing'),
           ),
-        ),
-      );
+        );
+      } else {
+        _showSaveError(mensajeHumano(error));
+      }
     }
+  }
+
+  void _showSaveError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
   }
 
   Future<void> _rent(Map<String, dynamic> item) async {

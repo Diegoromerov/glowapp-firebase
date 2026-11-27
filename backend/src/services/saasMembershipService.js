@@ -8,6 +8,20 @@ const { roleForSubRol } = require('./salonMembership');
 const VALID_ROLES = new Set(['ADMIN', 'MANAGER', 'MEMBER', 'VIEWER']);
 const TOKEN_TTL_DAYS = 7;
 
+function seatLimitError(current, limit, plan, message = 'Límite de asientos alcanzado') {
+  const error = new Error(message);
+  error.status = 403;
+  error.details = {
+    code: 'SAAS_QUOTA_EXCEEDED',
+    feature: 'TEAM_SEATS',
+    current,
+    limit,
+    plan,
+    upgradeUrl: '/api/saas/billing/checkout',
+  };
+  return error;
+}
+
 function hashToken(token) {
   return crypto.createHash('sha256').update(token).digest('hex');
 }
@@ -141,8 +155,7 @@ async function invite({ tenantId, tenantName, plan, actorId, email, role, subRol
     const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
     const occupiesSeat = !existing || !['PENDING', 'INVITED'].includes(existing.status);
     if (occupiesSeat && maxSeats !== null && countRows[0].count >= maxSeats) {
-      const error = new Error('Límite de asientos alcanzado'); error.status = 403;
-      error.details = { current: countRows[0].count, max: maxSeats, plan, upgradeUrl: '/api/saas/billing/checkout' }; throw error;
+      throw seatLimitError(countRows[0].count, maxSeats, plan);
     }
 
     token = crypto.randomBytes(16).toString('hex');
@@ -332,8 +345,7 @@ async function acceptLegacySalonInvitation({ token, user }) {
     const plan = invitation.saas_plan || 'FREE_TRIAL';
     const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
     if (maxSeats !== null && current >= maxSeats) {
-      const error = new Error('Límite de asientos alcanzado'); error.status = 403;
-      error.details = { current, max: maxSeats, plan }; throw error;
+      throw seatLimitError(current, maxSeats, plan);
     }
 
     const { rows: membershipRows } = await client.query(
@@ -423,8 +435,12 @@ async function setStatus({ tenantId, memberId, actorId, status, plan }) {
       );
       const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
       if (maxSeats !== null && countRows[0].count >= maxSeats) {
-        const error = new Error('Límite de asientos alcanzado para reactivar al miembro'); error.status = 403;
-        error.details = { current: countRows[0].count, max: maxSeats, plan }; throw error;
+        throw seatLimitError(
+          countRows[0].count,
+          maxSeats,
+          plan,
+          'Límite de asientos alcanzado para reactivar al miembro',
+        );
       }
     }
     const updated = await client.query(
@@ -472,8 +488,12 @@ async function resend({ tenantId, memberId, actorId, tenantName, plan }) {
       );
       const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
       if (maxSeats !== null && countRows[0].count >= maxSeats) {
-        const error = new Error('Límite de asientos alcanzado para reenviar la invitación'); error.status = 403;
-        error.details = { current: countRows[0].count, max: maxSeats, plan }; throw error;
+        throw seatLimitError(
+          countRows[0].count,
+          maxSeats,
+          plan,
+          'Límite de asientos alcanzado para reenviar la invitación',
+        );
       }
     }
     token = crypto.randomBytes(16).toString('hex');

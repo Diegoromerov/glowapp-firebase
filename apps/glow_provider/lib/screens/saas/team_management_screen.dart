@@ -3,6 +3,8 @@ import 'package:glow_core/glow_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'saas_quota_exceeded_dialog.dart';
+
 class TeamManagementScreen extends ConsumerStatefulWidget {
   const TeamManagementScreen({super.key});
 
@@ -354,7 +356,12 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
                   final emailSent = await ref.read(teamProvider.notifier).invite(businessProfileId, InviteMemberRequest(email: email, role: selectedRole));
                   if (context.mounted) _showInvitationResult(context, emailSent);
                 } catch (e) {
-                  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${mensajeHumano(e)}')));
+                  if (!context.mounted) return;
+                  if (e is SaasQuotaExceededException) {
+                    _showQuotaExceeded(context, e);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${mensajeHumano(e)}')));
+                  }
                 }
               }
             },
@@ -392,6 +399,11 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
       await ref.read(teamProvider.notifier).load(businessProfileId);
       if (!context.mounted) return;
 
+      if (error is SaasQuotaExceededException) {
+        _showQuotaExceeded(context, error);
+        return;
+      }
+
       final errorText = error.toString();
       final message = errorText.contains('404') ||
               errorText.contains('Invitación pendiente no encontrada')
@@ -399,6 +411,19 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
           : 'No se pudo reenviar la invitación: ${mensajeHumano(error)}';
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
     }
+  }
+
+  void _showQuotaExceeded(
+    BuildContext context,
+    SaasQuotaExceededException error,
+  ) {
+    showDialog<void>(
+      context: context,
+      builder: (_) => SaasQuotaExceededDialog(
+        error: error,
+        onViewBilling: () => Navigator.pushNamed(context, '/saas/billing'),
+      ),
+    );
   }
 
   Future<void> _showChangeRoleDialog(BuildContext context, WidgetRef ref, String? businessProfileId, TeamMember member) async {

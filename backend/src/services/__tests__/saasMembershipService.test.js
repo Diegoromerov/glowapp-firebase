@@ -18,6 +18,49 @@ describe('saasMembershipService invitation audit', () => {
     else process.env.BREVO_API_KEY = initialBrevoApiKey;
   });
 
+  test('returns structured SaaS quota details when an invitation would exceed team seats', async () => {
+    const client = {
+      query: jest.fn(async (sql) => {
+        if (sql.includes('app_saas_find_user_by_email')) {
+          return { rows: [{ id: 42, email: 'new.member@example.com' }] };
+        }
+        if (sql.includes('SELECT * FROM memberships')) return { rows: [] };
+        if (sql.includes('COUNT(*)::int AS count')) return { rows: [{ count: 999 }] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.invite({
+      tenantId: 'salon-1',
+      tenantName: 'Salón de prueba',
+      plan: 'FREEMIUM',
+      actorId: 7,
+      email: 'new.member@example.com',
+      role: 'MEMBER',
+    })).rejects.toMatchObject({
+      status: 403,
+      message: 'Límite de asientos alcanzado',
+      details: expect.objectContaining({
+        code: 'SAAS_QUOTA_EXCEEDED',
+        feature: 'TEAM_SEATS',
+        current: 3,
+        plan: 'FREE_TRIAL',
+        upgradeUrl: '/api/saas/billing/checkout',
+      }),
+      details: expect.objectContaining({
+        code: 'SAAS_QUOTA_EXCEEDED',
+        feature: 'TEAM_SEATS',
+        current: 999,
+        plan: 'FREEMIUM',
+        upgradeUrl: '/api/saas/billing/checkout',
+      }),
+    });
+
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
+  });
+
   test('records the acting user when expiring invitations during invite creation', async () => {
     const calls = [];
     const client = {
@@ -234,6 +277,12 @@ describe('saasMembershipService invitation audit', () => {
     })).rejects.toMatchObject({
       status: 403,
       message: 'Límite de asientos alcanzado para reenviar la invitación',
+      details: expect.objectContaining({
+        code: 'SAAS_QUOTA_EXCEEDED',
+        feature: 'TEAM_SEATS',
+        current: 5,
+        plan: 'BASIC',
+      }),
     });
 
     expect(calls.some(({ sql }) => sql.includes("UPDATE memberships SET status = 'PENDING'"))).toBe(false);
