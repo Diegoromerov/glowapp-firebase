@@ -244,3 +244,11 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - Dos regresiones nuevas comprueban que Freemium no reactive una membresía aunque la petición lleve `BASIC`, y que Básico sí permita reactivar con cupo. Suite `saasMembershipService.test.js`: 10/10; Backend CI PostgreSQL/RLS `46074308268` SUCCESS.
 - PR [#265](https://github.com/Diegoromerov/glowapp-firebase/pull/265) quedó integrada en `main` como `0a2cb8dace6b7b4349a93a9ada18393156650462`. Railway API, panel y ciclo de prueba están `SUCCESS`; `/api/health` devuelve HTTP 200 con el mismo SHA, PostgreSQL disponible y sin datos simulados.
 - Se cierra esta ruta de reactivación; siguen pendientes la aceptación operativa completa del equipo, otras capacidades/cuotas aún no cubiertas y facturación descritas en los puntos 8 y 9.
+
+## Plan vigente en todas las operaciones de equipo — 27 de noviembre de 2026
+
+- La auditoría encontró que invitar, reenviar invitaciones y cambiar roles confiaban en un plan cargado antes de iniciar la transacción. Una degradación concurrente podía volver obsoleta esa autorización. La reactivación ya se había corregido por separado.
+- El servicio de membresías ahora lee `business_profiles.saas_plan` dentro de la transacción antes de invitar, reenviar, cambiar roles o reactivar. Si el plan está vacío usa Freemium; sin `TEAM_MANAGEMENT` rechaza la operación antes de alterar membresías o enviar correo. Suspender y retirar miembros continúa permitido.
+- Pruebas locales: 15/15 enfocadas aprobadas. Backend CI `46075202876` pasó contratos y pruebas PostgreSQL/RLS. PR [#267](https://github.com/Diegoromerov/glowapp-firebase/pull/267) quedó integrada en `main` como `e09186c388df08df003fa4a41f8d24a052188c4d`.
+- Railway producción API, panel y ciclo de prueba están `SUCCESS`; `/api/health` confirmó HTTP 200 con el mismo SHA, PostgreSQL disponible, modo `postgres` y sin datos simulados.
+- Se cierra la revalidación del entitlement en operaciones de equipo. Sigue pendiente la aceptación E2E con usuarios de QA y el resto de la matriz de capacidades/cuotas del punto 9.
