@@ -282,14 +282,10 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
       }
 
       const item = await callAs(staff.admin, 'post', `/api/salon/${salonId}/inventario`, {
-        nombre: itemName, categoria: 'INSUMO', unidad: 'UNIDAD', stock_inicial: 0,
+        nombre: itemName, categoria: 'INSUMO', unidad: 'UNIDAD', stock_inicial: 3,
       }).expect(201);
       createdItemId = item.body.item.id;
-      expect(Number(item.body.item.stock_actual)).toBe(0);
-
-      await callAs(staff.admin, 'post', `/api/salon/${salonId}/inventario/${createdItemId}/movimientos`, {
-        tipo: 'ENTRADA', cantidad: 3, motivo: 'initial stock role test', idempotency_key: `initial-${crypto.randomUUID()}`,
-      }).expect(201);
+      expect(Number(item.body.item.stock_actual)).toBe(3);
 
       await callAs(staff.manager, 'post', `/api/salon/${salonId}/inventario/${createdItemId}/movimientos`, {
         tipo: 'SALIDA', cantidad: 1, motivo: 'integration role test', idempotency_key: `role-${crypto.randomUUID()}`,

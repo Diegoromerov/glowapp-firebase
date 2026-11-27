@@ -65,7 +65,8 @@ async function getSalonOperationalDb(req, db) {
     [req.salonId]
   );
   if (!rows.length || !rows[0].tenant_id) throw new Error('El salón no tiene un tenant empresarial activo.');
-  await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(rows[0].tenant_id)]);
+  req.salonOperationalTenantId = String(rows[0].tenant_id);
+  await client.query("SELECT set_config('app.tenant_id', $1, true)", [req.salonOperationalTenantId]);
   return client;
 }
 
@@ -153,15 +154,19 @@ function crearControladorOps(db = pool) {
       // Inquilino desde el perfil de negocio (fuente única, D-GL-027).
       // `salones.tenant_id` es legado y puede ser NULL: usarlo producía un
       // INSERT con NULL en una columna NOT NULL.
-      paso = 'leer tenant del perfil empresarial';
-      const { rows: perfilRows } = await queryDb.query(
-        `SELECT bp.tenant_id
-           FROM salones s
-           JOIN business_profiles bp ON bp.id = s.business_profile_id
-          WHERE s.id = $1`,
-        [req.salonId]
-      );
-      if (perfilRows.length === 0) {
+      paso = 'resolver tenant del perfil empresarial';
+      let tenantId = req.salonOperationalTenantId;
+      if (!tenantId) {
+        const { rows: perfilRows } = await queryDb.query(
+          `SELECT bp.tenant_id
+             FROM salones s
+             JOIN business_profiles bp ON bp.id = s.business_profile_id
+            WHERE s.id = $1`,
+          [req.salonId]
+        );
+        tenantId = perfilRows[0]?.tenant_id || null;
+      }
+      if (!tenantId) {
         return res.status(409).json({
           error: 'El salón no tiene identidad provisionada (business_profiles).',
           salon_id: Number(req.salonId),
@@ -176,7 +181,7 @@ function crearControladorOps(db = pool) {
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
          RETURNING id, nombre, categoria, unidad, stock_actual, stock_minimo, costo_unitario`,
         [
-          perfilRows[0].tenant_id, req.salonId, String(nombre).trim(), categoriaNorm,
+          tenantId, req.salonId, String(nombre).trim(), categoriaNorm,
           String(unidad || 'UNIDAD').toUpperCase(), inicial, minimo, costo,
           proveedor || null,
         ]
@@ -188,7 +193,7 @@ function crearControladorOps(db = pool) {
           `INSERT INTO inventario_movimientos
              (tenant_id, salon_id, item_id, tipo, cantidad, motivo, registrado_por)
            VALUES ($1, $2, $3, 'ENTRADA', $4, 'Stock inicial', $5)`,
-          [perfilRows[0].tenant_id, req.salonId, rows[0].id, inicial, req.user.id]
+          [tenantId, req.salonId, rows[0].id, inicial, req.user.id]
         );
       }
 
@@ -207,10 +212,7 @@ function crearControladorOps(db = pool) {
         return res.status(409).json({ error: 'Ya existe un insumo con ese nombre en el salón.' });
       }
       req.tenantTransactionError = error;
-      console.error(`❌ ERROR crearItemInventario (${paso}):`, error.message, {
-        salonId: req.salonId,
-        userId: req.user?.id,
-      });
+      console.error(`❌ ERROR crearItemInventario (${paso}):`, error.message);
       return res.status(500).json({ error: 'No se pudo crear el insumo.' });
     }
   }
@@ -621,26 +623,51 @@ function crearControladorOps(db = pool) {
       vistos.add(String(item.item_id));
     }
     try {
+      // `services.tenant_id` uses the legacy integer tenant. Validate the
+      // service before switching this transaction to the canonical business
+      // profile tenant used by operational tables.
+      const authClient = getActiveClient();
+      let servicioRows;
+      if (authClient) {
+        const { rows } = await authClient.query(
+          `SELECT sv.id FROM services sv
+             JOIN salones s ON s.id = sv.salon_id
+            WHERE sv.id = $1 AND sv.salon_id = $2 AND sv.is_active = TRUE
+              AND sv.business_profile_id = s.business_profile_id`,
+          [req.params.serviceId, req.salonId]
+        );
+        servicioRows = rows;
+      }
+
       const queryDb = await getSalonOperationalDb(req, db);
-      const { rows: servicio } = await queryDb.query(
-        `SELECT sv.id FROM services sv
-           JOIN salones s ON s.id = sv.salon_id
-          WHERE sv.id = $1 AND sv.salon_id = $2 AND sv.is_active = TRUE
-            AND sv.business_profile_id = s.business_profile_id`,
-        [req.params.serviceId, req.salonId]
-      );
-      if (!servicio.length) return res.status(404).json({ error: 'El servicio no existe en este salón.' });
-      const { rows: perfil } = await queryDb.query(
-        `SELECT bp.tenant_id FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id WHERE s.id = $1`,
-        [req.salonId]
-      );
-      if (!perfil.length) return res.status(409).json({ error: 'El salón no tiene identidad de negocio provisionada.' });
+      if (!servicioRows) {
+        const { rows } = await queryDb.query(
+          `SELECT sv.id FROM services sv
+             JOIN salones s ON s.id = sv.salon_id
+            WHERE sv.id = $1 AND sv.salon_id = $2 AND sv.is_active = TRUE
+              AND sv.business_profile_id = s.business_profile_id`,
+          [req.params.serviceId, req.salonId]
+        );
+        servicioRows = rows;
+      }
+      if (!servicioRows.length) return res.status(404).json({ error: 'El servicio no existe en este salón.' });
+
+      let tenantId = req.salonOperationalTenantId;
+      if (!tenantId) {
+        const { rows: perfil } = await queryDb.query(
+          `SELECT bp.tenant_id FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id WHERE s.id = $1`,
+          [req.salonId]
+        );
+        tenantId = perfil[0]?.tenant_id || null;
+      }
+      if (!tenantId) return res.status(409).json({ error: 'El salón no tiene identidad de negocio provisionada.' });
+
       if (items.length) {
         const ids = items.map((x) => x.item_id);
         const { rows: válidos } = await queryDb.query(
           `SELECT id FROM inventario_salon
             WHERE salon_id = $1 AND tenant_id = $3 AND id = ANY($2::uuid[]) AND activo = TRUE`,
-          [req.salonId, ids, perfil[0].tenant_id]
+          [req.salonId, ids, tenantId]
         );
         if (válidos.length !== ids.length) return res.status(400).json({ error: 'Hay insumos inexistentes o inactivos en esta sede.' });
       }
@@ -657,7 +684,7 @@ function crearControladorOps(db = pool) {
            ON CONFLICT (salon_id, service_id, item_id)
            DO UPDATE SET cantidad = EXCLUDED.cantidad, activo = TRUE,
                          actualizado_en = NOW(), creado_por = EXCLUDED.creado_por`,
-          [perfil[0].tenant_id, req.salonId, req.params.serviceId, item.item_id, Number(item.cantidad), req.user.id]
+          [tenantId, req.salonId, req.params.serviceId, item.item_id, Number(item.cantidad), req.user.id]
         );
       }
       return res.json({ success: true, service_id: req.params.serviceId, total_insumos: items.length });
