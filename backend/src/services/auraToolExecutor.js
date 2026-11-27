@@ -114,13 +114,10 @@ const AURA_TOOLS_DEFINITIONS = [
     type: 'function',
     function: {
       name: 'get_provider_b2b_insights',
-      description: 'Invoca a VALKYRIE para generar inteligencia de negocios, ocupación de horas muertas y descuentos dinámicos para un prestador.',
+      description: 'Invoca a VALKYRIE para generar inteligencia de negocios del prestador autenticado: ocupación de horas muertas y descuentos dinámicos.',
       parameters: {
         type: 'object',
-        properties: {
-          providerId: { type: 'number', description: 'ID numérico del prestador' }
-        },
-        required: ['providerId']
+        properties: {}
       }
     }
   },
@@ -342,8 +339,21 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
       }
 
       case 'get_provider_b2b_insights': {
+        const allowedRoles = new Set(['PRESTADOR', 'SALON', 'ADMIN_SALON', 'PROVIDER', 'OWNER', 'ADMIN', 'MANAGER']);
+        if (!allowedRoles.has(String(userRole || '').trim().toUpperCase())) {
+          return {
+            error: 'provider_role_required',
+            message: 'Esta herramienta está disponible únicamente para cuentas de prestador o administración del salón.'
+          };
+        }
+        const authenticatedProviderId = parseInt(userId, 10);
+        if (!Number.isSafeInteger(authenticatedProviderId) || authenticatedProviderId < 1) {
+          return { error: 'invalid_authenticated_user', message: 'No se pudo validar la cuenta del prestador.' };
+        }
         return await valkyrieAgent.getProviderInsights({
-          providerId: args.providerId
+          // `args.providerId` viene del modelo y nunca puede elegir el dueño de
+          // las métricas; la consulta se limita a la identidad autenticada.
+          providerId: authenticatedProviderId
         });
       }
 
