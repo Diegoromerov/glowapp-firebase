@@ -205,3 +205,10 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - Backend CI `46046353917` pasó, incluida la integración PostgreSQL/RLS y el E2E del catálogo. Firebase workflow `46046713443` pasó Analyze & Tests, build web y Deploy `glow_provider` a Hosting live.
 - Railway API, panel y job de ciclo de prueba desplegaron `a631c508` con SUCCESS; `/api/health` respondió `OK`. El catálogo productivo devuelve `checkoutAvailable=false`, Básico mantiene `commerciallyAvailable=true` y `Cache-Control: no-store`. Hosting `https://glowapp-provider.web.app` devuelve HTTP 200 y su `main.dart.js` contiene el nuevo mensaje.
 - No se configuró Wompi ni se habilitaron cobros. El checkout y el piloto comercial siguen pendientes; este cambio cierra la discrepancia de comunicación del onboarding, no la habilitación de pagos ni la Fase 7 completa.
+
+## Capacidades booleanas fuera del consumo cuantitativo — 27 de noviembre de 2026
+
+- La auditoría encontró que `GET /api/saas/usage` convertía permisos como presencia en mapa y Caja/POS en métricas `0 de 1`, aunque son capacidades incluidas por plan y no unidades consumidas.
+- PR [#234](https://github.com/Diegoromerov/glowapp-firebase/pull/234), commit productivo `ab60bbc431f01f26bcdafccfe208e373f45445f7`, excluye capacidades booleanas y el alias `ONLINE_BOOKING` de la lista cuantitativa. La tabla conserva la indicación «Incluido/No incluido» a partir del plan.
+- La prueba enfocada de medidor pasó (25 pruebas); Backend CI `46048208918` finalizó con éxito, incluida integración PostgreSQL/RLS. Railway API de producción desplegó el commit `ab60bbc` con SUCCESS y `/api/health` respondió `OK`, PostgreSQL activo y sin datos simulados.
+- El despliegue no hizo migraciones ni escrituras. No hubo sesión autenticada disponible para repetir `GET /api/saas/usage` con el salón QA después del cambio; validar ese JSON en QA sigue pendiente. Fase 7 continúa abierta.
