@@ -107,6 +107,9 @@ async function main() {
     if (ownDelete.rowCount !== 1) throw new Error('El proveedor no pudo eliminar su ubicación.');
 
     await client.query('SET LOCAL ROLE app_system');
+    // El contexto del usuario pertenece al rol RLS anterior. Un proceso
+    // operativo confiable consulta el directorio sin identidad de proveedor.
+    await client.query("SELECT set_config('app.user_id', '', true)");
     const systemRead = await client.query('SELECT provider_id FROM provider_live_locations ORDER BY provider_id');
     if (systemRead.rowCount !== 2) throw new Error('app_system no pudo leer el directorio cross-tenant.');
 
