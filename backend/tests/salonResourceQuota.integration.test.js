@@ -183,4 +183,38 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
     );
     expect(count.rows[0].count).toBe(5);
   }, 30000);
+
+  test('authenticated inventory entitlement follows the canonical tenant plan when the legacy salon plan is stale', async () => {
+    const app = express();
+    app.use(express.json());
+    app.use('/api/salon', salonRoutes);
+    app.use((error, _req, res, _next) => {
+      console.error('Salon entitlement HTTP integration failed:', error.message);
+      res.status(500).json({ error: 'Internal test request failure' });
+    });
+    const token = jwt.sign({ id: userId, email: ownerEmail }, getJwtSecret(), { expiresIn: '5m' });
+    const getInventory = () => request(app)
+      .get(`/api/salon/${salonId}/inventario`)
+      .set('Authorization', `Bearer ${token}`);
+
+    try {
+      // A downgrade in the canonical subscription profile must beat a stale
+      // legacy salon copy that still says BASIC.
+      await adminPool.query("UPDATE business_profiles SET saas_plan = 'FREEMIUM' WHERE id = $1", [profileId]);
+      await adminPool.query("UPDATE salones SET plan_saas = 'BASIC' WHERE id = $1", [salonId]);
+      const downgraded = await getInventory();
+      expect(downgraded.status).toBe(403);
+      expect(downgraded.body).toMatchObject({ required: 'INVENTORY', currentPlan: 'FREEMIUM' });
+
+      // Conversely, a stale Freemium copy cannot hide a module included in the
+      // current canonical BASIC plan.
+      await adminPool.query("UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1", [profileId]);
+      await adminPool.query("UPDATE salones SET plan_saas = 'FREEMIUM' WHERE id = $1", [salonId]);
+      const upgraded = await getInventory();
+      expect(upgraded.status).toBe(200);
+    } finally {
+      await adminPool.query("UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1", [profileId]);
+      await adminPool.query("UPDATE salones SET plan_saas = 'BASIC' WHERE id = $1", [salonId]);
+    }
+  }, 30000);
 });
