@@ -58,5 +58,5 @@ test('el saldo, catálogo y canje de puntos del cliente respetan LOYALTY del sal
   const routes = [...customerLoyaltySource.matchAll(/router\.(?:get|post)\([\s\S]*?\n\}\);/g)]
     .map((match) => match[0]);
   assert.equal(routes.length, 3);
-  assert.ok(routes.every((route) => route.includes("requireSalonEntitlement('LOYALTY')")));
+  assert.ok(routes.every((route) => route.includes("requirePublicSalonEntitlement('LOYALTY')")));
 });

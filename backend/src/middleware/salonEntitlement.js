@@ -13,8 +13,9 @@
  * trate igual las dos rutas de bloqueo (`error`, `required`, `currentPlan`).
  */
 
-const { pool } = require('../config/db');
+const { pool, systemPool } = require('../config/db');
 const { hasEntitlement } = require('../config/saasEntitlements');
+const { runAsSystem } = require('../config/tenantRouting');
 
 /**
  * Exige que el plan del salón incluya la capacidad indicada.
@@ -60,4 +61,45 @@ function requireSalonEntitlement(capability, db = pool) {
   };
 }
 
-module.exports = { requireSalonEntitlement };
+/**
+ * Entitlement lookup for customer-facing salon features that intentionally
+ * cross tenant boundaries (for example, a customer viewing a salon's rewards).
+ * The salon's plan is read through the audited system connection; the actual
+ * feature service must still scope every read/write to salonId and customerId.
+ * Do not use this for salon administration routes: those must first establish
+ * membership with requireSalonRole/requireSalonAdmin and use the tenant-scoped
+ * requireSalonEntitlement above.
+ */
+function requirePublicSalonEntitlement(capability) {
+  return async function publicSalonEntitlement(req, res, next) {
+    const salonId = req.params?.salonId;
+    if (!/^\d+$/.test(String(salonId || '')) || !Number.isSafeInteger(Number(salonId)) || Number(salonId) < 1) {
+      return res.status(400).json({ error: 'Identificador de sede inválido.' });
+    }
+
+    try {
+      const { rows } = await runAsSystem({ pool, systemPool }, (client) => client.query(
+        'SELECT plan_saas FROM salones WHERE id = $1', [Number(salonId)]
+      ));
+      if (!rows.length) return res.status(404).json({ error: 'El salón no existe.' });
+
+      const plan = String(rows[0].plan_saas || 'FREE_TRIAL').toUpperCase();
+      const required = Array.isArray(capability) ? capability : [capability];
+      if (!required.some((item) => hasEntitlement(plan, item))) {
+        return res.status(403).json({
+          error: 'Plan no incluye esta función',
+          required: Array.isArray(capability) ? capability : capability,
+          upgradeUrl: '/api/saas/checkout',
+        });
+      }
+
+      req.salonPlan = plan;
+      return next();
+    } catch (error) {
+      console.error('❌ ERROR requirePublicSalonEntitlement:', error.message);
+      return res.status(500).json({ error: 'No se pudo verificar el plan del salón.' });
+    }
+  };
+}
+
+module.exports = { requireSalonEntitlement, requirePublicSalonEntitlement };
