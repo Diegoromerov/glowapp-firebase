@@ -6,8 +6,10 @@
  * Ese middleware lee `req.saas`, que sólo puebla `saasContext` a partir de una
  * membresía activa. Las rutas `/api/salon/*` no pasan por ahí (se autorizan con
  * el guard de salón), así que montarlo devolvería 401 en todos los salones que
- * aún no tienen identidad provisionada. Aquí el plan se lee del propio salón,
- * que es la fuente que el cliente ya muestra.
+ * aún no tienen identidad provisionada. El plan se lee de
+ * `business_profiles.saas_plan`, fuente canónica. `salones.plan_saas` es una
+ * copia heredada que no se actualiza en todas las mutaciones de suscripción y
+ * no debe usarse para autorizar módulos.
  *
  * El cuerpo del 403 es el mismo que el de `featureGate` para que el cliente
  * trate igual las dos rutas de bloqueo (`error`, `required`, `currentPlan`).
@@ -15,7 +17,38 @@
 
 const { pool, systemPool } = require('../config/db');
 const { hasEntitlement } = require('../config/saasEntitlements');
-const { runAsSystem } = require('../config/tenantRouting');
+const { runAsSystem, runInTenantTransaction } = require('../config/tenantRouting');
+
+async function readSalonPlanForMember(salonId, req, db) {
+  const readPlan = (client) => client.query(
+    `SELECT bp.saas_plan
+       FROM salones s
+       JOIN business_profiles bp ON bp.id = s.business_profile_id
+      WHERE s.id = $1`,
+    [salonId]
+  );
+
+  // Injection point for focused middleware tests; production must always set
+  // user and tenant context because business_profiles and salones are RLS-bound.
+  if (db !== pool || typeof db.connect !== 'function') return db.query(
+    `SELECT bp.saas_plan
+       FROM salones s
+       JOIN business_profiles bp ON bp.id = s.business_profile_id
+      WHERE s.id = $1`,
+    [salonId]
+  );
+
+  return runInTenantTransaction({ pool }, req.user?.tenant_id ?? null, req.user?.id ?? null, async (client) => {
+    if (!req.user?.tenant_id && req.user?.id) {
+      const { rows } = await client.query('SELECT tenant_id FROM usuarios WHERE id = $1', [req.user.id]);
+      const tenantId = rows[0]?.tenant_id;
+      if (tenantId !== undefined && tenantId !== null) {
+        await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(tenantId)]);
+      }
+    }
+    return readPlan(client);
+  });
+}
 
 /**
  * Exige que el plan del salón incluya la capacidad indicada.
@@ -32,16 +65,13 @@ function requireSalonEntitlement(capability, db = pool) {
         return res.status(400).json({ error: 'salon_id es obligatorio.' });
       }
 
-      const { rows } = await db.query(
-        `SELECT plan_saas FROM salones WHERE id = $1`,
-        [salonId]
-      );
+      const { rows } = await readSalonPlanForMember(salonId, req, db);
 
       if (rows.length === 0) {
         return res.status(404).json({ error: 'El salón no existe.' });
       }
 
-      const plan = String(rows[0].plan_saas || 'FREE_TRIAL').toUpperCase();
+      const plan = String(rows[0].saas_plan || 'FREE_TRIAL').toUpperCase();
       const required = Array.isArray(capability) ? capability : [capability];
       if (!required.some((item) => hasEntitlement(plan, item))) {
         return res.status(403).json({
@@ -64,7 +94,7 @@ function requireSalonEntitlement(capability, db = pool) {
 /**
  * Entitlement lookup for customer-facing salon features that intentionally
  * cross tenant boundaries (for example, a customer viewing a salon's rewards).
- * The salon's plan is read through the audited system connection; the actual
+ * The tenant's canonical plan is read through the audited system connection; the actual
  * feature service must still scope every read/write to salonId and customerId.
  * Do not use this for salon administration routes: those must first establish
  * membership with requireSalonRole/requireSalonAdmin and use the tenant-scoped
@@ -79,11 +109,17 @@ function requirePublicSalonEntitlement(capability) {
 
     try {
       const { rows } = await runAsSystem({ pool, systemPool }, (client) => client.query(
-        'SELECT plan_saas FROM salones WHERE id = $1', [Number(salonId)]
+        `SELECT CASE
+                  WHEN bp.id IS NULL THEN s.plan_saas
+                  ELSE bp.saas_plan
+                END AS saas_plan
+           FROM salones s
+           LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
+          WHERE s.id = $1`, [Number(salonId)]
       ));
       if (!rows.length) return res.status(404).json({ error: 'El salón no existe.' });
 
-      const plan = String(rows[0].plan_saas || 'FREE_TRIAL').toUpperCase();
+      const plan = String(rows[0].saas_plan || 'FREE_TRIAL').toUpperCase();
       const required = Array.isArray(capability) ? capability : [capability];
       if (!required.some((item) => hasEntitlement(plan, item))) {
         return res.status(403).json({

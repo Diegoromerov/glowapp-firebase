@@ -4,6 +4,13 @@
 // la pantalla mostraba un negocio inexistente.
 
 jest.mock('../config/db', () => ({ pool: { query: jest.fn() } }));
+jest.mock('../services/salonMembership', () => ({
+  listSalonMembers: jest.fn(async () => []),
+  getMemberRole: jest.fn(),
+  getMembershipForSalonUser: jest.fn(),
+  canAdminSalon: jest.fn(),
+  roleForSubRol: jest.fn(),
+}));
 
 const { pool } = require('../config/db');
 const { getMySalon } = require('../controllers/salonController');
@@ -62,6 +69,8 @@ describe('GET /api/salon/my-salon', () => {
 
     const sql = pool.query.mock.calls[0][0];
     expect(sql).toMatch(/FROM memberships/i);
-    expect(pool.query.mock.calls[0][1]).toEqual([1042]);
+    expect(sql).toMatch(/bp\.saas_plan AS plan_saas/i);
+    expect(sql).toMatch(/JOIN business_profiles bp ON bp\.id = m\.business_profile_id/i);
+    expect(pool.query.mock.calls[0][1]).toEqual([1042, null]);
   });
 });

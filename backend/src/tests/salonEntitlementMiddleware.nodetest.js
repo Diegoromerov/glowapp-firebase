@@ -3,14 +3,30 @@ const assert = require('node:assert/strict');
 const Module = require('node:module');
 
 let plan = 'BASIC';
+let legacySalonPlan = 'FREEMIUM';
 let queryError = null;
+const rlsContext = [];
+const client = {
+  async query(sql, params = []) {
+    if (sql === 'BEGIN' || sql === 'COMMIT' || sql === 'ROLLBACK') return { rows: [] };
+    if (/set_config/i.test(sql)) {
+      rlsContext.push(sql.includes('app.tenant_id') ? ['app.tenant_id', params[0]] : params);
+    }
+    if (/SELECT tenant_id FROM usuarios/i.test(sql)) return { rows: [{ tenant_id: 17 }] };
+    if (/SELECT bp\.saas_plan/i.test(sql)) {
+      if (queryError) throw queryError;
+      assert.equal(params[0], '42');
+      assert.match(sql, /JOIN business_profiles bp ON bp\.id = s\.business_profile_id/);
+      return { rows: [{ saas_plan: plan, plan_saas: legacySalonPlan }] };
+    }
+    return { rows: [] };
+  },
+  release() {},
+};
 const dbMock = {
   pool: {
-    async query(_sql, [salonId]) {
-      if (queryError) throw queryError;
-      assert.equal(salonId, '42');
-      return { rows: [{ plan_saas: plan }] };
-    },
+    async query() { throw new Error('must use an RLS transaction'); },
+    async connect() { return client; },
   },
 };
 
@@ -25,7 +41,7 @@ const { requireSalonEntitlement } = require('../middleware/salonEntitlement');
 Module._load = originalLoad;
 
 async function invoke(capability) {
-  const req = { params: { salonId: '42' }, body: {} };
+  const req = { params: { salonId: '42' }, body: {}, user: { id: 7 } };
   const res = { statusCode: null, body: null };
   res.status = (code) => { res.statusCode = code; return res; };
   res.json = (body) => { res.body = body; return res; };
@@ -37,14 +53,17 @@ async function invoke(capability) {
 test('salon entitlement allows included modules and blocks excluded modules', async (t) => {
   await t.test('Basic permits inventory and annotates resolved plan', async () => {
     plan = 'BASIC';
+    rlsContext.length = 0;
     const { req, res, nextCalls } = await invoke('INVENTORY');
     assert.equal(nextCalls, 1);
     assert.equal(req.salonPlan, 'BASIC');
     assert.equal(res.statusCode, null);
+    assert.deepEqual(rlsContext, [['app.user_id', '7'], ['app.tenant_id', '17']]);
   });
 
-  await t.test('Freemium blocks inventory with a 403', async () => {
+  await t.test('canonical Freemium downgrade blocks inventory even if legacy salon copy says Basic', async () => {
     plan = 'FREEMIUM';
+    legacySalonPlan = 'BASIC';
     const { res, nextCalls } = await invoke('INVENTORY');
     assert.equal(res.statusCode, 403);
     assert.equal(res.body.required, 'INVENTORY');
@@ -54,8 +73,18 @@ test('salon entitlement allows included modules and blocks excluded modules', as
 
   await t.test('Freemium accepts its non-fiscal receipt entitlement', async () => {
     plan = 'FREEMIUM';
+    legacySalonPlan = 'BASIC';
     const { nextCalls } = await invoke(['POS_INTEGRATION', 'POS_RECEIPTS_ONLY']);
     assert.equal(nextCalls, 1);
+  });
+
+  await t.test('canonical Basic allows inventory even if legacy salon copy says Freemium', async () => {
+    plan = 'BASIC';
+    legacySalonPlan = 'FREEMIUM';
+    const { req, res, nextCalls } = await invoke('INVENTORY');
+    assert.equal(nextCalls, 1);
+    assert.equal(req.salonPlan, 'BASIC');
+    assert.equal(res.statusCode, null);
   });
 
   await t.test('database failures fail closed with a 500', async () => {

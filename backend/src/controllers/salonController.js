@@ -30,12 +30,14 @@ exports.getMySalon = async (req, res) => {
     // La pertenencia se resuelve en `memberships`, que es la fuente única
     // (D-GL-027, D-0). Antes se buscaba sólo por `salones.id_dueno`, de modo que
     // un OWNER o ADMIN invitado no encontraba su salón.
-    const salonRes = await pool.query(
+    const queryClient = tenantRouting.getActiveClient() || pool;
+    const salonRes = await queryClient.query(
       `SELECT s.id, s.nombre_salon, s.nit, s.direccion, s.telefono, s.ciudad,
-              s.plan_saas, s.id_dueno, s.latitude, s.longitude,
+              bp.saas_plan AS plan_saas, s.id_dueno, s.latitude, s.longitude,
               s.location_enabled, s.location_public
          FROM memberships m
          JOIN salones s ON s.business_profile_id = m.business_profile_id
+         JOIN business_profiles bp ON bp.id = m.business_profile_id
         WHERE m.user_id = $1 AND m.status = 'ACTIVE'
           AND ($2::integer IS NULL OR s.id = $2)
         ORDER BY s.id
@@ -125,9 +127,10 @@ exports.createSalon = async (req, res) => {
       await client.query('SELECT pg_advisory_xact_lock(73001, $1::integer)', [ownerId]);
       const existingSalonRes = await client.query(
         `SELECT s.id, s.nombre_salon, s.nit, s.direccion, s.ciudad, s.telefono,
-                s.plan_saas, s.latitude, s.longitude, s.location_enabled, s.location_public
+                bp.saas_plan AS plan_saas, s.latitude, s.longitude, s.location_enabled, s.location_public
            FROM salones s
            JOIN memberships m ON m.business_profile_id = s.business_profile_id
+           JOIN business_profiles bp ON bp.id = s.business_profile_id
           WHERE s.id_dueno = $1
             AND m.user_id = $1
             AND m.role = 'OWNER'
