@@ -227,13 +227,7 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
     final progress = unlimited || notIncluded || metric == null
         ? 0.0
         : (used / limit).clamp(0.0, 1.0);
-    final capColor = progress >= 0.9
-        ? Colors.red
-        : progress >= 0.75
-            ? Colors.amber.shade800
-            : notIncluded
-                ? _muted
-                : color;
+    final capColor = notIncluded ? _muted : (_progressColor(progress) ?? color);
 
     return Card(
       elevation: 0,
@@ -537,8 +531,11 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
   }
 
   Color? _progressColor(double progress) {
-    if (progress >= 0.9) return Colors.red;
-    if (progress >= 0.75) return Colors.amber.shade800;
+    // Mantener los mismos estados que GET /api/saas/usage:
+    // caution desde 60 %, warning desde 80 % y exceeded al llegar al 100 %.
+    if (progress >= 1) return Colors.red;
+    if (progress >= 0.8) return Colors.amber.shade800;
+    if (progress >= 0.6) return Colors.orange.shade800;
     return null;
   }
 
