@@ -21,6 +21,7 @@ describe('saasMembershipService invitation audit', () => {
   test('returns structured SaaS quota details when an invitation would exceed team seats', async () => {
     const client = {
       query: jest.fn(async (sql) => {
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'BASIC' }] };
         if (sql.includes('app_saas_find_user_by_email')) {
           return { rows: [{ id: 42, email: 'new.member@example.com' }] };
         }
@@ -35,7 +36,7 @@ describe('saasMembershipService invitation audit', () => {
     await expect(saasMembershipService.invite({
       tenantId: 'salon-1',
       tenantName: 'Salón de prueba',
-      plan: 'FREEMIUM',
+      plan: 'BASIC',
       actorId: 7,
       email: 'new.member@example.com',
       role: 'MEMBER',
@@ -45,15 +46,8 @@ describe('saasMembershipService invitation audit', () => {
       details: expect.objectContaining({
         code: 'SAAS_QUOTA_EXCEEDED',
         feature: 'TEAM_SEATS',
-        current: 3,
-        plan: 'FREE_TRIAL',
-        upgradeUrl: '/api/saas/billing/checkout',
-      }),
-      details: expect.objectContaining({
-        code: 'SAAS_QUOTA_EXCEEDED',
-        feature: 'TEAM_SEATS',
         current: 999,
-        plan: 'FREEMIUM',
+        plan: 'BASIC',
         upgradeUrl: '/api/saas/billing/checkout',
       }),
     });
@@ -69,6 +63,7 @@ describe('saasMembershipService invitation audit', () => {
         if (sql.includes('app_saas_find_user_by_email')) {
           return { rows: [{ id: 42, email: 'new.member@example.com' }] };
         }
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'BASIC' }] };
         if (sql.includes('SELECT * FROM memberships')) return { rows: [] };
         if (sql.includes('COUNT(*)::int AS count')) return { rows: [{ count: 1 }] };
         if (sql.includes('INSERT INTO memberships')) {
@@ -197,6 +192,7 @@ describe('saasMembershipService invitation audit', () => {
     const client = {
       query: jest.fn(async (sql, params = []) => {
         calls.push({ sql, params });
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'BASIC' }] };
         if (sql.includes('WHERE m.id = $1 AND m.business_profile_id = $2')) return { rows: [] };
         return { rows: [] };
       }),
@@ -223,6 +219,7 @@ describe('saasMembershipService invitation audit', () => {
     const client = {
       query: jest.fn(async (sql, params = []) => {
         calls.push({ sql, params });
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'BASIC' }] };
         if (sql.includes('WHERE m.id = $1 AND m.business_profile_id = $2')) {
           return { rows: [{
             id: 'expired-invite', business_profile_id: 'salon-1', user_id: 42,
@@ -260,6 +257,7 @@ describe('saasMembershipService invitation audit', () => {
     const client = {
       query: jest.fn(async (sql, params = []) => {
         calls.push({ sql, params });
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'BASIC' }] };
         if (sql.includes('WHERE m.id = $1 AND m.business_profile_id = $2')) {
           return { rows: [{
             id: 'expired-invite', business_profile_id: 'salon-1', user_id: 42,
@@ -320,6 +318,56 @@ describe('saasMembershipService invitation audit', () => {
     expect(calls.some((sql) => sql.includes('UPDATE memberships SET status'))).toBe(false);
     expect(client.query).toHaveBeenCalledWith('ROLLBACK');
     expect(client.release).toHaveBeenCalled();
+  });
+
+  test('does not resend an invitation when the canonical plan no longer includes team management', async () => {
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql) => {
+        calls.push(sql);
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'FREEMIUM' }] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.resend({
+      tenantId: 'salon-1', memberId: 'invite-1', actorId: 7,
+      tenantName: 'Salón de prueba', plan: 'BASIC',
+    })).rejects.toMatchObject({
+      status: 403,
+      details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+    });
+
+    expect(calls.some((sql) => sql.includes('UPDATE memberships'))).toBe(false);
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
+    expect(emailService.sendEmail).not.toHaveBeenCalled();
+  });
+
+  test('does not create an invitation when the canonical plan disagrees with a stale paid request plan', async () => {
+    const calls = [];
+    const client = {
+      query: jest.fn(async (sql) => {
+        calls.push(sql);
+        if (sql.includes('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: 'FREEMIUM' }] };
+        return { rows: [] };
+      }),
+      release: jest.fn(),
+    };
+    pool.connect.mockResolvedValue(client);
+
+    await expect(saasMembershipService.invite({
+      tenantId: 'salon-1', tenantName: 'Salón de prueba', plan: 'BASIC', actorId: 7,
+      email: 'new.member@example.com', role: 'MEMBER',
+    })).rejects.toMatchObject({
+      status: 403,
+      details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+    });
+
+    expect(calls.some((sql) => sql.includes('app_saas_find_user_by_email'))).toBe(false);
+    expect(calls.some((sql) => sql.includes('INSERT INTO memberships'))).toBe(false);
+    expect(client.query).toHaveBeenCalledWith('ROLLBACK');
   });
 
   test('reactivates a suspended member when the current plan includes team management and has a seat', async () => {
