@@ -9,9 +9,11 @@ const APP_URL = process.env.DATABASE_URL;
 const describeWithPostgres = ADMIN_URL && APP_URL ? describe : describe.skip;
 
 describe('SaaS free trial expiration scope validation', () => {
-  test('rejects a malformed tenant scope before opening the job transaction', async () => {
-    await expect(expireCompletedFreeTrials({ pool: {}, tenantId: 'not-a-uuid' }))
-      .rejects.toThrow('tenantId must be a valid UUID when provided');
+  test('rejects an invalid business profile id before opening the job transaction', async () => {
+    await expect(expireCompletedFreeTrials({ pool: {}, tenantId: 'invalid id' }))
+      .rejects.toThrow('tenantId must be a valid business profile id');
+    await expect(expireCompletedFreeTrials({ pool: {}, tenantId: 'x'.repeat(37) }))
+      .rejects.toThrow('tenantId must be a valid business profile id');
   });
 });
 
@@ -52,8 +54,7 @@ describeWithPostgres('SaaS free trial expiration on PostgreSQL', () => {
     }
   });
 
-  async function createTenant({ plan, endsAt, salonPlan = plan, paid = false }) {
-    const id = crypto.randomUUID();
+  async function createTenant({ plan, endsAt, salonPlan = plan, paid = false, id = crypto.randomUUID() }) {
     profiles.push(id);
     await adminPool.query(
       `INSERT INTO business_profiles
@@ -116,7 +117,11 @@ describeWithPostgres('SaaS free trial expiration on PostgreSQL', () => {
   }, 30000);
 
   test('targeted execution expires only the requested tenant', async () => {
-    const target = await createTenant({ plan: 'FREE_TRIAL', endsAt: new Date(Date.now() - 86400000) });
+    const target = await createTenant({
+      plan: 'FREE_TRIAL_LEGACY',
+      endsAt: new Date(Date.now() - 86400000),
+      id: `salon-${crypto.randomUUID().slice(0, 8)}`,
+    });
     const unrelated = await createTenant({ plan: 'FREE_TRIAL', endsAt: new Date(Date.now() - 86400000) });
 
     const result = await expireCompletedFreeTrials({ pool: appPool, tenantId: target });

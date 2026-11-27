@@ -5,8 +5,11 @@ const { runAsSystem } = require('../config/tenantRouting');
 
 async function expireCompletedFreeTrials(deps = { pool, systemPool }) {
   const tenantId = deps.tenantId ?? null;
-  if (tenantId !== null && !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(tenantId)) {
-    throw new TypeError('tenantId must be a valid UUID when provided');
+  // business_profiles.id is VARCHAR(36), and existing salons use IDs such as
+  // "salon-17" alongside UUIDs. Keep the target scope aligned with that schema.
+  if (tenantId !== null &&
+      (typeof tenantId !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._:-]{0,35}$/.test(tenantId))) {
+    throw new TypeError('tenantId must be a valid business profile id (1-36 safe characters) when provided');
   }
   return runAsSystem(deps, async () => {
     const { rows } = await pool.query(`
@@ -61,10 +64,10 @@ async function expireCompletedFreeTrials(deps = { pool, systemPool }) {
   });
 }
 
-async function runSaasFreeTrialExpirationCron() {
+async function runSaasFreeTrialExpirationCron({ tenantId = null } = {}) {
   const startedAt = new Date().toISOString();
-  console.log('[saasFreeTrialExpirationCron] Started', startedAt);
-  const result = await expireCompletedFreeTrials();
+  console.log('[saasFreeTrialExpirationCron] Started', { startedAt, scope: tenantId || 'all eligible tenants' });
+  const result = await expireCompletedFreeTrials({ tenantId });
   console.log('[saasFreeTrialExpirationCron] Completed', {
     ...result,
     completedAt: new Date().toISOString(),
@@ -73,7 +76,16 @@ async function runSaasFreeTrialExpirationCron() {
 }
 
 if (require.main === module) {
-  runSaasFreeTrialExpirationCron()
+  const args = process.argv.slice(2);
+  let tenantId = null;
+  if (args.length === 1 && args[0].startsWith('--tenant-id=')) {
+    tenantId = args[0].slice('--tenant-id='.length);
+  } else if (args.length > 0) {
+    console.error('Usage: node src/jobs/saasFreeTrialExpirationCron.js [--tenant-id=<business-profile-id>]');
+    process.exit(2);
+  }
+
+  runSaasFreeTrialExpirationCron({ tenantId })
     .then(() => process.exit(0))
     .catch((error) => {
       console.error('[saasFreeTrialExpirationCron] Failed', error.message);

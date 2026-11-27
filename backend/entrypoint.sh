@@ -84,7 +84,7 @@ if [ -n "$DATABASE_URL" ]; then
   # do not run schema migrations or start the HTTP API on every scheduled run.
   if [ "${RUN_SAAS_FREE_TRIAL_EXPIRATION_CRON:-false}" = "true" ]; then
     echo "⏰ Running SaaS free-trial expiration job..."
-    exec node src/jobs/saasFreeTrialExpirationCron.js
+    exec node src/jobs/saasFreeTrialExpirationCron.js "$@"
   fi
 
   # 4. Run the migration script (prepareRlsDatabase.js applies schema + transfers ownership)
