@@ -47,7 +47,19 @@ if [ -n "$DATABASE_URL" ]; then
     exit 1
   fi
 
-  # 2. Cambiar el rol de runtime a app_rls_user.
+  # 2. En una base nueva, prepareRlsDatabase fija la contraseña del rol
+  #    app_rls_user. Debe ejecutarse antes de probar ese login. Los cron
+  #    usan una base ya preparada y conservan su ruta sin migraciones.
+  if [ "${RUN_SAAS_FREE_TRIAL_EXPIRATION_CRON:-false}" != "true" ]; then
+    if node scripts/prepareRlsDatabase.js; then
+      echo "✅ Database migrations completed successfully"
+    else
+      echo "❌ Database migrations failed"
+      exit 1
+    fi
+  fi
+
+  # 3. Cambiar el rol de runtime a app_rls_user.
   #    Railway entrega la URL con esquema postgresql://; aceptar los dos y
   #    ABORTAR si la cadena no cambió: antes el sed solo entendía postgres://,
   #    no reescribía nada y el contenedor seguía conectando como superusuario
@@ -60,7 +72,7 @@ if [ -n "$DATABASE_URL" ]; then
   fi
   export DATABASE_URL="$URL_RUNTIME"
 
-  # 3. Verificar el rol en vez de anunciarlo
+  # 4. Verificar el rol en vez de anunciarlo
   echo "🔐 Verificando el rol de runtime..."
   if ! node -e "
     const { Client } = require('pg');
@@ -85,14 +97,6 @@ if [ -n "$DATABASE_URL" ]; then
   if [ "${RUN_SAAS_FREE_TRIAL_EXPIRATION_CRON:-false}" = "true" ]; then
     echo "⏰ Running SaaS free-trial expiration job..."
     exec node src/jobs/saasFreeTrialExpirationCron.js "$@"
-  fi
-
-  # 4. Run the migration script (prepareRlsDatabase.js applies schema + transfers ownership)
-  if node scripts/prepareRlsDatabase.js; then
-    echo "✅ Database migrations completed successfully"
-  else
-    echo "❌ Database migrations failed"
-    exit 1
   fi
 else
   echo "⚠️  DATABASE_URL not set, skipping migrations"

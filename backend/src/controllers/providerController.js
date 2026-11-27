@@ -2,12 +2,18 @@ const db = require('../config/db');
 const pool = db.pool;
 const { getPlansWithEntitlement, SAAS_CAPABILITIES } = require('../config/saasEntitlements');
 const { runAsSystem } = require('../config/tenantRouting');
+const { systemPool } = require('../config/db');
 const { getColombiaDayRange, getColombiaDateParts, isValidColombiaDate, getColombiaSchedule, intersectColombiaSchedules, buildAvailabilitySlots } = require('../utils/bookingCalendar');
 const { evaluarElegibilidadReserva, salonVisibleEnMarketplace } = require('../utils/bookingEligibility');
 
 // GET /api/providers → LISTA DE PRESTADORES Y SALONES (Geolocalización con PostGIS y Entitlements)
 exports.getProviders = async (req, res) => {
   try {
+    // La búsqueda cruza proveedores de varios tenants y requiere leer su
+    // directorio público; una sesión de cliente activa RLS de su tenant.
+    const queryAsSystem = (sql, values) =>
+      runAsSystem({ pool, systemPool }, (client) => client.query(sql, values));
+
     const dbStatus = db.getDbStatus();
     if (dbStatus.servingFabricatedData === true) {
       return res.status(503).json({
@@ -24,7 +30,7 @@ exports.getProviders = async (req, res) => {
     // Si faltan parámetros, intentar leer configuraciones dinámicas con fallback seguro
     if (isNaN(lat) || isNaN(lon) || isNaN(radius)) {
       try {
-        const configRes = await pool.query(
+        const configRes = await queryAsSystem(
           "SELECT key, value FROM platform_config WHERE key IN ('gps_centro_latitud', 'gps_centro_longitud', 'gps_default_radio_metros')"
         );
         const configs = {};
@@ -81,22 +87,33 @@ exports.getProviders = async (req, res) => {
                    ))
               )) as can_receive_bookings,
             false as is_salon,
-            ST_X(p.ubicacion::geometry) AS longitude,
-            ST_Y(p.ubicacion::geometry) AS latitude,
+            ST_X(COALESCE(live.location, p.ubicacion)::geometry) AS longitude,
+            ST_Y(COALESCE(live.location, p.ubicacion)::geometry) AS latitude,
             COALESCE(pl.tier, 'Creative Edge') as loyalty_tier,
             p.active_start_hour as start_hour,
             p.active_end_hour as end_hour,
             p.weekly_schedule as weekly_schedule,
-            ST_Distance(p.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
+            ST_Distance(COALESCE(live.location, p.ubicacion), ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters,
+            (live.provider_id IS NOT NULL) AS is_live_location,
+            live.captured_at AS live_location_updated_at,
+            ST_X(p.ubicacion::geometry) AS registered_longitude,
+            ST_Y(p.ubicacion::geometry) AS registered_latitude
           FROM perfiles_prestador p
           INNER JOIN usuarios u ON p.id = u.id
           LEFT JOIN provider_loyalty pl ON p.id = pl.provider_id
+          LEFT JOIN provider_live_locations live
+            ON live.provider_id = p.id
+           AND $5::boolean = true
+           AND p.is_active = true
+           AND p.live_location_consent = true
+           AND live.captured_at >= NOW() - INTERVAL '5 minutes'
+           AND live.received_at >= NOW() - INTERVAL '5 minutes'
           WHERE p.is_active = true AND u.is_active = true
             AND p.estatus_verificacion = 'APROBADO'
             AND COALESCE(u.visibilidad_suspendida, false) = false
-            AND p.ubicacion IS NOT NULL
+            AND (live.location IS NOT NULL OR p.ubicacion IS NOT NULL)
             AND ST_DWithin(
-              p.ubicacion, 
+              COALESCE(live.location, p.ubicacion),
               ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography,
               CASE 
                 WHEN COALESCE(pl.tier, 'Creative Edge') = 'Visage Pro' THEN $3 * 1.15
@@ -134,7 +151,11 @@ exports.getProviders = async (req, res) => {
             NULL::int as start_hour,
             NULL::int as end_hour,
             NULL::jsonb as weekly_schedule,
-            ST_Distance(s.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
+            ST_Distance(s.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters,
+            false AS is_live_location,
+            NULL::timestamptz AS live_location_updated_at,
+            COALESCE(s.longitude, ST_X(s.ubicacion::geometry)) AS registered_longitude,
+            COALESCE(s.latitude, ST_Y(s.ubicacion::geometry)) AS registered_latitude
           FROM salones s
           JOIN usuarios salon_owner ON salon_owner.id = s.id_dueno
           LEFT JOIN perfiles_prestador salon_profile ON salon_profile.id = salon_owner.id
@@ -159,45 +180,17 @@ exports.getProviders = async (req, res) => {
           END ASC,
           distance_meters ASC;
       `;
-      result = await pool.query(query, [lon, lat, radius, eligiblePlans]);
+      const includeLiveLocations = req.user?.role === 'client';
+      result = await queryAsSystem(query, [lon, lat, radius, eligiblePlans, includeLiveLocations]);
     } catch (postgisErr) {
-      // DEGRADED FALLBACK: Fallback geográfico con coordenadas fijas (4.6735, -74.1422) cuando falla la extensión PostGIS.
-      console.warn('⚠️ Consulta de geolocalización PostGIS falló, ejecutando consulta de respaldo (degraded: true):', postgisErr.message);
-      result = await pool.query(`
-        SELECT 
-          p.id::text, 
-          u.nombre as full_name, 
-          u.foto_url as avatar_url,
-          p.business_name, 
-          p.description,
-          p.rating_avg, 
-          p.rating_count, 
-          (p.estatus_verificacion = 'APROBADO') as is_verified,
-          (p.is_active = true AND u.is_active = true AND u.estado_operativo = 'HABILITADO'
-            AND p.estatus_verificacion = 'APROBADO'
-            AND EXISTS (
-              SELECT 1 FROM services ready_service
-               WHERE ready_service.is_active = true
-                 AND (ready_service.provider_id::text = p.id::text OR ready_service.business_profile_id::text IN (
-                   SELECT ready_profile.id::text FROM business_profiles ready_profile
-                    WHERE ready_profile.provider_id::text = p.id::text
-                 ))
-            )) as can_receive_bookings,
-          false as is_salon,
-          4.6735 as latitude,
-          -74.1422 as longitude,
-          'Creative Edge' as loyalty_tier,
-          p.active_start_hour as start_hour,
-          p.active_end_hour as end_hour,
-          p.weekly_schedule as weekly_schedule,
-          0 as distance_meters
-        FROM perfiles_prestador p
-        INNER JOIN usuarios u ON p.id = u.id
-        WHERE p.is_active = true
-          AND u.is_active = true
-          AND COALESCE(u.visibilidad_suspendida, false) = false
-        LIMIT 50
-      `);
+      // Nunca se inventa una coordenada cuando falla el cálculo espacial: un
+      // pin aproximado puede atribuir falsamente la ubicación de otra persona.
+      console.warn('⚠️ Consulta geográfica PostGIS no disponible:', postgisErr.message);
+      return res.status(503).json({
+        success: false,
+        error: 'PROVIDER_LOCATION_UNAVAILABLE',
+        message: 'No se pudo calcular la ubicación de los prestadores.'
+      });
     }
 
     // Mapeo explícito para tipos nativos
@@ -231,9 +224,17 @@ exports.getProviders = async (req, res) => {
       is_salon: !!row.is_salon,
       loyalty_tier: row.loyalty_tier || 'Creative Edge',
       distance_meters: Math.round(row.distance_meters || 0),
-      latitude: parseFloat(row.latitude) || 4.6097,
-      longitude: parseFloat(row.longitude) || -74.0817
+      latitude: row.latitude == null ? null : parseFloat(row.latitude),
+      longitude: row.longitude == null ? null : parseFloat(row.longitude),
+      registered_latitude: row.registered_latitude == null ? null : parseFloat(row.registered_latitude),
+      registered_longitude: row.registered_longitude == null ? null : parseFloat(row.registered_longitude),
+      is_live_location: row.is_live_location === true,
+      live_location_updated_at: row.live_location_updated_at || null
     }));
+
+    const providersWithCoordinates = formattedProviders.filter((provider) =>
+      Number.isFinite(provider.latitude) && Number.isFinite(provider.longitude)
+    );
 
     // ── «Cerca y disponible hoy» ─────────────────────────────────────────────
     // Una ficha a 300 m que solo tiene cita el jueves no resuelve "quiero algo
@@ -255,7 +256,7 @@ exports.getProviders = async (req, res) => {
       let duraciones = { rows: [] };
       try {
         [reservasHoy, duraciones] = await Promise.all([
-          pool.query(
+          queryAsSystem(
             `SELECT b.provider_id, b.scheduled_at, COALESCE(s.duration_minutes, 60) AS dur
                FROM bookings b
                LEFT JOIN services s ON s.id = b.service_id
@@ -264,7 +265,7 @@ exports.getProviders = async (req, res) => {
                 AND b.scheduled_at >= $2 AND b.scheduled_at < $3`,
             [idsIndividuales, rangoDiaBogota.start, rangoDiaBogota.endExclusive]
           ),
-          pool.query(
+          queryAsSystem(
             `SELECT provider_id, MIN(duration_minutes) AS dur
                FROM services
               WHERE provider_id = ANY($1::int[]) AND is_active = true
@@ -289,7 +290,7 @@ exports.getProviders = async (req, res) => {
         ocupadosPor.get(clave).push({ inicio, fin });
       }
 
-      for (const prov of formattedProviders) {
+      for (const prov of providersWithCoordinates) {
         const fila = porId.get(String(prov.id));
         const schedule = getColombiaSchedule({
           date: fechaBogota,
@@ -314,7 +315,7 @@ exports.getProviders = async (req, res) => {
         prov.available_today = Boolean(prov.next_slot_today);
       }
 
-      formattedProviders.sort((a, b) => {
+      providersWithCoordinates.sort((a, b) => {
         if (a.available_today !== b.available_today) return a.available_today ? -1 : 1;
         const franjaA = Math.floor(a.distance_meters / 1000);
         const franjaB = Math.floor(b.distance_meters / 1000);
@@ -322,7 +323,7 @@ exports.getProviders = async (req, res) => {
         return (b.rating_score || 0) - (a.rating_score || 0);
       });
     } else {
-      for (const prov of formattedProviders) {
+      for (const prov of providersWithCoordinates) {
         prov.next_slot_today = null;
         prov.available_today = false;
       }
@@ -330,8 +331,8 @@ exports.getProviders = async (req, res) => {
 
     const response = {
       success: true,
-      count: formattedProviders.length,
-      data: formattedProviders
+      count: providersWithCoordinates.length,
+      data: providersWithCoordinates
     };
     
     if (process.env.NODE_ENV === 'development') {

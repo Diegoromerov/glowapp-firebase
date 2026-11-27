@@ -20,6 +20,8 @@ const {
   transicionar,
 } = require('../services/fiscalRevision');
 
+const LIVE_LOCATION_BACKGROUND_CONSENT_VERSION = '2026-11-background-v1';
+
 // ─── CONTRATO DE COMISIÓN E INDEPENDENCIA (D-GL-023 · F8) ────────────────────
 // El prestador es independiente, no empleado. Se registra versión, fecha e IP:
 // sin ese registro no hay forma de probar el vínculo comercial.
@@ -96,9 +98,184 @@ router.post('/provider/contract/accept', authMiddleware, async (req, res) => {
   }
 });
 
-router.get('/providers', providerController.getProviders);
+const optionalProviderSearchAuth = (req, res, next) => {
+  const authorization = req.header('Authorization') || '';
+  if (!authorization.startsWith('Bearer ')) return next();
+  return authMiddleware(req, res, next);
+};
+
+/**
+ * @swagger
+ * /api/providers:
+ *   get:
+ *     summary: Busca prestadores dentro del radio solicitado
+ *     description: Las ubicaciones móviles recientes solo se incluyen cuando la petición corresponde a un cliente autenticado; invitados reciben la ubicación registrada.
+ *     tags: [providers]
+ *     security:
+ *       - {}
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: lat
+ *         schema: { type: number, minimum: -90, maximum: 90 }
+ *       - in: query
+ *         name: lon
+ *         schema: { type: number, minimum: -180, maximum: 180 }
+ *       - in: query
+ *         name: radius
+ *         schema: { type: integer, minimum: 1 }
+ *     responses:
+ *       '200':
+ *         description: Prestadores del radio con coordenadas registradas o, para clientes autenticados, ubicación móvil consentida y vigente.
+ *       '503':
+ *         description: No se pudo calcular la búsqueda geográfica.
+ */
+router.get('/providers', optionalProviderSearchAuth, providerController.getProviders);
 router.get('/providers/:id', providerController.getProviderById);
 router.get('/providers/:id/slots', providerController.getProviderSlots);
+
+/**
+ * @swagger
+ * /api/provider/me/location-consent:
+ *   put:
+ *     summary: Cambia el consentimiento del prestador para compartir su ubicación en vivo, también en segundo plano
+ *     tags: [provider]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [enabled]
+ *             properties:
+ *               enabled:
+ *                 type: boolean
+ *               consent_version:
+ *                 type: string
+ *                 description: Obligatoria al activar la ubicación; identifica el consentimiento explícito de segundo plano.
+ *     responses:
+ *       '200':
+ *         description: Consentimiento actualizado; al revocarlo se elimina la ubicación actual.
+ *       '403':
+ *         description: Solo prestadores autenticados pueden cambiar el consentimiento.
+ *       '404':
+ *         description: Perfil de prestador no encontrado.
+ */
+router.put('/provider/me/location-consent', authMiddleware, async (req, res) => {
+  const providerId = Number(req.user.id);
+  const enabled = req.body?.enabled;
+  const consentVersion = req.body?.consent_version;
+  if (!Number.isSafeInteger(providerId) || providerId <= 0 ||
+      !['provider', 'prestador'].includes(String(req.user.role || req.user.rol || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Solo un prestador autenticado puede cambiar este consentimiento.' });
+  }
+  if (typeof enabled !== 'boolean') return res.status(400).json({ error: 'enabled debe ser boolean.' });
+  if (enabled && consentVersion !== LIVE_LOCATION_BACKGROUND_CONSENT_VERSION) {
+    return res.status(400).json({ error: 'Se requiere aceptar la versión vigente del consentimiento de ubicación.' });
+  }
+  try {
+    const { rows } = await pool.query(
+      `UPDATE perfiles_prestador SET
+         live_location_consent = $2,
+         live_location_consent_at = CASE WHEN $2 THEN NOW() ELSE NULL END,
+         live_location_consent_version = CASE WHEN $2 THEN $3 ELSE NULL END
+       WHERE id = $1 RETURNING live_location_consent`,
+      [providerId, enabled, enabled ? consentVersion : null]
+    );
+    if (!rows.length) return res.status(404).json({ error: 'Perfil de prestador no encontrado.' });
+    if (!enabled) await pool.query('DELETE FROM provider_live_locations WHERE provider_id = $1', [providerId]);
+    return res.json({ enabled: rows[0].live_location_consent });
+  } catch (error) {
+    console.error('Error al actualizar consentimiento de ubicación:', error);
+    return res.status(500).json({ error: 'No se pudo actualizar el consentimiento de ubicación.' });
+  }
+});
+
+/**
+ * @swagger
+ * /api/provider/me/live-location:
+ *   put:
+ *     summary: Actualiza la ubicación vigente del prestador en línea con consentimiento
+ *     tags: [provider]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [latitude, longitude, accuracy_meters, captured_at]
+ *             properties:
+ *               latitude:
+ *                 type: number
+ *                 minimum: -90
+ *                 maximum: 90
+ *               longitude:
+ *                 type: number
+ *                 minimum: -180
+ *                 maximum: 180
+ *               accuracy_meters:
+ *                 type: number
+ *                 minimum: 0
+ *                 maximum: 100
+ *               captured_at:
+ *                 type: string
+ *                 format: date-time
+ *     responses:
+ *       '200':
+ *         description: Ubicación vigente actualizada.
+ *       '400':
+ *         description: Coordenadas inválidas, imprecisas o vencidas.
+ *       '403':
+ *         description: Solo prestadores autenticados pueden compartir su ubicación.
+ *       '409':
+ *         description: El prestador no está en línea o no otorgó consentimiento.
+ */
+router.put('/provider/me/live-location', authMiddleware, async (req, res) => {
+  const providerId = Number(req.user.id);
+  if (!Number.isSafeInteger(providerId) || providerId <= 0 ||
+      !['provider', 'prestador'].includes(String(req.user.role || req.user.rol || '').toLowerCase())) {
+    return res.status(403).json({ error: 'Solo un prestador autenticado puede compartir su ubicación.' });
+  }
+  const { latitude, longitude, accuracy_meters: accuracyMeters, captured_at: capturedAt } = req.body || {};
+  const lat = Number(latitude);
+  const lon = Number(longitude);
+  const accuracy = Number(accuracyMeters);
+  const timestamp = new Date(capturedAt);
+  const ageMs = Date.now() - timestamp.getTime();
+  if (typeof latitude !== 'number' || !Number.isFinite(lat) || lat < -90 || lat > 90 ||
+      typeof longitude !== 'number' || !Number.isFinite(lon) || lon < -180 || lon > 180 ||
+      typeof accuracyMeters !== 'number' || !Number.isFinite(accuracy) || accuracy < 0 || accuracy > 100 ||
+      typeof capturedAt !== 'string' ||
+      !Number.isFinite(timestamp.getTime()) || ageMs < -30000 || ageMs > 90000) {
+    return res.status(400).json({ error: 'La posición debe ser válida, reciente y tener precisión de hasta 100 metros.' });
+  }
+  try {
+    const { rows } = await pool.query(
+      `INSERT INTO provider_live_locations
+         (provider_id, location, accuracy_meters, captured_at, received_at)
+       SELECT p.id, ST_SetSRID(ST_MakePoint($2, $3), 4326)::geography, $4, $5, NOW()
+         FROM perfiles_prestador p
+        WHERE p.id = $1 AND p.is_active = TRUE AND p.live_location_consent = TRUE
+       ON CONFLICT (provider_id) DO UPDATE
+         SET location = EXCLUDED.location,
+             accuracy_meters = EXCLUDED.accuracy_meters,
+             captured_at = EXCLUDED.captured_at,
+             received_at = NOW()
+       WHERE provider_live_locations.captured_at <= EXCLUDED.captured_at
+       RETURNING provider_id`,
+      [providerId, lon, lat, accuracy, timestamp.toISOString()]
+    );
+    if (!rows.length) return res.status(409).json({ error: 'Activa estado en línea y consentimiento para compartir ubicación.' });
+    return res.json({ ok: true, received_at: new Date().toISOString() });
+  } catch (error) {
+    console.error('Error al guardar ubicación en vivo:', error);
+    return res.status(500).json({ error: 'No se pudo guardar la ubicación en vivo.' });
+  }
+});
 
 // ─── HORARIOS DEL PRESTADOR ──────────────────────────────────────────────────
 

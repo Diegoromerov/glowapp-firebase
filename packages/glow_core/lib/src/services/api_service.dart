@@ -1442,6 +1442,54 @@ class ApiService {
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }
 
+  /// Persists the provider's explicit choice to share live location while online.
+  static Future<Map<String, dynamic>> setProviderLiveLocationConsent(
+    bool enabled, {
+    String? consentVersion,
+  }) async {
+    final headers = await _getAuthHeaders();
+    final response = await http
+        .put(
+          Uri.parse('$_baseUrl$_apiPath/provider/me/location-consent'),
+          headers: headers,
+          body: json.encode({
+            'enabled': enabled,
+            if (consentVersion != null) 'consent_version': consentVersion,
+          }),
+        )
+        .timeout(requestTimeout);
+    if (response.statusCode == 200) {
+      return json.decode(response.body) as Map<String, dynamic>;
+    }
+    throw Exception(extractApiError(response.statusCode, response.body,
+        fallback: 'No se pudo actualizar el consentimiento de ubicación'));
+  }
+
+  /// Sends one foreground fix. The authenticated server owns the provider ID.
+  static Future<void> updateProviderLiveLocation({
+    required double latitude,
+    required double longitude,
+    required double accuracyMeters,
+    required DateTime capturedAt,
+  }) async {
+    final headers = await _getAuthHeaders();
+    final response = await http
+        .put(
+          Uri.parse('$_baseUrl$_apiPath/provider/me/live-location'),
+          headers: headers,
+          body: json.encode({
+            'latitude': latitude,
+            'longitude': longitude,
+            'accuracy_meters': accuracyMeters,
+            'captured_at': capturedAt.toUtc().toIso8601String(),
+          }),
+        )
+        .timeout(requestTimeout);
+    if (response.statusCode == 200) return;
+    throw Exception(extractApiError(response.statusCode, response.body,
+        fallback: 'No se pudo actualizar tu ubicación en vivo'));
+  }
+
   static Future<Map<String, dynamic>> startBooking(String bookingId) async {
     final headers = await _getAuthHeaders();
     final response = await http

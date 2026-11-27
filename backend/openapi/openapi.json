@@ -5632,6 +5632,22 @@
         "x-glowapp-documented": false
       }
     },
+    "/api/integrations/v1/services": {
+      "get": {
+        "operationId": "getapi_integrations_v1_services",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "GET /api/integrations/v1/services (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "integrations"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
     "/api/mentorship/sessions": {
       "get": {
         "operationId": "getapi_mentorship_sessions",
@@ -6431,6 +6447,120 @@
         "x-glowapp-documented": false
       }
     },
+    "/api/provider/me/live-location": {
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "accuracy_meters": {
+                    "maximum": 100,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "captured_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "maximum": 90,
+                    "minimum": -90,
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "maximum": 180,
+                    "minimum": -180,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "latitude",
+                  "longitude",
+                  "accuracy_meters",
+                  "captured_at"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ubicación vigente actualizada."
+          },
+          "400": {
+            "description": "Coordenadas inválidas, imprecisas o vencidas."
+          },
+          "403": {
+            "description": "Solo prestadores autenticados pueden compartir su ubicación."
+          },
+          "409": {
+            "description": "El prestador no está en línea o no otorgó consentimiento."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Actualiza la ubicación vigente del prestador en línea con consentimiento",
+        "tags": [
+          "provider"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
+    "/api/provider/me/location-consent": {
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "consent_version": {
+                    "description": "Obligatoria al activar la ubicación; identifica el consentimiento explícito de segundo plano.",
+                    "type": "string"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "enabled"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Consentimiento actualizado; al revocarlo se elimina la ubicación actual."
+          },
+          "403": {
+            "description": "Solo prestadores autenticados pueden cambiar el consentimiento."
+          },
+          "404": {
+            "description": "Perfil de prestador no encontrado."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Cambia el consentimiento del prestador para compartir su ubicación en vivo, también en segundo plano",
+        "tags": [
+          "provider"
+        ],
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
+      }
+    },
     "/api/provider/returns": {
       "get": {
         "operationId": "getapi_provider_returns",
@@ -6579,18 +6709,55 @@
     },
     "/api/providers": {
       "get": {
-        "operationId": "getapi_providers",
-        "parameters": [],
+        "description": "Las ubicaciones móviles recientes solo se incluyen cuando la petición corresponde a un cliente autenticado; invitados reciben la ubicación registrada.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "lat",
+            "schema": {
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "lon",
+            "schema": {
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "radius",
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          "200": {
+            "description": "Prestadores del radio con coordenadas registradas o, para clientes autenticados, ubicación móvil consentida y vigente."
+          },
+          "503": {
+            "description": "No se pudo calcular la búsqueda geográfica."
           }
         },
-        "summary": "GET /api/providers (autodescubierto, sin contrato declarado)",
+        "security": [
+          {},
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Busca prestadores dentro del radio solicitado",
         "tags": [
           "providers"
         ],
-        "x-glowapp-documented": false
+        "x-glowapp-critical": false,
+        "x-glowapp-documented": true
       }
     },
     "/api/providers/status": {
@@ -7127,6 +7294,22 @@
           }
         },
         "summary": "POST /api/saas/billing/portal (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "saas"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
+    "/api/saas/billing/wompi/acceptance": {
+      "get": {
+        "operationId": "getapi_saas_billing_wompi_acceptance",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "GET /api/saas/billing/wompi/acceptance (autodescubierto, sin contrato declarado)",
         "tags": [
           "saas"
         ],
@@ -8554,6 +8737,54 @@
           }
         },
         "summary": "PATCH /api/salon/{salonId}/members/{memberId}/role (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "salon"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
+    "/api/salon/{salonId}/profile": {
+      "get": {
+        "operationId": "getapi_salon_salonId_profile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "salonId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "GET /api/salon/{salonId}/profile (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "salon"
+        ],
+        "x-glowapp-documented": false
+      },
+      "patch": {
+        "operationId": "patchapi_salon_salonId_profile",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "salonId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "PATCH /api/salon/{salonId}/profile (autodescubierto, sin contrato declarado)",
         "tags": [
           "salon"
         ],
@@ -10435,6 +10666,22 @@
         "x-glowapp-documented": false
       }
     },
+    "/api/webhooks/stripe-saas": {
+      "post": {
+        "operationId": "postapi_webhooks_stripe_saas",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "Sin contrato declarado. Operación descubierta en el router; añadir contrato explícito en criticalContract.js o con anotación @swagger."
+          }
+        },
+        "summary": "POST /api/webhooks/stripe-saas (autodescubierto, sin contrato declarado)",
+        "tags": [
+          "webhooks"
+        ],
+        "x-glowapp-documented": false
+      }
+    },
     "/api/xp-logs": {
       "get": {
         "operationId": "getapi_xp_logs",
@@ -10494,8 +10741,8 @@
   ],
   "x-glowapp-contract": {
     "generator": "backend/src/openapi/buildOpenApi.js",
-    "operationsDiscovered": 441,
-    "operationsDocumented": 35,
-    "routesMounted": 476
+    "operationsDiscovered": 445,
+    "operationsDocumented": 38,
+    "routesMounted": 483
   }
 }
