@@ -266,3 +266,11 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - La regresión pone el plan canónico en nulo y la copia de sede en Growth; la ruta pública rechaza la capacidad LOYALTY. Una comprobación adicional confirma las cuatro expresiones SQL sin el `COALESCE` que permitía volver a la copia heredada. Pruebas enfocadas: 14/14; Backend CI PostgreSQL/RLS `46077080579` SUCCESS.
 - PR [#271](https://github.com/Diegoromerov/glowapp-firebase/pull/271) integrada en `main` como `6867a8e97cde0d41a8a4eb6974e4ffb36823dc1a`. Railway desplegó API, panel y ciclo de prueba; deployment API `a1528119-23cb-4459-86d0-3c73b787241c` SUCCESS. `/api/health` confirmó HTTP 200, SHA exacto, PostgreSQL disponible y sin datos fabricados; los nueve servicios de producción están sanos y sin trabajo pendiente.
 - Queda corregida la coherencia del plan canónico para estas consultas. No se modificaron planes ni datos de sedes; la auditoría completa de cuotas y aceptación QA de la Fase 7 continúa abierta.
+
+## Panel SuperAdmin clasifica planes nulos como Freemium — 27 de noviembre de 2026
+
+- Se detectó que `saas_plan` admite NULL y los reportes administrativos comparaban el campo directamente. Los perfiles sin plan canónico podían quedar fuera del filtro Freemium y aparecer con plan vacío en la distribución, listado/detalle de tenants, ingresos por plan y alertas de uso.
+- Los conteos, filtros y respuestas de SuperAdmin ahora interpretan NULL como Freemium. Se conserva la semántica de tenants activos (no Freemium) y planes de prueba.
+- Pruebas de contrato: `superAdminPlanFallback.nodetest.js`, 2/2; Backend CI PostgreSQL/RLS `46077933784` SUCCESS. PR [#273](https://github.com/Diegoromerov/glowapp-firebase/pull/273) integrada en `main` como `5754c7fb234e058ff17964cfc3b91245b9c1abd4`.
+- Railway API, panel y ciclo de prueba finalizaron SUCCESS; cero servicios con incidencias y cero trabajo pendiente. `/api/health` respondió HTTP 200 con el SHA exacto, PostgreSQL disponible y sin datos fabricados. No se cambiaron planes ni datos de tenants.
+- Queda cerrada la clasificación de plan nulo en los informes administrativos; la auditoría integral de cuotas y aceptación QA de la Fase 7 siguen abiertas.
