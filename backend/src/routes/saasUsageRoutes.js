@@ -303,47 +303,15 @@ router.get('/limits', async (req, res) => {
 
 /**
  * POST /api/saas/usage/alerts
- * Configura alertas de uso (webhook/email cuando llega a %)
+ * La notificación por email/webhook aún no tiene un despachador. No persistir
+ * configuraciones que parezcan activas pero nunca se entregan. El estado de
+ * uso sí muestra avisos en la aplicación al 80 % y al 100 %.
  */
 router.post('/alerts', requireEntitlement('ADVANCED_ANALYTICS'), async (req, res) => {
-  try {
-    if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
-
-    const { feature, thresholdPercent, channel = 'email', webhookUrl } = req.body;
-
-    if (!feature || !thresholdPercent || thresholdPercent < 1 || thresholdPercent > 100) {
-      return res.status(400).json({ error: 'feature y thresholdPercent (1-100) requeridos' });
-    }
-
-    const validChannels = ['email', 'webhook'];
-    if (!validChannels.includes(channel)) {
-      return res.status(400).json({ error: 'Canal inválido', validChannels });
-    }
-
-    if (channel === 'webhook' && !webhookUrl) {
-      return res.status(400).json({ error: 'webhookUrl requerido para canal webhook' });
-    }
-
-    // Guardar configuración de alerta (nueva tabla o metadata en business_profiles)
-    // Por simplicidad, guardamos en metadata del tenant
-    const { rows: tenant } = await pool.query(
-      `SELECT metadata FROM business_profiles WHERE id = $1`, [req.saas.tenantId]
-    );
-
-    const metadata = tenant[0]?.metadata || {};
-    metadata.usageAlerts = metadata.usageAlerts || [];
-    metadata.usageAlerts.push({ feature, thresholdPercent, channel, webhookUrl, createdAt: new Date().toISOString() });
-
-    await pool.query(
-      `UPDATE business_profiles SET metadata = $1 WHERE id = $2`,
-      [JSON.stringify(metadata), req.saas.tenantId]
-    );
-
-    res.json({ message: 'Alerta configurada', alert: { feature, thresholdPercent, channel } });
-  } catch (error) {
-    console.error('[saasUsageRoutes] Error setting alert:', error.message);
-    res.status(500).json({ error: 'Error configurando alerta' });
-  }
+  return res.status(501).json({
+    error: 'USAGE_ALERT_DELIVERY_UNAVAILABLE',
+    message: 'Las notificaciones por correo o webhook aún no están disponibles. El panel de uso muestra avisos dentro de GlowApp.',
+  });
 });
 
 /**
