@@ -39,6 +39,7 @@
 - PR [#163](https://github.com/Diegoromerov/glowapp-firebase/pull/163), integrada en `main` como `b01645ee45e503e3e4ba5584927da9a66b7e23a6`, incorporó a Backend CI la cobertura de `bookingController.createBooking`: reserva agrupada consume una cuota, retry idempotente no duplica ni consume, límite agotado responde 429 sin crear filas y marketplace no consume la cuota directa. CI `45915976892` terminó SUCCESS. Es cobertura de controlador con dependencias simuladas; al ser un cambio solo de pruebas/CI no cambia el artefacto API desplegado.
 - PR [#166](https://github.com/Diegoromerov/glowapp-firebase/pull/166), integrada en `main` como `c7232e3d7e261a341a1c66a3d8b2590f74b98a40`, añadió una prueba de integración que usa PostgreSQL con el rol de aplicación, reserva una unidad `DIRECT_BOOKINGS`, revierte y confirma con el rol de administración que el contador no quedó persistido. CI `45916594957` terminó SUCCESS. Es prueba del rollback transaccional del servicio de cuota bajo RLS, no una prueba E2E autenticada del handler.
 - PR [#168](https://github.com/Diegoromerov/glowapp-firebase/pull/168), integrada en `main` como `3edab389e13fa228c1bc278abb827c88bd4557d8`, corrigió `POST /api/saas/usage/alerts`: antes guardaba email/webhook que ningún proceso entregaba. Ahora responde `501 USAGE_ALERT_DELIVERY_UNAVAILABLE`, evita nuevas escrituras engañosas y conserva lectura/eliminación de configuraciones anteriores. CI `45917398818` pasó; producción sirve el commit `3edab389`, PostgreSQL disponible y sin datos simulados. El aviso local de uso al 80 % continúa en el dashboard; email/webhook sigue sin estar implementado.
+- PR [#172](https://github.com/Diegoromerov/glowapp-firebase/pull/172) añade tres pruebas HTTP de facturación: checkout COP devuelve 503 sin Wompi habilitado, checkout USD devuelve 503 sin secreto de webhook aun con Stripe configurado, y el cambio directo de plan devuelve 409 hasta confirmación de pago. Las tres pasan localmente. Se añadió la suite al workflow Backend CI; al momento de registrar esta nota el PR está abierto y CI está ejecutándose, por lo que todavía no se cuenta como integrado ni desplegado. Es una verificación de comportamiento fail-closed, no prueba de pagos reales.
 
 ## Consecuencias y trabajo siguiente
 
@@ -48,6 +49,7 @@
 4. Mantener deshabilitados los complementos e integraciones no disponibles, y no vender niveles propuestos.
 5. Antes de implementar cuotas restantes, decidir evento, momento de consumo, reversión ante fallo/reintento y respuesta al agotamiento; ampliar la inspección de rutas heredadas antes de afirmar cobertura global.
 6. Alinear el texto comercial de Caja/POS: describir la función actual como libro manual de caja con constancia interna; reservar “integración POS” y “solo recibos” para capacidades cuyo comportamiento esté separado e implementado. No alterar entitlements ni precios hasta aprobar esa matriz.
+7. Incorporar PR #172 solo tras CI verde; después mantener pendiente el E2E de checkout/webhook con credenciales sandbox controladas y el de producción con importes y productos comerciales aprobados.
 
 ## Límites de esta revisión
 
