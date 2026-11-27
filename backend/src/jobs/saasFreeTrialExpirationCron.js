@@ -14,7 +14,7 @@ async function expireCompletedFreeTrials(deps = { pool, systemPool }) {
         SELECT bp.id, bp.saas_plan AS previous_plan, bp.saas_trial_ends_at
         FROM business_profiles bp
         WHERE bp.saas_plan IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')
-          AND ($1::uuid IS NULL OR bp.id = $1::uuid)
+          AND ($1::text IS NULL OR bp.id = $1::text)
           AND bp.saas_trial_ends_at IS NOT NULL
           AND bp.saas_trial_ends_at <= NOW()
           AND NOT EXISTS (
