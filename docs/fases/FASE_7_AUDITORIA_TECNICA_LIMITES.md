@@ -197,3 +197,9 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 - Se retiró el filtro: una vez que el perfil califica para expirar (y no tiene suscripción pagada activa), todas sus sedes se sincronizan a Freemium. El cálculo de elegibilidad y el bloqueo de tenants pagados no cambian.
 - Se amplió `saasFreeTrialExpiration.integration.test.js` con una sede cuyo plan heredado es `BASIC`; debe quedar en Freemium junto con el perfil, sin afectar planes pagados o pruebas futuras. PR [#245](https://github.com/Diegoromerov/glowapp-firebase/pull/245) quedó en `main` como `cdd6a96`; Backend CI `46061253296` pasó, incluida la integración PostgreSQL.
 - Railway confirmó API, panel y job diario en `SUCCESS`, sin trabajo pendiente. Health productivo respondió `OK`, commit `cdd6a96`, PostgreSQL disponible y sin datos ficticios. El job solo alterará sedes asociadas al perfil cuando este expire; no se cambió ningún tenant al desplegar.
+
+## Plan mostrado en tablero de propietario y resumen de Aura — 27 de noviembre de 2026
+
+- La auditoría de consistencia detectó que el endpoint `GET /api/v1/owner/salones` y la herramienta Aura `get_salon_operational_summary` mostraban `salones.plan_saas`, aunque la fuente canónica de autorización es `business_profiles.saas_plan`. Una copia heredada desactualizada podía enseñar un nivel distinto al activo.
+- Ambos lectores ahora priorizan el plan del perfil si existe; solo salones históricos sin perfil usan el campo heredado. Si el perfil existe pero su plan está vacío, se aplica Freemium de forma conservadora.
+- Se añadió una prueba PostgreSQL/RLS que cambia temporalmente el perfil de una sede fixture a Freemium mientras su copia heredada sigue en PRO; el endpoint debe mostrar Freemium y restaurar el fixture al terminar. Aura tiene una regresión unitaria para la consulta. CI y despliegue de esta corrección quedan pendientes.

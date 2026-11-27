@@ -78,6 +78,10 @@ describe('Fase 3: Multi-Sede OWNER Dashboard & Endpoints Integration Tests', () 
     expect(res.body.salones).toHaveLength(2);
     expect(res.body.salones[0].total_colaboradores).toBe(3);
     expect(res.body.salones[1].nombre_salon).toBe('Sede Sur');
+    const listingSql = pool.query.mock.calls
+      .map(([sql]) => sql)
+      .find((sql) => /SELECT s\.id, s\.nombre_salon[\s\S]*FROM salones s/i.test(sql));
+    expect(listingSql).toContain("CASE WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')");
   });
 
   test('GET /api/v1/owner/salones debe rebotar 403 a usuarios que no poseen ninguna sede', async () => {
@@ -643,6 +647,22 @@ describeE2EReal('E2E REAL contra PostgreSQL: OWNER multi-sede (sin mocks de pool
     expect(porId[SEDE_NORTE].total_colaboradores).toBe(3);
     expect(porId[SEDE_SUR].total_colaboradores).toBe(2);
   });
+
+  test('GET /api/v1/owner/salones muestra el plan canónico aunque la copia de la sede esté desactualizada', async () => {
+    const profileId = `salon-${SEDE_NORTE}`;
+    await adminPool.query("UPDATE business_profiles SET saas_plan = 'FREEMIUM' WHERE id = $1", [profileId]);
+    try {
+      const res = await request(app)
+        .get('/api/v1/owner/salones')
+        .set('Authorization', `Bearer ${ownerToken}`);
+
+      expect(res.statusCode).toBe(200);
+      const norte = res.body.salones.find((salon) => salon.id === SEDE_NORTE);
+      expect(norte.plan_saas).toBe('FREEMIUM');
+    } finally {
+      await adminPool.query("UPDATE business_profiles SET saas_plan = 'PRO' WHERE id = $1", [profileId]);
+    }
+  }, 30000);
 
   test('GET /api/v1/owner/dashboard-metrics agrega sobre filas reales de bookings', async () => {
     const res = await request(app)
