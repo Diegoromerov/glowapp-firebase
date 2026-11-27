@@ -8,6 +8,13 @@ const ADMIN_URL = process.env.DATABASE_URL_ADMIN;
 const APP_URL = process.env.DATABASE_URL;
 const describeWithPostgres = ADMIN_URL && APP_URL ? describe : describe.skip;
 
+describe('SaaS free trial expiration scope validation', () => {
+  test('rejects a malformed tenant scope before opening the job transaction', async () => {
+    await expect(expireCompletedFreeTrials({ pool: {}, tenantId: 'not-a-uuid' }))
+      .rejects.toThrow('tenantId must be a valid UUID when provided');
+  });
+});
+
 describeWithPostgres('SaaS free trial expiration on PostgreSQL', () => {
   let adminPool;
   let appPool;
@@ -107,4 +114,21 @@ describeWithPostgres('SaaS free trial expiration on PostgreSQL', () => {
     );
     expect(audits.rows[0].count).toBe(2);
   }, 30000);
+
+  test('targeted execution expires only the requested tenant', async () => {
+    const target = await createTenant({ plan: 'FREE_TRIAL', endsAt: new Date(Date.now() - 86400000) });
+    const unrelated = await createTenant({ plan: 'FREE_TRIAL', endsAt: new Date(Date.now() - 86400000) });
+
+    const result = await expireCompletedFreeTrials({ pool: appPool, tenantId: target });
+    expect(result).toEqual({ expired_tenants: 1, updated_salons: 1, audit_events: 1 });
+
+    const states = await adminPool.query(
+      'SELECT id, saas_plan FROM business_profiles WHERE id = ANY($1::text[])',
+      [[target, unrelated]]
+    );
+    const byId = new Map(states.rows.map((row) => [row.id, row.saas_plan]));
+    expect(byId.get(target)).toBe('FREEMIUM');
+    expect(byId.get(unrelated)).toBe('FREE_TRIAL');
+  }, 30000);
+
 });

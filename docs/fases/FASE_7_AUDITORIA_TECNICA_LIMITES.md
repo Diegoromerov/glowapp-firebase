@@ -100,6 +100,18 @@
 
 La evidencia combina inspección estática, CI PostgreSQL y comprobación de salud de producción. La prueba de recursos usa fixtures efímeros y no modifica producción. No se probaron rollback bajo fallos ni todos los canales. Fase 7 continúa abierta.
 
+## Cancelación de renovación Wompi — 27 de noviembre de 2026
+
+- El servicio de cancelación ahora conserva el nivel pagado hasta `current_period_end` en las dos opciones de cancelación y evita cobrar la siguiente renovación. El job procesa la bajada cuando vence el periodo.
+- PR #212 y Backend CI `45959229138` pasaron; quedó integrado como `52630da969204c6b6a1b625b36147d7675da4d16` y desplegado a Railway (API, dashboard y cron SUCCESS). Health confirmó `OK` y PostgreSQL disponible.
+- La prueba focalizada de rutas y servicio pasó 11/11. No se realizó un cobro real ni una cancelación de una suscripción de cliente en producción.
+
+## Ejecución de vencimiento con tenant dirigido — en validación
+
+- El servicio de expiración admite opcionalmente un UUID de tenant y lo limita en la misma consulta transaccional. El cron diario no entrega ese parámetro y conserva su selección global programada.
+- Esta capacidad permite probar un único tenant QA sin degradar otros tenants vencidos. La integración PostgreSQL/RLS añadirá una regresión donde otro tenant vencido debe permanecer intacto, además de rechazar un identificador malformado.
+- Hasta que CI pase y se realice la aceptación QA autorizada, no se afirma una prueba de vencimiento real en producción.
+
 ## Revisión de rutas alternativas — 27 de noviembre de 2026
 
 - En `bookingRoutes.js`, la creación de reservas está concentrada en `POST /bookings`; el controlador reserva `DIRECT_BOOKINGS` en la transacción antes de insertar las reservas del grupo. En `paymentRoutes.js` se encontraron transiciones y pagos de reservas, no una segunda ruta de creación. La cuota se aplica solo al origen directo del salón; marketplace conserva la exclusión documentada.
