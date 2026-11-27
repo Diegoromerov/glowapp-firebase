@@ -252,3 +252,10 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - Pruebas locales: 15/15 enfocadas aprobadas. Backend CI `46075202876` pasó contratos y pruebas PostgreSQL/RLS. PR [#267](https://github.com/Diegoromerov/glowapp-firebase/pull/267) quedó integrada en `main` como `e09186c388df08df003fa4a41f8d24a052188c4d`.
 - Railway producción API, panel y ciclo de prueba están `SUCCESS`; `/api/health` confirmó HTTP 200 con el mismo SHA, PostgreSQL disponible, modo `postgres` y sin datos simulados.
 - Se cierra la revalidación del entitlement en operaciones de equipo. Sigue pendiente la aceptación E2E con usuarios de QA y el resto de la matriz de capacidades/cuotas del punto 9.
+
+## La interfaz del prestador refleja el plan predeterminado del backend — 27 de noviembre de 2026
+
+- Se detectó que `SalonShell` mostraba `FREE_TRIAL` si el plan no llegaba en el payload o si la pantalla se construía sin un plan inyectado. El backend ya aplica `FREEMIUM` en esos casos; se alinearon ambos respaldos de la app del prestador con la fuente canónica.
+- La regresión está cubierta por `saasCommercialCatalog.nodetest.js`; los 10 casos enfocados pasaron. Backend CI no aplica a Flutter, por eso se ejecutó además Analyze & Tests y el build web del prestador.
+- PR [#269](https://github.com/Diegoromerov/glowapp-firebase/pull/269) quedó integrada en `main` como `61e70fe4d3d372d1fcd3910aa791fbd8a77d20f7`. Analyze & Tests, build web y deploy a Firebase Hosting live terminaron SUCCESS en el workflow [46076088736](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/46076088736).
+- La discrepancia de respaldo visual queda cerrada en código y Hosting. No cambia la asignación comercial de planes ni permisos; la Fase 7 sigue abierta por los pendientes listados arriba.
