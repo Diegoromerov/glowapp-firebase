@@ -187,6 +187,37 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     }
   }, 20000);
 
+  test('blocks creating an invitation after downgrade despite a stale paid plan argument', async () => {
+    const fixture = await createFixture();
+    emailService.sendEmail.mockClear();
+    try {
+      await adminPool.query(
+        "UPDATE business_profiles SET saas_plan = 'FREEMIUM' WHERE id = $1", [fixture.profileId]
+      );
+
+      await expect(saasMembershipService.invite({
+        tenantId: fixture.profileId,
+        tenantName: 'SaaS downgraded invite test',
+        plan: 'BASIC',
+        actorId: fixture.ownerId,
+        email: fixture.emails['invitee-one'],
+        role: 'MEMBER',
+      })).rejects.toMatchObject({
+        status: 403,
+        details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+      });
+
+      const memberships = await adminPool.query(
+        'SELECT id FROM memberships WHERE business_profile_id = $1 AND user_id = $2',
+        [fixture.profileId, fixture.inviteeOneId]
+      );
+      expect(memberships.rows).toHaveLength(0);
+      expect(emailService.sendEmail).not.toHaveBeenCalled();
+    } finally {
+      await cleanupFixture(fixture);
+    }
+  }, 20000);
+
   test('serializes an invitation against reactivation for the same final trial seat', async () => {
     const fixture = await createFixture();
     try {
@@ -467,6 +498,53 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     } finally {
       await seedClient.query('ROLLBACK').catch(() => {});
       seedClient.release();
+      if (originalBrevoKey === undefined) delete process.env.BREVO_API_KEY;
+      else process.env.BREVO_API_KEY = originalBrevoKey;
+      await cleanupFixture(fixture);
+    }
+  }, 20000);
+
+  test('blocks resending an invitation after downgrade and leaves it unchanged', async () => {
+    const fixture = await createFixture();
+    const originalBrevoKey = process.env.BREVO_API_KEY;
+    process.env.BREVO_API_KEY = 'mocked-integration-test-key';
+    emailService.sendEmail.mockClear();
+    emailService.sendEmail.mockResolvedValue({ devMode: true });
+    try {
+      const invitation = await saasMembershipService.invite({
+        tenantId: fixture.profileId,
+        tenantName: 'SaaS resend downgrade test',
+        plan: 'FREE_TRIAL',
+        actorId: fixture.ownerId,
+        email: fixture.emails['invitee-one'],
+        role: 'MEMBER',
+      });
+      const before = await adminPool.query(
+        'SELECT status, invite_token_hash FROM memberships WHERE id = $1', [invitation.membershipId]
+      );
+      expect(before.rows[0].status).toBe('PENDING');
+      emailService.sendEmail.mockClear();
+      await adminPool.query(
+        "UPDATE business_profiles SET saas_plan = 'FREEMIUM' WHERE id = $1", [fixture.profileId]
+      );
+
+      await expect(saasMembershipService.resend({
+        tenantId: fixture.profileId,
+        memberId: invitation.membershipId,
+        actorId: fixture.ownerId,
+        tenantName: 'SaaS resend downgrade test',
+        plan: 'FREE_TRIAL',
+      })).rejects.toMatchObject({
+        status: 403,
+        details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+      });
+
+      const after = await adminPool.query(
+        'SELECT status, invite_token_hash FROM memberships WHERE id = $1', [invitation.membershipId]
+      );
+      expect(after.rows[0]).toEqual(before.rows[0]);
+      expect(emailService.sendEmail).not.toHaveBeenCalled();
+    } finally {
       if (originalBrevoKey === undefined) delete process.env.BREVO_API_KEY;
       else process.env.BREVO_API_KEY = originalBrevoKey;
       await cleanupFixture(fixture);

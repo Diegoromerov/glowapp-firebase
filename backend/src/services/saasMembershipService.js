@@ -38,6 +38,24 @@ async function lockTenant(client, tenantId) {
   await client.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [String(tenantId)]);
 }
 
+async function readCurrentPlan(client, tenantId) {
+  const { rows } = await client.query(
+    'SELECT saas_plan FROM business_profiles WHERE id = $1', [tenantId]
+  );
+  if (!rows.length) {
+    const error = new Error('No se encontró el plan vigente del negocio.'); error.status = 404; throw error;
+  }
+  return String(rows[0].saas_plan || 'FREEMIUM').toUpperCase();
+}
+
+function requireTeamManagement(plan, message = 'El plan actual no permite gestionar el equipo.') {
+  if (hasEntitlement(plan, 'TEAM_MANAGEMENT')) return;
+  const error = new Error(message);
+  error.status = 403;
+  error.details = { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: plan };
+  throw error;
+}
+
 function audit(client, { tenantId, membershipId, actorId, event, previousRole, newRole, previousStatus, newStatus, metadata = {} }) {
   return client.query(
     `INSERT INTO membership_audit_logs
@@ -113,7 +131,7 @@ async function list(tenantId, actorId) {
   return rows;
 }
 
-async function invite({ tenantId, tenantName, plan, actorId, email, role, subRole }) {
+async function invite({ tenantId, tenantName, actorId, email, role, subRole }) {
   const normalizedEmail = String(email || '').trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail) || normalizedEmail.length > 254) {
     const error = new Error('Email inválido'); error.status = 400; throw error;
@@ -131,6 +149,8 @@ async function invite({ tenantId, tenantName, plan, actorId, email, role, subRol
     await client.query('BEGIN');
     await setMembershipContext(client, tenantId, actorId);
     await lockTenant(client, tenantId);
+    const currentPlan = await readCurrentPlan(client, tenantId);
+    requireTeamManagement(currentPlan, 'El plan actual no permite enviar invitaciones al equipo.');
     await expireInvitations(client, tenantId, actorId);
     const { rows: userRows } = await client.query('SELECT user_id AS id, email FROM app_saas_find_user_by_email($1)', [normalizedEmail]);
     const userId = userRows[0]?.id || null;
@@ -153,10 +173,10 @@ async function invite({ tenantId, tenantName, plan, actorId, email, role, subRol
     const { rows: countRows } = await client.query(
       `SELECT COUNT(*)::int AS count FROM memberships WHERE business_profile_id = $1 AND status IN ('ACTIVE', 'PENDING', 'INVITED')`, [tenantId]
     );
-    const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
+    const maxSeats = usageMeteringService.getLimit(currentPlan, 'TEAM_SEATS');
     const occupiesSeat = !existing || !['PENDING', 'INVITED'].includes(existing.status);
     if (occupiesSeat && maxSeats !== null && countRows[0].count >= maxSeats) {
-      throw seatLimitError(countRows[0].count, maxSeats, plan);
+      throw seatLimitError(countRows[0].count, maxSeats, currentPlan);
     }
 
     token = crypto.randomBytes(16).toString('hex');
@@ -411,6 +431,8 @@ async function changeRole({ tenantId, memberId, actorId, role, subRole }) {
   try {
     await client.query('BEGIN');
     await setMembershipContext(client, tenantId, actorId);
+    const currentPlan = await readCurrentPlan(client, tenantId);
+    requireTeamManagement(currentPlan, 'El plan actual no permite gestionar el equipo.');
     const { rows } = await client.query('SELECT * FROM memberships WHERE id = $1 AND business_profile_id = $2 FOR UPDATE', [memberId, tenantId]);
     const target = rows[0];
     if (!target) { const error = new Error('Miembro no encontrado'); error.status = 404; throw error; }
@@ -429,7 +451,7 @@ async function changeRole({ tenantId, memberId, actorId, role, subRole }) {
   } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
 }
 
-async function setStatus({ tenantId, memberId, actorId, status, plan }) {
+async function setStatus({ tenantId, memberId, actorId, status }) {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -461,19 +483,8 @@ async function setStatus({ tenantId, memberId, actorId, status, plan }) {
       throw error;
     }
     if (nextStatus === 'ACTIVE' && target.status === 'SUSPENDED') {
-      const { rows: planRows } = await client.query(
-        'SELECT saas_plan FROM business_profiles WHERE id = $1', [tenantId]
-      );
-      if (!planRows.length) {
-        const error = new Error('No se encontró el plan vigente del negocio.'); error.status = 404; throw error;
-      }
-      const currentPlan = String(planRows[0].saas_plan || 'FREEMIUM').toUpperCase();
-      if (!hasEntitlement(currentPlan, 'TEAM_MANAGEMENT')) {
-        const error = new Error('El plan actual no permite reactivar miembros del equipo.');
-        error.status = 403;
-        error.details = { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan };
-        throw error;
-      }
+      const currentPlan = await readCurrentPlan(client, tenantId);
+      requireTeamManagement(currentPlan, 'El plan actual no permite reactivar miembros del equipo.');
       const { rows: countRows } = await client.query(
         `SELECT COUNT(*)::int AS count FROM memberships WHERE business_profile_id = $1 AND status IN ('ACTIVE','PENDING','INVITED')`, [tenantId]
       );
@@ -507,7 +518,7 @@ async function setStatus({ tenantId, memberId, actorId, status, plan }) {
   } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
 }
 
-async function resend({ tenantId, memberId, actorId, tenantName, plan }) {
+async function resend({ tenantId, memberId, actorId, tenantName }) {
   const client = await pool.connect();
   let token;
   let invite;
@@ -515,6 +526,8 @@ async function resend({ tenantId, memberId, actorId, tenantName, plan }) {
     await client.query('BEGIN');
     await setMembershipContext(client, tenantId, actorId);
     await lockTenant(client, tenantId);
+    const currentPlan = await readCurrentPlan(client, tenantId);
+    requireTeamManagement(currentPlan, 'El plan actual no permite reenviar invitaciones al equipo.');
     await expireInvitations(client, tenantId, actorId);
     const { rows } = await client.query(
       `SELECT m.*, COALESCE(u.email, m.invite_email) AS email FROM memberships m
@@ -530,12 +543,12 @@ async function resend({ tenantId, memberId, actorId, tenantName, plan }) {
       const { rows: countRows } = await client.query(
         `SELECT COUNT(*)::int AS count FROM memberships WHERE business_profile_id = $1 AND status IN ('ACTIVE','PENDING','INVITED')`, [tenantId]
       );
-      const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
+      const maxSeats = usageMeteringService.getLimit(currentPlan, 'TEAM_SEATS');
       if (maxSeats !== null && countRows[0].count >= maxSeats) {
         throw seatLimitError(
           countRows[0].count,
           maxSeats,
-          plan,
+          currentPlan,
           'Límite de asientos alcanzado para reenviar la invitación',
         );
       }

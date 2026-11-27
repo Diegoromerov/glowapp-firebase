@@ -6,7 +6,7 @@ jest.mock('../services/emailService', () => ({ sendEmail: jest.fn() }));
 
 const membershipService = require('../services/saasMembershipService');
 
-function makeClient(target) {
+function makeClient(target, plan = 'BASIC') {
   const calls = [];
   const client = {
     release: jest.fn(),
@@ -14,6 +14,7 @@ function makeClient(target) {
       calls.push({ sql: String(sql), params });
       const statement = String(sql);
       if (statement === 'BEGIN' || statement === 'COMMIT' || statement === 'ROLLBACK') return { rows: [] };
+      if (statement.startsWith('SELECT saas_plan FROM business_profiles')) return { rows: [{ saas_plan: plan }] };
       if (statement.startsWith('SELECT * FROM memberships')) return { rows: target ? [target] : [] };
       if (statement.startsWith('UPDATE memberships SET role')) {
         return { rows: [{ ...target, role: params[0], sub_rol: params[1] }] };
@@ -49,6 +50,21 @@ describe('changeRole compatibility for salon legacy routes', () => {
     await expect(membershipService.changeRole({
       tenantId: 'bp-3', memberId: 'm-1', actorId: 10, role: 'ADMIN', subRole: 'EMPLEADO',
     })).rejects.toMatchObject({ status: 400 });
+
+    expect(calls.some(({ sql }) => sql.startsWith('UPDATE memberships SET role'))).toBe(false);
+    expect(calls.at(-1).sql).toBe('ROLLBACK');
+  });
+
+  test('does not change roles when the current plan no longer includes team management', async () => {
+    const { client, calls } = makeClient({ id: 'm-1', user_id: 41, role: 'MEMBER', status: 'ACTIVE' }, 'FREEMIUM');
+    mockPoolConnect.mockResolvedValue(client);
+
+    await expect(membershipService.changeRole({
+      tenantId: 'bp-3', memberId: 'm-1', actorId: 10, role: 'ADMIN',
+    })).rejects.toMatchObject({
+      status: 403,
+      details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+    });
 
     expect(calls.some(({ sql }) => sql.startsWith('UPDATE memberships SET role'))).toBe(false);
     expect(calls.at(-1).sql).toBe('ROLLBACK');
