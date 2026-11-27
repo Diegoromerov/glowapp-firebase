@@ -146,6 +146,7 @@ function crearControladorOps(db = pool) {
       return res.status(400).json({ error: 'costo_unitario no puede ser negativo.' });
     }
 
+    let paso = 'resolver tenant del salón';
     try {
       const queryDb = await getSalonOperationalDb(req, db);
       // Inquilino desde el perfil de negocio (fuente única, D-GL-027).
@@ -165,6 +166,7 @@ function crearControladorOps(db = pool) {
         });
       }
 
+      paso = 'insertar artículo de inventario';
       const { rows } = await queryDb.query(
         `INSERT INTO inventario_salon
            (tenant_id, salon_id, nombre, categoria, unidad, stock_actual, stock_minimo,
@@ -179,6 +181,7 @@ function crearControladorOps(db = pool) {
       );
 
       if (inicial > 0) {
+        paso = 'registrar stock inicial';
         await queryDb.query(
           `INSERT INTO inventario_movimientos
              (tenant_id, salon_id, item_id, tipo, cantidad, motivo, registrado_por)
@@ -202,7 +205,7 @@ function crearControladorOps(db = pool) {
         return res.status(409).json({ error: 'Ya existe un insumo con ese nombre en el salón.' });
       }
       req.tenantTransactionError = error;
-      console.error('❌ ERROR crearItemInventario:', error.message);
+      console.error(`❌ ERROR crearItemInventario (${paso}):`, error.message);
       return res.status(500).json({ error: 'No se pudo crear el insumo.' });
     }
   }
