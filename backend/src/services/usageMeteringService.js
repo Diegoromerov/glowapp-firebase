@@ -38,6 +38,19 @@ async function getSiteCount(tenantId) {
   return Number(rows[0]?.count || 0);
 }
 
+/** Clasifica agotamiento mensual y capacidad concurrente con semántica distinta. */
+function getUsageStatus(feature, used, limit) {
+  const numericLimit = Number(limit);
+  if (!Number.isFinite(numericLimit) || numericLimit <= 0) return 'ok';
+  const percentage = (Number(used) / numericLimit) * 100;
+  const isConcurrent = METRICS[feature]?.period === 'concurrent';
+
+  if (isConcurrent ? Number(used) > numericLimit : percentage >= 100) return 'exceeded';
+  if (percentage >= 80) return 'warning';
+  if (percentage >= 60) return 'caution';
+  return 'ok';
+}
+
 /**
  * Verifica si un plan tiene una feature (boolean)
  */
@@ -352,6 +365,7 @@ module.exports = {
   getPlanLimits,
   getMeteredFeatures,
   getSiteCount,
+  getUsageStatus,
   hasFeature,
   getLimit,
   canConsume,

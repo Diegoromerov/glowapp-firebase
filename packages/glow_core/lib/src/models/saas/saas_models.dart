@@ -378,6 +378,12 @@ enum UsageMetricType {
       this == UsageMetricType.whatsapp ||
       this == UsageMetricType.pos;
 
+  /// Capacidades medidas por recursos simultáneos, no por consumo acumulado.
+  bool get isConcurrentQuota =>
+      this == UsageMetricType.staff ||
+      this == UsageMetricType.resources ||
+      this == UsageMetricType.sites;
+
   static UsageMetricType fromCode(String code) {
     final clean = code.toUpperCase().trim();
     // El backend conserva ONLINE_BOOKING como alias de catálogo, pero el
