@@ -227,3 +227,12 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - La ruta heredada podía aceptar invitaciones en un plan sin `TEAM_MANAGEMENT` cuando hubiera cupo. Ahora comprueba el entitlement vigente antes de usar la invitación o activar una membresía.
 - La regresión local y la prueba PostgreSQL/RLS confirman 403 para Freemium, invitación sin consumir y ausencia de membresía creada. PR [#258](https://github.com/Diegoromerov/glowapp-firebase/pull/258), Backend CI `46070614783`, integrado como `a8bbb1dce99fdcf1463c81f9837865ed8ee1e07d`.
 - Railway API, panel y job diario SUCCESS; health HTTP 200 con PostgreSQL disponible. Ambas rutas de aceptación ahora comprueban plan y cupos; siguen pendientes la aceptación QA de extremo a extremo y demás rutas/roles del punto 9.
+
+## Respaldo seguro ante plan SaaS vacío — 27 de noviembre de 2026
+
+- La auditoría encontró que varias rutas convertían un plan nulo en `FREE_TRIAL`, lo que podía entregar permisos de equipo, inventario u otras capacidades de prueba a una membresía cuyo plan no estaba definido. Además, algunas consultas de marketplace preferían la copia heredada de la sede sobre el plan canónico del perfil.
+- Los middlewares SaaS y las rutas de equipo ahora interpretan el plan vacío como `FREEMIUM`. Los filtros de marketplace, reservas y consultas de resumen priorizan `business_profiles.saas_plan`; los salones históricos sin perfil conservan el plan heredado, pero si también está vacío quedan en Freemium. Las altas nuevas siguen asignando explícitamente el período de prueba desde el flujo de bootstrap.
+- Se añadieron regresiones para membresía con plan nulo, gate administrativo de inventario y gate público de fidelización; también se validó el resumen de Aura. Suites enfocadas: 27 pruebas Jest y 8 casos Node, todas aprobadas; sintaxis JS y `git diff --check` sin errores.
+- PR [#260](https://github.com/Diegoromerov/glowapp-firebase/pull/260) pasó Backend CI `46073294287`, incluidas pruebas contra PostgreSQL/RLS, y quedó integrada en `main` como `c2da58ead328b486dbee9fd46efde989953cb911`.
+- Railway producción desplegó API, panel y ciclo de prueba en estado `SUCCESS`, sin trabajo pendiente. `/api/health` devolvió HTTP 200 con el mismo SHA, PostgreSQL disponible, modo `postgres` y sin datos simulados. No se modificaron planes ni datos de salones.
+- Queda cerrado este hallazgo de respaldo/permisos; Fase 7 sigue abierta por cobro, oferta comercial, cuotas restantes y aceptación operativa pendientes.
