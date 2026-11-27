@@ -31,7 +31,7 @@ router.get('/dashboard', async (req, res) => {
       trialsEndingSoon
     ] = await Promise.all([
       pool.query(`SELECT COUNT(*) as count FROM business_profiles`),
-      pool.query(`SELECT COUNT(*) as count FROM business_profiles WHERE saas_plan != 'FREEMIUM'`),
+      pool.query(`SELECT COUNT(*) as count FROM business_profiles WHERE COALESCE(saas_plan, 'FREEMIUM') != 'FREEMIUM'`),
       pool.query(`SELECT COUNT(*) as count FROM subscriptions WHERE status = 'active'`),
       pool.query(`
         SELECT COALESCE(SUM(
@@ -76,15 +76,15 @@ router.get('/dashboard', async (req, res) => {
 
     // Distribución por plan
     const planDist = await pool.query(`
-      SELECT saas_plan, COUNT(*) as count
+      SELECT COALESCE(saas_plan, 'FREEMIUM') AS saas_plan, COUNT(*) as count
       FROM business_profiles
-      GROUP BY saas_plan
+      GROUP BY COALESCE(saas_plan, 'FREEMIUM')
       ORDER BY count DESC;
     `);
 
     // Top tenants por uso (API calls)
     const topUsage = await pool.query(`
-      SELECT bp.id, bp.name, bp.saas_plan, um.count as api_calls
+      SELECT bp.id, bp.name, COALESCE(bp.saas_plan, 'FREEMIUM') AS saas_plan, um.count as api_calls
       FROM usage_metrics um
       JOIN business_profiles bp ON bp.id = um.tenant_id
       WHERE um.feature = 'API_CALLS'
@@ -140,15 +140,15 @@ router.get('/tenants', async (req, res) => {
     let paramIdx = 1;
 
     if (plan) {
-      whereClause += ` AND bp.saas_plan = $${paramIdx++}`;
+      whereClause += ` AND COALESCE(bp.saas_plan, 'FREEMIUM') = $${paramIdx++}`;
       params.push(plan);
     }
     if (status === 'active') {
-      whereClause += ` AND bp.saas_plan != 'FREEMIUM'`;
+      whereClause += ` AND COALESCE(bp.saas_plan, 'FREEMIUM') != 'FREEMIUM'`;
     } else if (status === 'trial') {
-      whereClause += ` AND bp.saas_plan IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')`;
+      whereClause += ` AND COALESCE(bp.saas_plan, 'FREEMIUM') IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')`;
     } else if (status === 'freemium') {
-      whereClause += ` AND bp.saas_plan = 'FREEMIUM'`;
+      whereClause += ` AND COALESCE(bp.saas_plan, 'FREEMIUM') = 'FREEMIUM'`;
     }
     if (search) {
       whereClause += ` AND (bp.name ILIKE $${paramIdx} OR bp.id::text ILIKE $${paramIdx})`;
@@ -159,7 +159,8 @@ router.get('/tenants', async (req, res) => {
     // Query principal con subqueries para métricas
     const query = `
       SELECT 
-        bp.id, bp.name, bp.saas_plan, bp.provider_id AS owner_id, bp.created_at, bp.updated_at,
+        bp.id, bp.name, COALESCE(bp.saas_plan, 'FREEMIUM') AS saas_plan,
+        bp.provider_id AS owner_id, bp.created_at, bp.updated_at,
         u.email as owner_email,
         s.status as sub_status, s.plan as sub_plan, s.current_period_end,
         (SELECT COUNT(*) FROM memberships m WHERE m.business_profile_id = bp.id AND m.status = 'ACTIVE') as team_size,
@@ -223,7 +224,8 @@ router.get('/tenants/:tenantId', async (req, res) => {
 
     const [tenant, memberships, subscription, invoices, usage, apiKeys] = await Promise.all([
       pool.query(`
-        SELECT bp.*, u.email as owner_email, u.full_name as owner_name
+        SELECT bp.*, COALESCE(bp.saas_plan, 'FREEMIUM') AS effective_saas_plan,
+               u.email as owner_email, u.full_name as owner_name
         FROM business_profiles bp
         LEFT JOIN usuarios u ON u.id = bp.provider_id
         WHERE bp.id = $1
@@ -270,7 +272,7 @@ router.get('/tenants/:tenantId', async (req, res) => {
       tenant: {
         id: t.id,
         name: t.name,
-        plan: t.saas_plan,
+        plan: t.effective_saas_plan,
         owner: { id: t.owner_id, email: t.owner_email, name: t.owner_name },
         settings: t.metadata || {},
         createdAt: t.created_at,
@@ -424,13 +426,13 @@ router.get('/revenue', async (req, res) => {
     // Revenue por plan
     const revenueByPlan = await pool.query(`
       SELECT 
-        bp.saas_plan,
+        COALESCE(bp.saas_plan, 'FREEMIUM') AS saas_plan,
         COUNT(DISTINCT bp.id) as tenants,
         COALESCE(SUM(i.total), 0) as revenue
       FROM business_profiles bp
       LEFT JOIN invoices i ON i.tenant_id = bp.id AND i.status = 'paid' 
         AND i.paid_at >= date_trunc('month', CURRENT_DATE) - INTERVAL '1 month'
-      GROUP BY bp.saas_plan
+      GROUP BY COALESCE(bp.saas_plan, 'FREEMIUM')
       ORDER BY revenue DESC;
     `);
 
@@ -497,7 +499,8 @@ router.get('/usage', async (req, res) => {
 
     // Features con límites excedidos (mes actual)
     const exceeded = await pool.query(`
-      SELECT um.tenant_id, bp.name, um.feature, um.count, um.limit, bp.saas_plan
+      SELECT um.tenant_id, bp.name, um.feature, um.count, um.limit,
+             COALESCE(bp.saas_plan, 'FREEMIUM') AS saas_plan
       FROM usage_metrics um
       JOIN business_profiles bp ON bp.id = um.tenant_id
       WHERE um.period_start = date_trunc('month', CURRENT_TIMESTAMP AT TIME ZONE 'America/Bogota')::date
