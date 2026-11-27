@@ -20,6 +20,7 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
   let ownerEmail;
   let outsiderEmail;
   let ownerMembershipId;
+  let serviceId;
   const staffIds = [];
   let profileId;
   let salonId;
@@ -85,6 +86,10 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
 
   afterAll(async () => {
     if (!adminPool) return;
+    if (serviceId) {
+      await adminPool.query('DELETE FROM salon_servicio_insumos WHERE service_id = $1', [serviceId]);
+      await adminPool.query('DELETE FROM services WHERE id = $1', [serviceId]);
+    }
     if (salonId) await adminPool.query('DELETE FROM recursos_alquilables WHERE salon_id = $1', [salonId]);
     if (profileId) {
       await adminPool.query('ALTER TABLE membership_audit_logs DISABLE TRIGGER USER');
@@ -291,6 +296,26 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
         tipo: 'SALIDA', cantidad: 1, motivo: 'integration role test', idempotency_key: `role-${crypto.randomUUID()}`,
       }).expect(201);
 
+      const service = await adminPool.query(
+        `INSERT INTO services (id, provider_id, name, price, duration_minutes, tenant_id, business_profile_id, salon_id)
+         VALUES ($1, $2, $3, 10000, 30, 1, $4, $5) RETURNING id`,
+        [crypto.randomUUID(), userId, `QA service ${crypto.randomUUID()}`, profileId, salonId]
+      );
+      serviceId = service.rows[0].id;
+      // Recipes are enabled by Prueba Gratis, not BASIC; grant the fixture's
+      // canonical plan only for the recipe-specific HTTP checks below.
+      await adminPool.query("UPDATE business_profiles SET saas_plan = 'FREE_TRIAL' WHERE id = $1", [profileId]);
+      await adminPool.query("UPDATE salones SET plan_saas = 'FREE_TRIAL' WHERE id = $1", [salonId]);
+      await callAs(staff.admin, 'put', `/api/salon/${salonId}/services/${serviceId}/inventory`, {
+        items: [{ item_id: createdItemId, cantidad: 1 }],
+      }).expect(200);
+      const recipe = await callAs(staff.member, 'get', `/api/salon/${salonId}/services/${serviceId}/inventory`).expect(200);
+      expect(recipe.body.items).toHaveLength(1);
+      expect(recipe.body.items[0]).toMatchObject({ item_id: createdItemId, cantidad: 1 });
+      await callAs(staff.member, 'put', `/api/salon/${salonId}/services/${serviceId}/inventory`, {
+        items: [{ item_id: createdItemId, cantidad: 2 }],
+      }).expect(403);
+
       await callAs(staff.member, 'post', `/api/salon/${salonId}/inventario`, {
         nombre: `Denied inventory ${crypto.randomUUID()}`,
       }).expect(403);
@@ -301,10 +326,14 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
       const history = await callAs(staff.member, 'get', `/api/salon/${salonId}/inventario/${createdItemId}/movimientos`).expect(200);
       expect(history.body.total).toBeGreaterThanOrEqual(2);
     } finally {
+      await adminPool.query("UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1", [profileId]);
+      await adminPool.query("UPDATE salones SET plan_saas = 'BASIC' WHERE id = $1", [salonId]);
       if (createdItemId) {
+        if (serviceId) await adminPool.query('DELETE FROM salon_servicio_insumos WHERE service_id = $1', [serviceId]);
         await adminPool.query('DELETE FROM inventario_movimientos WHERE item_id = $1', [createdItemId]);
         await adminPool.query('DELETE FROM inventario_salon WHERE id = $1', [createdItemId]);
       }
+      if (serviceId) await adminPool.query('DELETE FROM services WHERE id = $1', [serviceId]);
     }
   }, 30000);
 });
