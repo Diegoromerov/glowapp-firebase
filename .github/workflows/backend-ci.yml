@@ -104,6 +104,9 @@ jobs:
           JWT_SECRET: fase7-booking-quota-test-secret
         run: npx jest src/tests/bookingControllerEligibility.test.js --runInBand --forceExit --verbose
 
+      - name: Alertas SaaS no anuncian entrega externa no implementada
+        run: npx jest tests/saasUsageAlertDelivery.test.js --runInBand --forceExit --verbose
+
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
           # trust auth: sin password en la URL
