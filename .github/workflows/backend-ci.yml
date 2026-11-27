@@ -105,6 +105,8 @@ jobs:
         run: npx jest src/tests/bookingControllerEligibility.test.js --runInBand --forceExit --verbose
 
       - name: Alertas SaaS no anuncian entrega externa no implementada
+        env:
+          JWT_SECRET: fase7-usage-alert-test-secret
         run: npx jest tests/saasUsageAlertDelivery.test.js --runInBand --forceExit --verbose
 
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
