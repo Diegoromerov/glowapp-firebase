@@ -113,6 +113,15 @@ test('Flutter fallback availability and purchase flags stay in parity with backe
   assert.deepEqual(tiersFromGetter('isPurchasable'), backendPurchasable);
 });
 
+test('provider salon shell defaults to FREEMIUM when the current plan is missing', () => {
+  const shellPath = path.resolve(__dirname, '../../../apps/glow_provider/lib/screens/salon/salon_shell.dart');
+  const shell = fs.readFileSync(shellPath, 'utf8');
+
+  assert.match(shell, /this\.plan\s*=\s*'FREEMIUM'/);
+  assert.match(shell, /salon\['plan_saas'\]\s*\?\?\s*'FREEMIUM'/);
+  assert.doesNotMatch(shell, /salon\['plan_saas'\]\s*\?\?\s*'FREE_TRIAL'/);
+});
+
 test('provider onboarding distinguishes commercial availability from live checkout readiness', () => {
   const servicePath = path.resolve(
     __dirname,
