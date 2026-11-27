@@ -79,7 +79,10 @@ router.get('/', async (req, res) => {
         currency: subscription.currency || 'COP',
         paymentProvider,
         canManagePayments: Boolean(stripeConfigured && subscription.stripe_customer_id),
-        canCancel: Boolean((stripeConfigured && subscription.stripe_subscription_id) || subscription.billing_provider === 'wompi')
+        canCancel: Boolean(
+          (stripeConfigured && subscription.stripe_subscription_id) ||
+          (subscription.billing_provider === 'wompi' && subscription.status === 'active')
+        )
       } : null,
       nextPayment,
       recentInvoices: invoices.map(inv => ({
@@ -433,10 +436,12 @@ router.post('/cancel', requireOwner, async (req, res) => {
     if (currentSub?.billing_provider === 'wompi') {
       const subscription = await wompiSaasBilling.cancelSubscription(pool, req.saas.tenantId, atPeriodEnd === true);
       if (!subscription) return res.status(404).json({ error: 'No hay una suscripción Wompi activa para cancelar.' });
-      if (!atPeriodEnd) {
-        await pool.query(`UPDATE business_profiles SET saas_plan='FREEMIUM',updated_at=NOW() WHERE id=$1`, [req.saas.tenantId]);
-      }
-      return res.json({ message: atPeriodEnd ? 'La suscripción finalizará al término del período pagado.' : 'La suscripción se canceló inmediatamente.', subscription });
+      return res.json({
+        message: atPeriodEnd
+          ? 'La suscripción finalizará al término del período pagado.'
+          : 'Se detuvieron los próximos cobros. El acceso pagado se conserva hasta el vencimiento del período actual.',
+        subscription
+      });
     }
     if (!currentSub?.stripe_subscription_id) {
       return res.status(409).json({ error: 'No hay una suscripción con un proveedor de pago compatible para cancelar.' });
