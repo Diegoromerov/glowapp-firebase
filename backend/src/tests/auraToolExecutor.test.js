@@ -346,7 +346,7 @@ describe('get_salon_operational_summary · plan SaaS canónico', () => {
     const [sql] = dbPool.pool.query.mock.calls[0];
     expect(sql).toContain('LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id');
     expect(sql).toContain("CASE WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')");
-    expect(sql).toContain("ELSE COALESCE(s.plan_saas, 'FREE_TRIAL') END AS plan_saas");
+    expect(sql).toContain("ELSE COALESCE(s.plan_saas, 'FREEMIUM') END AS plan_saas");
   });
 });
 });

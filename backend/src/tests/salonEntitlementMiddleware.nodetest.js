@@ -13,6 +13,9 @@ const client = {
       rlsContext.push(sql.includes('app.tenant_id') ? ['app.tenant_id', params[0]] : params);
     }
     if (/SELECT tenant_id FROM usuarios/i.test(sql)) return { rows: [{ tenant_id: 17 }] };
+    if (/SELECT CASE\s+WHEN bp\.id IS NULL/i.test(sql)) {
+      return { rows: [{ saas_plan: plan }] };
+    }
     if (/SELECT bp\.saas_plan/i.test(sql)) {
       if (queryError) throw queryError;
       assert.equal(params[0], '42');
@@ -28,6 +31,7 @@ const dbMock = {
     async query() { throw new Error('must use an RLS transaction'); },
     async connect() { return client; },
   },
+  systemPool: null,
 };
 
 const originalLoad = Module._load;
@@ -35,9 +39,13 @@ Module._load = function loadWithDbStub(request, parent, isMain) {
   if (request === '../config/db' && parent?.filename.endsWith('salonEntitlement.js')) {
     return dbMock;
   }
+  if (request === '../config/tenantRouting' && parent?.filename.endsWith('salonEntitlement.js')) {
+    const actual = originalLoad.call(this, request, parent, isMain);
+    return { ...actual, runAsSystem: async (_db, callback) => callback(client) };
+  }
   return originalLoad.call(this, request, parent, isMain);
 };
-const { requireSalonEntitlement } = require('../middleware/salonEntitlement');
+const { requireSalonEntitlement, requirePublicSalonEntitlement } = require('../middleware/salonEntitlement');
 Module._load = originalLoad;
 
 async function invoke(capability) {
@@ -78,6 +86,16 @@ test('salon entitlement allows included modules and blocks excluded modules', as
     assert.equal(nextCalls, 1);
   });
 
+  await t.test('null canonical plan defaults to Freemium and blocks inventory', async () => {
+    plan = null;
+    legacySalonPlan = 'FREE_TRIAL';
+    const { req, res, nextCalls } = await invoke('INVENTORY');
+    assert.equal(res.statusCode, 403);
+    assert.equal(res.body.currentPlan, 'FREEMIUM');
+    assert.equal(nextCalls, 0);
+    assert.equal(req.salonPlan, undefined);
+  });
+
   await t.test('canonical Basic allows inventory even if legacy salon copy says Freemium', async () => {
     plan = 'BASIC';
     legacySalonPlan = 'FREEMIUM';
@@ -94,4 +112,16 @@ test('salon entitlement allows included modules and blocks excluded modules', as
     assert.equal(nextCalls, 0);
     queryError = null;
   });
+});
+
+test('public salon entitlement treats a null canonical plan as Freemium', async () => {
+  plan = null;
+  const req = { params: { salonId: '42' } };
+  const res = { statusCode: null, body: null };
+  res.status = (code) => { res.statusCode = code; return res; };
+  res.json = (body) => { res.body = body; return res; };
+  let nextCalls = 0;
+  await requirePublicSalonEntitlement('LOYALTY')(req, res, () => { nextCalls += 1; });
+  assert.equal(res.statusCode, 403);
+  assert.equal(nextCalls, 0);
 });

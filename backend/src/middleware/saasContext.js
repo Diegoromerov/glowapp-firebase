@@ -59,7 +59,8 @@ module.exports = async function saasContext(req, res, next) {
     }
 
     const m = rows[0];
-    const plan = m.saas_plan || 'FREE_TRIAL';
+    // A missing/unknown persisted plan must never inherit trial capabilities.
+    const plan = String(m.saas_plan || 'FREEMIUM').toUpperCase();
 
     // Calcular capacidades según plan (usa motor existente saasEntitlements.js)
     const capabilities = Object.keys(SAAS_CAPABILITIES)

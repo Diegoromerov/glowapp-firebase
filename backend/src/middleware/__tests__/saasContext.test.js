@@ -113,6 +113,22 @@ describe('saasContext middleware', () => {
     expect(req.saas.capabilities).toContain('MAP_VISIBILITY');
   });
 
+  test('membership con plan nulo recibe solo capacidades FREEMIUM', async () => {
+    req.user = { id: 8 };
+    transactionClient.query.mockResolvedValue({ rows: [{
+      id: 'm-null-plan', business_profile_id: 'bp-null-plan', name: 'Salón sin plan',
+      saas_plan: null, role: 'OWNER', accepted_at: '2026-11-27T10:00:00Z'
+    }] });
+
+    await saasContext(req, res, next);
+
+    expect(req.saas.plan).toBe('FREEMIUM');
+    expect(req.saas.capabilities).not.toContain('TEAM_MANAGEMENT');
+    expect(req.saas.capabilities).not.toContain('INVENTORY');
+    expect(req.saas.capabilities).toContain('MAP_VISIBILITY');
+    expect(next).toHaveBeenCalled();
+  });
+
   test('múltiples memberships → usa la más reciente accepted_at', async () => {
     req.user = { id: 3 };
     // Query ordena por accepted_at DESC, así que la más reciente debe ser la primera en el resultado

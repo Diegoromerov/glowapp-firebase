@@ -71,7 +71,7 @@ function requireSalonEntitlement(capability, db = pool) {
         return res.status(404).json({ error: 'El salón no existe.' });
       }
 
-      const plan = String(rows[0].saas_plan || 'FREE_TRIAL').toUpperCase();
+      const plan = String(rows[0].saas_plan || 'FREEMIUM').toUpperCase();
       const required = Array.isArray(capability) ? capability : [capability];
       if (!required.some((item) => hasEntitlement(plan, item))) {
         return res.status(403).json({
@@ -119,7 +119,7 @@ function requirePublicSalonEntitlement(capability) {
       ));
       if (!rows.length) return res.status(404).json({ error: 'El salón no existe.' });
 
-      const plan = String(rows[0].saas_plan || 'FREE_TRIAL').toUpperCase();
+      const plan = String(rows[0].saas_plan || 'FREEMIUM').toUpperCase();
       const required = Array.isArray(capability) ? capability : [capability];
       if (!required.some((item) => hasEntitlement(plan, item))) {
         return res.status(403).json({

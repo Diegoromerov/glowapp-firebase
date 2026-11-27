@@ -137,13 +137,14 @@ exports.getProviders = async (req, res) => {
             ST_Distance(s.ubicacion, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) AS distance_meters
           FROM salones s
           JOIN usuarios salon_owner ON salon_owner.id = s.id_dueno
+          LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
           LEFT JOIN perfiles_prestador salon_profile ON salon_profile.id = salon_owner.id
           WHERE salon_owner.is_active = true
             AND COALESCE(salon_owner.visibilidad_suspendida, false) = false
             AND s.ubicacion IS NOT NULL
             AND s.location_enabled = true
             AND s.location_public = true
-            AND UPPER(COALESCE(s.plan_saas, 'FREE_TRIAL')) = ANY($4)
+            AND UPPER(COALESCE(bp.saas_plan, s.plan_saas, 'FREEMIUM')) = ANY($4)
             AND ST_DWithin(
               s.ubicacion,
               ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography,
@@ -378,7 +379,7 @@ exports.getProviderById = async (req, res) => {
            AND s.location_enabled = true
            AND s.location_public = true
            AND COALESCE(u.visibilidad_suspendida, false) = false
-           AND UPPER(COALESCE(s.plan_saas, bp.saas_plan, 'FREE_TRIAL')) = ANY($2)
+           AND UPPER(COALESCE(bp.saas_plan, s.plan_saas, 'FREEMIUM')) = ANY($2)
          LIMIT 1`, [salonId, eligiblePlans]);
       if (!salonRes.rows.length) return res.status(404).json({ error: 'No encontrado' });
       const salon = salonRes.rows[0];
@@ -626,7 +627,7 @@ exports.getProviderSlots = async (req, res) => {
     if (targetSalonId) {
       const salonRes = await runAsSystem({ pool }, (client) => client.query(
         `SELECT s.id, s.business_profile_id, s.location_enabled, s.location_public,
-                UPPER(COALESCE(s.plan_saas, bp.saas_plan, 'FREE_TRIAL')) AS plan_saas
+                UPPER(COALESCE(bp.saas_plan, s.plan_saas, 'FREEMIUM')) AS plan_saas
            FROM salones s
            LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
           WHERE s.id = $1
