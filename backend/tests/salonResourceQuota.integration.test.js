@@ -196,22 +196,28 @@ describeWithPostgres('SaaS resource quota concurrency on PostgreSQL', () => {
     const getResources = () => request(app)
       .get(`/api/salon/${salonId}/recursos`)
       .set('Authorization', `Bearer ${token}`);
+    const getInventory = () => request(app)
+      .get(`/api/salon/${salonId}/inventario`)
+      .set('Authorization', `Bearer ${token}`);
 
     try {
       // A downgrade in the canonical subscription profile must beat a stale
       // legacy salon copy that still says BASIC.
       await adminPool.query("UPDATE business_profiles SET saas_plan = 'FREEMIUM' WHERE id = $1", [profileId]);
       await adminPool.query("UPDATE salones SET plan_saas = 'BASIC' WHERE id = $1", [salonId]);
-      const downgraded = await getResources();
-      expect(downgraded.status).toBe(403);
-      expect(downgraded.body).toMatchObject({ required: 'RESOURCES', currentPlan: 'FREEMIUM' });
+      for (const response of [await getResources(), await getInventory()]) {
+        expect(response.status).toBe(403);
+        expect(response.body.currentPlan).toBe('FREEMIUM');
+      }
 
       // Conversely, a stale Freemium copy cannot hide a module included in the
       // current canonical BASIC plan.
       await adminPool.query("UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1", [profileId]);
       await adminPool.query("UPDATE salones SET plan_saas = 'FREEMIUM' WHERE id = $1", [salonId]);
-      const upgraded = await getResources();
-      expect(upgraded.status).toBe(200);
+      const [resources, inventory] = await Promise.all([getResources(), getInventory()]);
+      expect(resources.status).toBe(200);
+      expect(inventory.status).toBe(200);
+      expect(inventory.body).toMatchObject({ success: true, items: [] });
     } finally {
       await adminPool.query("UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1", [profileId]);
       await adminPool.query("UPDATE salones SET plan_saas = 'BASIC' WHERE id = $1", [salonId]);

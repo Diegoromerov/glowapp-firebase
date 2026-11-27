@@ -73,6 +73,9 @@ const MIGRACIONES_BASE_NUEVA = [
 '114_memberships_sub_rol.sql',
   // The real PostgreSQL resource quota test needs the resource tables and locks.
   '117_inventario_y_alquileres.sql',
+  // SaaS inventory reads join reservation consumption; include the production
+  // schema so authenticated inventory routes are exercised against real RLS.
+  '194_fase5_operacion_comercial.sql',
 '118_drop_salon_miembros.sql',
 '119_force_rls_retention_policies.sql',
 '121_glowshop_precios_minimas.sql',
