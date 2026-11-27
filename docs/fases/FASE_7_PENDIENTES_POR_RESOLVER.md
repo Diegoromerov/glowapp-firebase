@@ -183,5 +183,6 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 
 ## Métricas de consumo frente a capacidades del plan — 27 de noviembre de 2026
 
-- **Código y producción: corregido.** PR [#234](https://github.com/Diegoromerov/glowapp-firebase/pull/234), commit `ab60bbc`, elimina capacidades booleanas del conteo cuantitativo de `GET /api/saas/usage`; siguen mostrándose como incluidas o no incluidas según el plan.
-- **Pendiente:** repetir consulta autenticada, de solo lectura, sobre el tenant QA para verificar que el endpoint y el resumen no incluyen `MAP_VISIBILITY` ni otras capacidades booleanas como consumo. Se requiere sesión QA vigente.
+- **Código, producción y aceptación autenticada: cerrado.** PR [#234](https://github.com/Diegoromerov/glowapp-firebase/pull/234), commit `ab60bbc`, elimina capacidades booleanas del consumo cuantitativo; siguen indicándose como incluidas o no incluidas según el plan.
+- La consulta de solo lectura al tenant QA `salon-17` devolvió 9 métricas, todas cuotas; no incluyó `MAP_VISIBILITY` ni otras capacidades booleanas. Resumen consistente: 9 total, 8 `ok`, 1 `caution` (`TEAM_SEATS`, 2/3), 0 `warning` y 0 `exceeded`.
+- Este subtema queda cerrado para contrato y comportamiento productivo consultado. La matriz de medición/agotamiento de todas las cuotas sigue pendiente en el punto correspondiente; no se afirma que cada cuota haya sido ejercitada.

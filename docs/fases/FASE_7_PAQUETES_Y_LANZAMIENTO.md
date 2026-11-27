@@ -211,4 +211,11 @@ La modificación de precios, acceso o prueba puede afectar contratos y funciones
 - La auditoría encontró que `GET /api/saas/usage` convertía permisos como presencia en mapa y Caja/POS en métricas `0 de 1`, aunque son capacidades incluidas por plan y no unidades consumidas.
 - PR [#234](https://github.com/Diegoromerov/glowapp-firebase/pull/234), commit productivo `ab60bbc431f01f26bcdafccfe208e373f45445f7`, excluye capacidades booleanas y el alias `ONLINE_BOOKING` de la lista cuantitativa. La tabla conserva la indicación «Incluido/No incluido» a partir del plan.
 - La prueba enfocada de medidor pasó (25 pruebas); Backend CI `46048208918` finalizó con éxito, incluida integración PostgreSQL/RLS. Railway API de producción desplegó el commit `ab60bbc` con SUCCESS y `/api/health` respondió `OK`, PostgreSQL activo y sin datos simulados.
-- El despliegue no hizo migraciones ni escrituras. No hubo sesión autenticada disponible para repetir `GET /api/saas/usage` con el salón QA después del cambio; validar ese JSON en QA sigue pendiente. Fase 7 continúa abierta.
+- El despliegue no hizo migraciones ni escrituras. La primera verificación del cambio fue solo health check; la aceptación autenticada se completó después y queda registrada a continuación. Fase 7 continúa abierta.
+
+## Aceptación autenticada de métricas sin capacidades booleanas — 27 de noviembre de 2026
+
+- Con la cuenta propietaria QA se consultó `GET /api/saas/usage` en producción para el tenant `salon-17` (**QA Salón Fase 2**, ID 17), usando audiencia `provider`. La llamada fue de solo lectura; no se tocaron membresías, cuotas ni reservas.
+- El plan devuelto fue `FREE_TRIAL_LEGACY`. La API envió 9 métricas, todas `kind=quota`; no incluyó `MAP_VISIBILITY`, `POS_INTEGRATION`, ni otras capacidades booleanas. El alias `ONLINE_BOOKING` tampoco aparece como contador duplicado.
+- El resumen fue `totalFeatures=9`, `ok=8`, `caution=1`, `warning=0`, `exceeded=0`; las categorías suman 9. La única cautela es `TEAM_SEATS`, 2 de 3 (67 %), consistente con la verificación previa del tenant.
+- Esto cierra la aceptación productiva del contrato de métricas cuantitativas para este tenant QA. No prueba el agotamiento de cada cuota ni cierra vencimiento controlado, cobros o piloto comercial.
