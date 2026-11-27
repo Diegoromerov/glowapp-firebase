@@ -1,4 +1,6 @@
-const VALID_SCOPES = Object.freeze(['read', 'write', 'webhooks', 'admin']);
+// The only external integration endpoint currently exposed is GET services.
+// Do not issue permissions that have no implemented endpoint behind them.
+const VALID_SCOPES = Object.freeze(['read']);
 const MAX_EXPIRY_DAYS = 365;
 
 function validateApiKeyName(value) {
@@ -14,7 +16,11 @@ function validateApiKeyScopes(value) {
   }
   const invalidScopes = [...new Set(value.filter((scope) => !VALID_SCOPES.includes(scope)))];
   if (invalidScopes.length) {
-    return { error: 'Scopes inválidos.', invalidScopes, validScopes: VALID_SCOPES };
+    return {
+      error: 'Uno o más scopes todavía no están habilitados para la API externa.',
+      invalidScopes,
+      validScopes: VALID_SCOPES,
+    };
   }
   return { value: [...new Set(value)] };
 }

@@ -14,8 +14,8 @@ test('API key names require a trimmed string from 3 to 100 characters', () => {
 });
 
 test('API key scopes must be a non-empty array of supported values', () => {
-  assert.deepEqual(validateApiKeyScopes(['read', 'read', 'write']), { value: ['read', 'write'] });
-  for (const value of [null, 'read', [], ['read', 3], ['unknown']]) {
+  assert.deepEqual(validateApiKeyScopes(['read', 'read']), { value: ['read'] });
+  for (const value of [null, 'read', [], ['read', 3], ['unknown'], ['write'], ['webhooks'], ['admin']]) {
     assert.ok(validateApiKeyScopes(value).error, `expected invalid scopes: ${String(value)}`);
   }
 });

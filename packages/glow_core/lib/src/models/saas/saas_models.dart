@@ -313,8 +313,7 @@ enum InvoiceStatus {
 }
 
 enum ApiKeyScope {
-  read(
-      'read', 'Lectura', 'Consultar reservas, clientes, servicios y productos'),
+  read('read', 'Lectura', 'Consultar los servicios activos del salón'),
   write('write', 'Escritura',
       'Crear y modificar reservas, clientes, servicios y productos'),
   webhooks(
