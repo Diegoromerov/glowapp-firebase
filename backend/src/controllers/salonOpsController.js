@@ -15,6 +15,7 @@
 //     nunca del cuerpo de la petición.
 
 const { pool } = require('../config/db');
+const { getActiveClient } = require('../config/tenantRouting');
 const usageMeteringService = require('../services/usageMeteringService');
 const crypto = require('crypto');
 
@@ -46,13 +47,36 @@ function hashSolicitud(value) {
   return crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
 }
 
+// Auth middleware owns the request transaction and initializes RLS with the
+// user's legacy tenant. Salon operational tables use business_profiles.tenant_id,
+// so switch this request-local transaction to the verified salon tenant before
+// querying inventory, recipes, resources, or rentals.
+async function getSalonOperationalDb(req, db) {
+  const client = getActiveClient();
+  if (!client) return db; // Direct controller tests / explicitly injected DB.
+  if (!req.user?.id || !req.salonId) throw new Error('Falta el contexto autenticado del salón.');
+
+  await client.query("SELECT set_config('app.user_id', $1, true)", [String(req.user.id)]);
+  const { rows } = await client.query(
+    `SELECT bp.tenant_id
+       FROM salones s
+       JOIN business_profiles bp ON bp.id = s.business_profile_id
+      WHERE s.id = $1`,
+    [req.salonId]
+  );
+  if (!rows.length || !rows[0].tenant_id) throw new Error('El salón no tiene un tenant empresarial activo.');
+  await client.query("SELECT set_config('app.tenant_id', $1, true)", [String(rows[0].tenant_id)]);
+  return client;
+}
+
 function crearControladorOps(db = pool) {
   // ── Inventario ────────────────────────────────────────────────────────────
 
   /** GET /api/salon/:salonId/inventario */
   async function listarInventario(req, res) {
     try {
-      const { rows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows } = await queryDb.query(
         `SELECT i.id, i.nombre, i.categoria, i.unidad, i.stock_actual, i.stock_minimo,
                 i.costo_unitario, i.proveedor,
                 (i.stock_actual <= i.stock_minimo) AS stock_bajo,
@@ -123,10 +147,11 @@ function crearControladorOps(db = pool) {
     }
 
     try {
+      const queryDb = await getSalonOperationalDb(req, db);
       // Inquilino desde el perfil de negocio (fuente única, D-GL-027).
       // `salones.tenant_id` es legado y puede ser NULL: usarlo producía un
       // INSERT con NULL en una columna NOT NULL.
-      const { rows: perfilRows } = await db.query(
+      const { rows: perfilRows } = await queryDb.query(
         `SELECT bp.tenant_id
            FROM salones s
            JOIN business_profiles bp ON bp.id = s.business_profile_id
@@ -140,7 +165,7 @@ function crearControladorOps(db = pool) {
         });
       }
 
-      const { rows } = await db.query(
+      const { rows } = await queryDb.query(
         `INSERT INTO inventario_salon
            (tenant_id, salon_id, nombre, categoria, unidad, stock_actual, stock_minimo,
             costo_unitario, proveedor)
@@ -154,7 +179,7 @@ function crearControladorOps(db = pool) {
       );
 
       if (inicial > 0) {
-        await db.query(
+        await queryDb.query(
           `INSERT INTO inventario_movimientos
              (tenant_id, salon_id, item_id, tipo, cantidad, motivo, registrado_por)
            VALUES ($1, $2, $3, 'ENTRADA', $4, 'Stock inicial', $5)`,
@@ -207,7 +232,8 @@ function crearControladorOps(db = pool) {
     }
 
     try {
-      const { rows: itemRows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows: itemRows } = await queryDb.query(
         `SELECT id, tenant_id, stock_actual FROM inventario_salon
           WHERE id = $1 AND salon_id = $2 FOR UPDATE`,
         [req.params.itemId, req.salonId]
@@ -222,9 +248,9 @@ function crearControladorOps(db = pool) {
       const requestHash = hashSolicitud({ item_id: item.id, tipo: tipoNorm, cantidad: cant, motivo: motivo || null });
       // Serializa la misma clave incluso cuando dos reintentos apuntan a
       // insumos distintos; el bloqueo por fila solo cubriría el mismo insumo.
-      await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [key]);
+      await queryDb.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))', [key]);
       if (key) {
-        const { rows: repetido } = await db.query(
+        const { rows: repetido } = await queryDb.query(
           `SELECT id, request_hash FROM inventario_movimientos
             WHERE tenant_id = $1 AND salon_id = $2 AND idempotency_key = $3`,
           [item.tenant_id, req.salonId, key]
@@ -255,7 +281,7 @@ function crearControladorOps(db = pool) {
         });
       }
 
-      const { rows } = await db.query(
+      const { rows } = await queryDb.query(
         `UPDATE inventario_salon
             SET stock_actual = $1, actualizado_en = NOW()
           WHERE id = $2 AND salon_id = $3
@@ -263,7 +289,7 @@ function crearControladorOps(db = pool) {
         [nuevo, item.id, req.salonId]
       );
 
-      await db.query(
+      await queryDb.query(
         `INSERT INTO inventario_movimientos
            (tenant_id, salon_id, item_id, tipo, cantidad, motivo, registrado_por,
             idempotency_key, request_hash)
@@ -290,7 +316,8 @@ function crearControladorOps(db = pool) {
   /** GET /api/salon/:salonId/inventario/:itemId/movimientos */
   async function historialItem(req, res) {
     try {
-      const { rows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows } = await queryDb.query(
         `SELECT id, tipo, cantidad, motivo, registrado_por, creado_en
            FROM inventario_movimientos
           WHERE item_id = $1 AND salon_id = $2
@@ -314,7 +341,8 @@ function crearControladorOps(db = pool) {
   /** GET /api/salon/:salonId/recursos */
   async function listarRecursos(req, res) {
     try {
-      const { rows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows } = await queryDb.query(
         `SELECT r.id, r.nombre, r.tipo, r.canon_mensual, r.estado,
                 a.id AS alquiler_id, a.persona_id, a.periodo_inicio
            FROM recursos_alquilables r
@@ -464,7 +492,8 @@ function crearControladorOps(db = pool) {
     }
 
     try {
-      const { rows: recursoRows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows: recursoRows } = await queryDb.query(
         `SELECT id, tenant_id, canon_mensual, estado FROM recursos_alquilables
           WHERE id = $1 AND salon_id = $2 FOR UPDATE`,
         [recursoId, req.salonId]
@@ -483,7 +512,7 @@ function crearControladorOps(db = pool) {
 
       const canon = numero(req.body.canon_mensual ?? recurso.canon_mensual) ?? 0;
 
-      const { rows } = await db.query(
+      const { rows } = await queryDb.query(
         `INSERT INTO alquileres
            (tenant_id, salon_id, recurso_id, persona_id, canon_mensual, periodo_inicio, creado_por)
          VALUES ($1, $2, $3, $4, $5, COALESCE($6::date, CURRENT_DATE), $7)
@@ -491,7 +520,7 @@ function crearControladorOps(db = pool) {
         [recurso.tenant_id, req.salonId, recurso.id, personaIdNorm, canon, inicio || null, req.user.id]
       );
 
-      await db.query(
+      await queryDb.query(
         `UPDATE recursos_alquilables SET estado = 'OCUPADO' WHERE id = $1`,
         [recurso.id]
       );
@@ -518,7 +547,8 @@ function crearControladorOps(db = pool) {
     }
 
     try {
-      const { rows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows } = await queryDb.query(
         `UPDATE alquileres
             SET estado = 'FINALIZADO', periodo_fin = COALESCE(periodo_fin, CURRENT_DATE)
           WHERE id = $1 AND salon_id = $2 AND estado = 'ACTIVO'
@@ -526,7 +556,7 @@ function crearControladorOps(db = pool) {
         [req.params.alquilerId, req.salonId]
       );
       if (!rows.length) {
-        const { rows: existente } = await db.query(
+        const { rows: existente } = await queryDb.query(
           `SELECT id, estado FROM alquileres WHERE id = $1 AND salon_id = $2`,
           [req.params.alquilerId, req.salonId]
         );
@@ -535,7 +565,7 @@ function crearControladorOps(db = pool) {
           : res.status(404).json({ error: 'El alquiler no existe en este salón.' });
       }
 
-      await db.query(
+      await queryDb.query(
         `UPDATE recursos_alquilables SET estado = 'DISPONIBLE'
           WHERE id = $1 AND salon_id = $2`,
         [rows[0].recurso_id, req.salonId]
@@ -550,7 +580,8 @@ function crearControladorOps(db = pool) {
 
   async function listarInsumosServicio(req, res) {
     try {
-      const { rows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows } = await queryDb.query(
         `SELECT si.id, si.service_id, si.item_id, i.nombre, i.unidad, si.cantidad
            FROM salon_servicio_insumos si
            JOIN inventario_salon i ON i.id = si.item_id AND i.salon_id = si.salon_id
@@ -582,7 +613,8 @@ function crearControladorOps(db = pool) {
       vistos.add(String(item.item_id));
     }
     try {
-      const { rows: servicio } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows: servicio } = await queryDb.query(
         `SELECT sv.id FROM services sv
            JOIN salones s ON s.id = sv.salon_id
           WHERE sv.id = $1 AND sv.salon_id = $2 AND sv.is_active = TRUE
@@ -590,27 +622,27 @@ function crearControladorOps(db = pool) {
         [req.params.serviceId, req.salonId]
       );
       if (!servicio.length) return res.status(404).json({ error: 'El servicio no existe en este salón.' });
-      const { rows: perfil } = await db.query(
+      const { rows: perfil } = await queryDb.query(
         `SELECT bp.tenant_id FROM salones s JOIN business_profiles bp ON bp.id = s.business_profile_id WHERE s.id = $1`,
         [req.salonId]
       );
       if (!perfil.length) return res.status(409).json({ error: 'El salón no tiene identidad de negocio provisionada.' });
       if (items.length) {
         const ids = items.map((x) => x.item_id);
-        const { rows: válidos } = await db.query(
+        const { rows: válidos } = await queryDb.query(
           `SELECT id FROM inventario_salon
             WHERE salon_id = $1 AND tenant_id = $3 AND id = ANY($2::uuid[]) AND activo = TRUE`,
           [req.salonId, ids, perfil[0].tenant_id]
         );
         if (válidos.length !== ids.length) return res.status(400).json({ error: 'Hay insumos inexistentes o inactivos en esta sede.' });
       }
-      await db.query(
+      await queryDb.query(
         `UPDATE salon_servicio_insumos SET activo = FALSE, actualizado_en = NOW()
           WHERE salon_id = $1 AND service_id = $2 AND activo = TRUE`,
         [req.salonId, req.params.serviceId]
       );
       for (const item of items) {
-        await db.query(
+        await queryDb.query(
           `INSERT INTO salon_servicio_insumos
              (tenant_id, salon_id, service_id, item_id, cantidad, activo, creado_por, actualizado_en)
            VALUES ($1, $2, $3, $4, $5, TRUE, $6, NOW())
@@ -632,7 +664,8 @@ function crearControladorOps(db = pool) {
   async function listarAlquileres(req, res) {
     const soloMios = !puedeEscribir(req);
     try {
-      const { rows } = await db.query(
+      const queryDb = await getSalonOperationalDb(req, db);
+      const { rows } = await queryDb.query(
         `SELECT a.id, a.recurso_id, r.nombre AS recurso_nombre, r.tipo,
                 a.persona_id, a.canon_mensual, a.periodo_inicio, a.periodo_fin, a.estado
            FROM alquileres a
