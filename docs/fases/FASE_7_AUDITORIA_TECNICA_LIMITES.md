@@ -65,6 +65,8 @@
 - Se corrigieron las etiquetas públicas y el fallback Flutter: `POS_INTEGRATION` ahora se muestra como “Caja manual del salón” y `POS_RECEIPTS_ONLY` como “Caja manual con constancias internas”. Los planes y permisos de acceso no cambiaron.
 - Las rutas todavía otorgan el mismo conjunto de operaciones a ambas capacidades. No se restringió Freemium a ingresos/recibos porque la propuesta no define con precisión qué tipos y consultas quedarían permitidos; ese comportamiento requiere una decisión funcional antes de modificar acceso existente.
 
+**Publicación verificada — 26 de noviembre de 2026:** PR [#177](https://github.com/Diegoromerov/glowapp-firebase/pull/177) quedó integrada como `90cc6b8`. Backend CI `45920139354` y el workflow Flutter de verificación/build/deploy `45932800849` pasaron. Firebase Hosting live del prestador publicó el bundle; la portada y `main.dart.js` responden HTTP 200 y el bundle incluye ambos rótulos nuevos. Railway API sirve `90cc6b8`, `/api/health` devuelve `OK` y PostgreSQL está disponible. La advertencia de Node.js 20 de las acciones GitHub no afectó el resultado.
+
 ## Límites de esta revisión
 
 La evidencia combina inspección estática, CI PostgreSQL y comprobación de salud de producción. La prueba de recursos usa fixtures efímeros y no modifica producción. No se probaron rollback bajo fallos ni todos los canales. Fase 7 continúa abierta.
