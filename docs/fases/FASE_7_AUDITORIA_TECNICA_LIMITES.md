@@ -72,7 +72,14 @@
 
 - Los cambios de plan en `subscriptionService`, el callback de Wompi y rutas de administración actualizan `business_profiles.saas_plan`; la expiración de prueba además sincroniza `salones.plan_saas`. No hay una garantía general de que las dos columnas se actualicen atómicamente.
 - `requireSalonEntitlement` ya resuelve permisos desde el tenant canónico unido a la sede dentro de una transacción con identidad y contexto RLS. También se alinearon `/api/salon/my-salon` y el reintento idempotente de alta. El lookup público de fidelización prefiere el plan canónico si el perfil existe y conserva `salones.plan_saas` solo para salones antiguos aún sin perfil empresarial.
-- Las pruebas locales cubren ambos sentidos de discrepancia: Freemium canónico bloquea inventario aunque la copia diga Basic; Basic canónico permite el módulo aunque la copia diga Freemium. También comprueban el contexto RLS, la lectura del perfil, el reintento idempotente y el gate público. CI y despliegue quedan pendientes.
+- Las pruebas locales cubren ambos sentidos de discrepancia: Freemium canónico bloquea inventario aunque la copia diga Basic; Basic canónico permite el módulo aunque la copia diga Freemium. También comprueban el contexto RLS, la lectura del perfil, el reintento idempotente y el gate público.
+
+## Despliegue verificado de la fuente canónica — 27 de noviembre de 2026
+
+- PR [#179](https://github.com/Diegoromerov/glowapp-firebase/pull/179), commit de producción `9b2b52fd87da853c401381bc6fe4b4c24079d79c`, alinea los permisos de módulos con `business_profiles.saas_plan` y fija el contexto RLS en consultas de rutas autenticadas.
+- CI `45934737990` pasó sintaxis, pruebas sin infraestructura, contratos y pruebas de integración PostgreSQL/RLS, incluida la regresión de salones históricos sin perfil empresarial.
+- Railway producción desplegó el API (`d6884d22-68b1-47a5-9c8e-678d17950831`), dashboard y cron. `/api/health` respondió `OK`, confirmó el commit `9b2b52f` y PostgreSQL disponible, sin migraciones nuevas.
+- El lookup público conserva el plan heredado solo si el salón no tiene `business_profile`; si el perfil existe, usa exclusivamente el plan canónico. La autorización autenticada requiere membresía validada y contexto de usuario/tenant.
 
 ## Límites de esta revisión
 
