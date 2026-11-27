@@ -4,12 +4,17 @@ const { pool, systemPool } = require('../config/db');
 const { runAsSystem } = require('../config/tenantRouting');
 
 async function expireCompletedFreeTrials(deps = { pool, systemPool }) {
+  const tenantId = deps.tenantId ?? null;
+  if (tenantId !== null && !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(tenantId)) {
+    throw new TypeError('tenantId must be a valid UUID when provided');
+  }
   return runAsSystem(deps, async () => {
     const { rows } = await pool.query(`
       WITH eligible AS (
         SELECT bp.id, bp.saas_plan AS previous_plan, bp.saas_trial_ends_at
         FROM business_profiles bp
         WHERE bp.saas_plan IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')
+          AND ($1::uuid IS NULL OR bp.id = $1::uuid)
           AND bp.saas_trial_ends_at IS NOT NULL
           AND bp.saas_trial_ends_at <= NOW()
           AND NOT EXISTS (
@@ -51,7 +56,7 @@ async function expireCompletedFreeTrials(deps = { pool, systemPool }) {
       SELECT (SELECT COUNT(*)::integer FROM expired) AS expired_tenants,
              (SELECT COUNT(*)::integer FROM updated_salons) AS updated_salons,
              (SELECT COUNT(*)::integer FROM audit) AS audit_events;
-    `);
+    `, [tenantId]);
     return rows[0] || { expired_tenants: 0, updated_salons: 0, audit_events: 0 };
   });
 }
