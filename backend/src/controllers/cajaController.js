@@ -14,6 +14,7 @@
 //     tenga que adivinar el formato.
 
 const { pool } = require('../config/db');
+const { hasEntitlement } = require('../config/saasEntitlements');
 const crypto = require('crypto');
 
 const ROLES_QUE_VEN_TODO = new Set(['DUEÑO', 'ADMINISTRADOR', 'RECEPCIONISTA', 'MANAGER']);
@@ -62,6 +63,11 @@ function nuevaConstancia(salonId) {
   ).padStart(2, '0')}`;
   const sufijo = Math.random().toString(16).slice(2, 6).toUpperCase().padEnd(4, '0');
   return `CJ-${salonId}-${ymd}-${sufijo}`;
+}
+
+function esModoConstancias(req) {
+  const plan = req.salonPlan;
+  return hasEntitlement(plan, 'POS_RECEIPTS_ONLY') && !hasEntitlement(plan, 'POS_INTEGRATION');
 }
 
 function crearControladorCaja(db = pool) {
@@ -127,6 +133,7 @@ function crearControladorCaja(db = pool) {
         alcance: alcance.veTodo ? 'SALON' : 'PROPIO',
         mi_rol: alcance.rol,
         puede_registrar: alcance.puedeRegistrar,
+        modo_registro: esModoConstancias(req) ? 'CONSTANCIAS_INGRESO' : 'CAJA_COMPLETA',
         moneda: 'COP',
       });
     } catch (error) {
@@ -207,6 +214,14 @@ function crearControladorCaja(db = pool) {
 
     if (!TIPOS.has(tipoNorm)) {
       return res.status(400).json({ error: 'tipo debe ser INGRESO o GASTO.' });
+    }
+    if (esModoConstancias(req) && tipoNorm !== 'INGRESO') {
+      return res.status(403).json({
+        error: 'El plan Freemium permite emitir constancias internas por ingresos, pero no registrar gastos de caja.',
+        code: 'FULL_CASH_REGISTER_REQUIRED',
+        required: 'POS_INTEGRATION',
+        currentPlan: req.salonPlan,
+      });
     }
     if (!CONCEPTOS.has(conceptoNorm)) {
       return res.status(400).json({ error: 'concepto no válido.', validos: [...CONCEPTOS] });
