@@ -7,7 +7,7 @@ import 'package:glow_core/shared/theme.dart' hide AppTheme;
 import 'package:glow_core/glow_core.dart';
 
 import 'package:glow_core/widgets/wompi_payment_sheet.dart';
-import 'saas_quota_exceeded_dialog.dart';
+import '../saas/saas_quota_exceeded_dialog.dart';
 // import 'package:glow_core/shared/app_tokens.dart'; // Not exported
 
 class BookingScreen extends StatefulWidget {

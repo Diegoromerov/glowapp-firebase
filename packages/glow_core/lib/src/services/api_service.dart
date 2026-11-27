@@ -354,6 +354,8 @@ class ApiService {
       return safeJsonDecode(response.body);
     }
     var detail = 'Error $status';
+    final quotaError = parseSaasQuotaExceeded(response.body);
+    if (quotaError != null) throw quotaError;
     try {
       final data = jsonDecode(response.body);
       if (data is Map && data['error'] != null) {

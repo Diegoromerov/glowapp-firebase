@@ -106,8 +106,17 @@ describeWithPostgres('SaaS external API with PostgreSQL RLS', () => {
     const responses = await Promise.all([call(), call()]);
     expect(responses.map((response) => response.status).sort()).toEqual([200, 429]);
     const success = responses.find((response) => response.status === 200);
+    const rejected = responses.find((response) => response.status === 429);
     expect(success.body.data.map((service) => service.id)).toContain(ownServiceId);
     expect(success.body.data.some((service) => service.name === 'Other tenant private service')).toBe(false);
+    expect(rejected.body).toMatchObject({
+      code: 'SAAS_QUOTA_EXCEEDED',
+      feature: 'API_CALLS',
+      current: limit,
+      limit,
+      plan: 'PRO',
+      upgradeUrl: '/api/saas/billing/checkout',
+    });
 
     const persisted = await adminPool.query(
       `SELECT count FROM usage_metrics

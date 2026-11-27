@@ -67,5 +67,16 @@ void main() {
       expect(parseSaasQuotaExceeded('{"code":"OTHER_ERROR"}'), isNull);
       expect(parseSaasQuotaExceeded('<html>proxy</html>'), isNull);
     });
+
+    test('interpreta el cupo de asientos del equipo', () {
+      final error = parseSaasQuotaExceeded(
+        '{"code":"SAAS_QUOTA_EXCEEDED","error":"Límite de asientos alcanzado",'
+        '"feature":"TEAM_SEATS","current":3,"limit":3,"plan":"FREEMIUM"}',
+      );
+
+      expect(error?.feature, 'TEAM_SEATS');
+      expect(error?.current, 3);
+      expect(error?.limit, 3);
+    });
   });
 }

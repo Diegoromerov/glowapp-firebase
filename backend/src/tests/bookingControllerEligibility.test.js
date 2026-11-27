@@ -257,6 +257,13 @@ describe('POST /api/bookings: estado operativo del prestador', () => {
   });
 
   test('crea una reserva para una sede pública usando su horario', async () => {
+    const scheduledAt = new Date();
+    const daysUntilFriday = (5 - scheduledAt.getUTCDay() + 7) % 7;
+    scheduledAt.setUTCDate(scheduledAt.getUTCDate() + daysUntilFriday);
+    scheduledAt.setUTCHours(14, 0, 0, 0); // 9:00 a. m. en Colombia.
+    if (scheduledAt <= new Date()) {
+      scheduledAt.setUTCDate(scheduledAt.getUTCDate() + 7);
+    }
     const salonHours = {
       lunes: { open: true, start: '09:00', end: '18:00' },
       martes: { open: true, start: '09:00', end: '18:00' },
@@ -303,7 +310,7 @@ describe('POST /api/bookings: estado operativo del prestador', () => {
         provider_id: '132',
         salon_id: '17',
         service_ids: ['00000000-0000-4000-8000-000000000001'],
-        scheduled_at: '2026-11-27T14:00:00.000Z',
+        scheduled_at: scheduledAt.toISOString(),
       },
     };
     const res = {
