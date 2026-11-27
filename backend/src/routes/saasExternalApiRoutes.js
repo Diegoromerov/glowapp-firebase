@@ -34,7 +34,15 @@ router.get('/services', async (req, res) => {
 
     const limit = getLimit(key.saas_plan, 'API_CALLS');
     if (limit === 0) {
-      return res.status(429).json({ error: 'El plan alcanzó el límite mensual de integraciones', current: 0, limit });
+      return res.status(429).json({
+        error: 'El plan alcanzó el límite mensual de integraciones',
+        code: 'SAAS_QUOTA_EXCEEDED',
+        feature: 'API_CALLS',
+        current: 0,
+        limit,
+        plan: key.saas_plan,
+        upgradeUrl: '/api/saas/billing/checkout',
+      });
     }
     const { start, end } = getMonthPeriod();
     const requestedLimit = Number.parseInt(req.query.limit, 10);
@@ -65,7 +73,12 @@ router.get('/services', async (req, res) => {
       transactionOpen = false;
       return res.status(429).json({
         error: 'Se alcanzó el límite mensual de integraciones del plan',
-        current: Number(current.rows[0]?.count || 0), limit, currentPlan: key.saas_plan,
+        code: 'SAAS_QUOTA_EXCEEDED',
+        feature: 'API_CALLS',
+        current: Number(current.rows[0]?.count || 0),
+        limit,
+        plan: key.saas_plan,
+        upgradeUrl: '/api/saas/billing/checkout',
       });
     }
 
