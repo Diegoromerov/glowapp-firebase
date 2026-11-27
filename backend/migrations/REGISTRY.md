@@ -6,8 +6,12 @@ Separa la última ubicación móvil del campo de ubicación del perfil. Guarda s
 una posición vigente por prestador, con precisión y marcas de captura/recepción;
 la revocación elimina esa fila. La actualización se acepta únicamente en línea,
 con consentimiento vigente, una captura reciente y precisión de hasta 100 m.
-La migración es aditiva y el cliente no consulta estas coordenadas todavía (fase
-de integración del mapa pendiente).
+La migración es aditiva e idempotente. El mapa cliente usa estas coordenadas
+solo para clientes autenticados cuando el consentimiento sigue activo y la
+posición tiene menos de cinco minutos; de lo contrario vuelve a la ubicación
+registrada del perfil. `app_rls_user` solo puede ver y modificar la fila cuyo
+`provider_id` coincide con `app.user_id`; el directorio y la retención usan
+`app_system`.
 
 **Un prefijo numérico = una migración.** El prefijo es el único contrato de orden
 entre migraciones independientes, y por eso está custodiado por el guard
