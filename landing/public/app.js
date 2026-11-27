@@ -25,6 +25,13 @@
     document.body.classList.toggle('static-landing', !showVideo);
   }
 
+  function storageMediaUrl(path) {
+    const url = new URL(`https://firebasestorage.googleapis.com/v0/b/${encodeURIComponent(config.firebase.storageBucket)}/o/${encodeURIComponent(path)}`);
+    url.searchParams.set('alt', 'media');
+    url.searchParams.set('key', config.firebase.apiKey);
+    return url.toString();
+  }
+
   function renderLandingButtons(buttons = []) {
     const nav = document.querySelector('#static-buttons');
     nav.replaceChildren();
@@ -47,22 +54,51 @@
     const firebase = config?.firebase;
     const videoPath = config?.videoLanding?.introPath;
     if (!firebase?.apiKey || !firebase?.storageBucket || !videoPath) { showLanding('static'); return; }
-    const mediaUrl = new URL(`https://firebasestorage.googleapis.com/v0/b/${encodeURIComponent(firebase.storageBucket)}/o/${encodeURIComponent(videoPath)}`);
-    mediaUrl.searchParams.set('alt', 'media');
-    mediaUrl.searchParams.set('key', firebase.apiKey);
-    introVideo.addEventListener('error', () => {
-      console.warn('[landing] El navegador no pudo cargar el intro de Storage.');
-      showLanding('static');
-    }, { once: true });
-    introVideo.src = mediaUrl.toString();
+    intro.dataset.videoMode = 'intro';
+    introVideo.muted = true;
+    introVideo.defaultMuted = true;
+    introVideo.loop = true;
+    introVideo.src = storageMediaUrl(videoPath);
     showLanding('video');
     introVideo.play().catch(() => {
-      document.querySelector('#intro-hint').textContent = 'Interactivo · toca para reproducir';
+      document.querySelector('#start-interactive').textContent = 'Interactivo · toca para reproducir';
+    });
+  }
+
+  function startInteractiveVideo() {
+    const firebase = config?.firebase;
+    const videoPath = config?.videoLanding?.transitionPath;
+    if (!firebase?.apiKey || !firebase?.storageBucket || !videoPath) {
+      document.querySelector('#start-interactive').textContent = 'Video interactivo no disponible';
+      return;
+    }
+    intro.dataset.videoMode = 'transition';
+    intro.classList.add('is-transition');
+    intro.setAttribute('aria-label', 'Video interactivo de GlowApp');
+    introVideo.pause();
+    introVideo.muted = false;
+    introVideo.defaultMuted = false;
+    introVideo.loop = false;
+    introVideo.src = storageMediaUrl(videoPath);
+    introVideo.load();
+    introVideo.play().catch(() => {
+      if (intro.dataset.videoMode !== 'transition') return;
+      intro.dataset.videoMode = 'intro';
+      intro.classList.remove('is-transition');
+      intro.setAttribute('aria-label', 'Introducción de GlowApp');
+      introVideo.muted = true;
+      introVideo.defaultMuted = true;
+      introVideo.loop = true;
+      introVideo.src = storageMediaUrl(config.videoLanding.introPath);
+      introVideo.play().catch(() => {});
+      document.querySelector('#start-interactive').textContent = 'Interactivo · toca para reproducir con sonido';
     });
   }
 
   function enterStaticLanding() {
     introVideo.pause();
+    intro.classList.remove('is-transition');
+    intro.dataset.videoMode = 'static';
     showLanding('static');
   }
 
@@ -111,12 +147,14 @@
       const button = event.target.closest('[data-button]');
       if (button) activateButton(button.dataset.button);
     });
+    document.querySelector('#start-interactive').addEventListener('click', startInteractiveVideo);
     document.querySelector('#skip-intro').addEventListener('click', enterStaticLanding);
-    intro.addEventListener('click', event => {
-      if (event.target.closest('#skip-intro, .landing-brand')) return;
-      if (introVideo.paused) {
-        introVideo.play().then(() => { document.querySelector('#intro-hint').textContent = 'Interactivo'; }).catch(() => {});
-      } else enterStaticLanding();
+    introVideo.addEventListener('ended', () => {
+      if (intro.dataset.videoMode === 'transition') enterStaticLanding();
+    });
+    introVideo.addEventListener('error', () => {
+      console.warn(`[landing] No se pudo cargar el video ${intro.dataset.videoMode === 'transition' ? 'interactivo' : 'intro'}.`);
+      enterStaticLanding();
     });
     document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     form.contactType.addEventListener('change', updateContact);

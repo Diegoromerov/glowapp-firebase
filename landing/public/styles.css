@@ -6,6 +6,8 @@ body.video-landing{min-height:100vh;overflow:hidden;background:#171018;color:#ff
 .video-state::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#160f1b88,transparent 35%,#160f1b44 65%,#160f1bcc);pointer-events:none}
 .intro-overlay{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding:28px clamp(22px,6vw,88px)}
 .intro-hint{position:absolute;left:clamp(22px,6vw,88px);bottom:clamp(22px,4vh,48px);margin:0;padding:12px 19px;border:1px solid #ffffffaa;border-radius:999px;background:#251a285c;color:#fff;font-size:14px;backdrop-filter:blur(10px);animation:hint-pulse 2s ease-in-out infinite}
+.intro-hint{cursor:pointer}
+.intro-hint:hover,.intro-hint:focus-visible{background:#ffffff32;outline:2px solid #fff;outline-offset:3px}
 .skip-btn{position:absolute;right:clamp(22px,6vw,88px);bottom:clamp(22px,4vh,48px);border:1px solid #ffffff99;border-radius:999px;padding:10px 17px;background:#251a285c;color:#fff;cursor:pointer;backdrop-filter:blur(10px)}
 .skip-btn:hover,.skip-btn:focus-visible{background:#ffffff32;outline:2px solid #fff;outline-offset:3px}
 .static-landing{min-height:100vh;background:radial-gradient(ellipse at 80% 0,#f5dce5 0,transparent 42%),var(--cream)}
@@ -19,6 +21,7 @@ body.video-landing{min-height:100vh;overflow:hidden;background:#171018;color:#ff
 @media(max-width:650px){.static-fallback{padding:22px 22px 34px}.static-copy{margin:auto 0 28px;padding-top:72px}.static-copy h1{letter-spacing:-1px}.static-buttons{grid-template-columns:1fr}.static-buttons .audience{min-height:60px}.intro-hint{left:20px;bottom:20px;font-size:13px}.skip-btn{right:20px;bottom:20px}}
 @media(prefers-reduced-motion:reduce){.intro-hint{animation:none}}
 .static-fallback[hidden],.video-state[hidden]{display:none}
+.video-state.is-transition .intro-overlay{display:none}
 .landing-brand{position:absolute;top:clamp(18px,3vh,30px);left:clamp(18px,4vw,48px);z-index:2;width:clamp(120px,14vw,200px);padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
 .landing-logo{display:block;width:100%;height:auto}
 .intro-slogan{position:absolute;z-index:2;left:calc(50vw + max(17.5vw,31.1111vh));top:calc(max(31.4844vw,55.972vh) - max(3vw,8vh));width:max(32.03125vw,56.9444vh);color:#383838;pointer-events:none}
