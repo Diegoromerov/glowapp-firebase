@@ -37,25 +37,44 @@ describeWithPostgres('Aura business quota with PostgreSQL RLS', () => {
        VALUES ($1, $2, $3, 'Aura quota test salon', $1, 'FREE_TRIAL_LEGACY')`,
       [profileId, userId, verticalId]
     );
-    await adminPool.query(
-      `INSERT INTO memberships (id, user_id, business_profile_id, role, status, accepted_at, created_by_user_id)
-       VALUES ($1, $2, $3, 'OWNER', 'ACTIVE', NOW(), $2)`,
-      [crypto.randomUUID(), userId, profileId]
-    );
+    const membershipClient = await adminPool.connect();
+    try {
+      await membershipClient.query('BEGIN');
+      await membershipClient.query("SELECT set_config('app.user_id', $1, true)", [String(userId)]);
+      await membershipClient.query("SELECT set_config('app.business_profile_id', $1, true)", [profileId]);
+      await membershipClient.query(
+        `INSERT INTO memberships (id, user_id, business_profile_id, role, status, accepted_at, created_by_user_id)
+         VALUES ($1, $2, $3, 'OWNER', 'ACTIVE', NOW(), $2)`,
+        [crypto.randomUUID(), userId, profileId]
+      );
+      await membershipClient.query('COMMIT');
+    } catch (error) {
+      await membershipClient.query('ROLLBACK');
+      throw error;
+    } finally {
+      membershipClient.release();
+    }
   });
 
   afterAll(async () => {
     if (adminPool) {
-      if (profileId) {
-        await adminPool.query(
-          `DELETE FROM usage_metrics WHERE tenant_id = $1 AND feature = 'AURA_QUERIES'`,
-          [profileId]
-        );
-        await adminPool.query('DELETE FROM memberships WHERE business_profile_id = $1', [profileId]);
-        await adminPool.query('DELETE FROM business_profiles WHERE id = $1', [profileId]);
+      // La regla de producción exige conservar las membresías y retirarlas por
+      // estado; el test usa una BD efímera y el teardown debe borrar sus fixtures.
+      await adminPool.query('ALTER TABLE public.memberships DISABLE TRIGGER trg_prevent_unsafe_membership_change');
+      try {
+        if (profileId) {
+          await adminPool.query(
+            `DELETE FROM usage_metrics WHERE tenant_id = $1 AND feature = 'AURA_QUERIES'`,
+            [profileId]
+          );
+          await adminPool.query('DELETE FROM memberships WHERE business_profile_id = $1', [profileId]);
+          await adminPool.query('DELETE FROM business_profiles WHERE id = $1', [profileId]);
+        }
+        if (userId) await adminPool.query('DELETE FROM usuarios WHERE id = $1', [userId]);
+        if (verticalId) await adminPool.query('DELETE FROM business_verticals WHERE id = $1', [verticalId]);
+      } finally {
+        await adminPool.query('ALTER TABLE public.memberships ENABLE TRIGGER trg_prevent_unsafe_membership_change');
       }
-      if (userId) await adminPool.query('DELETE FROM usuarios WHERE id = $1', [userId]);
-      if (verticalId) await adminPool.query('DELETE FROM business_verticals WHERE id = $1', [verticalId]);
       await appPool.end();
       await adminPool.end();
     }
