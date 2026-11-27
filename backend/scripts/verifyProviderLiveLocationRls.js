@@ -111,7 +111,9 @@ async function main() {
     // operativo confiable consulta el directorio sin identidad de proveedor.
     await client.query("SELECT set_config('app.user_id', '', true)");
     const systemRead = await client.query('SELECT provider_id FROM provider_live_locations ORDER BY provider_id');
-    if (systemRead.rowCount !== 2) throw new Error('app_system no pudo leer el directorio cross-tenant.');
+    if (systemRead.rowCount !== 1 || Number(systemRead.rows[0].provider_id) !== providerB) {
+      throw new Error('app_system no pudo leer la ubicación cross-tenant restante.');
+    }
 
     const systemDelete = await client.query(
       'DELETE FROM provider_live_locations WHERE provider_id = $1 RETURNING provider_id',
