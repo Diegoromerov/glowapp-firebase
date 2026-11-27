@@ -9,6 +9,9 @@ jest.mock('../config/database', () => ({
 jest.mock('../config/tenantRouting', () => ({
   runAsSystem: jest.fn(),
 }));
+jest.mock('../services/saasDirectBookingQuota', () => ({
+  reserveDirectBookingQuota: jest.fn(),
+}));
 jest.mock('../models', () => ({
   Booking: { create: jest.fn() },
   Service: { findAll: jest.fn() },
@@ -19,6 +22,7 @@ jest.mock('../models', () => ({
 const { pool } = require('../config/db');
 const { sequelize } = require('../config/database');
 const { runAsSystem } = require('../config/tenantRouting');
+const { reserveDirectBookingQuota } = require('../services/saasDirectBookingQuota');
 const { Booking, Service } = require('../models');
 const { createBooking } = require('../controllers/bookingController');
 const { getProviderSlots } = require('../controllers/providerController');
@@ -41,6 +45,66 @@ describe('POST /api/bookings: estado operativo del prestador', () => {
     });
     Service.findAll.mockResolvedValue([]);
   });
+
+  function configureDirectBooking({ duplicateId = null } = {}) {
+    const profileId = 'profile-direct-quota-test';
+    const serviceIds = [
+      '00000000-0000-4000-8000-000000000011',
+      '00000000-0000-4000-8000-000000000012',
+    ];
+    const future = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+    future.setUTCHours(15, 0, 0, 0); // 10:00 a. m. en Bogotá.
+    const salonHours = Object.fromEntries(
+      ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
+        .map((day) => [day, { open: true, start: '06:00', end: '20:00' }])
+    );
+    let duplicateLookups = 0;
+
+    sequelize.query.mockImplementation(async (sql) => {
+      if (sql.includes('SELECT u.is_active, u.estado_operativo')) return [{
+        is_active: true, estado_operativo: 'HABILITADO', estatus_verificacion: 'APROBADO',
+      }];
+      if (sql.includes('information_schema.columns')) return [];
+      if (sql.includes('SELECT responsable_iva, tarifa_iva')) return [{ responsable_iva: false, tarifa_iva: null }];
+      if (sql.includes('SELECT s.id, s.business_profile_id')) return [{ id: 17, business_profile_id: profileId }];
+      if (sql.includes('SELECT candidate.id FROM bookings candidate')) {
+        duplicateLookups += 1;
+        return duplicateId && duplicateLookups === 1 ? [{ id: duplicateId }] : [];
+      }
+      if (sql.includes('SELECT p.active_start_hour')) return [{
+        active_start_hour: 6,
+        active_end_hour: 20,
+        weekly_schedule: null,
+        horario_atencion: salonHours,
+      }];
+      if (sql.includes('SELECT b.scheduled_at')) return [];
+      return [];
+    });
+    Service.findAll.mockResolvedValue(serviceIds.map((id, index) => ({
+      id,
+      provider_id: 132,
+      business_profile_id: profileId,
+      salon_id: 17,
+      price: index === 0 ? '100000' : '50000',
+      duration_minutes: 30,
+    })));
+    Booking.create.mockImplementation(async (booking) => ({ id: booking.id, ...booking }));
+    pool.query.mockResolvedValue({ rows: [] });
+
+    return {
+      serviceIds,
+      request: {
+        appAudience: 'provider',
+        user: { id: 132, tenant_id: 1 },
+        body: {
+          provider_id: '132',
+          salon_id: '17',
+          service_ids: serviceIds,
+          scheduled_at: future.toISOString(),
+        },
+      },
+    };
+  }
 
   test('rechaza antes de insertar la cita cuando el prestador está en Exploración', async () => {
     const req = {
@@ -258,6 +322,59 @@ describe('POST /api/bookings: estado operativo del prestador', () => {
       salon_id: 17,
       estado: 'PENDIENTE_PAGO',
     }), expect.anything());
+    expect(reserveDirectBookingQuota).not.toHaveBeenCalled();
+  });
+
+  test('una reserva directa agrupada crea cada servicio, pero consume una sola unidad de cuota', async () => {
+    const { request, serviceIds } = configureDirectBooking();
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn().mockReturnThis() };
+
+    await createBooking(request, res);
+
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ success: true, bookings: expect.any(Array) }));
+    expect(Booking.create).toHaveBeenCalledTimes(2);
+    expect(Booking.create.mock.calls[0][0].productos_adicionales).toMatchObject({
+      is_primary: true, group_position: 0,
+    });
+    expect(Booking.create.mock.calls[1][0].productos_adicionales).toMatchObject({
+      is_primary: false, group_position: 1,
+    });
+    expect(Booking.create.mock.calls.map(([booking]) => booking.productos_adicionales.primary_booking_id))
+      .toEqual([Booking.create.mock.calls[0][0].id, Booking.create.mock.calls[0][0].id]);
+    expect(Booking.create.mock.calls.map(([booking]) => booking.service_id)).toEqual(serviceIds);
+    expect(reserveDirectBookingQuota).toHaveBeenCalledTimes(1);
+    expect(reserveDirectBookingQuota).toHaveBeenCalledWith(expect.objectContaining({ tenantId: 'profile-direct-quota-test', delta: 1 }));
+  });
+
+  test('un doble toque idempotente devuelve la cita existente sin reservar cuota ni crear otra', async () => {
+    const { request } = configureDirectBooking({ duplicateId: 'existing-primary-booking' });
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn().mockReturnThis() };
+
+    await createBooking(request, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      success: true,
+      booking_id: 'existing-primary-booking',
+      idempotente: true,
+    });
+    expect(reserveDirectBookingQuota).not.toHaveBeenCalled();
+    expect(Booking.create).not.toHaveBeenCalled();
+  });
+
+  test('si la cuota directa se agotó, responde 429 y no persiste citas', async () => {
+    const { request } = configureDirectBooking();
+    reserveDirectBookingQuota.mockRejectedValueOnce(Object.assign(new Error('quota exceeded'), {
+      code: 'SAAS_QUOTA_EXCEEDED', feature: 'DIRECT_BOOKINGS', current: 30, limit: 30, plan: 'FREEMIUM',
+    }));
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn().mockReturnThis() };
+
+    await createBooking(request, res);
+
+    expect(res.status).toHaveBeenCalledWith(429);
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({
+      code: 'SAAS_QUOTA_EXCEEDED', current: 30, limit: 30, currentPlan: 'FREEMIUM',
+    }));
+    expect(Booking.create).not.toHaveBeenCalled();
   });
 
   test('usa el horario comercial del salón aunque el usuario no tenga perfil_prestador', async () => {

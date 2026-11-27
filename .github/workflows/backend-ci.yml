@@ -99,6 +99,11 @@ jobs:
           JWT_SECRET: phase1-test-secret
         run: npx jest src/tests/saasBootstrapRoutes.test.js --runInBand --forceExit --verbose
 
+      - name: Cuota de reservas directas y reservas agrupadas
+        env:
+          JWT_SECRET: fase7-booking-quota-test-secret
+        run: npx jest src/tests/bookingControllerEligibility.test.js --runInBand --forceExit --verbose
+
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
           # trust auth: sin password en la URL
