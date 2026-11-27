@@ -64,7 +64,7 @@ function toPayload(row) {
   return {
     id: row.business_profile_id,
     name: row.name,
-    plan: row.saas_plan || 'FREE_TRIAL',
+    plan: row.saas_plan || 'FREEMIUM',
     trialStartedAt: row.saas_trial_started_at || null,
     trialEndsAt: row.saas_trial_ends_at || null,
     role: row.role,

@@ -644,7 +644,7 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
             s.direccion,
             s.ciudad,
             CASE WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')
-                 ELSE COALESCE(s.plan_saas, 'FREE_TRIAL') END AS plan_saas,
+                 ELSE COALESCE(s.plan_saas, 'FREEMIUM') END AS plan_saas,
             (SELECT COUNT(*) FROM memberships m
              WHERE m.business_profile_id = s.business_profile_id AND m.status = 'ACTIVE') as total_profesionales,
             (SELECT COUNT(*) FROM bookings b WHERE b.provider_id IN (

@@ -50,7 +50,7 @@ function evaluarElegibilidadReserva(prestador) {
 
 function salonVisibleEnMarketplace(salon) {
   if (!salon || salon.location_enabled !== true || salon.location_public !== true) return false;
-  const plan = String(salon.plan_saas || 'FREE_TRIAL').trim().toUpperCase();
+  const plan = String(salon.plan_saas || 'FREEMIUM').trim().toUpperCase();
   return hasEntitlement(plan, SAAS_CAPABILITIES.MAP_VISIBILITY);
 }
 

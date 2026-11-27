@@ -60,7 +60,7 @@ exports.getMySalon = async (req, res) => {
       });
     }
 
-    const plan = salon.plan_saas || 'FREE_TRIAL';
+    const plan = salon.plan_saas || 'FREEMIUM';
     const activeEntitlements = PLAN_ENTITLEMENTS[plan.toUpperCase()] || [];
 
     // E-02b (D-GL-027): el equipo se lee de `memberships`, no de la tabla
@@ -169,7 +169,7 @@ exports.createSalon = async (req, res) => {
         salonId: salon.id,
         ownerUserId: ownerId,
         name: salon.nombre_salon,
-        plan: salon.plan_saas || 'FREE_TRIAL',
+        plan: salon.plan_saas || 'FREEMIUM',
       });
       if (!identity.provisioned) {
         throw new Error(`No se pudo provisionar identidad SaaS: ${identity.reason}`);
@@ -271,12 +271,12 @@ exports.inviteMember = async (req, res) => {
       return rows;
     });
     if (!salonRows[0]) return res.status(409).json({ error: 'El salón no está vinculado a un perfil SaaS.' });
-    if (!hasEntitlement(salonRows[0].saas_plan || 'FREE_TRIAL', SAAS_CAPABILITIES.TEAM_MANAGEMENT)) {
-      return res.status(403).json({ error: 'El plan actual no incluye gestión de equipo.', currentPlan: salonRows[0].saas_plan || 'FREE_TRIAL' });
+    if (!hasEntitlement(salonRows[0].saas_plan || 'FREEMIUM', SAAS_CAPABILITIES.TEAM_MANAGEMENT)) {
+      return res.status(403).json({ error: 'El plan actual no incluye gestión de equipo.', currentPlan: salonRows[0].saas_plan || 'FREEMIUM' });
     }
     const saasRole = ({ ADMINISTRADOR: 'ADMIN', RECEPCIONISTA: 'MANAGER', PRESTADOR_INDEPENDIENTE: 'MEMBER', EMPLEADO: 'MEMBER' })[cleanSubRol];
     const result = await saasMembershipService.invite({ tenantId: salonRows[0].business_profile_id, tenantName: salonRows[0].name,
-      plan: salonRows[0].saas_plan || 'FREE_TRIAL', actorId: inviterId, email: cleanEmail, role: saasRole, subRole: cleanSubRol });
+      plan: salonRows[0].saas_plan || 'FREEMIUM', actorId: inviterId, email: cleanEmail, role: saasRole, subRole: cleanSubRol });
     return res.status(result.emailSent ? 201 : 202).json({ success: true,
       message: result.emailSent ? `Invitación enviada a ${cleanEmail}.` : `Invitación creada para ${cleanEmail}, pero no se confirmó el envío del correo.`,
       invitation_id: result.membershipId, email_sent: result.emailSent });

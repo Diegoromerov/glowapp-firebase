@@ -350,7 +350,7 @@ async function acceptLegacySalonInvitation({ token, user }) {
       const error = new Error('El rol de la invitación ya no es válido. Solicita una nueva invitación.'); error.status = 409; throw error;
     }
 
-    const plan = invitation.saas_plan || 'FREE_TRIAL';
+    const plan = invitation.saas_plan || 'FREEMIUM';
     if (!hasEntitlement(plan, 'TEAM_MANAGEMENT')) {
       const error = new Error('El plan actual no permite activar nuevos miembros del equipo.');
       error.status = 403;
