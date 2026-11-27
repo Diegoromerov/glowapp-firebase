@@ -41,7 +41,6 @@ async function expireCompletedFreeTrials(deps = { pool, systemPool }) {
         SET plan_saas = 'FREEMIUM', updated_at = NOW()
         FROM expired e
         WHERE s.business_profile_id = e.id
-          AND s.plan_saas IN ('FREE_TRIAL', 'FREE_TRIAL_LEGACY')
         RETURNING s.id, s.business_profile_id
       ), audit AS (
         INSERT INTO audit_logs (actor_id, action, target_type, target_id, metadata)

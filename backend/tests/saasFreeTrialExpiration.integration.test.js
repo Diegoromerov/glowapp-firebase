@@ -81,29 +81,34 @@ describeWithPostgres('SaaS free trial expiration on PostgreSQL', () => {
   test('expires eligible trials, preserves paid and future tenants, and is idempotent', async () => {
     const expired = await createTenant({ plan: 'FREE_TRIAL', endsAt: new Date(Date.now() - 86400000) });
     const legacy = await createTenant({ plan: 'FREE_TRIAL_LEGACY', endsAt: new Date(Date.now() - 86400000) });
+    const staleLegacyCopy = await createTenant({
+      plan: 'FREE_TRIAL', endsAt: new Date(Date.now() - 86400000), salonPlan: 'BASIC',
+    });
     const paid = await createTenant({ plan: 'FREE_TRIAL', endsAt: new Date(Date.now() - 86400000), paid: true });
     const future = await createTenant({ plan: 'FREE_TRIAL', endsAt: new Date(Date.now() + 86400000) });
 
     const result = await expireCompletedFreeTrials({ pool: appPool });
-    expect(result).toEqual({ expired_tenants: 2, updated_salons: 2, audit_events: 2 });
+    expect(result).toEqual({ expired_tenants: 3, updated_salons: 3, audit_events: 3 });
 
     const states = await adminPool.query(
       'SELECT id, saas_plan FROM business_profiles WHERE id = ANY($1::text[])',
-      [[expired, legacy, paid, future]]
+      [[expired, legacy, staleLegacyCopy, paid, future]]
     );
     const byId = new Map(states.rows.map((row) => [row.id, row.saas_plan]));
     expect(byId.get(expired)).toBe('FREEMIUM');
     expect(byId.get(legacy)).toBe('FREEMIUM');
+    expect(byId.get(staleLegacyCopy)).toBe('FREEMIUM');
     expect(byId.get(paid)).toBe('FREE_TRIAL');
     expect(byId.get(future)).toBe('FREE_TRIAL');
 
     const salonStates = await adminPool.query(
       'SELECT business_profile_id, plan_saas FROM salones WHERE business_profile_id = ANY($1::text[])',
-      [[expired, legacy, paid, future]]
+      [[expired, legacy, staleLegacyCopy, paid, future]]
     );
     const salonByProfile = new Map(salonStates.rows.map((row) => [row.business_profile_id, row.plan_saas]));
     expect(salonByProfile.get(expired)).toBe('FREEMIUM');
     expect(salonByProfile.get(legacy)).toBe('FREEMIUM');
+    expect(salonByProfile.get(staleLegacyCopy)).toBe('FREEMIUM');
     expect(salonByProfile.get(paid)).toBe('FREE_TRIAL');
     expect(salonByProfile.get(future)).toBe('FREE_TRIAL');
 
@@ -111,9 +116,9 @@ describeWithPostgres('SaaS free trial expiration on PostgreSQL', () => {
     expect(secondRun).toEqual({ expired_tenants: 0, updated_salons: 0, audit_events: 0 });
     const audits = await adminPool.query(
       "SELECT COUNT(*)::int AS count FROM audit_logs WHERE action = 'saas_free_trial_expired' AND target_id = ANY($1::text[])",
-      [[expired, legacy, paid, future]]
+      [[expired, legacy, staleLegacyCopy, paid, future]]
     );
-    expect(audits.rows[0].count).toBe(2);
+    expect(audits.rows[0].count).toBe(3);
   }, 30000);
 
   test('targeted execution expires only the requested tenant', async () => {

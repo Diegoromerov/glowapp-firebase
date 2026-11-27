@@ -190,3 +190,9 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 - Railway producción desplegó API, panel y ciclo de prueba con estado `SUCCESS`; sin trabajo pendiente. Health reportó `OK`, PostgreSQL disponible, sin datos ficticios y commit `b1742ed`.
 - Verificación autenticada de solo lectura en el salón QA 17: `/api/v1/business/summary` HTTP 200, `success=true`; `/api/v1/business/tasks` HTTP 200, 0 tareas. Esto confirma que un GET con lista vacía no intenta insertar tareas ni recibe rechazo de RLS. No se crearon ni modificaron tareas QA.
 - La suite local `businessSystem.integration.test.js` no fue concluyente por limitación del arnés `pg-mem` en `saasContext` (consulta de membresías no soportada), que devolvió 503 antes de llegar a las rutas. CI con PostgreSQL real y la consulta autenticada productiva aportan la evidencia de aceptación.
+
+## Sincronización de sedes al vencer la prueba — 27 de noviembre de 2026
+
+- Revisión estática del job encontró que `updated_salons` solo cambiaba sedes cuyo `salones.plan_saas` aún figuraba como `FREE_TRIAL`/`FREE_TRIAL_LEGACY`. Si la copia heredada decía `BASIC` mientras el plan canónico del perfil era una prueba vencida, el perfil bajaba a Freemium pero la sede quedaba con el valor viejo.
+- Se retiró el filtro: una vez que el perfil califica para expirar (y no tiene suscripción pagada activa), todas sus sedes se sincronizan a Freemium. El cálculo de elegibilidad y el bloqueo de tenants pagados no cambian.
+- Se amplió `saasFreeTrialExpiration.integration.test.js` con una sede cuyo plan heredado es `BASIC`; debe quedar en Freemium junto con el perfil, sin afectar planes pagados o pruebas futuras. La validación local pasó la prueba de formato/ID, pero omitió las pruebas PostgreSQL porque esta estación no tiene `DATABASE_URL_ADMIN`/`DATABASE_URL` configuradas. Integración CI y despliegue productivo quedan pendientes.
