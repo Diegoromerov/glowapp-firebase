@@ -461,15 +461,28 @@ async function setStatus({ tenantId, memberId, actorId, status, plan }) {
       throw error;
     }
     if (nextStatus === 'ACTIVE' && target.status === 'SUSPENDED') {
+      const { rows: planRows } = await client.query(
+        'SELECT saas_plan FROM business_profiles WHERE id = $1', [tenantId]
+      );
+      if (!planRows.length) {
+        const error = new Error('No se encontró el plan vigente del negocio.'); error.status = 404; throw error;
+      }
+      const currentPlan = String(planRows[0].saas_plan || 'FREEMIUM').toUpperCase();
+      if (!hasEntitlement(currentPlan, 'TEAM_MANAGEMENT')) {
+        const error = new Error('El plan actual no permite reactivar miembros del equipo.');
+        error.status = 403;
+        error.details = { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan };
+        throw error;
+      }
       const { rows: countRows } = await client.query(
         `SELECT COUNT(*)::int AS count FROM memberships WHERE business_profile_id = $1 AND status IN ('ACTIVE','PENDING','INVITED')`, [tenantId]
       );
-      const maxSeats = usageMeteringService.getLimit(plan, 'TEAM_SEATS');
+      const maxSeats = usageMeteringService.getLimit(currentPlan, 'TEAM_SEATS');
       if (maxSeats !== null && countRows[0].count >= maxSeats) {
         throw seatLimitError(
           countRows[0].count,
           maxSeats,
-          plan,
+          currentPlan,
           'Límite de asientos alcanzado para reactivar al miembro',
         );
       }
