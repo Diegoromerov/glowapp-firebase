@@ -92,6 +92,21 @@ describe('usageMeteringService', () => {
     });
   });
 
+  describe('getSiteCount', () => {
+    test('cuenta sedes vinculadas al perfil SaaS', async () => {
+      pool.query.mockResolvedValueOnce({ rows: [{ count: 2 }] });
+
+      await expect(usageMeteringService.getSiteCount('tenant-123')).resolves.toBe(2);
+      expect(pool.query).toHaveBeenCalledWith(expect.stringContaining('business_profile_id = $1'), ['tenant-123']);
+    });
+
+    test('devuelve cero cuando el tenant no tiene sedes visibles', async () => {
+      pool.query.mockResolvedValueOnce({ rows: [{ count: 0 }] });
+
+      await expect(usageMeteringService.getSiteCount('tenant-empty')).resolves.toBe(0);
+    });
+  });
+
   describe('hasFeature', () => {
     test('feature habilitada (1) → true', () => {
       expect(usageMeteringService.hasFeature('PRO', 'ADVANCED_ANALYTICS')).toBe(true);
