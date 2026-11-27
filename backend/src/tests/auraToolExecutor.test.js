@@ -287,4 +287,22 @@ describe('get_provider_financial_metrics · enum estado_cita', () => {
     expect(result.ingreso_neto_prestador).toBe(336000);
   });
 });
+
+describe('get_salon_operational_summary · plan SaaS canónico', () => {
+  test('prefiere business_profiles.saas_plan frente a una copia heredada de la sede', async () => {
+    dbPool.pool.query.mockResolvedValue({ rows: [{
+      id: 17, nombre_salon: 'Salón QA', direccion: 'Bogotá', ciudad: 'Bogotá',
+      plan_saas: 'FREEMIUM', total_profesionales: 1, total_citas_mes: 0,
+    }] });
+
+    const result = await executeAuraTool('get_salon_operational_summary', {}, 17, 'provider');
+
+    expect(result.status).toBe('success');
+    expect(result.salon.plan).toBe('FREEMIUM');
+    const [sql] = dbPool.pool.query.mock.calls[0];
+    expect(sql).toContain('LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id');
+    expect(sql).toContain("CASE WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')");
+    expect(sql).toContain("ELSE COALESCE(s.plan_saas, 'FREE_TRIAL') END AS plan_saas");
+  });
+});
 });

@@ -617,7 +617,8 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
             s.nombre_salon,
             s.direccion,
             s.ciudad,
-            s.plan_saas,
+            CASE WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')
+                 ELSE COALESCE(s.plan_saas, 'FREE_TRIAL') END AS plan_saas,
             (SELECT COUNT(*) FROM memberships m
              WHERE m.business_profile_id = s.business_profile_id AND m.status = 'ACTIVE') as total_profesionales,
             (SELECT COUNT(*) FROM bookings b WHERE b.provider_id IN (
@@ -625,6 +626,7 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
                 WHERE m2.business_profile_id = s.business_profile_id AND m2.status = 'ACTIVE'
              ) AND b.scheduled_at >= DATE_TRUNC('month', CURRENT_DATE)) as total_citas_mes
           FROM salones s
+          LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
           WHERE s.id_dueno = $1
           LIMIT 1;
         `;

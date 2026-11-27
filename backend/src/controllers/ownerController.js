@@ -12,13 +12,17 @@ exports.getOwnerSalones = async (req, res) => {
     }
 
     const salonesRes = await pool.query(
-      `SELECT s.id, s.nombre_salon, s.nit, s.direccion, s.telefono, s.ciudad, s.plan_saas, s.id_dueno,
+      `SELECT s.id, s.nombre_salon, s.nit, s.direccion, s.telefono, s.ciudad,
+              CASE WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')
+                   ELSE COALESCE(s.plan_saas, 'FREE_TRIAL') END AS plan_saas,
+              s.id_dueno,
               s.latitude, s.longitude, s.location_enabled, s.location_public,
               COUNT(DISTINCT m.user_id) FILTER (WHERE m.status = 'ACTIVE') AS total_colaboradores
          FROM salones s
+    LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
     LEFT JOIN memberships m ON m.business_profile_id = s.business_profile_id
         WHERE s.id = ANY($1::int[])
-     GROUP BY s.id
+     GROUP BY s.id, bp.id, bp.saas_plan
      ORDER BY s.id ASC`,
       [ownedIds]
     );
