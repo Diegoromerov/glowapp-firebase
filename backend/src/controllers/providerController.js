@@ -144,7 +144,10 @@ exports.getProviders = async (req, res) => {
             AND s.ubicacion IS NOT NULL
             AND s.location_enabled = true
             AND s.location_public = true
-            AND UPPER(COALESCE(bp.saas_plan, s.plan_saas, 'FREEMIUM')) = ANY($4)
+            AND UPPER(CASE
+              WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')
+              ELSE COALESCE(s.plan_saas, 'FREEMIUM')
+            END) = ANY($4)
             AND ST_DWithin(
               s.ubicacion,
               ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography,
@@ -379,7 +382,10 @@ exports.getProviderById = async (req, res) => {
            AND s.location_enabled = true
            AND s.location_public = true
            AND COALESCE(u.visibilidad_suspendida, false) = false
-           AND UPPER(COALESCE(bp.saas_plan, s.plan_saas, 'FREEMIUM')) = ANY($2)
+           AND UPPER(CASE
+             WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')
+             ELSE COALESCE(s.plan_saas, 'FREEMIUM')
+           END) = ANY($2)
          LIMIT 1`, [salonId, eligiblePlans]);
       if (!salonRes.rows.length) return res.status(404).json({ error: 'No encontrado' });
       const salon = salonRes.rows[0];
@@ -627,7 +633,10 @@ exports.getProviderSlots = async (req, res) => {
     if (targetSalonId) {
       const salonRes = await runAsSystem({ pool }, (client) => client.query(
         `SELECT s.id, s.business_profile_id, s.location_enabled, s.location_public,
-                UPPER(COALESCE(bp.saas_plan, s.plan_saas, 'FREEMIUM')) AS plan_saas
+                UPPER(CASE
+                  WHEN bp.id IS NOT NULL THEN COALESCE(bp.saas_plan, 'FREEMIUM')
+                  ELSE COALESCE(s.plan_saas, 'FREEMIUM')
+                END) AS plan_saas
            FROM salones s
            LEFT JOIN business_profiles bp ON bp.id = s.business_profile_id
           WHERE s.id = $1
