@@ -65,6 +65,33 @@ void main() {
     expect(elegido?.id, 'b');
   });
 
+  testWidgets('un proveedor agrupado conserva el acceso a su perfil', (tester) async {
+    String? perfilAbierto;
+    await tester.pumpWidget(MaterialApp(
+      routes: {
+        '/provider-detail': (context) {
+          perfilAbierto = (ModalRoute.of(context)!.settings.arguments! as Map)['providerId'] as String;
+          return const Scaffold(body: Text('Perfil del prestador'));
+        },
+      },
+      home: Builder(builder: (context) => Scaffold(body: Stack(children: [
+        const SizedBox.expand(),
+        HomeResultsSheet(
+          proveedores: [prov('a'), prov('b')],
+          onSelect: (p) => Navigator.pushNamed(context, '/provider-detail', arguments: {'providerId': p.id}),
+          onPosicion: (_) {},
+          construirTarjeta: (p) => SizedBox(height: 90, child: Text('tarjeta ${p.id}')),
+          tamanoInicial: 0.9,
+        ),
+      ]))),
+    ));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('tarjeta b'));
+    await tester.pumpAndSettle();
+    expect(perfilAbierto, 'b');
+    expect(find.text('Perfil del prestador'), findsOneWidget);
+  });
+
   testWidgets('el chip muestra el hueco real y no promete si no hay', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(

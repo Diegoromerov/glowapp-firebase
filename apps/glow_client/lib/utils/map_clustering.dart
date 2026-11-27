@@ -42,7 +42,9 @@ double pixelesEntre(LatLng a, LatLng b, double zoom) {
   double x(double lon) => (lon + 180.0) / 360.0 * escala;
   double y(double lat) {
     final rad = lat * math.pi / 180.0;
-    return (1.0 - math.log(math.tan(rad) + 1.0 / math.cos(rad)) / math.pi) / 2.0 * escala;
+    return (1.0 - math.log(math.tan(rad) + 1.0 / math.cos(rad)) / math.pi) /
+        2.0 *
+        escala;
   }
 
   final dx = x(a.longitude) - x(b.longitude);
@@ -71,11 +73,13 @@ List<GrupoPines> agruparPines(
     }
 
     if (indiceDestino == -1) {
-      grupos.add(GrupoPines(
-        ids: {pin.id},
-        centro: pin.posicion,
-        destacado: pin.destacado,
-      ));
+      grupos.add(
+        GrupoPines(
+          ids: {pin.id},
+          centro: pin.posicion,
+          destacado: pin.destacado,
+        ),
+      );
       continue;
     }
 
@@ -93,4 +97,43 @@ List<GrupoPines> agruparPines(
   }
 
   return grupos;
+}
+
+/// Desplaza coordenadas repetidas alrededor de su ubicación real para que cada
+/// prestador tenga un pin seleccionable cuando ya no queda zoom disponible.
+/// El desplazamiento es determinista y solo debe aplicarse al zoom máximo.
+List<PinPunto> separarPinesCoincidentes(
+  List<PinPunto> pines, {
+  double radioGrados = 0.0005,
+}) {
+  final porPosicion = <String, List<PinPunto>>{};
+  for (final pin in pines) {
+    final key = '${pin.posicion.latitude},${pin.posicion.longitude}';
+    porPosicion.putIfAbsent(key, () => []).add(pin);
+  }
+
+  final resultado = <PinPunto>[];
+  for (final grupo in porPosicion.values) {
+    if (grupo.length == 1) {
+      resultado.add(grupo.single);
+      continue;
+    }
+
+    for (var i = 0; i < grupo.length; i++) {
+      final angulo = 2 * math.pi * i / grupo.length;
+      final latScale = math.cos(grupo[i].posicion.latitude * math.pi / 180);
+      resultado.add(
+        PinPunto(
+          id: grupo[i].id,
+          destacado: grupo[i].destacado,
+          posicion: LatLng(
+            grupo[i].posicion.latitude + math.sin(angulo) * radioGrados,
+            grupo[i].posicion.longitude +
+                math.cos(angulo) * radioGrados / latScale,
+          ),
+        ),
+      );
+    }
+  }
+  return resultado;
 }

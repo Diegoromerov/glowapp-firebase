@@ -35,6 +35,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
   List<ProviderModel> _allProviders = [];
   List<ProviderModel> _filteredProviders = [];
   ProviderModel? _selectedProvider;
+  List<ProviderModel>? _clusterProviders;
   String _selectedCategory = 'all';
   bool _isLoading = true;
   String? _errorMessage;
@@ -75,6 +76,10 @@ class _ProvidersScreenState extends State<ProvidersScreen>
   double _zoomRender = 13.5;
   bool _soloLista = false;
   int _radioMetros = 20000;
+  static const double _zoomMinimoMapa = 2;
+  static const double _zoomMaximoMapa = 18;
+  String _cacheClavePines = '';
+  List<PinPunto> _pinesCoincidentesSeparados = const [];
 
   @override
   void initState() {
@@ -653,17 +658,65 @@ class _ProvidersScreenState extends State<ProvidersScreen>
         '$_zoomRender|${_filteredProviders.map((p) => '${p.id}:${p.latitude},${p.longitude}').join(";")}';
     if (_cacheClave == clave && _cacheGrupos != null) return _cacheGrupos!;
 
-    _cacheGrupos = agruparPines(
-      _filteredProviders
-          .map((p) => PinPunto(
-                id: p.id,
-                posicion: LatLng(p.latitude, p.longitude),
-              ))
-          .toList(),
-      zoom: _zoomRender,
-    );
+    final puntos = _zoomRender >= _zoomMaximoMapa
+        ? _pinesSeparados()
+        : _filteredProviders
+            .map((p) => PinPunto(
+                  id: p.id,
+                  posicion: LatLng(p.latitude, p.longitude),
+                ))
+            .toList();
+    _cacheGrupos = agruparPines(puntos, zoom: _zoomRender);
     _cacheClave = clave;
     return _cacheGrupos!;
+  }
+
+  List<PinPunto> _pinesSeparados() {
+    final clave = _filteredProviders
+        .map((p) => '${p.id}:${p.latitude},${p.longitude}')
+        .join(';');
+    if (_cacheClavePines != clave) {
+      _pinesCoincidentesSeparados = separarPinesCoincidentes(
+        _filteredProviders
+            .map((p) => PinPunto(
+                  id: p.id,
+                  posicion: LatLng(p.latitude, p.longitude),
+                ))
+            .toList(),
+      );
+      _cacheClavePines = clave;
+    }
+    return _pinesCoincidentesSeparados;
+  }
+
+  void _abrirAgrupacion(GrupoPines grupo) {
+    final providers = _filteredProviders
+        .where((p) => grupo.ids.contains(p.id))
+        .toList();
+    if (providers.isEmpty) return;
+    setState(() => _clusterProviders = providers);
+    final zoom = (_zoomRender + 2).clamp(_zoomMinimoMapa, _zoomMaximoMapa);
+    if (zoom > _zoomRender) _mapController.move(grupo.centro, zoom);
+  }
+
+  void _abrirPerfilDesdeResultados(ProviderModel p) {
+    setState(() {
+      _selectedProvider = p;
+      _soloLista = false;
+      _clusterProviders = null;
+    });
+    AnalyticsService().logEvent(
+      eventType: 'PROVIDER_CARD_TAP',
+      screenName: '/home',
+      elementId: p.id,
+      metadata: {'metros': p.distanceMeters},
+    );
+    Navigator.pushNamed(context, '/provider-detail', arguments: {
+      'providerId': p.id,
+      'isSalon': p.isSalon,
+      'providerName': p.businessName.isNotEmpty ? p.businessName : p.fullName,
+      'avatarUrl': p.avatarUrl,
+    });
   }
 
   /// Ids que se pintan como pin suelto (el resto están en un cluster).
@@ -2326,7 +2379,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                   onPositionChanged: (camera, tieneGesto) {
                     // Solo cuando la escala cambia de verdad: un rebuild por
                     // frame haría temblar el mapa durante el gesto.
-                    if ((camera.zoom - _zoomRender).abs() >= 0.5) {
+                    if ((camera.zoom - _zoomRender).abs() >= 0.1) {
                       setState(() => _zoomRender = camera.zoom);
                     }
                   },
@@ -2420,10 +2473,15 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                           .where((p) => _idsSueltos().contains(p.id))
                           .map((p) {
                         final isSelected = _selectedProvider?.id == p.id;
+                        final posicion = _zoomRender >= _zoomMaximoMapa
+                            ? _pinesSeparados()
+                                .firstWhere((pin) => pin.id == p.id)
+                                .posicion
+                            : LatLng(p.latitude, p.longitude);
                         return Marker(
                           width: 70,
                           height: 78,
-                          point: LatLng(p.latitude, p.longitude),
+                          point: posicion,
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
@@ -2547,8 +2605,7 @@ class _ProvidersScreenState extends State<ProvidersScreen>
                                 height: 58,
                                 point: g.centro,
                                 child: GestureDetector(
-                                  onTap: () => _mapController.move(
-                                      g.centro, _zoomRender + 2),
+                                  onTap: () => _abrirAgrupacion(g),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
@@ -2690,43 +2747,18 @@ class _ProvidersScreenState extends State<ProvidersScreen>
               // Modo lista: el mismo componente que la bandeja, a pantalla completa.
               // Sirve para redes lentas (no descarga tiles) y para lectores de
               // pantalla, que no pueden recorrer un mapa.
-              if (_soloLista)
+              if (_soloLista || _clusterProviders != null)
                 Positioned.fill(
                   child: Container(
                     color:
                         isMen ? MensTheme.obsidianBg : const Color(0xFFFAF8F5),
                     child: HomeResultsSheet(
-                      proveedores: _filteredProviders,
+                      proveedores: _clusterProviders ?? _filteredProviders,
                       tamanoInicial: 0.9,
                       // Tocar la tarjeta lleva al perfil del prestador. Se marca
                       // como seleccionado para que el mapa lo destaque al volver.
                       // La ruta espera un Map: pasar el id suelto revienta el cast.
-                      onSelect: (p) {
-                        setState(() => _selectedProvider = p);
-                        AnalyticsService().logEvent(
-                          eventType: 'PROVIDER_CARD_TAP',
-                          screenName: '/home',
-                          elementId: p.id,
-                          metadata: {'metros': p.distanceMeters},
-                        );
-                        Navigator.pushNamed(
-                          context,
-                          '/provider-detail',
-                          arguments: {
-                            'providerId': p.id,
-                            'isSalon': p.isSalon,
-                            'providerName': p.businessName.isNotEmpty
-                                ? p.businessName
-                                : p.fullName,
-                            'avatarUrl': p.avatarUrl,
-                          },
-                        ).then((_) {
-                          // Al volver, el atras devuelve al home (mapa), no a la
-                          // lista de prestadores desde la que se entro.
-                          if (!mounted) return;
-                          setState(() => _soloLista = false);
-                        });
-                      },
+                      onSelect: _abrirPerfilDesdeResultados,
                       onPosicion: (_) {},
                       construirTarjeta: _buildTarjetaResultado,
                       mensajeVacio: 'No hay prestadores en este radio.',
