@@ -586,6 +586,8 @@ class ApiService {
     if (esServiciosNoEncontrados(response.statusCode, response.body)) {
       throw const ServiciosNoEncontradosException();
     }
+    final quotaError = parseSaasQuotaExceeded(response.body);
+    if (quotaError != null) throw quotaError;
     throw Exception(
         extractApiError(response.statusCode, response.body, fallback: 'Error ${response.statusCode}'));
   }

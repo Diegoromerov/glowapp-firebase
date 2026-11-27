@@ -7,6 +7,7 @@ import 'package:glow_core/shared/theme.dart' hide AppTheme;
 import 'package:glow_core/glow_core.dart';
 
 import 'package:glow_core/widgets/wompi_payment_sheet.dart';
+import 'saas_quota_exceeded_dialog.dart';
 // import 'package:glow_core/shared/app_tokens.dart'; // Not exported
 
 class BookingScreen extends StatefulWidget {
@@ -407,6 +408,16 @@ class _BookingScreenState extends State<BookingScreen> {
     } catch (e) {
       if (mounted) {
         setState(() => isLoading = false);
+        if (e is SaasQuotaExceededException) {
+          await showDialog<void>(
+            context: context,
+            builder: (_) => SaasQuotaExceededDialog(
+              error: e,
+              onViewBilling: () => Navigator.pushNamed(context, '/saas/billing'),
+            ),
+          );
+          return;
+        }
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('❌ ${mensajeHumano(e)}'),

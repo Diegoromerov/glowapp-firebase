@@ -1,5 +1,54 @@
 import 'dart:convert';
 
+/// Respuesta estructurada cuando el backend impide una operación por cuota SaaS.
+class SaasQuotaExceededException implements Exception {
+  const SaasQuotaExceededException({
+    required this.message,
+    this.feature,
+    this.current,
+    this.limit,
+    this.plan,
+    this.upgradeUrl,
+  });
+
+  final String message;
+  final String? feature;
+  final int? current;
+  final int? limit;
+  final String? plan;
+  final String? upgradeUrl;
+
+  @override
+  String toString() => message;
+}
+
+/// Conserva los datos de uso/límite que algunas pantallas necesitan para dar
+/// contexto y ofrecer una ruta clara a Facturación.
+SaasQuotaExceededException? parseSaasQuotaExceeded(String body) {
+  try {
+    final data = jsonDecode(body);
+    if (data is! Map || data['code'] != 'SAAS_QUOTA_EXCEEDED') return null;
+
+    int? asInt(dynamic value) {
+      if (value is num) return value.toInt();
+      return int.tryParse(value?.toString() ?? '');
+    }
+
+    return SaasQuotaExceededException(
+      message:
+          (data['error'] ?? data['message'] ?? 'Se alcanzó el límite del plan.')
+              .toString(),
+      feature: data['feature']?.toString(),
+      current: asInt(data['current']),
+      limit: asInt(data['limit'] ?? data['max']),
+      plan: (data['currentPlan'] ?? data['plan'])?.toString(),
+      upgradeUrl: data['upgradeUrl']?.toString(),
+    );
+  } catch (_) {
+    return null;
+  }
+}
+
 /// Extrae un mensaje legible del cuerpo de una respuesta HTTP fallida.
 ///
 /// El cuerpo de un error no siempre es JSON: un 502/503/504 de un proxy, un

@@ -39,4 +39,33 @@ void main() {
       expect(msg.contains('<html'), isFalse);
     });
   });
+
+  group('parseSaasQuotaExceeded', () {
+    test('preserva el uso, el límite, el plan y la ruta de actualización', () {
+      final error = parseSaasQuotaExceeded(
+        '{"code":"SAAS_QUOTA_EXCEEDED","error":"Límite alcanzado",'
+        '"feature":"DIRECT_BOOKINGS","current":30,"limit":30,'
+        '"currentPlan":"FREEMIUM","upgradeUrl":"/api/saas/billing/checkout"}',
+      );
+
+      expect(error, isA<SaasQuotaExceededException>());
+      expect(error?.message, 'Límite alcanzado');
+      expect(error?.feature, 'DIRECT_BOOKINGS');
+      expect(error?.current, 30);
+      expect(error?.limit, 30);
+      expect(error?.plan, 'FREEMIUM');
+      expect(error?.upgradeUrl, '/api/saas/billing/checkout');
+    });
+
+    test('acepta la forma de cupo de recursos y descarta otros errores', () {
+      final error = parseSaasQuotaExceeded(
+        '{"code":"SAAS_QUOTA_EXCEEDED","error":"Límite alcanzado",'
+        '"feature":"RESOURCES","current":5,"max":5,"plan":"BASIC"}',
+      );
+      expect(error?.limit, 5);
+      expect(error?.plan, 'BASIC');
+      expect(parseSaasQuotaExceeded('{"code":"OTHER_ERROR"}'), isNull);
+      expect(parseSaasQuotaExceeded('<html>proxy</html>'), isNull);
+    });
+  });
 }
