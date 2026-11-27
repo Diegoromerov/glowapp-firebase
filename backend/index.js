@@ -1299,6 +1299,7 @@ app.get('/api/users/profile', authMiddleware, async (req, res) => {
                (p.estatus_verificacion = 'APROBADO') AS is_verified,
                p.estatus_verificacion, p.active_start_hour, p.active_end_hour,
                p.weekly_schedule, p.live_location_consent,
+               p.live_location_consent_version,
                u.revision_estado AS rut_revision_estado,
                u.revision_nota AS rut_revision_nota
           FROM perfiles_prestador p

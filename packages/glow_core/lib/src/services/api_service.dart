@@ -1444,13 +1444,18 @@ class ApiService {
 
   /// Persists the provider's explicit choice to share live location while online.
   static Future<Map<String, dynamic>> setProviderLiveLocationConsent(
-      bool enabled) async {
+    bool enabled, {
+    String? consentVersion,
+  }) async {
     final headers = await _getAuthHeaders();
     final response = await http
         .put(
           Uri.parse('$_baseUrl$_apiPath/provider/me/location-consent'),
           headers: headers,
-          body: json.encode({'enabled': enabled}),
+          body: json.encode({
+            'enabled': enabled,
+            if (consentVersion != null) 'consent_version': consentVersion,
+          }),
         )
         .timeout(requestTimeout);
     if (response.statusCode == 200) {

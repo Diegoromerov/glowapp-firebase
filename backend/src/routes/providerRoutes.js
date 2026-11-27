@@ -20,6 +20,8 @@ const {
   transicionar,
 } = require('../services/fiscalRevision');
 
+const LIVE_LOCATION_BACKGROUND_CONSENT_VERSION = '2026-11-background-v1';
+
 // ─── CONTRATO DE COMISIÓN E INDEPENDENCIA (D-GL-023 · F8) ────────────────────
 // El prestador es independiente, no empleado. Se registra versión, fecha e IP:
 // sin ese registro no hay forma de probar el vínculo comercial.
@@ -104,7 +106,7 @@ router.get('/providers/:id/slots', providerController.getProviderSlots);
  * @swagger
  * /api/provider/me/location-consent:
  *   put:
- *     summary: Cambia el consentimiento del prestador para compartir su ubicación en vivo
+ *     summary: Cambia el consentimiento del prestador para compartir su ubicación en vivo, también en segundo plano
  *     tags: [provider]
  *     security:
  *       - bearerAuth: []
@@ -118,6 +120,9 @@ router.get('/providers/:id/slots', providerController.getProviderSlots);
  *             properties:
  *               enabled:
  *                 type: boolean
+ *               consent_version:
+ *                 type: string
+ *                 description: Obligatoria al activar la ubicación; identifica el consentimiento explícito de segundo plano.
  *     responses:
  *       '200':
  *         description: Consentimiento actualizado; al revocarlo se elimina la ubicación actual.
@@ -129,19 +134,23 @@ router.get('/providers/:id/slots', providerController.getProviderSlots);
 router.put('/provider/me/location-consent', authMiddleware, async (req, res) => {
   const providerId = Number(req.user.id);
   const enabled = req.body?.enabled;
+  const consentVersion = req.body?.consent_version;
   if (!Number.isSafeInteger(providerId) || providerId <= 0 ||
       !['provider', 'prestador'].includes(String(req.user.role || req.user.rol || '').toLowerCase())) {
     return res.status(403).json({ error: 'Solo un prestador autenticado puede cambiar este consentimiento.' });
   }
   if (typeof enabled !== 'boolean') return res.status(400).json({ error: 'enabled debe ser boolean.' });
+  if (enabled && consentVersion !== LIVE_LOCATION_BACKGROUND_CONSENT_VERSION) {
+    return res.status(400).json({ error: 'Se requiere aceptar la versión vigente del consentimiento de ubicación.' });
+  }
   try {
     const { rows } = await pool.query(
       `UPDATE perfiles_prestador SET
          live_location_consent = $2,
          live_location_consent_at = CASE WHEN $2 THEN NOW() ELSE NULL END,
-         live_location_consent_version = CASE WHEN $2 THEN '2026-11' ELSE NULL END
+         live_location_consent_version = CASE WHEN $2 THEN $3 ELSE NULL END
        WHERE id = $1 RETURNING live_location_consent`,
-      [providerId, enabled]
+      [providerId, enabled, enabled ? consentVersion : null]
     );
     if (!rows.length) return res.status(404).json({ error: 'Perfil de prestador no encontrado.' });
     if (!enabled) await pool.query('DELETE FROM provider_live_locations WHERE provider_id = $1', [providerId]);
@@ -156,7 +165,7 @@ router.put('/provider/me/location-consent', authMiddleware, async (req, res) => 
  * @swagger
  * /api/provider/me/live-location:
  *   put:
- *     summary: Actualiza la ubicación vigente del prestador en primer plano
+ *     summary: Actualiza la ubicación vigente del prestador en línea con consentimiento
  *     tags: [provider]
  *     security:
  *       - bearerAuth: []

@@ -28,6 +28,12 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Tu ubicación se comparte mientras usas GlowApp y estás en línea para que clientes cercanos puedan encontrarte.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Con tu consentimiento, GlowApp comparte tu ubicación actual mientras estás en línea, incluso al usar otra app, para que clientes cercanos puedan encontrarte. Se guarda solo la posición vigente, no un historial.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

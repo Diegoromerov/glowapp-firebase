@@ -6505,7 +6505,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Actualiza la ubicación vigente del prestador en primer plano",
+        "summary": "Actualiza la ubicación vigente del prestador en línea con consentimiento",
         "tags": [
           "provider"
         ],
@@ -6520,6 +6520,10 @@
             "application/json": {
               "schema": {
                 "properties": {
+                  "consent_version": {
+                    "description": "Obligatoria al activar la ubicación; identifica el consentimiento explícito de segundo plano.",
+                    "type": "string"
+                  },
                   "enabled": {
                     "type": "boolean"
                   }
@@ -6549,7 +6553,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Cambia el consentimiento del prestador para compartir su ubicación en vivo",
+        "summary": "Cambia el consentimiento del prestador para compartir su ubicación en vivo, también en segundo plano",
         "tags": [
           "provider"
         ],

@@ -35,9 +35,11 @@ describe('provider live location endpoints', () => {
 
     const enabled = await request(app)
       .put('/api/provider/me/location-consent')
-      .send({ enabled: true });
+      .send({ enabled: true, consent_version: '2026-11-background-v1' });
     expect(enabled.status).toBe(200);
     expect(enabled.body).toEqual({ enabled: true });
+    expect(pool.query.mock.calls[0][0]).toContain('live_location_consent_version = CASE WHEN $2 THEN $3 ELSE NULL END');
+    expect(pool.query.mock.calls[0][1]).toEqual([42, true, '2026-11-background-v1']);
 
     const revoked = await request(app)
       .put('/api/provider/me/location-consent')
@@ -45,6 +47,15 @@ describe('provider live location endpoints', () => {
     expect(revoked.status).toBe(200);
     expect(pool.query.mock.calls[2][0]).toContain('DELETE FROM provider_live_locations');
     expect(pool.query.mock.calls[2][1]).toEqual([42]);
+  });
+
+  test('rejects enabling background tracking without its explicit consent version', async () => {
+    const response = await request(app)
+      .put('/api/provider/me/location-consent')
+      .send({ enabled: true });
+
+    expect(response.status).toBe(400);
+    expect(pool.query).not.toHaveBeenCalled();
   });
 
   test('accepts a recent precise fix and derives provider identity from auth', async () => {

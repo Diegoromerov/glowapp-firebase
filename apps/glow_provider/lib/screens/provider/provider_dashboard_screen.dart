@@ -1,6 +1,9 @@
 // frontend/lib/screens/provider_dashboard_screen.dart
 import 'dart:async';
+import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
 import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:glow_provider/utils/provider_location_policy.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
@@ -50,6 +53,7 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
   String? _error;
   bool _isActive = true;
   bool _liveLocationConsent = false;
+  String? _liveLocationConsentVersion;
   StreamSubscription<Position>? _liveLocationSubscription;
   Timer? _liveLocationHeartbeat;
   bool _locationTrackingStarting = false;
@@ -157,12 +161,20 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       if (_isActive && _liveLocationConsent) _startLiveLocationTracking();
-    } else if (state == AppLifecycleState.inactive ||
-        state == AppLifecycleState.paused ||
-        state == AppLifecycleState.detached) {
+    } else if (shouldStopLocationTrackingForLifecycle(
+      state,
+      hasBackgroundConsent: _hasBackgroundLocationConsent,
+    )) {
       _stopLiveLocationTracking();
     }
   }
+
+  bool get _hasBackgroundLocationConsent =>
+      hasBackgroundLocationConsent(
+        enabled: _liveLocationConsent,
+        consentVersion: _liveLocationConsentVersion,
+        isWeb: kIsWeb,
+      );
 
 
   void _scheduleWsReconnect() {
@@ -314,6 +326,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
         setState(() {
           _isActive = data['is_active'] ?? true;
           _liveLocationConsent = data['live_location_consent'] == true;
+          _liveLocationConsentVersion =
+              data['live_location_consent_version']?.toString();
           _ratingAvg = data['rating_avg'] != null
               ? double.tryParse(data['rating_avg'].toString())
               : null;
@@ -393,11 +407,39 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
           permission == LocationPermission.unableToDetermine) {
         return;
       }
-      _liveLocationSubscription = Geolocator.getPositionStream(
-        locationSettings: const LocationSettings(
+      final LocationSettings settings;
+      if (_hasBackgroundLocationConsent &&
+          defaultTargetPlatform == TargetPlatform.android) {
+        settings = AndroidSettings(
           accuracy: LocationAccuracy.high,
           distanceFilter: 50,
-        ),
+          intervalDuration: const Duration(seconds: 30),
+          foregroundNotificationConfig: const ForegroundNotificationConfig(
+            notificationTitle: 'Ubicación en vivo activa',
+            notificationText:
+                'GlowApp comparte tu ubicación mientras estás en línea.',
+            notificationChannelName: 'Ubicación en vivo',
+            setOngoing: true,
+          ),
+        );
+      } else if (_hasBackgroundLocationConsent &&
+          defaultTargetPlatform == TargetPlatform.iOS) {
+        settings = AppleSettings(
+          accuracy: LocationAccuracy.high,
+          distanceFilter: 50,
+          activityType: ActivityType.otherNavigation,
+          pauseLocationUpdatesAutomatically: false,
+          allowBackgroundLocationUpdates: true,
+          showBackgroundLocationIndicator: true,
+        );
+      } else {
+        settings = const LocationSettings(
+          accuracy: LocationAccuracy.high,
+          distanceFilter: 50,
+        );
+      }
+      _liveLocationSubscription = Geolocator.getPositionStream(
+        locationSettings: settings,
       ).listen(
         _publishLiveLocation,
         onError: (Object error) {
@@ -420,7 +462,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
     if (!mounted ||
         !_isActive ||
         !_liveLocationConsent ||
-        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
+        (WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed &&
+            !_hasBackgroundLocationConsent)) {
       return;
     }
     try {
@@ -440,7 +483,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
     if (!mounted ||
         !_isActive ||
         !_liveLocationConsent ||
-        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed ||
+        (WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed &&
+            !_hasBackgroundLocationConsent) ||
         position.accuracy > 100 ||
         age > const Duration(seconds: 90) ||
         age < const Duration(seconds: -30)) {
@@ -489,12 +533,15 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
     final accepted = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Compartir ubicación en vivo'),
+        title: const Text('Ubicación en vivo, incluso en segundo plano'),
         content: const Text(
-          'Mientras estés en línea y uses la app, tu ubicación actual se '
-          'compartirá para que clientes cercanos puedan encontrarte. Se guarda '
-          'solo la posición vigente, no un historial. Puedes detenerlo cuando '
-          'quieras desde este botón.',
+          'Mientras estés en línea, GlowApp compartirá tu ubicación actual '
+          'aunque minimices la app, para que clientes cercanos puedan '
+          'encontrarte. Android mostrará una notificación permanente; en iPhone '
+          'se indicará que la ubicación continúa activa y el sistema puede '
+          'pedirte permiso “Siempre”. Solo se guarda la posición vigente, no '
+          'un historial. Se detiene al quedar fuera de línea o revocar este '
+          'consentimiento.',
         ),
         actions: [
           TextButton(
@@ -510,8 +557,8 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
     );
     if (accepted != true || !mounted) return;
     try {
-      final location = await solicitarUbicacion();
-      if (!location.ok) {
+      final permissionGranted = await _requestBackgroundLocationPermission();
+      if (!permissionGranted) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -521,9 +568,15 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
         }
         return;
       }
-      await ApiService.setProviderLiveLocationConsent(true);
+      await ApiService.setProviderLiveLocationConsent(
+        true,
+        consentVersion: backgroundLocationConsentVersion,
+      );
       if (!mounted) return;
-      setState(() => _liveLocationConsent = true);
+      setState(() {
+        _liveLocationConsent = true;
+        _liveLocationConsentVersion = backgroundLocationConsentVersion;
+      });
       if (_isActive) _startLiveLocationTracking();
     } catch (error) {
       if (mounted) {
@@ -532,6 +585,26 @@ class _ProviderDashboardScreenState extends State<ProviderDashboardScreen>
         );
       }
     }
+  }
+
+  Future<bool> _requestBackgroundLocationPermission() async {
+    if (kIsWeb) {
+      final result = await solicitarUbicacion();
+      return result.ok;
+    }
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      var status = await Permission.locationWhenInUse.status;
+      if (!status.isGranted) {
+        status = await Permission.locationWhenInUse.request();
+      }
+      if (!status.isGranted) return false;
+      var always = await Permission.locationAlways.status;
+      if (!always.isGranted) always = await Permission.locationAlways.request();
+      return always.isGranted;
+    }
+    var status = await Permission.location.status;
+    if (!status.isGranted) status = await Permission.location.request();
+    return status.isGranted;
   }
 
   void _showSegmentedPinDialog(Map<String, dynamic> booking) {
