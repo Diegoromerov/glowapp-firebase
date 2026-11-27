@@ -156,3 +156,11 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - PostgreSQL real en CI ejercita `createBooking`: un fallo de inserción revierte la cuota y no crea una reserva parcial; la reserva directa alcanza el cupo de 30 y la siguiente falla con HTTP 429; una reserva marketplace no consume la cuota directa.
 - Railway producción desplegó el commit `244a4c0`, deployment `91a23716-f278-46dc-8860-e6377274c341` SUCCESS. Health confirmó API `OK`, PostgreSQL disponible y sin datos fabricados. Los logs confirmaron aplicación de migraciones `097`, `098`, `099`, `198` y `206`.
 - Estado del subtema: **cerrado en código, CI y despliegue**. La aceptación de UI con tenant QA sigue pendiente; la Fase 7 en conjunto continúa abierta.
+
+## Resumen de uso coherente con estados de cuota — 27 de noviembre de 2026
+
+- PR [#223](https://github.com/Diegoromerov/glowapp-firebase/pull/223) quedó integrada en `main` como `e6b7cc1443e6e0cce2a1385ad883e1b9fb26257b`. El resumen de `GET /api/saas/usage` ahora cuenta `caution` además de `ok`, `warning` y `exceeded`, para que las métricas cautelares no queden fuera de la suma.
+- CI Backend del PR `46040104125` terminó SUCCESS. Railway producción desplegó API, panel administrativo y job de ciclo de prueba; el estado de Railway confirma los nueve servicios activos, cero fallos recientes y cero trabajo pendiente.
+- Health productivo `GET https://glowapp-api-production.up.railway.app/api/health` respondió `OK`, commit exacto `e6b7cc1443e6e0cce2a1385ad883e1b9fb26257b`, PostgreSQL activo, sin datos fabricados y 79 migraciones registradas.
+- El endpoint autenticado no se volvió a consultar durante esta ejecución porque no había una sesión QA persistente disponible; por eso se registra la corrección y el despliegue como verificados, y la aceptación del resumen sobre un tenant QA como pendiente. No se modificaron datos del salón, no se enviaron invitaciones ni se crearon reservas o cobros.
+- Railway muestra el proceso diario `saas-trial-lifecycle` en estado Ready, programado a las 06:00 hora de Bogotá; esto acredita disponibilidad del job, no una expiración de prueba ejecutada en esta verificación.
