@@ -113,12 +113,14 @@ La evidencia combina inspección estática, CI PostgreSQL y comprobación de sal
 - PR #213 quedó integrada como `b963def11976b42b406d938abab7cf78b0305cf8` y se desplegó a API, dashboard y cron. Health de producción confirmó `OK`, PostgreSQL disponible y 79 migraciones.
 - No se cambió el plan de un tenant QA productivo. La prueba verifica el comportamiento con PostgreSQL aislado; no se reporta como ejecución de downgrade real en producción.
 
-## Respuesta de la app al agotamiento de reservas — implementación local verificada
+## Respuesta de la app al agotamiento de reservas — desplegada en Hosting live
 
 - El backend responde HTTP 429 `SAAS_QUOTA_EXCEEDED` con métrica, uso, límite, plan y ruta de actualización al intentar crear una reserva directa por encima del cupo.
 - Antes, `ApiService.createBooking` convertía esa respuesta en un texto y descartaba el uso/límite; la pantalla de reserva solo mostraba una notificación genérica.
 - Ahora Glow Core conserva esos datos en `SaasQuotaExceededException`; el prestador ve un diálogo con el consumo y el botón **Ver Facturación**, que abre `/saas/billing`. Los errores restantes mantienen el tratamiento previo.
-- Pruebas locales: 8/8 en interpretación de errores SaaS y 1/1 de widget/navegación. `flutter analyze` de los nuevos archivos no reportó problemas. CI de PR sigue pendiente. La prueba de backend del límite 29→30/429 ya pasó en CI `45946611097` y `45946792869`.
+- Pruebas locales: 8/8 en interpretación de errores SaaS y 1/1 de widget/navegación. `flutter analyze` de los nuevos archivos no reportó problemas. `main` CI `45962602718` pasó análisis y pruebas de Glow Core y ambas apps. La prueba de backend del límite 29→30/429 ya había pasado en CI `45946611097` y `45946792869`.
+- PR #215 quedó integrada en `main` como `ff54de988906c51cbdcfb6d7a6fa64665f8889cb`. El workflow manual de producción `45963726287` compiló el proveedor y publicó Firebase Hosting live: Build y Deploy SUCCESS.
+- Verificación posterior: `https://glowapp-provider.web.app/` y `/main.dart.js` respondieron HTTP 200. El bundle live contiene los marcadores de uso mensual, reservas y ruta `/saas/billing`. No se publicó cliente ni se alteraron datos de salones.
 
 ## Revisión de rutas alternativas — 27 de noviembre de 2026
 
