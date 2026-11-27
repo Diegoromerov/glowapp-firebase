@@ -214,3 +214,10 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - PR [#254](https://github.com/Diegoromerov/glowapp-firebase/pull/254) integrado en `main` como `e7eb0d4b60588b51d65cbfa786d5586fda077671`.
 - Railway API, panel administrativo y cron finalizaron SUCCESS. `/api/health` devolvió HTTP 200 con el mismo commit, PostgreSQL disponible y sin datos fabricados.
 - Queda cerrada esta brecha de aceptación de invitaciones. Continúan pendientes la prueba operativa de todo el ciclo de equipo con usuarios QA, la auditoría integral de entitlements y cuotas restantes, la facturación y los puntos priorizados en esta fase.
+
+## Métricas del tablero limitadas a sedes propias — 27 de noviembre de 2026
+
+- El dashboard del propietario filtraba citas por prestador y podía incorporar citas e ingresos de salones ajenos. También duplicaba el detalle por sede cuando un prestador trabajaba en varias sedes propias.
+- Ahora la consulta limita las citas a sedes autorizadas, descarta en el controlador cualquier fila externa y atribuye cada cita a su sede registrada. La regresión está en Backend CI.
+- PR [#256](https://github.com/Diegoromerov/glowapp-firebase/pull/256), CI `46069833582`, integrado como `c4a1aee2a5e350b68f6804c6760a8c040f6176b3`. API, panel y cron Railway SUCCESS; health HTTP 200 con PostgreSQL disponible.
+- Se cierra este hallazgo de agregación. La aceptación QA autenticada y la cobertura integral de rutas, roles y entitlements siguen pendientes en el punto 9; Fase 7 continúa abierta.
