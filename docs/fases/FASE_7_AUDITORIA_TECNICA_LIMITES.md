@@ -100,6 +100,13 @@
 
 La evidencia combina inspección estática, CI PostgreSQL y comprobación de salud de producción. La prueba de recursos usa fixtures efímeros y no modifica producción. No se probaron rollback bajo fallos ni todos los canales. Fase 7 continúa abierta.
 
+## Revisión de rutas alternativas — 27 de noviembre de 2026
+
+- En `bookingRoutes.js`, la creación de reservas está concentrada en `POST /bookings`; el controlador reserva `DIRECT_BOOKINGS` en la transacción antes de insertar las reservas del grupo. En `paymentRoutes.js` se encontraron transiciones y pagos de reservas, no una segunda ruta de creación. La cuota se aplica solo al origen directo del salón; marketplace conserva la exclusión documentada.
+- `GET/POST /api/provider/inventory/consignment` opera sobre `inventario_consignacion_prestador`, inventario de consignación del marketplace. La migración 117 distingue expresamente esa tabla de `inventario_salon`; por tanto, no constituye una ruta alterna para el módulo SaaS `INVENTORY`.
+- La gestión de miembros tiene las rutas canónicas `/api/saas/team` y `/api/v1/memberships`, además del alias heredado `/api/salon`. Invitación y cambios de rol requieren `TEAM_MANAGEMENT`; altas, aceptación, reenvío y reactivación verifican el cupo. Suspender o retirar no aumenta el número de asientos y se conserva para permitir reducir el equipo tras cambiar a un plan menor; reactivar sí vuelve a comprobar el cupo bajo el bloqueo del salón. Añadir un gate de plan a la baja impediría esa reducción y no es una corrección adecuada.
+- Esta revisión estática no reemplaza las pruebas integrales de todos los roles ni el recorrido QA autenticado en producción. No se modificó código porque las rutas revisadas ya cumplen el comportamiento definido; siguen abiertos los faltantes de aceptación QA, cuotas de módulos aún no operativos y decisiones comerciales de la Fase 7.
+
 ## Pruebas de recetas y alquileres — 27 de noviembre de 2026
 
 - CI `45940586113` pasó PostgreSQL/RLS para recetas: MEMBER lee; ADMIN escribe; MEMBER no escribe. El test usa `FREE_TRIAL`, con restauración del plan del fixture.
