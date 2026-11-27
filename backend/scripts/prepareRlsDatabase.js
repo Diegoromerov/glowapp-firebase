@@ -165,6 +165,7 @@ const MIGRACIONES_BASE_NUEVA = [
   '200_saas_memberships_rls.sql',
   '204_direct_bookings_usage_metric.sql',
   '205_saas_api_key_lookup.sql',
+  '207_aura_business_usage_metric.sql',
 ];
 
 // ── Lista de ARRANQUE ───────────────────────────────────────────────────────
@@ -334,6 +335,7 @@ const MIGRACIONES_ARRANQUE = [
   '200_saas_memberships_rls.sql',
   '204_direct_bookings_usage_metric.sql',
   '205_saas_api_key_lookup.sql',
+  '207_aura_business_usage_metric.sql',
   ];
 /// Lista que corresponde según el estado de la base.
 function migracionesPara(baseVacia) {

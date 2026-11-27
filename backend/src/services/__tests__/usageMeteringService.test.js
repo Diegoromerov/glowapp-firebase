@@ -4,6 +4,7 @@
  */
 const usageMeteringService = require('../usageMeteringService');
 const { pool } = require('../../config/db');
+const tenantRouting = require('../../config/tenantRouting');
 
 jest.mock('../../config/db', () => ({
   pool: {
@@ -11,9 +12,17 @@ jest.mock('../../config/db', () => ({
   }
 }));
 
+jest.mock('../../config/tenantRouting', () => ({
+  runInTenantTransaction: jest.fn(),
+}));
+
+const quotaClient = { query: jest.fn() };
+
 describe('usageMeteringService', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    tenantRouting.runInTenantTransaction.mockImplementation((_deps, _tenantId, _userId, callback) => callback(quotaClient));
+    quotaClient.query.mockReset();
   });
 
   describe('getPlanLimits', () => {
@@ -173,6 +182,50 @@ describe('usageMeteringService', () => {
         expect.stringContaining('INSERT INTO usage_metrics'),
         expect.arrayContaining(['bp_123', 'ONLINE_BOOKING', expect.any(String), expect.any(String), 1, null])
       );
+    });
+  });
+
+  describe('consumeAuraBusinessQuery', () => {
+    test('valida membresía/entitlement y consume cuota bajo transacción tenant', async () => {
+      quotaClient.query
+        .mockResolvedValueOnce({ rows: [] })
+        .mockResolvedValueOnce({ rows: [{ saas_plan: 'FREE_TRIAL_LEGACY' }] })
+        .mockResolvedValueOnce({ rows: [] })
+        .mockResolvedValueOnce({ rows: [{ count: 1 }] });
+
+      const result = await usageMeteringService.consumeAuraBusinessQuery({ tenantId: 'salon-1', userId: 7 });
+
+      expect(result).toMatchObject({ allowed: true, plan: 'FREE_TRIAL_LEGACY', limit: 10, current: 1, remaining: 9 });
+      expect(tenantRouting.runInTenantTransaction).toHaveBeenCalledWith(
+        expect.objectContaining({ pool }), 'salon-1', 7, expect.any(Function)
+      );
+      expect(quotaClient.query).toHaveBeenCalledWith(expect.stringContaining('pg_advisory_xact_lock'), expect.any(Array));
+      expect(quotaClient.query).toHaveBeenCalledWith(expect.stringContaining("'AURA_QUERIES'"), expect.arrayContaining(['salon-1']));
+    });
+
+    test('deniega planes sin entitlement sin escribir la métrica', async () => {
+      quotaClient.query
+        .mockResolvedValueOnce({ rows: [] })
+        .mockResolvedValueOnce({ rows: [{ saas_plan: 'FREEMIUM' }] });
+
+      const result = await usageMeteringService.consumeAuraBusinessQuery({ tenantId: 'salon-1', userId: 7 });
+
+      expect(result).toMatchObject({ allowed: false, reason: 'Feature not included in plan', plan: 'FREEMIUM', limit: 0 });
+      expect(quotaClient.query).toHaveBeenCalledTimes(2);
+    });
+
+    test('bloquea atómicamente y devuelve el uso actual al agotar el límite', async () => {
+      quotaClient.query
+        .mockResolvedValueOnce({ rows: [] })
+        .mockResolvedValueOnce({ rows: [{ saas_plan: 'FREE_TRIAL_LEGACY' }] })
+        .mockResolvedValueOnce({ rows: [] })
+        .mockResolvedValueOnce({ rows: [] })
+        .mockResolvedValueOnce({ rows: [{ count: 10 }] });
+
+      const result = await usageMeteringService.consumeAuraBusinessQuery({ tenantId: 'salon-1', userId: 7 });
+
+      expect(result).toMatchObject({ allowed: false, reason: 'Quota exceeded', limit: 10, current: 10, remaining: 0 });
+      expect(quotaClient.query).toHaveBeenCalledWith(expect.stringContaining('usage_metrics.count + 1 <= EXCLUDED."limit"'), expect.any(Array));
     });
   });
 

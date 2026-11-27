@@ -12,6 +12,7 @@ const businessRequirementService = require('./businessRequirementService');
 const businessRepository = require('../repositories/businessRepository');
 const { KNOWLEDGE_CATEGORIES } = require('../config/knowledgeCategories');
 const { pool } = require('../config/db');
+const { consumeAuraBusinessQuery } = require('./usageMeteringService');
 
 /**
  * Etiquetas REALES del enum `estado_cita` de PostgreSQL.
@@ -350,11 +351,50 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
         if (!Number.isSafeInteger(authenticatedProviderId) || authenticatedProviderId < 1) {
           return { error: 'invalid_authenticated_user', message: 'No se pudo validar la cuenta del prestador.' };
         }
-        return await valkyrieAgent.getProviderInsights({
+        let usage;
+        try {
+          usage = await consumeAuraBusinessQuery({ tenantId, userId: authenticatedProviderId });
+        } catch (error) {
+          console.error('[AURA] No se pudo validar la cuota de Aura para negocio:', error.message);
+          return { error: 'aura_quota_validation_failed', message: 'No se pudo validar el acceso a Aura para negocio. Inténtalo de nuevo.' };
+        }
+        if (!usage.allowed) {
+          if (usage.reason === 'Quota exceeded') {
+            return {
+              error: 'aura_quota_exceeded',
+              message: 'Se alcanzó el límite mensual de consultas de Aura para negocio.',
+              limit: usage.limit,
+              current: usage.current,
+              remaining: 0,
+            };
+          }
+          if (usage.reason === 'Feature not included in plan') {
+            return {
+              error: 'aura_entitlement_required',
+              message: 'El plan actual no incluye Aura para negocio.',
+              required: 'AURA_BUSINESS',
+              currentPlan: usage.plan,
+            };
+          }
+          return {
+            error: 'aura_saas_context_required',
+            message: 'Selecciona un salón activo con acceso a Aura para negocio.',
+          };
+        }
+        const insight = await valkyrieAgent.getProviderInsights({
           // `args.providerId` viene del modelo y nunca puede elegir el dueño de
           // las métricas; la consulta se limita a la identidad autenticada.
           providerId: authenticatedProviderId
         });
+        return {
+          ...insight,
+          usage: {
+            feature: 'AURA_QUERIES',
+            limit: usage.limit,
+            current: usage.current,
+            remaining: usage.remaining,
+          },
+        };
       }
 
       case 'search_beauty_knowledge_rag': {

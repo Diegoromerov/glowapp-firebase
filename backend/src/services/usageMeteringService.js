@@ -1,6 +1,8 @@
 // backend/src/services/usageMeteringService.js
 const { pool } = require('../config/db');
 const { PLAN_CATALOG, METRICS, getLimit: catalogGetLimit, getMonthPeriod, PLAN_IDS } = require('../config/saasCatalog');
+const { hasEntitlement } = require('../config/saasEntitlements');
+const { runInTenantTransaction } = require('../config/tenantRouting');
 
 /**
  * Servicio centralizado de límites y métricas de uso por plan
@@ -141,6 +143,74 @@ async function consumeUsage(tenantId, feature, delta = 1) {
 }
 
 /**
+ * Consume una consulta de Aura para negocio bajo el perfil SaaS autenticado.
+ * Se resuelve la membresía activa y el plan dentro del contexto RLS de ese
+ * perfil; el bloqueo y el UPSERT evitan exceder la cuota en concurrencia.
+ */
+async function consumeAuraBusinessQuery({ tenantId, userId, dbPool = pool }) {
+  if (!tenantId || !Number.isSafeInteger(Number(userId)) || Number(userId) < 1) {
+    return { allowed: false, reason: 'SaaS context required' };
+  }
+
+  return runInTenantTransaction({ pool: dbPool }, String(tenantId), Number(userId), async (client) => {
+    await client.query("SELECT set_config('app.business_profile_id', $1, true)", [String(tenantId)]);
+    const { rows: memberships } = await client.query(`
+      SELECT bp.saas_plan
+        FROM memberships m
+        JOIN business_profiles bp ON bp.id = m.business_profile_id
+       WHERE m.business_profile_id = $1
+         AND m.user_id = $2
+         AND m.status = 'ACTIVE'
+       LIMIT 1
+    `, [String(tenantId), Number(userId)]);
+    if (!memberships.length) return { allowed: false, reason: 'Active membership required' };
+
+    const plan = String(memberships[0].saas_plan || 'FREEMIUM').toUpperCase();
+    if (!hasEntitlement(plan, 'AURA_BUSINESS')) {
+      return { allowed: false, reason: 'Feature not included in plan', plan, limit: 0 };
+    }
+
+    const limit = getLimit(plan, 'AURA_QUERIES');
+    if (limit === 0) return { allowed: false, reason: 'Feature not included in plan', plan, limit };
+
+    const { start, end } = getMonthPeriod();
+    await client.query(
+      'SELECT pg_advisory_xact_lock(hashtextextended($1, 73110))',
+      [`${tenantId}:AURA_QUERIES:${start}`]
+    );
+    const { rows } = await client.query(`
+      INSERT INTO usage_metrics (tenant_id, feature, period_start, period_end, count, "limit")
+      VALUES ($1, 'AURA_QUERIES', $2, $3, 1, $4)
+      ON CONFLICT (tenant_id, feature, period_start)
+      DO UPDATE SET count = usage_metrics.count + 1,
+                    "limit" = EXCLUDED."limit",
+                    updated_at = NOW()
+      WHERE EXCLUDED."limit" IS NULL
+         OR usage_metrics.count + 1 <= EXCLUDED."limit"
+      RETURNING count
+    `, [String(tenantId), start, end, limit]);
+
+    if (rows.length) {
+      const current = Number(rows[0].count);
+      return {
+        allowed: true,
+        plan,
+        limit: limit === null ? 'unlimited' : limit,
+        current,
+        remaining: limit === null ? null : Math.max(0, limit - current),
+      };
+    }
+
+    const { rows: currentRows } = await client.query(`
+      SELECT count FROM usage_metrics
+       WHERE tenant_id = $1 AND feature = 'AURA_QUERIES' AND period_start = $2
+    `, [String(tenantId), start]);
+    const current = Number(currentRows[0]?.count || 0);
+    return { allowed: false, reason: 'Quota exceeded', plan, limit, current, remaining: 0 };
+  });
+}
+
+/**
  * Obtiene plan actual del tenant
  */
 async function getTenantPlan(tenantId) {
@@ -268,6 +338,7 @@ module.exports = {
   canConsume,
   incrementUsage,
   consumeUsage,
+  consumeAuraBusinessQuery,
   getCurrentUsage,
   getTenantPlan,
   resetMonthlyCounters,

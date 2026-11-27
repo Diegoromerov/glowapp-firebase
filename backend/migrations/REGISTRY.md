@@ -674,3 +674,9 @@ en 076).
 - No reaplica la migración 011, que también reemplazaba el trigger de comisiones.
 - Aditiva e idempotente; rollback: eliminar la columna solo tras retirar sus usos y verificar los datos existentes.
 
+## 207: métrica de consultas Aura para negocio
+
+- Permite `AURA_QUERIES` en la restricción de uso SaaS para que el contador del catálogo pueda persistirse.
+- El incremento se limita a una membresía activa y al plan que tenga `AURA_BUSINESS`; el upsert aplica límite mensual bajo bloqueo transaccional.
+- No habilita los planes Growth/Pro/Enterprise ni cambia cuotas. Es aditiva; rollback: retirar primero el consumo de Aura y recrear la restricción anterior solo si no quedan métricas `AURA_QUERIES`.
+

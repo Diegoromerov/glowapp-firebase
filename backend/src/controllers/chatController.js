@@ -179,7 +179,9 @@ exports.sendMessage = async (req, res) => {
 
     if (targetReceiver === 0) {
       const senderRole = req.user?.rol || 'client';
-      const senderTenantId = req.user?.tenant_id || null;
+      // SaaS metrics and Aura business tools use the canonical business profile
+      // from the verified session, never the legacy numeric tenant partition.
+      const senderTenantId = req.user?.businessProfileId || null;
       processAssistantMessage(senderId, message.trim(), image_path, senderRole, senderTenantId).catch(err => {
         console.error('❌ Error en procesamiento asíncrono del Asistente de IA:', err);
       });
