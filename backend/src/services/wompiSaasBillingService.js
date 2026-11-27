@@ -285,14 +285,8 @@ async function cancelSubscription(client, tenantId, atPeriodEnd = true) {
        AND status IN ('active','past_due') ORDER BY created_at DESC LIMIT 1 FOR UPDATE`, [tenantId]);
   const subscription = rows[0];
   if (!subscription) return null;
-  if (atPeriodEnd) {
-    const { rows: updated } = await client.query(
-      `UPDATE subscriptions SET cancel_at_period_end=TRUE, updated_at=NOW() WHERE id=$1 RETURNING *`, [subscription.id]);
-    return updated[0];
-  }
   const { rows: updated } = await client.query(
-    `UPDATE subscriptions SET status='canceled', canceled_at=NOW(), cancel_at_period_end=FALSE,
-       plan='FREEMIUM', wompi_payment_source_ciphertext=NULL, updated_at=NOW() WHERE id=$1 RETURNING *`, [subscription.id]);
+    `UPDATE subscriptions SET cancel_at_period_end=TRUE, updated_at=NOW() WHERE id=$1 RETURNING *`, [subscription.id]);
   return updated[0];
 }
 
