@@ -486,7 +486,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         const SizedBox(height: 3),
                         Text(
                           commercialPlan.isActive
-                              ? 'Puedes activarlo después desde Facturación.'
+                              ? commercialPlan.checkoutAvailable
+                                  ? 'Puedes activarlo después desde Facturación.'
+                                  : 'Contratación pausada hasta que se habilite el pago.'
                               : 'Precio y activación propuestos; aún no disponibles.',
                           style: const TextStyle(
                               fontSize: 10, color: Color(0xFF9A6B42)),

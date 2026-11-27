@@ -409,6 +409,7 @@ class SaasPlan {
   final Set<String> unlimitedLimits;
   final List<String> features;
   final bool isActive;
+  final bool checkoutAvailable;
   final bool isPopular;
 
   const SaasPlan({
@@ -424,6 +425,7 @@ class SaasPlan {
     this.unlimitedLimits = const {},
     required this.features,
     required this.isActive,
+    this.checkoutAvailable = false,
     this.isPopular = false,
   });
 
@@ -451,6 +453,9 @@ class SaasPlan {
               .toList() ??
           [],
       isActive: json['is_active'] as bool? ?? true,
+      checkoutAvailable: json['checkout_available'] as bool? ??
+          json['checkoutAvailable'] as bool? ??
+          false,
       isPopular: json['is_popular'] as bool? ?? false,
     );
   }
@@ -466,6 +471,7 @@ class SaasPlan {
         'limits': limits,
         'features': features,
         'is_active': isActive,
+        'checkout_available': checkoutAvailable,
         'is_popular': isPopular,
       };
 
