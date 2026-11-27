@@ -171,3 +171,11 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - PR [#225](https://github.com/Diegoromerov/glowapp-firebase/pull/225) quedó integrada en `main` como `5305746af185ef397dcbe3284d1fc24428064f53`. Analyze & Tests del proveedor y la compilación web terminaron SUCCESS en el workflow `46041308156`.
 - Firebase Hosting live del prestador se publicó con éxito en el workflow `46041815863`. La portada y `main.dart.js` responden HTTP 200 con `Last-Modified: 2026-11-27 17:30:32 UTC`.
 - El indicador ahora cambia a naranja desde 60 %, ámbar desde 80 % y rojo al alcanzar 100 %. Se alineó tanto la tarjeta de consumo como la tabla de límites. No se modificaron los límites del plan ni datos de salones.
+
+## Aceptación autenticada del resumen de uso — 27 de noviembre de 2026
+
+- Posterior al despliegue de PR #223, se inició sesión con la cuenta QA propietaria, seleccionando el salón 17 (**QA Salón Fase 2**) mediante `X-Active-Salon-Id`. Se hizo únicamente `GET /api/saas/usage`; no se modificó información ni se generaron operaciones.
+- La API productiva devolvió `totalFeatures=14`, `ok=13`, `caution=1`, `warning=0`, `exceeded=0`. La suma de estados coincide con el total.
+- La única métrica en cautela es `TEAM_SEATS`: 2 de 3 personas, 67 %. Esto confirma en el tenant QA el estado que la app proveedor ahora colorea desde el 60 %.
+- El login respondió correctamente para la identidad QA; la consulta fue de lectura. La contraseña no se registra aquí.
+- Con esta observación queda cerrada la aceptación de lectura del resumen de uso y de su conteo por estado. No cierra expiración/downgrade QA, cobro, integridad de todas las cuotas restantes ni piloto comercial.
