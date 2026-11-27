@@ -111,7 +111,7 @@ router.post('/', requireRole('ADMIN'), requireEntitlement('API_KEYS'), async (re
  * Actualiza API key (nombre, scopes, expiración)
  * Requiere: ADMIN u OWNER
  */
-router.patch('/:keyId', requireRole('ADMIN'), async (req, res) => {
+router.patch('/:keyId', requireRole('ADMIN'), requireEntitlement('API_KEYS'), async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
