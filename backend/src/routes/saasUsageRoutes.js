@@ -97,7 +97,10 @@ router.get('/', async (req, res) => {
     const planLimits = usageMeteringService.getPlanLimits(plan);
 
     // Calcular % de uso y alertas
-    const visibleFeatures = Object.keys(planLimits).filter((feature) => feature !== 'ONLINE_BOOKING');
+    // Las capacidades booleanas son derechos del plan, no consumo. Se presentan
+    // como Incluido/No incluido en la tabla de límites y no deben inflar métricas,
+    // porcentajes ni resúmenes con valores artificiales de 0/1.
+    const visibleFeatures = usageMeteringService.getMeteredFeatures(planLimits);
     const usage = visibleFeatures.map(feature => {
       const metric = metrics.find(m => m.feature === feature);
       const limit = planLimits[feature];
