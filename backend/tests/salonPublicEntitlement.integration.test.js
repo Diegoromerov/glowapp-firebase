@@ -25,6 +25,14 @@ describeWithPostgres('public salon entitlement lookup with PostgreSQL RLS', () =
   let ownerId;
   let salonId;
 
+  beforeEach(() => {
+    customerRewards.mockImplementation(async ({ salonId: requestedSalonId }) => ({
+      salon_id: requestedSalonId,
+      enabled: true,
+      rewards: [],
+    }));
+  });
+
   beforeAll(async () => {
     adminPool = new Pool({ connectionString: ADMIN_URL });
     const suffix = crypto.randomUUID();
