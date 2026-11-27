@@ -60,7 +60,7 @@ describe('acceptLegacySalonInvitation', () => {
     mockPoolConnect.mockResolvedValue(client);
 
     await expect(membershipService.acceptLegacySalonInvitation({ token: TOKEN, user: USER }))
-      .rejects.toMatchObject({ status: 403, details: { current: 3, max: 3 } });
+      .rejects.toMatchObject({ status: 403, details: { current: 3, limit: 3 } });
 
     expect(calls.some(({ sql }) => sql.startsWith('INSERT INTO memberships'))).toBe(false);
     expect(calls.some(({ sql }) => sql.startsWith('UPDATE salon_invitaciones'))).toBe(false);

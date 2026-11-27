@@ -275,6 +275,113 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     }
   }, 20000);
 
+  test('does not activate a pending invitation after the tenant loses TEAM_MANAGEMENT', async () => {
+    const fixture = await createFixture();
+    const originalBrevoKey = process.env.BREVO_API_KEY;
+    process.env.BREVO_API_KEY = 'mocked-integration-test-key';
+    emailService.sendEmail.mockClear();
+    emailService.sendEmail.mockResolvedValue({ devMode: true });
+    try {
+      const invitation = await saasMembershipService.invite({
+        tenantId: fixture.profileId,
+        tenantName: 'SaaS downgrade invitation test',
+        plan: 'FREE_TRIAL',
+        actorId: fixture.ownerId,
+        email: fixture.emails['invitee-one'],
+        role: 'MEMBER',
+      });
+      const latestEmail = emailService.sendEmail.mock.calls.at(-1)[0];
+      const token = String(latestEmail.data.text).match(/token=([0-9a-f]{32})/i)?.[1];
+      expect(token).toBeTruthy();
+
+      await adminPool.query(
+        "UPDATE business_profiles SET saas_plan = 'FREEMIUM' WHERE id = $1",
+        [fixture.profileId]
+      );
+
+      await expect(saasMembershipService.accept({
+        token,
+        user: { id: fixture.inviteeOneId, email: fixture.emails['invitee-one'] },
+      })).rejects.toMatchObject({
+        status: 403,
+        details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+      });
+
+      const unchanged = await adminPool.query(
+        'SELECT status, invite_token_hash FROM memberships WHERE id = $1',
+        [invitation.membershipId]
+      );
+      expect(unchanged.rows[0]).toMatchObject({ status: 'PENDING' });
+      expect(unchanged.rows[0].invite_token_hash).toBeTruthy();
+    } finally {
+      if (originalBrevoKey === undefined) delete process.env.BREVO_API_KEY;
+      else process.env.BREVO_API_KEY = originalBrevoKey;
+      await cleanupFixture(fixture);
+    }
+  }, 20000);
+
+  test('rechecks the seat limit if the plan shrinks while an invitation is pending', async () => {
+    const fixture = await createFixture();
+    const originalBrevoKey = process.env.BREVO_API_KEY;
+    process.env.BREVO_API_KEY = 'mocked-integration-test-key';
+    emailService.sendEmail.mockClear();
+    emailService.sendEmail.mockResolvedValue({ devMode: true });
+    try {
+      await adminPool.query(
+        "UPDATE business_profiles SET saas_plan = 'BASIC' WHERE id = $1",
+        [fixture.profileId]
+      );
+      await saasMembershipService.setStatus({
+        tenantId: fixture.profileId,
+        memberId: fixture.memberships.suspended,
+        actorId: fixture.ownerId,
+        status: 'ACTIVE',
+        plan: 'BASIC',
+      });
+
+      const inviteeTwo = await saasMembershipService.invite({
+        tenantId: fixture.profileId, tenantName: 'Seat downgrade test', plan: 'BASIC',
+        actorId: fixture.ownerId, email: fixture.emails['invitee-two'], role: 'MEMBER',
+      });
+      const tokenTwo = String(emailService.sendEmail.mock.calls.at(-1)[0].data.text)
+        .match(/token=([0-9a-f]{32})/i)?.[1];
+      await saasMembershipService.accept({
+        token: tokenTwo,
+        user: { id: fixture.inviteeTwoId, email: fixture.emails['invitee-two'] },
+      });
+
+      const inviteeOne = await saasMembershipService.invite({
+        tenantId: fixture.profileId, tenantName: 'Seat downgrade test', plan: 'BASIC',
+        actorId: fixture.ownerId, email: fixture.emails['invitee-one'], role: 'MEMBER',
+      });
+      const tokenOne = String(emailService.sendEmail.mock.calls.at(-1)[0].data.text)
+        .match(/token=([0-9a-f]{32})/i)?.[1];
+      expect(tokenOne).toBeTruthy();
+
+      await adminPool.query(
+        "UPDATE business_profiles SET saas_plan = 'FREE_TRIAL' WHERE id = $1",
+        [fixture.profileId]
+      );
+
+      await expect(saasMembershipService.accept({
+        token: tokenOne,
+        user: { id: fixture.inviteeOneId, email: fixture.emails['invitee-one'] },
+      })).rejects.toMatchObject({
+        status: 403,
+        details: { code: 'SAAS_QUOTA_EXCEEDED', feature: 'TEAM_SEATS', current: 4, limit: 3, plan: 'FREE_TRIAL' },
+      });
+
+      const unchanged = await adminPool.query(
+        'SELECT status FROM memberships WHERE id = $1', [inviteeOne.membershipId]
+      );
+      expect(unchanged.rows[0].status).toBe('PENDING');
+    } finally {
+      if (originalBrevoKey === undefined) delete process.env.BREVO_API_KEY;
+      else process.env.BREVO_API_KEY = originalBrevoKey;
+      await cleanupFixture(fixture);
+    }
+  }, 30000);
+
   test('expires and safely resends a pending invitation when a seat is available', async () => {
     const fixture = await createFixture();
     const originalBrevoKey = process.env.BREVO_API_KEY;
