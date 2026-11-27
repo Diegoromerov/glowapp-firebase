@@ -37,11 +37,23 @@ describeWithPostgres('Aura business quota with PostgreSQL RLS', () => {
        VALUES ($1, $2, $3, 'Aura quota test salon', $1, 'FREE_TRIAL_LEGACY')`,
       [profileId, userId, verticalId]
     );
-    await adminPool.query(
-      `INSERT INTO memberships (id, user_id, business_profile_id, role, status, accepted_at, created_by_user_id)
-       VALUES ($1, $2, $3, 'OWNER', 'ACTIVE', NOW(), $2)`,
-      [crypto.randomUUID(), userId, profileId]
-    );
+    const membershipClient = await adminPool.connect();
+    try {
+      await membershipClient.query('BEGIN');
+      await membershipClient.query("SELECT set_config('app.user_id', $1, true)", [String(userId)]);
+      await membershipClient.query("SELECT set_config('app.business_profile_id', $1, true)", [profileId]);
+      await membershipClient.query(
+        `INSERT INTO memberships (id, user_id, business_profile_id, role, status, accepted_at, created_by_user_id)
+         VALUES ($1, $2, $3, 'OWNER', 'ACTIVE', NOW(), $2)`,
+        [crypto.randomUUID(), userId, profileId]
+      );
+      await membershipClient.query('COMMIT');
+    } catch (error) {
+      await membershipClient.query('ROLLBACK');
+      throw error;
+    } finally {
+      membershipClient.release();
+    }
   });
 
   afterAll(async () => {
