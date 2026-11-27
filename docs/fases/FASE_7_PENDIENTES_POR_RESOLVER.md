@@ -204,3 +204,13 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - PR [#252](https://github.com/Diegoromerov/glowapp-firebase/pull/252) pasó Backend CI (`46066625294`) y quedó integrada como `3f2f1f008382bc0acf9f377940618d7332781ed5`.
 - Railway API, panel y job de ciclo de prueba terminaron SUCCESS, sin trabajo pendiente. `/api/health` devolvió HTTP 200 con el commit `3f2f1f0`, PostgreSQL disponible y sin datos fabricados.
 - Esta cierra el punto de edición sin entitlement; la aceptación productiva de una API key QA válida, medición de todas las cuotas y venta de excedentes siguen pendientes en el punto 6/9.
+
+## Revalidación de invitaciones de equipo SaaS — 27 de noviembre de 2026
+
+- Se detectó que la aceptación canónica de una invitación pendiente no reevaluaba `TEAM_MANAGEMENT` ni `TEAM_SEATS` frente al plan actual. Un enlace emitido antes de bajar de plan podía activar un miembro sin derecho o cupo vigente.
+- La comprobación ahora ocurre dentro de la transacción y bloqueo del tenant. También bloquea el perfil durante la lectura del plan para serializar la aceptación frente a un cambio concurrente de plan.
+- RLS ocultaba las otras membresías al usuario invitado, causando que el conteo subestimara los asientos ocupados. La consulta de conteo usa el contexto de lectura del propietario del tenant; antes de activar se restaura el contexto del invitado. La invitación permanece pendiente si el plan o el cupo ya no permiten aceptarla.
+- CI PostgreSQL, workflow `46068626722`, pasó con las regresiones de downgrade a Freemium y reducción del cupo, además del resto de integración backend. Verificación local: 26 pruebas enfocadas pasan; sintaxis y `git diff --check` pasan.
+- PR [#254](https://github.com/Diegoromerov/glowapp-firebase/pull/254) integrado en `main` como `e7eb0d4b60588b51d65cbfa786d5586fda077671`.
+- Railway API, panel administrativo y cron finalizaron SUCCESS. `/api/health` devolvió HTTP 200 con el mismo commit, PostgreSQL disponible y sin datos fabricados.
+- Queda cerrada esta brecha de aceptación de invitaciones. Continúan pendientes la prueba operativa de todo el ciclo de equipo con usuarios QA, la auditoría integral de entitlements y cuotas restantes, la facturación y los puntos priorizados en esta fase.
