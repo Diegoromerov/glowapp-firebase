@@ -1103,8 +1103,14 @@ class UsageAlert {
     return (currentValue / limitValue) * 100;
   }
 
-  /// Severidad derivada: crítico al superar el límite, aviso cerca de él.
-  String get severity => percentageUsed >= 100 ? 'critical' : 'warning';
+  /// Una cuota concurrente completa es un aviso; solo excederla es crítico.
+  /// Las cuotas acumuladas del período son críticas al alcanzar el tope.
+  String get severity {
+    final limitExceeded = metricType.isConcurrentQuota
+        ? currentValue > limitValue
+        : percentageUsed >= 100;
+    return limitExceeded ? 'critical' : 'warning';
+  }
 
   Map<String, dynamic> toJson() => {
         'id': id,

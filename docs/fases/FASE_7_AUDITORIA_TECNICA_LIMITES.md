@@ -220,3 +220,10 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 - Ambos lectores ahora priorizan el plan del perfil si existe; solo salones históricos sin perfil usan el campo heredado. Si el perfil existe pero su plan está vacío, se aplica Freemium de forma conservadora.
 - PR [#247](https://github.com/Diegoromerov/glowapp-firebase/pull/247) quedó integrada como `5712548`; Backend CI `46062417251` pasó, incluida la prueba PostgreSQL/RLS que compara una sede con plan canónico Freemium y copia heredada PRO. Aura tiene regresión unitaria para la consulta.
 - Railway API, panel y job diario reportaron `SUCCESS`, sin trabajo pendiente; health productivo confirmó `OK`, PostgreSQL activo, sin datos ficticios y commit `5712548`. Lectura autenticada de `GET /api/owner/salones` en QA respondió HTTP 200 con una sede y el plan `FREE_TRIAL_LEGACY` que entrega el servicio en producción.
+
+## Severidad de alertas de cuotas concurrentes — 27 de noviembre de 2026
+
+- La regla existente considera `TEAM_SEATS`, `RESOURCES` y `SITES` en su capacidad exacta como aviso; solo un valor mayor al límite es exceso. Las cuotas mensuales acumuladas son críticas al alcanzar el 100 %.
+- El backend y el color de la app ya respetaban esa regla, pero `UsageAlert.severity` clasificaba cualquier métrica al 100 % como crítica. Esto hacía que el tablero resaltara en rojo y contara como crítica una cuota concurrente completa que su propia regla clasifica como aviso.
+- Se alineó la severidad en el modelo compartido `packages/glow_core/lib/src/models/saas/saas_models.dart`. Análisis estático de Flutter del archivo: sin problemas; no se ejecutaron pruebas automatizadas en esta revisión.
+- El cambio aún requiere integración y publicación para considerarse corregido en producción; no cambia límites, accesos ni datos de tenants.
