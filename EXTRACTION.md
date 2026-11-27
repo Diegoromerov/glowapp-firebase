@@ -1,5 +1,12 @@
 # Procedencia de la extracción
 
+> **Nota de estado actual:** este documento describe la extracción inicial de
+> `apps/` y `packages/` del 2026-11-01; no describe el estado actual completo
+> del repo. El backend se añadió después y su fuente activa es ahora
+> `glowapp-firebase/backend/`, desplegada en Railway. La referencia histórica a
+> que `belleza-app` conserva el backend no significa que siga siendo la fuente
+> activa. Ver [`docs/UBICACION_BACKEND.md`](docs/UBICACION_BACKEND.md).
+
 Extraído de `Diegoromerov/belleza-app` (repo matriz) el 2026-11-01.
 
 | Dato | Valor |
