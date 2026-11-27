@@ -4,13 +4,14 @@
  * Cliente para Factura Electrónica DIAN (Colombia).
  *
  * Implementa el Anexo Técnico 1.9 (Factura Electrónica de Venta) de la DIAN.
- * Genera UBL 2.1 XML, lo firma con certificado digital y lo envía a la DIAN
- * o a un Proveedor Tecnológico autorizado.
+ * Genera UBL 2.1 XML, lo firma con certificado digital y lo entrega a un
+ * Proveedor Tecnológico configurado. El envío SOAP directo a DIAN no está
+ * implementado de forma apta para producción y, por tanto, no se usa como fallback.
  *
  * Flujo:
  * 1. Generar XML UBL 2.1 desde los datos de la reserva/pedido
  * 2. Firmar XML con certificado digital (X.509 + clave privada)
- * 3. Enviar a Proveedor Tecnológico / DIAN (validación previa)
+ * 3. Enviar al Proveedor Tecnológico configurado y habilitado explícitamente
  * 4. Recibir respuesta (aceptada/rechazada) y guardar CUFE
  * 4. Entregar al adquiriente (email/portal)
  *
@@ -23,6 +24,7 @@
  * - DIAN_SOFTWARE_ID: ID del software registrado ante DIAN
  * - DIAN_SOFTWARE_PIN: PIN del software
  * - DIAN_ENV: 'test' | 'production'
+ * - DIAN_PROVIDER_ENABLED: 'true' solo después de validar proveedor y ambiente
  */
 
 const fs = require('fs');
@@ -32,9 +34,6 @@ const { DOMParser, XMLSerializer } = require('@xmldom/xmldom');
 const xmldsig = require('xmldsigjs');
 const forge = require('node-forge');
 const axios = require('axios');
-
-const TEST_BASE_URL = 'https://vpfe.dian.gov.co/WS/ValidacionFactura'; // DIAN validación previa test
-const PROD_BASE_URL = 'https://vpfe-hab.dian.gov.co/WS/ValidacionFactura'; // DIAN validación previa prod
 
 class DianInvoiceClient {
   constructor() {
@@ -47,14 +46,24 @@ class DianInvoiceClient {
     this.softwareId = process.env.DIAN_SOFTWARE_ID;
     this.softwarePin = process.env.DIAN_SOFTWARE_PIN;
     this.env = process.env.DIAN_ENV || 'test';
-  }
-
-  get baseUrl() {
-    return this.env === 'production' ? PROD_BASE_URL : TEST_BASE_URL;
+    this.providerEnabled = process.env.DIAN_PROVIDER_ENABLED === 'true';
   }
 
   isConfigured() {
     return Boolean(this.certPath && this.certPassword && this.nit);
+  }
+
+  isEmissionReady() {
+    if (!this.providerEnabled || !this.isConfigured() || !this.providerApiKey || !this.softwareId || !this.softwarePin
+        || !['test', 'production'].includes(this.env)) return false;
+
+    try {
+      const url = new URL(this.providerUrl);
+      return url.protocol === 'https:' && Boolean(url.hostname) && !url.username && !url.password
+        && !url.search && !url.hash;
+    } catch (_) {
+      return false;
+    }
   }
 
   _assertConfigured() {
@@ -407,26 +416,23 @@ class DianInvoiceClient {
    */
   async enviarFactura(xmlFirmado, numeroFactura) {
     this._assertConfigured();
+    if (!this.isEmissionReady()) {
+      throw new Error('Emisión electrónica deshabilitada: configure un Proveedor Tecnológico HTTPS y todas sus credenciales antes de emitir.');
+    }
 
     // Generar CUFE (hash SHA-384 del XML firmado + datos clave)
     const cufe = this._generarCufe(xmlFirmado, numeroFactura);
 
     try {
-      if (this.providerUrl && this.providerApiKey) {
-        // Enviar a Proveedor Tecnológico
-        return await this._enviarAProveedor(xmlFirmado, numeroFactura, cufe);
-      } else {
-        // Enviar directo a DIAN (validación previa)
-        return await this._enviarADian(xmlFirmado, numeroFactura, cufe);
-      }
+      return await this._enviarAProveedor(xmlFirmado, numeroFactura, cufe);
     } catch (error) {
-      throw new Error(`Error enviando factura a DIAN: ${error.message}`);
+      throw new Error(`Error enviando factura al Proveedor Tecnológico: ${error.message}`);
     }
   }
 
   async _enviarAProveedor(xmlFirmado, numeroFactura, cufe) {
     const response = await axios.post(
-      `${this.providerUrl}/api/facturas`,
+      `${this.providerUrl.replace(/\/+$/, '')}/api/facturas`,
       {
         xml: xmlFirmado,
         nit: this.nit,
@@ -447,36 +453,6 @@ class DianInvoiceClient {
       aceptada: response.data.aceptada === true,
       cufe: response.data.cufe || cufe,
       qr: response.data.qr || null,
-      respuesta: response.data
-    };
-  }
-
-  async _enviarADian(xmlFirmado, numeroFactura, cufe) {
-    // DIAN validación previa usa SOAP. Aquí simplificamos asumiendo REST wrapper.
-    // En producción real, usar SOAP con WS-Security.
-    const response = await axios.post(
-      `${this.baseUrl}/SubmitInvoice`,
-      xmlFirmado,
-      {
-        headers: {
-          'Content-Type': 'application/xml',
-          'SOAPAction': 'http://wcf.dian.colombia/IWcfDianCustomerServices/SubmitInvoice'
-        },
-        timeout: this.timeout
-      }
-    );
-
-    // Parsear respuesta SOAP
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(response.data, 'text/xml');
-    const accepted = doc.getElementsByTagName('IsValid')[0]?.textContent === 'true';
-    const returnedCufe = doc.getElementsByTagName('CUFE')[0]?.textContent || cufe;
-    const qr = doc.getElementsByTagName('QRCode')[0]?.textContent || null;
-
-    return {
-      aceptada: accepted,
-      cufe: returnedCufe,
-      qr,
       respuesta: response.data
     };
   }

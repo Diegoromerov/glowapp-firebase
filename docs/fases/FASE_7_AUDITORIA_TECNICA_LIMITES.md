@@ -107,6 +107,13 @@ La evidencia combina inspección estática, CI PostgreSQL y comprobación de sal
 - La gestión de miembros tiene las rutas canónicas `/api/saas/team` y `/api/v1/memberships`, además del alias heredado `/api/salon`. Invitación y cambios de rol requieren `TEAM_MANAGEMENT`; altas, aceptación, reenvío y reactivación verifican el cupo. Suspender o retirar no aumenta el número de asientos y se conserva para permitir reducir el equipo tras cambiar a un plan menor; reactivar sí vuelve a comprobar el cupo bajo el bloqueo del salón. Añadir un gate de plan a la baja impediría esa reducción y no es una corrección adecuada.
 - Esta revisión estática no reemplaza las pruebas integrales de todos los roles ni el recorrido QA autenticado en producción. No se modificó código porque las rutas revisadas ya cumplen el comportamiento definido; siguen abiertos los faltantes de aceptación QA, cuotas de módulos aún no operativos y decisiones comerciales de la Fase 7.
 
+## Facturación DIAN: cierre seguro mientras se elige proveedor — 27 de noviembre de 2026
+
+- La auditoría de `dianInvoiceClient` encontró que la emisión se marcaba configurada con solo certificado, contraseña y NIT. Si faltaba URL/credencial del proveedor, intentaba un envío SOAP simplificado que el propio código declara no apto para producción.
+- Se ajustó el cliente para exigir proveedor HTTPS, API key, ID/PIN de software y `DIAN_PROVIDER_ENABLED=true`; se retiró el fallback de envío directo no implementado. Las rutas de cita y tienda omiten el intento y registran claramente que no se emitió cuando no se cumple la configuración.
+- Esto evita una falsa apariencia de disponibilidad y no integra ni selecciona un proveedor. La facturación SaaS sigue deshabilitada comercialmente. La emisión productiva requiere elegir proveedor, verificar su contrato real, validar facturas de prueba y luego habilitar la bandera explícitamente.
+- Estado de este cambio: implementado en código. Prueba focalizada `dianInvoiceClient.test.js`: 12/12; comprobación de sintaxis y `git diff --check` correctos. Pendiente CI de rama y despliegue; no se configuró ni habilitó proveedor en producción.
+
 ## Pruebas de recetas y alquileres — 27 de noviembre de 2026
 
 - CI `45940586113` pasó PostgreSQL/RLS para recetas: MEMBER lee; ADMIN escribe; MEMBER no escribe. El test usa `FREE_TRIAL`, con restauración del plan del fixture.

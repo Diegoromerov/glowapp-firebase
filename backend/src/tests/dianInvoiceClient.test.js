@@ -17,6 +17,11 @@ describe('dianInvoiceClient — Factura Electrónica DIAN', () => {
     process.env.DIAN_DV = '7';
     process.env.DIAN_RAZON_SOCIAL = 'GlowApp S.A.S.';
     process.env.DIAN_ENV = 'test';
+    delete process.env.DIAN_PROVIDER_ENABLED;
+    delete process.env.DIAN_PROVIDER_URL;
+    delete process.env.DIAN_PROVIDER_API_KEY;
+    delete process.env.DIAN_SOFTWARE_ID;
+    delete process.env.DIAN_SOFTWARE_PIN;
     dianInvoiceClient = require('../services/dianInvoiceClient');
   });
 
@@ -44,6 +49,44 @@ describe('dianInvoiceClient — Factura Electrónica DIAN', () => {
       jest.resetModules();
       const client = require('../services/dianInvoiceClient');
       expect(client.isConfigured()).toBe(false);
+    });
+  });
+
+  describe('isEmissionReady', () => {
+    test('no habilita facturación solo por tener certificado y NIT', () => {
+      expect(dianInvoiceClient.isEmissionReady()).toBe(false);
+    });
+
+    test('requiere habilitación explícita y proveedor HTTPS con credenciales completas', () => {
+      process.env.DIAN_PROVIDER_ENABLED = 'true';
+      process.env.DIAN_PROVIDER_URL = 'https://facturador.example/api';
+      process.env.DIAN_PROVIDER_API_KEY = 'qa-key';
+      process.env.DIAN_SOFTWARE_ID = 'qa-software';
+      process.env.DIAN_SOFTWARE_PIN = 'qa-pin';
+      jest.resetModules();
+      const client = require('../services/dianInvoiceClient');
+
+      expect(client.isEmissionReady()).toBe(true);
+    });
+
+    test.each([
+      ['URL sin HTTPS', 'http://facturador.example'],
+      ['URL con credenciales incrustadas', 'https://user:secret@facturador.example'],
+    ])('rechaza %s', (_label, providerUrl) => {
+      process.env.DIAN_PROVIDER_ENABLED = 'true';
+      process.env.DIAN_PROVIDER_URL = providerUrl;
+      process.env.DIAN_PROVIDER_API_KEY = 'qa-key';
+      process.env.DIAN_SOFTWARE_ID = 'qa-software';
+      process.env.DIAN_SOFTWARE_PIN = 'qa-pin';
+      jest.resetModules();
+      const client = require('../services/dianInvoiceClient');
+
+      expect(client.isEmissionReady()).toBe(false);
+    });
+
+    test('no intenta enviar por SOAP directo si no hay proveedor habilitado', async () => {
+      await expect(dianInvoiceClient.enviarFactura('<Invoice/>', 'FAC-QA-1'))
+        .rejects.toThrow(/Emisión electrónica deshabilitada/);
     });
   });
 

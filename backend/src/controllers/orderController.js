@@ -1297,8 +1297,11 @@ exports.storeWebhook = async (req, res) => {
  * llega sin contexto de inquilino y las políticas de RLS filtrarían todo.
  */
 async function generarFacturaDianPedido(pedidoId) {
-  if (!dianInvoiceClient.isConfigured()) {
-    console.info(`[DIAN INVOICE] Cliente no configurado (falta certificado/NIT). Saltando factura para pedido ${pedidoId}.`);
+  const emissionReady = typeof dianInvoiceClient.isEmissionReady === 'function'
+    ? dianInvoiceClient.isEmissionReady()
+    : dianInvoiceClient.isConfigured();
+  if (!emissionReady) {
+    console.info(`[DIAN INVOICE] Proveedor Tecnológico no configurado; factura del pedido ${pedidoId} no emitida.`);
     return;
   }
 
