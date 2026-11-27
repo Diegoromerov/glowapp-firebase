@@ -290,7 +290,7 @@ class SaasApiService {
           'Presencia en el mapa',
           'Gestión de equipo, roles y permisos',
           'Reservas en línea',
-          'Caja y ventas',
+          'Caja manual del salón',
           'Inventario',
           'Reportes básicos',
           'Checklists de cumplimiento',
@@ -308,7 +308,7 @@ class SaasApiService {
           'Presencia en el mapa',
           'Gestión de equipo, roles y permisos',
           'Reservas en línea',
-          'Caja y ventas',
+          'Caja manual del salón',
           'Inventario',
           'Reportes básicos',
           'recursos ilimitados',
@@ -320,7 +320,7 @@ class SaasApiService {
         return const [
           'Presencia en el mapa',
           'Reservas en línea',
-          'Recibos no fiscales',
+          'Caja manual con constancias internas',
           'Reportes básicos',
         ];
       case SaasPlanTier.basic:
@@ -328,7 +328,7 @@ class SaasApiService {
           'Presencia en el mapa',
           'Gestión de equipo, roles y permisos',
           'Reservas en línea',
-          'Caja y ventas',
+          'Caja manual del salón',
           'Inventario',
           'Reportes básicos',
           'Checklists de cumplimiento',
