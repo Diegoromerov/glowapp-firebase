@@ -22,5 +22,22 @@ void main() {
         ['BASIC'],
       );
     });
+
+    test('checkout readiness round-trips with the plan model', () {
+      final plan = SaasPlan.fromJson({
+        'id': 'BASIC',
+        'tier': 'BASIC',
+        'name': 'Básico',
+        'description': 'Plan básico',
+        'price_cents': 9900000,
+        'trial_days': 0,
+        'limits': <String, dynamic>{},
+        'features': <String>[],
+        'checkout_available': true,
+      });
+
+      expect(plan.checkoutAvailable, isTrue);
+      expect(plan.toJson()['checkout_available'], isTrue);
+    });
   });
 }

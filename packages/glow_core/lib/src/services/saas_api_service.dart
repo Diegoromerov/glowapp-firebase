@@ -199,6 +199,7 @@ class SaasApiService {
           unlimitedLimits: unlimitedLimits,
           features: features,
           isActive: raw['commerciallyAvailable'] as bool? ?? true,
+          checkoutAvailable: data['checkoutAvailable'] == true,
           isPopular: raw['popular'] as bool? ?? false,
         );
       }).toList();

@@ -113,6 +113,29 @@ test('Flutter fallback availability and purchase flags stay in parity with backe
   assert.deepEqual(tiersFromGetter('isPurchasable'), backendPurchasable);
 });
 
+test('provider onboarding distinguishes commercial availability from live checkout readiness', () => {
+  const servicePath = path.resolve(
+    __dirname,
+    '../../../packages/glow_core/lib/src/services/saas_api_service.dart'
+  );
+  const modelPath = path.resolve(
+    __dirname,
+    '../../../packages/glow_core/lib/src/models/saas/saas_models.dart'
+  );
+  const onboardingPath = path.resolve(
+    __dirname,
+    '../../../apps/glow_provider/lib/screens/auth/onboarding_screen.dart'
+  );
+  const service = fs.readFileSync(servicePath, 'utf8');
+  const model = fs.readFileSync(modelPath, 'utf8');
+  const onboarding = fs.readFileSync(onboardingPath, 'utf8');
+
+  assert.match(service, /checkoutAvailable:\s*data\['checkoutAvailable'\]\s*==\s*true/);
+  assert.match(model, /final bool checkoutAvailable;/);
+  assert.match(onboarding, /commercialPlan\.checkoutAvailable/);
+  assert.match(onboarding, /Contratación pausada hasta que se habilite el pago\./);
+});
+
 test('Flutter fallback descriptions, prices and benefits match the public catalog', () => {
   const catalog = publicCatalog();
   const servicePath = path.resolve(
