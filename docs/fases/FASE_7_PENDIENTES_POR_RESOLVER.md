@@ -195,3 +195,12 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - Verificación local: `auraToolExecutor.test.js` (18 casos), `businessComplianceEntitlement.test.js` (5 casos) y `businessRAG.integration.test.js` (14 casos) pasan; `node --check` y `git diff --check` pasan.
 - PR [#249](https://github.com/Diegoromerov/glowapp-firebase/pull/249) pasó Backend CI (`46065525067`) y quedó integrado en `main` como `921ab275b135ef7c79d04c5fea1eed2a882cff88`.
 - Railway API, dashboard y cron finalizaron SUCCESS. La API productiva `/api/health` devuelve HTTP 200 con el mismo commit, PostgreSQL disponible y sin datos fabricados. La brecha de autorización de Aura Cumplimiento queda corregida en código, CI y producción; la aceptación funcional de cada rol/salón en la app continúa dentro de la matriz pendiente del punto 9.
+
+## Entitlement para editar API keys heredadas — 27 de noviembre de 2026
+
+- La auditoría detectó que `PATCH /api/saas/api-keys/:keyId` permitía a un tenant sin `API_KEYS` cambiar scopes y extender el vencimiento de una llave existente. Aunque la API externa verificaba entitlement en cada llamada, la ruta de administración no coincidía con la compuerta de creación.
+- Ahora editar exige `API_KEYS`. Se conserva listar, revocar y purgar una llave ya revocada para que una cuenta que bajó de plan aún pueda inspeccionar o retirar credenciales antiguas.
+- Regresiones locales: Freemium recibe 403 en edición y sí puede revocar. Las suites Aura, entitlement, RAG y API key pasan: 39/39; `node --check` y `git diff --check` pasan.
+- PR [#252](https://github.com/Diegoromerov/glowapp-firebase/pull/252) pasó Backend CI (`46066625294`) y quedó integrada como `3f2f1f008382bc0acf9f377940618d7332781ed5`.
+- Railway API, panel y job de ciclo de prueba terminaron SUCCESS, sin trabajo pendiente. `/api/health` devolvió HTTP 200 con el commit `3f2f1f0`, PostgreSQL disponible y sin datos fabricados.
+- Esta cierra el punto de edición sin entitlement; la aceptación productiva de una API key QA válida, medición de todas las cuotas y venta de excedentes siguen pendientes en el punto 6/9.
