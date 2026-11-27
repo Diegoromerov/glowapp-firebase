@@ -114,6 +114,11 @@ jobs:
           JWT_SECRET: fase7-billing-fail-closed-test-secret
         run: npx jest tests/saasBillingFailClosed.test.js --runInBand --forceExit --verbose
 
+      - name: Cancelación SaaS conserva acceso hasta fin de período y requiere suscripción activa
+        env:
+          JWT_SECRET: fase7-billing-cancel-test-secret
+        run: npx jest src/routes/saasBillingRoutes.documents.test.js --runInBand --forceExit --verbose
+
       - name: Preparar base de datos con RLS (prepareRlsDatabase.js)
         env:
           # trust auth: sin password en la URL

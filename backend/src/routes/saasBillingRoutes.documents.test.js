@@ -10,6 +10,10 @@ jest.mock('../middleware/featureGate', () => ({
 }));
 jest.mock('../services/subscriptionService', () => ({ getActiveSubscription: jest.fn() }));
 jest.mock('../services/stripeService', () => ({ isConfigured: jest.fn() }));
+jest.mock('../services/wompiSaasBillingService', () => ({
+  isCheckoutAvailable: jest.fn(() => false),
+  cancelSubscription: jest.fn(),
+}));
 jest.mock('../services/invoiceService', () => ({
   getInvoiceDocument: jest.fn(),
   getInvoicesByTenant: jest.fn(),
@@ -18,18 +22,22 @@ jest.mock('../services/invoiceService', () => ({
 
 const express = require('express');
 const request = require('supertest');
+const bodyParser = require('body-parser');
 const { pool } = require('../config/db');
 const invoiceService = require('../services/invoiceService');
 const subscriptionService = require('../services/subscriptionService');
 const stripeService = require('../services/stripeService');
+const wompiSaasBilling = require('../services/wompiSaasBillingService');
 const billingRouter = require('./saasBillingRoutes');
 
 describe('SaaS invoice document route', () => {
   const app = express();
+  app.use(bodyParser.json());
   app.use('/api/saas/billing', billingRouter);
 
   beforeEach(() => {
     jest.clearAllMocks();
+    pool.query.mockResolvedValue({ rows: [] });
   });
 
   it('queries the invoice within the active tenant and serves private, uncached PDF bytes', async () => {
@@ -79,13 +87,14 @@ describe('SaaS invoice document route', () => {
     });
   });
 
-  it('marks Wompi cancellation and Stripe portal controls unavailable when Stripe is not configured', async () => {
+  it('offers cancellation for an active Wompi subscription and disables Stripe portal controls', async () => {
     stripeService.isConfigured.mockReturnValue(false);
     subscriptionService.getActiveSubscription.mockResolvedValue({
       id: 'subscription-qa',
       tenant_id: 'tenant-qa',
       plan: 'BASIC',
       status: 'active',
+      billing_provider: 'wompi',
       wompi_subscription_id: 'wompi-sub-qa',
       stripe_subscription_id: null,
       stripe_customer_id: null,
@@ -103,8 +112,64 @@ describe('SaaS invoice document route', () => {
     expect(response.body.subscription).toMatchObject({
       paymentProvider: 'wompi',
       canManagePayments: false,
-      canCancel: false
+      canCancel: true
     });
+  });
+
+  it('hides Wompi cancellation for a non-active Wompi subscription', async () => {
+    stripeService.isConfigured.mockReturnValue(false);
+    subscriptionService.getActiveSubscription.mockResolvedValue({
+      id: 'subscription-qa', tenant_id: 'tenant-qa', plan: 'BASIC', status: 'active',
+      billing_provider: 'wompi', wompi_subscription_id: null, status: 'canceled',
+      stripe_subscription_id: null, stripe_customer_id: null,
+      current_period_start: new Date('2026-11-01T00:00:00Z'),
+      current_period_end: new Date('2026-12-01T00:00:00Z'),
+      cancel_at_period_end: false, currency: 'COP'
+    });
+    invoiceService.getInvoicesByTenant.mockResolvedValue([]);
+
+    const response = await request(app).get('/api/saas/billing');
+
+    expect(response.status).toBe(200);
+    expect(response.body.subscription.canCancel).toBe(false);
+  });
+
+  it('rejects a Wompi cancellation if the active subscription disappeared before update', async () => {
+    subscriptionService.getActiveSubscription.mockResolvedValue({
+      id: 'subscription-qa', tenant_id: 'tenant-qa', plan: 'BASIC', status: 'active',
+      billing_provider: 'wompi', wompi_subscription_id: null
+    });
+
+    const response = await request(app)
+      .post('/api/saas/billing/cancel')
+      .send({ atPeriodEnd: false });
+
+    expect(response.status).toBe(404);
+    expect(wompiSaasBilling.cancelSubscription).toHaveBeenCalledWith(pool, 'tenant-qa', false);
+    expect(pool.query).not.toHaveBeenCalledWith(
+      expect.stringContaining("saas_plan='FREEMIUM'"), expect.anything()
+    );
+  });
+
+  it('preserves the paid plan until the current period ends after immediate renewal cancellation', async () => {
+    subscriptionService.getActiveSubscription.mockResolvedValue({
+      id: 'subscription-qa', tenant_id: 'tenant-qa', plan: 'BASIC', status: 'active',
+      billing_provider: 'wompi', wompi_subscription_id: 'wompi-sub-qa'
+    });
+    wompiSaasBilling.cancelSubscription.mockResolvedValue({
+      id: 'subscription-qa', plan: 'BASIC', status: 'active', cancel_at_period_end: true
+    });
+
+    const response = await request(app)
+      .post('/api/saas/billing/cancel')
+      .send({ atPeriodEnd: false });
+
+    expect(response.status).toBe(200);
+    expect(response.body.subscription.plan).toBe('BASIC');
+    expect(response.body.message).toMatch(/acceso pagado se conserva/i);
+    expect(pool.query).not.toHaveBeenCalledWith(
+      expect.stringContaining("saas_plan='FREEMIUM'"), expect.anything()
+    );
   });
 
   it('exposes Stripe billing controls only when a Stripe customer and configuration exist', async () => {
