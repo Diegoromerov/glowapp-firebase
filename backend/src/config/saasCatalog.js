@@ -148,9 +148,9 @@ const PLAN_CATALOG = Object.freeze({
     id: 'ENTERPRISE', name: 'Empresarial', priceCop: 599000, priceUsd: 150, proposedPriceCop: 449000, proposedAnnualPriceCop: 359200,
     interval: 'month', trialDays: 0,
     description: 'Propuesta V3: operación multi-sede, API abierta y atención comercial para cadenas.', popular: false, commerciallyAvailable: false,
-    capabilities: ['MAP_VISIBILITY', 'TEAM_MANAGEMENT', 'ONLINE_BOOKING', 'ADVANCED_ANALYTICS', 'CUSTOM_BRANDING', 'API_KEYS', 'WHATSAPP_INTEGRATION', 'POS_INTEGRATION', 'MULTI_SITE'],
-    quotas: { MAP_VISIBILITY: 1, ONLINE_BOOKING: null, DIRECT_BOOKINGS: null, TEAM_SEATS: null, SITES: 3, API_CALLS: null, ADVANCED_ANALYTICS: 1, CUSTOM_BRANDING: 1, WHATSAPP_INTEGRATION: 1, POS_INTEGRATION: 1 },
-    proposedOffer: { priceCop: 449000, annualPriceCop: 359200, apiCalls: 500000, invoicingDocuments: 2500, auraQueries: 600, whatsappMessages: 500, sites: 3 },
+    capabilities: ['MAP_VISIBILITY', 'TEAM_MANAGEMENT', 'ONLINE_BOOKING', 'ADVANCED_ANALYTICS', 'CUSTOM_BRANDING', 'API_KEYS', 'WHATSAPP_INTEGRATION', 'POS_INTEGRATION'],
+    quotas: { MAP_VISIBILITY: 1, ONLINE_BOOKING: null, DIRECT_BOOKINGS: null, TEAM_SEATS: null, SITES: 1, API_CALLS: null, ADVANCED_ANALYTICS: 1, CUSTOM_BRANDING: 1, WHATSAPP_INTEGRATION: 1, POS_INTEGRATION: 1 },
+    proposedOffer: { priceCop: 449000, annualPriceCop: 359200, apiCalls: 500000, invoicingDocuments: 2500, auraQueries: 600, whatsappMessages: 500, sites: 3, multiSite: true },
   },
 });
 
