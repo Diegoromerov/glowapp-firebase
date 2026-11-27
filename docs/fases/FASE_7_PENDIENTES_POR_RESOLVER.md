@@ -164,3 +164,10 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - Health productivo `GET https://glowapp-api-production.up.railway.app/api/health` respondió `OK`, commit exacto `e6b7cc1443e6e0cce2a1385ad883e1b9fb26257b`, PostgreSQL activo, sin datos fabricados y 79 migraciones registradas.
 - El endpoint autenticado no se volvió a consultar durante esta ejecución porque no había una sesión QA persistente disponible; por eso se registra la corrección y el despliegue como verificados, y la aceptación del resumen sobre un tenant QA como pendiente. No se modificaron datos del salón, no se enviaron invitaciones ni se crearon reservas o cobros.
 - Railway muestra el proceso diario `saas-trial-lifecycle` en estado Ready, programado a las 06:00 hora de Bogotá; esto acredita disponibilidad del job, no una expiración de prueba ejecutada en esta verificación.
+
+## Colores de cuota alineados con el servidor — 27 de noviembre de 2026
+
+- La revisión encontró que la app coloreaba el uso en 75 % y 90 %, mientras `GET /api/saas/usage` clasifica `caution` desde 60 %, `warning` desde 80 % y `exceeded` desde 100 %. Así, la interfaz podía marcar rojo antes del agotamiento real.
+- PR [#225](https://github.com/Diegoromerov/glowapp-firebase/pull/225) quedó integrada en `main` como `5305746af185ef397dcbe3284d1fc24428064f53`. Analyze & Tests del proveedor y la compilación web terminaron SUCCESS en el workflow `46041308156`.
+- Firebase Hosting live del prestador se publicó con éxito en el workflow `46041815863`. La portada y `main.dart.js` responden HTTP 200 con `Last-Modified: 2026-11-27 17:30:32 UTC`.
+- El indicador ahora cambia a naranja desde 60 %, ámbar desde 80 % y rojo al alcanzar 100 %. Se alineó tanto la tarjeta de consumo como la tabla de límites. No se modificaron los límites del plan ni datos de salones.
