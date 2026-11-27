@@ -236,3 +236,11 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - PR [#260](https://github.com/Diegoromerov/glowapp-firebase/pull/260) pasó Backend CI `46073294287`, incluidas pruebas contra PostgreSQL/RLS, y quedó integrada en `main` como `c2da58ead328b486dbee9fd46efde989953cb911`.
 - Railway producción desplegó API, panel y ciclo de prueba en estado `SUCCESS`, sin trabajo pendiente. `/api/health` devolvió HTTP 200 con el mismo SHA, PostgreSQL disponible, modo `postgres` y sin datos simulados. No se modificaron planes ni datos de salones.
 - Queda cerrado este hallazgo de respaldo/permisos; Fase 7 sigue abierta por cobro, oferta comercial, cuotas restantes y aceptación operativa pendientes.
+
+## Reactivación de membresía verifica el entitlement vigente — 27 de noviembre de 2026
+
+- Se detectó que una membresía suspendida podía reactivarse usando el plan que `saasContext` había cargado antes de la petición. Después de una degradación, ese valor podía estar obsoleto.
+- La reactivación ahora consulta `business_profiles.saas_plan` dentro de la transacción y vuelve a exigir `TEAM_MANAGEMENT` antes de contar cupos o modificar el estado. Si el plan no incluye gestión de equipo (o está vacío y aplica Freemium), responde 403; suspender o retirar miembros sigue permitido.
+- Dos regresiones nuevas comprueban que Freemium no reactive una membresía aunque la petición lleve `BASIC`, y que Básico sí permita reactivar con cupo. Suite `saasMembershipService.test.js`: 10/10; Backend CI PostgreSQL/RLS `46074308268` SUCCESS.
+- PR [#265](https://github.com/Diegoromerov/glowapp-firebase/pull/265) quedó integrada en `main` como `0a2cb8dace6b7b4349a93a9ada18393156650462`. Railway API, panel y ciclo de prueba están `SUCCESS`; `/api/health` devuelve HTTP 200 con el mismo SHA, PostgreSQL disponible y sin datos simulados.
+- Se cierra esta ruta de reactivación; siguen pendientes la aceptación operativa completa del equipo, otras capacidades/cuotas aún no cubiertas y facturación descritas en los puntos 8 y 9.
