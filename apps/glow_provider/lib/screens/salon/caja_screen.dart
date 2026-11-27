@@ -187,7 +187,11 @@ class _CajaScreenState extends State<CajaScreen> {
                   const SizedBox(width: Spacing.sm),
                   Expanded(
                     child: Text(
-                      alcance == 'SALON' ? 'Caja del salón' : 'Mis movimientos',
+                      soloConstancias
+                          ? 'Constancias de pago'
+                          : (alcance == 'SALON'
+                              ? 'Caja del salón'
+                              : 'Mis movimientos'),
                       style: TypographyTokens.h3(t).copyWith(fontSize: 16),
                     ),
                   ),
