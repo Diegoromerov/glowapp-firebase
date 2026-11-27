@@ -134,6 +134,7 @@ router.get('/', async (req, res) => {
     // Resumen general
     const exceeded = usage.filter(u => u.status === 'exceeded').length;
     const warning = usage.filter(u => u.status === 'warning').length;
+    const caution = usage.filter(u => u.status === 'caution').length;
 
     res.json({
       tenantId,
@@ -144,6 +145,7 @@ router.get('/', async (req, res) => {
         totalFeatures: usage.length,
         exceeded,
         warning,
+        caution,
         ok: usage.filter(u => u.status === 'ok').length
       }
     });
