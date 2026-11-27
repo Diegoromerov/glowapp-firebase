@@ -38,8 +38,11 @@ void main() {
       const PinPunto(id: 'b', posicion: b, destacado: true),
     ], zoom: 13);
 
-    expect(grupos.single.destacado, isTrue,
-        reason: 'si hay un buen prestador en el montón, el montón debe verse');
+    expect(
+      grupos.single.destacado,
+      isTrue,
+      reason: 'si hay un buen prestador en el montón, el montón debe verse',
+    );
   });
 
   test('pines lejanos no se agrupan', () {
@@ -58,5 +61,35 @@ void main() {
 
     expect(grupos.single.ids, {'a'});
     expect(grupos.single.esCluster, isFalse);
+  });
+
+  test(
+    'pines con coordenadas idénticas se separan con posiciones estables',
+    () {
+      const iguales = [
+        PinPunto(id: 'a', posicion: a),
+        PinPunto(id: 'b', posicion: a),
+        PinPunto(id: 'c', posicion: a),
+      ];
+      final primero = separarPinesCoincidentes(iguales);
+      final segundo = separarPinesCoincidentes(iguales);
+
+      expect(primero.map((pin) => pin.id).toSet(), {'a', 'b', 'c'});
+      expect(primero.map((pin) => pin.posicion).toSet(), hasLength(3));
+      expect(
+        primero.map((pin) => pin.posicion).toList(),
+        segundo.map((pin) => pin.posicion).toList(),
+      );
+    },
+  );
+
+  test('pines con coordenadas diferentes conservan su ubicación', () {
+    final separados = separarPinesCoincidentes([
+      const PinPunto(id: 'a', posicion: a),
+      const PinPunto(id: 'b', posicion: b),
+    ]);
+
+    expect(separados[0].posicion, a);
+    expect(separados[1].posicion, b);
   });
 }
