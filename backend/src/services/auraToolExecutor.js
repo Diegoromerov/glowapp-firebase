@@ -12,7 +12,25 @@ const businessRequirementService = require('./businessRequirementService');
 const businessRepository = require('../repositories/businessRepository');
 const { KNOWLEDGE_CATEGORIES } = require('../config/knowledgeCategories');
 const { pool } = require('../config/db');
-const { consumeAuraBusinessQuery } = require('./usageMeteringService');
+const { consumeAuraBusinessQuery, withBusinessComplianceRead } = require('./usageMeteringService');
+
+function businessComplianceAccessError(access) {
+  if (access.reason === 'Feature not included in plan') {
+    return {
+      error: 'business_compliance_entitlement_required',
+      message: 'El plan actual no incluye las herramientas de cumplimiento del negocio.',
+      required: 'COMPLIANCE',
+      currentPlan: access.plan,
+    };
+  }
+  if (access.reason === 'Role cannot read business profile') {
+    return { error: 'business_profile_read_forbidden', message: 'Tu rol no puede consultar el expediente del negocio.' };
+  }
+  if (access.reason === 'Active membership required') {
+    return { error: 'active_membership_required', message: 'No tienes una membresía activa en el salón seleccionado.' };
+  }
+  return { error: 'business_compliance_context_required', message: 'Selecciona un salón activo y vuelve a intentarlo.' };
+}
 
 /**
  * Etiquetas REALES del enum `estado_cita` de PostgreSQL.
@@ -419,8 +437,12 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
 
       // ── BUSINESS READ-ONLY TOOLS EXECUTION ──
       case 'get_business_profile_summary': {
-        const targetProviderId = String(userId);
-        const summary = await businessDiagnosticService.getProfileSummary(targetProviderId, tenantId);
+        const access = await withBusinessComplianceRead({
+          tenantId, userId,
+          read: () => businessDiagnosticService.getProfileSummary(String(userId), tenantId),
+        });
+        if (!access.allowed) return businessComplianceAccessError(access);
+        const summary = access.data;
         if (!summary) {
           return { status: 'not_found', message: 'No se encontró expediente de negocio para este usuario.' };
         }
@@ -428,8 +450,12 @@ async function executeAuraTool(toolName, args, userId, userRole = 'provider', te
       }
 
       case 'get_business_tasks': {
-        const targetProviderId = String(userId);
-        const tasks = await businessWorkflowService.getTasksForProvider(targetProviderId, tenantId);
+        const access = await withBusinessComplianceRead({
+          tenantId, userId,
+          read: () => businessWorkflowService.getTasksForProvider(String(userId), tenantId),
+        });
+        if (!access.allowed) return businessComplianceAccessError(access);
+        const tasks = access.data;
         return { status: 'success', tasksCount: tasks.length, tasks };
       }
 

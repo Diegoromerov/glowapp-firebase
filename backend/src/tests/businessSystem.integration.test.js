@@ -296,13 +296,13 @@ describe('GlowApp Business - System Integration & Architecture Validation (Goal 
 
   describe('4. Aura & Multi-Tenant RAG Integration Boundary', () => {
     test('Aura Tool: get_business_profile_summary returns profile for provider context', async () => {
-      const result = await executeAuraTool('get_business_profile_summary', {}, mockProviderUser.id, 'provider', mockProviderUser.tenant_id);
+      const result = await executeAuraTool('get_business_profile_summary', {}, mockProviderUser.id, 'provider', 'biz-sys-alpha');
       expect(result.status).toBe('success');
       expect(result.summary.profile).toBeDefined();
     });
 
     test('Aura Tool: get_business_tasks returns tasks for provider context', async () => {
-      const result = await executeAuraTool('get_business_tasks', {}, mockProviderUser.id, 'provider', mockProviderUser.tenant_id);
+      const result = await executeAuraTool('get_business_tasks', {}, mockProviderUser.id, 'provider', 'biz-sys-alpha');
       expect(result.status).toBe('success');
       expect(result.tasksCount).toBeDefined();
     });

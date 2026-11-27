@@ -186,3 +186,11 @@ La oferta V3 orienta el análisis, pero sus precios e hipótesis no se considera
 - **Código, producción y aceptación autenticada: cerrado.** PR [#234](https://github.com/Diegoromerov/glowapp-firebase/pull/234), commit `ab60bbc`, elimina capacidades booleanas del consumo cuantitativo; siguen indicándose como incluidas o no incluidas según el plan.
 - La consulta de solo lectura al tenant QA `salon-17` devolvió 9 métricas, todas cuotas; no incluyó `MAP_VISIBILITY` ni otras capacidades booleanas. Resumen consistente: 9 total, 8 `ok`, 1 `caution` (`TEAM_SEATS`, 2/3), 0 `warning` y 0 `exceeded`.
 - Este subtema queda cerrado para contrato y comportamiento productivo consultado. La matriz de medición/agotamiento de todas las cuotas sigue pendiente en el punto correspondiente; no se afirma que cada cuota haya sido ejercitada.
+
+## Hallazgo de autorización en Aura Cumplimiento — 27 de noviembre de 2026
+
+- La auditoría encontró que `get_business_profile_summary` y `get_business_tasks` consultaban servicios directamente, omitiendo las verificaciones `COMPLIANCE`, membresía activa y permiso `BUSINESS_PROFILE:READ` de las rutas `/api/v1/business`.
+- Ambas herramientas ahora validan el perfil SaaS activo, la membresía, el entitlement y el permiso RBAC dentro de una transacción con RLS. Freemium y cuentas sin membresía reciben denegación segura.
+- Las lecturas de expediente y tareas se limitan al `businessProfileId` autorizado junto al usuario; así una cuenta con varios salones no puede consultar otro expediente desde Aura.
+- Verificación local: `auraToolExecutor.test.js` (18 casos) y `businessComplianceEntitlement.test.js` (4 casos) pasan; `node --check` y `git diff --check` pasan.
+- Aún no publicado: el cambio requiere CI, integración a `main` y despliegue antes de considerar cerrada esta brecha en producción.

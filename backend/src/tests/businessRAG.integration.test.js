@@ -85,17 +85,14 @@ describe('GlowApp Business Engine — GOAL 05 Aura + RAG Security & Quality Suit
       expect(Array.isArray(results)).toBe(true);
     });
 
-    test('Q2 — Business Contextual Retrieval: Consulta de resumen de expediente de negocio', async () => {
-      const res = await executeAuraTool('get_business_profile_summary', {}, AURA_TEST_PROVIDER_ID, 'provider', 'tenant-alpha');
-      expect(res.status).toBe('success');
-      expect(res.summary).toHaveProperty('profile');
-      expect(res.summary.profile).toHaveProperty('compliance_score');
+    test('Q2 — Aura no consulta el expediente sin un salón activo seleccionado', async () => {
+      const res = await executeAuraTool('get_business_profile_summary', {}, AURA_TEST_PROVIDER_ID, 'provider', null);
+      expect(res.error).toBe('business_compliance_context_required');
     });
 
-    test('Q3 — Tenant Private Retrieval: Tareas privadas del prestador autenticado', async () => {
-      const res = await executeAuraTool('get_business_tasks', {}, AURA_TEST_PROVIDER_ID, 'provider', 'tenant-alpha');
-      expect(res.status).toBe('success');
-      expect(Array.isArray(res.tasks)).toBe(true);
+    test('Q3 — Aura no consulta tareas sin un salón activo seleccionado', async () => {
+      const res = await executeAuraTool('get_business_tasks', {}, AURA_TEST_PROVIDER_ID, 'provider', null);
+      expect(res.error).toBe('business_compliance_context_required');
     });
 
     test('Q4 — Regulatory Retrieval: Recuperación de normatividad regulatoria nacional', async () => {
