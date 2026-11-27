@@ -320,6 +320,45 @@ describeWithPostgres('SaaS seat allocation concurrency on PostgreSQL', () => {
     }
   }, 20000);
 
+  test('rejects legacy invitation acceptance when FREEMIUM lacks TEAM_MANAGEMENT', async () => {
+    const fixture = await createFixture();
+    const token = crypto.randomBytes(16).toString('hex');
+    const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
+    try {
+      await adminPool.query(
+        "UPDATE business_profiles SET saas_plan = 'FREEMIUM' WHERE id = $1",
+        [fixture.profileId]
+      );
+      const invitation = await adminPool.query(
+        `INSERT INTO salon_invitaciones
+           (salon_id, email, sub_rol, token_invitacion, expires_at, creado_por)
+         VALUES ($1, $2, 'EMPLEADO', $3, NOW() + INTERVAL '1 day', $4)
+         RETURNING id`,
+        [fixture.salonId, fixture.emails['invitee-one'], tokenHash, fixture.ownerId]
+      );
+
+      await expect(saasMembershipService.acceptLegacySalonInvitation({
+        token,
+        user: { id: fixture.inviteeOneId, email: fixture.emails['invitee-one'] },
+      })).rejects.toMatchObject({
+        status: 403,
+        details: { code: 'TEAM_MANAGEMENT_NOT_INCLUDED', currentPlan: 'FREEMIUM' },
+      });
+
+      const unchanged = await adminPool.query(
+        'SELECT usado FROM salon_invitaciones WHERE id = $1', [invitation.rows[0].id]
+      );
+      expect(unchanged.rows[0].usado).toBe(false);
+      const noMembership = await adminPool.query(
+        'SELECT id FROM memberships WHERE business_profile_id = $1 AND user_id = $2',
+        [fixture.profileId, fixture.inviteeOneId]
+      );
+      expect(noMembership.rows).toHaveLength(0);
+    } finally {
+      await cleanupFixture(fixture);
+    }
+  }, 20000);
+
   test('rechecks the seat limit if the plan shrinks while an invitation is pending', async () => {
     const fixture = await createFixture();
     const originalBrevoKey = process.env.BREVO_API_KEY;
