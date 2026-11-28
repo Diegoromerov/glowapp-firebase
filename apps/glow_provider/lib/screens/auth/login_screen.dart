@@ -89,6 +89,24 @@ class _LoginScreenState extends State<LoginScreen> {
           );
           return;
         }
+        final activeContext = result['active_context'];
+        if (activeContext is Map &&
+            activeContext['business_profile_id'] != null &&
+            activeContext['status']?.toString().toUpperCase() == 'ACTIVE') {
+          final contextRole = activeContext['role']?.toString().toLowerCase();
+          final salonRole = contextRole == 'salon' ||
+              contextRole == 'owner' ||
+              contextRole == 'admin';
+          final providerRole =
+              contextRole == 'provider' || contextRole == 'manager';
+          final route = salonRole
+              ? '/salon'
+              : providerRole
+                  ? '/provider/dashboard'
+                  : '/home';
+          Navigator.pushReplacementNamed(context, route);
+          return;
+        }
         final bool onboardingCompleto =
             result['user']['onboarding_completo'] ?? false;
         final String rLower = (result['user']['role'] ?? '').toString().toLowerCase();
