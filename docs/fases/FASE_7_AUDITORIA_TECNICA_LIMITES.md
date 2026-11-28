@@ -261,3 +261,10 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 - La cuota `SITES` cuenta sedes reales vinculadas a `business_profile_id`. La revisión de rutas y controladores confirma que el alta de onboarding crea una sede inicial de forma idempotente; no hay un endpoint de altas adicionales que eluda el flujo de negocio.
 - Por tanto, no se encontró una ruta de creación que permita superar la cuota. La gestión multi-sede sigue sin estar construida y su oferta/activación requiere aprobación comercial; el medidor no equivale a una capacidad de crear sedes.
 - Esto mantiene abierto el pendiente multi-sede del punto 5 y no autoriza nuevas sedes ni cambios a tenants productivos.
+
+## Avisos de uso no descartables — 28 de noviembre de 2026
+
+- Los avisos de Uso y Métricas se calculan en el cliente desde el consumo y los límites. El botón «Descartar» solo los quitaba del estado local: no guardaba una preferencia y reaparecían al recargar.
+- Se eliminó ese control y se aclaró en la pantalla que son avisos automáticos del período. También se retiró el método local de descarte sin efecto persistente.
+- La validación de formato y la integración quedan pendientes del PR. No se cambian métricas, cuotas ni datos de tenants. Fase 7 continúa abierta.
+
