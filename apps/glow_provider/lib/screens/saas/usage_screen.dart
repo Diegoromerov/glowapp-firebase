@@ -373,7 +373,8 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
   Widget _alertsSection(List<UsageAlert> alerts) {
     return _card(
       title: 'Alertas de Uso',
-      subtitle: '${alerts.length} alerta(s) del período',
+      subtitle:
+          '${alerts.length} aviso(s) automático(s) según el consumo del período',
       children: alerts.map((a) {
         final isCritical = a.severity == 'critical';
         final color = isCritical ? Colors.red : Colors.amber.shade800;
@@ -412,12 +413,6 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
                     ),
                   ],
                 ),
-              ),
-              IconButton(
-                tooltip: 'Descartar',
-                icon: const Icon(Icons.close_rounded, size: 16, color: _muted),
-                onPressed: () =>
-                    ref.read(usageProvider.notifier).dismissAlert(a.id),
               ),
             ],
           ),
@@ -716,3 +711,4 @@ class _UsageScreenState extends ConsumerState<UsageScreen> {
     return n.toString();
   }
 }
+
