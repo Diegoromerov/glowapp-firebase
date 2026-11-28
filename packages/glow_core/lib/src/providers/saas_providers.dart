@@ -519,23 +519,6 @@ class UsageNotifier extends StateNotifier<UsageState> {
       if (kDebugMode) debugPrint('UsageNotifier.load error: $e\n$st');
     }
   }
-
-  /// Descarta una alerta de la vista.
-  /// El backend expone DELETE /usage/alerts/:index; sin índice estable en el
-  /// modelo, se descarta localmente y se recarga al refrescar.
-  Future<void> dismissAlert(String alertId) async {
-    if (state.summary == null) return;
-    final updatedAlerts =
-        state.summary!.alerts.where((a) => a.id != alertId).toList();
-    state = state.copyWith(
-      summary: UsageSummary(
-        metrics: state.summary!.metrics,
-        alerts: updatedAlerts,
-        periodStart: state.summary!.periodStart,
-        periodEnd: state.summary!.periodEnd,
-      ),
-    );
-  }
 }
 
 class ApiKeysNotifier extends StateNotifier<ApiKeysState> {
@@ -657,3 +640,4 @@ final saasDashboardProvider = FutureProvider<Map<String, dynamic>>((ref) async {
     'usageSummary': usage.summary,
   };
 });
+
