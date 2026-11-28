@@ -233,3 +233,9 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 - `GET /api/saas/usage/history` aceptaba valores negativos para `months`; al interpolarlos como intervalo PostgreSQL, una petición como `months=-3` movía el corte al futuro y devolvía un historial vacío, en vez del rango predeterminado.
 - El parámetro ahora acepta únicamente enteros positivos, limita el máximo a 12 meses y usa 6 meses ante valores ausentes, inválidos, cero o negativos. La interpolación sigue recibiendo solo un entero validado.
 - `node --check backend/src/routes/saasUsageRoutes.js` y `git diff --check` pasaron. PR [#276](https://github.com/Diegoromerov/glowapp-firebase/pull/276) quedó integrada en `main` como `52e5425a`; Backend CI `46107489810` pasó incluidas pruebas PostgreSQL/RLS. Railway desplegó API, panel administrativo y ciclo de prueba; los nueve servicios están sanos, sin fallos ni trabajo pendiente. `/api/health` confirma HTTP 200, SHA `52e5425adf2fdce045bd33768f7a456d29a9a160`, PostgreSQL activo y sin datos fabricados. No se modificaron datos de tenants.
+
+## Separar inventario en consignación de inventario SaaS — 28 de noviembre de 2026
+
+- La ruta montada `/api/provider/inventory/consume` modifica `inventario_consignacion_prestador`, filtrado por el `provider_id` autenticado. No modifica el inventario del salón SaaS (`INVENTORY`) de `salonRoutes.js`, que tiene sus propias reglas de tenant, roles y entitlement.
+- Se confirmó que esta ruta corresponde al inventario comercial en consignación y no debe consumir ni heredar cuotas SaaS del salón. El mensaje de éxito decía incorrectamente «inventario SaaS»; se corrigió para nombrar el inventario en consignación. También se ajustó el comentario del controlador y su log de error a la ruta realmente montada.
+- Validación local de sintaxis y CI backend pendientes antes de publicación.

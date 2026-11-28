@@ -1,7 +1,7 @@
 // backend/src/controllers/inventoryController.js
 const { pool } = require('../config/db');
 
-// GET /api/provider/inventory/consignment → Obtener inventario en consignación del salón/prestador
+// GET /api/provider/inventory/consignment → Inventario en consignación asignado al prestador
 exports.getProviderConsignmentInventory = async (req, res) => {
   try {
     const providerId = req.user.id;
@@ -44,7 +44,7 @@ exports.getProviderConsignmentInventory = async (req, res) => {
   }
 };
 
-// POST /api/provider/inventory/consume → Registrar consumo de insumo en cita o venta presencial (Transacción Atómica ACID)
+// POST /api/provider/inventory/consume → Registrar consumo/venta de inventario en consignación (transacción atómica)
 exports.consumeInventoryItem = async (req, res) => {
   const client = await pool.connect();
   try {
@@ -99,13 +99,13 @@ exports.consumeInventoryItem = async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Consumo de insumo registrado en el inventario SaaS',
+      message: 'Consumo registrado en el inventario en consignación del prestador',
       data: updateRes.rows[0]
     });
   } catch (error) {
     await client.query('ROLLBACK').catch(() => {});
     client.release();
-    console.error('❌ ERROR EN POST /api/inventory/consume:', error);
+    console.error('❌ ERROR EN POST /api/provider/inventory/consume:', error);
     res.status(500).json({ error: 'Error al registrar consumo de inventario' });
   }
 };
