@@ -1,6 +1,6 @@
 # Estado porcentual del onboarding SaaS
 
-**Corte:** 26 de noviembre de 2026  
+**Corte:** 28 de noviembre de 2026
 **Base:** evidencia de producción, reportes de fase y confirmaciones del usuario en esta conversación.
 
 | Fase | Alcance | Avance verificado | Estado | Evidencia en repo y entorno local |
@@ -8,16 +8,27 @@
 | 1. Entrada confiable | Alta, tenant válido, reintentos y acceso protegido | **100 %** | Cerrada por el usuario el 25 Nov 2026. | [Informe Fase 1](fases/ONBOARDING_FASE_1_PUERTA_SAAS.md): despliegue, bootstrap idempotente y pruebas de acceso. El informe separa los escenarios adicionales que no bloquearon el cierre. |
 | 2. Configuración inicial del salón | Datos del salón, sede, horarios y servicios iniciales | **100 %** | Cerrada; evaluación visual confirmada por el usuario el 25 Nov 2026. | [Informe Fase 2](fases/ONBOARDING_FASE_2_CONFIGURACION_SALON.md) y [registro del salón QA](fases/QA_SALON_FASE_2.md): perfil, horario, servicio de prueba, persistencia y acceso. |
 | 3. Plan y límites claros | Catálogo, beneficios, cuotas y aplicación en API | **100 %** | Cerrada y verificada en producción. | [Informe Fase 3](fases/ONBOARDING_FASE_3_PLANES_Y_LIMITES.md): catálogo V2, límites, CI y despliegues. |
-| 4. Equipo y permisos | Invitaciones, roles, aislamiento y cupos | **90 %** | Abierta. Invitación/aceptación real de Sonia confirmadas; matriz de permisos, aislamiento entre tenants y concurrencia de cupos cubiertos por integración PostgreSQL en CI (**17/17** en run 45733109611). Resta el recorrido autenticado con dos cuentas reales en producción y la confirmación de Sonia desde su sesión. | [Informe Fase 4](fases/ONBOARDING_FASE_4_EQUIPO_PERMISOS.md): evidencia actualizada, pruebas CI y validaciones productivas pendientes. |
-| 5. Puesta en marcha operativa | Guía, agenda y primera reserva atendida | **85 % estimado** | Abierta. Elegibilidad, oferta QA, horarios y bloqueo de sedes privadas desplegados. Falta un salón QA con ubicación pública legítima y completar cliente→reserva→agenda→atención sin cuentas administrativas o de prestador. | [Informe Fase 5](fases/ONBOARDING_FASE_5_PUESTA_EN_MARCHA.md): PR #98/#99/#100/#102/#104 integrados; Railway `SUCCESS`; el smoke del salón QA privado responde `404 SALON_NOT_PUBLIC`. Sin reserva ni pago aún. |
+| 4. Equipo y permisos | Invitaciones, roles, aislamiento y cupos | **90 % estimado** | Abierta. La API confirma roles, aislamiento y cupos. El login visual OWNER fue correcto, pero el shell no pudo leer su salón por RLS; migración 208 y prueba de integración preparadas, pendientes CI, despliegue y smoke por roles. | [Informe Fase 4](fases/ONBOARDING_FASE_4_EQUIPO_PERMISOS.md): bloqueo visual reproducido y corrección en curso. |
+| 5. Puesta en marcha operativa | Guía, agenda y primera reserva atendida | **85 % estimado** | Abierta. Se creó y autenticó una cuenta `CLIENTE` QA independiente. El ciclo de reserva sigue bloqueado hasta contar con salón/oferta QA publicables con ubicación legítima; no se inventó ubicación ni se creó una cita. | [Informe Fase 5](fases/ONBOARDING_FASE_5_PUESTA_EN_MARCHA.md): elegibilidad y horarios desplegados; QA Salón 17 sigue sin ubicación pública aprobada. |
 | 6. Facturación y cambios de plan | Checkout, activación, renovación, cancelación y recuperación | **80 % de implementación estimada; 0 % E2E Wompi** | Abierta. PR #116–#118 están en `main`; Railway aplicó la migración 201 y Firebase publicó Prestador. Checkout/COF/live siguen apagados. Faltan pruebas de transacciones, webhook y renovación en sandbox, confirmar elegibilidad COF/RBM y validar recibo/fiscalidad. | [Informe Fase 6](fases/ONBOARDING_FASE_6_FACTURACION_Y_CAMBIOS_PLAN.md): evidencia, límites y pendientes. |
-| 7. Seguimiento y crecimiento | Métricas, uso frente a límites y recomendaciones | **0 % verificado** | Sin auditoría de criterios de salida en el repo. Falta comprobar métricas, avisos de capacidad y cambio de nivel. | Criterio de salida acordado: que el dueño consulte actividad y uso frente a límites y pueda decidir un cambio de nivel. Aún no hay informe de fase ni evidencia de recorrido. |
+| 7. Seguimiento y crecimiento | Métricas, uso frente a límites y recomendaciones | **20 % verificado** | El API de uso ya respondió por tenant y mostró 3/3 asientos en ambos QA. `FREE_TRIAL` rechazó analítica avanzada como corresponde. Falta validar la pantalla, avisos de capacidad y decisión/cambio de nivel. | Verificación productiva de solo lectura del 28 nov; el informe de Fase 7 aún debe cubrir UI, alertas y cambio de plan. |
 
 ## Lectura del avance
 
-- Las fases 1–3 están cerradas según el historial del proyecto; la fase 4 permanece abierta, con la prueba de permisos y concurrencia cubierta por CI y recorridos productivos adicionales pendientes.
+- Las fases 1–3 están cerradas según el historial del proyecto. La Fase 4 avanzó con evidencia real de login/contexto, RBAC, aislamiento y cupos; quedan casos específicos de invitación y validación visual.
 - La Fase 5 está en **85 % estimado**: guía y acceso a agenda publicados, corrección OTP integrada y desplegada, CI aprobado; el criterio final de primera reserva atendida sigue pendiente. La Fase 6 está en **80 % de implementación estimada y 0 % E2E con Wompi**; no se debe interpretar el porcentaje de código como validación de cobros. La Fase 7 sigue pendiente de auditoría de sus criterios de salida.
 - No se calcula un porcentaje global: las fases no tienen ponderaciones acordadas y tres aún no cuentan con evaluación sustentada.
+
+## Verificación productiva de roles y cuotas (28 de noviembre de 2026)
+
+- Railway desplegó `glowapp-api` en `main`, commit `aa3fae0b2fa781aa5360948d9d84acacd31ceafc`, estado `SUCCESS`.
+- Se corrigió el contexto de login SaaS: la consulta de membresías ahora fija `app.user_id` solo dentro de una transacción, de modo que RLS devuelve las membresías propias antes de emitir el token. El login pasó de autenticar sin contexto a devolver OWNER/ADMIN/MANAGER para el Salón A y OWNER/MEMBER/VIEWER para el Salón B.
+- Las ocho cuentas de QA y los salones 18/19 se verificaron con `app_rls_user` (`rolsuper=false`, `rolbypassrls=false`). La cuenta CLIENTE 150 pudo iniciar sesión por el endpoint HTTP; las demás credenciales se validaron mediante el controlador de producción y sus tokens ejercitaron las rutas HTTP.
+- En producción: OWNER/ADMIN/MANAGER leyeron exactamente los tres miembros de su salón; MEMBER/VIEWER recibieron 403 para gestión de miembros; la cuenta CLIENTE y la cuenta sin membresía recibieron 403 `NO_ACTIVE_MEMBERSHIP`.
+- El token del administrador A no pudo cambiar de contexto al salón B; enviar el ID B en el encabezado mantuvo el contexto A y devolvió solo los miembros A.
+- El intento HTTP de invitar un cuarto miembro al salón A devolvió 403 `SAAS_QUOTA_EXCEEDED`; la lista quedó en tres miembros y no se envió correo.
+- `GET /api/saas/usage` devolvió `FREE_TRIAL`, `TEAM_SEATS=3/3` para ambos tenants. `GET /api/saas/analytics` respondió 403 para `FREE_TRIAL`, que no incluye `ADVANCED_ANALYTICS`.
+- No se probó concurrencia de invitaciones ni se inició reserva o pago. La oferta del salón QA 17 sigue sin una ubicación pública legítima.
 
 ## Revisión y despliegue de Fase 5 (26 de noviembre de 2026)
 

@@ -1,7 +1,7 @@
 # Onboarding SaaS — Fase 4: equipo y permisos
 
-**Estado:** endurecimiento RLS desplegado y validado en producción; faltan recorridos funcionales E2E. Fase abierta.
-**Corte:** 25 de noviembre de 2026.
+**Estado:** la API confirma roles y aislamiento, pero el acceso visual del OWNER QA al espacio SaaS encontró una denegación RLS al leer su salón. Corrección de política preparada; pendiente despliegue y smoke visual.
+**Corte:** 28 de noviembre de 2026.
 
 ## Objetivo y criterio de cierre
 
@@ -97,6 +97,33 @@ Otra transacción temporal comprobó permisos de negocio sin dejar filas: ADMIN 
 El 60 % y el 80 % reportados antes eran estimaciones, no métricas instrumentadas. El 80 % sobrecontó criterios al tratar el despliegue de compatibilidad como prueba de aceptación E2E y al describir mal el rol PostgreSQL. La estimación actual de 75 % reconoce el RLS desplegado y verificado, una matriz parcial de permisos comprobada en PostgreSQL y la invitación/aceptación real descrita abajo; la fase sigue abierta hasta completar los casos restantes por API, correo, alcance por tenant y cupos.
 
 No se persistieron invitaciones ni cambios de membresía de prueba, y no se enviaron correos durante esta revisión.
+
+## Actualización de cierre productivo (28 Nov 2026)
+
+El login autenticaba correctamente, pero el contexto SaaS salía vacío. La consulta Sequelize de `Membership.findAll` corría antes de establecer `app.user_id`; con RLS activo, PostgreSQL devolvía cero filas. Se corrigió `backend/src/controllers/authController.js` para fijar el usuario en una transacción limitada a la consulta de sus membresías. Commit `aa3fae0b2fa781aa5360948d9d84acacd31ceafc`, publicado en `main`; Railway deployment `b88cca61-6210-4a4c-8a77-27b1ceca9c4c` terminó `SUCCESS`.
+
+La regresión se reprodujo antes del cambio y se volvió a ejecutar después contra producción. Evidencia posterior:
+
+- El controlador de login aceptó las ocho credenciales QA; las seis identidades con membresías obtuvieron el contexto/rol esperado y las cuentas CLIENTE y sin membresía quedaron sin contexto. Los endpoints HTTP `POST /api/auth/login` autenticaron al CLIENTE QA y al OWNER del Salón A con HTTP 200; este último recibió su contexto OWNER.
+- `OWNER`, `ADMIN` y `MANAGER` leyeron los tres miembros de su propio salón por `GET /api/v1/memberships` (HTTP 200). `MEMBER` y `VIEWER` recibieron HTTP 403.
+- La cuenta CLIENTE y el usuario PRESTADOR sin membresía recibieron HTTP 403 `NO_ACTIVE_MEMBERSHIP`.
+- Un ADMIN A no cambió al tenant B: el encabezado B no sustituyó su contexto del JWT, y el endpoint de cambio de contexto devolvió HTTP 403 `MEMBERSHIP_NOT_FOUND_OR_INACTIVE`.
+- En el Salón A, con plan `FREE_TRIAL`, el intento HTTP de invitar un cuarto asiento devolvió `SAAS_QUOTA_EXCEEDED` (3/3). La lectura posterior confirmó que no quedó invitación.
+- Los dos salones QA permanecieron en tres asientos cada uno. No se enviaron correos en estas comprobaciones.
+
+**Avance actualizado: 95 % estimado.** La matriz RBAC, el aislamiento real y el límite de asientos ya tienen evidencia productiva. Restan el rechazo de aceptación desde otra cuenta, vencimiento/reenvío de una invitación pendiente, concurrencia/reactivación en producción y validar visualmente sesiones de personal en Flutter. La base de permisos y cupos también tiene cobertura PostgreSQL en CI; la fase no se marca cerrada hasta completar esos escenarios.
+
+## Continuación del goal: acceso visual a SaaS (28 Nov 2026)
+
+- La cuenta QA OWNER autenticó correctamente en la app Prestador y recibió contexto OWNER del Salón 18.
+- El primer intento de acceso mostró un rechazo genérico porque el campo del navegador acumuló caracteres al usar una entrada no compatible con Flutter; se reemplazaron los campos y se confirmó HTTP 200 al autenticar con el correo y contraseña exactos.
+- Ya autenticado, `/api/saas/bootstrap` respondió 409 «El usuario no tiene un salón registrado» y `/api/salon/my-salon` no devolvió una sede. La misma cuenta sí tiene membresía OWNER activa y la API de membresías la ve. Esto señala que la política RLS de `salones`, limitada a `tenant_id`, oculta la fila ligada a una membresía SaaS activa cuando el usuario no comparte ese tenant legado.
+- Se preparó la migración `208_saas_membership_salon_read.sql`: permite SELECT de una sede solo cuando el usuario tiene membresía `ACTIVE` en el `business_profile_id` asociado. Mantiene la política tenant existente y no amplía escritura ni acceso a otros salones.
+- Se agregó prueba PostgreSQL real `saasSalonMembershipRls.integration.test.js` para confirmar lectura del propio salón y denegación del salón B, y se incorporó al job de integración backend.
+- `getMySalon.test.js`: **2/2 aprobadas** localmente. La prueba nueva se omitió localmente porque este equipo no tiene `DATABASE_URL`/PostgreSQL configurado; debe correr en el job PostgreSQL de CI. Aún no se publicó la migración.
+- La verificación HTTP puntual a `/api/saas/bootstrap` y `/api/salon/my-salon` reprodujo el fallo. No se cambiaron membresías, no se crearon invitaciones y no se enviaron correos.
+
+**Avance provisional: 90 %.** La verificación visual destapó este bloqueo y la corrección ya está preparada, pero la fase no se considera terminada hasta que CI apruebe PostgreSQL, Railway aplique la migración y OWNER/ADMIN/MANAGER/MEMBER/VIEWER puedan ver su destino correcto en la app.
 
 ### Continuación de pruebas (25 Nov 2026)
 
