@@ -266,5 +266,7 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 
 - Los avisos de Uso y Métricas se calculan en el cliente desde el consumo y los límites. El botón «Descartar» solo los quitaba del estado local: no guardaba una preferencia y reaparecían al recargar.
 - Se eliminó ese control y se aclaró en la pantalla que son avisos automáticos del período. También se retiró el método local de descarte sin efecto persistente.
-- La validación de formato y la integración quedan pendientes del PR. No se cambian métricas, cuotas ni datos de tenants. Fase 7 continúa abierta.
+- PR [#284](https://github.com/Diegoromerov/glowapp-firebase/pull/284) quedó integrada en `main` como `2472b324a23a4110afa97340fb496056a2669ae4`. Analyze & Tests de `glow_core` y `glow_provider`, build web y Deploy glow_provider terminaron `SUCCESS` en el workflow [46113702549](https://github.com/Diegoromerov/glowapp-firebase/actions/runs/46113702549).
+- Smoke live del proveedor: `/`, `flutter_bootstrap.js` y `main.dart.js` respondieron HTTP 200; el bundle contiene el aviso automático y el código ya no contiene el control «Descartar» ni `dismissAlert`. `/api/health` reportó el mismo commit, PostgreSQL activo y sin datos fabricados.
+- No se alteraron métricas, cuotas ni datos de tenants. Fase 7 continúa abierta por las aceptaciones QA y decisiones comerciales restantes.
 
