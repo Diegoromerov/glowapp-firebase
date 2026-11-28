@@ -28,6 +28,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
     final teamState = ref.watch(teamProvider);
     final businessProfileId = ref.watch(currentBusinessProfileIdProvider);
     final businessProfile = businessProfileState.profile;
+    final canManageMemberships = businessProfileState.membership?.role == MembershipRole.owner;
 
     // Carga inicial: el provider no se auto-carga al entrar a la pantalla.
     if (businessProfileId != null && teamState.members.isEmpty && !teamState.isLoading) {
@@ -105,7 +106,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
               ),
               IconButton(
                 icon: const Icon(Icons.person_add_rounded, color: Color(0xFFC5A052)),
-                onPressed: () => _showInviteDialog(context, ref, businessProfileId),
+                onPressed: canManageMemberships ? () => _showInviteDialog(context, ref, businessProfileId) : null,
                 tooltip: 'Invitar miembro',
               ),
             ],
@@ -128,9 +129,9 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15)),
               ),
               const SizedBox(height: 12),
-              ...teamState.members.map((m) => _buildMemberTile(context, ref, businessProfileId, m)),
+              ...teamState.members.map((m) => _buildMemberTile(context, ref, businessProfileId, m, canManageMemberships)),
             ] else ...[
-              _buildEmptyState(context, ref, businessProfileId),
+              _buildEmptyState(context, ref, businessProfileId, canManageMemberships),
             ],
             if (teamState.invitations.isNotEmpty) ...[
               const SizedBox(height: 24),
@@ -139,7 +140,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1F1A15)),
               ),
               const SizedBox(height: 12),
-              ...teamState.invitations.map((inv) => _buildInvitationTile(context, ref, businessProfileId, inv)),
+              ...teamState.invitations.map((inv) => _buildInvitationTile(context, ref, businessProfileId, inv, canManageMemberships)),
             ],
             if (teamState.isLoading) const Center(child: CircularProgressIndicator()),
             if (teamState.error != null)
@@ -184,7 +185,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
     );
   }
 
-  Widget _buildEmptyState(BuildContext context, WidgetRef ref, String? businessProfileId) {
+  Widget _buildEmptyState(BuildContext context, WidgetRef ref, String? businessProfileId, bool canManageMemberships) {
     return Card(
       color: const Color(0xFFFAF6EE),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -198,7 +199,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
             const SizedBox(height: 8),
             const Text('Invita a tus colaboradores para que gestionen el salón contigo.', textAlign: TextAlign.center, style: TextStyle(fontSize: 13, color: Color(0xFF8C7E74))),
             const SizedBox(height: 16),
-            FilledButton.icon(
+            if (canManageMemberships) FilledButton.icon(
               onPressed: () => _showInviteDialog(context, ref, businessProfileId),
               icon: const Icon(Icons.person_add_rounded),
               label: const Text('Invitar primer miembro'),
@@ -210,7 +211,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
     );
   }
 
-  Widget _buildMemberTile(BuildContext context, WidgetRef ref, String? businessProfileId, TeamMember member) {
+  Widget _buildMemberTile(BuildContext context, WidgetRef ref, String? businessProfileId, TeamMember member, bool canManageMemberships) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -218,7 +219,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
         leading: CircleAvatar(backgroundColor: member.role.color.withOpacity(0.1), child: Icon(Icons.person, color: member.role.color)),
         title: Text(member.fullName.isNotEmpty ? member.fullName : member.email, style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text(member.email, style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74))),
-        trailing: PopupMenuButton<String>(
+        trailing: canManageMemberships ? PopupMenuButton<String>(
           onSelected: (value) async {
             switch (value) {
               case 'change_role':
@@ -276,12 +277,12 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
             if (member.invitationStatus == InvitationStatus.accepted || member.invitationStatus == InvitationStatus.suspended)
               const PopupMenuItem(value: 'remove', child: Row(children: [Icon(Icons.delete_outline, size: 18, color: Colors.red), SizedBox(width: 8), Text('Eliminar', style: TextStyle(color: Colors.red))])),
           ],
-        ),
+        ) : null,
       ),
     );
   }
 
-  Widget _buildInvitationTile(BuildContext context, WidgetRef ref, String? businessProfileId, TeamInvitation invitation) {
+  Widget _buildInvitationTile(BuildContext context, WidgetRef ref, String? businessProfileId, TeamInvitation invitation, bool canManageMemberships) {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       color: const Color(0xFFFFF8E1),
@@ -290,7 +291,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
         leading: CircleAvatar(backgroundColor: Colors.amber.withOpacity(0.2), child: Icon(Icons.pending, color: Colors.amber, size: 20)),
         title: Text(invitation.email, style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text('Rol: ${invitation.role.label} · ${invitation.status.label}', style: const TextStyle(fontSize: 12, color: Color(0xFF8C7E74))),
-        trailing: Row(
+        trailing: canManageMemberships ? Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
@@ -314,7 +315,7 @@ class _TeamManagementScreenState extends ConsumerState<TeamManagementScreen> {
               tooltip: 'Cancelar',
             ),
           ],
-        ),
+        ) : null,
       ),
     );
   }

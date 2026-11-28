@@ -5,6 +5,34 @@ import 'package:glow_core/glow_core.dart';
 import 'package:glow_provider/screens/saas/team_management_screen.dart';
 
 void main() {
+  for (final role in [MembershipRole.owner, MembershipRole.admin]) {
+    testWidgets('team actions follow active role: $role', (tester) async {
+      tester.view.physicalSize = const Size(1200, 1600);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+
+      await tester.pumpWidget(ProviderScope(
+        overrides: [
+          businessProfileProvider.overrideWith((ref) => _LoadedBusinessProfileNotifier(role: role)),
+          teamProvider.overrideWith((ref) => _LoadedTeamNotifier()),
+        ],
+        child: const MaterialApp(home: TeamManagementScreen()),
+      ));
+      await tester.pumpAndSettle();
+
+      final menus = find.byType(PopupMenuButton<String>);
+      if (role == MembershipRole.owner) {
+        expect(menus, findsNWidgets(3));
+        await tester.tap(menus.at(1));
+        await tester.pumpAndSettle();
+        expect(find.text('Cambiar rol'), findsOneWidget);
+      } else {
+        expect(menus, findsOneWidget);
+      }
+    });
+  }
+
   testWidgets(
     'Given an invitation accepted elsewhere, when resend returns 404, '
     'then reloads the team and shows a human-readable message',
@@ -54,7 +82,7 @@ void main() {
 }
 
 class _LoadedBusinessProfileNotifier extends BusinessProfileNotifier {
-  _LoadedBusinessProfileNotifier() {
+  _LoadedBusinessProfileNotifier({MembershipRole role = MembershipRole.owner}) {
     final now = DateTime(2026, 11, 25);
     state = BusinessProfileState(
       profile: SaasBusinessProfile(
@@ -69,11 +97,27 @@ class _LoadedBusinessProfileNotifier extends BusinessProfileNotifier {
         updatedAt: now,
         isActive: true,
       ),
+      membership: Membership(
+        id: 'actor', userId: 'actor', businessProfileId: 'profile-1',
+        role: role, joinedAt: now, isActive: true,
+      ),
     );
   }
 
   @override
   Future<void> load() async {}
+}
+
+class _LoadedTeamNotifier extends TeamNotifier {
+  _LoadedTeamNotifier() {
+    state = const TeamState(members: [
+      TeamMember(id: 'owner', userId: 'owner', email: 'owner@example.com', fullName: 'Owner', role: MembershipRole.owner, invitationStatus: InvitationStatus.accepted, isOwner: true),
+      TeamMember(id: 'admin', userId: 'admin', email: 'admin@example.com', fullName: 'Admin', role: MembershipRole.admin, invitationStatus: InvitationStatus.accepted, isOwner: false),
+    ]);
+  }
+
+  @override
+  Future<void> load(String businessProfileId) async {}
 }
 
 class _TeamNotifierWithStaleInvitation extends TeamNotifier {

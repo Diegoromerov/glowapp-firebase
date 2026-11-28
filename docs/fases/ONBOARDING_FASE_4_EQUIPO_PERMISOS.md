@@ -176,3 +176,10 @@ El avance de salida se mantiene en **75 %**: el fallo visual del reenvío ya est
 - En producción, el commit `883ad735a79baa7f925c849e75d80dbe2e690aa4` está desplegado; Railway reporta los ocho servicios en línea y sin trabajo pendiente. `/api/health` indica PostgreSQL disponible y las rutas de equipo/auditoría rechazan acceso anónimo con HTTP 401.
 - Se consideran acreditadas por integración automatizada las reglas de roles, aislamiento y cupos; el porcentaje no se eleva a 100 % porque falta el recorrido con dos identidades reales de QA en producción y Sonia debe validar desde su propia sesión. Actualmente no hay una segunda cuenta de QA disponible.
 - Para cerrar: proporcionar/autenticar una segunda cuenta de QA perteneciente a otro salón, ejecutar el recorrido productivo controlado y obtener la confirmación de Sonia. No se cambiaron membresías ni se enviaron correos en esta revisión.
+
+## Alineación visual de permisos en Equipo (28 de noviembre de 2026)
+
+- La sesión productiva de una cuenta ADMIN mostró acciones por miembro (incluido «Cambiar rol») que la API reserva al OWNER. La autorización del servidor ya rechazaba el cambio, pero la interfaz no reflejaba la matriz de permisos.
+- La pantalla ahora deriva la gestión de miembros de la membresía SaaS activa: invitar, cambiar rol, suspender/reactivar y retirar miembros, además de administrar invitaciones, quedan disponibles solo para OWNER. ADMIN conserva lectura del equipo y el menú general.
+- Prueba de widgets `team_management_screen_test.dart`: **3/3 aprobadas**; comprueba las acciones OWNER/ADMIN y la recuperación del reenvío 404 sin mutar roles.
+- Esta corrección solo está validada localmente en este registro; el código y Hosting aún requieren publicación y smoke visual. El avance de Fase 4 permanece en **90 %** hasta confirmar la versión desplegada.
