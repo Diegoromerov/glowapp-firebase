@@ -3,7 +3,7 @@ const express = require('express');
 const { pool, systemPool } = require('../config/db');
 const { runAsSystem } = require('../config/tenantRouting');
 const saasContext = require('../middleware/saasContext');
-const { requireEntitlement } = require('../middleware/featureGate');
+const { requireEntitlement, requireRole } = require('../middleware/featureGate');
 const { authMiddleware } = require('../middleware/auth');
 const usageMeteringService = require('../services/usageMeteringService');
 const { METRICS, PLAN_IDS, PLAN_CATALOG, publicCatalog, getMonthPeriod } = require('../config/saasCatalog');
@@ -347,7 +347,7 @@ router.get('/alerts', async (req, res) => {
  * DELETE /api/saas/usage/alerts/:index
  * Elimina alerta por índice
  */
-router.delete('/alerts/:index', async (req, res) => {
+router.delete('/alerts/:index', requireRole('ADMIN'), async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
