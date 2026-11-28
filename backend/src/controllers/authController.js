@@ -288,10 +288,45 @@ exports.login = async (req, res) => {
         let jwtPayload = { id: user.id, email: user.email, role: toApiRole(user.rol), rol: user.rol, audience };
 
     try {
-      const activeMemberships = await Membership.findAll({
-        where: { user_id: user.id, status: 'ACTIVE' },
-        include: [{ model: BusinessProfile, as: 'businessProfile', attributes: ['id', 'name', 'city'] }]
-      });
+      // El login ocurre antes de que authMiddleware/tenantContext fijen app.user_id.
+      // Consultar Membership con Sequelize aquí deja a app_rls_user sin contexto y
+      // RLS responde cero filas, aunque el usuario sí tenga membresías activas.
+      // Fijamos el sujeto solo durante esta transacción y leemos sus propias filas.
+      const client = await pool.connect();
+      let transactionStarted = false;
+      let activeMemberships;
+      try {
+        await client.query('BEGIN');
+        transactionStarted = true;
+        await client.query("SELECT set_config('app.user_id', $1, true)", [String(user.id)]);
+        const membershipResult = await client.query(
+          `SELECT m.business_profile_id, m.role, m.status,
+                  bp.id AS profile_id, bp.name AS profile_name, bp.city AS profile_city
+             FROM memberships m
+             LEFT JOIN business_profiles bp ON bp.id = m.business_profile_id
+            WHERE m.user_id = $1 AND m.status = 'ACTIVE'
+            ORDER BY m.accepted_at ASC NULLS LAST, m.created_at ASC NULLS LAST, m.id ASC`,
+          [user.id],
+        );
+        activeMemberships = membershipResult.rows.map((membership) => ({
+          business_profile_id: membership.business_profile_id,
+          role: membership.role,
+          status: membership.status,
+          businessProfile: membership.profile_id
+            ? { id: membership.profile_id, name: membership.profile_name, city: membership.profile_city }
+            : null,
+        }));
+        await client.query('COMMIT');
+        transactionStarted = false;
+      } catch (membershipError) {
+        if (transactionStarted) {
+          try { await client.query('ROLLBACK'); } catch (_) {}
+          transactionStarted = false;
+        }
+        throw membershipError;
+      } finally {
+        client.release();
+      }
 
       if (activeMemberships.length === 1) {
         // Regla de 1: Selección automática
