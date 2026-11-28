@@ -11,7 +11,7 @@ import '../auth/google_signin_button.dart'
 
 const _googleReauthClientId = String.fromEnvironment(
   'GOOGLE_WEB_CLIENT_ID',
-  defaultValue: '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
+  defaultValue: '509840252897-i1v5ls1rva7a88o966698icm51ofu16u.apps.googleusercontent.com',
 );
 
 class WalletScreen extends StatefulWidget {

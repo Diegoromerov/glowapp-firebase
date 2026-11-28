@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     'GOOGLE_WEB_CLIENT_ID',
     defaultValue: String.fromEnvironment(
       'GOOGLE_CLIENT_ID',
-      defaultValue: '374223351186-0fukntsog02r0p1tofd2aju3c7lsr86j.apps.googleusercontent.com',
+      defaultValue: '509840252897-i1v5ls1rva7a88o966698icm51ofu16u.apps.googleusercontent.com',
     ),
   );
 
@@ -47,25 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
           serverClientId: _googleClientId.isNotEmpty ? _googleClientId : null,
         );
 
-  StreamSubscription<GoogleSignInAccount?>? _googleUserSub;
-
-  @override
-  void initState() {
-    super.initState();
-    if (kIsWeb) {
-      // One Tap se inicializa lazily al renderizar el botón (ver google_signin_button_web.dart)
-      // No necesitamos listener de onCurrentUserChanged
-    } else {
-      // Nativo: listener para signInSilently / signIn
-      _googleUserSub = _googleSignIn!.onCurrentUserChanged.listen((user) {
-        if (user != null && mounted) _finishGoogleLogin(user);
-      });
-    }
-  }
-
   @override
   void dispose() {
-    _googleUserSub?.cancel();
     _emailCtrl.dispose();
     _passCtrl.dispose();
     super.dispose();
@@ -129,6 +112,10 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     GoogleSignInAccount? googleUser;
     try {
+      // Android no renueva el idToken de una cuenta que sigue conectada.
+      // Cerrar la sesión local fuerza una autenticación nueva y evita enviar
+      // un token cacheado que ya haya vencido.
+      await _googleSignIn!.signOut();
       googleUser = await _googleSignIn!.signIn().timeout(
         const Duration(seconds: 60),
         onTimeout: () => null,
@@ -158,7 +145,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   /// Completa el login con la cuenta de Google ya obtenida.
-  /// Camino nativo: después de signIn(). Camino web: desde onCurrentUserChanged.
+  /// Se invoca una sola vez, después del inicio interactivo en Android/iOS o
+  /// desde el callback de One Tap en web.
   Future<void> _finishGoogleLogin(GoogleSignInAccount googleUser) async {
     if (mounted) {
       setState(() {
