@@ -10,6 +10,10 @@ const consentService = require('../services/consentService');
 const { atribuirInvitacion } = require('../services/referralService');
 const xpBienvenidaService = require('../services/xpBienvenidaService');
 const { huellasDePeticion } = require('../utils/hashSenal');
+const {
+  canProvisionDemoAccount,
+  canBypassLoginPassword,
+} = require('../utils/loginSecurityPolicy');
 const { Membership, BusinessProfile } = require('../models');
 const {
   registerSchema,
@@ -152,6 +156,7 @@ exports.login = async (req, res) => {
     const { email, password } = data;
 
     const cleanEmail = email.trim().toLowerCase();
+    const allowDemoAccount = canProvisionDemoAccount(cleanEmail);
 
         // SECURITY DEFINER function bypasses RLS to find user by email before
         // tenant context is established. Returns only columns needed for auth.
@@ -162,11 +167,7 @@ exports.login = async (req, res) => {
 
         let user;
         if (result.rows.length === 0) {
-      const isDemoDomain = cleanEmail.endsWith('@beautyapp.com') ||
-                           cleanEmail.endsWith('@bellezaapp.com') ||
-                           cleanEmail.endsWith('@correo.com') ||
-                           cleanEmail.endsWith('@cliente.com');
-      if (isDemoDomain) {
+      if (allowDemoAccount) {
         const rol = (cleanEmail.includes('admin')) ? 'ADMIN' :
                     (cleanEmail.includes('salon')) ? 'SALON' :
                     (cleanEmail.includes('client') || cleanEmail.includes('ana@') || cleanEmail.includes('miusuario')) ? 'CLIENTE' : 'PRESTADOR';
@@ -208,12 +209,7 @@ exports.login = async (req, res) => {
       user = result.rows[0];
     }
 
-    const isDemoDomain = cleanEmail.endsWith('@beautyapp.com') ||
-                         cleanEmail.endsWith('@bellezaapp.com') ||
-                         cleanEmail.endsWith('@correo.com') ||
-                         cleanEmail.endsWith('@cliente.com');
-
-    if (isDemoDomain) {
+    if (allowDemoAccount) {
       user.is_active = true;
       try {
         await pool.query(`UPDATE usuarios SET is_active = true WHERE id = $1`, [user.id]);
@@ -225,15 +221,7 @@ exports.login = async (req, res) => {
     }
 
     const cleanPassword = (password || '').trim();
-    const seedPass = (process.env.SEED_PASSWORD && process.env.SEED_PASSWORD.trim())
-      ? process.env.SEED_PASSWORD.trim()
-      : 'Password123!';
-
-    let isValid = (password === seedPass) ||
-                  (password === 'Password123!') ||
-                  (cleanPassword === seedPass) ||
-                  (cleanPassword === 'Password123!') ||
-                  isDemoDomain;
+    let isValid = canBypassLoginPassword({ email: cleanEmail, password });
 
     if (!isValid && user.password_hash && user.password_hash !== '__SEED_PASSWORD_HASH__') {
       try {
