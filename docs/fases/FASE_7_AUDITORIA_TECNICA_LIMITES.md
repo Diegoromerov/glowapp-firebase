@@ -227,3 +227,9 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 - El backend y el color de la app ya respetaban esa regla, pero `UsageAlert.severity` clasificaba cualquier métrica al 100 % como crítica. Esto hacía que el tablero resaltara en rojo y contara como crítica una cuota concurrente completa que su propia regla clasifica como aviso.
 - Se alineó la severidad en el modelo compartido `packages/glow_core/lib/src/models/saas/saas_models.dart`. Análisis estático de Flutter del archivo: sin problemas; no se ejecutaron pruebas automatizadas en esta revisión.
 - El cambio aún requiere integración y publicación para considerarse corregido en producción; no cambia límites, accesos ni datos de tenants.
+
+## Validación del período de historial de uso — 28 de noviembre de 2026
+
+- `GET /api/saas/usage/history` aceptaba valores negativos para `months`; al interpolarlos como intervalo PostgreSQL, una petición como `months=-3` movía el corte al futuro y devolvía un historial vacío, en vez del rango predeterminado.
+- El parámetro ahora acepta únicamente enteros positivos, limita el máximo a 12 meses y usa 6 meses ante valores ausentes, inválidos, cero o negativos. La interpolación sigue recibiendo solo un entero validado.
+- `node --check backend/src/routes/saasUsageRoutes.js` y `git diff --check` pasaron. La corrección aún requiere merge, CI y despliegue en producción.
