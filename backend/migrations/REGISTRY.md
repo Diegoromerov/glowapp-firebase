@@ -680,3 +680,15 @@ en 076).
 - El incremento se limita a una membresía activa y al plan que tenga `AURA_BUSINESS`; el upsert aplica límite mensual bajo bloqueo transaccional.
 - No habilita los planes Growth/Pro/Enterprise ni cambia cuotas. Es aditiva; rollback: retirar primero el consumo de Aura y recrear la restricción anterior solo si no quedan métricas `AURA_QUERIES`.
 
+## 208: lectura de sede por membresía SaaS activa
+
+- Permite leer la fila de `salones` asociada al perfil empresarial de la sesión, únicamente cuando existe membresía `ACTIVE` del usuario actual.
+- Mantiene la política de aislamiento por tenant y concede solo `SELECT`.
+- Aditiva. Rollback: retirar primero la resolución del salón SaaS y luego eliminar la política.
+
+## 209: reparación de política de lectura de sede SaaS
+
+- Reinstala la política de lectura de sede de la migración 208 cuando esta se registró sin crearla por falta de prerrequisitos.
+- Comprueba rol, tablas y función antes de cambiar la política; si falta algo, detiene el despliegue y no registra una migración incompleta.
+- Conserva alcance `SELECT` y membresía activa del perfil propio. Rollback: eliminar `salones_active_membership_read` si se revierte primero el flujo que la usa.
+
