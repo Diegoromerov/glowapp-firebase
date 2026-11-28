@@ -168,7 +168,10 @@ router.get('/history', async (req, res) => {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
     const tenantId = req.saas.tenantId;
-    const months = Math.min(parseInt(req.query.months) || 6, 12);
+    const requestedMonths = Number.parseInt(req.query.months, 10);
+    const months = Number.isInteger(requestedMonths) && requestedMonths > 0
+      ? Math.min(requestedMonths, 12)
+      : 6;
 
     const { rows } = await pool.query(`
       SELECT feature, period_start, period_end, count, "limit"
