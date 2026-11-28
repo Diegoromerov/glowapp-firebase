@@ -3,21 +3,19 @@ const { pool } = require('../config/db');
 const usageMeteringService = require('../services/usageMeteringService');
 
 /**
- * Job mensual: reset de contadores de uso
+ * Job mensual: resumen y auditoría de métricas de uso
  * Se ejecuta día 1 de cada mes a las 00:05 UTC (configurar en cron)
  * 
  * En PostgreSQL, el "reset" es natural porque period_start cambia.
- * Este job sirve para:
- * 1. Archivar métricas del mes anterior (opcional, mover a tabla histórica)
- * 2. Enviar alertas de límites excedidos el mes anterior
- * 3. Detectar tenants que necesitan atención
+ * Este job no envía email ni webhook. Solo calcula datos y registra un
+ * resumen interno para auditoría/diagnóstico.
  */
 async function runMonthlyUsageReset() {
   const startTime = Date.now();
   console.log('[usageMonthlyReset] Iniciando reset mensual...', new Date().toISOString());
 
   try {
-    // 1. Verificar alerts del mes anterior
+    // 1. Calcular reglas heredadas de umbral; no se despachan externamente.
     const alerts = await usageMeteringService.checkUsageAlerts();
     console.log(`[usageMonthlyReset] Alertas de uso generadas: ${alerts.length}`);
 
@@ -36,9 +34,9 @@ async function runMonthlyUsageReset() {
       overageTenants: exceeded.exceeded.length
     })]);
 
-    // 4. Opcional: Enviar reporte a super-admins via email/webhook
+    // 4. Escribir un resumen interno en logs; no se envía correo ni webhook.
     if (alerts.length > 0 || exceeded.exceeded.length > 0) {
-      await notifySuperAdmins({ alerts, exceeded });
+      await logSuperAdminUsageSummary({ alerts, exceeded });
     }
 
     console.log(`[usageMonthlyReset] Completado en ${Date.now() - startTime}ms`);
@@ -57,11 +55,10 @@ async function runMonthlyUsageReset() {
 }
 
 /**
- * Notifica a super-admins sobre alertas/overages
+ * Registra en logs un resumen interno para diagnóstico de super-admins.
  */
-async function notifySuperAdmins({ alerts, exceeded }) {
-  // TODO: Integrar con email.service.js o webhook
-  console.log('[usageMonthlyReset] Notificación a super-admins:');
+async function logSuperAdminUsageSummary({ alerts, exceeded }) {
+  console.log('[usageMonthlyReset] Resumen interno de uso (solo logs):');
   console.log(`  - Alertas de threshold: ${alerts.length}`);
   console.log(`  - Tenants con overage: ${exceeded.length}`);
   
