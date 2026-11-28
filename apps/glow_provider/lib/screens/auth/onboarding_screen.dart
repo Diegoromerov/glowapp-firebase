@@ -222,46 +222,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     });
 
     try {
-      // Si el usuario vuelve tras una respuesta perdida o una provisión
-      // incompleta, el bootstrap idempotente recupera el tenant antes de
-      // intentar crear otro salón. Solo un 409 que confirme que no hay salón
-      // autoriza iniciar la creación.
-      SaasBusinessProfile profile;
-      try {
-        profile =
-            await SaasApiService.provisionTenant(plan: _selectedPlan.code);
-      } catch (error) {
-        final message = error.toString().toLowerCase();
-        final salonMissing = message.contains('409') &&
-            message.contains('no tiene un salón registrado');
-        if (!salonMissing) rethrow;
-
-        final created = await AuthService.createSalon(
-          nombreSalon: _salonNameCtrl.text.trim(),
-          nit: _salonNitCtrl.text.trim(),
-          direccion: _salonAddressCtrl.text.trim(),
-          telefono: _salonPhoneCtrl.text.trim(),
-          ciudad: _salonCityCtrl.text.trim(),
-          latitude: _salonLocationConfirmed ? _salonLocation.latitude : null,
-          longitude: _salonLocationConfirmed ? _salonLocation.longitude : null,
-          locationPublic: _salonLocationPublic,
+      // Crear primero la sede: /api/saas/bootstrap solo puede provisionar
+      // un tenant a partir de un salón persistido. El endpoint de creación es
+      // idempotente por dueño, así que un reintento recupera la misma sede.
+      final created = await AuthService.createSalon(
+        nombreSalon: _salonNameCtrl.text.trim(),
+        nit: _salonNitCtrl.text.trim(),
+        direccion: _salonAddressCtrl.text.trim(),
+        telefono: _salonPhoneCtrl.text.trim(),
+        ciudad: _salonCityCtrl.text.trim(),
+        latitude: _salonLocationConfirmed ? _salonLocation.latitude : null,
+        longitude: _salonLocationConfirmed ? _salonLocation.longitude : null,
+        locationPublic: _salonLocationPublic,
+      );
+      if (created == null || created['success'] != true) {
+        throw StateError(
+          'No pudimos crear o recuperar la sede. Verifica los datos e inténtalo de nuevo.',
         );
-
-        // createSalon puede haber guardado el salón aunque la respuesta se
-        // pierda. El bootstrap vuelve a consultar por el usuario y crea su
-        // identidad SaaS de forma idempotente, evitando duplicar el salón.
-        profile = await SaasApiService.provisionTenant(
-          plan: _selectedPlan.code,
-        );
-        if (created == null || created['success'] != true) {
-          if (kDebugMode) {
-            debugPrint(
-              'Onboarding: createSalon no confirmó la respuesta; '
-              'el bootstrap recuperó el tenant existente.',
-            );
-          }
-        }
       }
+
+      final profile =
+          await SaasApiService.provisionTenant(plan: _selectedPlan.code);
 
       // El horario comercial es opcional. Se guarda después del bootstrap para
       // reutilizar el salon_id canónico y también cubrir reintentos del alta.
