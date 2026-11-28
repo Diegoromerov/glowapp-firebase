@@ -327,7 +327,7 @@ router.post('/alerts', requireEntitlement('ADVANCED_ANALYTICS'), async (req, res
  * GET /api/saas/usage/alerts
  * Lista alertas configuradas
  */
-router.get('/alerts', async (req, res) => {
+router.get('/alerts', requireRole('ADMIN'), async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
