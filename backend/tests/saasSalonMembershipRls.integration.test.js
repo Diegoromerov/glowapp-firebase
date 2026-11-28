@@ -43,10 +43,21 @@ describeWithPostgres('SaaS salon visibility under RLS', () => {
         [fixture.userId, `Salon RLS ${label}`, fixture.profileId],
       );
       fixture.salonId = salon.rows[0].id;
-      await adminPool.query(
-        "INSERT INTO memberships (id, user_id, business_profile_id, role, status, created_by_user_id) VALUES ($1, $2, $3, 'OWNER', 'ACTIVE', $2)",
-        [crypto.randomUUID(), fixture.userId, fixture.profileId],
-      );
+      const membershipClient = await adminPool.connect();
+      try {
+        await membershipClient.query('BEGIN');
+        await membershipClient.query("SELECT set_config('app.user_id', $1, true)", [String(fixture.userId)]);
+        await membershipClient.query(
+          "INSERT INTO memberships (id, user_id, business_profile_id, role, status, created_by_user_id) VALUES ($1, $2, $3, 'OWNER', 'ACTIVE', $2)",
+          [crypto.randomUUID(), fixture.userId, fixture.profileId],
+        );
+        await membershipClient.query('COMMIT');
+      } catch (error) {
+        await membershipClient.query('ROLLBACK');
+        throw error;
+      } finally {
+        membershipClient.release();
+      }
     }
   });
 
