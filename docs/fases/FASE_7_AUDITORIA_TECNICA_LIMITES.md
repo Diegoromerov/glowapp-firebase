@@ -238,4 +238,26 @@ La lectura del resumen del tenant QA está cerrada. Continúan pendientes una re
 
 - La ruta montada `/api/provider/inventory/consume` modifica `inventario_consignacion_prestador`, filtrado por el `provider_id` autenticado. No modifica el inventario del salón SaaS (`INVENTORY`) de `salonRoutes.js`, que tiene sus propias reglas de tenant, roles y entitlement.
 - Se confirmó que esta ruta corresponde al inventario comercial en consignación y no debe consumir ni heredar cuotas SaaS del salón. El mensaje de éxito decía incorrectamente «inventario SaaS»; se corrigió para nombrar el inventario en consignación. También se ajustó el comentario del controlador y su log de error a la ruta realmente montada.
-- Validación local de sintaxis y CI backend pendientes antes de publicación.
+- `node --check backend/src/controllers/inventoryController.js` y `git diff --check` pasaron. PR [#278](https://github.com/Diegoromerov/glowapp-firebase/pull/278), Backend CI `46107963919` SUCCESS, quedó integrada en `main` como `7888894de2536128e75a0c5606497c84febb0715`.
+- Railway desplegó API, panel y ciclo de prueba. La API quedó operativa con PostgreSQL y sin datos fabricados; no se modificaron cantidades ni registros de inventario.
+- Se cierra este hallazgo de agregación. La aceptación QA autenticada y la cobertura integral de rutas, roles y entitlements siguen pendientes en el punto 9; Fase 7 continúa abierta.
+
+## Lectura y borrado de alertas heredadas — 28 de noviembre de 2026
+
+- La configuración de alertas se conserva en `business_profiles.metadata`; aunque crear alertas está deshabilitado (HTTP 501), podían existir reglas heredadas con una URL de webhook. Los endpoints GET y DELETE permitían leerlas o cambiarlas a cualquier miembro activo.
+- Ambos endpoints ahora requieren `ADMIN` como mínimo (OWNER/ADMIN). La interfaz obtiene alertas visuales del resumen de cuotas y no depende de la lectura de estas reglas heredadas.
+- PR [#279](https://github.com/Diegoromerov/glowapp-firebase/pull/279), CI `46108428979`, y PR [#280](https://github.com/Diegoromerov/glowapp-firebase/pull/280), CI `46108744437`, pasaron Backend CI, incluidas verificaciones PostgreSQL/RLS. Se integraron como `869991f` y `ffeaf9c` respectivamente.
+- Railway desplegó ambos cambios. La verificación final conjunta con la siguiente corrección confirmó producción saludable, API con PostgreSQL, nueve servicios sin fallos ni trabajo pendiente. No se leyeron ni alteraron metadatos de tenants.
+
+## Lecturas de facturación solo para OWNER — 28 de noviembre de 2026
+
+- El resumen de facturación, facturas y comprobantes PDF incluyen información fiscal y pagos; los métodos de pago revelan al menos tipo, marca y últimos cuatro dígitos. Las rutas GET solo comprobaban membresía activa, mientras que los cambios de facturación ya exigían OWNER.
+- Los endpoints de resumen, listado/detalle/PDF de facturas y medios de pago ahora requieren OWNER.
+- PR [#281](https://github.com/Diegoromerov/glowapp-firebase/pull/281), Backend CI `46109062431`, quedó integrada como `aaedef36921b372987bee3d6dd250ca3c8d9718d`.
+- Railway y `/api/health` verificaron el despliegue: nueve servicios saludables, sin trabajo pendiente, PostgreSQL disponible y sin datos fabricados. No se accedió a datos de facturación de tenants durante el despliegue.
+
+## Revisión del alta de sedes — 28 de noviembre de 2026
+
+- La cuota `SITES` cuenta sedes reales vinculadas a `business_profile_id`. La revisión de rutas y controladores confirma que el alta de onboarding crea una sede inicial de forma idempotente; no hay un endpoint de altas adicionales que eluda el flujo de negocio.
+- Por tanto, no se encontró una ruta de creación que permita superar la cuota. La gestión multi-sede sigue sin estar construida y su oferta/activación requiere aprobación comercial; el medidor no equivale a una capacidad de crear sedes.
+- Esto mantiene abierto el pendiente multi-sede del punto 5 y no autoriza nuevas sedes ni cambios a tenants productivos.
