@@ -177,24 +177,31 @@ async function main() {
         );
         const tenantPolicy = policies.find((p) => p.policyname === 'tenant_isolation');
         const membershipRead = policies.find((p) => p.policyname === 'salones_active_membership_read');
+        const tenantSql = `${tenantPolicy?.qual || ''} ${tenantPolicy?.with_check || tenantPolicy?.qual || ''}`
+          .replace(/\s+/g, ' ').toLowerCase();
+        const membershipSql = (membershipRead?.qual || '').replace(/\s+/g, ' ').toLowerCase();
         const tenantPolicyIsScoped = tenantPolicy?.permissive === 'PERMISSIVE'
           && tenantPolicy.cmd === 'ALL'
           && tenantPolicy.roles === '{public}'
-          && /tenant_id\s+IS\s+NOT\s+NULL/i.test(tenantPolicy.qual || '')
-          && /app_current_tenant_id\s*\(\s*\)/i.test(tenantPolicy.qual || '')
-          && /app_current_tenant_id\s*\(\s*\)/i.test(tenantPolicy.with_check || '');
+          && tenantSql.includes('tenant_id is not null')
+          && tenantSql.includes('app_current_tenant_id()');
+        const membershipRoleList = Array.isArray(membershipRead?.roles)
+          ? membershipRead.roles
+          : String(membershipRead?.roles || '').replace(/[{}\"]/g, '').split(',').filter(Boolean);
         const membershipPolicyIsNarrow = membershipRead?.permissive === 'PERMISSIVE'
           && membershipRead.cmd === 'SELECT'
-          && membershipRead.roles === '{app_rls_user}'
-          && /business_profile_id\s+IS\s+NOT\s+NULL/i.test(membershipRead.qual || '')
-          && /FROM\s+memberships\s+m/i.test(membershipRead.qual || '')
-          && /m\.user_id\s*=\s*app_current_user_id\s*\(\s*\)/i.test(membershipRead.qual || '')
-          && /m\.status\s*=\s*'ACTIVE'/i.test(membershipRead.qual || '')
+          && membershipRoleList.length === 1
+          && membershipRoleList[0] === 'app_rls_user'
+          && membershipSql.includes('business_profile_id is not null')
+          && membershipSql.includes('from memberships m')
+          && membershipSql.includes('m.user_id = app_current_user_id()')
+          && membershipSql.includes('m.status')
+          && membershipSql.includes("'active'")
           && !membershipRead.with_check;
         if (policies.length === 2 && tenantPolicyIsScoped && membershipPolicyIsNarrow) {
           ok('salones: RLS + FORCE + aislamiento tenant y SELECT SaaS limitado a membresía activa propia');
         } else {
-          mal('salones: se esperaba tenant_isolation y una política SELECT limitada a app_rls_user + membresía activa propia');
+          mal(`salones: políticas fuera del contrato permitido: ${JSON.stringify(policies)}`);
         }
       } else if (nPoliticas !== 1) {
         mal(`${t}: ${nPoliticas} políticas. Deben ser exactamente 1: con varias, las `
