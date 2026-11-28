@@ -169,7 +169,34 @@ async function main() {
       const nPoliticas = Number(r.politicas); // pg devuelve count(*) como string
       if (!r.rls)        mal(`${t}: RLS DESACTIVADO`);
       else if (!r.force) mal(`${t}: RLS activo pero SIN FORCE -> el propietario (${r.propietario}) salta las políticas`);
-      else if (nPoliticas !== 1) {
+      else if (t === 'salones' && nPoliticas === 2) {
+        const { rows: policies } = await cli.query(
+          `SELECT policyname, permissive, roles::text AS roles, cmd, qual, with_check
+             FROM pg_policies
+            WHERE schemaname = 'public' AND tablename = 'salones'`
+        );
+        const tenantPolicy = policies.find((p) => p.policyname === 'tenant_isolation');
+        const membershipRead = policies.find((p) => p.policyname === 'salones_active_membership_read');
+        const tenantPolicyIsScoped = tenantPolicy?.permissive === 'PERMISSIVE'
+          && tenantPolicy.cmd === 'ALL'
+          && tenantPolicy.roles === '{public}'
+          && /tenant_id\s+IS\s+NOT\s+NULL/i.test(tenantPolicy.qual || '')
+          && /app_current_tenant_id\s*\(\s*\)/i.test(tenantPolicy.qual || '')
+          && /app_current_tenant_id\s*\(\s*\)/i.test(tenantPolicy.with_check || '');
+        const membershipPolicyIsNarrow = membershipRead?.permissive === 'PERMISSIVE'
+          && membershipRead.cmd === 'SELECT'
+          && membershipRead.roles === '{app_rls_user}'
+          && /business_profile_id\s+IS\s+NOT\s+NULL/i.test(membershipRead.qual || '')
+          && /FROM\s+memberships\s+m/i.test(membershipRead.qual || '')
+          && /m\.user_id\s*=\s*app_current_user_id\s*\(\s*\)/i.test(membershipRead.qual || '')
+          && /m\.status\s*=\s*'ACTIVE'/i.test(membershipRead.qual || '')
+          && !membershipRead.with_check;
+        if (policies.length === 2 && tenantPolicyIsScoped && membershipPolicyIsNarrow) {
+          ok('salones: RLS + FORCE + aislamiento tenant y SELECT SaaS limitado a membresía activa propia');
+        } else {
+          mal('salones: se esperaba tenant_isolation y una política SELECT limitada a app_rls_user + membresía activa propia');
+        }
+      } else if (nPoliticas !== 1) {
         mal(`${t}: ${nPoliticas} políticas. Deben ser exactamente 1: con varias, las `
           + 'permisivas se OR-ean y una laxa anula a la estricta.');
       } else ok(`${t}: RLS + FORCE + 1 política`);
