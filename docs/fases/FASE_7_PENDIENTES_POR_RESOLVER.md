@@ -1,7 +1,7 @@
 # Fase 7 — Puntos por resolver
 
 **Estado:** Fase 7 en curso. Catálogo V4, conservación de derechos heredados, corrección de lectura de cuotas e informes administrativos desplegados en producción; la cobertura PostgreSQL/RLS de inventario se amplió el 27 de noviembre de 2026.
-**Fecha de elaboración:** 23 de noviembre de 2026. **Última conciliación técnica:** 27 de noviembre de 2026.
+**Fecha de elaboración:** 23 de noviembre de 2026. **Última conciliación técnica:** 28 de noviembre de 2026.
 **Contexto:** plan comercial SaaS de GlowApp para salones. El trabajo se publica directamente en producción, sin usar staging, conforme a la instrucción del usuario.
 
 ## Propósito
@@ -9,6 +9,8 @@
 Consolidar los asuntos pendientes para que catálogo, cobro, límites técnicos y oferta comercial describan el mismo producto. Este documento registra trabajo por resolver; no implica que los puntos ya estén aprobados o implementados.
 
 La auditoría estática de cobertura actual está en [FASE_7_AUDITORIA_TECNICA_LIMITES.md](FASE_7_AUDITORIA_TECNICA_LIMITES.md); distingue compuertas/cuotas encontradas de funciones que aún no tienen flujo de consumo verificable.
+
+**Conciliación 28 de noviembre:** PR #278 aclaró que el consumo del inventario de consignación del prestador no es consumo del inventario SaaS del salón. PR #279 y #280 limitaron al rol ADMIN/OWNER la lectura y eliminación de configuraciones heredadas de alertas SaaS, y PR #281 limitó al OWNER el acceso a resumen, facturas, PDF y medios de pago. Los tres CI de backend pasaron; el último despliegue productivo verificado es `aaedef36921b372987bee3d6dd250ca3c8d9718d`, con PostgreSQL activo, los nueve servicios saludables y sin despliegues pendientes. Estas correcciones de permisos no cierran la aceptación integral de rutas/roles ni los pendientes de operación y oferta comercial.
 
 **Actualización posterior:** PR [#172](https://github.com/Diegoromerov/glowapp-firebase/pull/172) quedó integrada en `main` como `89b8afdc`. Backend CI `45918524098` pasó. Añade tres pruebas HTTP que verifican que el checkout COP/USD falla cerrado ante configuración incompleta y que el cambio directo de plan no evita la confirmación de pago. No cambia el backend desplegable; producción sigue saludable en `7a2a62cb`. Las pruebas de cobro sandbox/producción y la activación comercial siguen pendientes.
 
