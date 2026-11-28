@@ -19,7 +19,7 @@ router.use(saasContext);
  * GET /api/saas/billing
  * Resumen de facturación del tenant
  */
-router.get('/', async (req, res) => {
+router.get('/', requireOwner, async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
@@ -109,7 +109,7 @@ router.get('/', async (req, res) => {
  * GET /api/saas/billing/invoices
  * Lista paginada de facturas
  */
-router.get('/invoices', async (req, res) => {
+router.get('/invoices', requireOwner, async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
@@ -150,7 +150,7 @@ router.get('/invoices', async (req, res) => {
  * GET /api/saas/billing/invoices/:invoiceId
  * Detalle de factura + link descarga PDF
  */
-router.get('/invoices/:invoiceId', async (req, res) => {
+router.get('/invoices/:invoiceId', requireOwner, async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
@@ -201,7 +201,7 @@ router.get('/invoices/:invoiceId', async (req, res) => {
  * GET /api/saas/billing/invoices/:invoiceId/pdf
  * Descarga PDF de factura
  */
-router.get('/invoices/:invoiceId/pdf', async (req, res) => {
+router.get('/invoices/:invoiceId/pdf', requireOwner, async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
@@ -466,7 +466,7 @@ router.post('/cancel', requireOwner, async (req, res) => {
  * GET /api/saas/billing/payment-methods
  * Métodos de pago guardados (Stripe)
  */
-router.get('/payment-methods', async (req, res) => {
+router.get('/payment-methods', requireOwner, async (req, res) => {
   try {
     if (!req.saas) return res.status(401).json({ error: 'Contexto SaaS requerido' });
 
