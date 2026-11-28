@@ -322,7 +322,7 @@ async function resetMonthlyCounters() {
 }
 
 /**
- * Verifica y alerta si uso supera umbral (para job diario/cron)
+ * Calcula reglas de umbral para auditoría. No envía email ni webhook.
  */
 async function checkUsageAlerts() {
   const { start } = getMonthPeriod();
